@@ -2,9 +2,8 @@
 // owned by Docsy's plugin loading and by the `benchmarks` shortcode's gate,
 // which no unit sees.
 //
-// It reads the built site, so it skips when `public/` is absent (convention:
-// tests/public/favicons.test.mjs); a missing expected page is a failure, not a
-// skip.
+// A `test:public` check (Site § Testing): skips without a build; a missing
+// expected page is a failure, not a skip.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -20,30 +19,33 @@ const repoRoot = path.resolve(
 const publicDir = path.join(repoRoot, 'public');
 
 const PLUGIN_SRC = /\/js\/plugins\/otel-benchmarks[.\w-]*\.js/;
-// Any version: the pin is hugo.yaml's business, vendoring with SRI is ours.
+// Any version: the pin is hugo.yaml's business; vendoring with SRI is ours.
 const CHARTJS_SRC = /\/js\/vendor\/chart-\d[.\w-]*\.js/;
-const DATA_SRC =
-  /open-telemetry\.github\.io\/opentelemetry-collector-contrib\/benchmarks\/loadtests\/data\.js/;
+const ANY_CHARTJS_SRC = /chart/i;
+const DATA_URL =
+  'https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js';
+const DATA_SRC = new RegExp(RegExp.escape(DATA_URL));
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
 const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])/g;
 const PLUGIN_CSS =
   /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
 
-// The Collector benchmarks page per language. Languages without their own copy
-// serve the en content as fallback (config/_default/module.yaml), so es stands
-// in for the seven fallback languages.
 const PAGE = (lang) =>
   `${lang === 'en' ? '' : `${lang}/`}docs/collector/benchmarks/index.html`;
 const MD_PAGE = (lang) => PAGE(lang).replace(/\.html$/, '.md');
-const DATA_URL =
-  'https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js';
+// Languages without their own copy serve the en content as fallback
+// (config/_default/module.yaml), so es stands in for the seven.
 const LANGS = ['en', 'ja', 'pt', 'zh', 'es'];
-// Pages converted to the shortcode; a locale moving over joins this list. When
-// the last one does, the delivery-mode duality here goes with the inline copies.
+// A locale moving over joins this list; when the last one does, the
+// delivery-mode duality here goes with the inline copies.
 const CONVERTED = ['en', 'es'];
 const OTHER_PAGE = 'docs/collector/index.html';
 
-const read = (rel) => fs.readFileSync(path.join(publicDir, rel), 'utf8');
+const read = (rel) => {
+  const file = path.join(publicDir, rel);
+  assert.ok(fs.existsSync(file), `public/${rel} is built`);
+  return fs.readFileSync(file, 'utf8');
+};
 const count = (html, re) => (html.match(re) ?? []).length;
 const scriptTags = (html) => html.match(/<script\b[^>]*>/gi) ?? [];
 // Values may be unquoted: the production build minifies the HTML. The name is
@@ -65,27 +67,20 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     () => {},
   );
 } else {
-  test('expected pages are built', () => {
-    for (const rel of [...LANGS.map(PAGE), OTHER_PAGE]) {
-      assert.ok(fs.existsSync(path.join(publicDir, rel)), `${rel} is built`);
-    }
-  });
-
   for (const lang of LANGS) {
-    const html = read(PAGE(lang));
-    const plugin = tagsWithSrc(html, PLUGIN_SRC);
-    const inline = count(html, INLINE_ID);
-
     test(`${lang}: exactly one delivery mode`, () => {
-      assert.equal(plugin.length + inline, 1, 'one of plugin or inline script');
+      const html = read(PAGE(lang));
+      const plugin = tagsWithSrc(html, PLUGIN_SRC).length;
+      const inline = count(html, INLINE_ID);
+      assert.equal(plugin + inline, 1, 'one of plugin or inline script');
       assert.equal(tagsWithSrc(html, DATA_SRC).length, 1, 'data.js tag once');
       assert.equal(
         tagsWithSrc(html, CHARTJS_SRC).length,
-        plugin.length,
+        plugin,
         'vendored Chart.js accompanies the plugin, and only it',
       );
       assert.equal(
-        plugin.length,
+        plugin,
         CONVERTED.includes(lang) ? 1 : 0,
         'plugin on converted pages only',
       );
@@ -94,6 +89,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     if (!CONVERTED.includes(lang)) continue;
 
     test(`${lang}: the plugin's file set, in order, synchronously`, () => {
+      const html = read(PAGE(lang));
       assert.equal(count(html, HOOK), 1, 'one plugin container');
       const css = html.match(PLUGIN_CSS) ?? [];
       assert.equal(css.length, 1, 'plugin stylesheet linked once');
@@ -101,10 +97,22 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         attr(css[0], 'integrity'),
         'plugin stylesheet carries integrity',
       );
+      assert.equal(
+        tagsWithSrc(html, ANY_CHARTJS_SRC).length,
+        1,
+        'the vendored Chart.js is the only Chart.js',
+      );
       const tags = scriptTags(html);
       const at = (re) => tags.findIndex((t) => re.test(attr(t, 'src')));
       const [c, d, p] = [CHARTJS_SRC, DATA_SRC, PLUGIN_SRC].map(at);
-      assert.ok(c < d && d < p, 'Chart.js, then data.js, then the plugin');
+      assert.ok(
+        c < d && d < p,
+        `Chart.js (${c}), then data.js (${d}), then the plugin (${p})`,
+      );
+      assert.ok(
+        html.search(HOOK) < html.indexOf(tags[p]),
+        'container precedes the plugin tag',
+      );
       for (const tag of [tags[c], tags[p]]) {
         assert.ok(attr(tag, 'integrity'), `integrity on ${attr(tag, 'src')}`);
       }
