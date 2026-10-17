@@ -11,10 +11,10 @@ The site adds a few scripts of its own to Docsy's, under `assets/js/`, loaded
 three ways:
 
 - [Plugins](#plugins), through Docsy's loader
-- [Body-end scripts](#body-end-scripts), through the body-end hook; the head-end
-  hook loads one script, the Kapa widget's pre-initialization
+- Hook scripts, through the body-end hook ([inventory](#body-end-scripts)) and
+  the head-end hook (one script, the Kapa widget's pre-initialization)
 - Shortcode scripts, by the shortcode of the feature that needs them: the
-  registry search form, the config-types accordion
+  registry search form and the config-types accordion, for example
 
 Hooks and shortcodes load a script through the `script.html` partial: Hugo's
 `js.Build` bundles each file, and production builds also minify, fingerprint and
@@ -32,19 +32,18 @@ owns the markup and marks the page; the shim reads the mark.
 publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
 branch); the action documents the data's shape nowhere else, so that [stock
 renderer][] is the reference for it. The fork adds the Collector testbed's
-grouping and filtering of benches, and keeps the stock class names, which the
-inline pages' shared stylesheet still targets; additions carry the `otel-`
-prefix. The language pages for JavaScript and Python still carry the stock
-renderer inline. The plugin's parts:
+grouping and filtering of benches. The language pages for JavaScript and Python
+still carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
-  container, a `div` the renderer finds by its `data-otel-benchmarks` hook, and
+  container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
   records the page's `benchmark_data_url` front-matter param in the page
   [store][] as `otelBenchmarks`. Links and text belong in the page's prose,
   where each language writes its own; the prose links the same param through
   `_param`. Top level and once per page (one data source, one container): a
-  nested or second call fails the build. Included content isn't marked ([Page
-  flags in included content][]).
+  nested or second call fails the build. A call in included content marks the
+  included page, not the page that includes it ([Page flags in included
+  content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
   charts show is worth more to an agent than the data file the page links to,
   and without a variant the HTML template's markup would land in the page's
@@ -62,10 +61,11 @@ renderer inline. The plugin's parts:
 - **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
   names what it assumes loaded.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
-  the stock page's rules for the markup the renderer creates, scoped to the
-  container; Docsy emits it with the plugin. The inline copies keep the stock
-  page's `static/css/benchmarks.css`, whose bare `main`, `button` and `footer`
-  selectors also reach Docsy's chrome.
+  the charts' layout, scoped to the container: a horizontal scroller per chart
+  for narrow columns, the minimum width the renderer sizes each chart from, and
+  the stock page's spacing; Docsy emits it with the plugin. The inline copies
+  keep the stock page's `static/css/benchmarks.css`, whose bare `main`, `button`
+  and `footer` selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
 - **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages across
@@ -75,12 +75,17 @@ renderer inline. The plugin's parts:
 #### Localized pages
 
 A page's localized copies keep inlining the script until they convert. To
-convert a copy, replace its markup and `<script>` tags with the shortcode line
-from the English page, copy its `benchmark_data_url` param, link the data from
-the prose as the English page does, and add the language to the test's
-`CONVERTED` list: the tests check that each page loads exactly one delivery
-mode, and that converted pages load the plugin. Languages without their own copy
-serve the English page and convert with it.
+convert a copy:
+
+1. Replace its stylesheet link, chart markup and `<script>` tags with the
+   shortcode line from the English page.
+2. Copy the English page's `benchmark_data_url` param, and link the data from
+   the prose as it does.
+3. Add the language to the test's `CONVERTED` list: the tests check that each
+   page loads exactly one delivery mode, and that converted pages load the
+   plugin.
+
+Languages without their own copy serve the English page and convert with it.
 
 ## Body-end scripts
 

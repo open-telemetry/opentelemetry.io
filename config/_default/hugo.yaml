@@ -127,7 +127,7 @@ cascade:
       path: '/blog'
 
 params:
-  # Site plugins: /site/implementation/plugins-and-scripts/#plugins
+  # Site plugins: https://opentelemetry.io/site/implementation/plugins-and-scripts/#plugins
   docsy:
     plugins:
       otel-benchmarks:

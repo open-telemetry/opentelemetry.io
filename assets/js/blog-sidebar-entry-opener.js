@@ -1,6 +1,6 @@
 // Opens the two newest year groups in the blog sidebar on the blog index's
 // first page. Loaded on the blog index and its pager pages; pager pages are
-// skipped here (why: https://opentelemetry.io/site/implementation/plugins-and-scripts/).
+// skipped here (why: https://opentelemetry.io/site/implementation/plugins-and-scripts/#gating-to-the-blog-index).
 //
 // This script runs at body end, when the sidebar is in the HTML but still
 // hidden: Docsy's chrome-nav.js unhides it at DOMContentLoaded, so the year
