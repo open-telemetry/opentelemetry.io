@@ -13,10 +13,7 @@ For workflows and (most of) their helper scripts, see the `workflow` and
 
 Workflows and composite actions reference this repository's own actions and
 reusable workflows with GitHub's [self-repository `$/` syntax][self-repo], which
-loads them from the running commit, no checkout needed. Until
-[actions/runner#4626][] is fixed, the runner stages the whole repository archive
-for each such reference, so a tracked symlink that dangles in an archive (for
-example, one into a submodule) fails every `$/` job at setup.
+loads them from the running commit, no checkout needed.
 
 ## Dependency installation {#dependency-installation}
 
@@ -515,7 +512,6 @@ The repository includes several other workflows:
 | `component-owners.yml`     | Assign reviewers based on component ownership                                                |
 
 <!-- prettier-ignore-start -->
-[actions/runner#4626]: https://github.com/actions/runner/issues/4626
 [link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 [self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
