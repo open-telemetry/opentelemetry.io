@@ -1,0 +1,29 @@
+{{/* The benchmarks plugin's dependencies, emitted before its script. Design:
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
+
+{{ $record := .Page.Store.Get "otelBenchmarks" -}}
+{{ if not $record -}}
+  {{ errorf "otel-benchmarks is enabled on %s without the benchmarks shortcode, whose page record its shim gates on." .Page.Path -}}
+{{ end -}}
+
+{{ $version := .Plugin.version -}}
+{{ if not $version -}}
+  {{ errorf "params.docsy.plugins.otel-benchmarks.version is empty: pin the Chart.js version there." -}}
+{{ else -}}
+  {{ $url := printf "https://cdn.jsdelivr.net/npm/chart.js@%s/dist/chart.umd.min.js" $version -}}
+  {{ with try (resources.GetRemote $url) -}}
+    {{ with .Err -}}
+      {{ errorf "Could not retrieve Chart.js %s from the CDN. Reason: %s." $version . -}}
+    {{ else with .Value -}}
+      {{/* Keyed by version: resources.Copy caches by target name. */ -}}
+      {{ $lib := resources.Copy (printf "js/vendor/chart-%s.js" $version) . | fingerprint -}}
+      <script src="{{ $lib.RelPermalink }}" integrity="{{ $lib.Data.Integrity }}" crossorigin="anonymous"></script>
+      {{- "\n" -}}
+    {{ else -}}
+      {{ errorf "Chart.js %s was not found on the CDN." $version -}}
+    {{ end -}}
+  {{ end -}}
+
+  <script src="{{ $record.data }}"></script>
+  {{- "\n" -}}
+{{ end -}}

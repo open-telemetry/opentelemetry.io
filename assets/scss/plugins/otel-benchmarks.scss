@@ -1,0 +1,45 @@
+// Styles for the markup the otel-benchmarks renderer creates.
+
+$charts-gap-above: 3rem; // Docsy's section rhythm
+$chart-min-width: 600px; // legend, axis and ~20 commit labels stay legible
+$chart-max-width: 1000px; // the stock page's chart width; keeps wide columns readable
+$set-gap: 0.5rem;
+$chart-gap: 2rem; // between one chart and the next title
+
+[data-otel-benchmarks] {
+  margin-top: $charts-gap-above;
+
+  .benchmark-set {
+    margin-block: $set-gap;
+  }
+
+  .benchmark-graphs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Titles pair a group with a bench name: long identifiers with no break
+  // points of their own.
+  h3 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    margin-top: $chart-gap;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  // Narrow columns pan the chart, as Docsy's tables do, rather than shrink it
+  // past legibility.
+  .otel-chart-scroller {
+    width: 100%;
+    max-width: $chart-max-width;
+    overflow-x: auto;
+  }
+
+  .otel-chart-wrapper {
+    min-width: $chart-min-width;
+  }
+}

@@ -127,6 +127,12 @@ cascade:
       path: '/blog'
 
 params:
+  # Site plugins: /site/implementation/plugins-and-scripts/#plugins
+  docsy:
+    plugins:
+      otel-benchmarks:
+        enable: true
+        version: 4.5.1 # Chart.js
   copyright:
     authors: >-
       OpenTelemetry Authors | Docs [CC BY
