@@ -11,7 +11,7 @@ of collector with various configuration options per test and send traffic
 through the collector. For more details about the testing environment, see
 [TestBed][].
 
-A subset of the [results][] are shown below. For all the results, see [Collector
+This page charts a subset of the [results][]. For all results, see [Collector
 Benchmarks][].
 
 {{< benchmarks >}}

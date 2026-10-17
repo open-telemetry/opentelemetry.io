@@ -1,15 +1,17 @@
-{{/* Markup for the otel-benchmarks plugin's charts, and the page record its
-  shim and companion read (`data`: the page's `benchmark_data_url` param, the
-  github-action-benchmark data.js the page's prose links too). One invocation
-  per page: the renderer targets a fixed element ID. Site pattern:
+{{/* Chart container for the otel-benchmarks plugin; records the page's data
+  URL for the plugin's shim and companion. Top level and once per page: the
+  renderer targets a fixed element ID. Site pattern:
   /site/implementation/docsy-plugins/ */ -}}
 {{ $data := .Page.Params.benchmark_data_url -}}
 {{ if not $data -}}
   {{ errorf "%s: the benchmarks shortcode reads the page's `benchmark_data_url` param, the URL of a github-action-benchmark data.js; set it in the front matter." .Position -}}
 {{ end -}}
+{{ if .Parent -}}
+  {{/* .Ordinal is relative to the parent, so only top-level calls are
+    comparable. */ -}}
+  {{ errorf "%s: the benchmarks shortcode can't be nested in another shortcode." .Position -}}
+{{ end -}}
 {{ with .Page.Store.Get "otelBenchmarks" -}}
-  {{/* The same invocation renders once per output format with one ordinal; a
-    second ordinal is a second shortcode. */ -}}
   {{ if ne .ordinal $.Ordinal -}}
     {{ errorf "%s: a page can hold one benchmarks shortcode; the renderer targets a fixed element ID." $.Position -}}
   {{ end -}}

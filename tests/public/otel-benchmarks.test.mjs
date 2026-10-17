@@ -1,11 +1,7 @@
-// Checks the benchmarks pages' script delivery in the built site. The
-// `benchmarks` shortcode marks a page for the `otel-benchmarks` Docsy plugin
-// (assets/js/plugins/), which replaces the inline renderer page by page; a page
-// not yet converted keeps its inline copy. Every benchmarks page, converted or
-// not, carries exactly one delivery mode and one chart container; a converted
-// page's Markdown output carries no chart markup and its prose links the data;
-// the plugin loads nowhere else; Docsy's own plugins survive the site-level
-// registration (params merge).
+// Checks the benchmarks pages' script delivery in the built site: each page
+// carries one delivery mode (the `otel-benchmarks` plugin, or the inline copy
+// of a locale not yet converted), the plugin loads nowhere else, and Docsy's
+// own plugins survive the site-level registration.
 //
 // It reads the built site, so it skips when `public/` is absent (convention:
 // tests/public/favicons.test.mjs); a missing expected page is a failure, not a

@@ -1,4 +1,3 @@
-{{/* Markdown-output variant of the benchmarks shortcode: renders nothing. The
-  charts are drawn in the browser and the page prose links the data; without
-  this file Hugo would emit the HTML template's markup into the Markdown
-  output. */ -}}
+{{/* Markdown-output variant: renders nothing. The charts need a browser and
+  the page prose links the data; without this file the HTML template's markup
+  would land in the Markdown output. */ -}}

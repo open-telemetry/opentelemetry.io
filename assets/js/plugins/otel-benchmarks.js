@@ -65,7 +65,6 @@ function init() {
 
   const data = window.BENCHMARK_DATA;
 
-  // Prepare data points for charts
   return Object.keys(data.entries).map((name) => ({
     name,
     dataSet: collectBenchesPerTestCase(data.entries[name]),

@@ -1,8 +1,7 @@
-{{/* Dependencies of the benchmarks plugin, emitted before its script: Chart.js,
-  vendored at build time on the entry's version pin and served with SRI, then
-  the benchmark data named by the page's shortcode, a per-commit remote script
-  that can't be vendored. Both load synchronously so the plugin finds `Chart`
-  and `window.BENCHMARK_DATA` defined. File contract:
+{{/* The benchmarks plugin's dependencies, emitted before its script: Chart.js,
+  vendored on the entry's version pin, then the page's data file. The data
+  stays a live remote script, so charts update between site builds; a fixed
+  integrity hash would reject the next update. File contract:
   https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
 {{ $record := .Page.Store.Get "otelBenchmarks" -}}
 {{ if not $record -}}
