@@ -17,13 +17,6 @@ languages:
     locale: en-US
     params:
       description: The OpenTelemetry Project Site
-      docsy:
-        plugins:
-          # Site-owned plugin, en only until the other locales convert:
-          # /site/implementation/docsy-plugins/
-          otel-collector-benchmarks:
-            enable: true
-            version: '2.9.2' # Chart.js
   bn:
     label: বাংলা
     params:
@@ -134,6 +127,12 @@ cascade:
       path: '/blog'
 
 params:
+  # Site-owned Docsy plugins: /site/implementation/docsy-plugins/
+  docsy:
+    plugins:
+      otel-benchmarks:
+        enable: true
+        version: '2.9.2' # Chart.js
   copyright:
     authors: >-
       OpenTelemetry Authors | Docs [CC BY

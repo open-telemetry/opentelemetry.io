@@ -50,3 +50,8 @@ distributions_table_header_name: Nome
 distributions_table_header_components: Componentes
 distributions_table_header_learn_more: Saiba mais
 distributions_table_footnote: Listadas em ordem alfabética
+
+# Benchmarks (the `benchmarks` shortcode)
+
+benchmarks_download: Baixar os dados em JSON
+benchmarks_powered_by: Powered by {{ .Link }}

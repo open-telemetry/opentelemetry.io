@@ -1,6 +1,6 @@
-// Renders the Collector load-test charts on /docs/collector/benchmarks/ from
-// window.BENCHMARK_DATA, which the plugin's companion partial loads along with
-// Chart.js before this script runs. Site-owned Docsy plugin:
+// Renders github-action-benchmark charts into the markup of the `benchmarks`
+// shortcode, from window.BENCHMARK_DATA, which the plugin's companion partial
+// loads along with Chart.js before this script runs. Site-owned Docsy plugin:
 // /site/implementation/docsy-plugins/
 
 'use strict';

@@ -1,0 +1,4 @@
+# Benchmarks (the `benchmarks` shortcode)
+
+benchmarks_download: データをJSONとしてダウンロード
+benchmarks_powered_by: Powered by {{ .Link }}
