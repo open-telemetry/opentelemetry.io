@@ -4,13 +4,18 @@ weight: 99
 ---
 
 The OpenTelemetry Collector runs load tests on every commit to the
-[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/)
-repository. These load tests run the binary of collector with various
-configuration options per test and send traffic through the collector.
-Additional information regarding the testing environment can be found in the
-[repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/testbed#opentelemetry-collector-testbed).
+[opentelemetry-collector-contrib][] repository. These load tests run the binary
+of collector with various configuration options per test and send traffic
+through the collector. For more details about the testing environment, see
+[TestBed][].
 
-A subset of the results are shown below. For all the results, see
-[Collector Benchmarks](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/).
+A subset of the results are shown below. For all the results, see [Collector
+Benchmarks][].
 
 {{< benchmarks data=`https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js` >}}
+
+<!-- prettier-ignore-start -->
+[Collector Benchmarks]: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/
+[opentelemetry-collector-contrib]: https://github.com/open-telemetry/opentelemetry-collector-contrib/
+[TestBed]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/testbed#opentelemetry-collector-testbed
+<!-- prettier-ignore-end -->
