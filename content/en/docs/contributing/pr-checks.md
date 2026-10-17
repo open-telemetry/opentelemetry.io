@@ -132,14 +132,19 @@ The check flags these obsolete paths:
 - `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
 - `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
   branch restores it, follow the [stale-branch update instructions][#10990].
+- `.lycheecache` as a **tracked** file - untracked when the committed link cache
+  [became `link-cache.jsonc`][#11649]. If your branch still commits it, follow
+  the [update instructions][#11928].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
 [#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
 [#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
+[#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#11928]: https://github.com/open-telemetry/opentelemetry.io/issues/11928
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-These two checks build the website and verify that all links are valid.
+These two checks build the website and verify that its links are valid.
 
 > [!NOTE]
 >
@@ -171,19 +176,31 @@ appending a `last-validated=YYYY-MM-DD` parameter, for example:
 
 - `https:/some-example.org?link-check=no&last-validated=2026-08-02`
 
+### `CHECK LINKS (production, internal)` {#check-links-production-internal .notranslate lang=en}
+
+This check fails when a page links to a **draft** or **future-dated** page: such
+a page renders in the deploy preview, but the production site omits it. Either
+link to a published page instead, or publish the target first. If `CHECK LINKS`
+reports the same page as missing, it doesn't exist at all: fix the link. For
+what the check builds and covers, see
+[Links into unpublished pages](/site/build/link-checking/#production-internal).
+
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
 If you added or changed an external link, the link checker records it in the
-link cache (`.lycheecache`), and this check fails until the updated cache is
+link cache (`link-cache.jsonc`), and this check fails until the updated cache is
 committed.
 
-The easiest way to update it is to comment
-[`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates the cache for you.
+If your branch predates `link-cache.jsonc`, first update it from `main`; for
+how, including a conflict on the cache file itself, see the [update
+instructions][#11928]. Then, either:
 
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the link cache. Push any
-changes to the cache in a new commit.
+- Comment [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR
+  — the OpenTelemetry bot updates the cache for you (on a branch that predates
+  `link-cache.jsonc`, the bot refuses and points to the same instructions); or
+- Build and check links locally: `npm run install:safe`, then
+  `npm run check:links`, which also updates the link cache. Push the cache
+  changes from a passing run in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
@@ -223,6 +240,11 @@ The following code enforces the link requirement described in this section:
   [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+#### Never mark a localized page as a draft {#localized-drafts}
+
+The build warns about a localized page marked as a draft. For the rule and the
+remedy, see [Draft pages](../localization/#drafts).
 
 ### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 

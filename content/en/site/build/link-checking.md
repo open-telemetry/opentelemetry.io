@@ -4,8 +4,8 @@ weight: 12
 description: How the site's links are checked, locally and in CI.
 ---
 
-The site is link-checked with **[Lychee][]**, backed by a committed cache of
-external-link results (see [Link cache][]).
+The site is link-checked with **[Lychee][]**, backed by a committed
+[cache of external-link results](#link-cache).
 
 > [!NOTE] Installing Lychee locally is optional
 >
@@ -24,68 +24,98 @@ npm run check:links
 
 ## Common commands
 
-| Command                | Checking scope                                               |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:links`          | Whole site                                                   |
-| `check:links:internal` | Whole site, offline (no external links)                      |
-| `check:links:diff`     | Changed files only                                           |
-| `fix:link-cache`       | Alias of `check:links`; use it to refresh the [link cache][] |
+| Command                           | Checking scope                                                      |
+| --------------------------------- | ------------------------------------------------------------------- |
+| `check:links`                     | Whole site, plus the repository's root Markdown files               |
+| `check:links:internal`            | Same scope, offline (no external links)                             |
+| `check:links:production-internal` | Same scope over a [production build](#production-internal), offline |
+| `fix:link-cache`                  | Alias of `check:links`; use it to refresh the [link cache][]        |
 
 The `check:links` and `check:links:internal` scripts run over a build of
-`BUILD_KIND`; `check:links:diff` checks files from the existing `public/` build.
-For details, see [Build kinds: full and lean][].
+`BUILD_KIND`. For details, see [Build kinds: full and lean][build-kinds].
+
+## Links into unpublished pages {#production-internal}
+
+Non-production [site builds][build-kinds] include **draft** and **future-dated**
+pages, and production builds omit them. A link into such a page therefore works
+in a deploy preview and passes `check:links`, yet returns 404 on the production
+site. The `check:links:production-internal` script catches this: it runs an
+offline check over a [lean][build-kinds] production build, and reports each page
+that links to a target the build didn't produce. For the contributor's view of a
+failure, see
+[`CHECK LINKS (production, internal)`][pr-check-production-internal].
+
+The production check complements `check:links`. Links from pages that the
+[configuration](#configuration) excludes, drifted localized pages in particular,
+go unchecked in both. External links, and the [link cache](#link-cache) that
+records their results, belong to `check:links`: an offline run fetches nothing,
+so it has no results to record.
 
 ## Configuration
 
-Lychee runs over the built site (`public/`) using the generated, git-ignored
-`lychee.toml`. The `generate:config:links` script derives it from
-[`lychee.base.toml`][] plus an `exclude_path` block computed from page front
-matter, which has two sources:
+The link check reads the generated, git-ignored `lychee.toml`, which the
+`generate:config:links` script derives from [`lychee.base.toml`][] plus
+exclusions computed from two front-matter fields:
 
-- **`link_check_exclude_path`** — a list of site-relative path regexes for pages
-  the link checker must skip, such as blog pagination and old blog posts; see
-  [`content/en/blog/_index.md`][blog-index]. Start a pattern with `^(../)?` to
-  have it cover every locale: the optional `../` matches a two-letter locale
-  path segment such as `ja/`.
-- **`drifted_from_default`** — [drifted localized pages][drifted], status `true`
-  (EN counterpart changed) or `file not found` (EN counterpart deleted). Links
-  _from_ such a page aren't checked, since they may be stale, but the page
-  remains a valid link target: inbound links from in-sync pages, including
-  fragments, are still validated.
+- **`link_check_exclude_path`**: site-relative path regexes for pages that the
+  link checker must skip, such as blog pagination and old blog posts; for an
+  example, see [`content/en/blog/_index.md`][blog-index].
+  - To cover every locale, start a pattern with `^(../)?`: the optional `../`
+    matches a two-letter locale path segment such as `ja/`.
+- **`drifted_from_default`**: marks [drifted localized pages][drifted], with
+  status `true` (EN counterpart changed) or `file not found` (EN counterpart
+  deleted).
+  - Links _from_ a drifted page aren't checked, since they may be stale.
+  - Fragment links _into_ a drifted page are skipped when the page is in the
+    build and is its URL's only content file; otherwise they're checked in full.
+    Net effect: the page is known to exist and only its fragment goes unchecked.
+    That is what drift calls for: the page can lack sections that its English
+    counterpart has since gained, and English pages shown as [locale
+    fallbacks][] still link to those sections. Implementation:
+    `toExcludePaths()` in `scripts/lychee/config/index.mjs`.
 
-Stored drift statuses are only as fresh as the last nightly [Housekeeping][]
-status sync (as merged, so the window can exceed a day), so the generator also
-skips **drift-pending** pages: locale copies of English pages changed (or
-deleted) since the **drift-status baseline**, the main-branch commit recorded in
-`data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A copy
-that itself changed since the baseline stays checked: someone is working on it.
-Config generation fails when the baseline is missing or can't be resolved; in
-CI, the `CHECK LINKS` job first deepens its shallow clone to the baseline
-commit; locally, fetch the missing history (`git fetch upstream main`) or
-override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` empties the
-overlay (stored-status skips still apply).
+Stored drift statuses lag English changes until the next [Housekeeping][] status
+sync is merged, so the generator also treats **drift-pending** pages as drifted:
 
-A local tree-wide status sync (`npm run fix:i18n`) can rewrite
-`data/l10n-drift.yaml`; leave that rewrite uncommitted — a locally recorded
-commit might not exist upstream.
+- **Drift-pending page**: a locale copy whose English page changed or was
+  deleted since the drift-status baseline, unless the copy itself changed since
+  then (someone is working on it).
+- **Drift-status baseline**: the `main` commit recorded in
+  `data/l10n-drift.yaml` by tree-wide status syncs (`npm run fix:i18n`). A local
+  sync can rewrite that file; leave the rewrite uncommitted, since the recorded
+  commit might not exist upstream.
+
+Config generation fails when the baseline is missing or can't be resolved. CI
+jobs fetch the baseline commit first; locally, either:
+
+- Fetch the missing history: `git fetch upstream main`.
+- Override the baseline: `DRIFT_BASELINE=HEAD npm run check:links` compares
+  against the current commit, so only uncommitted English changes count as
+  drift-pending (stored statuses still apply).
 
 ## Link cache <a id="refcache"></a>
 
-External-link check results are cached in `.lycheecache`, which is under version
-control so that checks only fetch URLs that are new or whose cache entries have
-expired. Lychee caches successful results only, so failures are retried on every
-run.
+External-link check results are cached in **`link-cache.jsonc`**, the committed
+cache that the [link-cache][] package maintains; Lychee's own cache file,
+`.lycheecache`, is derived from it per run and git-ignored. For the file's
+format, including how to seed an entry by hand, see [The owned
+cache][cache-format]; for which URLs a check run fetches and which it serves
+from the cache, see [Operating model][]. Hand edits are for deliberate seeds
+only; for a URL that merely blocks link checkers, append `?link-check=no` to it
+instead (see [Handling valid external links][]).
 
-Since the cache is routinely updated by several
-[scheduled workflows](#workflows) as well as content PRs, concurrent updates are
-merged line-by-line with Git's `union` strategy (see [`.gitattributes`][])
-rather than reported as conflicts. Such merges can leave duplicate or stale
-entries behind; these are benign for the checker, and the next link-check run
-rewrites the cache clean. In a PR, commit that rewrite.
+The cache is routinely updated by several [scheduled workflows](#workflows) as
+well as content PRs, so concurrent updates can conflict under Git's 3-way merge,
+distinct URLs included: both sides inserting into the same sorted gap, or one
+side pruning an entry the other refreshed or inserted beside (a hunk can then
+split an entry). When the branch's cache changes are routine check results, take
+`main`'s whole file and rerun the check, which re-adds whatever the branch
+needs; otherwise follow the conflict rules in [The owned cache][cache-format],
+then rerun the check to normalize the file.
 
 If you add or change external links, run `npm run check:links` **before
-submitting your PR** — the site build dominates the run time — and commit the
-updated `.lycheecache` along with your content changes. Otherwise the
+submitting your PR** (the site build dominates the run time) and commit the
+updated `link-cache.jsonc` along with your content changes. Otherwise the
 `CACHE updates committed?` check will fail; for recovery steps, see
 [`CACHE updates committed?`][pr-checks].
 
@@ -107,12 +137,13 @@ URLs that are still used in the site.
 
 Some sites serve valid pages to browsers but turn away plain HTTP clients like
 Lychee (bot walls, crates.io's unconditional 404s, npmjs.com signin redirects).
-Since [failures are never cached](#link-cache), links to such sites would
-otherwise fail the link check on every run once their cache entries expire.
+Since a cached failure is [re-fetched on every run][Operating model], links to
+such sites would otherwise fail the check each time.
 
 The **double-check** tooling re-verifies Lychee-reported failures through a
-browser-grade probe. URLs that the probe resolves are recorded in `.lycheecache`
-with the synthetic status `206` ("OK by analysis"). The Refcache refresh
+browser-grade probe and records the URLs it resolves in `link-cache.jsonc` with
+the synthetic status `206` ("OK by analysis"); URLs it can't resolve keep the
+failure the check recorded, for triage in the refresh PR. The Refcache refresh
 workflow runs it after the link check; to run it locally over a captured log:
 
 ```sh
@@ -125,24 +156,32 @@ behavior and setup, see the [double-check README][].
 
 ## In CI
 
-The [`check-links.yml` workflow][ci] builds the site once (lean) and shares that
-artifact with the `CHECK LINKS` job, so local runs and CI check the same build.
-That job fails if any link check fails, and hands the cache it refreshed to the
-`CACHE updates committed?` job, which fails if the run left the committed
-`.lycheecache` stale.
+The [`check-links.yml` workflow][ci] builds the site (lean) in its `BUILD` job
+and shares that artifact with the `CHECK LINKS` job, so local runs and CI check
+the same build. That job fails if any link check fails, and hands the cache it
+refreshed to the `CACHE updates committed?` job, which fails if the run left the
+committed `link-cache.jsonc` stale.
+
+The `CHECK LINKS (production, internal)` job runs beside `BUILD`, with its own
+build: it runs [`check:links:production-internal`](#production-internal).
 
 <!-- prettier-ignore-start -->
-[`.gitattributes`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.gitattributes
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
-[Build kinds: full and lean]: ../#build-kinds
+[build-kinds]: ../#build-kinds
+[cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
 [drifted]: /docs/contributing/localization/#track-changes
+[Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[locale fallbacks]: ../localization/#hugo-mounts
+[link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
+[Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
+[pr-check-production-internal]: /docs/contributing/pr-checks/#check-links-production-internal
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->

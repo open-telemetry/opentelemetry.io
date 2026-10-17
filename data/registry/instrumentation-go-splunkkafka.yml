@@ -1,7 +1,7 @@
 # cSpell:ignore splunkkafka confluentinc
 title:
   splunkkafka -- Instrumentation for
-  github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka
+  github.com/confluentinc/confluent-kafka-go/v2/kafka/splunkkafka
 registryType: instrumentation
 language: go
 tags:
@@ -11,11 +11,11 @@ tags:
 license: Apache 2.0
 description:
   Instrumentation for the
-  `github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka` package.
+  `github.com/confluentinc/confluent-kafka-go/v2/kafka/splunkkafka` package.
 authors:
   - name: Splunk Inc.
     url: https://www.splunk.com/
 urls:
-  repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka
+  repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/confluentinc/confluent-kafka-go/v2/kafka/splunkkafka
 createdAt: 2022-01-20
 isFirstParty: false

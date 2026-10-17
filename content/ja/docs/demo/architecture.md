@@ -3,7 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 4c76a8ab64aef829003446e6ff8d2869c51c03a6
+default_lang_commit: 0f387a04d1d4029af5139505eb4c1f780ae238cc
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -15,7 +15,7 @@ subgraph サービス図
 accounting(会計):::dotnet
 ad(広告):::java
 agent(Agent):::python
-cache[(キャッシュ<br/>&#40Valkey&#41)]
+cache[(キャッシュ<br/>Valkey)]
 cart(カート):::dotnet
 chatbot(Chatbot):::python
 checkout(決済):::golang
@@ -25,8 +25,8 @@ flagd(Flagd):::golang
 flagd-ui(Flagd-ui):::elixir
 fraud-detection(不正検知):::kotlin
 frontend(フロントエンド):::typescript
-frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
-image-provider(画像プロバイダー <br/>&#40nginx&#41):::cpp
+frontend-proxy(フロントエンドプロキシ <br/>Envoy):::cpp
+image-provider(画像プロバイダー <br/>nginx):::cpp
 load-generator([負荷生成ツール]):::python
 mcp(MCP):::python
 payment(支払い):::javascript
@@ -34,9 +34,9 @@ product-catalog(商品カタログ):::golang
 quoteservice(見積サービス):::php
 recommendation(レコメンデーション):::python
 shipping(配送):::rust
-queue[(キュー<br/>&#40Kafka&#41)]:::java
+queue[(キュー<br/>Kafka)]:::java
 react-native-app(React Native<br>アプリケーション):::typescript
-postgresql[(astronomy-db<br/>&#40PostgreSQL&#41)]
+postgresql[(astronomy-db<br/>PostgreSQL)]
 
 chatbot -->|HTTP| agent
 agent -.->|HTTP| frontend

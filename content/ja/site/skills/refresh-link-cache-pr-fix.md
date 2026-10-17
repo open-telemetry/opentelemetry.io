@@ -3,7 +3,7 @@ title: Refresh-link-cache PR の修正
 aliases: [refresh-refcache-pr-fix]
 description: >-
   otelbot の PR で失敗するリンクチェックを解決する方法。
-default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
+default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
 ---
 
 以下の手順に従って、[対象の otelbot PR](#target-prs) で失敗するリンクチェックを解決します。
@@ -58,7 +58,7 @@ default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
 ## 失敗したリンクの解決 {#resolve-failing-links}
 
 1. サイトをビルドしてリンクをチェックします: `npm run log:check:links`。
-   これにより `.lycheecache` も更新され、以下のダブルチェック手順で読み取るチェックログがキャプチャされます。
+   これにより `link-cache.jsonc` も更新され、以下のダブルチェック手順で読み取るチェックログがキャプチャされます。
    下記の LinkedIn に関する注意事項を参照してください。
 2. チェックが成功した場合は、[PR のまとめ](#wrap-up)に進みます。
 3. **それ以外の場合は**、チェック出力から失敗した URL とそのステータスを一覧表示します（CI 実行の場合は、PR の失敗した `CHECK LINKS` ジョブのログを参照）。
@@ -99,7 +99,7 @@ default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
    `content/` 以下のページコンテンツについては、英語ページのみを編集します。
    **ローカライズされたページのコンテンツは決して編集しないでください**。
 
-7. ソースリンクの変更後、`npm run log:check:links` を実行してリンクを再チェックし `.lycheecache` を更新します。
+7. ソースリンクの変更後、`npm run log:check:links` を実行してリンクを再チェックし `link-cache.jsonc` を更新します。
    ローカライズされたページがまだ失敗する場合は、編集するかわりに[ドリフトステータス][drift status]を更新します。
 
    ```sh
@@ -115,7 +115,9 @@ default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
 処理中の PR でリンクチェックが成功したら:
 
 1. リンクチェックの概要を返信で共有します（再チェックまたは修正された URL、および表示された場合は最終的なステータスカウント）。
-2. `.lycheecache` が変更された場合は、upstream の _`TARGET_BRANCH`_ にコミットしてプッシュします。
+2. `link-cache.jsonc` が変更された場合は、upstream の _`TARGET_BRANCH`_ にコミットしてプッシュします。
+   後続のボット実行でキャッシュのみのマージコンフリクトが発生した場合、`main` のファイルが採用され、これらの編集は破棄されます。
+   refresh レーンはその後ダブルチェックを再実行しますが、spec-integration レーンは再実行しません。
    コミットメッセージの本文にはリンクチェックの概要を使用します（プレーンテキスト。URL リストが長い場合はカウントのみを含めます）。
    これはスカッシュマージ後も PR のコミット履歴に残ります。
 3. スキルの呼び出しでコメント不要と指定されていない限り（たとえば "no comment" や "silent" を含む場合）、PR にコメントを追加します（`gh pr comment <num> --body '…'`）。
