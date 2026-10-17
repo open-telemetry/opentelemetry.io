@@ -4,6 +4,7 @@ aliases: [/docs/instrumentation/java/extensions]
 description: エクステンションは、個別のディストリビューションを作成することなくエージェントに機能を追加します。
 weight: 300
 default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
+drifted_from_default: true
 cSpell:ignore: Customizer Dotel myextension
 ---
 
