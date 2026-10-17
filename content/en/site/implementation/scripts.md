@@ -48,8 +48,9 @@ keeps the stock reading of each entry (`commit`, `benches` with `name`, `value`,
 `unit`, `range`, `extra`) and adds the Collector testbed's grouping, which
 splits each bench's `extra` on `/` and keeps the 10k-per-second cases.
 
-The `benchmarks` shortcode names the data file and emits the chart container;
-the plugin's companion loads Chart.js and the data file before the script runs
+The page names the data file in its `benchmark_data_url` front-matter param; the
+`benchmarks` shortcode emits the chart container, and the plugin's companion
+loads Chart.js and the data file before the script runs
 ([Docsy plugins](../docsy-plugins/)). The language pages for JavaScript and
 Python still carry the stock renderer inline.
 

@@ -129,7 +129,10 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     test(`${lang}: Markdown output has no chart markup; prose links the data`, () => {
       const md = read(MD_PAGE(lang));
       assert.doesNotMatch(md, /<(main|div|link|script)\b/, 'no chart markup');
-      assert.ok(md.includes(`[results]: ${DATA_URL}`), 'prose links the data');
+      assert.ok(
+        md.includes(`[results]: <${DATA_URL}>`),
+        'prose links the data',
+      );
     });
   }
 

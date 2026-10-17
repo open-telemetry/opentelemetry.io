@@ -33,11 +33,13 @@ For a plugin named _`NAME`_, where _`NAME`_ carries the `otel-` prefix:
   markup is the page that loads the script, in every language.
 - **Shortcode**: when the plugin renders into markup of its own, a shortcode
   under `layouts/_shortcodes/` owns that markup and the page record.
-  ``{{</* benchmarks data=`URL` */>}}`` takes the data script's URL and emits
-  the chart container, nothing more: links and text belong in the page's prose,
-  where each language writes its own. A page holds one such shortcode, since the
-  renderer targets a fixed element ID, and a second one fails the build. A
-  Markdown variant, `benchmarks.md` beside the HTML template, serves the page's
+  `{{</* benchmarks */>}}` emits the chart container, nothing more: links and
+  text belong in the page's prose, where each language writes its own. The data
+  file's URL has one home, the page's `benchmark_data_url` front-matter param:
+  the shortcode reads it, and the prose links it through `_param`. A page holds
+  one such shortcode, since the renderer targets a fixed element ID, and a
+  second one fails the build. A Markdown variant, `benchmarks.md` beside the
+  HTML template, serves the page's
   [Markdown output](/site/design/agent-support/): the HTML filtered to what
   survives without a browser, which for charts is nothing, rather than the empty
   chart markup Hugo would emit from the HTML template.
@@ -57,9 +59,10 @@ whose file holds the shortcode ([Page flags in included content][]).
 
 A page's localized copies keep inlining the script until they convert. To
 convert a copy, replace its markup and `<script>` tags with the shortcode line
-from the English page, and carry the English page's data link into the prose:
-the plugin tests accept either delivery mode per page, never both or neither.
-Languages without their own copy serve the English page and convert with it.
+from the English page, copy its `benchmark_data_url` param, and link the data
+from the prose as the English page does: the plugin tests accept either delivery
+mode per page, never both or neither. Languages without their own copy serve the
+English page and convert with it.
 
 [Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
 [Page flags in included content]:
