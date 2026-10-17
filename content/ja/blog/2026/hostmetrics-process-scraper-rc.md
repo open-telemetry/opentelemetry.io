@@ -44,7 +44,7 @@ System SIG は、[バージョン付きメトリクスに関する GitHub イシ
 これはユーザーにコストをかけず、コンポーネントメンテナーに単一の `metadata.yaml` ファイルで作業できる環境を提供しますが、スクレイパーの作業を開始する前に、Collector のコアリポジトリで mdatagen 自体を変更する必要がありました。
 
 System SIG は2つ目の方法を選択しました。
-フィーチャーゲートで移行を駆動する、バージョン付きメトリクスです。
+フィーチャーゲートによって移行を進める、バージョン付きメトリクスです。
 この投稿の残りの部分では、これらの移行を行うコンポーネントのコードオーナーにとって、それがどのようなものかを説明します。
 
 ## mdatagen へのバージョン付きメトリクスの追加 {#adding-versioned-metrics-to-mdatagen}
@@ -60,18 +60,18 @@ System SIG は2つ目の方法を選択しました。
 
 ```yaml
 metrics:
-  # Optional: migration/aliasing information to support dual-schema emission.
-  # When present, generated code will emit this metric and the target metric
-  # according to the gates specified below.
+  # 任意: デュアルスキーマ出力をサポートするための移行/エイリアス情報。
+  # 指定した場合、生成コードは以下で指定されたゲートに従って、
+  # このメトリクスとターゲットメトリクスを出力します。
   migration:
-    # Required: target metric key in this metadata file to emit to during migration.
+    # 必須: 移行中に出力するターゲットメトリクスのキー（このメタデータファイル内）。
     to: string
-    # Required: feature gates controlling emission. The referenced gates must be
-    # declared under feature_gates below in this file.
+    # 必須: 出力を制御するフィーチャーゲート。
+    # 参照するゲートは、このファイルの feature_gates セクションで宣言する必要があります。
     through_gates:
-      # Required: when enabled, emission of the old (current) metric is disabled.
+      # 必須: 有効にすると、古い（現在の）メトリクスの出力が無効になります。
       disable_old: string
-      # Required: when enabled, emission of the new (target) metric is enabled.
+      # 必須: 有効にすると、新しい（ターゲット）メトリクスの出力が有効になります。
       enable_new: string
 ```
 
@@ -122,7 +122,7 @@ process.cpu.utilization@v1:
 この作業は Collector のコアリポジトリで行われました。
 [mdatagen バージョン付きメトリクスの PR](https://github.com/open-telemetry/opentelemetry-collector/pull/15309) を参照してください。
 
-最後に、System SIG はバージョン付きメトリクスに従うべきルールを定義しました。
+最後に、System SIG はバージョン付きメトリクスについて従うべきルールを定義しました。
 これは要約すると、二重公開時の競合の処理、つまり同じ名前のメトリクスを出力する場合の処理に帰着します。
 これはレガシーと RC の両方のメトリクスを出力する際に発生します。
 この処理のために、以下のルールを定めた RFC が公開されました。
@@ -160,18 +160,18 @@ process スクレイパーの `metadata.yaml` ファイルで定義された移�
 | レガシーメトリクス              | RC メトリクス                           | 単位の変更                      | 属性の変更                                            |
 | ------------------------------- | --------------------------------------- | ------------------------------- | ----------------------------------------------------- |
 | `process.context_switches`      | `process.context_switches@v1`           | `{count}` → `{context_switch}`  | `context_switch_type` → `process.context_switch.type` |
-| `process.cpu.time`              | `process.cpu.time@v1`                   | none                            | `state` → `cpu.mode`                                  |
-| `process.cpu.utilization`       | `process.cpu.utilization@v1`            | none                            | `state` → `cpu.mode`                                  |
-| `process.disk.io`               | `process.disk.io@v1`                    | none                            | `direction` → `disk.io.direction`                     |
-| `process.handles`               | `process.windows.handle.count@v1`       | `{count}` → `{handle}`          | none                                                  |
-| `process.open_file_descriptors` | `process.unix.file_descriptor.count@v1` | `{count}` → `{file_descriptor}` | none                                                  |
+| `process.cpu.time`              | `process.cpu.time@v1`                   | なし                            | `state` → `cpu.mode`                                  |
+| `process.cpu.utilization`       | `process.cpu.utilization@v1`            | なし                            | `state` → `cpu.mode`                                  |
+| `process.disk.io`               | `process.disk.io@v1`                    | なし                            | `direction` → `disk.io.direction`                     |
+| `process.handles`               | `process.windows.handle.count@v1`       | `{count}` → `{handle}`          | なし                                                  |
+| `process.open_file_descriptors` | `process.unix.file_descriptor.count@v1` | `{count}` → `{file_descriptor}` | なし                                                  |
 | `process.paging.faults`         | `process.paging.faults@v1`              | `{faults}` → `{fault}`          | `paging_fault_type` → `system.paging.fault.type`      |
-| `process.threads`               | `process.thread.count@v1`               | `{threads}` → `{thread}`        | none                                                  |
+| `process.threads`               | `process.thread.count@v1`               | `{threads}` → `{thread}`        | なし                                                  |
 
 process スクレイパーからレガシーまたは RC メトリクスを出力する方法の簡単なガイドを以下に示します。
 まず、process スクレイパーのシンプルな Collector 設定が必要です。
 この例では `process.cpu.utilization` も有効にしています。
-レガシーメトリクスが有効であれば、ユーザーの設定で RC メトリクスに言及する必要がないことを示すためです。
+レガシーメトリクスが有効になっていれば、ユーザーの設定で RC メトリクスを明示的に指定しなくても、それらが出力されることを示すためです。
 
 ```yaml
 receivers:
@@ -256,12 +256,12 @@ process スクレイパーの安定化に向けた次のステップは、6か�
 System SIG は、RC の process スクレイパーをコミュニティに試してもらいたいと考えています。
 これにより、エンドユーザーが RC メトリクスと属性が自分のダッシュボードを壊すかどうかを確認する時間が得られます。
 RC メトリクスのみを出力した場合、クエリは期待どおりの結果を返し、ダッシュボードは正しく描画されるでしょうか。
-描画されない場合、RC 期間がそれらを更新するための猶予期間です。
+期待どおりに動作しない場合、RC 期間がそれらを更新するための猶予期間です。
 フィードバックがある方は、[CNCF Slack](https://slack.cncf.io/) の System SIG Slack チャンネル [#otel-system-metrics](https://cloud-native.slack.com/archives/C05CTFE9U4A?link-check=no&last-validated=2026-10-05) までお寄せください。
 
 6か月が経過した後、process スクレイパーを安定版に移行できます。
 これは、テスト、ベンチマーク、ドキュメント、テレメトリーの安定性をカバーする [「安定版」の安定性基準](https://github.com/open-telemetry/opentelemetry-collector/blob/7d1c25d46b14cce04a820d92a4ce462bf7a04b0b/docs/component-stability.md#stable)を満たしていることを検証することを意味します。
-スクレイパーを安定版に移行するということは、移行フィーチャーゲートをベータに昇格させることを意味し、両方がデフォルトでオンになり、レガシーメトリクスが削除されます。
+スクレイパーを安定版に移行するということは、移行フィーチャーゲートをベータに昇格させることを意味し、両方がデフォルトでオンになるため、レガシーメトリクスは削除されることになります。
 ユーザーは必要に応じて、両方のゲートを無効にすることでレガシーメトリクスを引き続き出力できます。
 [フィーチャーゲートガイド](https://github.com/open-telemetry/opentelemetry-collector/blob/ac085a4d9f1bdaf3eb90aaebc9a3815f4e00954d/featuregate/README.md?plain=1#L1)を参照してください。
 
