@@ -2,8 +2,7 @@
 title: エクスポーター
 weight: 50
 description: テレメトリデータの処理とエクスポート
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-drifted_from_default: true
+default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -205,7 +204,7 @@ server {
 
 [Getting Started の Node.js](/docs/languages/js/getting-started/nodejs/)または[手動計装](/docs/languages/js/instrumentation)ガイドに従った場合、コンソールエクスポーターはすでにインストールされています。
 
-`ConsoleSpanExporter`は[`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node)パッケージに含まれており、`ConsoleMetricExporter`は[`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)パッケージに含まれています。
+`ConsoleSpanExporter`は[`@opentelemetry/sdk-trace`](https://www.npmjs.com/package/@opentelemetry/sdk-trace)パッケージに含まれており、`ConsoleMetricExporter`は[`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)パッケージに含まれています。
 
 {{% include "exporters/jaeger.md" %}}
 
@@ -305,7 +304,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
