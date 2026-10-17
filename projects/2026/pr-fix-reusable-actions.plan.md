@@ -170,10 +170,10 @@ As of 2026-06-10 (continued work tracked in [#10320][]):
     download/apply/commit plumbing. Constraint on sharing: after
     `reusable-apply-patch.yml` checks out the PR branch, a `scripts/` file
     resolves from the PR's code, while a composite action referenced with `$/`
-    still loads from the caller's commit. Share via such an action (if its steps
-    run no workspace scripts), via steps that run before the PR-branch checkout,
-    by copying the shared script to a temp path first, or keep the trusted steps
-    inline (current choice).
+    still loads from the calling workflow's commit. Share via such an action (if
+    its steps run no workspace scripts), via steps that run before the PR-branch
+    checkout, by copying the shared script to a temp path first, or keep the
+    trusted steps inline (current choice).
   - Candidate migrations onto the generate→publish patch actions, retiring
     bespoke branch-management code: `refcache-refresh.yml`, and possibly the
     spec/semconv integration-branch workflows.

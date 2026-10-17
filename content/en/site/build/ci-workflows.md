@@ -277,9 +277,10 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, and uploads a patch artifact (`site.patch`), up to 1024 KB.
-   - The [npm-script-patch][] action that runs the command is referenced with
-     the [self-repository `$/` syntax](#same-repository-references), so its
+   command via the [npm-script-patch][] action, and uploads a patch artifact
+   (`site.patch`), up to 1024 KB.
+   - The action is referenced with the
+     [self-repository `$/` syntax](#same-repository-references), so its
      definition, including the lychee version it installs, comes from the
      default branch; npm dependency installation and the fix command still run
      the PR's code.

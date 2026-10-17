@@ -98,8 +98,6 @@ describe('every workflow references files that exist', () => {
 
   assert.ok(files.length > 0, 'expected to find workflow files');
 
-  // Guards the guard: a reference syntax the extractor doesn't recognize would
-  // otherwise pass every file vacuously.
   test('at least one same-repository use is found across workflows', () => {
     const actionRefs = files
       .flatMap((file) =>
