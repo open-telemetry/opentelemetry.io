@@ -5,6 +5,9 @@
 //
 // - `Chart`: Chart.js 2
 // - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
+//
+// Class and function names are the stock renderer's; ours carry the `otel-`
+// prefix.
 
 'use strict';
 
@@ -79,9 +82,18 @@ function renderAllCharts(dataSets) {
     chartTitle.textContent = name;
     parent.append(chartTitle);
 
+    // Chart.js sizes a chart from its parent's width, so the minimum width
+    // sits on an inner box, and the outer one scrolls.
+    const scroller = document.createElement('div');
+    scroller.className = 'otel-chart-scroller';
+    parent.appendChild(scroller);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'otel-chart-wrapper';
+    scroller.appendChild(wrapper);
+
     const canvas = document.createElement('canvas');
     canvas.className = 'benchmark-chart';
-    parent.appendChild(canvas);
+    wrapper.appendChild(canvas);
 
     const results = [];
     for (const [name, byCommitId] of byName.entries()) {

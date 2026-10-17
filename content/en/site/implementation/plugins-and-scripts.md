@@ -31,8 +31,10 @@ owns the markup and marks the page; the shim reads the mark.
 publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
 branch); the action documents the data's shape nowhere else, so that [stock
 renderer][] is the reference for it. The fork adds the Collector testbed's
-grouping and filtering of benches. The language pages for JavaScript and Python
-still carry the stock renderer inline. The plugin's parts:
+grouping and filtering of benches, and keeps the stock class names, which the
+inline pages' shared stylesheet still targets; additions carry the `otel-`
+prefix. The language pages for JavaScript and Python still carry the stock
+renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` the renderer finds by its `data-otel-benchmarks` hook, and
