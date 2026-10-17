@@ -164,7 +164,7 @@ describe('lychee fragment checking on external (http) URLs', { skip }, () => {
 });
 
 describe('lychee input filtering and exclusion', { skip }, () => {
-  test('extensions = ["html"] skips .md inputs', () => {
+  test('extensions = ["html"] skips .md files in a directory walk', () => {
     const dir = makeFixtureDir();
     try {
       writeFileSync(join(dir, 'ok.txt'), 'ok');
@@ -185,7 +185,34 @@ describe('lychee input filtering and exclusion', { skip }, () => {
       assert.equal(
         result.errors,
         0,
-        'the .md input is not scanned, so its dead link is not an error',
+        '.md file in a walked directory is not scanned, so its dead link is not an error',
+      );
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  // The site check names the repository's root Markdown files beside public/;
+  // their coverage rests on this.
+  test('an explicitly named .md input is checked despite extensions = ["html"]', () => {
+    const dir = makeFixtureDir();
+    try {
+      writeFileSync(join(dir, 'keep.html'), '<!doctype html><html></html>');
+      writeFileSync(join(dir, 'named.md'), '[bad](./does-not-exist.md)\n');
+      writeFileSync(join(dir, 'cfg.toml'), 'extensions = ["html"]\n');
+      const result = runLychee([
+        '--config',
+        join(dir, 'cfg.toml'),
+        '--offline',
+        '--root-dir',
+        dir,
+        dir,
+        join(dir, 'named.md'),
+      ]);
+      assert.equal(
+        result.errors,
+        1,
+        'named .md input is scanned, so its dead link is an error',
       );
     } finally {
       rmSync(dir, { recursive: true, force: true });

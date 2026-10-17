@@ -3,6 +3,7 @@ title: 浏览器
 aliases: [/docs/js/getting_started/browser]
 description: 了解如何为你的浏览器应用添加 OpenTelemetry
 default_lang_commit: 4c9af5912f276b79a489a10b44c53f720c7927d7
+drifted_from_default: true
 weight: 20
 ---
 
