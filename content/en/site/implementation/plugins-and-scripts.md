@@ -1,6 +1,5 @@
 ---
-title: Plugins and site scripts
-linkTitle: Plugins and scripts
+title: Plugins and scripts
 description: >-
   Where the site's own JavaScript loads, how a script is gated to a page, and
   what each gated script relies on
