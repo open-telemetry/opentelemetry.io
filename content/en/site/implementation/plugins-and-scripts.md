@@ -7,29 +7,23 @@ aliases: [scripts]
 cSpell:ignore: subresource
 ---
 
-The site adds a few scripts of its own to Docsy's, under `assets/js/`. Three
-kinds of template load them:
+The site adds a few scripts of its own to Docsy's, under `assets/js/`, loaded
+three ways:
 
-- **Plugins**, the scripts under `assets/js/plugins/`: Docsy builds and emits
-  them under its [custom-script contract][Docsy plugins]; the site names them
-  with the `otel-` prefix. A plugin that renders into markup of its own is gated
-  by a shortcode: the shortcode owns the markup and marks the page, so the page
-  that shows the markup is the page that loads the script, in every language.
-- **Hooks**: the body-end hook, `layouts/_partials/hooks/body-end.html`, for
-  scripts that run on every page or on a gated subset of them; the head-end
-  hook, for the Kapa widget's pre-initialization.
-- **Shortcodes**, for scripts a feature needs on the pages that use it, for
-  example the registry search form and the config-types accordion.
+- [Plugins](#plugins), through Docsy's loader
+- [Body-end scripts](#body-end-scripts), through the body-end hook
+- Shortcode scripts, by the shortcode of the feature that needs them: the
+  registry search form, the config-types accordion
 
 Hooks and shortcodes load a script through the `script.html` partial: Hugo's
-`js.Build` bundles each file, and production builds also minify and fingerprint
-it and emit a subresource-integrity hash.
+`js.Build` bundles each file, and production builds also minify, fingerprint and
+add subresource integrity.
 
 ## Plugins
 
-| Script               | Pages                                 | Purpose                                                 |
-| -------------------- | ------------------------------------- | ------------------------------------------------------- |
-| `otel-benchmarks.js` | Pages with the `benchmarks` shortcode | Renders a repository's benchmark history as line charts |
+Site plugins follow Docsy's [custom-script contract][Docsy plugins] under the
+`otel-` prefix. One that renders markup of its own is gated by a shortcode that
+owns the markup and marks the page; the shim reads the mark.
 
 ### Benchmarks plugin {#benchmarks}
 
