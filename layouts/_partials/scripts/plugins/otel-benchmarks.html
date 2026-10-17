@@ -10,7 +10,7 @@
 {{ if not $version -}}
   {{ errorf "params.docsy.plugins.otel-benchmarks.version is empty: pin the Chart.js version there." -}}
 {{ else -}}
-  {{ $url := printf "https://cdn.jsdelivr.net/npm/chart.js@%s/dist/Chart.min.js" $version -}}
+  {{ $url := printf "https://cdn.jsdelivr.net/npm/chart.js@%s/dist/chart.umd.min.js" $version -}}
   {{ with try (resources.GetRemote $url) -}}
     {{ with .Err -}}
       {{ errorf "Could not retrieve Chart.js %s from the CDN. Reason: %s." $version . -}}

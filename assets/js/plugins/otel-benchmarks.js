@@ -3,13 +3,16 @@
 //
 // Assumes these globals, loaded by the plugin's companion before this runs:
 //
-// - `Chart`: Chart.js 2
+// - `Chart`: Chart.js 4
 // - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
 //
 // Class and function names are the stock renderer's; ours carry the `otel-`
 // prefix.
 
 'use strict';
+
+// Widest a right-hand legend may grow; the plot keeps the rest.
+const LEGEND_MAX_WIDTH = 260;
 
 const COLORS = [
   '#48aaf9',
@@ -121,59 +124,59 @@ function renderAllCharts(dataSets) {
 
     const options = {
       scales: {
-        xAxes: [
-          {
-            scaleLabel: {
-              display: true,
-              labelString: 'commit',
-            },
-          },
-        ],
-        yAxes: [
-          {
-            scaleLabel: {
-              display: true,
-              labelString:
-                results?.[0]?.dataset.find((d) => d !== null)?.bench.unit ?? '',
-            },
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-      tooltips: {
-        callbacks: {
-          afterTitle: (items) => {
-            const { datasetIndex, index } = items[0];
-            const data = results[datasetIndex].dataset[index];
-            return (
-              '\n' +
-              data.commit.message +
-              '\n\n' +
-              data.commit.timestamp +
-              ' committed by @' +
-              data.commit.author.username +
-              '\n'
-            );
-          },
-          label: (item) => {
-            const { datasetIndex, index, value } = item;
-            const { name, dataset } = results[datasetIndex];
-            const { range, unit } = dataset[index].bench;
-            let label = `${name}: ${value}`;
-            label += unit;
-            if (range) {
-              label += ' (' + range + ')';
-            }
-            return label;
+        x: {
+          title: {
+            display: true,
+            text: 'commit',
           },
         },
+        y: {
+          title: {
+            display: true,
+            text:
+              results?.[0]?.dataset.find((d) => d !== null)?.bench.unit ?? '',
+          },
+          beginAtZero: true,
+        },
       },
-      legend: {
-        display: true,
-        position: 'right',
+      plugins: {
+        tooltip: {
+          callbacks: {
+            afterTitle: (items) => {
+              const { datasetIndex, dataIndex } = items[0];
+              const data = results[datasetIndex].dataset[dataIndex];
+              return (
+                '\n' +
+                data.commit.message +
+                '\n\n' +
+                data.commit.timestamp +
+                ' committed by @' +
+                data.commit.author.username +
+                '\n'
+              );
+            },
+            label: (item) => {
+              const { datasetIndex, dataIndex, formattedValue } = item;
+              const { name, dataset } = results[datasetIndex];
+              const { range, unit } = dataset[dataIndex].bench;
+              let label = `${name}: ${formattedValue}`;
+              label += unit;
+              if (range) {
+                label += ' (' + range + ')';
+              }
+              return label;
+            },
+          },
+        },
+        legend: {
+          display: true,
+          position: 'right',
+          maxWidth: LEGEND_MAX_WIDTH,
+        },
       },
+      // Tall enough for the legend's rows in one column: the stock 2:1 shape
+      // squeezes a long legend into the plot on narrow screens.
+      aspectRatio: Math.min(2, 600 / Math.max(300, results.length * 24 + 60)),
     };
 
     new Chart(canvas, {

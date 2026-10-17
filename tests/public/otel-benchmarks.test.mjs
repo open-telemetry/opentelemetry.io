@@ -21,7 +21,7 @@ const repoRoot = path.resolve(
 const publicDir = path.join(repoRoot, 'public');
 
 const PLUGIN_SRC = /\/js\/plugins\/otel-benchmarks[.\w-]*\.js/;
-const CHARTJS_SRC = /\/js\/vendor\/chart-2\.9\.2[.\w-]*\.js/;
+const CHARTJS_SRC = /\/js\/vendor\/chart-4\.5\.1[.\w-]*\.js/;
 const CHARTJS_CDN = /cdn\.jsdelivr\.net\/npm\/chart\.js@/;
 const DATA_SRC =
   /open-telemetry\.github\.io\/opentelemetry-collector-contrib\/benchmarks\/loadtests\/data\.js/;
