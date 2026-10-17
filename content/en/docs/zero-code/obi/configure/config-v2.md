@@ -91,8 +91,8 @@ Do not set either field to the OBI release version.
 
 ### Supported top-level fields
 
-OBI v0.12.1 supports the following OpenTelemetry declarative configuration
-fields:
+OBI v0.12.1 and later support the following OpenTelemetry declarative
+configuration fields:
 
 | Field                        | Support                                                                                                                     |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -115,7 +115,7 @@ resource:
 ```
 
 When you validate a standalone configuration, OBI reports an error for
-unsupported pipeline fields instead of ignoring them. In v0.12.1, do not use
+unsupported pipeline fields instead of ignoring them. Do not use
 `attribute_limits`, `instrumentation/development`, or `logger_provider`. It also
 rejects `disabled: true`, a nonempty `distribution`, and a nonempty
 `propagator`.
@@ -228,9 +228,9 @@ extensions:
                   unmatched: path
 ```
 
-In v0.12.1, `refine` supports `exports` and `http.routes`. It does not support a
-nonempty `http.filters` field or per-workload sampling. Configure sampling for
-all workloads with `tracer_provider.sampler`.
+`refine` supports `exports` and `http.routes`. It does not support a nonempty
+`http.filters` field or per-workload sampling. Configure sampling for all
+workloads with `tracer_provider.sampler`.
 
 When multiple rules match a workload, a rule does not inherit refinements that
 you omit from an earlier rule. If rules can overlap, specify each refinement
@@ -286,9 +286,9 @@ signal. For example, you can filter HTTP traces without applying the same filter
 to HTTP metrics or SQL telemetry. Define these filters under
 `capture.instrumentation.<protocol>.filters.traces` and `.metrics`.
 
-Network flow filters and TCP statistics filters are not signal-specific in
-v0.12.1. For each of these groups, use the same filter map for traces and
-metrics. Validation reports an error when the two maps differ.
+Network flow filters and TCP statistics filters are not signal-specific. For
+each of these groups, use the same filter map for traces and metrics. Validation
+reports an error when the two maps differ.
 
 To enable HTTP payload extraction, add extractors to
 `payload_extraction.enabled`. Supported values are `graphql`, `elasticsearch`,
@@ -301,8 +301,8 @@ extractor. A nested block does not enable the extractor.
 
 Use `capture.runtimes` to enable or disable Go probes, Node.js `SIGUSR1`
 injection, and Java agent attachment. You can also configure Java debug settings
-and an attachment timeout. OBI v0.12.1 does not support nonempty runtime
-`filter` fields. Use capture rules to select workloads instead.
+and an attachment timeout. OBI does not support nonempty runtime `filter`
+fields. Use capture rules to select workloads instead.
 
 ### Network observability
 

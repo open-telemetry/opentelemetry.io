@@ -17,14 +17,12 @@ the OpenTelemetry protocol (OTLP).
 OBI can also expose a Prometheus HTTP endpoint ready to scrape, for example in
 **pull** mode.
 
-To use Direct mode requires configuration with authentication credentials. Set
-the OTLP endpoint authentication credentials with these environment variables:
+For Direct mode, set the OTLP endpoint with `OTEL_EXPORTER_OTLP_ENDPOINT`. If
+the endpoint requires authentication, also set `OTEL_EXPORTER_OTLP_HEADERS` with
+the credentials.
 
-- `OTEL_EXPORTER_OTLP_ENDPOINT`
-- `OTEL_EXPORTER_OTLP_HEADERS`
-
-To run in Direct mode using the Prometheus scrape endpoint, see the
-[configuration documentation](../options/).
+For the Prometheus scrape endpoint, see the
+[data export documentation](../export-data/).
 
 ## Configure and run OBI
 

@@ -111,7 +111,7 @@ don't have OCB installed, see the
 
 **Requirements:**
 
-- [Go](https://go.dev) 1.25 or later
+- [Go](https://go.dev) 1.26 or later
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
@@ -142,26 +142,26 @@ don't have OCB installed, see the
      output_path: ./dist
 
    exporters:
-     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.142.0
-     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.142.0
+     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.151.0
+     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.158.0
 
    processors:
-     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.142.0
+     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.159.0
 
    receivers:
-     - gomod: go.opentelemetry.io/obi v0.6.0
+     - gomod: go.opentelemetry.io/obi v0.14.0
        import: go.opentelemetry.io/obi/collector
 
    providers:
-     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.18.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.65.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/fileprovider v1.18.0
+         go.opentelemetry.io/collector/confmap/provider/fileprovider v1.65.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpprovider v1.18.0
+         go.opentelemetry.io/collector/confmap/provider/httpprovider v1.65.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.18.0
+         go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.65.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.18.0
+         go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.65.0
 
    replaces:
      - go.opentelemetry.io/obi => /path/to/obi
@@ -173,11 +173,10 @@ don't have OCB installed, see the
    published OBI module does not include the generated BPF code.
 
    **Version selection**: You must specify versions for each component. The
-   example above uses versions that are known to be compatible with OBI v0.6.0.
-   If you're using a different OBI version or want to use newer component
-   versions, check your OBI repository's `go.mod` file to see which collector
-   component versions it depends on, then update the versions in your builder
-   config accordingly.
+   example above uses the OBI v0.14.0 versions for components listed in its
+   `go.mod` and the corresponding Collector release for the other components. If
+   you're using a different OBI version or want to use newer component versions,
+   check the OBI `go.mod` and update your builder config accordingly.
 
 3. Build the custom Collector:
 
@@ -303,8 +302,8 @@ the custom collector binary into a container image:
 2. Build and push the image:
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.6.0 .
-   docker push my-registry/otelcol-obi:v0.6.0
+   docker build -t my-registry/otelcol-obi:v0.14.0 .
+   docker push my-registry/otelcol-obi:v0.14.0
    ```
 
 3. Deploy the DaemonSet:
@@ -329,7 +328,7 @@ the custom collector binary into a container image:
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.6.0
+             image: my-registry/otelcol-obi:v0.14.0
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
@@ -380,10 +379,10 @@ to your `builder-config.yaml`:
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-      v0.142.0
+      v0.159.0
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
-      v0.142.0
+      v0.159.0
 ```
 
 Then use Collector processors to redact PII before export:
@@ -442,7 +441,7 @@ Implement intelligent sampling using the Collector. This example requires the
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor
-      v0.142.0
+      v0.159.0
 ```
 
 Configuration example:
@@ -562,15 +561,17 @@ configuration.
 If you encounter API incompatibility errors or "unknown revision" errors during
 build:
 
-1. Ensure your OBI source directory is up to date:
+1. Ensure your OBI source directory is checked out at the version used by the
+   builder configuration:
 
    ```shell
    cd /path/to/obi
-   git pull origin main  # or your branch
+   git fetch --tags
+   git checkout v0.14.0
    ```
 
-2. Ensure version pins are not specified in your builder config for collector
-   components, or that they match versions defined in your OBI `go.mod` file.
+2. Ensure the Collector component version pins in your builder config match the
+   versions defined in the checked-out OBI `go.mod` file.
 
 3. Check your OBI `go.mod` file to see which collector component versions it
    depends on:
