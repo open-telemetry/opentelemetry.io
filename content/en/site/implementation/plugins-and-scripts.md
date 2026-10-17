@@ -58,8 +58,9 @@ still carry the stock renderer inline. The plugin's parts:
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid; the shim keeps that remote
   code off every other page ([Security][]).
-- **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
-  names what it assumes loaded.
+- **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer: the charts,
+  a hover tooltip with the point's value and commit, and a click popover with
+  the commit's link; its header names what it assumes loaded.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container: a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and

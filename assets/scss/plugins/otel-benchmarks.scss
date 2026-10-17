@@ -47,4 +47,9 @@ $title-gap-above: 2rem;
     min-width: $chart-min-width;
     min-height: 0;
   }
+
+  // Where a clicked point is; the commit popover hangs off it.
+  .otel-point-anchor {
+    position: absolute;
+  }
 }

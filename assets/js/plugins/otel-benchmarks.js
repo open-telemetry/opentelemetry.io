@@ -1,10 +1,12 @@
 // Chart renderer of the `benchmarks` shortcode, docs:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
-// Assumes these globals, loaded by the plugin's companion before this runs:
+// Assumes these globals, loaded before this runs:
 //
-// - `Chart`: Chart.js 4
-// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
+// - `Chart`: Chart.js 4 (the plugin's companion)
+// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js (the companion)
+// - `bootstrap`: Bootstrap's bundle, for the commit popover (Docsy's main
+//   bundle)
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 
@@ -24,6 +26,108 @@ const legendLines = (label) =>
 const LEGEND_LINE_HEIGHT = 24;
 const AXES_HEIGHT = 60;
 const MAX_ASPECT_RATIO = 2;
+
+// Canvas tooltips don't wrap text, and commit subjects run to 130 characters.
+const TOOLTIP_LINE_LENGTH = 60;
+const wrapLine = (text) => {
+  const lines = [];
+  let line = '';
+  for (const word of text.split(' ')) {
+    if (line && line.length + 1 + word.length > TOOLTIP_LINE_LENGTH) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = line ? `${line} ${word}` : word;
+    }
+  }
+  return [...lines, line];
+};
+
+const subjectOf = (commit) => commit.message.split('\n')[0];
+const shortId = (commit) => commit.id.slice(0, 7);
+const parseUrl = (text) => {
+  try {
+    return new URL(text);
+  } catch {
+    return null;
+  }
+};
+
+// One commit popover at a time: clicking a point opens it, a click anywhere
+// else, Escape, or a chart resize closes it. Its content is built as DOM, the
+// commit being remote data.
+let openPopover = null;
+
+function closePopover() {
+  if (!openPopover) return;
+  const { popover, anchor, chart } = openPopover;
+  openPopover = null;
+  popover.dispose();
+  anchor.remove();
+  chart.options.plugins.tooltip.enabled = true;
+  chart.update('none');
+}
+
+function openCommitPopover(chart, wrapper, point, commit) {
+  closePopover();
+  if (!window.bootstrap?.Popover) return;
+
+  const anchor = document.createElement('span');
+  anchor.className = 'otel-point-anchor';
+  anchor.style.left = `${point.x}px`;
+  anchor.style.top = `${point.y}px`;
+  wrapper.appendChild(anchor);
+
+  const title = document.createElement('span');
+  title.textContent = subjectOf(commit);
+
+  const content = document.createElement('div');
+  const url = parseUrl(commit.url);
+  if (url?.protocol === 'https:') {
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = `Commit ${shortId(commit)} on GitHub`;
+    content.appendChild(link);
+  } else {
+    content.textContent = `Commit ${shortId(commit)}`;
+  }
+  const meta = document.createElement('div');
+  meta.className = 'small text-body-secondary';
+  meta.textContent = `${commit.timestamp.slice(0, 10)} by @${
+    commit.author.username ?? commit.author.name
+  }`;
+  content.appendChild(meta);
+
+  const popover = new bootstrap.Popover(anchor, {
+    html: true,
+    trigger: 'manual',
+    placement: 'top',
+    title,
+    content,
+  });
+  popover.show();
+  openPopover = { popover, anchor, chart };
+  // The canvas tooltip would sit under the popover (a tap leaves it up).
+  chart.options.plugins.tooltip.enabled = false;
+  chart.update('none');
+}
+
+document.addEventListener(
+  'click',
+  (event) => {
+    if (!openPopover) return;
+    const tip = document.getElementById(
+      openPopover.anchor.getAttribute('aria-describedby') ?? '',
+    );
+    if (!tip?.contains(event.target)) closePopover();
+  },
+  true,
+);
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closePopover();
+});
 
 const COLORS = [
   '#48aaf9',
@@ -146,6 +250,21 @@ function renderAllCharts(dataSets) {
 
     const options = {
       maintainAspectRatio: false,
+      // A point opens its commit's popover; the cursor says so.
+      onHover: (event, elements) => {
+        event.native.target.style.cursor = elements.length ? 'pointer' : '';
+      },
+      onClick: (event, elements, chart) => {
+        if (!elements.length) return;
+        const { datasetIndex, index } = elements[0];
+        openCommitPopover(
+          chart,
+          wrapper,
+          chart.getDatasetMeta(datasetIndex).data[index],
+          datasets[datasetIndex].data[index].result.commit,
+        );
+      },
+      onResize: closePopover,
       scales: {
         x: {
           title: {
@@ -164,19 +283,16 @@ function renderAllCharts(dataSets) {
       },
       plugins: {
         tooltip: {
+          footerMarginTop: 10,
           callbacks: {
-            // The commit's message runs to PR-body length, so it follows the
-            // value rather than pushing it off the canvas.
+            title: () => '',
+            // The commit's subject and short id; its body is PR-body length.
             footer: (items) => {
               const { commit } = items[0].raw.result;
-              return (
-                '\n' +
-                commit.message +
-                '\n\n' +
-                commit.timestamp +
-                ' committed by @' +
-                commit.author.username
-              );
+              return [
+                ...wrapLine(`${subjectOf(commit)} · ${shortId(commit)}`),
+                'Click the point for the commit link',
+              ];
             },
             label: (item) => {
               const { range, unit } = item.raw.result.bench;
