@@ -3,10 +3,12 @@
   stays a live remote script, so charts update between site builds; a fixed
   integrity hash would reject the next update. File contract:
   https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
+
 {{ $record := .Page.Store.Get "otelBenchmarks" -}}
 {{ if not $record -}}
   {{ errorf "otel-benchmarks is enabled on %s without the benchmarks shortcode, whose page record its shim gates on." .Page.Path -}}
 {{ end -}}
+
 {{ $version := .Plugin.version -}}
 {{ if not $version -}}
   {{ errorf "params.docsy.plugins.otel-benchmarks.version is empty: pin the Chart.js version there." -}}
@@ -24,6 +26,7 @@
       {{ errorf "Chart.js %s was not found on the CDN." $version -}}
     {{ end -}}
   {{ end -}}
+
   <script src="{{ $record.data }}"></script>
   {{- "\n" -}}
 {{ end -}}
