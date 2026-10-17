@@ -18,6 +18,10 @@ subresource-integrity hash. Two kinds of template load them:
 - **Shortcodes**, for scripts a feature needs on the pages that use it, for
   example the registry search form and the config-types accordion.
 
+Scripts under `assets/js/plugins/` load a third way, as
+[Docsy plugins](../docsy-plugins/): Docsy builds and emits them, and a shim
+gates each to its pages.
+
 ## Body-end scripts
 
 | Script                         | Pages                                          | Purpose                                                                                                            |
@@ -26,6 +30,28 @@ subresource-integrity hash. Two kinds of template load them:
 | `imageZoom.js`                 | All                                            | Click-to-zoom for content images                                                                                   |
 | `navScroll.js`                 | All                                            | Meant to scroll the sidebar's active entry into view; inert today, since the active state is applied after it runs |
 | `tracing.js`                   | Netlify builds, when unpaused                  | [Website telemetry](../../features/#website-telemetry), paused                                                     |
+
+## Plugins
+
+| Script               | Pages                                 | Purpose                                                 |
+| -------------------- | ------------------------------------- | ------------------------------------------------------- |
+| `otel-benchmarks.js` | Pages with the `benchmarks` shortcode | Renders a repository's benchmark history as line charts |
+
+## Benchmarks
+
+`otel-benchmarks.js` draws the charts of the Collector benchmarks page from the
+data that [github-action-benchmark][] publishes to a repository's `gh-pages`
+branch: a `data.js` file that assigns the benchmark history, one entry per
+commit, to `window.BENCHMARK_DATA`. The action documents no schema for that
+object beyond its own [stock renderer][], which the script is a fork of: it
+keeps the stock reading of each entry (`commit`, `benches` with `name`, `value`,
+`unit`, `range`, `extra`) and adds the Collector testbed's grouping, which
+splits each bench's `extra` on `/` and keeps the 10k-per-second cases.
+
+The `benchmarks` shortcode names the data file and emits the chart container;
+the plugin's companion loads Chart.js and the data file before the script runs
+([Docsy plugins](../docsy-plugins/)). The language pages for JavaScript and
+Python still carry the stock renderer inline.
 
 ## Blog sidebar entry opener
 
@@ -58,3 +84,8 @@ before the sidebar appears; the opener checks its two year groups then. In a
 lean build, other pages carry a placeholder instead, which `chrome-nav.js` fills
 after fetching the nav, too late for a body-end script. With JavaScript
 disabled, the sidebar stays hidden.
+
+[github-action-benchmark]:
+  https://github.com/benchmark-action/github-action-benchmark
+[stock renderer]:
+  https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts

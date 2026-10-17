@@ -5874,6 +5874,16 @@
     "when": "2026-10-02T19:05:20Z",
     "via": "lychee",
   },
+  "https://github.com/benchmark-action/github-action-benchmark": {
+    "result": 200,
+    "when": "2026-10-17T13:13:41Z",
+    "via": "lychee",
+  },
+  "https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts": {
+    "result": 200,
+    "when": "2026-10-17T13:13:40Z",
+    "via": "lychee",
+  },
   "https://github.com/benjoseph-grafana": {
     "result": 200,
     "when": "2026-10-10T05:45:50Z",
@@ -27489,6 +27499,11 @@
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
+    "via": "lychee",
+  },
+  "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js": {
+    "result": 200,
+    "when": "2026-10-17T13:13:38Z",
     "via": "lychee",
   },
   "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {

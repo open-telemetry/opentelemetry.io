@@ -9,9 +9,9 @@ Docsy builds, fingerprints, and emits once at the end of the page body with
 [subresource integrity][SRI], gated to the pages that use it. Inlining the same
 `<script>` in every locale's copy of a page is the pattern this replaces.
 
-| Plugin            | Effect                                                         | Loads on                              |
-| ----------------- | -------------------------------------------------------------- | ------------------------------------- |
-| `otel-benchmarks` | Renders github-action-benchmark charts (Chart.js, remote data) | Pages with the `benchmarks` shortcode |
+| Plugin            | Effect                                                                       | Loads on                              |
+| ----------------- | ---------------------------------------------------------------------------- | ------------------------------------- |
+| `otel-benchmarks` | Renders a repository's [benchmark history](../scripts/#benchmarks) as charts | Pages with the `benchmarks` shortcode |
 
 ## Plugin files
 

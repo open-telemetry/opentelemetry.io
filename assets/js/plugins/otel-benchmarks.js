@@ -1,9 +1,8 @@
-// Renders the charts of a github-action-benchmark `data.js` into the
-// `benchmarks` shortcode's #main. The data shape is the action's, undocumented
-// beyond its stock renderer, which this script derives from:
-// https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
-// Assumes `Chart` (Chart.js 2) and `window.BENCHMARK_DATA` are defined when it
-// runs. Site pattern: /site/implementation/docsy-plugins/
+// Chart renderer of the `benchmarks` shortcode:
+// /site/implementation/scripts/#benchmarks. Assumes, when it runs:
+// - `Chart`: Chart.js 2, vendored by the plugin's companion
+// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js, loaded by the
+//   companion
 
 'use strict';
 
