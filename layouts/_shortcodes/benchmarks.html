@@ -21,7 +21,4 @@
 {{ end -}}
 {{ .Page.Store.Set "otelBenchmarks" (dict "data" $data "ordinal" .Ordinal) -}}
 
-<link rel="stylesheet" href="/css/benchmarks.css">
-<div class="container">
-  <main id="main"></main>
-</div>
+<div data-otel-benchmarks></div>

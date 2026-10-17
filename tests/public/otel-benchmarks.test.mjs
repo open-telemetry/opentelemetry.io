@@ -27,6 +27,10 @@ const DATA_SRC =
   /open-telemetry\.github\.io\/opentelemetry-collector-contrib\/benchmarks\/loadtests\/data\.js/;
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
 const MAIN_ID = /<main\b[^>]*\bid=["']?main(?=["'\s>])/g;
+const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])/g;
+const SHARED_CSS = /<link\b[^>]*\bhref=["']?\/css\/benchmarks\.css(?=["'\s>])/g;
+const PLUGIN_CSS =
+  /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
 const BUTTON =
   /<button\b[^>]*\bid=["']?dl-button(?=["'\s>])[^>]*>([^<]*)<\/button>/g;
 
@@ -83,12 +87,27 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     test(`${lang}: exactly one delivery mode and one chart container`, () => {
       assert.equal(plugin.length + inline, 1, 'one of plugin or inline script');
       assert.equal(data.length, 1, 'data.js tag appears once');
-      assert.equal(count(html, MAIN_ID), 1, 'one #main container');
       if (CONVERTED.includes(lang)) {
         assert.equal(plugin.length, 1, 'converted page loads the plugin');
+        assert.equal(count(html, HOOK), 1, 'one plugin container');
+        assert.equal(count(html, MAIN_ID), 0, 'no inline #main container');
         assert.equal(count(html, BUTTON), 0, 'no download button');
+        assert.equal(count(html, SHARED_CSS), 0, 'no shared stylesheet link');
+        const css = html.match(PLUGIN_CSS) ?? [];
+        assert.equal(css.length, 1, 'plugin stylesheet linked once');
+        assert.ok(
+          attr(css[0], 'integrity'),
+          'plugin stylesheet carries integrity',
+        );
       } else {
+        assert.equal(count(html, MAIN_ID), 1, 'one inline #main container');
+        assert.equal(count(html, HOOK), 0, 'no plugin container');
         assert.equal(count(html, BUTTON), 1, 'inline copy keeps its button');
+        assert.equal(
+          count(html, SHARED_CSS),
+          1,
+          'shared stylesheet linked once',
+        );
       }
     });
 
@@ -141,7 +160,8 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     ]) {
       assert.equal(tagsWithSrc(html, re).length, 0, `${name} is absent`);
     }
-    assert.equal(count(html, MAIN_ID), 0, 'no benchmarks container');
+    assert.equal(count(html, HOOK), 0, 'no plugin container');
+    assert.equal(count(html, PLUGIN_CSS), 0, 'no plugin stylesheet');
   });
 
   test("theme plugins survive the site plugin's registration", () => {

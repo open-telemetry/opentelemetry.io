@@ -1,0 +1,27 @@
+// Styles for the markup the otel-benchmarks renderer creates; the stock
+// github-action-benchmark page's rules, scoped to the plugin's container.
+
+[data-otel-benchmarks] {
+  max-width: 1012px;
+  margin-inline: auto;
+
+  .benchmark-set {
+    margin: 8px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .benchmark-graphs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .benchmark-chart {
+    max-width: 1000px;
+  }
+}

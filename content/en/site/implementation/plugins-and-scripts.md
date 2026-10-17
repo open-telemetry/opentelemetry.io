@@ -35,12 +35,13 @@ grouping and filtering of benches. The language pages for JavaScript and Python
 still carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
-  container and records the page's `benchmark_data_url` front-matter param in
-  the page [store][] as `otelBenchmarks`. Links and text belong in the page's
-  prose, where each language writes its own; the prose links the same param
-  through `_param`. Top level and once per page (the renderer targets a fixed
-  element ID): a nested or second call fails the build. Included content isn't
-  marked ([Page flags in included content][]).
+  container, a `div` the renderer finds by its `data-otel-benchmarks` hook, and
+  records the page's `benchmark_data_url` front-matter param in the page
+  [store][] as `otelBenchmarks`. Links and text belong in the page's prose,
+  where each language writes its own; the prose links the same param through
+  `_param`. Top level and once per page (one data source, one container): a
+  nested or second call fails the build. Included content isn't marked ([Page
+  flags in included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
   charts show is worth more to an agent than the data file the page links to,
   and without a variant the HTML template's markup would land in the page's
@@ -57,6 +58,11 @@ still carry the stock renderer inline. The plugin's parts:
   code off every other page ([Security][]).
 - **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
   names what it assumes loaded.
+- **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
+  the stock page's rules for the markup the renderer creates, scoped to the
+  container; Docsy emits it with the plugin. The inline copies keep the stock
+  page's `static/css/benchmarks.css`, whose bare `main`, `button` and `footer`
+  selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
 - **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages, in both

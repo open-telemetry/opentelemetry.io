@@ -192,7 +192,7 @@ function renderAllCharts(dataSets) {
     }
   }
 
-  const main = document.getElementById('main');
+  const main = document.querySelector('[data-otel-benchmarks]');
   for (const { name, dataSet } of dataSets) {
     renderBenchSet(name, dataSet, main);
   }
