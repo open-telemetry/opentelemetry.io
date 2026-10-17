@@ -1,8 +1,10 @@
-// Chart renderer of the `benchmarks` shortcode:
-// /site/implementation/plugins-and-scripts/#benchmarks. Assumes, when it runs:
-// - `Chart`: Chart.js 2, vendored by the plugin's companion
-// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js, loaded by the
-//   companion
+// Chart renderer of the `benchmarks` shortcode, docs:
+// /site/implementation/plugins-and-scripts/#benchmarks
+//
+// Assumes these globals, loaded by the plugin's companion before this runs:
+//
+// - `Chart`: Chart.js 2
+// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
 
 'use strict';
 
