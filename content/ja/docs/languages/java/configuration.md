@@ -3,14 +3,13 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
-drifted_from_default: true
+default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 
 [SDK](../sdk/)は[API](../api/)の組み込み参照実装で、計装API呼び出しによって生成されたテレメトリーを処理およびエクスポートします。
 テレメトリーを適切に処理およびエクスポートするようにSDKを設定することは、OpenTelemetryをアプリケーションに統合するために不可欠なステップです。
