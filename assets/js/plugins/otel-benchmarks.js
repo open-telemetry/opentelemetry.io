@@ -78,24 +78,23 @@ function openCommitPopover(chart, wrapper, point, commit) {
   anchor.style.top = `${point.y}px`;
   wrapper.appendChild(anchor);
 
-  const title = document.createElement('span');
-  title.textContent = subjectOf(commit);
-
+  // No words of ours in the popover (the page has no i18n keys): the commit's
+  // subject as the link, its short id, its date and author.
   const content = document.createElement('div');
   const url = parseUrl(commit.url);
-  if (url?.protocol === 'https:') {
-    const link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = `Commit ${shortId(commit)} on GitHub`;
-    content.appendChild(link);
-  } else {
-    content.textContent = `Commit ${shortId(commit)}`;
+  const subject = document.createElement(
+    url?.protocol === 'https:' ? 'a' : 'span',
+  );
+  if (subject.tagName === 'A') {
+    subject.href = url;
+    subject.target = '_blank';
+    subject.rel = 'noopener';
   }
+  subject.textContent = subjectOf(commit);
+  content.append(subject, ` - ${shortId(commit)}`);
   const meta = document.createElement('div');
   meta.className = 'small text-body-secondary';
-  meta.textContent = `${commit.timestamp.slice(0, 10)} by @${
+  meta.textContent = `${commit.timestamp.slice(0, 10)} · @${
     commit.author.username ?? commit.author.name
   }`;
   content.appendChild(meta);
@@ -104,7 +103,6 @@ function openCommitPopover(chart, wrapper, point, commit) {
     html: true,
     trigger: 'manual',
     placement: 'top',
-    title,
     content,
   });
   popover.show();
@@ -290,7 +288,7 @@ function renderAllCharts(dataSets) {
             footer: (items) => {
               const { commit } = items[0].raw.result;
               return [
-                ...wrapLine(`${subjectOf(commit)} · ${shortId(commit)}`),
+                ...wrapLine(`${subjectOf(commit)} - ${shortId(commit)}`),
                 'Click the point for the commit link',
               ];
             },
