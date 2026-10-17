@@ -39,14 +39,3 @@ collector_component_distributions_footnote: >-
 collector_component_stability_footnote: >-
   有关组件稳定性级别的详细信息，请参阅 [OpenTelemetry Collector
   组件稳定性定义](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md)。
-
-# Benchmarks (the `benchmarks` shortcode)
-
-benchmarks_download: 下载数据为 JSON
-benchmarks_powered_by: 由 {{ .Link }} 提供支持
-benchmarks_md_summary: >-
-  本页面的 HTML
-  版本以交互式图表展示最新的基准测试结果。图表背后的数据（每个被测提交对应一个
-  JSON 文档）由
-  [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark)
-  以 JavaScript 文件的形式发布：<{{ .Data }}>。

@@ -9,7 +9,7 @@ of collector with various configuration options per test and send traffic
 through the collector. For more details about the testing environment, see
 [TestBed][].
 
-A subset of the results are shown below. For all the results, see [Collector
+A subset of the [results][] are shown below. For all the results, see [Collector
 Benchmarks][].
 
 {{< benchmarks data=`https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js` >}}
@@ -17,5 +17,6 @@ Benchmarks][].
 <!-- prettier-ignore-start -->
 [Collector Benchmarks]: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/
 [opentelemetry-collector-contrib]: https://github.com/open-telemetry/opentelemetry-collector-contrib/
+[results]: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js
 [TestBed]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/testbed#opentelemetry-collector-testbed
 <!-- prettier-ignore-end -->

@@ -1,6 +1,6 @@
 {{/* Markup for the otel-benchmarks plugin's charts, and the page record its
   shim and companion read (`data`: the github-action-benchmark data.js URL).
-  One invocation per page: the renderer targets fixed element IDs. Site
+  One invocation per page: the renderer targets a fixed element ID. Site
   pattern: /site/implementation/docsy-plugins/ */ -}}
 {{ $data := .Get "data" -}}
 {{ if not $data -}}
@@ -10,17 +10,11 @@
   {{/* The same invocation renders once per output format with one ordinal; a
     second ordinal is a second shortcode. */ -}}
   {{ if ne .ordinal $.Ordinal -}}
-    {{ errorf "%s: a page can hold one benchmarks shortcode; the renderer targets fixed element IDs." $.Position -}}
+    {{ errorf "%s: a page can hold one benchmarks shortcode; the renderer targets a fixed element ID." $.Position -}}
   {{ end -}}
 {{ end -}}
 {{ .Page.Store.Set "otelBenchmarks" (dict "data" $data "ordinal" .Ordinal) -}}
-{{ $link := `<a rel="noopener" href="https://github.com/marketplace/actions/continuous-benchmark">github-action-benchmark</a>` -}}
 <link rel="stylesheet" href="/css/benchmarks.css">
 <div class="container">
   <main id="main"></main>
 </div>
-<footer>
-  <button id="dl-button">{{ i18n "benchmarks_download" }}</button>
-  <div class="spacer"></div>
-  <div class="small">{{ i18n "benchmarks_powered_by" (dict "Link" $link) | safeHTML }}</div>
-</footer>

@@ -50,14 +50,3 @@ distributions_table_header_name: Nome
 distributions_table_header_components: Componentes
 distributions_table_header_learn_more: Saiba mais
 distributions_table_footnote: Listadas em ordem alfabética
-
-# Benchmarks (the `benchmarks` shortcode)
-
-benchmarks_download: Baixar os dados em JSON
-benchmarks_powered_by: Powered by {{ .Link }}
-benchmarks_md_summary: >-
-  A versão HTML desta página exibe gráficos interativos com os resultados mais
-  recentes dos benchmarks. Os dados por trás deles, um documento JSON para cada
-  commit avaliado, são publicados pelo
-  [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark)
-  como um arquivo JavaScript: <{{ .Data }}>.

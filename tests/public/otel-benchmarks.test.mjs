@@ -2,9 +2,10 @@
 // `benchmarks` shortcode marks a page for the `otel-benchmarks` Docsy plugin
 // (assets/js/plugins/), which replaces the inline renderer page by page; a page
 // not yet converted keeps its inline copy. Every benchmarks page, converted or
-// not, carries exactly one delivery mode, one chart container and one download
-// button, and its localized strings; the plugin loads nowhere else; Docsy's own
-// plugins survive the site-level registration (params merge).
+// not, carries exactly one delivery mode and one chart container; a converted
+// page's Markdown output carries no chart markup and its prose links the data;
+// the plugin loads nowhere else; Docsy's own plugins survive the site-level
+// registration (params merge).
 //
 // It reads the built site, so it skips when `public/` is absent (convention:
 // tests/public/favicons.test.mjs); a missing expected page is a failure, not a
@@ -32,7 +33,6 @@ const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
 const MAIN_ID = /<main\b[^>]*\bid=["']?main(?=["'\s>])/g;
 const BUTTON =
   /<button\b[^>]*\bid=["']?dl-button(?=["'\s>])[^>]*>([^<]*)<\/button>/g;
-const POWERED_BY_LINK = String.raw`<a\b[^>]*>github-action-benchmark</a>`;
 
 // The Collector benchmarks page per language. Languages without their own copy
 // serve the en content as fallback (config/_default/module.yaml), so es stands
@@ -46,28 +46,6 @@ const LANGS = ['en', 'ja', 'pt', 'zh', 'es'];
 // Pages converted to the shortcode; a locale moving over joins this list, and
 // one left out is still checked for exactly one delivery mode.
 const CONVERTED = ['en', 'es'];
-const STRINGS = {
-  en: {
-    download: 'Download data as JSON',
-    poweredBy: `Powered by ${POWERED_BY_LINK}`,
-  },
-  ja: {
-    download: 'データをJSONとしてダウンロード',
-    poweredBy: `Powered by ${POWERED_BY_LINK}`,
-  },
-  pt: {
-    download: 'Baixar os dados em JSON',
-    poweredBy: `Powered by ${POWERED_BY_LINK}`,
-  },
-  zh: {
-    download: '下载数据为 JSON',
-    poweredBy: `由 ${POWERED_BY_LINK} 提供支持`,
-  },
-  es: {
-    download: 'Download data as JSON',
-    poweredBy: `Powered by ${POWERED_BY_LINK}`,
-  },
-};
 const OTHER_PAGES = {
   collectorIndex: 'docs/collector/index.html',
   enMermaid: 'docs/demo/architecture/index.html',
@@ -106,24 +84,16 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     const inline = count(html, INLINE_ID);
     const data = tagsWithSrc(html, DATA_SRC);
 
-    test(`${lang}: exactly one delivery mode, one container, one button`, () => {
+    test(`${lang}: exactly one delivery mode and one chart container`, () => {
       assert.equal(plugin.length + inline, 1, 'one of plugin or inline script');
       assert.equal(data.length, 1, 'data.js tag appears once');
       assert.equal(count(html, MAIN_ID), 1, 'one #main container');
-      assert.equal(count(html, BUTTON), 1, 'one #dl-button');
       if (CONVERTED.includes(lang)) {
         assert.equal(plugin.length, 1, 'converted page loads the plugin');
+        assert.equal(count(html, BUTTON), 0, 'no download button');
+      } else {
+        assert.equal(count(html, BUTTON), 1, 'inline copy keeps its button');
       }
-    });
-
-    test(`${lang}: localized strings`, () => {
-      const button = [...html.matchAll(BUTTON)][0]?.[1];
-      assert.equal(button, STRINGS[lang].download, 'download button text');
-      assert.match(
-        html,
-        new RegExp(STRINGS[lang].poweredBy),
-        'powered-by sentence with its link',
-      );
     });
 
     if (plugin.length === 1) {
@@ -156,15 +126,10 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
   }
 
   for (const lang of CONVERTED) {
-    test(`${lang}: Markdown output describes the charts and links the data`, () => {
+    test(`${lang}: Markdown output has no chart markup; prose links the data`, () => {
       const md = read(MD_PAGE(lang));
-      assert.ok(md.includes(`<${DATA_URL}>`), 'data URL is linked');
-      assert.match(md, /github-action-benchmark\)/, 'producer is linked');
-      assert.doesNotMatch(
-        md,
-        /<(main|button|footer|link)\b/,
-        'no chart markup',
-      );
+      assert.doesNotMatch(md, /<(main|div|link|script)\b/, 'no chart markup');
+      assert.ok(md.includes(`[results]: ${DATA_URL}`), 'prose links the data');
     });
   }
 

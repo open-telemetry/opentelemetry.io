@@ -69,15 +69,6 @@ function init() {
 
   const data = window.BENCHMARK_DATA;
 
-  // Render footer
-  document.getElementById('dl-button').onclick = () => {
-    const dataUrl = 'data:,' + JSON.stringify(data, null, 2);
-    const a = document.createElement('a');
-    a.href = dataUrl;
-    a.download = 'benchmark_data.json';
-    a.click();
-  };
-
   // Prepare data points for charts
   return Object.keys(data.entries).map((name) => ({
     name,
