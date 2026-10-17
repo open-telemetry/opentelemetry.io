@@ -20484,6 +20484,11 @@
     "when": "2026-10-16T05:44:19Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/5357": {
+    "result": 200,
+    "when": "2026-10-15T06:53:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "result": 200,
     "when": "2026-10-08T05:47:50Z",
@@ -33104,6 +33109,11 @@
   "https://www.mysql.com/": {
     "result": 206,
     "when": "2026-09-30T06:17:14Z",
+    "via": "lychee",
+  },
+  "https://www.ncsc.gov.uk/report/impact-ai-cyber-threat-now-2027": {
+    "result": 200,
+    "when": "2026-10-15T06:53:32Z",
     "via": "lychee",
   },
   "https://www.netlify.com/": {
