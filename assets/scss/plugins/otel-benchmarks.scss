@@ -18,6 +18,12 @@ $set-gap: 0.5rem;
     align-items: center;
   }
 
+  // Titles are bench identifiers, one unbreakable word each.
+  h3 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   // Narrow columns pan the chart, as Docsy's tables do, rather than shrink it
   // past legibility.
   .otel-chart-scroller {
