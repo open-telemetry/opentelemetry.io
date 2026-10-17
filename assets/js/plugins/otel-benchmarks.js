@@ -98,29 +98,24 @@ function renderAllCharts(dataSets) {
     canvas.className = 'benchmark-chart';
     wrapper.appendChild(canvas);
 
-    const results = [];
-    for (const [name, byCommitId] of byName.entries()) {
-      results.push({
-        name,
-        dataset: commitIds.map((commitId) => byCommitId.get(commitId) ?? null),
-      });
-    }
-    results.sort((a, b) => a.name.localeCompare(b.name));
-
-    const data = {
-      labels: commitIds,
-      datasets: results.map(({ name, dataset }, index) => {
+    // A point carries its result, which the tooltip reads back as `raw`.
+    const datasets = [...byName.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, byCommitId], index) => {
         const color = COLORS[index % COLORS.length];
 
         return {
           label: name,
-          data: dataset.map((d) => d?.bench.value ?? null),
-          fill: false,
+          data: commitIds.map((commitId) => {
+            const result = byCommitId.get(commitId);
+            return { x: commitId, y: result?.bench.value ?? null, result };
+          }),
           borderColor: color,
           backgroundColor: color,
         };
-      }),
-    };
+      });
+
+    const data = { labels: commitIds, datasets };
 
     const options = {
       scales: {
@@ -134,7 +129,7 @@ function renderAllCharts(dataSets) {
           title: {
             display: true,
             text:
-              results?.[0]?.dataset.find((d) => d !== null)?.bench.unit ?? '',
+              datasets[0]?.data.find((p) => p.result)?.result.bench.unit ?? '',
           },
           beginAtZero: true,
         },
@@ -143,23 +138,20 @@ function renderAllCharts(dataSets) {
         tooltip: {
           callbacks: {
             afterTitle: (items) => {
-              const { datasetIndex, dataIndex } = items[0];
-              const data = results[datasetIndex].dataset[dataIndex];
+              const { commit } = items[0].raw.result;
               return (
                 '\n' +
-                data.commit.message +
+                commit.message +
                 '\n\n' +
-                data.commit.timestamp +
+                commit.timestamp +
                 ' committed by @' +
-                data.commit.author.username +
+                commit.author.username +
                 '\n'
               );
             },
             label: (item) => {
-              const { datasetIndex, dataIndex, formattedValue } = item;
-              const { name, dataset } = results[datasetIndex];
-              const { range, unit } = dataset[dataIndex].bench;
-              let label = `${name}: ${formattedValue}`;
+              const { range, unit } = item.raw.result.bench;
+              let label = `${item.dataset.label}: ${item.formattedValue}`;
               label += unit;
               if (range) {
                 label += ' (' + range + ')';
@@ -176,7 +168,7 @@ function renderAllCharts(dataSets) {
       },
       // Tall enough for the legend's rows in one column: the stock 2:1 shape
       // squeezes a long legend into the plot on narrow screens.
-      aspectRatio: Math.min(2, 600 / Math.max(300, results.length * 24 + 60)),
+      aspectRatio: Math.min(2, 600 / Math.max(300, datasets.length * 24 + 60)),
     };
 
     new Chart(canvas, {
