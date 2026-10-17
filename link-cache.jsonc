@@ -1829,11 +1829,6 @@
     "when": "2026-10-15T05:44:45Z",
     "via": "lychee",
   },
-  "https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity": {
-    "result": 200,
-    "when": "2026-10-16T00:43:10Z",
-    "via": "lychee",
-  },
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS": {
     "result": 200,
     "when": "2026-10-08T05:47:38Z",
@@ -24916,6 +24911,11 @@
     "when": "2026-09-30T05:46:18Z",
     "via": "lychee",
   },
+  "https://gohugo.io/methods/page/store/": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
   "https://gohugo.io/methods/site/regularpages/": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
@@ -32211,14 +32211,44 @@
     "when": "2026-10-16T00:43:10Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#configuration-reference": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#dependency-versions": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content": {
     "result": 200,
     "when": "2026-10-17T02:23:19Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/docs/content/plugins/#plugin-files": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#security": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/shortcodes/#markdown-output-variants": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
     "via": "lychee",
   },
   "https://www.docsy.dev/tags/hugo/": {

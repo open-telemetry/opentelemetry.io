@@ -1,70 +1,63 @@
 ---
 title: Docsy plugins
-description: Ship a site-owned script as a Docsy plugin instead of inlining it
-cSpell:ignore: subresource
+description: Package and gate a site-owned script as a Docsy plugin.
 ---
 
-The site ships some of its own scripts as [Docsy plugins][]: a script file that
-Docsy builds, fingerprints, and emits once at the end of the page body with
-[subresource integrity][SRI], gated to the pages that use it. Inlining the same
-`<script>` in every locale's copy of a page is the pattern this replaces.
+Site-owned plugins follow Docsy's [custom-script contract][Docsy plugins], under
+names with the `otel-` prefix. For the plugins in service, see
+[Site scripts § Plugins](../scripts/#plugins); this page is the pattern, through
+its first instance, `otel-benchmarks`.
 
-| Plugin            | Effect                                                                       | Loads on                              |
-| ----------------- | ---------------------------------------------------------------------------- | ------------------------------------- |
-| `otel-benchmarks` | Renders a repository's [benchmark history](../scripts/#benchmarks) as charts | Pages with the `benchmarks` shortcode |
+## Shortcode-gated pattern
 
-## Plugin files
+Docsy loads a plugin on every page unless its shim says otherwise. Where a
+plugin renders into markup of its own, a shortcode owns that markup and marks
+the page, so the page that shows the markup is the page that loads the script,
+in every language:
 
-For a plugin named _`NAME`_, where _`NAME`_ carries the `otel-` prefix:
-
-- **Script**: `assets/js/plugins/`_`NAME`_`.js`, the plugin's code. Docsy builds
-  it with `js.Build` and emits it synchronously, after the page's markup.
-- **Companion**: `layouts/_partials/scripts/plugins/`_`NAME`_`.html`, emitted
-  before the script, for the plugin's dependencies. Vendor a third-party library
-  at build time from the entry's `version` pin and serve it with SRI, as the
-  `otel-benchmarks` companion does with Chart.js. Data that changes between
-  builds, such as a benchmark `data.js`, stays a remote script: it can't be
-  vendored or carry SRI, and it executes as JavaScript, so load it only where
-  the page needs it.
-- **Shim**: `layouts/_partials/scripts/plugins/`_`NAME`_`_docsy-shim.html`,
-  returns the plugin entry with `enable: false` on pages that don't need the
-  plugin. The `otel-benchmarks` shim gates on a page record that the
-  `benchmarks` shortcode sets with `.Page.Store`, so the page that renders the
-  markup is the page that loads the script, in every language.
-- **Shortcode**: when the plugin renders into markup of its own, a shortcode
-  under `layouts/_shortcodes/` owns that markup and the page record.
-  `{{</* benchmarks */>}}` emits the chart container, nothing more: links and
-  text belong in the page's prose, where each language writes its own. The data
-  file's URL has one home, the page's `benchmark_data_url` front-matter param:
-  the shortcode reads it, and the prose links it through `_param`. A page holds
-  one such shortcode, since the renderer targets a fixed element ID, and a
-  second one fails the build. A Markdown variant, `benchmarks.md` beside the
-  HTML template, serves the page's
-  [Markdown output](/site/design/agent-support/): the HTML filtered to what
-  survives without a browser, which for charts is nothing, rather than the empty
-  chart markup Hugo would emit from the HTML template.
-- **Registration**: `params.docsy.plugins.`_`NAME`_ in
-  `config/_default/hugo.yaml`, with `enable` and the dependency `version`. The
-  shim decides per page, so one site-level entry serves every language.
-- **Tests**: a `tests/public/`_`NAME`_`.test.mjs` file checks the built pages:
-  the plugin loads once where it should, with SRI, and nowhere else; see
-  `otel-benchmarks.test.mjs`.
-
-For the file contract, see Docsy's [Add a custom script][Docsy plugins]. Docsy
-marks plugin authoring as experimental. A page that pulls the shortcode in
-through included content doesn't get the plugin: the record lands on the page
-whose file holds the shortcode ([Page flags in included content][]).
+- **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
+  container and records the page's `benchmark_data_url` front-matter param in
+  the page [store][] as `otelBenchmarks`. Links and text belong in the page's
+  prose, where each language writes its own; the prose links the same param
+  through `_param`. Top level and once per page (the renderer targets a fixed
+  element ID): a nested or second call fails the build. Included content isn't
+  marked ([Page flags in included content][]).
+- **Markdown variant**, `benchmarks.md` beside it ([Markdown output
+  variants][]): renders nothing, since the charts need a browser and the prose
+  links the data, so the page's [Markdown output](/site/design/agent-support/)
+  carries no empty container.
+- **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
+  ([Adjust a plugin per page][]): disables the plugin on pages without the
+  record.
+- **Companion**, `layouts/_partials/scripts/plugins/otel-benchmarks.html`
+  ([Plugin files][]): vendors Chart.js on the entry's
+  [`version`][Dependency versions] pin, then loads the data file from the
+  record. The data stays a live remote script so the charts update between site
+  builds; the shim keeps that remote code off every other page ([Security][]).
+- **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
+  names what it assumes loaded.
+- **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
+  one site-level entry, since the shim decides per page.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages, in both
+  output formats, across converted, unconverted and fallback languages.
 
 ## Localized pages
 
 A page's localized copies keep inlining the script until they convert. To
 convert a copy, replace its markup and `<script>` tags with the shortcode line
 from the English page, copy its `benchmark_data_url` param, and link the data
-from the prose as the English page does: the plugin tests accept either delivery
-mode per page, never both or neither. Languages without their own copy serve the
+from the prose as the English page does: the tests accept either delivery mode
+per page, never both or neither. Languages without their own copy serve the
 English page and convert with it.
 
+<!-- prettier-ignore-start -->
+[Adjust a plugin per page]: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page
+[Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
+[Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
 [Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
-[Page flags in included content]:
-  https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
-[SRI]: https://developer.mozilla.org/docs/Web/Security/Subresource_Integrity
+[Markdown output variants]: https://www.docsy.dev/docs/content/shortcodes/#markdown-output-variants
+[Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
+[Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
+[Security]: https://www.docsy.dev/docs/content/plugins/#security
+[store]: https://gohugo.io/methods/page/store/
+<!-- prettier-ignore-end -->

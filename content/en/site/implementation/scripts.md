@@ -7,20 +7,20 @@ description: >-
 cSpell:ignore: subresource
 ---
 
-The site adds a few scripts of its own to Docsy's. They live under `assets/js/`
-and load through the `script.html` partial: Hugo's `js.Build` bundles each file,
-and production builds also minify and fingerprint it and emit a
-subresource-integrity hash. Two kinds of template load them:
+The site adds a few scripts of its own to Docsy's, under `assets/js/`. Three
+kinds of template load them:
 
 - **Hooks**: the body-end hook, `layouts/_partials/hooks/body-end.html`, for
   scripts that run on every page or on a gated subset of them; the head-end
   hook, for the Kapa widget's pre-initialization.
 - **Shortcodes**, for scripts a feature needs on the pages that use it, for
   example the registry search form and the config-types accordion.
+- **Docsy's plugin loader**, for the scripts under `assets/js/plugins/`
+  ([Docsy plugins](../docsy-plugins/)).
 
-Scripts under `assets/js/plugins/` load a third way, as
-[Docsy plugins](../docsy-plugins/): Docsy builds and emits them, and a shim
-gates each to its pages.
+Hooks and shortcodes load a script through the `script.html` partial: Hugo's
+`js.Build` bundles each file, and production builds also minify and fingerprint
+it and emit a subresource-integrity hash.
 
 ## Body-end scripts
 
@@ -39,20 +39,13 @@ gates each to its pages.
 
 ## Benchmarks
 
-`otel-benchmarks.js` draws the charts of the Collector benchmarks page from the
-data that [github-action-benchmark][] publishes to a repository's `gh-pages`
-branch: a `data.js` file that assigns the benchmark history, one entry per
-commit, to `window.BENCHMARK_DATA`. The action documents no schema for that
-object beyond its own [stock renderer][], which the script is a fork of: it
-keeps the stock reading of each entry (`commit`, `benches` with `name`, `value`,
-`unit`, `range`, `extra`) and adds the Collector testbed's grouping, which
-splits each bench's `extra` on `/` and keeps the 10k-per-second cases.
-
-The page names the data file in its `benchmark_data_url` front-matter param; the
-`benchmarks` shortcode emits the chart container, and the plugin's companion
-loads Chart.js and the data file before the script runs
-([Docsy plugins](../docsy-plugins/)). The language pages for JavaScript and
-Python still carry the stock renderer inline.
+`otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
+publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
+branch); the action documents the data's shape nowhere else, so that [stock
+renderer][] is the reference for it. The fork adds the Collector testbed's
+grouping and filtering of benches. How the page, shortcode and plugin fit
+together: [Docsy plugins](../docsy-plugins/). The language pages for JavaScript
+and Python still carry the stock renderer inline.
 
 ## Blog sidebar entry opener
 
