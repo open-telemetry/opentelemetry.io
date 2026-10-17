@@ -53,7 +53,8 @@ still carry the stock renderer inline. The plugin's parts:
   ([Plugin files][]): vendors Chart.js on the entry's
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
-  builds; the shim keeps that remote code off every other page ([Security][]).
+  builds, which a fixed integrity hash would forbid; the shim keeps that remote
+  code off every other page ([Security][]).
 - **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
   names what it assumes loaded.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):

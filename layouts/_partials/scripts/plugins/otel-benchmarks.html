@@ -1,8 +1,6 @@
-{{/* The benchmarks plugin's dependencies, emitted before its script: Chart.js,
-  vendored on the entry's version pin, then the page's data file. The data
-  stays a live remote script, so charts update between site builds; a fixed
-  integrity hash would reject the next update. File contract:
-  https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
+{{/* The benchmarks plugin's dependencies, emitted before its script. Design:
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks;
+  file contract: https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
 
 {{ $record := .Page.Store.Get "otelBenchmarks" -}}
 {{ if not $record -}}
