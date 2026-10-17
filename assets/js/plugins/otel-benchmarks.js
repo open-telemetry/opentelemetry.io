@@ -1,5 +1,5 @@
 // Chart renderer of the `benchmarks` shortcode, docs:
-// /site/implementation/plugins-and-scripts/#benchmarks
+// https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
 // Assumes these globals, loaded by the plugin's companion before this runs:
 //
