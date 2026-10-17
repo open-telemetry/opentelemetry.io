@@ -1,5 +1,5 @@
-{{/* Loads the plugin only on pages the benchmarks shortcode marked. Shim
-  contract: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page */ -}}
+{{/* Loads the plugin only on pages the benchmarks shortcode marked. Design:
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $entry := .Plugin -}}
 {{ if not (.Page.Store.Get "otelBenchmarks") -}}

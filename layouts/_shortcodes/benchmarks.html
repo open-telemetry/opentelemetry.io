@@ -1,7 +1,6 @@
 {{/* Chart container for the otel-benchmarks plugin; records the page's data
-  URL for the plugin's shim and companion. Top level and once per page: the
-  renderer targets a fixed element ID. Site pattern:
-  /site/implementation/plugins-and-scripts/#benchmarks */ -}}
+  URL for the plugin's shim and companion. Top level and once per page. Design:
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $data := .Page.Params.benchmark_data_url -}}
 {{ if not $data -}}

@@ -1,6 +1,5 @@
 {{/* The benchmarks plugin's dependencies, emitted before its script. Design:
-  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks;
-  file contract: https://www.docsy.dev/docs/content/plugins/#plugin-files */ -}}
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $record := .Page.Store.Get "otelBenchmarks" -}}
 {{ if not $record -}}
