@@ -11,7 +11,8 @@ The site adds a few scripts of its own to Docsy's, under `assets/js/`, loaded
 three ways:
 
 - [Plugins](#plugins), through Docsy's loader
-- [Body-end scripts](#body-end-scripts), through the body-end hook
+- [Body-end scripts](#body-end-scripts), through the body-end hook; the head-end
+  hook loads one script, the Kapa widget's pre-initialization
 - Shortcode scripts, by the shortcode of the feature that needs them: the
   registry search form, the config-types accordion
 
@@ -67,17 +68,19 @@ renderer inline. The plugin's parts:
   selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
-- **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages, in both
-  output formats, across converted, unconverted and fallback languages.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages across
+  converted, unconverted and fallback languages, and the Markdown output of the
+  converted ones.
 
 #### Localized pages
 
 A page's localized copies keep inlining the script until they convert. To
 convert a copy, replace its markup and `<script>` tags with the shortcode line
-from the English page, copy its `benchmark_data_url` param, and link the data
-from the prose as the English page does: the tests accept either delivery mode
-per page, never both or neither. Languages without their own copy serve the
-English page and convert with it.
+from the English page, copy its `benchmark_data_url` param, link the data from
+the prose as the English page does, and add the language to the test's
+`CONVERTED` list: the tests check that each page loads exactly one delivery
+mode, and that converted pages load the plugin. Languages without their own copy
+serve the English page and convert with it.
 
 ## Body-end scripts
 
