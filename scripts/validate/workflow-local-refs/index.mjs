@@ -22,7 +22,7 @@ const USES_LOCAL_RE = /\buses:\s*([$.]\/[^\s'"`]+)/;
 
 /**
  * Extract local file references (`node scripts/...` invocations and
- * same-repository `uses: $/...` or `uses: ./...` steps) from a workflow file's
+ * same-repository `uses: $/...` or `uses: ./...` entries) from a workflow file's
  * text. Commented-out lines are ignored so example snippets in comments don't
  * count.
  *

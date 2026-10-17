@@ -29,7 +29,7 @@ describe('findWorkflowReferences', () => {
     assert.equal(refs[0].ref, 'scripts/a/b.mjs');
   });
 
-  test('finds a self-repository composite-action or reusable-workflow use', () => {
+  test('finds a self-repository use', () => {
     const refs = findWorkflowReferences('        uses: $/.github/actions/foo');
     assert.deepEqual(refs, [
       { kind: 'action', ref: '$/.github/actions/foo', line: 1 },
@@ -71,7 +71,7 @@ describe('candidatePaths', () => {
     );
   });
 
-  test('action directory: action.yml or action.yaml', () => {
+  test('self-repository action directory: action.yml or action.yaml', () => {
     assert.deepEqual(
       candidatePaths({ kind: 'action', ref: '$/.github/actions/foo' }),
       ['.github/actions/foo/action.yml', '.github/actions/foo/action.yaml'],
