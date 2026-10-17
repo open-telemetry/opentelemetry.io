@@ -33,7 +33,7 @@ For a plugin named _`NAME`_, where _`NAME`_ carries the `otel-` prefix:
   markup is the page that loads the script, in every language.
 - **Shortcode**: when the plugin renders into markup of its own, a shortcode
   under `layouts/_shortcodes/` owns that markup, its localized strings (through
-  `i18n/`), and the page record. `{{</* benchmarks data="URL" */>}}` takes the
+  `i18n/`), and the page record. ``{{</* benchmarks data=`URL` */>}}`` takes the
   data script's URL; a page holds one such shortcode, since the renderer targets
   fixed element IDs, and a second one fails the build.
 - **Registration**: `params.docsy.plugins.`_`NAME`_ in

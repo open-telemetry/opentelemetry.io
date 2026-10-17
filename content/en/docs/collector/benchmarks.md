@@ -13,4 +13,4 @@ Additional information regarding the testing environment can be found in the
 A subset of the results are shown below. For all the results, see
 [Collector Benchmarks](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/).
 
-{{< benchmarks data="https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js" >}}
+{{< benchmarks data=`https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js` >}}

@@ -32196,6 +32196,11 @@
     "when": "2026-10-16T00:43:10Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content": {
+    "result": 200,
+    "when": "2026-10-17T02:23:19Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
     "result": 200,
     "when": "2026-09-30T05:46:18Z",
