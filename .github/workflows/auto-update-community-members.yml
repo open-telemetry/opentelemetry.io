@@ -59,7 +59,7 @@ jobs:
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
-      - uses: ./.github/actions/install-lychee
+      - uses: $/.github/actions/install-lychee
 
       - name: Fix link cache
         env:
@@ -88,7 +88,7 @@ jobs:
   report-failure:
     needs: auto-update
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read
