@@ -21,7 +21,7 @@ cSpell:ignore: Dyrmishi Farfetch Inet Ktor scraperhelper Skywalking
 
 ##### [仕様](/docs/specs/otel/) {#specification}
 
-[バージョン1.22](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.22.0) では、メトリクスにおけるアグリゲーターの規範的な予約に関する推奨事項、OTLP 仕様の opentelemetry-proto リポジトリへの移動、カスタム属性を OTel 名前空間に配置することが推奨されない理由の説明が含まれています。
+[バージョン1.22](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.22.0) では、メトリクスにおいて「アグリゲーター」という用語を将来のために確保するという推奨事項の規範化、OTLP 仕様の opentelemetry-proto リポジトリへの移動、カスタム属性を OTel 名前空間に配置することが推奨されない理由の説明が含まれています。
 
 その他の領域に変更はありません。
 
