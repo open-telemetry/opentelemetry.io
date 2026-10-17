@@ -19,7 +19,8 @@ $chart-gap: 2rem; // between one chart and the next title
     align-items: center;
   }
 
-  // Titles are bench identifiers, one unbreakable word each.
+  // Titles pair a group with a bench name: long identifiers with no break
+  // points of their own.
   h3 {
     max-width: 100%;
     overflow-wrap: anywhere;

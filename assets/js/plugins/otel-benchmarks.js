@@ -6,13 +6,18 @@
 // - `Chart`: Chart.js 4
 // - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
 //
-// Class and function names are the stock renderer's; ours carry the `otel-`
-// prefix.
+// Class names are the stock renderer's; ours carry the `otel-` prefix.
 
 'use strict';
 
 // Widest a right-hand legend may grow; the plot keeps the rest.
 const LEGEND_MAX_WIDTH = 260;
+
+// Labels past this length wrap at their ` - ` separator: the cap above would
+// clip them (`Trace10kSPSJaegerGRPC - Dropped Span Count`).
+const LEGEND_WRAP_LENGTH = 28;
+const legendLines = (label) =>
+  label.length > LEGEND_WRAP_LENGTH ? label.split(' - ') : [label];
 
 const COLORS = [
   '#48aaf9',
@@ -117,6 +122,20 @@ function renderAllCharts(dataSets) {
 
     const data = { labels: commitIds, datasets };
 
+    // The chart at its narrowest (the stylesheet's minimum width) still fits
+    // the legend's lines in one column: the stock 2:1 shape squeezes a long
+    // legend into the plot on narrow screens.
+    const minWidth =
+      parseFloat(getComputedStyle(wrapper).minWidth) || wrapper.clientWidth;
+    const legendLineCount = datasets.reduce(
+      (n, { label }) => n + legendLines(label).length,
+      0,
+    );
+    const aspectRatio = Math.min(
+      2,
+      minWidth / Math.max(300, legendLineCount * 24 + 60),
+    );
+
     const options = {
       scales: {
         x: {
@@ -164,11 +183,18 @@ function renderAllCharts(dataSets) {
           display: true,
           position: 'right',
           maxWidth: LEGEND_MAX_WIDTH,
+          labels: {
+            generateLabels: (chart) =>
+              Chart.defaults.plugins.legend.labels
+                .generateLabels(chart)
+                .map((item) => {
+                  const lines = legendLines(item.text);
+                  return lines.length > 1 ? { ...item, text: lines } : item;
+                }),
+          },
         },
       },
-      // Tall enough for the legend's rows in one column: the stock 2:1 shape
-      // squeezes a long legend into the plot on narrow screens.
-      aspectRatio: Math.min(2, 600 / Math.max(300, datasets.length * 24 + 60)),
+      aspectRatio,
     };
 
     new Chart(canvas, {
