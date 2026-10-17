@@ -1,10 +1,11 @@
-// Styles for the markup the otel-benchmarks renderer creates.
+// Layout of the benchmarks shortcode's container and the markup the renderer
+// creates in it.
 
 $charts-gap-above: 3rem; // Docsy's section rhythm
-$chart-min-width: 600px; // legend, axis and ~20 commit labels stay legible
+$chart-min-width: 600px; // legend and axes stay legible; the renderer reads it
 $chart-max-width: 1000px; // the stock page's chart width; keeps wide columns readable
 $set-gap: 0.5rem;
-$chart-gap: 2rem; // between one chart and the next title
+$title-gap-above: 2rem;
 
 [data-otel-benchmarks] {
   margin-top: $charts-gap-above;
@@ -24,7 +25,7 @@ $chart-gap: 2rem; // between one chart and the next title
   h3 {
     max-width: 100%;
     overflow-wrap: anywhere;
-    margin-top: $chart-gap;
+    margin-top: $title-gap-above;
 
     &:first-child {
       margin-top: 0;
@@ -39,7 +40,11 @@ $chart-gap: 2rem; // between one chart and the next title
     overflow-x: auto;
   }
 
+  // The chart fills this box; the renderer sets its aspect ratio. Without the
+  // zero minimum, the canvas's own height would hold the box after a shrink.
   .otel-chart-wrapper {
+    position: relative;
     min-width: $chart-min-width;
+    min-height: 0;
   }
 }

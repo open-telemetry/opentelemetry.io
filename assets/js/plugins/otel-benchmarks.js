@@ -19,6 +19,12 @@ const LEGEND_WRAP_LENGTH = 28;
 const legendLines = (label) =>
   label.length > LEGEND_WRAP_LENGTH ? label.split(' - ') : [label];
 
+// A chart's height at its narrowest: a row per legend line plus the axes'
+// room, never shallower than the stock 2:1 shape.
+const LEGEND_LINE_HEIGHT = 24;
+const AXES_HEIGHT = 60;
+const MAX_ASPECT_RATIO = 2;
+
 const COLORS = [
   '#48aaf9',
   '#8a3ef2',
@@ -90,8 +96,8 @@ function renderAllCharts(dataSets) {
     chartTitle.textContent = name;
     parent.append(chartTitle);
 
-    // Chart.js sizes a chart from its parent's width, so the minimum width
-    // sits on an inner box, and the outer one scrolls.
+    // Chart.js fills its parent, so the box owns the size: the minimum width
+    // and the aspect ratio sit on an inner box, and the outer one scrolls.
     const scroller = document.createElement('div');
     scroller.className = 'otel-chart-scroller';
     parent.appendChild(scroller);
@@ -131,12 +137,15 @@ function renderAllCharts(dataSets) {
       (n, { label }) => n + legendLines(label).length,
       0,
     );
-    const aspectRatio = Math.min(
-      2,
-      minWidth / Math.max(300, legendLineCount * 24 + 60),
+    wrapper.style.aspectRatio = String(
+      Math.min(
+        MAX_ASPECT_RATIO,
+        minWidth / (legendLineCount * LEGEND_LINE_HEIGHT + AXES_HEIGHT),
+      ),
     );
 
     const options = {
+      maintainAspectRatio: false,
       scales: {
         x: {
           title: {
@@ -156,7 +165,9 @@ function renderAllCharts(dataSets) {
       plugins: {
         tooltip: {
           callbacks: {
-            afterTitle: (items) => {
+            // The commit's message runs to PR-body length, so it follows the
+            // value rather than pushing it off the canvas.
+            footer: (items) => {
               const { commit } = items[0].raw.result;
               return (
                 '\n' +
@@ -164,8 +175,7 @@ function renderAllCharts(dataSets) {
                 '\n\n' +
                 commit.timestamp +
                 ' committed by @' +
-                commit.author.username +
-                '\n'
+                commit.author.username
               );
             },
             label: (item) => {
@@ -194,7 +204,6 @@ function renderAllCharts(dataSets) {
           },
         },
       },
-      aspectRatio,
     };
 
     new Chart(canvas, {
