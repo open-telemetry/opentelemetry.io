@@ -1,9 +1,10 @@
 ---
-title: Site scripts
+title: Site scripts and Docsy plugins
+linkTitle: Scripts and plugins
 description: >-
   Where the site's own JavaScript loads, how a script is gated to a page, and
-  what Hugo pagination and Docsy's sidebar hydration mean for one that acts on
-  the sidebar
+  what each gated script relies on
+aliases: [scripts]
 cSpell:ignore: subresource
 ---
 
@@ -15,8 +16,11 @@ kinds of template load them:
   hook, for the Kapa widget's pre-initialization.
 - **Shortcodes**, for scripts a feature needs on the pages that use it, for
   example the registry search form and the config-types accordion.
-- **Docsy's plugin loader**, for the scripts under `assets/js/plugins/`
-  ([Docsy plugins](../docsy-plugins/)).
+- **Docsy's plugin loader**, for the scripts under `assets/js/plugins/`, which
+  follow Docsy's [custom-script contract][Docsy plugins] under names with the
+  `otel-` prefix. A plugin that renders into markup of its own is gated by a
+  shortcode: the shortcode owns the markup and marks the page, so the page that
+  shows the markup is the page that loads the script, in every language.
 
 Hooks and shortcodes load a script through the `script.html` partial: Hugo's
 `js.Build` bundles each file, and production builds also minify and fingerprint
@@ -43,9 +47,46 @@ it and emit a subresource-integrity hash.
 publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
 branch); the action documents the data's shape nowhere else, so that [stock
 renderer][] is the reference for it. The fork adds the Collector testbed's
-grouping and filtering of benches. How the page, shortcode and plugin fit
-together: [Docsy plugins](../docsy-plugins/). The language pages for JavaScript
-and Python still carry the stock renderer inline.
+grouping and filtering of benches. The language pages for JavaScript and Python
+still carry the stock renderer inline.
+
+### Files
+
+- **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
+  container and records the page's `benchmark_data_url` front-matter param in
+  the page [store][] as `otelBenchmarks`. Links and text belong in the page's
+  prose, where each language writes its own; the prose links the same param
+  through `_param`. Top level and once per page (the renderer targets a fixed
+  element ID): a nested or second call fails the build. Included content isn't
+  marked ([Page flags in included content][]).
+- **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
+  charts show is worth more to an agent than the data file the page links to,
+  and without a variant the HTML template's markup would land in the page's
+  [Markdown output][], which the site serves per
+  [Agent support](../../design/agent-support/).
+- **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
+  ([Adjust a plugin per page][]): disables the plugin on pages without the
+  record.
+- **Companion**, `layouts/_partials/scripts/plugins/otel-benchmarks.html`
+  ([Plugin files][]): vendors Chart.js on the entry's
+  [`version`][Dependency versions] pin, then loads the data file from the
+  record. The data stays a live remote script so the charts update between site
+  builds; the shim keeps that remote code off every other page ([Security][]).
+- **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer; its header
+  names what it assumes loaded.
+- **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
+  one site-level entry, since the shim decides per page.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages, in both
+  output formats, across converted, unconverted and fallback languages.
+
+### Localized pages
+
+A page's localized copies keep inlining the script until they convert. To
+convert a copy, replace its markup and `<script>` tags with the shortcode line
+from the English page, copy its `benchmark_data_url` param, and link the data
+from the prose as the English page does: the tests accept either delivery mode
+per page, never both or neither. Languages without their own copy serve the
+English page and convert with it.
 
 ## Blog sidebar entry opener
 
@@ -79,7 +120,16 @@ lean build, other pages carry a placeholder instead, which `chrome-nav.js` fills
 after fetching the nav, too late for a body-end script. With JavaScript
 disabled, the sidebar stays hidden.
 
-[github-action-benchmark]:
-  https://github.com/benchmark-action/github-action-benchmark
-[stock renderer]:
-  https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
+<!-- prettier-ignore-start -->
+[Adjust a plugin per page]: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page
+[Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
+[Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
+[Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
+[github-action-benchmark]: https://github.com/benchmark-action/github-action-benchmark
+[Markdown output]: https://www.docsy.dev/docs/content/agent-support/#markdown-output
+[Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
+[Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
+[Security]: https://www.docsy.dev/docs/content/plugins/#security
+[stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
+[store]: https://gohugo.io/methods/page/store/
+<!-- prettier-ignore-end -->

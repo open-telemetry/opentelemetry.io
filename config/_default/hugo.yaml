@@ -127,7 +127,7 @@ cascade:
       path: '/blog'
 
 params:
-  # Site-owned Docsy plugins: /site/implementation/docsy-plugins/
+  # Site-owned Docsy plugins: /site/implementation/scripts-and-plugins/#plugins
   docsy:
     plugins:
       otel-benchmarks:
