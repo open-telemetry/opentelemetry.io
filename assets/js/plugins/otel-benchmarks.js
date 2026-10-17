@@ -1,7 +1,9 @@
-// Renders github-action-benchmark charts into the markup of the `benchmarks`
-// shortcode, from window.BENCHMARK_DATA, which the plugin's companion partial
-// loads along with Chart.js before this script runs. Site-owned Docsy plugin:
-// /site/implementation/docsy-plugins/
+// Renders the charts of a github-action-benchmark `data.js` into the
+// `benchmarks` shortcode's #main. The data shape is the action's, undocumented
+// beyond its stock renderer, which this script derives from:
+// https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
+// Assumes `Chart` (Chart.js 2) and `window.BENCHMARK_DATA` are defined when it
+// runs. Site pattern: /site/implementation/docsy-plugins/
 
 'use strict';
 
@@ -18,11 +20,6 @@ const COLORS = [
   '#f3c8ad',
   '#410472',
 ];
-
-// zh wraps a tooltip's range in full-width parentheses, as its inline copy did.
-const RANGE_PARENS = document.documentElement.lang.startsWith('zh')
-  ? ['（', '）']
-  : [' (', ')'];
 
 function init() {
   function collectBenchesPerTestCase(entries) {
@@ -155,7 +152,7 @@ function renderAllCharts(dataSets) {
             let label = `${name}: ${value}`;
             label += unit;
             if (range) {
-              label += RANGE_PARENS[0] + range + RANGE_PARENS[1];
+              label += ' (' + range + ')';
             }
             return label;
           },
