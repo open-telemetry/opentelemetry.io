@@ -39,6 +39,9 @@ const POWERED_BY_LINK = String.raw`<a\b[^>]*>github-action-benchmark</a>`;
 // in for the seven fallback languages.
 const PAGE = (lang) =>
   `${lang === 'en' ? '' : `${lang}/`}docs/collector/benchmarks/index.html`;
+const MD_PAGE = (lang) => PAGE(lang).replace(/\.html$/, '.md');
+const DATA_URL =
+  'https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js';
 const LANGS = ['en', 'ja', 'pt', 'zh', 'es'];
 // Pages converted to the shortcode; a locale moving over joins this list, and
 // one left out is still checked for exactly one delivery mode.
@@ -150,6 +153,19 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         );
       });
     }
+  }
+
+  for (const lang of CONVERTED) {
+    test(`${lang}: Markdown output describes the charts and links the data`, () => {
+      const md = read(MD_PAGE(lang));
+      assert.ok(md.includes(`<${DATA_URL}>`), 'data URL is linked');
+      assert.match(md, /github-action-benchmark\)/, 'producer is linked');
+      assert.doesNotMatch(
+        md,
+        /<(main|button|footer|link)\b/,
+        'no chart markup',
+      );
+    });
   }
 
   test('plugin and its dependencies load on no other page', () => {

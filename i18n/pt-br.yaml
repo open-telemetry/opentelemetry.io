@@ -55,3 +55,9 @@ distributions_table_footnote: Listadas em ordem alfabética
 
 benchmarks_download: Baixar os dados em JSON
 benchmarks_powered_by: Powered by {{ .Link }}
+benchmarks_md_summary: >-
+  A versão HTML desta página exibe gráficos interativos com os resultados mais
+  recentes dos benchmarks. Os dados por trás deles, um documento JSON para cada
+  commit avaliado, são publicados pelo
+  [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark)
+  como um arquivo JavaScript: <{{ .Data }}>.

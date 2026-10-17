@@ -2,3 +2,8 @@
 
 benchmarks_download: データをJSONとしてダウンロード
 benchmarks_powered_by: Powered by {{ .Link }}
+benchmarks_md_summary: >-
+  このページのHTML版では、最新のベンチマーク結果をインタラクティブなグラフで表示します。
+  その元データは、ベンチマーク対象のコミットごとのJSONドキュメントとして、
+  [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark)
+  がJavaScriptファイルで公開しています: <{{ .Data }}>。

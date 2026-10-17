@@ -35,7 +35,10 @@ For a plugin named _`NAME`_, where _`NAME`_ carries the `otel-` prefix:
   under `layouts/_shortcodes/` owns that markup, its localized strings (through
   `i18n/`), and the page record. ``{{</* benchmarks data=`URL` */>}}`` takes the
   data script's URL; a page holds one such shortcode, since the renderer targets
-  fixed element IDs, and a second one fails the build.
+  fixed element IDs, and a second one fails the build. A Markdown variant,
+  `benchmarks.md` beside the HTML template, serves the page's
+  [Markdown output](/site/design/agent-support/): it says what the charts show
+  and links the data instead of emitting empty chart markup.
 - **Registration**: `params.docsy.plugins.`_`NAME`_ in
   `config/_default/hugo.yaml`, with `enable` and the dependency `version`. The
   shim decides per page, so one site-level entry serves every language.

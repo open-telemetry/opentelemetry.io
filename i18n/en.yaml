@@ -73,3 +73,9 @@ config_types_schema_version: Schema version
 
 benchmarks_download: Download data as JSON
 benchmarks_powered_by: Powered by {{ .Link }}
+benchmarks_md_summary: >-
+  The HTML version of this page renders interactive charts of the latest
+  benchmark results. The data behind them, a JSON document for each benchmarked
+  commit, is published by
+  [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark)
+  as a JavaScript file: <{{ .Data }}>.
