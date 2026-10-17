@@ -1,3 +1,3 @@
-{{/* Markdown-output variant: renders nothing. The charts need a browser and
-  the page prose links the data; without this file the HTML template's markup
-  would land in the Markdown output. */ -}}
+{{/* Empty by design: nothing the charts show is worth more to an agent than the
+  data file that the including page links to. Also see
+  https://www.docsy.dev/docs/content/agent-support/#markdown-output */ -}}

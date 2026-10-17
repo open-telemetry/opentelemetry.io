@@ -22,10 +22,11 @@ in every language:
   through `_param`. Top level and once per page (the renderer targets a fixed
   element ID): a nested or second call fails the build. Included content isn't
   marked ([Page flags in included content][]).
-- **Markdown variant**, `benchmarks.md` beside it ([Markdown output
-  variants][]): renders nothing, since the charts need a browser and the prose
-  links the data, so the page's [Markdown output](/site/design/agent-support/)
-  carries no empty container.
+- **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
+  charts show is worth more to an agent than the data file the page links to,
+  and without a variant the HTML template's markup would land in the page's
+  [Markdown output][], which the site serves per
+  [Agent support](/site/design/agent-support/).
 - **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
   ([Adjust a plugin per page][]): disables the plugin on pages without the
   record.
@@ -55,7 +56,7 @@ English page and convert with it.
 [Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
 [Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
 [Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
-[Markdown output variants]: https://www.docsy.dev/docs/content/shortcodes/#markdown-output-variants
+[Markdown output]: https://www.docsy.dev/docs/content/agent-support/#markdown-output
 [Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
 [Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
 [Security]: https://www.docsy.dev/docs/content/plugins/#security

@@ -32206,6 +32206,11 @@
     "when": "2026-09-30T05:46:18Z",
     "via": "lychee",
   },
+  "https://www.docsy.dev/docs/content/agent-support/#markdown-output": {
+    "result": 200,
+    "when": "2026-10-17T14:11:34Z",
+    "via": "lychee",
+  },
   "https://www.docsy.dev/docs/content/plugins/#add-a-custom-script": {
     "result": 200,
     "when": "2026-10-16T00:43:10Z",
