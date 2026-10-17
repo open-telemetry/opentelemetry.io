@@ -1,5 +1,5 @@
 ---
-title: Docsy plugins and site scripts
+title: Plugins and site scripts
 linkTitle: Plugins and scripts
 description: >-
   Where the site's own JavaScript loads, how a script is gated to a page, and
@@ -11,11 +11,11 @@ cSpell:ignore: subresource
 The site adds a few scripts of its own to Docsy's, under `assets/js/`. Three
 kinds of template load them:
 
-- **Docsy's plugin loader**, for the scripts under `assets/js/plugins/`, which
-  follow Docsy's [custom-script contract][Docsy plugins] under names with the
-  `otel-` prefix. A plugin that renders into markup of its own is gated by a
-  shortcode: the shortcode owns the markup and marks the page, so the page that
-  shows the markup is the page that loads the script, in every language.
+- **Plugins**, the scripts under `assets/js/plugins/`: Docsy builds and emits
+  them under its [custom-script contract][Docsy plugins]; the site names them
+  with the `otel-` prefix. A plugin that renders into markup of its own is gated
+  by a shortcode: the shortcode owns the markup and marks the page, so the page
+  that shows the markup is the page that loads the script, in every language.
 - **Hooks**: the body-end hook, `layouts/_partials/hooks/body-end.html`, for
   scripts that run on every page or on a gated subset of them; the head-end
   hook, for the Kapa widget's pre-initialization.
