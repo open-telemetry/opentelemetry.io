@@ -100,7 +100,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
       assert.equal(
         tagsWithSrc(html, ANY_CHARTJS_SRC).length,
         1,
-        'the vendored Chart.js is the only Chart.js',
+        'vendored Chart.js is the only Chart.js',
       );
       const tags = scriptTags(html);
       const at = (re) => tags.findIndex((t) => re.test(attr(t, 'src')));
