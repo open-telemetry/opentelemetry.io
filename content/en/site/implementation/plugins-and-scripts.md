@@ -30,10 +30,10 @@ owns the markup and marks the page; the shim reads the mark.
 
 `otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
 publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
-branch); the action documents the data's shape nowhere else, so that [stock
-renderer][] is the reference for it. The fork adds the Collector testbed's
-grouping and filtering of benches. The language pages for JavaScript and Python
-still carry the stock renderer inline. The plugin's parts:
+branch); the action defines the data's shape in its [source types][] and reads
+it in that [stock renderer][], the reference for this fork. The fork adds the
+Collector testbed's grouping and filtering of benches. The language pages for
+JavaScript and Python still carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
@@ -58,13 +58,13 @@ still carry the stock renderer inline. The plugin's parts:
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid; the shim keeps that remote
   code off every other page ([Security][]).
-- **Script**, `assets/js/plugins/otel-benchmarks.js`: the renderer: the charts,
-  a hover tooltip with the point's value and commit, and a click popover with
-  the commit's link; its header names what it assumes loaded.
+- **Script**, `assets/js/plugins/otel-benchmarks.js`: renders the charts, a
+  hover tooltip with the point's value and commit, and a click popover with the
+  commit's link; its header names what it assumes loaded.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
-  the charts' layout, scoped to the container: a horizontal scroller per chart
+  the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and
-  the stock page's spacing; Docsy emits it with the plugin. The inline copies
+  the stock page's spacing); Docsy emits it with the plugin. The inline copies
   keep the stock page's `static/css/benchmarks.css`, whose bare `main`, `button`
   and `footer` selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
@@ -80,8 +80,8 @@ convert a copy:
 
 1. Replace its stylesheet link, chart markup and `<script>` tags with the
    shortcode line from the English page.
-2. Copy the English page's `benchmark_data_url` param, and link the data from
-   the prose as it does.
+2. Copy the English page's `benchmark_data_url` param and its tip, and link the
+   data from the prose as it does.
 3. Add the language to the test's `CONVERTED` list: the tests check that each
    page loads exactly one delivery mode, and that converted pages load the
    plugin.
@@ -139,6 +139,7 @@ disabled, the sidebar stays hidden.
 [Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
 [Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
 [Security]: https://www.docsy.dev/docs/content/plugins/#security
+[source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts
 [stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
 [store]: https://gohugo.io/methods/page/store/
 <!-- prettier-ignore-end -->
