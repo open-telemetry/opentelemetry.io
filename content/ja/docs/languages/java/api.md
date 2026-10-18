@@ -8,13 +8,12 @@ logBridgeWarning: >-
   [Log Bridge API](/docs/specs/otel/logs/api/)を表しており、これは他のログAPI/フレームワークを通じて
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
-default_lang_commit: 9229908e7b567bc9c3f6352a5a8922caf5c1ac1c
-drifted_from_default: true
+default_lang_commit: 5c42532e37db75bdd0ffbf158ff088fb774f4492
 cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 
 APIは、主要なオブザーバビリティシグナル全体にわたってテレメトリーを記録するためのクラスとインターフェイスのセットです。
 [SDK](../sdk/)は、テレメトリーを処理およびエクスポートするように[設定](../configuration/)されたAPIの組み込み参照実装です。
@@ -641,7 +640,7 @@ public class GlobalOpenTelemetryNativeInstrumentationUsage {
 
 <!-- prettier-ignore-start -->
 <!-- temporarily change except path to resolve relative to configuration directory, and revert after -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 <?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
 ```java
 package otel;
@@ -668,7 +667,7 @@ public class GlobalOpenTelemetryManualInstrumentationUsage {
   }
 }
 ```
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 <!-- prettier-ignore-end -->
 
 その結果として:
