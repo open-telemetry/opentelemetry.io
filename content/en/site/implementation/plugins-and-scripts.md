@@ -32,23 +32,17 @@ language that serves it; the shim reads the mark.
 The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
-types][] and reads it in that [stock renderer][], the reference for this fork. A
-page names its data under one front-matter key named after the plugin, and the
-shortcode call says how to read it:
-
-```yaml
-params:
-  otel-benchmarks:
-    data_url: https://open-telemetry.github.io/.../benchmarks/loadtests/data.js
-```
+types][] and reads it in that [stock renderer][], the reference for this fork.
+The shortcode call names the data and says how to read it:
 
 ```markdown
-{{</* benchmarks filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
+{{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
 
-`data_url` is the action's `data.js`. The call's optional arguments say which
-benches to chart and how each bench's `extra` text names its chart and series:
-
+- `data_url`: the action's `data.js`, as `https://…` or as `param:NAME`, a page
+  param holding it; the Collector page keeps the URL in
+  `params.otel-benchmarks.data_url` because its prose links it too, through
+  `_param`
 - `filter`: keep a bench whose `extra` contains any of the comma-separated
   strings
 - `group_separator`: split `extra` into a group, joined to the bench name as the
@@ -62,13 +56,14 @@ carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
-  arguments as JSON for the renderer (an unknown or positional argument fails
-  the build), and records the page's `data_url` in the page [store][] as
-  `otelBenchmarks`. Links and text belong in the page's prose, where each
-  language writes its own; the prose links the data URL through `_param`. Each
-  call renders a chart set of the page's data where it stands. A call in
-  included content marks the included page, not the page that includes it ([Page
-  flags in included content][]).
+  reading as JSON for the renderer, and records the data URL in the page
+  [store][] as `otelBenchmarks`. A malformed `data_url`, an unknown or
+  positional argument, or a second call naming other data fails the build. Links
+  and text belong in the page's prose, where each language writes its own; the
+  prose links the data URL through `_param`. Each call renders a chart set where
+  it stands; the calls on a page name the same data. A call in included content
+  marks the included page, not the page that includes it ([Page flags in
+  included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
   template's markup stays out of the page's [Markdown output][], which the site
   serves per [Agent support](../../design/agent-support/); the data file the

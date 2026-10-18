@@ -21,7 +21,7 @@ This page charts a subset of the benchmark [data][]. For the full dashboard, see
 > In a chart below, hover over a point for its value and commit; click it for a
 > link to the commit.
 
-{{< benchmarks filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " >}}
+{{< benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " >}}
 
 <!-- prettier-ignore-start -->
 [Collector Benchmarks]: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/

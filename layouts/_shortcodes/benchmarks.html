@@ -1,29 +1,40 @@
-{{/* Chart container for the otel-benchmarks plugin; records the page's data
-  URL for the plugin's shim and companion, and hands the renderer the call's
-  reading of the data. Design:
+{{/* Chart container for the otel-benchmarks plugin; records the data URL for
+  the plugin's shim and companion, and hands the renderer the call's reading of
+  the data. Design:
   https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $docs := "https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" -}}
-{{ $params := index .Page.Params "otel-benchmarks" | default dict -}}
-{{ $data := $params.data_url -}}
-{{ if not $data -}}
-  {{ errorf "%s: shortcode %q: page param `otel-benchmarks.data_url` is missing; see %s" .Position .Name $docs -}}
+{{ if or (not .Params) (not .IsNamedParams) -}}
+  {{ errorf "%s: shortcode %q: takes named arguments (data_url, filter, group_separator, series_separator); see %s" .Position .Name $docs -}}
 {{ end -}}
 
-{{ if and .Params (not .IsNamedParams) -}}
-  {{ errorf "%s: shortcode %q: arguments are named (filter, group_separator, series_separator); see %s" .Position .Name $docs -}}
+{{ $src := .Get "data_url" | default "" -}}
+{{ $data := $src -}}
+{{ if hasPrefix $src "param:" -}}
+  {{ $name := strings.TrimPrefix "param:" $src -}}
+  {{ $data = .Page.Param $name | default "" -}}
+  {{ if not (hasPrefix $data "https://") -}}
+    {{ errorf "%s: shortcode %q: page param %q, named by `data_url`, must be an https URL, got %q; see %s" .Position .Name $name $data $docs -}}
+  {{ end -}}
+{{ else if not (hasPrefix $src "https://") -}}
+  {{ errorf "%s: shortcode %q: `data_url` must be `https://...` or `param:NAME`, got %q; see %s" .Position .Name $src $docs -}}
 {{ end -}}
+{{ with .Page.Store.Get "otelBenchmarks" -}}
+  {{ if ne . $data -}}
+    {{ errorf "%s: shortcode %q: `data_url` differs from an earlier call's (%s): one data source per page; see %s" $.Position $.Name . $docs -}}
+  {{ end -}}
+{{ end -}}
+{{ .Page.Store.Set "otelBenchmarks" $data -}}
+
 {{ $reading := dict -}}
 {{ range $name, $value := .Params -}}
   {{ if eq $name "filter" -}}
     {{ $reading = merge $reading (dict $name (apply (split $value ",") "strings.TrimSpace" ".")) -}}
   {{ else if in (slice "group_separator" "series_separator") $name -}}
     {{ $reading = merge $reading (dict $name $value) -}}
-  {{ else -}}
+  {{ else if ne $name "data_url" -}}
     {{ errorf "%s: shortcode %q: unknown argument %q; see %s" $.Position $.Name $name $docs -}}
   {{ end -}}
 {{ end -}}
-
-{{ .Page.Store.Set "otelBenchmarks" $data -}}
 
 <div data-otel-benchmarks="{{ $reading | jsonify }}"></div>
