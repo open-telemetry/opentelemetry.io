@@ -3,8 +3,7 @@ title: HelmでKubernetesにOBIをデプロイする
 linkTitle: Helm チャート
 description: KubernetesにHelmチャートとしてOBIをデプロイする方法を学ぶ
 weight: 2
-default_lang_commit: ad6f8d1e5179464d22f7e9cdf9fe86bc53f550e5
-drifted_from_default: true
+default_lang_commit: 5c42532e37db75bdd0ffbf158ff088fb774f4492
 ---
 
 > [!NOTE]
@@ -124,6 +123,9 @@ k8sCache:
 OBI Pod はキャッシュ `Service` を通じてレプリカ間でロードバランスし、障害時には正常なレプリカに再接続します。
 
 `k8sCache.replicas` が `0`（デフォルト）の場合、キャッシュはデプロイされず、各 OBI Pod は独自のローカル informer を使用します。
+
+`k8s-cache` の詳細な背景やいつ使用するかについては、[Kubernetes セットアップガイド](../kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache)を参照してください。
+キャッシュの設定オプションについては、[Kubernetes デコレーター](../../configure/metrics-traces-attributes/#kubernetes-decorator)を参照してください。
 
 ## Helm 設定へのシークレットの提供 {#providing-secrets-to-the-helm-configuration}
 
