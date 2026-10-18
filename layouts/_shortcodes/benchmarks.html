@@ -15,7 +15,21 @@
 {{ $reading := dict -}}
 {{ with $params.reading -}}
   {{ range $key, $value := . -}}
-    {{ if not (in (slice "filter" "group_separator" "series_separator") $key) -}}
+    {{ if eq $key "filter" -}}
+      {{ $ok := reflect.IsSlice $value -}}
+      {{ if $ok -}}
+        {{ range $value -}}
+          {{ $ok = and $ok (eq (printf "%T" .) "string") -}}
+        {{ end -}}
+      {{ end -}}
+      {{ if not $ok -}}
+        {{ errorf "%s: shortcode %q: `otel-benchmarks.reading.filter` must be a list of strings; see %s" $.Position $.Name $docs -}}
+      {{ end -}}
+    {{ else if in (slice "group_separator" "series_separator") $key -}}
+      {{ if ne (printf "%T" $value) "string" -}}
+        {{ errorf "%s: shortcode %q: `otel-benchmarks.reading.%s` must be a string; see %s" $.Position $.Name $key $docs -}}
+      {{ end -}}
+    {{ else -}}
       {{ errorf "%s: shortcode %q: unknown `otel-benchmarks.reading` key %q; see %s" $.Position $.Name $key $docs -}}
     {{ end -}}
   {{ end -}}

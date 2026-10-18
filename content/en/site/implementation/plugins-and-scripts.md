@@ -59,11 +59,12 @@ stock renderer inline). The plugin's parts:
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
   records the page's `data_url` in the page [store][] as `otelBenchmarks`, and
   hands the renderer the `reading` as the container's `data-reading` JSON (an
-  unknown key fails the build). Links and text belong in the page's prose, where
-  each language writes its own; the prose links the data URL through `_param`.
-  Call it at top level, once per page (one data source, one container): a nested
-  or second call fails the build. A call in included content marks the included
-  page, not the page that includes it ([Page flags in included content][]).
+  unknown key or a wrong type fails the build). Links and text belong in the
+  page's prose, where each language writes its own; the prose links the data URL
+  through `_param`. Call it at top level, once per page (one data source, one
+  container): a nested or second call fails the build. A call in included
+  content marks the included page, not the page that includes it ([Page flags in
+  included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
   charts show is worth more to an agent than the data file the page links to,
   and without a variant the HTML template's markup would land in the page's
