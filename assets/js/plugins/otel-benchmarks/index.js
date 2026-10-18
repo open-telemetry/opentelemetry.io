@@ -10,12 +10,7 @@
 
 'use strict';
 
-import {
-  commitContent,
-  subjectOf,
-  valueLabel,
-  wrapLine,
-} from './commit.js';
+import { commitContent, subjectOf, valueLabel, wrapLine } from './commit.js';
 import { aspectRatioFor, legendOptions } from './legend.js';
 import { pointPopover } from './point-popover.js';
 
