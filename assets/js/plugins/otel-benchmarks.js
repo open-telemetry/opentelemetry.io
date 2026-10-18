@@ -50,9 +50,9 @@ const parseUrl = (text) => {
   }
 };
 
-// One commit popover at a time: clicking a point opens it, a click anywhere
-// else, Escape, or a chart resize closes it. Its content is built as DOM, the
-// commit being remote data.
+// One commit popover at a time: clicking a point opens it; a click anywhere
+// else, Escape, a chart resize or the chart scrolling closes it. Its content is
+// built as DOM, the commit being remote data.
 let openPopover = null;
 
 function closePopover() {
@@ -88,11 +88,13 @@ function openCommitPopover(chart, wrapper, point, commit) {
   }
   subject.textContent = subjectOf(commit);
   content.append(subject);
+  // The action's data types make the timestamp and the author's names optional.
+  const who = commit.author.username ?? commit.author.name;
   const meta = document.createElement('div');
   meta.className = 'small text-body-secondary';
-  meta.textContent = `${commit.timestamp.slice(0, 10)} · @${
-    commit.author.username ?? commit.author.name
-  }`;
+  meta.textContent = [commit.timestamp?.slice(0, 10), who && `@${who}`]
+    .filter(Boolean)
+    .join(' · ');
   content.appendChild(meta);
 
   const popover = new bootstrap.Popover(anchor, {
