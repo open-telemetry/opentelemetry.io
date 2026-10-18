@@ -103,8 +103,11 @@ function openCommitPopover(chart, wrapper, point, commit) {
   });
   popover.show();
   openPopover = { popover, anchor, chart };
-  // The canvas tooltip would sit under the popover (a tap leaves it up).
+  // The canvas tooltip would sit under the popover (a tap leaves it up). Its
+  // state is cleared too: a disabled tooltip stops updating, and the stale one
+  // would paint back when re-enabled.
   chart.options.plugins.tooltip.enabled = false;
+  chart.tooltip.setActiveElements([], { x: 0, y: 0 });
   chart.update('none');
 }
 
@@ -203,6 +206,8 @@ function renderAllCharts(dataSets) {
     // and the aspect ratio sit on an inner box, and the outer one scrolls.
     const scroller = document.createElement('div');
     scroller.className = 'otel-chart-scroller';
+    // The popover hangs off a point; panning the chart would leave it behind.
+    scroller.addEventListener('scroll', closePopover);
     parent.appendChild(scroller);
     const wrapper = document.createElement('div');
     wrapper.className = 'otel-chart-wrapper';
@@ -249,7 +254,7 @@ function renderAllCharts(dataSets) {
 
     const options = {
       maintainAspectRatio: false,
-      // A point opens its commit's popover; the cursor and a hover ring say so.
+      // The cursor and a hover ring mark points as clickable.
       onHover: (event, elements) => {
         event.native.target.style.cursor = elements.length ? 'pointer' : '';
       },
@@ -291,8 +296,7 @@ function renderAllCharts(dataSets) {
         tooltip: {
           callbacks: {
             title: () => '',
-            // The commit's subject; its body is PR-body length. The page's tip
-            // says what a click does.
+            // The commit's subject; its body is PR-body length.
             afterBody: (items) =>
               wrapLine(subjectOf(items[0].raw.result.commit)),
             label: (item) => {
