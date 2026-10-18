@@ -10,82 +10,14 @@
 
 'use strict';
 
+import {
+  commitContent,
+  subjectOf,
+  valueLabel,
+  wrapLine,
+} from './otel-benchmarks/commit.js';
+import { aspectRatioFor, legendOptions } from './otel-benchmarks/legend.js';
 import { closePopover, openPopover } from './otel-benchmarks/point-popover.js';
-
-// Widest a right-hand legend may grow; the plot keeps the rest.
-const LEGEND_MAX_WIDTH = 260;
-
-// Labels past this length wrap at their ` - ` separator: the cap above would
-// clip them (`Trace10kSPSJaegerGRPC - Dropped Span Count`).
-const LEGEND_WRAP_LENGTH = 28;
-const legendLines = (label) =>
-  label.length > LEGEND_WRAP_LENGTH ? label.split(' - ') : [label];
-
-const LEGEND_LINE_HEIGHT = 24;
-const AXES_HEIGHT = 60;
-const MAX_ASPECT_RATIO = 2;
-
-// Canvas tooltips don't wrap text, and commit subjects run to 130 characters.
-const TOOLTIP_LINE_LENGTH = 60;
-const wrapLine = (text) => {
-  const lines = [];
-  let line = '';
-  for (const word of text.split(' ')) {
-    if (line && line.length + 1 + word.length > TOOLTIP_LINE_LENGTH) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = line ? `${line} ${word}` : word;
-    }
-  }
-  return [...lines, line];
-};
-
-const subjectOf = (commit) => commit.message.split('\n')[0];
-// The value line, Chart.js's number formatting (three decimals), the unit,
-// and the range when the data has one.
-const valueLabel = (series, point, formatted) => {
-  const { unit, range } = point.result.bench;
-  return `${series}: ${formatted}${unit}${range ? ` (${range})` : ''}`;
-};
-const parseUrl = (text) => {
-  try {
-    return new URL(text);
-  } catch {
-    return null;
-  }
-};
-
-// The popover's content: the value line, the commit's subject as the link,
-// its date and author. No words of ours: the plugin defines no i18n keys.
-function commitContent(commit, valueLabelText) {
-  const content = document.createElement('div');
-  const value = document.createElement('div');
-  value.textContent = valueLabelText;
-  content.appendChild(value);
-  const url = parseUrl(commit.url);
-  const subject = document.createElement(
-    url?.protocol === 'https:' ? 'a' : 'span',
-  );
-  if (subject.tagName === 'A') {
-    subject.href = url;
-    subject.target = '_blank';
-    subject.rel = 'noopener';
-  }
-  subject.textContent = subjectOf(commit);
-  content.append(subject);
-  // The action's data types make the timestamp and the author's names optional.
-  const who = commit.author.username
-    ? `@${commit.author.username}`
-    : commit.author.name;
-  const meta = document.createElement('div');
-  meta.className = 'small text-body-secondary';
-  meta.textContent = [commit.timestamp?.slice(0, 10), who]
-    .filter(Boolean)
-    .join(' · ');
-  content.appendChild(meta);
-  return content;
-}
 
 const COLORS = [
   '#48aaf9',
@@ -212,19 +144,13 @@ function renderAllCharts(dataSets) {
 
     const data = { labels: commitIds, datasets };
 
-    // The chart at its narrowest (the stylesheet's minimum width) still fits
-    // the legend's lines in one column: the stock 2:1 shape squeezes a long
-    // legend into the plot on narrow screens.
+    // Sized for the chart at its narrowest, the stylesheet's minimum width.
     const minWidth =
       parseFloat(getComputedStyle(wrapper).minWidth) || wrapper.clientWidth;
-    const legendLineCount = datasets.reduce(
-      (n, { label }) => n + legendLines(label).length,
-      0,
-    );
     wrapper.style.aspectRatio = String(
-      Math.min(
-        MAX_ASPECT_RATIO,
-        minWidth / (legendLineCount * LEGEND_LINE_HEIGHT + AXES_HEIGHT),
+      aspectRatioFor(
+        datasets.map((d) => d.label),
+        minWidth,
       ),
     );
 
@@ -287,20 +213,7 @@ function renderAllCharts(dataSets) {
               valueLabel(item.dataset.label, item.raw, item.formattedValue),
           },
         },
-        legend: {
-          display: true,
-          position: 'right',
-          maxWidth: LEGEND_MAX_WIDTH,
-          labels: {
-            generateLabels: (chart) =>
-              Chart.defaults.plugins.legend.labels
-                .generateLabels(chart)
-                .map((item) => {
-                  const lines = legendLines(item.text);
-                  return lines.length > 1 ? { ...item, text: lines } : item;
-                }),
-          },
-        },
+        legend: legendOptions,
       },
     };
 
