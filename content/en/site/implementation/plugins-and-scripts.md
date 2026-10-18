@@ -24,26 +24,28 @@ add subresource integrity.
 
 Site plugins follow Docsy's [custom-script contract][Docsy plugins] under the
 `otel-` prefix. One that renders markup of its own is gated by a shortcode that
-owns the markup and marks the page; the shim reads the mark.
+owns the markup and marks the page, so the gate follows the content into every
+language that serves it; the shim reads the mark.
 
 ### Benchmarks plugin {#benchmarks}
 
 `otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
-publishes with a repository's benchmark history (a `data.js` on its `gh-pages`
-branch); the action defines the data's shape in its [source types][] and reads
-it in that [stock renderer][], the reference for this fork. The fork adds the
-Collector testbed's grouping and filtering of benches. The language pages for
-JavaScript and Python still carry the stock renderer inline. The plugin's parts:
+publishes with a repository's benchmark history (a `data.js` it publishes to
+GitHub Pages); the action defines the data's shape in its [source types][] and
+reads it in that [stock renderer][], the reference for this fork. The fork adds
+the Collector testbed's grouping and filtering of benches. The language pages
+for JavaScript and Python still carry the stock renderer inline. The plugin's
+parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
   records the page's `benchmark_data_url` front-matter param in the page
   [store][] as `otelBenchmarks`. Links and text belong in the page's prose,
   where each language writes its own; the prose links the same param through
-  `_param`. Top level and once per page (one data source, one container): a
-  nested or second call fails the build. A call in included content marks the
-  included page, not the page that includes it ([Page flags in included
-  content][]).
+  `_param`. Call it at top level, once per page (one data source, one
+  container): a nested or second call fails the build. A call in included
+  content marks the included page, not the page that includes it ([Page flags in
+  included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
   charts show is worth more to an agent than the data file the page links to,
   and without a variant the HTML template's markup would land in the page's
@@ -51,22 +53,22 @@ JavaScript and Python still carry the stock renderer inline. The plugin's parts:
   [Agent support](../../design/agent-support/).
 - **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
   ([Adjust a plugin per page][]): disables the plugin on pages without the
-  record.
+  record, which keeps the remote data script off every other page
+  ([Security][]).
 - **Companion**, `layouts/_partials/scripts/plugins/otel-benchmarks.html`
   ([Plugin files][]): vendors Chart.js on the entry's
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
-  builds, which a fixed integrity hash would forbid; the shim keeps that remote
-  code off every other page ([Security][]).
+  builds, which a fixed integrity hash would forbid.
 - **Script**, `assets/js/plugins/otel-benchmarks.js`: renders the charts, a
   hover tooltip with the point's value and commit, and a click popover with the
   commit's link; its header names what it assumes loaded.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and
-  the stock page's spacing); Docsy emits it with the plugin. The inline copies
-  keep the stock page's `static/css/benchmarks.css`, whose bare `main`, `button`
-  and `footer` selectors also reach Docsy's chrome.
+  spacing); Docsy emits it with the plugin. The inline copies keep the stock
+  page's `static/css/benchmarks.css`, whose bare `main`, `button` and `footer`
+  selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
 - **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages across
@@ -78,10 +80,11 @@ JavaScript and Python still carry the stock renderer inline. The plugin's parts:
 A page's localized copies keep inlining the script until they convert. To
 convert a copy:
 
-1. Replace its stylesheet link, chart markup and `<script>` tags with the
+1. Replace everything from its stylesheet link to its last `<script>` tag (the
+   `markdownlint` comment, the chart container and its footer included) with the
    shortcode line from the English page.
-2. Copy the English page's `benchmark_data_url` param and its tip, and link the
-   data from the prose as it does.
+2. Copy the English page's `benchmark_data_url` param, translate its tip, and
+   link the data from the prose as it does.
 3. Add the language to the test's `CONVERTED` list: the tests check that each
    page loads exactly one delivery mode, and that converted pages load the
    plugin.
@@ -139,7 +142,7 @@ disabled, the sidebar stays hidden.
 [Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
 [Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
 [Security]: https://www.docsy.dev/docs/content/plugins/#security
-[source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts
+[source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/write.ts
 [stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
 [store]: https://gohugo.io/methods/page/store/
 <!-- prettier-ignore-end -->
