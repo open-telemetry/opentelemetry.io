@@ -49,8 +49,8 @@ const read = (rel) => {
 };
 const count = (html, re) => (html.match(re) ?? []).length;
 const scriptTags = (html) => html.match(/<script\b[^>]*>/gi) ?? [];
-// Values may be unquoted: the production build minifies the HTML. The name is
-// anchored on whitespace, so `src` doesn't match `data-src`.
+// An attribute's value by its exact name (`src`, not `data-src`), quoted or
+// not: the production build minifies the HTML.
 const attr = (tag, name) =>
   tag
     .match(new RegExp(`\\s${name}=(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'))

@@ -52,10 +52,11 @@ to chart and how each bench's `extra` text names its chart and series:
 - `filter`: keep a bench whose `extra` contains any of the listed strings
 - `group_separator`: split `extra` into a group, joined to the bench name as the
   chart's title, and a series name; an `extra` without the separator is both
-- `series_separator`: trim the series name at its first occurrence
+- `series_separator`: trim a series name split off by `group_separator` at its
+  first occurrence
 
-Without a `reading`, each bench name is its own chart with one series, on the
-commit axis the whole data set shares. The JavaScript and Python pages still
+Without `group_separator`, each bench name is its own chart with one series, on
+the commit axis the whole data set shares. The JavaScript and Python pages still
 carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
@@ -68,11 +69,10 @@ carry the stock renderer inline. The plugin's parts:
   container): a nested or second call fails the build. A call in included
   content marks the included page, not the page that includes it ([Page flags in
   included content][]).
-- **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
-  charts show is worth more to an agent than the data file the page links to,
-  and without a variant the HTML template's markup would land in the page's
-  [Markdown output][], which the site serves per
-  [Agent support](../../design/agent-support/).
+- **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
+  template's markup stays out of the page's [Markdown output][], which the site
+  serves per [Agent support](../../design/agent-support/); the data file the
+  prose links is an agent's path to the numbers.
 - **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
   ([Adjust a plugin per page][]): disables the plugin on pages without the
   record, which keeps the remote data script off every other page
