@@ -61,15 +61,14 @@ the commit axis the whole data set shares. The JavaScript and Python pages still
 carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
-  container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
-  records the page's `data_url` in the page [store][] as `otelBenchmarks`, and
-  hands the renderer its arguments as the container's `data-reading` JSON (an
-  unknown or positional argument fails the build). Links and text belong in the
-  page's prose, where each language writes its own; the prose links the data URL
-  through `_param`. Call it at top level, once per page (one data source, one
-  container): a nested or second call fails the build. A call in included
-  content marks the included page, not the page that includes it ([Page flags in
-  included content][]).
+  container, a `div` whose `data-otel-benchmarks` attribute carries the call's
+  arguments as JSON for the renderer (an unknown or positional argument fails
+  the build), and records the page's `data_url` in the page [store][] as
+  `otelBenchmarks`. Links and text belong in the page's prose, where each
+  language writes its own; the prose links the data URL through `_param`. Each
+  call renders a chart set of the page's data where it stands. A call in
+  included content marks the included page, not the page that includes it ([Page
+  flags in included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
   template's markup stays out of the page's [Markdown output][], which the site
   serves per [Agent support](../../design/agent-support/); the data file the

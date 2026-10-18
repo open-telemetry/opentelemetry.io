@@ -94,7 +94,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
       assert.equal(count(html, HOOK), 1, 'one plugin container');
       const container = html.match(HOOK_TAG)?.[0] ?? '';
       const reading = JSON.parse(
-        attr(container, 'data-reading').replaceAll('&#34;', '"'),
+        attr(container, 'data-otel-benchmarks').replaceAll('&#34;', '"'),
       );
       assert.deepEqual(
         reading.filter,

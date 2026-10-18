@@ -1,6 +1,6 @@
 {{/* Chart container for the otel-benchmarks plugin; records the page's data
   URL for the plugin's shim and companion, and hands the renderer the call's
-  reading of the data. Top level and once per page. Design:
+  reading of the data. Design:
   https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $docs := "https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" -}}
@@ -24,17 +24,6 @@
   {{ end -}}
 {{ end -}}
 
-{{ if .Parent -}}
-  {{/* .Ordinal is relative to the parent, so only top-level calls are
-    comparable. */ -}}
-  {{ errorf "%s: shortcode %q: nested in another shortcode; see %s" .Position .Name $docs -}}
-{{ end -}}
+{{ .Page.Store.Set "otelBenchmarks" $data -}}
 
-{{ with .Page.Store.Get "otelBenchmarks" -}}
-  {{ if ne .ordinal $.Ordinal -}}
-    {{ errorf "%s: shortcode %q: more than one on the page; see %s" $.Position $.Name $docs -}}
-  {{ end -}}
-{{ end -}}
-{{ .Page.Store.Set "otelBenchmarks" (dict "data" $data "ordinal" .Ordinal) -}}
-
-<div data-otel-benchmarks data-reading="{{ $reading | jsonify }}"></div>
+<div data-otel-benchmarks="{{ $reading | jsonify }}"></div>

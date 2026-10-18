@@ -28,10 +28,10 @@ const COLORS = [
   '#410472',
 ];
 
-// How the page reads its data (the shortcode's `data-reading`): which benches
-// to chart, and how `extra` names a chart's group and its series. Without a
-// reading, each bench name is its own chart with one series, on the shared
-// commit axis.
+// How a call reads the page's data (its container's `data-otel-benchmarks`
+// JSON): which benches to chart, and how `extra` names a chart's group and its
+// series. Without a reading, each bench name is its own chart with one series,
+// on the shared commit axis.
 function init(reading) {
   const {
     filter,
@@ -99,9 +99,7 @@ const popoverContent = (point, dataset, chart) =>
     valueLabel(dataset.label, point, chart.scales.y.getLabelForValue(point.y)),
   );
 
-function renderAllCharts(dataSets) {
-  const main = document.querySelector('[data-otel-benchmarks]');
-
+function renderAllCharts(dataSets, main) {
   function renderGraph(parent, name, commitIds, byName) {
     const chartTitle = document.createElement('h3');
     chartTitle.textContent = name;
@@ -218,5 +216,9 @@ function renderAllCharts(dataSets) {
   }
 }
 
-const container = document.querySelector('[data-otel-benchmarks]');
-renderAllCharts(init(JSON.parse(container.dataset.reading)));
+for (const container of document.querySelectorAll('[data-otel-benchmarks]')) {
+  renderAllCharts(
+    init(JSON.parse(container.dataset.otelBenchmarks)),
+    container,
+  );
+}
