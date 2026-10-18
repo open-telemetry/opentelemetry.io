@@ -5879,11 +5879,6 @@
     "when": "2026-10-17T13:13:40Z",
     "via": "lychee",
   },
-  "https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts": {
-    "result": 200,
-    "when": "2026-10-18T01:24:52Z",
-    "via": "lychee",
-  },
   "https://github.com/benchmark-action/github-action-benchmark/blob/master/src/write.ts": {
     "result": 200,
     "when": "2026-10-18T02:02:00Z",

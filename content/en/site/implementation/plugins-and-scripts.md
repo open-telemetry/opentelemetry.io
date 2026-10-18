@@ -30,12 +30,11 @@ language that serves it; the shim reads the mark.
 ### Benchmarks plugin {#benchmarks}
 
 `otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
-publishes with a repository's benchmark history (a `data.js` it publishes to
-GitHub Pages); the action defines the data's shape in its [source types][] and
-reads it in that [stock renderer][], the reference for this fork. The fork adds
-the Collector testbed's grouping and filtering of benches. The language pages
-for JavaScript and Python still carry the stock renderer inline. The plugin's
-parts:
+publishes with a repository's benchmark history (a `data.js` on GitHub Pages);
+the action defines the data's shape in its [source types][] and reads it in that
+[stock renderer][], the reference for this fork. The fork adds the Collector
+testbed's grouping and filtering of benches. The language pages for JavaScript
+and Python still carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
@@ -80,8 +79,8 @@ parts:
 A page's localized copies keep inlining the script until they convert. To
 convert a copy:
 
-1. Replace everything from its stylesheet link to its last `<script>` tag (the
-   `markdownlint` comment, the chart container and its footer included) with the
+1. Remove the stylesheet link above the prose, and replace the block below it
+   (from the `markdownlint` comment through the last `<script>` tag) with the
    shortcode line from the English page.
 2. Copy the English page's `benchmark_data_url` param, translate its tip, and
    link the data from the prose as it does.
