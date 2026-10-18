@@ -42,6 +42,12 @@ const wrapLine = (text) => {
 };
 
 const subjectOf = (commit) => commit.message.split('\n')[0];
+// The value line, Chart.js's number formatting (three decimals), the unit,
+// and the range when the data has one.
+const valueLabel = (series, point, formatted) => {
+  const { unit, range } = point.result.bench;
+  return `${series}: ${formatted}${unit}${range ? ` (${range})` : ''}`;
+};
 const parseUrl = (text) => {
   try {
     return new URL(text);
@@ -61,11 +67,14 @@ function closePopover() {
   openPopover = null;
   popover.dispose();
   anchor.remove();
+  // Cleared again on close: re-enabling replays the chart's last pointer
+  // event, which on touch is still the tap that opened the popover.
+  chart.tooltip.setActiveElements([], { x: 0, y: 0 });
   chart.options.plugins.tooltip.enabled = true;
   chart.update('none');
 }
 
-function openCommitPopover(chart, wrapper, point, commit) {
+function openCommitPopover(chart, wrapper, point, commit, valueLabel) {
   closePopover();
   if (!window.bootstrap?.Popover) return;
 
@@ -75,8 +84,12 @@ function openCommitPopover(chart, wrapper, point, commit) {
   anchor.style.top = `${point.y}px`;
   wrapper.appendChild(anchor);
 
-  // No words of ours in the popover: the page has no i18n keys.
+  // No words of ours in the popover: the plugin defines no i18n keys. The
+  // value line is the tooltip's, which a tap can't show for long.
   const content = document.createElement('div');
+  const value = document.createElement('div');
+  value.textContent = valueLabel;
+  content.appendChild(value);
   const url = parseUrl(commit.url);
   const subject = document.createElement(
     url?.protocol === 'https:' ? 'a' : 'span',
@@ -89,10 +102,12 @@ function openCommitPopover(chart, wrapper, point, commit) {
   subject.textContent = subjectOf(commit);
   content.append(subject);
   // The action's data types make the timestamp and the author's names optional.
-  const who = commit.author.username ?? commit.author.name;
+  const who = commit.author.username
+    ? `@${commit.author.username}`
+    : commit.author.name;
   const meta = document.createElement('div');
   meta.className = 'small text-body-secondary';
-  meta.textContent = [commit.timestamp?.slice(0, 10), who && `@${who}`]
+  meta.textContent = [commit.timestamp?.slice(0, 10), who]
     .filter(Boolean)
     .join(' · ');
   content.appendChild(meta);
@@ -105,11 +120,12 @@ function openCommitPopover(chart, wrapper, point, commit) {
   });
   popover.show();
   openPopover = { popover, anchor, chart };
-  // The canvas tooltip would sit under the popover (a tap leaves it up). Its
-  // state is cleared too: a disabled tooltip stops updating, and the stale one
-  // would paint back when re-enabled.
-  chart.options.plugins.tooltip.enabled = false;
+  // The canvas tooltip would sit under the popover (a tap leaves it up): its
+  // fade-in is stopped and its state cleared before it's disabled, or the
+  // stale one paints back when re-enabled.
+  chart.stop();
   chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+  chart.options.plugins.tooltip.enabled = false;
   chart.update('none');
 }
 
@@ -144,8 +160,8 @@ const COLORS = [
 
 // How the page reads its data (the shortcode's `data-reading`): which benches
 // to chart, and how `extra` names a chart's group and its series. Without a
-// reading, every bench is its own chart with one series, as the stock renderer
-// draws it.
+// reading, each bench name is its own chart with one series, on the shared
+// commit axis.
 function init(reading) {
   const {
     filter,
@@ -218,7 +234,9 @@ function renderAllCharts(dataSets) {
     parent.append(chartTitle);
 
     // Chart.js fills its parent, so the box owns the size: the minimum width
-    // and the aspect ratio sit on an inner box, and the outer one scrolls.
+    // and the aspect ratio sit on an inner box, and the outer one scrolls. CSS
+    // owns the ratio because Chart.js's own doesn't grow a chart back after a
+    // shrink (chartjs/Chart.js#11005).
     const scroller = document.createElement('div');
     scroller.className = 'otel-chart-scroller';
     // The popover hangs off a point; panning the chart would leave it behind.
@@ -283,11 +301,17 @@ function renderAllCharts(dataSets) {
       onClick: (event, elements, chart) => {
         if (!elements.length) return;
         const { datasetIndex, index } = elements[0];
+        const point = datasets[datasetIndex].data[index];
         openCommitPopover(
           chart,
           wrapper,
           chart.getDatasetMeta(datasetIndex).data[index],
-          datasets[datasetIndex].data[index].result.commit,
+          point.result.commit,
+          valueLabel(
+            datasets[datasetIndex].label,
+            point,
+            chart.scales.y.getLabelForValue(point.y),
+          ),
         );
       },
       onResize: closePopover,
@@ -311,18 +335,11 @@ function renderAllCharts(dataSets) {
         tooltip: {
           callbacks: {
             title: () => '',
-            // The commit's subject; its body is PR-body length.
+            // The commit's body is PR-body length; only its subject fits.
             afterBody: (items) =>
               wrapLine(subjectOf(items[0].raw.result.commit)),
-            label: (item) => {
-              const { range, unit } = item.raw.result.bench;
-              let label = `${item.dataset.label}: ${item.formattedValue}`;
-              label += unit;
-              if (range) {
-                label += ' (' + range + ')';
-              }
-              return label;
-            },
+            label: (item) =>
+              valueLabel(item.dataset.label, item.raw, item.formattedValue),
           },
         },
         legend: {
