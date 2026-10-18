@@ -10,8 +10,6 @@
   {{ errorf "%s: shortcode %q: page param `otel-benchmarks.data_url` is missing; see %s" .Position .Name $docs -}}
 {{ end -}}
 
-{{/* The reading: which benches to chart and how `extra` names chart and
-  series. Absent keys mean the stock rendering. */ -}}
 {{ $reading := dict -}}
 {{ with $params.reading -}}
   {{ range $key, $value := . -}}

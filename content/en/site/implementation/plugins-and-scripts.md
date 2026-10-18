@@ -46,14 +46,16 @@ params:
 ```
 
 `data_url` is the action's `data.js`. The optional `reading` says which benches
-to chart and how each bench's `extra` text names its chart and series: `filter`
-keeps a bench whose `extra` contains any of the listed strings;
-`group_separator` splits `extra` into a group (joined to the bench name as the
-chart's title) and a series name, which `series_separator` trims; an `extra`
-without the group separator is both. Without a `reading`, every bench is its own
-chart with one series, as the stock renderer draws it, which is what the
-JavaScript and Python pages will get when they convert (they still carry the
-stock renderer inline). The plugin's parts:
+to chart and how each bench's `extra` text names its chart and series:
+
+- `filter`: keep a bench whose `extra` contains any of the listed strings
+- `group_separator`: split `extra` into a group, joined to the bench name as the
+  chart's title, and a series name; an `extra` without the separator is both
+- `series_separator`: trim the series name at its first occurrence
+
+Without a `reading`, each bench name is its own chart with one series, on the
+commit axis the whole data set shares. The JavaScript and Python pages still
+carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
@@ -161,7 +163,7 @@ disabled, the sidebar stays hidden.
 [Page flags in included content]: https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content
 [Plugin files]: https://www.docsy.dev/docs/content/plugins/#plugin-files
 [Security]: https://www.docsy.dev/docs/content/plugins/#security
-[source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/write.ts
+[source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts
 [stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
 [store]: https://gohugo.io/methods/page/store/
 <!-- prettier-ignore-end -->
