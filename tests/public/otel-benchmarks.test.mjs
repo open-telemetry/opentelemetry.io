@@ -91,6 +91,11 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     test(`${lang}: the plugin's file set, in order, synchronously`, () => {
       const html = read(PAGE(lang));
       assert.equal(count(html, HOOK), 1, 'one plugin container');
+      assert.match(
+        html,
+        /<div\b[^>]*\bdata-otel-benchmarks\b[^>]*\bdata-reading=["'][^"']*filter/,
+        'container carries the page reading',
+      );
       const css = html.match(PLUGIN_CSS) ?? [];
       assert.equal(css.length, 1, 'plugin stylesheet linked once');
       assert.ok(

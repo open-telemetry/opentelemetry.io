@@ -142,7 +142,29 @@ const COLORS = [
   '#410472',
 ];
 
-function init() {
+// How the page reads its data (the shortcode's `data-reading`): which benches
+// to chart, and how `extra` names a chart's group and its series. Without a
+// reading, every bench is its own chart with one series, as the stock renderer
+// draws it.
+function init(reading) {
+  const {
+    filter,
+    group_separator: groupSep,
+    series_separator: seriesSep,
+  } = reading;
+  const charted = (bench) =>
+    !filter || filter.some((token) => (bench.extra ?? '').includes(token));
+  // `extra` as `GROUP<groupSep>SERIES<seriesSep>noise`; an `extra` without the
+  // group separator is both group and series.
+  const groupAndSeries = (bench) => {
+    const extra = bench.extra ?? '';
+    const at = extra.indexOf(groupSep);
+    if (at < 0) return [extra, extra];
+    const rest = extra.slice(at + groupSep.length);
+    const end = seriesSep ? rest.indexOf(seriesSep) : -1;
+    return [extra.slice(0, at), end < 0 ? rest : rest.slice(0, end)];
+  };
+
   function collectBenchesPerTestCase(entries) {
     const byGroup = new Map();
     const commitIds = [];
@@ -151,32 +173,23 @@ function init() {
       const commitId = commit.id.slice(0, 7);
       commitIds.push(commitId);
       for (const bench of benches) {
+        if (!charted(bench)) continue;
         const result = { commit, date, tool, bench };
-        if (
-          !bench.extra.includes('10kDPS') &&
-          !bench.extra.includes('10kSPS')
-        ) {
-          continue;
-        }
-        const extraParts = bench.extra.split('/');
-        let benchmarkName = extraParts[0] + ' - ' + bench.name;
-        let byName = byGroup.get(benchmarkName);
+        const [group, series] = groupSep
+          ? groupAndSeries(bench)
+          : ['', bench.name];
+        const chartName = groupSep ? `${group} - ${bench.name}` : bench.name;
+        let byName = byGroup.get(chartName);
         if (byName === undefined) {
           byName = new Map();
-          byGroup.set(benchmarkName, byName);
+          byGroup.set(chartName, byName);
         }
-        let extraName = bench.extra;
-        if (extraParts.length > 1) {
-          extraName = extraParts[1].split(' - ')[0];
-        }
-        let byCommitId = byName.get(extraName);
+        let byCommitId = byName.get(series);
         if (byCommitId === undefined) {
           byCommitId = new Map();
-          byCommitId.set(commitId, result);
-          byName.set(extraName, byCommitId);
-        } else {
-          byCommitId.set(commitId, result);
+          byName.set(series, byCommitId);
         }
+        byCommitId.set(commitId, result);
       }
     }
     return {
@@ -362,4 +375,5 @@ function renderAllCharts(dataSets) {
   }
 }
 
-renderAllCharts(init());
+const container = document.querySelector('[data-otel-benchmarks]');
+renderAllCharts(init(JSON.parse(container.dataset.reading)));

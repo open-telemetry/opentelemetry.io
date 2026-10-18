@@ -32,19 +32,38 @@ language that serves it; the shim reads the mark.
 `otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
 publishes with a repository's benchmark history (a `data.js` on GitHub Pages);
 the action defines the data's shape in its [source types][] and reads it in that
-[stock renderer][], the reference for this fork. The fork adds the Collector
-testbed's grouping and filtering of benches. The language pages for JavaScript
-and Python still carry the stock renderer inline. The plugin's parts:
+[stock renderer][], the reference for this fork. A page states how its data is
+read under one front-matter key named after the plugin:
+
+```yaml
+params:
+  otel-benchmarks:
+    data_url: https://open-telemetry.github.io/.../benchmarks/loadtests/data.js
+    reading:
+      filter: [10kDPS, 10kSPS]
+      group_separator: /
+      series_separator: ' - '
+```
+
+`data_url` is the action's `data.js`. The optional `reading` says which benches
+to chart and how each bench's `extra` text names its chart and series: `filter`
+keeps a bench whose `extra` contains any of the listed strings;
+`group_separator` splits `extra` into a group (joined to the bench name as the
+chart's title) and a series name, which `series_separator` trims; an `extra`
+without the group separator is both. Without a `reading`, every bench is its own
+chart with one series, as the stock renderer draws it, which is what the
+JavaScript and Python pages will get when they convert (they still carry the
+stock renderer inline). The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
-  records the page's `benchmark_data_url` front-matter param in the page
-  [store][] as `otelBenchmarks`. Links and text belong in the page's prose,
-  where each language writes its own; the prose links the same param through
-  `_param`. Call it at top level, once per page (one data source, one
-  container): a nested or second call fails the build. A call in included
-  content marks the included page, not the page that includes it ([Page flags in
-  included content][]).
+  records the page's `data_url` in the page [store][] as `otelBenchmarks`, and
+  hands the renderer the `reading` as the container's `data-reading` JSON (an
+  unknown key fails the build). Links and text belong in the page's prose, where
+  each language writes its own; the prose links the data URL through `_param`.
+  Call it at top level, once per page (one data source, one container): a nested
+  or second call fails the build. A call in included content marks the included
+  page, not the page that includes it ([Page flags in included content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design. Nothing the
   charts show is worth more to an agent than the data file the page links to,
   and without a variant the HTML template's markup would land in the page's
@@ -82,8 +101,8 @@ convert a copy:
 1. Remove the stylesheet link above the prose, and replace the block below it
    (from the `markdownlint` comment through the last `<script>` tag) with the
    shortcode line from the English page.
-2. Copy the English page's `benchmark_data_url` param, translate its tip, and
-   link the data from the prose as it does.
+2. Copy the English page's `otel-benchmarks` params, translate its tip, and link
+   the data from the prose as it does.
 3. Add the language to the test's `CONVERTED` list: the tests check that each
    page loads exactly one delivery mode, and that converted pages load the
    plugin.
