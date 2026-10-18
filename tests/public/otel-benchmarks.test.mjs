@@ -27,6 +27,7 @@ const DATA_URL =
 const DATA_SRC = new RegExp(RegExp.escape(DATA_URL));
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
 const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])/g;
+const HOOK_TAG = /<div\b[^>]*\bdata-otel-benchmarks\b[^>]*>/;
 const PLUGIN_CSS =
   /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
 
@@ -91,9 +92,13 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     test(`${lang}: the plugin's file set, in order, synchronously`, () => {
       const html = read(PAGE(lang));
       assert.equal(count(html, HOOK), 1, 'one plugin container');
-      assert.match(
-        html,
-        /<div\b[^>]*\bdata-otel-benchmarks\b[^>]*\bdata-reading=["'][^"']*filter/,
+      const container = html.match(HOOK_TAG)?.[0] ?? '';
+      const reading = JSON.parse(
+        attr(container, 'data-reading').replaceAll('&#34;', '"'),
+      );
+      assert.deepEqual(
+        reading.filter,
+        ['10kDPS', '10kSPS'],
         'container carries the page reading',
       );
       const css = html.match(PLUGIN_CSS) ?? [];
