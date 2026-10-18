@@ -16,8 +16,8 @@ Benchmarks][].
 
 > [!TIP]
 >
-> In the charts below, hover over a point for its value and commit; click it
-> for a link to the commit.
+> In the charts below, hover over a point for its value and commit; click it for
+> a link to the commit.
 
 {{< benchmarks >}}
 
