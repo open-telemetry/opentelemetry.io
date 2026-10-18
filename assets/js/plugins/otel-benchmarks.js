@@ -1,12 +1,12 @@
 // Chart renderer of the `benchmarks` shortcode, docs:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
-// Assumes these globals, loaded before this runs:
+// Assumes these globals, the first two loaded by the plugin's companion, the
+// third by Docsy's main bundle:
 //
-// - `Chart`: Chart.js 4 (the plugin's companion)
-// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js (the companion)
-// - `bootstrap`: Bootstrap's bundle, for the commit popover (Docsy's main
-//   bundle)
+// - `Chart`: Chart.js
+// - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
+// - `bootstrap`: Bootstrap, for the commit popover
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 

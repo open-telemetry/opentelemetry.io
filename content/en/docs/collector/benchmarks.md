@@ -1,5 +1,6 @@
 ---
 title: Benchmarks
+description: Load-test results of the Collector, charted per commit
 weight: 99
 params:
   benchmark_data_url: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js
@@ -16,8 +17,8 @@ This page charts a subset of the benchmark [data][]. For the full dashboard, see
 
 > [!TIP]
 >
-> In the charts below, hover over a point for its value and commit; click it for
-> a link to the commit.
+> In a chart below, hover over a point for its value and commit; click it for a
+> link to the commit.
 
 {{< benchmarks >}}
 
