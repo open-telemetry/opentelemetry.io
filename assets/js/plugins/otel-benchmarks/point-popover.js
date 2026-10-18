@@ -4,8 +4,45 @@
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
 let open = null;
+let ringColor;
 
-export function closePopover() {
+// The chart options that wire its points to the popover: the clickable cue
+// (cursor and hover ring), the click, and the dismissals the chart's own
+// movement needs, since the popover hangs off a point's position. `contentOf`
+// gets the clicked data point, its dataset and the chart, and returns the
+// popover's body, a DOM node.
+export function pointPopover(wrapper, scroller, contentOf) {
+  ringColor ??= getComputedStyle(document.documentElement)
+    .getPropertyValue('--bs-body-color')
+    .trim();
+  scroller.addEventListener('scroll', closePopover);
+  return {
+    onHover: (event, elements) => {
+      event.native.target.style.cursor = elements.length ? 'pointer' : '';
+    },
+    elements: {
+      point: {
+        hoverRadius: 6,
+        hoverBorderWidth: 2,
+        hoverBorderColor: ringColor,
+      },
+    },
+    onClick: (event, elements, chart) => {
+      if (!elements.length) return;
+      const { datasetIndex, index } = elements[0];
+      const dataset = chart.data.datasets[datasetIndex];
+      openPopover(
+        chart,
+        wrapper,
+        chart.getDatasetMeta(datasetIndex).data[index],
+        contentOf(dataset.data[index], dataset, chart),
+      );
+    },
+    onResize: closePopover,
+  };
+}
+
+function closePopover() {
   if (!open) return;
   const { popover, anchor, chart } = open;
   open = null;
@@ -19,7 +56,7 @@ export function closePopover() {
 }
 
 // `content` is a DOM node the caller built; `point` is the chart element.
-export function openPopover(chart, wrapper, point, content) {
+function openPopover(chart, wrapper, point, content) {
   closePopover();
   if (!window.bootstrap?.Popover) return;
 

@@ -17,7 +17,7 @@ import {
   wrapLine,
 } from './otel-benchmarks/commit.js';
 import { aspectRatioFor, legendOptions } from './otel-benchmarks/legend.js';
-import { closePopover, openPopover } from './otel-benchmarks/point-popover.js';
+import { pointPopover } from './otel-benchmarks/point-popover.js';
 
 const COLORS = [
   '#48aaf9',
@@ -97,11 +97,15 @@ function init(reading) {
   }));
 }
 
+// The popover's body: the value as the y axis formats it, then the commit.
+const popoverContent = (point, dataset, chart) =>
+  commitContent(
+    point.result.commit,
+    valueLabel(dataset.label, point, chart.scales.y.getLabelForValue(point.y)),
+  );
+
 function renderAllCharts(dataSets) {
   const main = document.querySelector('[data-otel-benchmarks]');
-  const bodyColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--bs-body-color')
-    .trim();
 
   function renderGraph(parent, name, commitIds, byName) {
     const chartTitle = document.createElement('h3');
@@ -114,8 +118,6 @@ function renderAllCharts(dataSets) {
     // shrink (chartjs/Chart.js#11005).
     const scroller = document.createElement('div');
     scroller.className = 'otel-chart-scroller';
-    // The popover hangs off a point; panning the chart would leave it behind.
-    scroller.addEventListener('scroll', closePopover);
     parent.appendChild(scroller);
     const wrapper = document.createElement('div');
     wrapper.className = 'otel-chart-wrapper';
@@ -156,36 +158,7 @@ function renderAllCharts(dataSets) {
 
     const options = {
       maintainAspectRatio: false,
-      // The cursor and a hover ring mark points as clickable.
-      onHover: (event, elements) => {
-        event.native.target.style.cursor = elements.length ? 'pointer' : '';
-      },
-      elements: {
-        point: {
-          hoverRadius: 6,
-          hoverBorderWidth: 2,
-          hoverBorderColor: bodyColor,
-        },
-      },
-      onClick: (event, elements, chart) => {
-        if (!elements.length) return;
-        const { datasetIndex, index } = elements[0];
-        const point = datasets[datasetIndex].data[index];
-        openPopover(
-          chart,
-          wrapper,
-          chart.getDatasetMeta(datasetIndex).data[index],
-          commitContent(
-            point.result.commit,
-            valueLabel(
-              datasets[datasetIndex].label,
-              point,
-              chart.scales.y.getLabelForValue(point.y),
-            ),
-          ),
-        );
-      },
-      onResize: closePopover,
+      ...pointPopover(wrapper, scroller, popoverContent),
       scales: {
         x: {
           title: {
