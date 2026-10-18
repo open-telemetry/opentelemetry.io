@@ -260,9 +260,9 @@
     "via": "lychee",
   },
   "https://azure.microsoft.com/": {
-    "result": "timeout",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://azure.microsoft.com/en-us/products/kubernetes-service": {
     "result": 200,
@@ -270,14 +270,14 @@
     "via": "lychee",
   },
   "https://azure.microsoft.com/global-infrastructure/geographies/": {
-    "result": "timeout",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://azure.microsoft.com/products/cosmos-db/": {
-    "result": "timeout",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://backstage.io/": {
     "result": 200,
@@ -355,9 +355,9 @@
     "via": "lychee",
   },
   "https://blogs.oracle.com/linux/post/understanding-linux-kernel-memory-statistics": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://bosh.io/docs/jobs/#properties-spec": {
     "result": 200,
@@ -875,9 +875,9 @@
     "via": "lychee",
   },
   "https://clickhouse.com/docs/operations/server-configuration-parameters/settings#skip_binary_checksum_checks": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://clotributor.dev/": {
     "result": 200,
@@ -885,9 +885,9 @@
     "via": "lychee",
   },
   "https://cloud-native.slack.com/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "result": 206,
@@ -945,14 +945,14 @@
     "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C02UN96HZH6": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C031SAMGV2A": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C03B4CWV4DA": {
     "result": 206,
@@ -975,9 +975,9 @@
     "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C05J0T9K27Q": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/archives/C05PXDFTCPJ": {
     "result": 206,
@@ -1060,19 +1060,19 @@
     "via": "double-check",
   },
   "https://cloud-native.slack.com/team/U02EUCBFK8A": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/team/U03UARAJ405": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud-native.slack.com/team/U07DR07KAEQ": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://cloud.google.com/": {
     "result": 200,
@@ -1715,14 +1715,14 @@
     "via": "lychee",
   },
   "https://dev.mysql.com/doc/mysql-errors/9.0/en/error-reference-introduction.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://dev.mysql.com/doc/refman/9.2/en/telemetry-trace.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://devcenter.heroku.com/articles/dyno-metadata": {
     "result": 200,
@@ -2200,9 +2200,9 @@
     "via": "lychee",
   },
   "https://docs.bmc.com/xwiki/bin/view/Main/Search?text=metric+ingestion+REST+API": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.bronto.io/agent-setup/open-telemetry": {
     "result": 200,
@@ -2355,19 +2355,19 @@
     "via": "lychee",
   },
   "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerInspect": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerStats": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image/operation/ImageInspect": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector": {
     "result": 200,
@@ -2675,9 +2675,9 @@
     "via": "lychee",
   },
   "https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventlevel#fields": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource": {
     "result": 200,
@@ -3250,24 +3250,24 @@
     "via": "lychee",
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.renovatebot.com/": {
     "result": 200,
@@ -3320,34 +3320,34 @@
     "via": "lychee",
   },
   "https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/go/get-started.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/java/get-started.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/nodejs/get-started.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/otel-dotnet/get-started.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/python/get-started.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html": {
     "result": 206,
@@ -3360,9 +3360,9 @@
     "via": "lychee",
   },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties": {
     "result": 200,
@@ -8295,9 +8295,9 @@
     "via": "lychee",
   },
   "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157C6-L157C20": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236": {
     "result": 200,
@@ -25392,9 +25392,9 @@
     "via": "lychee",
   },
   "https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://lightstep.com/blog/apm-is-dying-and-thats-okay": {
     "result": 200,
@@ -25562,19 +25562,19 @@
     "via": "lychee",
   },
   "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-okhttp-3.0": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://maven.org/artifact/io.opentelemetry.javaagent.instrumentation/opentelemetry-javaagent-finatra-2.9": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://maxdb.sap.com/": {
     "result": 200,
@@ -25852,48 +25852,48 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-langchain": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-openai": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@autotelic/fastify-opentelemetry": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@azure/monitor-opentelemetry-exporter": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@azure/opentelemetry-instrumentation-azure-sdk": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@cerbos/opentelemetry": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@fastify/otel": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@instana/opentelemetry-exporter": {
@@ -25903,28 +25903,28 @@
   },
   "https://npmjs.com/package/@jenniferplusplus/opentelemetry-instrumentation-bullmq": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@jufab/opentelemetry-angular-interceptor": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/baggage-log-record-processor": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/baggage-span-processor": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/exporter-prometheus": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/exporter-zipkin": {
     "result": 200,
@@ -25933,13 +25933,13 @@
   },
   "https://npmjs.com/package/@opentelemetry/host-metrics": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/id-generator-aws-xray": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-amqplib": {
     "result": 200,
@@ -25952,14 +25952,14 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-sdk": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-browser-navigation": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-bunyan": {
     "result": 206,
@@ -25968,27 +25968,27 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-cassandra-driver": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-connect": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-cucumber": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-dataloader": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-dns": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-document-load": {
@@ -25997,9 +25997,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-express": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-fetch": {
     "result": 206,
@@ -26008,12 +26008,12 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-fs": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-generic-pool": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-graphql": {
@@ -26022,13 +26022,13 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-grpc": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-hapi": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-http": {
@@ -26037,9 +26037,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-ioredis": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-knex": {
     "result": 206,
@@ -26047,9 +26047,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-koa": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-long-task": {
     "result": 200,
@@ -26057,9 +26057,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-lru-memoizer": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-memcached": {
     "result": 200,
@@ -26068,18 +26068,18 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mongodb": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mongoose": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mysql": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-mysql2": {
     "result": 206,
@@ -26088,28 +26088,28 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-net": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-oracledb": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-pg": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-pino": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-redis": {
     "result": 206,
@@ -26122,19 +26122,19 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-restify": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-router": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-runtime-node": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
     "result": 200,
@@ -26142,9 +26142,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
     "result": 200,
@@ -26153,12 +26153,12 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-web-exception": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-winston": {
@@ -26167,49 +26167,49 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/propagator-aws-xray": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/propagator-aws-xray-lambda": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/propagator-instana": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/propagator-ot-trace": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-alibaba-cloud": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-aws": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-azure": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-container": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-gcp": {
     "result": 206,
@@ -26217,9 +26217,9 @@
     "via": "lychee",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-github": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
     "result": 206,
@@ -26228,18 +26228,18 @@
   },
   "https://npmjs.com/package/@opentelemetry/sampler-aws-xray": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@prisma/instrumentation": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://npmjs.com/package/@waitingliou/tsc-otel-instrumentation": {
     "result": 200,
@@ -26248,7 +26248,7 @@
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-rhea": {
@@ -26337,9 +26337,9 @@
     "via": "lychee",
   },
   "https://openai.com/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://opencensus.io/": {
     "result": 200,
@@ -26842,8 +26842,8 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/goyek/x/otelgoyek": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/hertz-contrib/obs-opentelemetry": {
@@ -28012,8 +28012,8 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/statsdreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/stefreceiver": {
@@ -28052,13 +28052,13 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/vcenterreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/vcrreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/webhookeventreceiver": {
@@ -28067,13 +28067,13 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowseventlogreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsperfcountersreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsservicereceiver": {
@@ -28082,8 +28082,8 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/yanggrpcreceiver": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver": {
@@ -28137,8 +28137,8 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/go.mongodb.org/mongo-driver/mongo": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:07Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/go.opentelemetry.io/auto/sdk": {
@@ -28487,8 +28487,8 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/gorm.io/plugin/opentelemetry": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/k8s.io/api@v0.31.3/core/v1#NamespacePhase": {
@@ -28552,13 +28552,13 @@
     "via": "lychee",
   },
   "https://pkg.go.dev/log": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/log/slog": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "result": 200,
+    "when": "2026-10-18T05:41:06Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/net/http": {
@@ -30037,9 +30037,9 @@
     "via": "lychee",
   },
   "https://semver.org/#spec-item-11": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://semver.org/spec/v2.0.0.html": {
     "result": 200,
@@ -30207,9 +30207,9 @@
     "via": "lychee",
   },
   "https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html": {
     "result": 200,
@@ -30537,9 +30537,9 @@
     "via": "lychee",
   },
   "https://wiki.alpinelinux.org/wiki/Repositories#Testing": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://wiki.debian.org/SecureBoot": {
     "result": 200,
@@ -30782,9 +30782,9 @@
     "via": "lychee",
   },
   "https://www.cisco.com/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.cloudfoundry.org/": {
     "result": 200,
@@ -31192,29 +31192,29 @@
     "via": "lychee",
   },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuLoad--": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuTime--": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/docs/db2-for-zos/12?topic=codes-sql": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/docs/en/instana-observability/1.0.304?topic=apis-opentelemetry": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/docs/en/instana-observability/current?topic=collectors-instana-distribution-opentelemetry-collector": {
     "result": 206,
@@ -31222,9 +31222,9 @@
     "via": "double-check",
   },
   "https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.ibm.com/products/db2": {
     "result": 200,
@@ -31852,19 +31852,19 @@
     "via": "lychee",
   },
   "https://www.markdownguide.org/basic-syntax/#line-breaks": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.mathworks.com/products/matlab.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.meetup.com/opentelemetry-in-practice-meetup-group/": {
     "result": 200,
@@ -31902,9 +31902,9 @@
     "via": "lychee",
   },
   "https://www.mysql.com/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.netlify.com/": {
     "result": 200,
@@ -31928,43 +31928,43 @@
   },
   "https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-prometheus": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto": {
     "result": "error",
-    "when": "2026-10-17T05:40:55Z",
+    "when": "2026-10-18T05:40:52Z",
     "via": "lychee",
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-zipkin": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-express": {
     "result": 206,
@@ -31982,9 +31982,9 @@
     "via": "lychee",
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace": {
     "result": 200,
@@ -31997,9 +31997,9 @@
     "via": "double-check",
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "result": 200,
@@ -32392,9 +32392,9 @@
     "via": "lychee",
   },
   "https://www.opentext.com/products/core-application-observability": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.oracle.com/database/": {
     "result": 200,
@@ -32662,9 +32662,9 @@
     "via": "lychee",
   },
   "https://www.sap.com/products/technology-platform/hana/what-is-sap-hana.html": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.scala-lang.org/api/2.12.0/scala/concurrent/forkjoin/package$$ForkJoinPool$.html": {
     "result": 200,
@@ -32742,9 +32742,9 @@
     "via": "lychee",
   },
   "https://www.thousandeyes.com/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.tinybird.co/": {
     "result": 200,
@@ -32767,9 +32767,9 @@
     "via": "lychee",
   },
   "https://www.uber.com/blog/flipr/": {
-    "result": "error",
-    "when": "2026-10-17T05:40:55Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-10-18T05:54:20Z",
+    "via": "double-check",
   },
   "https://www.velodb.io/solutions/use-cases/observability": {
     "result": 200,
