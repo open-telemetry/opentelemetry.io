@@ -21,8 +21,6 @@ const LEGEND_WRAP_LENGTH = 28;
 const legendLines = (label) =>
   label.length > LEGEND_WRAP_LENGTH ? label.split(' - ') : [label];
 
-// A chart's height at its narrowest: a row per legend line plus the axes'
-// room, never shallower than the stock 2:1 shape.
 const LEGEND_LINE_HEIGHT = 24;
 const AXES_HEIGHT = 60;
 const MAX_ASPECT_RATIO = 2;
@@ -77,8 +75,7 @@ function openCommitPopover(chart, wrapper, point, commit) {
   anchor.style.top = `${point.y}px`;
   wrapper.appendChild(anchor);
 
-  // No words of ours in the popover (the page has no i18n keys): the commit's
-  // subject as the link, its date and author.
+  // No words of ours in the popover: the page has no i18n keys.
   const content = document.createElement('div');
   const url = parseUrl(commit.url);
   const subject = document.createElement(

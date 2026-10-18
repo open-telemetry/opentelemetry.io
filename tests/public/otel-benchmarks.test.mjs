@@ -139,7 +139,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     });
   }
 
-  test('plugin and its dependencies load on no other page', () => {
+  test('plugin and its dependencies are absent from a page without the shortcode', () => {
     const html = read(OTHER_PAGE);
     for (const [name, re] of [
       ['plugin', PLUGIN_SRC],
