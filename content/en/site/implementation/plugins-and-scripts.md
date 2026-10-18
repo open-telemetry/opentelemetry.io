@@ -29,11 +29,12 @@ language that serves it; the shim reads the mark.
 
 ### Benchmarks plugin {#benchmarks}
 
-`otel-benchmarks.js` is a fork of the renderer that [github-action-benchmark][]
-publishes with a repository's benchmark history (a `data.js` on GitHub Pages);
-the action defines the data's shape in its [source types][] and reads it in that
-[stock renderer][], the reference for this fork. A page states how its data is
-read under one front-matter key named after the plugin:
+The `otel-benchmarks` plugin is a fork of the renderer that
+[github-action-benchmark][] publishes with a repository's benchmark history (a
+`data.js` on GitHub Pages); the action defines the data's shape in its [source
+types][] and reads it in that [stock renderer][], the reference for this fork. A
+page states how its data is read under one front-matter key named after the
+plugin:
 
 ```yaml
 params:
@@ -81,13 +82,14 @@ carry the stock renderer inline. The plugin's parts:
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid.
-- **Script**, `assets/js/plugins/otel-benchmarks.js`: reads the data per the
-  page's `reading` and renders the charts; its header names what it assumes
-  loaded. Its parts live beside it in `otel-benchmarks/`: `legend.js` (the
-  legend's width cap, label wrapping and the chart height that fits it),
-  `commit.js` (a commit's subject and the popover's content) and
-  `point-popover.js` (the click popover's lifecycle). Hugo's `js.Build` bundles
-  them into the one file Docsy emits.
+- **Script**, `assets/js/plugins/otel-benchmarks/`, with `index.js` the
+  renderer: reads the data per the page's `reading` and renders the charts; its
+  header names what it assumes loaded. Beside it: `legend.js` (the legend's
+  width cap, label wrapping and the chart height that fits it), `commit.js` (a
+  commit's subject and the popover's content) and `point-popover.js` (the click
+  popover, from cue to dismissal). Docsy looks for
+  `js/plugins/otel-benchmarks.js` only, so that file imports the folder's entry;
+  Hugo's `js.Build` bundles all of it into the one file Docsy emits.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and
