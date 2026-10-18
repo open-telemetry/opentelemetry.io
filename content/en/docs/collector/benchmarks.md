@@ -12,8 +12,12 @@ through the collector. For more details about the testing environment, see
 [Testbed][].
 
 This page charts a subset of the [results][]. For all results, see [Collector
-Benchmarks][]. Hover a point for its value and commit; click it for the commit
-link.
+Benchmarks][].
+
+> [!TIP]
+>
+> Hover over a point for its value and commit; click it for a link to the
+> commit.
 
 {{< benchmarks >}}
 

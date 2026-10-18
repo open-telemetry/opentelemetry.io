@@ -193,20 +193,9 @@ function init() {
 
 function renderAllCharts(dataSets) {
   const main = document.querySelector('[data-otel-benchmarks]');
-  // Docsy's "Read more", in the page's language (the shortcode's attribute).
-  const readMore = main.dataset.readMore ?? '';
   const bodyColor = getComputedStyle(document.documentElement)
     .getPropertyValue('--bs-body-color')
     .trim();
-  // The tooltip is dark whatever the page theme, so its link takes the dark
-  // theme's link color.
-  const probe = document.createElement('span');
-  probe.dataset.bsTheme = 'dark';
-  main.appendChild(probe);
-  const linkColor = getComputedStyle(probe)
-    .getPropertyValue('--bs-link-color')
-    .trim();
-  probe.remove();
 
   function renderGraph(parent, name, commitIds, byName) {
     const chartTitle = document.createElement('h3');
@@ -303,14 +292,12 @@ function renderAllCharts(dataSets) {
       },
       plugins: {
         tooltip: {
-          footerMarginTop: 10,
-          footerColor: linkColor,
           callbacks: {
             title: () => '',
-            // The commit's subject; its body is PR-body length.
+            // The commit's subject; its body is PR-body length. The page's tip
+            // says what a click does.
             afterBody: (items) =>
               wrapLine(subjectOf(items[0].raw.result.commit)),
-            footer: () => `${readMore} ↗`,
             label: (item) => {
               const { range, unit } = item.raw.result.bench;
               let label = `${item.dataset.label}: ${item.formattedValue}`;

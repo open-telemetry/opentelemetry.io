@@ -21,5 +21,4 @@
 {{ end -}}
 {{ .Page.Store.Set "otelBenchmarks" (dict "data" $data "ordinal" .Ordinal) -}}
 
-{{/* Docsy's label, in the page's language: the renderer has no strings. */ -}}
-<div data-otel-benchmarks data-read-more="{{ i18n "ui_read_more" }}"></div>
+<div data-otel-benchmarks></div>
