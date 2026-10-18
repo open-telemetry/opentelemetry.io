@@ -81,9 +81,11 @@ carry the stock renderer inline. The plugin's parts:
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid.
-- **Script**, `assets/js/plugins/otel-benchmarks.js`: renders the charts, a
-  hover tooltip with the point's value and commit, and a click popover with the
-  commit's link; its header names what it assumes loaded.
+- **Script**, `assets/js/plugins/otel-benchmarks.js`: renders the charts and a
+  hover tooltip with the point's value and commit; its header names what it
+  assumes loaded. It imports `otel-benchmarks/point-popover.js`, the click
+  popover's lifecycle (one at a time, anchored at the point, dismissal); Hugo's
+  `js.Build` bundles the two into the one file Docsy emits.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and

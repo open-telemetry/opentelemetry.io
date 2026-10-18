@@ -1,16 +1,16 @@
 // Chart renderer of the `benchmarks` shortcode, docs:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
-// Assumes these globals, the first two loaded by the plugin's companion, the
-// third by Docsy's main bundle:
+// Assumes these globals, loaded by the plugin's companion before this runs:
 //
 // - `Chart`: Chart.js
 // - `window.BENCHMARK_DATA`: a github-action-benchmark data.js
-// - `bootstrap`: Bootstrap, for the commit popover
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 
 'use strict';
+
+import { closePopover, openPopover } from './otel-benchmarks/point-popover.js';
 
 // Widest a right-hand legend may grow; the plot keeps the rest.
 const LEGEND_MAX_WIDTH = 260;
@@ -56,39 +56,12 @@ const parseUrl = (text) => {
   }
 };
 
-// One commit popover at a time: clicking a point opens it; a click anywhere
-// else, Escape, a chart resize or the chart scrolling closes it. Its content is
-// built as DOM, the commit being remote data.
-let openPopover = null;
-
-function closePopover() {
-  if (!openPopover) return;
-  const { popover, anchor, chart } = openPopover;
-  openPopover = null;
-  popover.dispose();
-  anchor.remove();
-  // Cleared again on close: re-enabling replays the chart's last pointer
-  // event, which on touch is still the tap that opened the popover.
-  chart.tooltip.setActiveElements([], { x: 0, y: 0 });
-  chart.options.plugins.tooltip.enabled = true;
-  chart.update('none');
-}
-
-function openCommitPopover(chart, wrapper, point, commit, valueLabel) {
-  closePopover();
-  if (!window.bootstrap?.Popover) return;
-
-  const anchor = document.createElement('span');
-  anchor.className = 'otel-point-anchor';
-  anchor.style.left = `${point.x}px`;
-  anchor.style.top = `${point.y}px`;
-  wrapper.appendChild(anchor);
-
-  // No words of ours in the popover: the plugin defines no i18n keys. The
-  // value line is the tooltip's, which a tap can't show for long.
+// The popover's content: the value line, the commit's subject as the link,
+// its date and author. No words of ours: the plugin defines no i18n keys.
+function commitContent(commit, valueLabelText) {
   const content = document.createElement('div');
   const value = document.createElement('div');
-  value.textContent = valueLabel;
+  value.textContent = valueLabelText;
   content.appendChild(value);
   const url = parseUrl(commit.url);
   const subject = document.createElement(
@@ -111,38 +84,8 @@ function openCommitPopover(chart, wrapper, point, commit, valueLabel) {
     .filter(Boolean)
     .join(' · ');
   content.appendChild(meta);
-
-  const popover = new bootstrap.Popover(anchor, {
-    html: true,
-    trigger: 'manual',
-    placement: 'top',
-    content,
-  });
-  popover.show();
-  openPopover = { popover, anchor, chart };
-  // The canvas tooltip would sit under the popover (a tap leaves it up): its
-  // fade-in is stopped and its state cleared before it's disabled, or the
-  // stale one paints back when re-enabled.
-  chart.stop();
-  chart.tooltip.setActiveElements([], { x: 0, y: 0 });
-  chart.options.plugins.tooltip.enabled = false;
-  chart.update('none');
+  return content;
 }
-
-document.addEventListener(
-  'click',
-  (event) => {
-    if (!openPopover) return;
-    const tip = document.getElementById(
-      openPopover.anchor.getAttribute('aria-describedby') ?? '',
-    );
-    if (!tip?.contains(event.target)) closePopover();
-  },
-  true,
-);
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closePopover();
-});
 
 const COLORS = [
   '#48aaf9',
@@ -302,15 +245,17 @@ function renderAllCharts(dataSets) {
         if (!elements.length) return;
         const { datasetIndex, index } = elements[0];
         const point = datasets[datasetIndex].data[index];
-        openCommitPopover(
+        openPopover(
           chart,
           wrapper,
           chart.getDatasetMeta(datasetIndex).data[index],
-          point.result.commit,
-          valueLabel(
-            datasets[datasetIndex].label,
-            point,
-            chart.scales.y.getLabelForValue(point.y),
+          commitContent(
+            point.result.commit,
+            valueLabel(
+              datasets[datasetIndex].label,
+              point,
+              chart.scales.y.getLabelForValue(point.y),
+            ),
           ),
         );
       },
