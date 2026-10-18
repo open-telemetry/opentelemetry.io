@@ -44,7 +44,6 @@ const wrapLine = (text) => {
 };
 
 const subjectOf = (commit) => commit.message.split('\n')[0];
-const shortId = (commit) => commit.id.slice(0, 7);
 const parseUrl = (text) => {
   try {
     return new URL(text);
@@ -79,7 +78,7 @@ function openCommitPopover(chart, wrapper, point, commit) {
   wrapper.appendChild(anchor);
 
   // No words of ours in the popover (the page has no i18n keys): the commit's
-  // subject as the link, its short id, its date and author.
+  // subject as the link, its date and author.
   const content = document.createElement('div');
   const url = parseUrl(commit.url);
   const subject = document.createElement(
@@ -91,7 +90,7 @@ function openCommitPopover(chart, wrapper, point, commit) {
     subject.rel = 'noopener';
   }
   subject.textContent = subjectOf(commit);
-  content.append(subject, ` - ${shortId(commit)}`);
+  content.append(subject);
   const meta = document.createElement('div');
   meta.className = 'small text-body-secondary';
   meta.textContent = `${commit.timestamp.slice(0, 10)} · @${
@@ -193,6 +192,22 @@ function init() {
 }
 
 function renderAllCharts(dataSets) {
+  const main = document.querySelector('[data-otel-benchmarks]');
+  // Docsy's "Read more", in the page's language (the shortcode's attribute).
+  const readMore = main.dataset.readMore ?? '';
+  const bodyColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--bs-body-color')
+    .trim();
+  // The tooltip is dark whatever the page theme, so its link takes the dark
+  // theme's link color.
+  const probe = document.createElement('span');
+  probe.dataset.bsTheme = 'dark';
+  main.appendChild(probe);
+  const linkColor = getComputedStyle(probe)
+    .getPropertyValue('--bs-link-color')
+    .trim();
+  probe.remove();
+
   function renderGraph(parent, name, commitIds, byName) {
     const chartTitle = document.createElement('h3');
     chartTitle.textContent = name;
@@ -248,9 +263,16 @@ function renderAllCharts(dataSets) {
 
     const options = {
       maintainAspectRatio: false,
-      // A point opens its commit's popover; the cursor says so.
+      // A point opens its commit's popover; the cursor and a hover ring say so.
       onHover: (event, elements) => {
         event.native.target.style.cursor = elements.length ? 'pointer' : '';
+      },
+      elements: {
+        point: {
+          hoverRadius: 6,
+          hoverBorderWidth: 2,
+          hoverBorderColor: bodyColor,
+        },
       },
       onClick: (event, elements, chart) => {
         if (!elements.length) return;
@@ -282,16 +304,13 @@ function renderAllCharts(dataSets) {
       plugins: {
         tooltip: {
           footerMarginTop: 10,
+          footerColor: linkColor,
           callbacks: {
             title: () => '',
-            // The commit's subject and short id; its body is PR-body length.
-            footer: (items) => {
-              const { commit } = items[0].raw.result;
-              return [
-                ...wrapLine(`${subjectOf(commit)} - ${shortId(commit)}`),
-                'Click the point for the commit link',
-              ];
-            },
+            // The commit's subject; its body is PR-body length.
+            afterBody: (items) =>
+              wrapLine(subjectOf(items[0].raw.result.commit)),
+            footer: () => `${readMore} ↗`,
             label: (item) => {
               const { range, unit } = item.raw.result.bench;
               let label = `${item.dataset.label}: ${item.formattedValue}`;
@@ -348,7 +367,6 @@ function renderAllCharts(dataSets) {
     }
   }
 
-  const main = document.querySelector('[data-otel-benchmarks]');
   for (const { name, dataSet } of dataSets) {
     renderBenchSet(name, dataSet, main);
   }
