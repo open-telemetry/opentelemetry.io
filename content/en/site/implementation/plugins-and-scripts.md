@@ -59,11 +59,10 @@ carry the stock renderer inline. The plugin's parts:
   reading as JSON for the renderer, and records the data URL in the page
   [store][] as `otelBenchmarks`. A malformed `data_url`, an unknown or
   positional argument, or a second call naming other data fails the build. Links
-  and text belong in the page's prose, where each language writes its own; the
-  prose links the data URL through `_param`. Each call renders a chart set where
-  it stands; the calls on a page name the same data. A call in included content
-  marks the included page, not the page that includes it ([Page flags in
-  included content][]).
+  and text belong in the page's prose, where each language writes its own. Each
+  call renders a chart set where it stands. A call in included content marks the
+  included page, not the page that includes it ([Page flags in included
+  content][]).
 - **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
   template's markup stays out of the page's [Markdown output][], which the site
   serves per [Agent support](../../design/agent-support/); the data file the

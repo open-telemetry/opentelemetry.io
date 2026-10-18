@@ -13,11 +13,13 @@
 {{ if hasPrefix $src "param:" -}}
   {{ $name := strings.TrimPrefix "param:" $src -}}
   {{ $data = .Page.Param $name | default "" -}}
-  {{ if not (hasPrefix $data "https://") -}}
-    {{ errorf "%s: shortcode %q: page param %q, named by `data_url`, must be an https URL, got %q; see %s" .Position .Name $name $data $docs -}}
+  {{ if not $data -}}
+    {{ errorf "%s: shortcode %q: page param %q, named by `data_url`, is not set; see %s" .Position .Name $name $docs -}}
   {{ end -}}
-{{ else if not (hasPrefix $src "https://") -}}
-  {{ errorf "%s: shortcode %q: `data_url` must be `https://...` or `param:NAME`, got %q; see %s" .Position .Name $src $docs -}}
+{{ end -}}
+{{ $url := urls.Parse $data -}}
+{{ if or (ne $url.Scheme "https") (not $url.Hostname) -}}
+  {{ errorf "%s: shortcode %q: `data_url` must be an https URL or `param:NAME` naming one, got %q; see %s" .Position .Name $data $docs -}}
 {{ end -}}
 {{ with .Page.Store.Get "otelBenchmarks" -}}
   {{ if ne . $data -}}

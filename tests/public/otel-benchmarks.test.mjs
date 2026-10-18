@@ -24,7 +24,7 @@ const CHARTJS_SRC = /\/js\/vendor\/chart-\d[.\w-]*\.js/;
 const ANY_CHARTJS_SRC = /chart/i;
 const DATA_URL =
   'https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js';
-const DATA_SRC = new RegExp(RegExp.escape(DATA_URL));
+const DATA_SRC = new RegExp(`^${RegExp.escape(DATA_URL)}$`);
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
 const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])/g;
 const HOOK_TAG = /<div\b[^>]*\bdata-otel-benchmarks\b[^>]*>/;
