@@ -234,7 +234,7 @@ If you followed the
 have the console exporter installed.
 
 The `ConsoleSpanExporter` is included in the
-[`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node)
+[`@opentelemetry/sdk-trace`](https://www.npmjs.com/package/@opentelemetry/sdk-trace)
 package and the `ConsoleMetricExporter` is included in the
 [`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
 package:
@@ -345,7 +345,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 

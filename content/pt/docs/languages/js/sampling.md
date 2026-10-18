@@ -3,6 +3,7 @@ title: Amostragem
 weight: 80
 description: Reduza a quantidade de telemetria criada
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+drifted_from_default: true
 ---
 
 [Amostragem](/docs/concepts/sampling/) é um processo que restringe a quantidade

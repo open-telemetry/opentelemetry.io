@@ -5,7 +5,7 @@ cSpell:ignore: distro
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 This spring starter supports
 [configuration metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html),
