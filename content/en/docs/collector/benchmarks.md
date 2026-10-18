@@ -5,10 +5,6 @@ weight: 99
 params:
   otel-benchmarks:
     data_url: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js
-    reading:
-      filter: [10kDPS, 10kSPS]
-      group_separator: /
-      series_separator: ' - '
 ---
 
 The OpenTelemetry Collector runs load tests on every commit to the
@@ -25,7 +21,7 @@ This page charts a subset of the benchmark [data][]. For the full dashboard, see
 > In a chart below, hover over a point for its value and commit; click it for a
 > link to the commit.
 
-{{< benchmarks >}}
+{{< benchmarks filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " >}}
 
 <!-- prettier-ignore-start -->
 [Collector Benchmarks]: https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/

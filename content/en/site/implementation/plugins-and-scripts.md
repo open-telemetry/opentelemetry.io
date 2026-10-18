@@ -33,23 +33,24 @@ The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
 types][] and reads it in that [stock renderer][], the reference for this fork. A
-page states how its data is read under one front-matter key named after the
-plugin:
+page names its data under one front-matter key named after the plugin, and the
+shortcode call says how to read it:
 
 ```yaml
 params:
   otel-benchmarks:
     data_url: https://open-telemetry.github.io/.../benchmarks/loadtests/data.js
-    reading:
-      filter: [10kDPS, 10kSPS]
-      group_separator: /
-      series_separator: ' - '
 ```
 
-`data_url` is the action's `data.js`. The optional `reading` says which benches
-to chart and how each bench's `extra` text names its chart and series:
+```markdown
+{{</* benchmarks filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
+```
 
-- `filter`: keep a bench whose `extra` contains any of the listed strings
+`data_url` is the action's `data.js`. The call's optional arguments say which
+benches to chart and how each bench's `extra` text names its chart and series:
+
+- `filter`: keep a bench whose `extra` contains any of the comma-separated
+  strings
 - `group_separator`: split `extra` into a group, joined to the bench name as the
   chart's title, and a series name; an `extra` without the separator is both
 - `series_separator`: trim a series name split off by `group_separator` at its
@@ -62,8 +63,8 @@ carry the stock renderer inline. The plugin's parts:
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container (a `div` the renderer finds by its `data-otel-benchmarks` hook) and
   records the page's `data_url` in the page [store][] as `otelBenchmarks`, and
-  hands the renderer the `reading` as the container's `data-reading` JSON (an
-  unknown key or a wrong type fails the build). Links and text belong in the
+  hands the renderer its arguments as the container's `data-reading` JSON (an
+  unknown or positional argument fails the build). Links and text belong in the
   page's prose, where each language writes its own; the prose links the data URL
   through `_param`. Call it at top level, once per page (one data source, one
   container): a nested or second call fails the build. A call in included
@@ -83,8 +84,8 @@ carry the stock renderer inline. The plugin's parts:
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid.
 - **Script**, `assets/js/plugins/otel-benchmarks/`, with `index.js` the
-  renderer: reads the data per the page's `reading` and renders the charts; its
-  header names what it assumes loaded. Beside it: `legend.js` (the legend's
+  renderer: reads the data as the shortcode call says and renders the charts;
+  its header names what it assumes loaded. Beside it: `legend.js` (the legend's
   width cap, label wrapping and the chart height that fits it), `commit.js` (a
   commit's subject and the popover's content) and `point-popover.js` (the click
   popover, from cue to dismissal). Docsy looks for

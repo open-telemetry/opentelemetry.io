@@ -1,6 +1,6 @@
 {{/* Chart container for the otel-benchmarks plugin; records the page's data
-  URL for the plugin's shim and companion, and hands the renderer the page's
-  reading of its data. Top level and once per page. Design:
+  URL for the plugin's shim and companion, and hands the renderer the call's
+  reading of the data. Top level and once per page. Design:
   https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $docs := "https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" -}}
@@ -10,28 +10,18 @@
   {{ errorf "%s: shortcode %q: page param `otel-benchmarks.data_url` is missing; see %s" .Position .Name $docs -}}
 {{ end -}}
 
+{{ if and .Params (not .IsNamedParams) -}}
+  {{ errorf "%s: shortcode %q: arguments are named (filter, group_separator, series_separator); see %s" .Position .Name $docs -}}
+{{ end -}}
 {{ $reading := dict -}}
-{{ with $params.reading -}}
-  {{ range $key, $value := . -}}
-    {{ if eq $key "filter" -}}
-      {{ $ok := reflect.IsSlice $value -}}
-      {{ if $ok -}}
-        {{ range $value -}}
-          {{ $ok = and $ok (eq (printf "%T" .) "string") -}}
-        {{ end -}}
-      {{ end -}}
-      {{ if not $ok -}}
-        {{ errorf "%s: shortcode %q: `otel-benchmarks.reading.filter` must be a list of strings; see %s" $.Position $.Name $docs -}}
-      {{ end -}}
-    {{ else if in (slice "group_separator" "series_separator") $key -}}
-      {{ if ne (printf "%T" $value) "string" -}}
-        {{ errorf "%s: shortcode %q: `otel-benchmarks.reading.%s` must be a string; see %s" $.Position $.Name $key $docs -}}
-      {{ end -}}
-    {{ else -}}
-      {{ errorf "%s: shortcode %q: unknown `otel-benchmarks.reading` key %q; see %s" $.Position $.Name $key $docs -}}
-    {{ end -}}
+{{ range $name, $value := .Params -}}
+  {{ if eq $name "filter" -}}
+    {{ $reading = merge $reading (dict $name (apply (split $value ",") "strings.TrimSpace" ".")) -}}
+  {{ else if in (slice "group_separator" "series_separator") $name -}}
+    {{ $reading = merge $reading (dict $name $value) -}}
+  {{ else -}}
+    {{ errorf "%s: shortcode %q: unknown argument %q; see %s" $.Position $.Name $name $docs -}}
   {{ end -}}
-  {{ $reading = . -}}
 {{ end -}}
 
 {{ if .Parent -}}

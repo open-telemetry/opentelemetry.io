@@ -99,7 +99,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
       assert.deepEqual(
         reading.filter,
         ['10kDPS', '10kSPS'],
-        'container carries the page reading',
+        'container carries the reading from the call',
       );
       const css = html.match(PLUGIN_CSS) ?? [];
       assert.equal(css.length, 1, 'plugin stylesheet linked once');
