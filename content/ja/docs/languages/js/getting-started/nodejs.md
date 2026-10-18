@@ -3,8 +3,7 @@ title: Node.js
 description: 5分未満でアプリのテレメトリーを取得しましょう！
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
-drifted_from_default: true
+default_lang_commit: eab64e41b388032bae1475f226e5e9e437ab314d
 cSpell:ignore: autoinstrumentations rolldice
 ---
 
@@ -144,7 +143,7 @@ npm install @opentelemetry/sdk-node \
   @opentelemetry/api \
   @opentelemetry/auto-instrumentations-node \
   @opentelemetry/sdk-metrics \
-  @opentelemetry/sdk-trace-node
+  @opentelemetry/sdk-trace
 ```
 
 すべての自動計装モジュールを見つけるには、[レジストリ](/ecosystem/registry/?language=js&component=instrumentation)を参照してください。
@@ -166,7 +165,7 @@ npm install @opentelemetry/sdk-node \
 ```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,
@@ -189,7 +188,7 @@ sdk.start();
 ```js
 /*instrumentation.mjs*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,
