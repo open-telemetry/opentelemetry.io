@@ -16,6 +16,7 @@ bifând
 calificatori
 colaboreze
 colectezi
+colectoarele
 colectorii
 colectorului
 commiturile
@@ -45,6 +46,7 @@ emojiilor
 enumerează
 explorezi
 exportatorilor
+exportatorului
 formatorul
 forțezi
 franceză
@@ -91,6 +93,7 @@ prepopulată
 propagatoarele
 propagatorul
 propagi
+provii
 randată
 randează
 receptoarelor
