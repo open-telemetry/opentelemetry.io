@@ -18,8 +18,8 @@ candidates for the
 - **Voting closes:** 28 October 2026 at 23:59 [Anywhere on Earth][] (AoE),
   equivalent to 29 October 2026 at 11:59 UTC.
 
-You can find the candidates' pictures, profile links, and descriptions on the
-[candidates page][]. Here are their names:
+For candidate photos, GitHub profiles, and statements, see the [candidates
+page][].
 
 - Antoine Toulme
 - Dan Gomez Blanco
