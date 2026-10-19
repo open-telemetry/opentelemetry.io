@@ -336,10 +336,10 @@ supports GIL-enabled, 64-bit CPython 3.9 through 3.14. Free-threaded builds are
 not supported.
 
 The context propagation at network level applies to Python applications running
-on `uvloop`, allowing OBI to automatically instrument and propagate trace
-context for asynchronous operations. No additional configuration is required
-beyond enabling context propagation as described in the
-[introduction](#introduction).
+on the standard event loop or `uvloop`, allowing OBI to automatically instrument
+and propagate trace context for asynchronous operations. No additional
+configuration is required beyond enabling context propagation as described in
+the [introduction](#introduction).
 
 On `uvloop`, `asyncio.start_server()` is not correlated because its accept path
 runs in C without a probed task context.
