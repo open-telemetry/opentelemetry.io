@@ -120,7 +120,7 @@ OBI instruments the following CUDA operations:
 
 OBI also observes selected memory, stream, event, and device-introspection
 calls. For the complete API list and metrics, see the
-[v0.14.0 GPU monitoring reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/devdocs/gpu-monitoring.md).
+[v0.15.2 GPU monitoring reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/gpu-monitoring.md).
 
 ## Common metrics configuration
 
@@ -250,7 +250,7 @@ discovery:
 OBI can collect runtime metrics without requiring SDK changes in the target
 process.
 
-Enable Go, HotSpot JVM, and Node.js runtime metrics with the
+Enable Go, JVM, .NET, Node.js, and Python runtime metrics with the
 `application_runtime` metrics feature. Go runtime values are reported after the
 target completes a garbage-collection cycle, so a new process might not emit
 these metrics immediately. Changes to `GOGC`, `GOMEMLIMIT`, or `GOMAXPROCS`
@@ -261,6 +261,16 @@ second. Event-loop time and utilization require Node.js 14.10 or later. Delay
 metrics require Node.js 16.14 or later. OBI reports the main-thread event loop
 only, and the inspector must be reachable for OBI to inject the runtime metrics
 agent.
+
+For .NET 8 and later on Linux, OBI collects runtime metrics through the
+process's diagnostic socket. Keep diagnostics enabled and allow OBI to access
+the socket through the target process filesystem. v0.15.2 adds processor count,
+process CPU time, and last-collection heap size. The default polling interval is
+1 second, configured by `dotnet_runtime_metrics.sampling_interval`; diagnostic
+IPC setup and shutdown use `dotnet_runtime_metrics.timeout` (default `10s`). See
+the
+[.NET runtime reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/runtimes/dotnet.md)
+for collection semantics and metric availability.
 
 Use `jvm_runtime_metrics.sampling_interval` to control how often OBI samples
 HotSpot JVM memory metrics:
@@ -317,6 +327,10 @@ otel_metrics_export:
 | `histogram_aggregation`<br>`OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION`    | Sets the default aggregation OBI uses for histogram instruments. Accepted values [`explicit_bucket_histogram`](/docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation) or [`base2_exponential_bucket_histogram`](/docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation). | `string`        | `explicit_bucket_histogram` |
 
 ### Metrics export protocol
+
+The metrics exporter sends protobuf over HTTP. Config v1 accepts `http/json` but
+sends metrics as protobuf and logs a warning; JSON encoding is supported for
+traces only.
 
 If you don't set a protocol OBI sets the protocol as follows:
 

@@ -104,6 +104,12 @@ However, here is a list of factors that can influence the overall cardinality:
   Multiple error types for the same operation, endpoint, and status code create
   separate series. Count the values observed in your deployment rather than
   multiplying every HTTP series by a fixed factor.
+- **Database collections and RPC ports**: starting with v0.15.2, database
+  duration metrics include `db.collection.name`, RPC client duration includes
+  `server.port`, and failed RPC server duration includes `error.type` by
+  default. Count the distinct combinations observed for each operation.
+  Messaging duration metrics can also split by operation type and subscription
+  name.
 - **HistogramBuckets** need to be accounted for, as each application metric in
   this example is a histogram. OBI's defaults have 15 explicit duration bucket
   boundaries and 10 body-size boundaries. Prometheus adds a `+Inf` bucket, sum,
@@ -166,7 +172,9 @@ The numbers taken as reference:
 This bound is deliberately loose: SQL operations do not multiply RPC and HTTP
 metrics, and only the client or server emits each metric. It also assumes one
 `error_type` value per HTTP status code; additional error types can split those
-series further.
+series further. The worked count also assumes one database collection per SQL
+operation, one RPC server port per endpoint, and one RPC error type per failed
+operation.
 
 Under these assumptions, we can count 417 series from the five listed metrics,
 far fewer than the pessimistic bound of 26,460:

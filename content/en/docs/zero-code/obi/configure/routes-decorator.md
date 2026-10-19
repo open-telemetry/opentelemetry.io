@@ -5,6 +5,7 @@ description:
   Configure the routes decorator component before OBI sends data to the next
   stage of the pipeline.
 weight: 50
+cSpell:ignore: Blazor
 ---
 
 > [!NOTE]
@@ -20,6 +21,10 @@ Django, FastAPI, Flask, Rails, .NET, Symfony, Laravel, and Slim applications.
 When a framework route is available, it provides a low-cardinality `http.route`
 without requiring you to list that route in `patterns`. Configure patterns or
 the heuristic mode for applications whose routes OBI cannot harvest.
+
+In v0.15.2, route harvesting also covers Rails GraphQL engines and more .NET
+endpoint forms, including route groups, MVC and Razor Pages, health checks,
+SignalR, and Blazor endpoints.
 
 You can configure the component under the `routes` section of your YAML
 configuration or with environment variables.

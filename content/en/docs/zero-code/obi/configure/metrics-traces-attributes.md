@@ -165,6 +165,12 @@ on the span.
 The opt-in exists because error strings may contain sensitive or
 high-cardinality detail (schema names, fragments of queries, or data values).
 
+The opt-in `url.template` attribute is available on HTTP client spans in
+v0.15.2. When available, it contains the route-derived URL template; include it
+in the selected trace attributes to export it. GraphQL, MCP, and JSON-RPC server
+spans omit HTTP-specific attributes. Captured HTTP headers apply only to plain
+HTTP and GraphQL spans.
+
 ## Distributed traces and context propagation
 
 YAML section: `ebpf`

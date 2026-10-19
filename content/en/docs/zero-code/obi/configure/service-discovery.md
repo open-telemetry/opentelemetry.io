@@ -548,7 +548,7 @@ export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns
 # Or enable eBPF-captured DNS lookups (requires DNS event capture)
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,rdns
 
-# Enable all resolver sources
+# Enable Kubernetes and both DNS resolver sources
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns,rdns
 
 # Optional: Adjust cache size (default: 1024)
@@ -588,3 +588,38 @@ With enhanced lookup enabled:
 service.name: "frontend"
 peer.service: "backend-api"
 ```
+
+### AWS Route53 endpoint names
+
+Starting with v0.15.2, the opt-in `route53` resolver maps endpoint IP addresses
+to names from selected hosted zones on detected EC2 hosts. For Config v1:
+
+```yaml
+name_resolver:
+  sources: [k8s, ecs, route53]
+cloud_metadata:
+  route53:
+    hosted_zone_ids: [Z0123456789EXAMPLE]
+    refresh_interval: 5m
+```
+
+The environment variables `OTEL_EBPF_NAME_RESOLVER_SOURCES`,
+`OTEL_EBPF_NAME_RESOLVER_ROUTE53_HOSTED_ZONE_IDS`, and
+`OTEL_EBPF_NAME_RESOLVER_ROUTE53_REFRESH_INTERVAL` override these fields. Hosted
+zone IDs are required when the source is enabled. Use the AWS SDK's standard
+credentials configuration and grant `route53:ListResourceRecordSets` on those
+zones.
+
+For Config v2, place the source list at
+`extensions.obi.enrich.service_name.sources` and the Route53 settings at
+`extensions.obi.enrich.enrichers.cloud.route53`. The migration command preserves
+Route53 settings in the Config v1 file.
+
+Kubernetes and ECS names take precedence over Route53; Route53 takes precedence
+over captured and reverse DNS. Only literal A and AAAA records contribute
+mappings; aliases, CNAMEs, and wildcard records are excluded. Failed refreshes
+retain the last successful mappings. Each OBI instance polls the configured
+zones independently, so size the refresh interval for the number of instances
+and zones. See the
+[Route53 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/route53-name-resolution.md)
+for polling behavior and name selection.

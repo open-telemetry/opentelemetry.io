@@ -123,7 +123,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           securityContext:
             privileged: true
           volumeMounts:
@@ -146,7 +146,7 @@ kubectl apply -f obi-network.yml
 
 This configuration:
 
-- Uses the v0.14.0 release image and one OBI Pod per node.
+- Uses the v0.15.2 release image and one OBI Pod per node.
 - Grants read access to Kubernetes metadata for workload labels.
 - Uses `hostNetwork: true` to observe host network interfaces.
 - Exposes Prometheus metrics on port 9090 and prints flows for the verification

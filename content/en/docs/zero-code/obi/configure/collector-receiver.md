@@ -115,7 +115,7 @@ don't have OCB installed, see the
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-  repository at v0.6.0 or later
+  repository at v0.15.2
 - [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF
   files) or a C compiler, clang, and eBPF headers
 
@@ -142,41 +142,45 @@ don't have OCB installed, see the
      output_path: ./dist
 
    exporters:
-     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.151.0
-     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.158.0
+     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.163.0
+     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.163.0
 
    processors:
-     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.159.0
+     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.163.0
 
    receivers:
-     - gomod: go.opentelemetry.io/obi v0.14.0
+     - gomod: go.opentelemetry.io/obi/collector v0.15.2
        import: go.opentelemetry.io/obi/collector
 
    providers:
-     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.65.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.69.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/fileprovider v1.65.0
+         go.opentelemetry.io/collector/confmap/provider/fileprovider v1.69.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpprovider v1.65.0
+         go.opentelemetry.io/collector/confmap/provider/httpprovider v1.69.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.65.0
+         go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.69.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.65.0
+         go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.69.0
 
    replaces:
      - go.opentelemetry.io/obi => /path/to/obi
+     - go.opentelemetry.io/obi/collector => /path/to/obi/collector
    ```
 
    Replace `/path/to/obi` with the actual path to your OBI source directory. The
-   `replaces:` section tells `ocb` to use your local OBI source instead of
-   fetching from the public module repository, which is necessary because the
-   published OBI module does not include the generated BPF code.
+   `replaces:` section points both the core and receiver modules at the local
+   checkout, including the generated BPF code. Starting with v0.15.2, the
+   receiver is published separately as `go.opentelemetry.io/obi/collector`,
+   tagged `collector/v0.15.2`. Its Go module version is `v0.15.2`, and its
+   import path is unchanged. Replacing only the root module no longer replaces
+   the receiver.
 
    **Version selection**: You must specify versions for each component. The
-   example above uses the OBI v0.14.0 versions for components listed in its
-   `go.mod` and the corresponding Collector release for the other components. If
-   you're using a different OBI version or want to use newer component versions,
-   check the OBI `go.mod` and update your builder config accordingly.
+   example above matches the v0.15.2 upstream Builder example: Collector
+   components use `v0.163.0` and configuration providers use `v1.69.0`. Check
+   `collector/go.mod` and `examples/otel-collector/builder-config.yaml` in your
+   OBI checkout when selecting another version.
 
 3. Build the custom Collector:
 
@@ -302,8 +306,8 @@ the custom collector binary into a container image:
 2. Build and push the image:
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.14.0 .
-   docker push my-registry/otelcol-obi:v0.14.0
+   docker build -t my-registry/otelcol-obi:v0.15.2 .
+   docker push my-registry/otelcol-obi:v0.15.2
    ```
 
 3. Deploy the DaemonSet:
@@ -328,7 +332,7 @@ the custom collector binary into a container image:
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.14.0
+             image: my-registry/otelcol-obi:v0.15.2
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
@@ -379,10 +383,10 @@ to your `builder-config.yaml`:
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-      v0.159.0
+      v0.163.0
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
-      v0.159.0
+      v0.163.0
 ```
 
 Then use Collector processors to redact PII before export:
@@ -441,7 +445,7 @@ Implement intelligent sampling using the Collector. This example requires the
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor
-      v0.159.0
+      v0.163.0
 ```
 
 Configuration example:
@@ -567,17 +571,17 @@ build:
    ```shell
    cd /path/to/obi
    git fetch --tags
-   git checkout v0.14.0
+   git checkout v0.15.2
    ```
 
 2. Ensure the Collector component version pins in your builder config match the
-   versions defined in the checked-out OBI `go.mod` file.
+   versions defined in the checked-out OBI `collector/go.mod` file.
 
-3. Check your OBI `go.mod` file to see which collector component versions it
-   depends on:
+3. Check your OBI `collector/go.mod` file to see which collector component
+   versions it depends on:
 
    ```shell
-   grep "go.opentelemetry.io/collector" go.mod
+   grep "go.opentelemetry.io/collector" collector/go.mod
    ```
 
    Then add those same versions to your `builder-config.yaml` for other

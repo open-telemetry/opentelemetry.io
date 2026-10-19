@@ -49,14 +49,14 @@ OBI offers the following features:
 - **Database instrumentation (client only)**: MongoDB, Couchbase (N1QL/SQL++ and
   KV protocol), Aerospike, Elasticsearch, and OpenSearch
 - **HTTP payload instrumentation**: Server-side GraphQL and client-side
-  Elasticsearch, OpenSearch, AWS S3, and AWS SQS, plus MCP over JSON-RPC on both
-  clients and servers
+  Elasticsearch, OpenSearch, and AWS S3, SQS, and SNS, plus MCP over JSON-RPC on
+  both clients and servers
 - **GenAI instrumentation**: Trace and metrics for OpenAI, OpenAI-compatible
   gateways, Ollama, Anthropic Claude, Google AI Studio (Gemini), AWS Bedrock,
   Qwen (DashScope), MCP over JSON-RPC, embedding and rerank APIs, and vector
   retrieval systems
-- **Runtime metrics**: Collect Go, HotSpot JVM, and Node.js event-loop metrics
-  without SDK changes
+- **Runtime metrics**: Collect Go, JVM, .NET, Node.js, and Python runtime
+  metrics without SDK changes
 - **GPU instrumentation**: Capture supported CUDA runtime operations on Linux
 - **Span and service graph metrics**: Export application span metrics and
   service-to-service relationships
@@ -69,28 +69,78 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.14.0)
+## Recent highlights (v0.15.2)
 
-OBI v0.14.0 expands instrumentation and improves trace-context propagation:
+OBI v0.15.2 supersedes the unpublished v0.15.0 and v0.15.1 releases. It includes
+the intended v0.15.0 changes, a BPF verifier correction, and a release artifact
+build correction. Install v0.15.2 when upgrading from v0.14.0.
 
-- **Broader coverage**: Added AWS SNS instrumentation, MCP metrics, generic
-  Python asyncio server support, and GPU and runtime metrics for more runtimes
-- **Framework routes**: Harvests routes from Django, FastAPI, Flask, Rails,
-  .NET, Symfony, Laravel, and Slim applications
-- **Propagation**: Improves HTTP/2 and gRPC trace-context propagation
-- **Permissions**: Most probes can attach without `CAP_SYS_ADMIN`; features that
-  write to application memory still require it
-- **Telemetry schema**: Publishes the full schema and promotes HTTP and SQL span
-  groups to stable status
+- **Go manual spans**: Captures spans through the Auto SDK embedded in the Go
+  Trace API, without requiring the separate Auto SDK module
+- **.NET instrumentation**: Expands route harvesting and adds CPU and
+  last-collection heap-size metrics
+- **Endpoint names**: Adds opt-in AWS Route53 hosted-zone name resolution
+- **Config v2**: Selects metric families explicitly and applies protocol metric
+  switches to span metrics and service graphs
+- **Collector integration**: Publishes the receiver as a separate Go module
+  while preserving its import path
+- **Correctness fixes**: Prevents HTTP/2 context injection into misclassified
+  sockets, separates colliding metric-label tuples, corrects duplicate
+  `target.info` counts, and fixes OTLP/HTTP JSON trace encoding
 
-For behavior changes that may affect dashboards and trace processing, see the
-[v0.14.0 upgrade notes](#upgrade-notes-for-v0140) and
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0).
+Review the [v0.15.2 upgrade notes](#upgrade-notes-for-v0152) and
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)
+for changes that affect dashboards, metric cardinality, and trace processing.
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/apache).
+
+## Upgrade notes for v0.15.2
+
+- Build Collector distributions with the `go.opentelemetry.io/obi/collector`
+  module at `v0.15.2`. The root module no longer contains the receiver package.
+  See [Collector receiver setup](configure/collector-receiver/) for the updated
+  module replacements and component versions. Go embedders must also replace the
+  removed `PrometheusConfig.Registry` field with a Prometheus HTTP port
+  configuration.
+- Config v2 protocol `enabled.metrics: false` now also suppresses that
+  protocol's span metrics and service graphs. Traces remain independently
+  configurable. Review the migration report when Config v1 instrumentation lists
+  and derived metric coverage differ. See
+  [metric feature selection](configure/config-v2/#metric-feature-selection).
+- HTTP client `server.address` values omit the Host header's port; `server.port`
+  and `url.full` retain it. Kubernetes Service hosts with ports now resolve to
+  the service and namespace, which can change service graph names.
+- gRPC span names and `rpc.method` values omit the leading slash. Invalid or
+  unread paths use span name `grpc` and method `_OTHER`; `rpc.method_original`
+  preserves a captured raw path. ONC RPC uses `{program}/{procedure}` methods
+  only when a CALL was captured and reports response status only with a REPLY.
+- GenAI, database, GraphQL, AWS S3/SQS, and ONC RPC span names change to follow
+  semantic conventions. For example, Anthropic `message` becomes `chat`, GraphQL
+  server names omit `GraphQL`, and S3/SQS names use `S3.`/`SQS.` prefixes.
+  Update span-name filters and span-metric queries.
+- Database duration metrics include `db.collection.name` by default. RPC client
+  duration adds `server.port`, and failed RPC server duration adds `error.type`.
+  Messaging client duration adds `messaging.operation.type`; client and process
+  durations include subscription names when present. These defaults can split
+  metric series. See [metric attributes](metrics/#attributes-of-obi-metrics).
+- MQTT SUBSCRIBE telemetry uses `messaging.destination.subscription.name`
+  instead of destination name and omits the filter from span names. Shared
+  subscriptions also report `messaging.consumer.group.name`. AWS SNS spans no
+  longer include `rpc.system.name` or `rpc.method`.
+- GraphQL, MCP, and JSON-RPC server spans no longer carry HTTP method, status,
+  route, URL, body-size, user-agent, or OBI response-observation attributes.
+  Captured HTTP headers are limited to plain HTTP and GraphQL spans. OTLP GenAI
+  metrics omit missing request models, and AMQP metrics omit empty destinations.
+- The telemetry schema advances to `0.15.2`, retaining earlier transformations.
+  The telemetry registry uses Weaver `definition/2`; span reference IDs no
+  longer have a `span.` prefix, so update links to old catalog anchors.
+
+When upgrading from a release older than v0.14.0, also review the earlier
+changes below. The release notes describe additional protocol-specific naming
+and attribute changes.
 
 ## Upgrade notes for v0.14.0
 

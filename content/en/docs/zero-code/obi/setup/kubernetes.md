@@ -171,7 +171,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -207,7 +207,7 @@ pod, you can specify the executable name or open port instead of using the
 wildcard.
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:v0.14.0`). The
+container (image available at `otel/ebpf-instrument:v0.15.2`). The
 auto-instrumentation tool is configured to forward metrics and traces to
 OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
 same namespace:
@@ -243,7 +243,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -308,7 +308,7 @@ spec:
       serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           securityContext:
             privileged: true
           env:
@@ -378,7 +378,7 @@ spec:
       containers:
         - name: obi
           terminationMessagePolicy: FallbackToLogsOnError
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           env:
             - name: OTEL_EBPF_TRACE_PRINTER
               value: "text"
@@ -496,7 +496,7 @@ spec:
       serviceAccountName: obi # needs list/watch on pods, nodes, services
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.14.0
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.15.2
           ports:
             - containerPort: 50055
               name: grpc
@@ -579,7 +579,7 @@ spec:
       hostPID: true #important!
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.14.0
+          image: otel/ebpf-instrument:v0.15.2
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

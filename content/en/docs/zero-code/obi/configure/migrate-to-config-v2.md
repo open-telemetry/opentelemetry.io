@@ -22,7 +22,7 @@ Prepare a rollback plan before you migrate:
 2. List any settings supplied through environment variables, command-line flags,
    Helm values, Kubernetes manifests, or secret injection. The migration command
    reads only the file you provide.
-3. Install the target OBI v0.12.1 or later binary.
+3. Install the target OBI v0.15.2 binary.
 4. Select one representative instance or workload for a canary deployment.
 
 The migration command resolves substitution expressions in the source file.
@@ -78,6 +78,7 @@ sections:
 | Trace-log correlation                                      | `extensions.obi.correlation`                                       |
 | Process logging, profiling, shutdown, and internal metrics | `extensions.obi.daemon`                                            |
 | Trace sampling and export                                  | Top-level `tracer_provider`                                        |
+| Metric features                                            | `extensions.obi.capture.metrics.features`                          |
 | Metric export                                              | Top-level `meter_provider`                                         |
 | Resource attributes                                        | Top-level `resource`                                               |
 
@@ -117,6 +118,20 @@ them out.
 Network flow and TCP statistics filters remain shared between traces and
 metrics. Keep the two maps identical within each group. Validation reports an
 error when they differ.
+
+### Metric families and protocol coverage
+
+In v0.15.2, migration preserves global metric feature names in
+`capture.metrics.features`, including runtime metrics, span metrics, service
+graphs, and network variants. An explicit empty list stays empty. Protocol and
+network switches also preserve capture behavior.
+
+Config v1 exporter `instrumentations` lists restrict application metrics but
+leave span metrics and service graphs unrestricted. Config v2 protocol
+`enabled.metrics` switches apply to all three families. If migration cannot
+preserve their separate coverage, it reports the exporter's `instrumentations`
+field. Use `--allow-partial` to inspect the generated configuration and choose
+the desired protocol coverage before deploying it.
 
 ### HTTP routes
 
@@ -194,10 +209,12 @@ meter_provider:
             encoding: protobuf
 ```
 
-For OTLP over HTTP, you can also set `encoding` to `json`. Config v2 also
-supports declarative exporter headers. Exporter authentication environment
-variables remain runtime inputs; the migration command does not copy their
-values into the generated file.
+For OTLP/HTTP traces, you can also set `encoding` to `json`. Metrics support
+only protobuf: Config v2 rejects `encoding: json` on a metric exporter. Config
+v1 accepts `http/json` for metrics but sends protobuf and logs a warning. Config
+v2 also supports declarative exporter headers. Exporter authentication
+environment variables remain runtime inputs; the migration command does not copy
+their values into the generated file.
 
 ## Handle settings that need manual changes
 
@@ -222,11 +239,10 @@ changes:
 | Debug exporter or unsupported sampler                                       | Configure a supported OTLP exporter or sampler.                                                                                                                       |
 | Differing active OTLP and Prometheus instrumentation lists                  | Make protocol metric enablement consistent before migrating.                                                                                                          |
 
-The command reports other unsupported metric features and histogram, exporter,
-or Prometheus settings individually. Review and resolve every reported field
-before you rerun the migration. When a field has no direct equivalent, choose a
-supported Config v2 or Collector behavior and verify the change in the canary
-deployment.
+The command reports unsupported histogram, exporter, or Prometheus settings
+individually. Review and resolve every reported field before you rerun the
+migration. When a field has no direct equivalent, choose a supported Config v2
+or Collector behavior and verify the change in the canary deployment.
 
 The command also rejects unknown Config v1 fields, files that already use Config
 v2, and files that contain multiple YAML documents.

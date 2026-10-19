@@ -247,6 +247,7 @@ Collector receiver:
 | `policy`, `rules` | Select workloads and apply per-workload refinements.                                         |
 | `instrumentation` | Enable and tune application protocols.                                                       |
 | `runtimes`        | Control Go, Node.js, and Java runtime instrumentation.                                       |
+| `metrics`         | Select metric families with `features`.                                                      |
 | `network`         | Configure network flow and TCP statistics capture.                                           |
 | `limits`          | Set cardinality and memory guardrails.                                                       |
 | `engine`          | Tune batching, PID filtering, context propagation, traffic control, and other eBPF behavior. |
@@ -303,6 +304,37 @@ Use `capture.runtimes` to enable or disable Go probes, Node.js `SIGUSR1`
 injection, and Java agent attachment. You can also configure Java debug settings
 and an attachment timeout. OBI does not support nonempty runtime `filter`
 fields. Use capture rules to select workloads instead.
+
+### Metric feature selection
+
+Starting with v0.15.2, set `capture.metrics.features` to select metric families
+using the same names as Config v1:
+
+```yaml
+extensions:
+  obi:
+    version: '2.0'
+    capture:
+      metrics:
+        features:
+          - application_red
+          - application_runtime
+          - application_service_graph
+          - application_span_otel
+```
+
+Configure `meter_provider` to export these metrics. In a Collector receiver
+body, put this list at `metrics.features` and use the Collector metric pipeline
+for export. See
+[metric export features](../export-data/#metrics-export-features) for all names
+and compatibility constraints.
+
+An explicit list replaces the selection inferred from protocol, HTTP body-size,
+and network settings. An empty list disables all metric features; omitting it
+preserves inference. Protocol `enabled.metrics` switches still control which
+protocols contribute application metrics, span metrics, and service graphs,
+independently of `enabled.traces`. Setting `network.capture.enabled: true` can
+force flow capture independently of this feature list.
 
 ### Network observability
 

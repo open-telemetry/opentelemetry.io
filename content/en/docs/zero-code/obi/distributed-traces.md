@@ -137,7 +137,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:v0.14.0'
+      image: 'docker.io/otel/ebpf-instrument:v0.15.2'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -210,6 +210,14 @@ global `TracerProvider`, including by calling
 `otel.SetTracerProvider(auto.TracerProvider())`, prevents this automatic
 activation.
 
+Starting with v0.15.2, OBI also captures spans through the Auto SDK embedded in
+`go.opentelemetry.io/otel/trace`. This path accepts canonical, unreplaced `otel`
+and `otel/trace` modules at the exact `.0` releases from v1.35.0 through
+v1.46.0; the separate `go.opentelemetry.io/auto/sdk` module is optional. It
+supports provider lookups from empty contexts and non-recording local or remote
+span contexts. Arbitrary remote-parent extraction and context handoffs remain
+limited.
+
 OBI activates the integration only when all of the following conditions are met:
 
 - The application uses a supported OpenTelemetry module version and checksum
@@ -225,7 +233,7 @@ partial synthetic spans that contain the span name, parent relationship, status,
 and some primitive attributes. These spans do not include the instrumentation
 scope, events, or requested span kind.
 
-In OBI v0.11.0, the encoded payload for each span exported through the Auto SDK
+In OBI v0.15.2, the encoded payload for each span exported through the Auto SDK
 must not exceed 16 KiB. OBI does not emit a metric or log message when it
 activates the integration or drops an oversized payload.
 
@@ -239,9 +247,9 @@ and
 
 For the supported combinations of module version, checksum, and architecture,
 see the
-[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.14.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
 You can also review the upstream
-[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.14.0/examples/go-trace-api)
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/go-trace-api)
 and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
@@ -281,7 +289,7 @@ configuration, which ensures OBI has sufficient information to determine the
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:v0.14.0'
+    image: 'docker.io/otel/ebpf-instrument:v0.15.2'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
