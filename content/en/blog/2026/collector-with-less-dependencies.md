@@ -1,6 +1,6 @@
 ---
-title: More reasons to build your own Collector
-linkTitle: More reasons to build your own Collector
+title: Only include resource detectors you need by building your own Collector
+linkTitle: Only include resource detectors you need by building your own Collector
 date: 2026-10-16
 author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
@@ -16,7 +16,7 @@ use. Building your own gives you the ability to select only the components you
 care about, add your own custom components, and control exactly what ends up in
 the binary you run in production.
 
-One of the reasons I prefer to build my own distribution when I need to is to
+One of the reasons I prefer to build my own distribution is to
 limit the size of the binary I have to ship around and to ensure that the least
 amount of dependencies are included. Fewer dependencies means a smaller binary,
 a smaller attack surface, and fewer third-party modules to track when a
@@ -28,8 +28,8 @@ and ocb compiles into the resulting binary.
 
 Limiting components is great, but as a user
 [reported recently](https://github.com/open-telemetry/opentelemetry-collector/issues/16075),
-resource detectors can also cause unexpected dependencies to bloat the size of
-the binary with code you never use. Resource detectors are used to
+resource detectors can bloat the size of the binary with
+dependencies you never use. Resource detectors are used to
 [automatically inject resource attributes](/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment)
 into the telemetry a process produces. They are great in cloud environments,
 where you want to have as much information as possible about the deployment of
