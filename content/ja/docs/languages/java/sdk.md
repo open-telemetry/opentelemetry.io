@@ -2,13 +2,12 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 73ebe319188f1d3800b62c349d9f39cf9c21e657
-drifted_from_default: true
+default_lang_commit: eab64e41b388032bae1475f226e5e9e437ab314d
 cSpell:ignore: data_point inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 
 SDKは、計装API呼び出しによって生成されたテレメトリーを処理およびエクスポートする[API](../api/)の組み込み参照実装です。
 このページは、説明、関連するJavadocへのリンク、アーティファクト座標、サンプルプログラム設定などを含むSDKの概念的な概要です。

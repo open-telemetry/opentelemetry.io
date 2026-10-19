@@ -1178,6 +1178,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-ro-approvers
       - docs-triagers
       - ecosystem-explorer-approvers
       - javascript-approvers
@@ -1516,9 +1517,6 @@ maintainers:
       - docs-triagers
       - proto-approvers
       - proto-triagers
-      - sig-contributor-experience-approvers
-      - sig-contributor-experience-maintainers
-      - sig-contributor-experience-triagers
       - social-media-approvers
       - specs-approvers
       - specs-triagers
@@ -2662,6 +2660,9 @@ members:
   - name: asuresh4
     html_url: https://github.com/asuresh4
     avatar_url: https://avatars.githubusercontent.com/u/17557526?v=4
+  - name: atharvamhaske
+    html_url: https://github.com/atharvamhaske
+    avatar_url: https://avatars.githubusercontent.com/u/143622968?v=4
   - name: athre0z
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
@@ -3106,6 +3107,9 @@ members:
   - name: prestonvasquez
     html_url: https://github.com/prestonvasquez
     avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
+  - name: proost
+    html_url: https://github.com/proost
+    avatar_url: https://avatars.githubusercontent.com/u/34047134?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4

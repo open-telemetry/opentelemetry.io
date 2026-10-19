@@ -8,7 +8,7 @@ name: Reusable - publish patch as PR
 #
 #   publish-patch:
 #     needs: generate-patch
-#     uses: ./.github/workflows/reusable-patch-pr.yml
+#     uses: $/.github/workflows/reusable-patch-pr.yml
 #     with:
 #       patch-name: my-patch-${{ github.run_id }}
 #       branch: otelbot/housekeeping

@@ -3,8 +3,7 @@ title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
 weight: 4
-default_lang_commit: 0a410d00f789607f64e6e71b785b9c027305117b
-drifted_from_default: true
+default_lang_commit: eab64e41b388032bae1475f226e5e9e437ab314d
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
@@ -481,6 +480,9 @@ env:
 通常はレプリカ1つで十分です。
 高可用性を確保するには、同じ `Service` の背後で複数のレプリカを実行します。
 各 OBI Pod は1つに接続し、障害時には別のレプリカに再接続します。
+Helm を使用した `k8s-cache` のセットアップ方法の詳細については、[Helm チャートガイド](../kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache)を参照してください。
+
+キャッシュ構成オプションについては、[Kubernetes デコレーター](../../configure/metrics-traces-attributes/#kubernetes-decorator)を参照してください。
 
 ## 外部構成ファイルの提供 {#providing-an-external-configuration-file}
 
