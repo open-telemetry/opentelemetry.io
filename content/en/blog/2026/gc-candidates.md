@@ -8,8 +8,8 @@ cSpell:ignore: Akkoyun Baeyens Cascio Huxing Suereth Toulme Vibhanshu
 ---
 
 The OpenTelemetry Election Committee is excited to announce the final list of
-candidates for the upcoming
-[2026 OpenTelemetry Governance Committee Election](../gc-elections/)!
+candidates for the
+[2026 OpenTelemetry Governance Committee election](../gc-elections/)!
 
 If you are an [eligible voter][], you'll have the opportunity to continue
 shaping the future of OpenTelemetry by casting your vote between 26 October 2026
