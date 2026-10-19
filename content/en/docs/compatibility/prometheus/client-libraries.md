@@ -4,7 +4,7 @@ linkTitle: Client libraries
 cSpell:ignore: hvac
 ---
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 
 > [!NOTE]
 >
@@ -243,7 +243,7 @@ public class OtelScrapeInit {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -332,7 +332,7 @@ func main() {
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusOtlpInit.java"?>
 
 ```java
@@ -421,7 +421,7 @@ public class OtelOtlpInit {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -501,7 +501,7 @@ OpenTelemetry equivalent:
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusCounter.java"?>
 
 ```java
@@ -581,7 +581,7 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -667,7 +667,7 @@ to observe it at collection time rather than increment it yourself.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusCounterCallback.java"?>
 
 ```java
@@ -738,7 +738,7 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -846,7 +846,7 @@ OpenTelemetry `Gauge` instrument.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
 
 ```java
@@ -913,7 +913,7 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -988,7 +988,7 @@ want to observe it at collection time rather than track it yourself.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
 
 ```java
@@ -1052,7 +1052,7 @@ public class OtelGaugeCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1140,7 +1140,7 @@ OpenTelemetry `UpDownCounter` instrument.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
 
 ```java
@@ -1212,7 +1212,7 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1295,7 +1295,7 @@ want to observe it at collection time.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
 
 ```java
@@ -1357,7 +1357,7 @@ public class OtelUpDownCounterCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1466,7 +1466,7 @@ observations into discrete ranges.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
 
 ```java
@@ -1542,7 +1542,7 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1637,7 +1637,7 @@ In Prometheus, the histogram format is controlled at instrument creation time.
 The example below uses `.nativeOnly()` to restrict to native format; omitting it
 would emit both classic and native formats simultaneously:
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
 
 ```java
@@ -1663,7 +1663,7 @@ public class PrometheusHistogramNative {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1714,7 +1714,7 @@ instrumentation code:
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
 
 ```java
@@ -1741,7 +1741,7 @@ public class OtelHistogramExponentialExporter {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential_exporter.go" region="createExponentialExporter"?>
 
 ```go
@@ -1776,7 +1776,7 @@ view instead:
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
 
 ```java
@@ -1802,7 +1802,7 @@ public class OtelHistogramExponentialView {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
 
 ```go
@@ -1839,7 +1839,7 @@ below show this simpler approach.
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
 
 ```java
@@ -1904,7 +1904,7 @@ public class OtelHistogramAsSummary {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 

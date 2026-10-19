@@ -689,8 +689,7 @@
   distributions:
     - contrib
   stability:
-    metrics: unmaintained
-  unmaintained: true
+    metrics: beta
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib
@@ -831,13 +830,6 @@
     metrics: development
     profiles: development
     traces: development
-- name: wavefrontreceiver
-  display_name: Wavefront Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: webhookeventreceiver
   display_name: Webhook Event Receiver
   repo: contrib
@@ -851,7 +843,7 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: beta
 - name: windowsperfcountersreceiver
   display_name: Windows Performance Counters Receiver
   repo: contrib

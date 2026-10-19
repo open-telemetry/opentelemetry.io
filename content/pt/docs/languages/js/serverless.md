@@ -3,6 +3,7 @@ title: Serverless
 weight: 100
 description: Instrumente suas funções serverless com OpenTelemetry JavaScript
 default_lang_commit: 2b99811a310f2749a5b6389f5e4d654a4f2e2f8e
+drifted_from_default: true
 cSpell:ignore: otelwrapper
 ---
 

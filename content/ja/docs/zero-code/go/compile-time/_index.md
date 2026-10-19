@@ -3,8 +3,7 @@ title: Go コンパイル時計装
 linkTitle: コンパイル時
 description: ビルド時にコードを変更せずに Go アプリケーションを計装します。
 weight: 20
-default_lang_commit: 1fef2df9c49cb4b2192665ef5b1df5746507cecb
-cSpell:ignore: otelc toolexec
+default_lang_commit: 849387f51615f3f2127385cae60454ced8c4560c
 ---
 
 Go のコンパイル時計装は、ビルド中にアプリケーションを自動的に計装し、ソースコードを変更することなく、多くの人気のあるライブラリやフレームワークからテレメトリーをキャプチャします。

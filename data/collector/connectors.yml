@@ -28,6 +28,8 @@
     - contrib
     - k8s
   stability:
+    logs_to_logs: alpha
+    logs_to_metrics: alpha
     traces_to_logs: alpha
     traces_to_metrics: alpha
 - name: failoverconnector

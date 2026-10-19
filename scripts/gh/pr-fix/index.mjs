@@ -18,6 +18,13 @@ export const FIX_ALL_COMPAT_MESSAGE =
 export const FIX_REFCACHE_COMPAT_MESSAGE =
   'ℹ️ INFO: `/fix:refcache` is deprecated. Use `/fix:link-cache` moving forward.';
 
+// Posted instead of running a fixer on a PR head that predates the owned link
+// cache.
+export const STALE_HEAD_MESSAGE =
+  '❌ This branch predates the committed `link-cache.jsonc`, so the bot did not ' +
+  'run the fix. Update the branch from `main`, then comment again. For how, see ' +
+  'https://github.com/open-telemetry/opentelemetry.io/issues/11928';
+
 // The first line of the comment must be exactly `/fix` optionally followed by
 // one or more `:segment` parts, where a segment is one or more of `-_0-9a-zA-Z`.
 // Any following lines are ignored.
