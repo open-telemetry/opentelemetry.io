@@ -157,7 +157,7 @@ jobs:
       - run: npm run ci:min
       - run: npm run ci:prepare
 
-      - uses: ./.github/actions/install-lychee
+      - uses: $/.github/actions/install-lychee
 
       - name: Prune link cache
         if:
