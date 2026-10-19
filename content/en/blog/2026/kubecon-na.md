@@ -153,26 +153,11 @@ observability and OpenTelemetry in the [schedule][obs-day-sched].
 > You need an _all-access_ pass to attend **Observability Day**. For details,
 > see [KubeCon registration][register].
 
-<!--
-## OpenTelemetry Observatory
+## OpenTelemetry at the Project Pavilion
 
-Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
-Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers, such as:
-
-- SIG Office Hours: Come meet the people behind the project, learn about their
-  work, ask questions, share feedback, or find out how to contribute.
-- Special Topic Discussions: Come learn about the hottest topics in the OTel
-  community.
-
-If you'd like to participate by leading a discussion, or if there is a
-discussion topic you're interested in, please reach out to the [OpenTelemetry
-End User SIG][end user] to let us know, and we will see what we can do.
-
-For activity details, see the [OTel Observatory Schedule][]. This schedule is a
-work in progress and will be updated up until the day of the event. Check back
-often for the latest!
--->
+Come meet the OpenTelemetry community at the Project Pavilion on Thursday,
+November 12, from 10:00 to 14:00! Stop by for an informal chat, ask questions,
+share your experiences, or find out how to get involved in the project.
 
 ## OpenTelemetry Community Awards
 
