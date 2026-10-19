@@ -26,8 +26,7 @@ const DATA_URL =
   'https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js';
 const DATA_SRC = new RegExp(`^${RegExp.escape(DATA_URL)}$`);
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
-const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])/g;
-const HOOK_TAG = /<div\b[^>]*\bdata-otel-benchmarks\b[^>]*>/;
+const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])[^>]*>/g;
 const PLUGIN_CSS =
   /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
 
@@ -92,13 +91,17 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
     test(`${lang}: the plugin's file set, in order, synchronously`, () => {
       const html = read(PAGE(lang));
       assert.equal(count(html, HOOK), 1, 'one plugin container');
-      const container = html.match(HOOK_TAG)?.[0] ?? '';
+      const container = html.match(HOOK)?.[0] ?? '';
       const reading = JSON.parse(
         attr(container, 'data-otel-benchmarks').replaceAll('&#34;', '"'),
       );
       assert.deepEqual(
-        reading.filter,
-        ['10kDPS', '10kSPS'],
+        reading,
+        {
+          filter: ['10kDPS', '10kSPS'],
+          group_separator: '/',
+          series_separator: ' - ',
+        },
         'container carries the reading from the call',
       );
       const css = html.match(PLUGIN_CSS) ?? [];
@@ -116,7 +119,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
       const at = (re) => tags.findIndex((t) => re.test(attr(t, 'src')));
       const [c, d, p] = [CHARTJS_SRC, DATA_SRC, PLUGIN_SRC].map(at);
       assert.ok(
-        c < d && d < p,
+        0 <= c && c < d && d < p,
         `Chart.js (${c}), then data.js (${d}), then the plugin (${p})`,
       );
       assert.ok(
