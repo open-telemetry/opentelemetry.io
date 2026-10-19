@@ -1,0 +1,19 @@
+title: MetricKit Instrumentation
+registryType: instrumentation
+language: swift
+tags:
+  - MetricKit
+  - instrumentation
+  - swift
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/MetricKit
+license: Apache 2.0
+description:
+  This instrumentation adds MetricKit signals to OpenTelemetry, capturing
+  performance metrics and diagnostic data from Apple's MetricKit framework.
+  MetricKit provides aggregated data about your app's performance and
+  diagnostics, reported approximately once per day with cumulative data from the
+  previous 24-hour period.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

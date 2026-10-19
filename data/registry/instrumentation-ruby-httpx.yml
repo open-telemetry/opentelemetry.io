@@ -1,19 +1,19 @@
 # cSpell:ignore httpx
-title: OpenTelemetry HTTPX Instrumentation
+title: opentelemetry-instrumentation-httpx
 registryType: instrumentation
 language: ruby
 tags:
   - httpx
   - instrumentation
   - ruby
-license: Apache 2.0
-description:
-  The HTTPX instrumentation is a community-maintained instrumentation for the
-  HTTPX gem.
+license: Apache-2.0
+description: HTTPX instrumentation for the OpenTelemetry framework
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/httpx
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-httpx/v0.8.0/instrumentation/http
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-httpx/0.8.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2022-10-27
 package:
   registry: gems

@@ -1,0 +1,17 @@
+# cSpell:ignore awsecsattributes
+title: AWS ECS Attributes Processor
+registryType: processor
+language: collector
+tags:
+  - awsecsattributes
+  - processor
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/awsecsattributesprocessor
+license: Apache 2.0
+description:
+  The `awsecsattributes` processor enriches logs, metrics, traces and profiles
+  with
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

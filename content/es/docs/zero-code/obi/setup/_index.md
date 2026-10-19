@@ -10,7 +10,9 @@ drifted_from_default: true
 Hay diferentes opciones para configurar y ejecutar OBI:
 
 - [Configurar OBI en Kubernetes](kubernetes/)
+
 <!-- - [Configurar OBI en Kubernetes con Helm](kubernetes-helm/) -->
+
 - [Configurar OBI en Docker](docker/)
 - [Configurar OBI como un proceso independiente](standalone/)
 

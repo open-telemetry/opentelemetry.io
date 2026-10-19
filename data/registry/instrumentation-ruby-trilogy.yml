@@ -1,16 +1,18 @@
-title: Trilogy Instrumentation
+title: opentelemetry-instrumentation-trilogy
 registryType: instrumentation
 language: ruby
 tags:
   - ruby
   - instrumentation
   - trilogy
-license: Apache 2.0
-description: Trilogy instrumentation for Ruby.
+license: Apache-2.0
+description: Adds auto instrumentation that includes SQL metadata
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/trilogy
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/opentelemetry-instrumentation-trilogy/v0.69.0/instrumentation/trilogy
+  docs: https://rubydoc.info/gems/opentelemetry-instrumentation-trilogy/0.69.0
+  website: https://github.com/open-telemetry/opentelemetry-ruby-contrib
 createdAt: 2020-11-09
 package:
   registry: gems

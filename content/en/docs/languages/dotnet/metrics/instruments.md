@@ -143,26 +143,6 @@ meter.CreateObservableGauge("cpu_usage", () =>
 }, "%", "Current CPU usage percentage");
 ```
 
-## Batching observable measurements
-
-You can also register a callback that returns multiple measurements for multiple
-instruments:
-
-```csharp
-// Register a single callback for multiple observable instruments
-var observableCounter = meter.CreateObservableCounter<long>("my_observable_counter", "items");
-var observableGauge = meter.CreateObservableGauge<double>("my_observable_gauge", "%");
-
-meter.RegisterObservableCallback(observableInstruments =>
-{
-    // Record a value for the counter
-    observableInstruments.Observe(observableCounter, 42, new("type", "product_a"));
-
-    // Record a value for the gauge
-    observableInstruments.Observe(observableGauge, 12.3, new("resource", "cpu"));
-}, observableCounter, observableGauge);
-```
-
 ## Unit and description
 
 When creating instruments, it's a good practice to specify the unit and

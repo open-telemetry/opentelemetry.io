@@ -78,6 +78,7 @@ we've run previously:
 - [Contributor Experience Survey](/blog/2025/contribex-survey-results/)
 - [Developer Experience Survey](/blog/2025/devex-survey/)
 - [Docs Usability Survey](/blog/2024/otel-docs-survey/)
+
 <!--➡️ TODO: Turn links into embeds-->
 
 [Learn more](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)

@@ -1,0 +1,17 @@
+# cspell:ignore httpurlconnection
+title:
+  Android Instrumentation for URLConnection, HttpURLConnection and
+  HttpsURLConnection
+registryType: instrumentation
+language: android
+tags:
+  - httpurlconnection
+  - instrumentation
+  - android
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-12

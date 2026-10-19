@@ -5,7 +5,7 @@ description: >-
   src="/img/logos/32x32/Python_SDK.svg" alt="Python"> PythonにおけるOpenTelemetryの言語固有の実装。
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 190
-default_lang_commit: 1143960b75c6faceb40eb64269e68390e3237671
+default_lang_commit: b7589cf40b05480bc7a2022cf2dd36cc299904fa
 ---
 
 {{% docs/languages/index-intro python /%}}
@@ -42,7 +42,7 @@ Jaeger、Zipkin、Prometheus、OTLPおよびOpenCensusエクスポーターは�
 
 まだPyPIにリリースされていない機能はいくつかあります。
 その場合、リポジトリから直接パッケージをインストールすることができます。
-リポジトリをクローンして[編集可能なインストール](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs)を行う方法は次のとおりです。
+リポジトリをクローンして[編集可能なインストール](https://pip.pypa.io/en/stable/topics/local-project-installs/#editable-installs)を行う方法は次のとおりです。
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-python.git

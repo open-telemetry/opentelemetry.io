@@ -2,9 +2,9 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 869b2bb90ca9e54d8d98e7815e66111b577165eb
+default_lang_commit: 5ec6f9be2f6645aca56794b24524a6f5316613b6
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -34,7 +34,8 @@ otelcol --config=customconfig.yaml
 - **file** - ファイルから設定を読み込みます。たとえば `file:path/to/config.yaml` のように指定します。
 - **env** - 環境変数から設定を読み込みます。たとえば `env:MY_CONFIG_IN_AN_ENVVAR` のように指定します。
 - **yaml** - YAML 文字列から設定を読み込みます。サブパスは `::` で区切ります。
-たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+  たとえば `yaml:exporters::debug::verbosity: detailed` のように指定します。
+
 <!-- prettier-ignore-start -->
 - **http** - HTTP URI から設定を読み込みます。たとえば `http://www.example.com` のように指定します。
 - **https** - HTTPS URI から設定を読み込みます。たとえば
@@ -257,7 +258,7 @@ receivers:
     endpoint: 0.0.0.0:8006
 
   # データソース: メトリクス
-  hostmetrics:
+  host_metrics:
     scrapers:
       cpu:
       disk:
@@ -460,7 +461,7 @@ exporters:
     namespace: default
 
   # データソース: メトリクス
-  prometheusremotewrite:
+  prometheus_remote_write:
     endpoint: http://prometheus.example.com:9411/api/prom/push
     # 公式の Prometheus (Docker経由で動作) の
     # エンドポイントを使う場合は: 'http://prometheus:9090/api/v1/write' 次を追加

@@ -5,7 +5,8 @@ description:
   Află cum aprobatorii și administratorii gestionează problemele și
   contribuțiile.
 weight: 999
-default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806
+default_lang_commit: db8337edbbac824aebbb330acea18a7042b38806 # patched
+drifted_from_default: true
 cSpell:ignore: Comms contribfest hotfixes triager triagers
 ---
 
@@ -302,6 +303,6 @@ din timp - câtă vreme setul de modificări din amonte (_upstream_) este încă
 redus - este mult mai ușoară decât stingerea incendiilor în ziua lansării.
 
 [update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml
 [update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml

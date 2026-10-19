@@ -2,7 +2,7 @@
 title: 遥测特性
 linkTitle: 遥测特性
 aliases: [demo_features, features]
-default_lang_commit: 911b0a6b7752c125523a85fd2e58a49d1e459f34
+default_lang_commit: 911b0a6b7752c125523a85fd2e58a49d1e459f34 # patched
 drifted_from_default: true
 ---
 
@@ -43,7 +43,3 @@ drifted_from_default: true
 - **[Locust](https://locust.io)**：一个后台任务，使用合成负载生成器在网站上模拟真实的用户访问与使用模式。
 - **[OpenFeature](https://openfeature.dev)**：一个特性开关 API 与 SDK，用于在应用中启用或禁用特性。
 - **[flagd](https://flagd.dev)**：一个特性开关守护进程，用于在示例应用中管理特性开关。
-- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**：
-  一个模拟的大语言模型（LLM），遵循
-  [OpenAI 的 Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
-  格式，用于回答与产品相关的问题。

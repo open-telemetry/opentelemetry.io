@@ -118,13 +118,13 @@ Follow these steps to create a post from the template:
 1. Run the following command from the repository root:
 
    ```sh
-   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
+   npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
    ```
 
    If your post has images or other assets, run the following command:
 
    ```sh
-   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
+   npm exec --no -- hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
    ```
 
 2. Edit the Markdown file at the path you provided in the previous command. The

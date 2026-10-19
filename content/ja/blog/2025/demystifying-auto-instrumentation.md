@@ -7,7 +7,7 @@ author: >-
 canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentation
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7810
 sig: Comms
-default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
+default_lang_commit: 31d919c6dea163515e2ff36c84e65b569a675fb3
 cspell:ignore: Beyla bpftrace Causely libbpf premain uprobes
 ---
 
@@ -145,7 +145,7 @@ Java、Kotlin、Scala、その他の JVM 言語を変更なしに計装できま
 動的にロードされたコードや外部ソースからのコードを含め、JVM 上で動作するあらゆるコードを計装できます。
 ただし、バイトコード変換プロセスによるオーバーヘッドが多少あります。
 
-実際の実装では、[ByteBuddy](https://bytebuddy.net/#/) が Java におけるバイトコード計装のデファクトスタンダードのライブラリです。
+実際の実装では、[ByteBuddy](https://bytebuddy.net/) が Java におけるバイトコード計装のデファクトスタンダードのライブラリです。
 Java エージェントを作成するための強力で柔軟な API を提供し、バイトコード操作の複雑さの多くを抽象化して、計装ルールを定義するためのクリーンで型安全な方法を提供します。
 
 自分で試してみたい場合は、ラボの [Java のサンプル](https://github.com/causely-oss/automatic-instrumentation-lab#byte-code-instrumentation-java)を参照してください。

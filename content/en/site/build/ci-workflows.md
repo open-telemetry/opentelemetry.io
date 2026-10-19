@@ -9,6 +9,18 @@ weight: 10
 For workflows and (most of) their helper scripts, see the `workflow` and
 `scripts` folder under [.github][]
 
+## Same-repository references {#same-repository-references}
+
+Workflows and composite actions reference this repository's own actions and
+reusable workflows with GitHub's [self-repository `$/` syntax][self-repo], which
+loads them from the running commit, no checkout needed.
+
+## Dependency installation {#dependency-installation}
+
+CI jobs install npm dependencies following the site-wide
+[install contracts](../dependencies/#install-contracts): lock-exact and
+script-free, with build jobs re-enabling only the reviewed Hugo rebuild.
+
 ## PR approval labels {#pr-approval-labels}
 
 The following workflows work together to automatically manage approval-related
@@ -17,7 +29,7 @@ labels on pull requests:
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| [`label-manager.yml`][labels]      | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
 | [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)           | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
@@ -61,8 +73,8 @@ latest date — all content must be ready before merging.
 #### Script operating modes
 
 The [`pr-approval-labels.sh`][script] script processes a single PR (set via the
-`PR` environment variable). It is called by `pr-approval-labels.yml` on PR
-events and by [`blog-publish-check.sh`][batch-script] in batch mode.
+`PR` environment variable). It is called by `label-manager.yml` on PR events and
+by [`blog-publish-check.sh`][batch-script] in batch mode.
 
 [script]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
@@ -87,19 +99,19 @@ To work around this limitation, the system uses a
 
 1. **`pr-review-trigger`** runs on every review submission/dismissal. It saves
    the PR number as an artifact and exits — no secrets needed.
-2. **`pr-approval-labels`** is triggered by `workflow_run` (when the trigger
-   workflow completes). It runs in the base repository context with full access
-   to the GitHub App token, downloads the artifact, and updates labels.
+2. **`label-manager`** is triggered by `workflow_run` (when the trigger workflow
+   completes). It runs in the base repository context with full access to the
+   GitHub App token, downloads the artifact, and updates labels.
 
-For content changes (`opened`, `reopened`, `synchronize`), the
-`pr-approval-labels` workflow is triggered directly via `pull_request_target`.
+For content changes (`opened`, `reopened`, `synchronize`), the `label-manager`
+workflow is triggered directly via `pull_request_target`.
 
 ```mermaid
 sequenceDiagram
     participant R as Reviewer
     participant GH as GitHub
     participant T as pr-review-trigger
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     R->>GH: Submits review (approve/request changes/dismiss)
 
@@ -121,7 +133,7 @@ sequenceDiagram
 sequenceDiagram
     participant A as Author
     participant GH as GitHub
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     A->>GH: Opens/updates PR
 
@@ -137,10 +149,13 @@ sequenceDiagram
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
   permissions. Ignores `review.state == "commented"` since comments don't affect
   approvals.
-- **`pr-approval-labels`**: runs with a GitHub App token (`OTELBOT_DOCS_APP_ID`
-  / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
+- **`label-manager`**: runs with a GitHub App token (`OTELBOT_DOCS_CLIENT_ID` /
+  `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
-  always executes in the trusted base repository context.
+  always executes in the trusted base repository context. The downloaded
+  `pr-number` artifact comes from the PR's own copy of `pr-review-trigger`, so
+  it is untrusted input: extracted outside the checkout and accepted only as an
+  integer PR number.
 - **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
   `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
@@ -245,6 +260,8 @@ scripts by commenting on a PR:
 - **`/fix:all`** is mapped to `/fix` since the command semantics changed
   ([#9291][]).
 - **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
+- **`/fix:refcache`** (deprecated) still runs, via the `fix:refcache` compat
+  alias; the outcome comment points to `/fix:link-cache`.
 
 The directive must be the first line of the comment; any following lines are
 ignored, so you can add an explanation after it. The workflow itself triggers on
@@ -260,8 +277,18 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, prunes the link refcache, and uploads a patch artifact
+   command via the [npm-script-patch][] action, and uploads a patch artifact
    (`site.patch`), up to 1024 KB.
+   - The action is referenced with the
+     [self-repository `$/` syntax](#same-repository-references), so its
+     definition, including the lychee version it installs, comes from the
+     default branch; npm dependency installation and the fix command still run
+     the PR's code.
+   - Before the checkout, a trusted step refuses a PR head that predates
+     `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
+     check would recreate the obsolete `.lycheecache`); the outcome comment then
+     tells the author to update the branch. The step is inline shell, untested,
+     and goes once no open PR predates the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -316,10 +343,15 @@ It runs as a three-stage pipeline:
 
 1. **`generate-patch`**: runs the housekeeping command via the
    [npm-script-patch][] action and uploads the changes as a patch artifact.
-   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
-   dispatch triggers only ever execute default-branch code. A failing command
-   fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body.
+   - Unlike the `/fix` pipeline, the whole run is trusted: scheduled runs
+     execute `main`, and a dispatch runs the maintainer-selected ref.
+   - A failing command fails the job, but any fixes it produced are still
+     published, with a partial-results warning in the PR body.
+   - With the default command, it first refreshes the locale team registry
+     (`data/locale-teams.yaml`) from the live teams' direct membership, using a
+     read-only, members-scoped app token that later steps never see; drift then
+     lands in the same PR as the regenerated CODEOWNERS. A failed refresh leaves
+     the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,
@@ -339,10 +371,12 @@ It runs as a three-stage pipeline:
 > [!NOTE]
 >
 > The [`refcache-refresh.yml`][] workflow also runs daily and touches
-> `refcache.json`, so the two bot PRs can conflict depending on merge order.
-> Conflicts self-heal, since both branches sync from `main` on each run.
-> Migrating refcache-refresh onto the reusable patch actions — eliminating such
-> conflicts by construction — is tracked in the [project plan][].
+> `link-cache.jsonc`, so the two bot PRs can conflict depending on merge order.
+> Conflicts self-heal: the housekeeping branch is rebuilt from `main` on each
+> run, and `refcache-refresh` merges `main`, taking `main`'s file and re-pruning
+> on a cache-only conflict. Migrating `refcache-refresh` onto the reusable patch
+> actions — eliminating such conflicts by construction — is tracked in the
+> [project plan][].
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]:
@@ -383,37 +417,49 @@ usage lives in the [localization guide][localization-auto-merge].
 
 ## Spec integration branches {#spec-integration-branches}
 
-Two scheduled workflows track unreleased changes from upstream spec repositories
-and keep a draft PR ("integration branch") current with the next development
-version:
+The scheduled [specs-integration.yml][] workflow owns the site's update cycle
+for the upstream spec repositories (which `auto-update-versions.yml` therefore
+excludes). It runs one matrix job per upstream repository: between releases,
+each job tracks unreleased upstream changes through a draft PR ("integration
+branch"); once upstream releases, it finalizes that branch and PR into the
+release PR. Each run merges `main` into the long-lived integration branch; a
+conflict confined to `link-cache.jsonc` (both sides update the cache daily)
+self-heals by taking `main`'s cache, and the run's own link check re-adds the
+branch's entries.
 
-| Workflow file                             | Upstream repository           | Branch slug |
-| ----------------------------------------- | ----------------------------- | ----------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`      |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`   |
+| Matrix job | Upstream repository           | Branch slug |
+| ---------- | ----------------------------- | ----------- |
+| `otel`     | `opentelemetry-specification` | `spec`      |
+| `semconv`  | `semantic-conventions`        | `semconv`   |
 
-[update-spec-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-Both workflows delegate the "pick the next version + branch" step to a shared
-Node helper, [scripts/gh/specs/pick-branch/cli.mjs][]. The helper:
+Each job delegates the "pick the mode, version and branch" step to a shared
+helper, [scripts/gh/specs/pick-branch.mjs][]. The helper:
 
-- Reuses an existing `otelbot/<slug>-integration-vX.Y.Z-dev` branch when one
-  exists and the version has not yet been released; otherwise bumps the latest
-  release tag's minor version.
-- Writes `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
+- Selects the run's `MODE`: `dev` while the version pinned on main is the latest
+  upstream release, `release` once a newer release exists.
+- Writes `MODE`, `VERSION` and `BRANCH` to `$GITHUB_ENV` for downstream steps.
 - Opens a tracking issue (label `<slug>-integration-warning`, deduplicated) when
   it detects problems such as multiple stale integration branches.
 
-[scripts/gh/specs/pick-branch/cli.mjs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
+
+The final step, [scripts/gh/specs/create-or-finalize-pr.mjs][], creates or
+finalizes the PR as `MODE` calls for: in dev mode it opens the draft integration
+PR if missing; in release mode it creates or finalizes the release PR. It only
+rewrites PR text that the automation itself wrote: a maintainer-edited title or
+body is left alone.
+
+[scripts/gh/specs/create-or-finalize-pr.mjs]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
 
 ### Run modes
 
-The helper auto-selects between dry-run and write mode and prints a `[mode]`
-banner explaining its choice:
+Both helpers auto-select between dry-run and write mode and print a `[mode]`
+banner explaining their choice:
 
 | Context               | Default behavior | Override            |
 | --------------------- | ---------------- | ------------------- |
@@ -421,18 +467,19 @@ banner explaining its choice:
 | Local (anywhere else) | dry-run          | pass `--no-dry-run` |
 
 Locally, dry-run still runs all read-only `git`/`gh` commands (so the issue
-deduplication check executes), but skips writes. With `--no-dry-run` the helper
-uses your local `gh` credentials; if `GITHUB_ENV` is unset, `VERSION`/`BRANCH`
-are printed to stdout only. Try it:
+deduplication check executes), but skips writes. With `--no-dry-run` the helpers
+use your local `gh` credentials; if `GITHUB_ENV` is unset, pick-branch prints
+`MODE`/`VERSION`/`BRANCH` to stdout only — export these to feed a local
+create-or-finalize-pr run. Try it:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv --no-dry-run
-node scripts/gh/specs/pick-branch/cli.mjs --help
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
+scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 
-Pure logic and CLI argument parsing live in `index.mjs` and are covered by
-`*.test.mjs` files in the same folder (`npm run test:local-tools` to run them).
+Pure logic lives in each helper's `index.mjs` and is covered by `*.test.mjs`
+files in the same folder (`npm run test:local-tools` to run them).
 
 ## Workflow failure reporting {#workflow-failure-reporting}
 
@@ -451,21 +498,22 @@ logic lives in [scripts/gh/report-failure/][report-failure-script]
 
 The repository includes several other workflows:
 
-| Workflow                   | Purpose                                                                                |
-| -------------------------- | -------------------------------------------------------------------------------------- |
-| `check-links.yml`          | Sharded link checking using htmltest, plus a non-blocking [Lychee][lychee-pilot] pilot |
-| `check-text.yml`           | Textlint terminology checks                                                            |
-| `check-i18n.yml`           | Localization front matter validation                                                   |
-| `check-spelling.yml`       | Spell checking                                                                         |
-| `test.yml`                 | Test (excludes `test:base`)                                                            |
-| `auto-update-registry.yml` | Auto-update registry package versions                                                  |
-| `auto-update-versions.yml` | Auto-update OTel component versions                                                    |
-| `build-dev.yml`            | Development build and preview                                                          |
-| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                              |
-| `label-manager.yml`        | PR labels (component labels & approval flow)                                           |
-| `component-owners.yml`     | Assign reviewers based on component ownership                                          |
+| Workflow                   | Purpose                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| `check-links.yml`          | Site build and [link checking][] with Lychee                                                 |
+| `check-text.yml`           | Textlint terminology checks                                                                  |
+| `check-i18n.yml`           | Localization front matter validation                                                         |
+| `check-spelling.yml`       | Spell checking                                                                               |
+| `test.yml`                 | Test (excludes `test:base`)                                                                  |
+| `auto-update-registry.yml` | Auto-update registry package versions                                                        |
+| `auto-update-versions.yml` | Auto-update OTel component versions (except [spec repositories](#spec-integration-branches)) |
+| `build-dev.yml`            | Development build and preview                                                                |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`                                                    |
+| `label-manager.yml`        | PR labels (component labels & approval flow)                                                 |
+| `component-owners.yml`     | Assign reviewers based on component ownership                                                |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: ../npm-scripts/#notes
+[link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+[self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->

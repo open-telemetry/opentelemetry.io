@@ -3,6 +3,7 @@ title: OTLP Exporter Configuration
 linkTitle: OTLP Exporter
 weight: 20
 aliases: [otlp-exporter-configuration]
+cSpell:ignore: lowmemory
 ---
 
 {{% include "env-var-note.md" %}}
@@ -35,6 +36,11 @@ and logs, the following URLs are constructed from the example above:
 - Traces: `"http://my-api-endpoint/v1/traces"`
 - Metrics: `"http://my-api-endpoint/v1/metrics"`
 - Logs: `"http://my-api-endpoint/v1/logs"`
+
+For OTLP/gRPC, endpoint values are gRPC targets. Do not append OTLP/HTTP signal
+paths such as `/v1/traces`, `/v1/metrics`, or `/v1/logs` to gRPC endpoint
+values; gRPC exporters use the OTLP protobuf service method for each signal
+after connecting to the configured target.
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
@@ -107,6 +113,14 @@ ends with `v1/profiles` when using OTLP/HTTP.
 
 The following environment variables let you configure additional headers as a
 list of key-value pairs to add in outgoing gRPC or HTTP requests.
+
+Headers are represented in a format matching to the
+[W3C Baggage](https://www.w3.org/TR/baggage/#header-content), for example
+`key1=value1,key2=value2`. Semi-colon delimited
+[metadata](https://www.w3.org/TR/baggage/#property) is not supported. For more
+details, see
+[Specifying headers via environment variables](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)
+in the protocol specification.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 
@@ -278,3 +292,42 @@ Valid values are:
 - `grpc` to use OTLP/gRPC
 - `http/protobuf` to use OTLP/HTTP + protobuf
 - `http/json` to use OTLP/HTTP + JSON
+
+## Metrics-specific configuration
+
+The following environment variables configure exporter options that are
+exclusive to metrics.
+
+### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`
+
+Configures the exporter's aggregation temporality preference on the basis of
+instrument kind.
+
+**Default value:** `cumulative`
+
+**Example:** `export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta`
+
+Valid values are:
+
+- `cumulative` to use cumulative aggregation temporality for all instrument
+  kinds.
+- `delta` to use delta aggregation temporality for Counter, Asynchronous
+  Counter, and Histogram, and cumulative for UpDownCounter and Asynchronous
+  UpDownCounter.
+- `lowmemory` to use delta aggregation temporality for Synchronous Counter and
+  Histogram, and cumulative for others.
+
+### `OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION`
+
+Configures the exporter's default aggregation for the Histogram instrument kind.
+
+**Default value:** `explicit_bucket_histogram`
+
+**Example:**
+`export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=base2_exponential_bucket_histogram`
+
+Valid values are:
+
+- `explicit_bucket_histogram` to use explicit bucket histogram aggregation.
+- `base2_exponential_bucket_histogram` to use base2 exponential bucket histogram
+  aggregation.

@@ -2,6 +2,7 @@
 title: アノテーション
 weight: 50
 default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
+drifted_from_default: true
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

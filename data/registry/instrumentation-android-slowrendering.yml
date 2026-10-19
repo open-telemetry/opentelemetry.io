@@ -1,0 +1,15 @@
+# cspell:ignore slowrendering
+title: Slow Rendering Instrumentation
+registryType: instrumentation
+language: android
+tags:
+  - slowrendering
+  - instrumentation
+  - android
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/slowrendering
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-12

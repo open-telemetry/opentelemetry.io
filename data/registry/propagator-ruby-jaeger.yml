@@ -1,0 +1,21 @@
+title: opentelemetry-propagator-jaeger
+registryType: propagator
+language: ruby
+tags:
+  - jaeger
+  - propagator
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/opentelemetry-propagator-jaeger/v0.25.1/propagator/jaeger
+  docs: https://rubydoc.info/gems/opentelemetry-propagator-jaeger/0.25.1
+  website: https://github.com/open-telemetry/opentelemetry-ruby
+license: Apache-2.0
+description:
+  Jaeger Context Propagation Extension for the OpenTelemetry framework
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09
+package:
+  registry: gems
+  name: opentelemetry-propagator-jaeger
+  version: 0.25.1

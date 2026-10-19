@@ -43,21 +43,21 @@ jobs:
       comment_id: ${{ steps.ack.outputs.comment_id }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { fetch-depth: 1, persist-credentials: false }
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
           # PR comments authorize via the pull-requests permission (even
           # though they're posted through the issues API endpoint).
@@ -96,13 +96,14 @@ jobs:
       action_exit_status: ${{ steps.patch.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
       patch_skipped: ${{ steps.patch.outputs.patch_skipped }}
+      stale_head: ${{ steps.head.outputs.stale }}
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { fetch-depth: 0, persist-credentials: false }
 
       - name: Extract action name and resolve command
@@ -113,24 +114,55 @@ jobs:
         # usage hint) on the PR.
         run: node scripts/gh/pr-fix/cli.mjs --comment "$COMMENT"
 
+      - name: Refuse a PR head that predates link-cache.jsonc
+        id: head
+        # Runs from the default-branch checkout, before the PR head's own
+        # scripts take over: such a head would rewrite the obsolete
+        # `.lycheecache` and leave the PR in a modify/delete conflict with
+        # main. Read-only; a plain fetch, since --depth would make the whole
+        # checkout shallow and break history-dependent fixers (fix:i18n).
+        env:
+          HEAD_REF: refs/pull/${{ github.event.issue.number }}/head
+          # The head's link-cache pin, from its manifest as text (nothing from
+          # the head runs); a copied-in owned file alone doesn't prove the pin.
+          READ_PIN: |
+            let text = '';
+            process.stdin.on('data', (chunk) => (text += chunk));
+            process.stdin.on('end', () => {
+              let pin = '';
+              try {
+                pin = JSON.parse(text).devDependencies?.['link-cache'] ?? '';
+              } catch {}
+              console.log(pin);
+            });
+        run: |
+          git fetch --quiet origin "$HEAD_REF" || true
+          pin=$( { git show FETCH_HEAD:package.json 2>/dev/null || true; } | node -e "$READ_PIN")
+          if git cat-file -e FETCH_HEAD:link-cache.jsonc 2>/dev/null &&
+             [[ -n "$pin" && "$pin" != 0.3.* ]]; then
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "::error::PR head predates link-cache.jsonc; update the branch from main first."
+            exit 1
+          fi
+
       - run: gh pr checkout "$PR_NUM" -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Run PR action and generate patch
         id: patch
-        # Untrusted: runs the resolved npm script and captures any changes as a
-        # patch artifact. Has no write permissions or secrets. The `_refcache:prune`
-        # post-command drops 404 entries so refcache updates stay clean.
-        # NOTE: after `gh pr checkout` above, this local action's definition
-        # resolves from the PR branch — treat the action itself as untrusted;
-        # never add secrets or write permissions to this job.
-        uses: ./.github/actions/npm-script-patch
+        # Untrusted: the `$/` reference resolves this action's definition,
+        # lychee pin included, from the default branch rather than the PR branch
+        # checked out above, but npm dependency installation and the fix command
+        # still run the PR's code; never add secrets or write permissions to
+        # this job.
+        uses: $/.github/actions/npm-script-patch
         with:
           command: ${{ steps.extract.outputs.command }}
           patch-name: pr-fix-${{ github.run_id }}
           max-patch-size-kb: ${{ env.MAX_PATCH_SIZE_KB }}
-          post-command: _refcache:prune
 
   apply-patch:
     name: Apply and push patch (trusted)
@@ -138,7 +170,7 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'false'
     # A reusable workflow (resolved from the default branch, never from the PR)
     # so that no PR-controlled code can run with write credentials.
-    uses: ./.github/workflows/reusable-apply-patch.yml
+    uses: $/.github/workflows/reusable-apply-patch.yml
     # GITHUB_TOKEN grants forwarded to the reusable workflow (its jobs cannot
     # exceed these); see that workflow for how its steps authenticate.
     permissions:
@@ -151,7 +183,7 @@ jobs:
       user-name: otelbot
       user-email: 197425009+otelbot@users.noreply.github.com
       # the higher privileged docs app is needed to push commits to an existing PR
-      app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+      client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
     secrets:
       app-private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
@@ -173,21 +205,21 @@ jobs:
       contents: read # checkout
 
     steps:
-      - uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with: { fetch-depth: 1, persist-credentials: false }
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version-file: .nvmrc
 
       - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         id: otelbot-token
         with:
-          client-id: ${{ vars.OTELBOT_APP_ID }}
+          client-id: ${{ vars.OTELBOT_CLIENT_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
           # PR comments authorize via the pull-requests permission (even
           # though they're posted through the issues API endpoint). The
@@ -214,11 +246,17 @@ jobs:
           COMMAND_EXIT_STATUS:
             ${{ needs.generate-patch.outputs.action_exit_status }}
           APPLY_RESULT: ${{ needs.apply-patch.result }}
-        # The hint is owned by the directive parser (single source of truth
-        # with its invalid-directive message); this checkout is of the default
-        # branch, so the imported text is trusted.
+          STALE_HEAD: ${{ needs.generate-patch.outputs.stale_head }}
+        # The note is owned by the directive parser; this checkout is of the
+        # default branch, so the derived text is trusted (the parser only ever
+        # returns its own constants, never comment text; STALE_HEAD, an
+        # untrusted-job output, only selects one of them).
         run: |
-          hint=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => console.log(m.DIRECTIVE_HINT))')
+          note=$(node -e 'import("./scripts/gh/pr-fix/index.mjs").then((m) => {
+            if (process.env.STALE_HEAD === "true") return console.log(m.STALE_HEAD_MESSAGE);
+            const d = m.parseFixDirective(process.env.COMMENT);
+            console.log(d.valid ? (d.info ?? "") : m.DIRECTIVE_HINT);
+          })')
           node scripts/gh/patch-report/cli.mjs \
             --pr "$PR_NUM" \
             --comment-id "$ACK_COMMENT_ID" \
@@ -230,4 +268,4 @@ jobs:
             --patch-skipped "$PATCH_SKIPPED" \
             --command-exit-status "$COMMAND_EXIT_STATUS" \
             --apply-result "$APPLY_RESULT" \
-            --hint "$hint"
+            --note "$note"

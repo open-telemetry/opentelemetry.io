@@ -11,7 +11,9 @@ if [[ -n "$GITHUB_ACTIONS" ]]; then
   # different commit (e.g., a freshly bumped tag).
   git checkout main
   git reset --hard origin/main
-  npm run get:submodule
+  # Remove the App token from each npm command's direct child environment.
+  # This limits accidental access; it is not a process-isolation boundary.
+  (unset GH_TOKEN; npm run get:submodule)
 elif [[ "$1" != "-f" ]]; then
   # Do a dry-run when script it executed locally, unless the
   # force flag is specified (-f).
@@ -68,10 +70,12 @@ function process_file() {
   fi
 }
 
+pin_updated=false
 while [[ $# -gt 0 ]]; do
   variable_name=$1; shift;
   file_name=$1; shift;
   process_file $variable_name $file_name
+  if [[ "$file_name" == ".gitmodules" ]]; then pin_updated=true; fi
 done
 
 if git diff --quiet "${file_names[@]}"; then
@@ -103,12 +107,12 @@ else
   echo "None found."
 fi
 
-if [[ "$repo" == "opentelemetry-specification"
-  || "$repo" == "opentelemetry-proto"
-  || "$repo" == "semantic-conventions"
-  || "$repo" == "opentelemetry-configuration" ]]; then
+# When the repo's submodule pin was updated, switch the submodule's working
+# tree to the new tag so that code excerpts regenerate against the new tree,
+# and the commit below records a gitlink consistent with the pin.
+if [[ "$pin_updated" == "true" ]]; then
   echo "Switching to $repo at tag $latest_version"
-  ( set -x;
+  ( unset GH_TOKEN; set -x;
     npm run get:submodule -- content-modules/$repo &&
     cd content-modules/$repo &&
     git fetch &&
@@ -120,7 +124,7 @@ fi
 
 # Sync any code-excerpt directives that embed upstream files, so the build
 # doesn't fail if the new version changed an excerpted file.
-npm run fix:code-excerpts
+(unset GH_TOKEN; npm run fix:code-excerpts)
 
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"

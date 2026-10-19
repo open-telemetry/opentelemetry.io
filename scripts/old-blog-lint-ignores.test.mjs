@@ -2,12 +2,10 @@
 // file seeded with violations is created in an old blog folder (must be
 // ignored) and in a recent one (must be flagged). For the policy, tool list,
 // and config details, see:
+// https://opentelemetry.io/site/skills/update-old-blog-ignores/
 //
-// - https://opentelemetry.io/site/skills/update-old-blog-ignores/
-// - content/en/site/skills/update-old-blog-ignores.md
-//
-// htmltest is not covered (requires a site build); validate it manually via
-// `npm run check:links`.
+// Link checking is not covered (requires a site build); validate it manually
+// via `npm run check:links`.
 //
 // Seed files are deleted on completion; should the test runner die mid-run,
 // stray files are easy to spot: content/en/blog/*/zz-old-blog-ignore-test/
@@ -18,10 +16,6 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRequire } from 'node:module';
-
-const require = createRequire(import.meta.url);
-const { isOldBlogDir } = require('./_extract-external-links.js');
 
 const repoRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -52,9 +46,7 @@ const recentDir = recentBlogDir();
 const recentYear = path.basename(recentDir);
 const recentPost = `${recentDir}/zz-old-blog-ignore-test/index.md`;
 
-// The newest existing blog-year folder that the tools must ignore. Like the
-// sidebar script in content/en/blog/_index.md, treat the current and previous
-// years as recent: old years are those <= currentYear - 2.
+// The newest existing blog-year folder that the tools must ignore.
 function oldBlogDir() {
   for (let year = new Date().getFullYear() - 2; year >= 2019; year--) {
     const dir = `content/en/blog/${year}`;
@@ -90,7 +82,7 @@ function run(cmd, args) {
   return { status: res.status, out: (res.stdout ?? '') + (res.stderr ?? '') };
 }
 
-const npx = (...args) => run('npx', ['--no-install', ...args]);
+const npx = (...args) => run('npm', ['exec', '--no', '--', ...args]);
 
 describe('old blog posts are ignored by lint/format tooling', () => {
   before(() => {
@@ -165,13 +157,5 @@ describe('old blog posts are ignored by lint/format tooling', () => {
     const files = out.split('\0').filter(Boolean);
     assert.ok(files.includes(recentPost), 'finds recent post');
     assert.ok(!files.includes(oldPost), 'excludes old post');
-  });
-
-  test(`isOldBlogDir('${oldYear}') of _extract-external-links.js`, () => {
-    assert.equal(isOldBlogDir(oldYear), true, 'old year is skipped');
-  });
-
-  test(`isOldBlogDir('${recentYear}') of _extract-external-links.js`, () => {
-    assert.equal(isOldBlogDir(recentYear), false, 'recent year is processed');
   });
 });

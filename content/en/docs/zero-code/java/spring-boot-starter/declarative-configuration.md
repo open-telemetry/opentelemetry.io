@@ -20,6 +20,10 @@ This approach is useful when:
 >
 > Declarative configuration is experimental.
 
+For background on how declarative configuration fits into the Spring Boot
+starter, see the blog post
+[The Voyage of a Small Environment Variable](/blog/2026/spring-boot-declarative-config/).
+
 ## Supported versions
 
 Declarative configuration is supported in the **OpenTelemetry Spring Boot

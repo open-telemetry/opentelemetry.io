@@ -1,0 +1,23 @@
+# cSpell:ignore networkdevicereceiver sysObjectID snmp Tsuga tsuga
+title: Network Device Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+  - snmp
+  - network
+urls:
+  repo: https://github.com/tsuga-dev/networkdevicereceiver
+license: Apache 2.0
+description:
+  OTel Collector receiver for SNMP network devices. Discovers devices across
+  configured subnets, selects a device profile from sysObjectID, and emits
+  metrics named after the hardware and system semantic conventions.
+authors:
+  - name: Tsuga
+    url: https://github.com/tsuga-dev
+createdAt: '2026-08-04'
+isNative: false
+isFirstParty: false

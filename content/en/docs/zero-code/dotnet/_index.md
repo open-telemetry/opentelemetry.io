@@ -55,30 +55,38 @@ script for your operating system.
 
 ### Linux and macOS
 
-Download and run the `.sh` script:
+Download, verify, and run the `.sh` script:
 
 > [!NOTE]
 >
-> For air-gapped environments, use the `LOCAL_PATH` variable to provide the
-> installation file directly:
+> On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is
+> required.
 >
-> ```shell
-> LOCAL_PATH=<PATH_TO_INSTALLER> sh ./otel-dotnet-auto-install.sh
-> ```
->
-> Alternatively, use `DOWNLOAD_DIR` to provide a folder with files, and the
-> install script determines the correct file to use:
->
-> ```shell
-> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
-> ```
+> The downloaded installer should be verified before it is executed because a
+> script cannot establish trust in its own code. By default, the installer also
+> requires the [GitHub CLI](https://cli.github.com/) and verifies both the
+> immutable release and artifact attestation for the downloaded ZIP archive. To
+> explicitly opt out of archive verification, set
+> `SKIP_RELEASE_VERIFICATION=true`. Skipping verification is not recommended.
 
 ```shell
-# Download the bash script
-curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh -O
+# Download the installer into a private directory
+version="v1.17.0"
+repository="open-telemetry/opentelemetry-dotnet-instrumentation"
+release_workflow="$repository/.github/workflows/release.yml"
+download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
+installer="$download_dir/otel-dotnet-auto-install.sh"
+trap 'rm -rf "$download_dir"' 0
 
-# Install core files
-sh ./otel-dotnet-auto-install.sh
+# Download, verify, and run the installer as a single conditional chain so a
+# failed download or verification prevents the installer from running
+curl -sSfL "https://github.com/$repository/releases/download/$version/otel-dotnet-auto-install.sh" -o "$installer" &&
+  gh release verify-asset "$version" "$installer" --repo "$repository" &&
+  gh attestation verify "$installer" \
+    --repo "$repository" \
+    --signer-workflow "$release_workflow" \
+    --source-ref "refs/tags/$version" &&
+  VERSION="$version" sh "$installer"
 
 # Enable execution for the instrumentation script
 chmod +x $HOME/.otel-dotnet-auto/instrument.sh
@@ -90,11 +98,25 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
 
+For air-gapped environments, verify the archive before transferring it and
+explicitly skip the installer's online verification. You can provide the archive
+directly with:
+
+```shell
+SKIP_RELEASE_VERIFICATION=true LOCAL_PATH=<PATH_TO_ARCHIVE> sh ./otel-dotnet-auto-install.sh
+```
+
+Alternatively, provide the folder with the files, and the install script
+determines the correct file to use:
+
+```shell
+SKIP_RELEASE_VERIFICATION=true DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
+```
+
 > [!IMPORTANT]
 >
-> On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is
-> required. If you have [homebrew](https://brew.sh/) installed, you can get it
-> by running:
+> If you have [Homebrew](https://brew.sh/) installed on macOS, you can install
+> `coreutils` by running:
 >
 > ```shell
 > brew install coreutils
@@ -104,29 +126,80 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=sta
 
 On Windows, use the PowerShell module as an Administrator.
 
-> [!NOTE] Version note
+> [!NOTE] Requirements
 >
 > Windows
 > [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
 > (v5.1) is required. Other
 > [versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
 > including PowerShell Core (v6.0+) are not supported at this time.
+>
+> The downloaded module should be verified before it is imported because a
+> module cannot establish trust in its own code. By default, installation
+> requires the [GitHub CLI](https://cli.github.com/) and verifies both the
+> immutable release and artifact attestation. To explicitly opt out, set
+> `$skip_release_verification` to `$true`; this also passes
+> `-SkipReleaseVerification` to `Install-OpenTelemetryCore` for the Windows
+> archive. Skipping verification is not recommended.
 
 ```powershell
 # PowerShell 5.1 is required
 #Requires -PSEdition Desktop
 
-# Download the module
-$module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
-$download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+$version = "v1.17.0"
+$repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
+$release_workflow = "$repository/.github/workflows/release.yml"
+$skip_release_verification = $false
 
-# Import the module to use its functions
-Import-Module $download_path
+# Use a unique directory protected by the Program Files access controls.
+$program_files = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::ProgramFiles)
+$download_dir = Join-Path $program_files "OpenTelemetry .NET AutoInstrumentation Download $([System.Guid]::NewGuid().ToString("N"))"
+$download_path = Join-Path $download_dir "OpenTelemetry.DotNet.Auto.psm1"
+$module_url = "https://github.com/$repository/releases/download/$version/OpenTelemetry.DotNet.Auto.psm1"
 
-# Install core files (online vs offline method)
-Install-OpenTelemetryCore
-Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
+New-Item -ItemType Directory -Path $download_dir -ErrorAction Stop | Out-Null
+
+try {
+    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+
+    if ($skip_release_verification) {
+        Write-Warning "Release verification is skipped. Downloaded PowerShell code and binaries will not be verified."
+    }
+    else {
+        $github_cli = Get-Command gh.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+        if (-not $github_cli) {
+            throw "The GitHub CLI ('gh') is required. Install it from https://cli.github.com/ or explicitly set `$skip_release_verification to `$true."
+        }
+
+        & $github_cli.Source release verify-asset $version $download_path --repo $repository
+        if ($LASTEXITCODE -ne 0) {
+            throw "GitHub release verification failed for the PowerShell module."
+        }
+
+        & $github_cli.Source attestation verify $download_path `
+            --repo $repository `
+            --signer-workflow $release_workflow `
+            --source-ref "refs/tags/$version"
+        if ($LASTEXITCODE -ne 0) {
+            throw "GitHub artifact attestation verification failed for the PowerShell module."
+        }
+    }
+
+    # Import the module only after successful verification.
+    Import-Module $download_path
+
+    # To install from a previously downloaded Windows archive, add:
+    # -LocalPath "C:\Path\To\OpenTelemetry.zip"
+    Install-OpenTelemetryCore -SkipReleaseVerification:$skip_release_verification -ErrorAction Stop
+
+    # Cache the verified module for updates and uninstallation.
+    Copy-Item -LiteralPath $download_path -Destination (Get-OpenTelemetryInstallDirectory) -Force
+}
+finally {
+    if (Test-Path -LiteralPath $download_dir) {
+        Remove-Item -LiteralPath $download_dir -Force -Recurse
+    }
+}
 
 # Set up the instrumentation for the current PowerShell session
 Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
@@ -258,7 +331,7 @@ IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 ## NuGet package
 
 You can instrument
-[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
+[`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-as-self-contained)
 applications using the NuGet packages. See [NuGet packages](./nuget-packages)
 for more information.
 

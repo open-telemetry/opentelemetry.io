@@ -3,7 +3,7 @@ title: 承認者およびメンテナーのための SIG のプラクティス
 linkTitle: SIG のプラクティス
 description: 承認者およびメンテナーがどのようにイシューやコントリビューションを管理するかを学びます。
 weight: 999
-default_lang_commit: 94f3816a5eadb63c7ac0309fe5aac6552abec12a
+default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
 cSpell:ignore: Comms contribfest
 ---
 
@@ -145,7 +145,7 @@ cSpell:ignore: Comms contribfest
 
 SIG が共同所有するドキュメント（コレクター、デモ、言語固有など）を変更する PR は、ドキュメント承認者による承認と SIG 承認者による承認の 2 つの承認を目指す必要があります。
 
-- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグ付与します
+- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグを付与します
 - ドキュメント承認者が PR を承認した後、[`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing) ラベルを追加します。
   これにより SIG に対応を促します
 - SIG の承認が一定期間（通常 2 週間、緊急の場合は短縮可能）内に得られない場合、ドキュメントメンテナーの判断でマージできます
@@ -198,9 +198,7 @@ SIG が共同所有するドキュメント（コレクター、デモ、言語�
 
 1. 前のセクションのリンクから、たとえば `otelbot/spec-integration-v1.56.0-dev` のような、対象となる仕様の最新の統合ブランチをみつけます。
 2. ブランチページからリンクされている、関連 PR を開きます。
-3. 対応するワークフローを新たに実行し、最新の変更を取り込みます
-   - [update-spec-integration-branch.yml][]
-   - [update-semconv-integration-branch.yml][]
+3. [specs-integration.yml][] ワークフローを新たに実行し、最新の変更を取り込みます。
 4. PR チェックが成功している場合、仕様はリリース可能です。
    失敗している場合は、`@open-telemetry/docs-maintainers` にメンションし、リリース前に不具合を解消できるようにします。
 
@@ -209,5 +207,4 @@ SIG が共同所有するドキュメント（コレクター、デモ、言語�
 月を通して、統合 PR を定期的に確認し、CI チェックが成功するよう段階的な修正をコミットしてください。
 アップストリームの変更セットがまだ小さいうちに、不具合を早期に察知する方が、リリース当日に慌てて対応するよりもはるかに簡単です。
 
-[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/actions/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]: https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml

@@ -3,6 +3,7 @@ title: 伝搬
 description: JS SDKのコンテキスト伝搬
 weight: 65
 default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
+drifted_from_default: true
 cSpell:ignore: rolldice
 ---
 

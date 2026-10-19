@@ -29,35 +29,40 @@ const ISSUE_INPUT = {
   body: 'body content',
 };
 
+const ISSUE_URL =
+  'https://github.com/open-telemetry/opentelemetry.io/issues/123';
+
 describe('pick-branch: ensureWarningIssueOpen', () => {
-  test('skips creation when an issue already exists', () => {
+  test('is a no-op when an issue is already open', () => {
     const { runGh, calls } = makeFakeGh({
       'issue list': { stdout: '[{"number":42}]', status: 0 },
     });
     const logs = [];
-    const result = ensureWarningIssueOpen({
+    const outcome = ensureWarningIssueOpen({
       ...ISSUE_INPUT,
       dryRun: false,
       runGh,
       log: (m) => logs.push(m),
     });
-    assert.equal(result.action, 'skipped-existing');
-    assert.equal(calls.length, 1, 'only the issue-list call should be made');
+    assert.equal(outcome, 'unchanged');
+    assert.equal(calls.length, 1, 'issue-list is the sole gh call');
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
-    assert.match(logs[0], /already open; skipping/);
+    assert.match(logs[0], /already open; nothing to do/);
   });
 
   test('creates issue (with label) when none exists', () => {
     const { runGh, calls } = makeFakeGh({
       'issue list': { stdout: '[]', status: 0 },
+      'issue create': { stdout: `${ISSUE_URL}\n`, status: 0 },
     });
-    const result = ensureWarningIssueOpen({
+    const logs = [];
+    const outcome = ensureWarningIssueOpen({
       ...ISSUE_INPUT,
       dryRun: false,
       runGh,
-      log: noLog,
+      log: (m) => logs.push(m),
     });
-    assert.equal(result.action, 'created');
+    assert.equal(outcome, 'created');
     assert.equal(calls.length, 3);
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
     assert.deepEqual(calls[1].slice(0, 3), [
@@ -80,6 +85,10 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       createArgs[createArgs.indexOf('--body') + 1],
       ISSUE_INPUT.body,
     );
+    assert.ok(
+      logs.some((m) => m.includes(ISSUE_URL)),
+      'created issue URL is logged',
+    );
   });
 
   test('dry-run still checks but never creates', () => {
@@ -87,18 +96,18 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       'issue list': { stdout: '[]', status: 0 },
     });
     const logs = [];
-    const result = ensureWarningIssueOpen({
+    const outcome = ensureWarningIssueOpen({
       ...ISSUE_INPUT,
       dryRun: true,
       runGh,
       log: (m) => logs.push(m),
     });
-    assert.equal(result.action, 'would-create');
-    assert.equal(calls.length, 1, 'only the read-only issue-list call runs');
+    assert.equal(outcome, 'created');
+    assert.equal(calls.length, 1, 'read-only issue-list is the sole gh call');
     assert.deepEqual(calls[0].slice(0, 2), ['issue', 'list']);
     assert.ok(
-      logs.some((m) => /\[dry-run\] Would open an issue/.test(m)),
-      'should log a "would open" message',
+      logs.some((m) => /\[dry-run\] Opening an issue/.test(m)),
+      'dry-run log announces the issue that a write run would open',
     );
   });
 
@@ -107,18 +116,16 @@ describe('pick-branch: ensureWarningIssueOpen', () => {
       'issue list': { stdout: '[{"number":7}]', status: 0 },
     });
     const logs = [];
-    const result = ensureWarningIssueOpen({
+    const outcome = ensureWarningIssueOpen({
       ...ISSUE_INPUT,
       dryRun: true,
       runGh,
       log: (m) => logs.push(m),
     });
-    assert.equal(result.action, 'skipped-existing');
+    assert.equal(outcome, 'unchanged');
     assert.equal(calls.length, 1);
-    assert.ok(
-      !logs.some((m) => /Would open an issue/.test(m)),
-      'should not log "would open" when an issue exists',
-    );
+    assert.equal(logs.length, 1, 'no-op message is the sole log line');
+    assert.match(logs[0], /already open; nothing to do/);
   });
 
   test('throws when gh issue list fails', () => {

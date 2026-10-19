@@ -9,7 +9,7 @@ cSpell:ignore: Customizer Dotel myextension
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/extensions-minimal"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/extensions-minimal"?>
 
 ## Introduction
 
@@ -49,7 +49,7 @@ java {
 
 dependencies {
     // Use BOM to manage OpenTelemetry dependency versions
-    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.61.0"))
+    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.64.0"))
 
     // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
     compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
@@ -541,7 +541,7 @@ to:
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
@@ -586,7 +586,7 @@ instrumentations.
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
 ```java
 /**
@@ -741,7 +741,7 @@ Register custom propagators that can be referenced by name in the
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
@@ -767,7 +767,7 @@ configuration.
 **Example (`otel.traces.sampler=demo`):**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
@@ -794,7 +794,7 @@ resource providers.
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ResourceProvider.class)

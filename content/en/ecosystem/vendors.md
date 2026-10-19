@@ -4,6 +4,8 @@ description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 ---
 
+{{% include freeze-notice.md %}}
+
 A non-exhaustive list of organizations offering solutions that consume
 OpenTelemetry natively via [OTLP](/docs/specs/otlp/), such as observability
 backends and observability pipelines.
@@ -19,6 +21,7 @@ source product for their customers.
 
 {{% ecosystem/vendor-table %}}
 
+<!--
 ## Adding your organization {#how-to-add}
 
 To have your organization listed, [submit a PR][] with an entry added to the
@@ -44,7 +47,9 @@ OpenTelemetry, see [Integrations](/ecosystem/integrations/).
 
 [submit a PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md vendor %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md vendor % } }
 
 [vendors list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml
+-->

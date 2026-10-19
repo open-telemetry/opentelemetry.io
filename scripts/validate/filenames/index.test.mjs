@@ -1,0 +1,374 @@
+// Unit tests for the filename checks, plus repo-wide sanity and drift guards.
+
+import { describe, test, beforeEach, afterEach } from 'node:test';
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import {
+  OBSOLETE_PATHS,
+  SCAN_DIRS,
+  escapeAnnotation,
+  escapeAnnotationProperty,
+  findBadFilenames,
+  findObsoletePaths,
+  fixViolations,
+  isBadName,
+} from './index.mjs';
+
+const repoRoot = fileURLToPath(new URL('../../../', import.meta.url));
+
+describe('isBadName', () => {
+  test('flags names containing underscores', () => {
+    assert.ok(isBadName('getting_started.md'));
+    assert.ok(isBadName('my_dir'));
+  });
+
+  test('allows kebab-case names', () => {
+    assert.equal(
+      isBadName('getting-started.md'),
+      false,
+      'kebab-case name is accepted',
+    );
+    assert.equal(isBadName('img.png'), false, 'kebab-case name is accepted');
+  });
+
+  test('allows _- and .-prefixed names', () => {
+    assert.equal(isBadName('_index.md'), false, '_-prefixed name is exempt');
+    assert.equal(isBadName('__init__.py'), false, '_-prefixed name is exempt');
+    assert.equal(
+      isBadName('.git_ignore-ish'),
+      false,
+      '.-prefixed name is exempt',
+    );
+  });
+});
+
+describe('temp-fixture checks', () => {
+  let cwd;
+
+  // A fresh fixture per test keeps the tests below order-independent.
+  beforeEach(() => {
+    cwd = fs.mkdtempSync(path.join(os.tmpdir(), 'filenames-test-'));
+    // The `tracked` check asks git, so every fixture is a repository.
+    execFileSync('git', ['init', '-q'], { cwd });
+    fs.mkdirSync(path.join(cwd, 'content/a_b'), { recursive: true });
+    fs.writeFileSync(path.join(cwd, 'content/a_b/c_d.md'), '');
+    fs.writeFileSync(path.join(cwd, 'content/a_b/_index.md'), '');
+    fs.mkdirSync(path.join(cwd, 'static'), { recursive: true });
+    fs.writeFileSync(path.join(cwd, 'static/refcache.json'), '{}');
+    fs.mkdirSync(path.join(cwd, 'tools'), { recursive: true });
+    fs.writeFileSync(path.join(cwd, 'tools/x.txt'), '');
+  });
+
+  afterEach(() => {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  });
+
+  test('findBadFilenames reports files and directories, sorted', () => {
+    assert.deepEqual(findBadFilenames(['content', 'static'], { cwd }), [
+      'content/a_b',
+      'content/a_b/c_d.md',
+    ]);
+  });
+
+  test('findBadFilenames skips missing directories', () => {
+    assert.deepEqual(findBadFilenames(['no-such-dir'], { cwd }), []);
+  });
+
+  test('findObsoletePaths reports only paths that exist', () => {
+    const found = findObsoletePaths(OBSOLETE_PATHS, { cwd });
+    assert.deepEqual(found.map((entry) => entry.path).sort(), [
+      'static/refcache.json',
+      'tools',
+    ]);
+    fs.rmSync(path.join(cwd, 'tools'), { recursive: true });
+    assert.deepEqual(
+      findObsoletePaths(OBSOLETE_PATHS, { cwd }).map((entry) => entry.path),
+      ['static/refcache.json'],
+    );
+  });
+
+  test('fixViolations deletes obsolete paths and renames deepest-first', () => {
+    const logs = [];
+    fixViolations({
+      badNames: findBadFilenames(['content'], { cwd }),
+      obsolete: findObsoletePaths(OBSOLETE_PATHS, { cwd }),
+      cwd,
+      log: (message) => logs.push(message),
+    });
+
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'tools')),
+      false,
+      'obsolete tools/ is removed',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'static/refcache.json')),
+      false,
+      'obsolete refcache.json is removed',
+    );
+    assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/c-d.md')));
+    assert.ok(fs.existsSync(path.join(cwd, 'content/a-b/_index.md')));
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a_b')),
+      false,
+      'a_b directory is renamed away',
+    );
+    assert.equal(logs.length, 4, 'one log line per fixed violation');
+
+    assert.deepEqual(findBadFilenames(['content'], { cwd }), []);
+    assert.deepEqual(findObsoletePaths(OBSOLETE_PATHS, { cwd }), []);
+  });
+
+  test('fixViolations refuses a rename over an existing path, mutating nothing', () => {
+    fs.writeFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'occupied');
+
+    assert.throws(
+      () =>
+        fixViolations({
+          badNames: findBadFilenames(['content'], { cwd }),
+          obsolete: findObsoletePaths(OBSOLETE_PATHS, { cwd }),
+          cwd,
+          log: () => {},
+        }),
+      /refusing to rename content\/a_b\/c_d\.md: content\/a_b\/c-d\.md already exists/,
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'tools')),
+      true,
+      'obsolete tools/ is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'static/refcache.json')),
+      true,
+      'obsolete refcache.json is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a-b')),
+      false,
+      'a_b directory keeps its name',
+    );
+    assert.ok(fs.existsSync(path.join(cwd, 'content/a_b/c_d.md')));
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a_b/c-d.md'), 'utf8'),
+      'occupied',
+    );
+  });
+
+  test('fixViolations refuses two renames onto the same destination', () => {
+    fs.writeFileSync(path.join(cwd, 'content/a_b-c.md'), 'first');
+    fs.writeFileSync(path.join(cwd, 'content/a-b_c.md'), 'second');
+
+    assert.throws(
+      () =>
+        fixViolations({
+          badNames: ['content/a_b-c.md', 'content/a-b_c.md'],
+          cwd,
+          log: () => {},
+        }),
+      /refusing to rename content\/a-b_c\.md: content\/a-b-c\.md is also the rename destination of another path/,
+    );
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a_b-c.md'), 'utf8'),
+      'first',
+      'first source is untouched',
+    );
+    assert.equal(
+      fs.readFileSync(path.join(cwd, 'content/a-b_c.md'), 'utf8'),
+      'second',
+      'second source is untouched',
+    );
+    assert.equal(
+      fs.existsSync(path.join(cwd, 'content/a-b-c.md')),
+      false,
+      'no rename is applied',
+    );
+  });
+
+  test('findObsoletePaths reports a dangling symlink', () => {
+    fs.rmSync(path.join(cwd, 'static/refcache.json'));
+    fs.symlinkSync('no-such-target', path.join(cwd, 'static/refcache.json'));
+    assert.deepEqual(
+      findObsoletePaths(OBSOLETE_PATHS, { cwd }).map((entry) => entry.path),
+      ['tools', 'static/refcache.json'],
+    );
+  });
+
+  // `tracked` entry (see OBSOLETE_PATHS): a git fixture, not the filesystem.
+  test('a tracked entry is reported only while git tracks the path, and fixed by untracking', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    assert.deepEqual(
+      tracked.map((entry) => entry.path),
+      ['.lycheecache'],
+      'derived link cache is the `tracked` entry',
+    );
+    fs.writeFileSync(
+      path.join(cwd, '.lycheecache'),
+      'https://a.example/,200,1\n',
+    );
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }),
+      [],
+      'untracked derived file is not a violation',
+    );
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'track the csv');
+    assert.deepEqual(
+      findObsoletePaths(tracked, { cwd }).map((entry) => entry.path),
+      ['.lycheecache'],
+      'tracked derived file is reported',
+    );
+    fixViolations({
+      obsolete: findObsoletePaths(tracked, { cwd }),
+      cwd,
+      log() {},
+    });
+    assert.equal(git('ls-files', '--', '.lycheecache'), '', 'untracked');
+    assert.ok(
+      fs.existsSync(path.join(cwd, '.lycheecache')),
+      'file kept on disk',
+    );
+    assert.deepEqual(findObsoletePaths(tracked, { cwd }), [], 'fixed');
+  });
+
+  test('a refused untrack throws instead of reporting a fix', () => {
+    const git = (...args) =>
+      execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
+    git('config', 'user.email', 'test@example.invalid');
+    git('config', 'user.name', 'Test');
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    const csv = path.join(cwd, '.lycheecache');
+    // Committed, staged and working-tree contents all differ: git refuses
+    // `rm --cached` without --force.
+    fs.writeFileSync(csv, 'a,200,1\n');
+    git('add', '.lycheecache');
+    git('commit', '-q', '-m', 'csv');
+    fs.writeFileSync(csv, 'b,200,1\n');
+    git('add', '.lycheecache');
+    fs.writeFileSync(csv, 'c,200,1\n');
+    assert.throws(
+      () =>
+        fixViolations({
+          obsolete: findObsoletePaths(tracked, { cwd }),
+          cwd,
+          log() {},
+        }),
+      /\.lycheecache/,
+      'refusal surfaces',
+    );
+    assert.notEqual(
+      git('ls-files', '--', '.lycheecache'),
+      '',
+      'file remains tracked',
+    );
+  });
+
+  test('a git failure is an error, not "not tracked"', () => {
+    const tracked = OBSOLETE_PATHS.filter((entry) => entry.tracked);
+    fs.writeFileSync(path.join(cwd, '.git', 'index'), 'not an index');
+    assert.throws(
+      () => findObsoletePaths(tracked, { cwd }),
+      /git ls-files/,
+      'git failure surfaces',
+    );
+  });
+});
+
+describe('escapeAnnotation', () => {
+  test('escapes %, CR, and LF', () => {
+    assert.equal(escapeAnnotation('a%b\r\nc'), 'a%25b%0D%0Ac');
+  });
+
+  test('leaves URLs intact', () => {
+    const url = 'https://github.com/open-telemetry/opentelemetry.io/issues/1';
+    assert.equal(escapeAnnotation(url), url);
+  });
+
+  test('property form also escapes : and ,', () => {
+    assert.equal(escapeAnnotationProperty('a:b,c%d'), 'a%3Ab%2Cc%25d');
+  });
+});
+
+describe('repo-wide sanity', () => {
+  // Guards against a false-green check that silently scans nothing.
+  test('every scanned directory exists at the repo root', () => {
+    for (const dir of SCAN_DIRS) {
+      assert.ok(
+        fs.existsSync(path.join(repoRoot, dir)),
+        `scan root ${dir}/ exists`,
+      );
+    }
+  });
+
+  test('every obsolete-path entry carries guidance', () => {
+    assert.ok(OBSOLETE_PATHS.length > 0, 'obsolete-path list has entries');
+    for (const { path: p, message } of OBSOLETE_PATHS) {
+      assert.equal(path.posix.normalize(p), p, `path is normalized: ${p}`);
+      assert.ok(
+        p && !path.posix.isAbsolute(p) && p !== '..' && !p.startsWith('../'),
+        `path stays within the repository: ${p}`,
+      );
+      assert.match(
+        message,
+        /#\d+|https:\/\//,
+        `message for ${p} references an issue, PR, or URL`,
+      );
+    }
+  });
+
+  // OBSOLETE_PATHS is canonical; the docs page mirrors it for contributors.
+  test('the docs page mirrors every obsolete-path entry', () => {
+    const docsPage = fs.readFileSync(
+      path.join(repoRoot, 'content/en/docs/contributing/pr-checks.md'),
+      'utf8',
+    );
+    // Scope the checks to the section that mirrors the table, up to the
+    // next h3; it includes the entry list and its link definitions.
+    const section = docsPage
+      .split('#### Obsolete files and folders')[1]
+      ?.split('\n### ')[0];
+    assert.ok(section, 'docs have an "Obsolete files and folders" section');
+    for (const { path: p, message } of OBSOLETE_PATHS) {
+      assert.ok(
+        section.includes(`\`${p}\``) || section.includes(`\`${p}/\``),
+        `docs list the path ${p}`,
+      );
+      // Issue/PR references appear as `#N` or as GitHub issue/pull URLs.
+      const refs = new Set([
+        ...(message.match(/#\d+/g) ?? []),
+        ...[...message.matchAll(/\/(?:issues|pull)\/(\d+)/g)].map(
+          (m) => `#${m[1]}`,
+        ),
+      ]);
+      // Cited in the list text itself: a reference-style link definition
+      // alone (`[#N]: url`) would satisfy a plain includes() check.
+      const listText = section.split(/^\[#/m)[0];
+      for (const ref of refs) {
+        assert.ok(
+          listText.includes(`[${ref}]`),
+          `docs cite ${ref}, referenced by the message for ${p}`,
+        );
+      }
+    }
+    // Reverse direction: every docs list item must correspond to an
+    // OBSOLETE_PATHS entry, so stale docs items don't linger after removal.
+    const knownPaths = new Set(OBSOLETE_PATHS.map(({ path: p }) => p));
+    const docsPaths = [...section.matchAll(/^- `([^`]+)`/gm)].map((m) =>
+      m[1].replace(/\/$/, ''),
+    );
+    for (const dp of docsPaths) {
+      assert.ok(
+        knownPaths.has(dp),
+        `docs list item \`${dp}\` corresponds to an OBSOLETE_PATHS entry`,
+      );
+    }
+  });
+});

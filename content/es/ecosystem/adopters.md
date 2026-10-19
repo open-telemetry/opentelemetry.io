@@ -2,6 +2,7 @@
 title: Usuarios
 description: Organizaciones que utilizan OpenTelemetry
 default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
+drifted_from_default: true
 ---
 
 La misión de OpenTelemetry es facilitar la observabilidad efectiva para todos

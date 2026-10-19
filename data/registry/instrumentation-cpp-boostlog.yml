@@ -1,0 +1,15 @@
+# cSpell:ignore boostlog
+title: Boost log OpenTelemetry sink backend
+registryType: instrumentation
+language: cpp
+tags:
+  - boostlog
+  - instrumentation
+  - cpp
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/boost_log
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

@@ -2,6 +2,13 @@
 # This file is automatically updated by scripts/collector-sync
 
 ---
+- name: adaptivetailsamplingprocessor
+  display_name: Adaptive Tail Sampling Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
 - name: attributesprocessor
   display_name: Attributes Processor
   repo: contrib
@@ -14,7 +21,7 @@
     metrics: beta
     traces: beta
 - name: awsecsattributesprocessor
-  display_name: awsecsattributesprocessor
+  display_name: AWS ECS Attributes Processor
   repo: contrib
   distributions:
     - contrib
@@ -35,7 +42,7 @@
     metrics: beta
     traces: beta
 - name: cardinalityguardianprocessor
-  display_name: cardinalityguardianprocessor
+  display_name: Cardinality Guardian Processor
   repo: contrib
   distributions:
     - contrib
@@ -150,10 +157,10 @@
     - contrib
     - k8s
   stability:
-    logs: beta
-    metrics: beta
-    traces: beta
     profiles: development
+    logs: stable
+    metrics: stable
+    traces: stable
 - name: logdedupprocessor
   display_name: Log DeDuplication Processor
   repo: contrib
@@ -175,9 +182,9 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
-    traces: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
 - name: memorylimiterprocessor
   display_name: Memory Limiter Processor
   repo: core
@@ -212,6 +219,16 @@
     - k8s
   stability:
     metrics: beta
+- name: partitioningprocessor
+  display_name: Partitioning Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
 - name: probabilisticsamplerprocessor
   display_name: Probabilistic Sampling Processor
   repo: contrib
@@ -222,6 +239,16 @@
   stability:
     logs: alpha
     traces: beta
+- name: queuebatchprocessor
+  display_name: Queue Batch Processor
+  repo: core
+  distributions:
+    - core
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
 - name: redactionprocessor
   display_name: Redaction Processor
   repo: contrib
@@ -265,6 +292,13 @@
     metrics: beta
     traces: beta
     profiles: development
+- name: rollingspanlatencyprocessor
+  display_name: rollingspanlatencyprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
 - name: schemaprocessor
   display_name: Schema Processor
   repo: contrib
@@ -274,6 +308,13 @@
     logs: alpha
     metrics: alpha
     traces: alpha
+- name: signingprocessor
+  display_name: Signing Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib
@@ -306,6 +347,15 @@
     - k8s
   stability:
     traces: beta
+- name: telemetrypolicyprocessor
+  display_name: Telemetry Policy Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
 - name: transformprocessor
   display_name: Transform Processor
   repo: contrib

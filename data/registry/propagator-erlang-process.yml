@@ -1,0 +1,14 @@
+title: OpenTelemetry Process Propagator
+registryType: propagator
+language: erlang
+tags:
+  - process
+  - propagator
+  - erlang
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/propagators/opentelemetry_process_propagator
+license: Apache 2.0
+description: Functions for cross-process OpenTelemetry context propagation.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2026-07-09

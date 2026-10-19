@@ -23,7 +23,7 @@ leaving Dart and Flutter developers without a supported path to capture
 telemetry from their servers and apps.
 
 An actively developed implementation of the OpenTelemetry specification for Dart
-already exists that is in the process of being donated to the the OpenTelemetry
+already exists that is in the process of being donated to the OpenTelemetry
 project:
 [dartastic_opentelemetry](https://github.com/MindfulSoftwareLLC/dartastic_opentelemetry)
 and its standalone API package

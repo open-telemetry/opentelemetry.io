@@ -10,8 +10,9 @@ info here.
 
 **Environment Setup:**
 
-- Install Node.js LTS (currently v22.x): Use `nvm install` or
-  `nvm install lts && nvm use lts`
+- Install the Node.js version pinned in `.nvmrc`: `nvm install` (for Windows,
+  see
+  [Development setup](https://opentelemetry.io/docs/contributing/development/))
 - If Puppeteer download fails due to network issues: Set
   `export PUPPETEER_SKIP_DOWNLOAD=true`
 - Clone repository:
@@ -20,6 +21,7 @@ info here.
 **Initial Setup and Dependencies:**
 
 - `npm install` -- takes ~45 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
+  Installs the versions pinned in the committed `package-lock.json`
 - Initial setup automatically runs: `npm run prepare` which executes
   `get:submodule` and `_prepare:docsy`
 - Submodules are essential - they contain OpenTelemetry specifications,
@@ -42,7 +44,6 @@ info here.
 - `npm run check:spelling` -- ~5 seconds, validates content spelling
 - `npm run check:format` -- ~25 seconds, validates Prettier formatting
 - `npm run check:markdown` -- ~10 seconds, validates markdown syntax
-- `npm run check:registry` -- ~1 second, validates registry YAML files
 
 ### Development Server
 
@@ -50,8 +51,6 @@ info here.
 
 - `npm run serve` -- starts Hugo development server at http://localhost:1313
 - Takes ~1.5 minutes initial build, then serves from memory with live reload
-- Alternative: `npm run serve:netlify` -- serves at http://localhost:8888 for
-  testing Netlify redirects
 - NEVER CANCEL serve startup. Set timeout to 3+ minutes for initial build.
 
 ### Critical Warnings and Known Issues
@@ -114,7 +113,6 @@ info here.
 ├── static/               # Static assets (images, CSS, JS)
 ├── themes/docsy/         # Docsy theme submodule
 ├── scripts/              # Build and validation helper scripts
-├── gulp-src/             # Gulp task definitions for validation
 ├── data/                 # YAML data files (registry, etc.)
 └── public/               # Generated site output (git-ignored)
 ```
@@ -132,14 +130,12 @@ npm run build:production # Production build with minification (~1.5min)
 
 # Development server
 npm run serve            # Serve at localhost:1313 (~1.5min startup)
-npm run serve:netlify    # Serve at localhost:8888 with Netlify config
 
 # Validation and testing
 npm run check            # Run ALL validation checks (~2min)
 npm run check:spelling   # Spell check content (~5s)
 npm run check:format     # Check Prettier formatting (~25s)
 npm run check:markdown   # Lint markdown files (~10s)
-npm run check:registry   # Validate registry YAML (~1s)
 
 # Fixing issues
 npm run fix:format       # Auto-fix formatting issues
@@ -165,8 +161,8 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 ### Hugo-Specific Details
 
-- Uses Hugo v0.148.2 with extended features
-- Theme: Docsy (Google's documentation theme)
+- Uses the `hugo-extended` version pinned in `package.json`
+- Theme: Docsy
 - Multilingual support enabled for 8+ languages
 - Content mounting from submodules defined in
   `config/_default/module-template.yaml`
@@ -194,7 +190,6 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 - `npm run check:spelling`
 - `npm run check:format`
-- `npm run check:registry`
 - `npm run check:markdown`
 
 **Common Timing Issues:**

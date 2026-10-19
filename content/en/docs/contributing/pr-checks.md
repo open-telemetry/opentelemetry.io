@@ -19,7 +19,7 @@ a set of checks are executed. The PR checks verify that:
 >
 > If any of the PR checks fails, try to
 > [fix content issues](../pull-requests/#fix-issues) first by running
-> `npm run fix:all` locally.
+> `npm run fix` locally.
 >
 > You can also add the comment `/fix` to your PR. This will trigger the
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
@@ -36,6 +36,17 @@ This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 
 If the [Netlify](https://www.netlify.com/) build fails, select **Details** for
 more information.
+
+A `?? some/path` status line shortly before `"build.command" failed`, naming a
+path that your PR doesn't touch, suggests that the build tripped over a stale
+Netlify build cache rather than your changes:
+
+1. Ask a maintainer, through a PR comment, to retry the build without its cache.
+   For the cache-clearing procedure, see
+   [Dependency management](/site/build/dependencies/#netlify-build-cache).
+2. If the failure recurs on the cache-free retry, the cache wasn't the cause:
+   some step of the build is writing that path, and your changes are the first
+   suspect.
 
 ## GitHub PR checks {#checks}
 
@@ -107,8 +118,8 @@ This check verifies that:
 - All [file names are in kebab-case](../style-guide/#file-names)
 - No obsolete files or folders exist in the repository (see list below)
 
-If this check fails, run `npm run fix:filenames` locally and push the changes in
-a new commit.
+Follow the guidance in each error annotation. To apply fixes locally, run
+`npm run fix:filenames` and push the changes in a new commit.
 
 > [!NOTE]
 >
@@ -116,29 +127,24 @@ a new commit.
 
 #### Obsolete files and folders
 
-The following paths are flagged as obsolete and removed by `fix:filenames`. When
-present, an issue or PR number provides context for the change that made the
-path obsolete.
+The check flags these obsolete paths:
 
-- `tools/` - [Migrate code-excerpts tooling to npm package version #9638][#9638]
+- `tools/` - removed when [code-excerpts tooling moved to an npm package][#9638]
+- `static/refcache.json` - removed in the [switch to Lychee][#10911]. If your
+  branch restores it, follow the [stale-branch update instructions][#10990].
+- `.lycheecache` as a **tracked** file - untracked when the committed link cache
+  [became `link-cache.jsonc`][#11649]. If your branch still commits it, follow
+  the [update instructions][#11928].
 
 [#9638]: https://github.com/open-telemetry/opentelemetry.io/pull/9638
+[#10911]: https://github.com/open-telemetry/opentelemetry.io/pull/10911
+[#10990]: https://github.com/open-telemetry/opentelemetry.io/issues/10990
+[#11649]: https://github.com/open-telemetry/opentelemetry.io/pull/11649
+[#11928]: https://github.com/open-telemetry/opentelemetry.io/issues/11928
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-These two checks build the website and verify that all links are valid.
-
-If you added or changed an external link, the link checker records it in the
-reference cache (`static/refcache.json`), and this check will fail until that
-cache is updated.
-
-The easiest way to update it is to comment
-[`/fix:refcache`](../pull-requests/#fixing-prs-in-github) on your PR — the
-OpenTelemetry bot updates `static/refcache.json` for you.
-
-Alternatively, you can build and check links locally, by running
-`npm run check:links`. This command also updates the reference cache. Push any
-changes to the refcache in a new commit.
+These two checks build the website and verify that its links are valid.
 
 > [!NOTE]
 >
@@ -150,7 +156,7 @@ changes to the refcache in a new commit.
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
 link checker.
 
-#### Handling valid external links
+#### Handling valid external links {#handling-valid-external-links}
 
 The link checker will sometimes get an HTTP status other than 200 (success) by
 servers that block checkers. Such servers will often return an HTTP status in
@@ -162,28 +168,45 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
 are other query parameters. For example, the following URLs will be ignored:
 
-- <https:/some-example.org?link-check=no>
-- <https:/some-example.org?other-param=value&link-check=no>
+- `https:/some-example.org?link-check=no`
+- `https:/some-example.org?other-param=value&link-check=no`
 
-> [!TIP] Maintainers tip
->
-> Maintainers can run the following script immediately after having run the link
-> checker to have Puppeteer attempt to validate links with non-ok statuses:
->
-> ```sh
-> ./scripts/double-check-refcache-4XX.mjs
-> ```
->
-> Use the `-f` flag to also validate URL fragments (anchors) in external links,
-> which `htmltest` doesn't do. We don't currently run this often, so you will
-> probably want to limit the number of updated entries using the `-m N` flag.
-> For usage info, run with `-h`.
+When you add `link-check=no`, record the date of your manual validation by also
+appending a `last-validated=YYYY-MM-DD` parameter, for example:
+
+- `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CHECK LINKS (production, internal)` {#check-links-production-internal .notranslate lang=en}
+
+This check fails when a page links to a **draft** or **future-dated** page: such
+a page renders in the deploy preview, but the production site omits it. Either
+link to a published page instead, or publish the target first. If `CHECK LINKS`
+reports the same page as missing, it doesn't exist at all: fix the link. For
+what the check builds and covers, see
+[Links into unpublished pages](/site/build/link-checking/#production-internal).
+
+### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
+
+If you added or changed an external link, the link checker records it in the
+link cache (`link-cache.jsonc`), and this check fails until the updated cache is
+committed.
+
+If your branch predates `link-cache.jsonc`, first update it from `main`; for
+how, including a conflict on the cache file itself, see the [update
+instructions][#11928]. Then, either:
+
+- Comment [`/fix:link-cache`](../pull-requests/#fixing-prs-in-github) on your PR
+  — the OpenTelemetry bot updates the cache for you (on a branch that predates
+  `link-cache.jsonc`, the bot refuses and points to the same instructions); or
+- Build and check links locally: `npm run install:safe`, then
+  `npm run check:links`, which also updates the link cache. Push the cache
+  changes from a passing run in a new commit.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
-If this check fails, review the `BUILD and CHECK LINKS` log, under the
-`npm run log:check:links` step, for any other potential issues. Ask maintainers
-for help, if you are unsure how to recover.
+If this check fails, review the `BUILD` log, under the `npm run log:build` step,
+for any other potential issues. Ask maintainers for help, if you are unsure how
+to recover.
 
 #### Always use a path for site-local links {#avoid-external-site-local-links}
 
@@ -203,7 +226,8 @@ Using local paths ensures that:
   tab, which is not the desired behavior for site-local navigation
 - Localization link processing works as expected: links are automatically
   prefixed with the appropriate language code
-- Local paths are easier to link-check and don't unnecessarily fill the refcache
+- Local paths are easier to link-check and don't unnecessarily fill the link
+  cache
 
 <details>
 <summary>Note to maintainers</summary>
@@ -213,9 +237,14 @@ The following code enforces the link requirement described in this section:
 - The render-link hook that emits this warning:
   [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
 - The script that auto-converts full URLs to local paths:
-  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+  [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+#### Never mark a localized page as a draft {#localized-drafts}
+
+The build warns about a localized page marked as a draft. For the rule and the
+remedy, see [Draft pages](../localization/#drafts).
 
 ### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 

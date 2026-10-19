@@ -1,7 +1,7 @@
 ---
 title: service.criticality を使用したテイルベースサンプリング
 linkTitle: テイルサンプリング
-default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
+default_lang_commit: 98f910ef53d1e7f45002e7303b2af4da15282b21
 ---
 
 この例では、OpenTelemetry Collector においてインテリジェントなテイルベースのサンプリング決定を行うために、リソース属性 [`service.criticality`](/docs/specs/semconv/resource/service/#service) を使用する方法を示します。
@@ -12,7 +12,7 @@ default_lang_commit: d503571bbd711e05b9e6f85966fed6f0e00ba910
 | ---------- | ------------------ | ---------------------------------------------------------------------------- |
 | `critical` | 100%               | 支払い、チェックアウト、フロントエンド、フロントエンドプロキシ               |
 | `high`     | 50%                | カート、商品カタログ、通貨換算、配送                                         |
-| `medium`   | 10%                | レコメンデーション、広告、商品レビュー、メール                               |
+| `medium`   | 10%                | レコメンデーション、広告、メール                                             |
 | `low`      | 1%                 | 会計、不正検知、画像プロバイダー、負荷生成、見積もり、flagd、flagd-ui、Kafka |
 
 ## コレクター設定 {#collector-configuration}
@@ -112,8 +112,14 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [resourcedetection, memory_limiter, transform, tail_sampling]
-      exporters: [otlp, debug, spanmetrics]
+      processors:
+        [
+          resourcedetection,
+          memory_limiter,
+          transform/sanitize_spans,
+          tail_sampling,
+        ]
+      exporters: [otlp_grpc/jaeger, debug, span_metrics]
 ```
 
 ## どのように動くか {#how-it-works}

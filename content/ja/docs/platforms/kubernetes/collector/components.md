@@ -1,7 +1,7 @@
 ---
 title: Kubernetesのための重要なコンポーネント
 linkTitle: コンポーネント
-default_lang_commit: 1f686d5f7b6bbdfaa30dafdc6ca0214c6f2308db
+default_lang_commit: 5ec6f9be2f6645aca56794b24524a6f5316613b6
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
@@ -237,7 +237,7 @@ Kubernetesに特化したレシーバーではないですが、Kubernetesから
 Kubernetesのログは通常、一連の標準フォーマットに適合するため、Kubernetes用の典型的なFilelogレシーバー設定は次のようになります。
 
 ```yaml
-filelog:
+file_log:
   include:
     - /var/log/pods/*/*/*.log
   exclude:
@@ -602,7 +602,9 @@ Kubernetes では、レシーバーが正しく動作するためには `hostfs`
 | processes    | Linux, macOS          | プロセス数のメトリクス                                           |
 | process      | Linux, macOS, Windows | プロセス毎のCPU、Memory、ディスクI/Oのメトリクス                 |
 
-[^1]: Collector SIGがリリースしたイメージのデフォルトであるcgoなしでコンパイルした場合、macOSではサポートされません。
+[^1]:
+    cgoなしでコンパイルした場合、macOSではサポートされません。
+    cgoなしのコンパイルは Collector SIG がリリースしたイメージのデフォルトです。
 
 どのメトリクスが収集されるか、および具体的な構成の詳細については、[ホストメトリクスレシーバーのドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)を参照してください。
 
@@ -640,7 +642,7 @@ spec:
 
 ```yaml
 receivers:
-  hostmetrics:
+  host_metrics:
     root_path: /hostfs
     collection_interval: 10s
     scrapers:

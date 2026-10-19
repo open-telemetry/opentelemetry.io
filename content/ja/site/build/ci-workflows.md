@@ -3,10 +3,15 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
+default_lang_commit: 93c5503563a88540106cdf7925ad259fa78171de
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
+
+## 依存関係のインストール {#dependency-installation}
+
+CI ジョブはサイト全体の[インストール規約](../dependencies/#install-contracts)に従って npm の依存関係をインストールします。
+ロック固定かつスクリプト無効で、ビルドジョブはレビュー済みの Hugo リビルドのみを再有効化します。
 
 ## PR 承認ラベル {#pr-approval-labels}
 
@@ -15,7 +20,7 @@ default_lang_commit: b291d077d4c7aba2b43ec5a1648c02bb5c43f870
 | ワークフローファイル               | トリガー                              | 権限                                            |
 | ---------------------------------- | ------------------------------------- | ----------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | 最小限（シークレットなし）                      |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | ラベル編集と org/team 読み取り用の App トークン |
+| [`label-manager.yml`][labels]      | `pull_request_target`, `workflow_run` | ラベル編集と org/team 読み取り用の App トークン |
 | [`blog-publish-labels.yml`][blog]  | `schedule`（毎日 7 AM UTC）           | App トークン + `SLACK_WEBHOOK_URL` シークレット |
 
 [trigger]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -48,7 +53,7 @@ PR に異なる日付を持つ複数のファイルが含まれる場合、ラ�
 #### スクリプトの動作モード {#script-operating-modes}
 
 [`pr-approval-labels.sh`][script] スクリプトは、単一の PR を処理します（`PR` 環境変数で設定）。
-PR イベント時に `pr-approval-labels.yml` から呼び出されるほか、バッチモードでは [`blog-publish-check.sh`][batch-script] から呼び出されます。
+PR イベント時に `label-manager.yml` から呼び出されるほか、バッチモードでは [`blog-publish-check.sh`][batch-script] から呼び出されます。
 
 [script]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
 [batch-script]: https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
@@ -66,17 +71,17 @@ GitHub の `pull_request_review` イベントには `_target` バリアントが
 
 1. **`pr-review-trigger`** はすべてのレビュー送信/却下時に実行されます。
    PR 番号をアーティファクトとして保存して終了します。シークレットは不要です。
-2. **`pr-approval-labels`** は `workflow_run`（トリガーワークフローの完了時）によってトリガーされます。
+2. **`label-manager`** は `workflow_run`（トリガーワークフローの完了時）によってトリガーされます。
    ベースリポジトリのコンテキストで GitHub App トークンへのフルアクセスを持って実行され、アーティファクトをダウンロードしてラベルを更新します。
 
-コンテンツの変更（`opened`、`reopened`、`synchronize`）については、`pr-approval-labels` ワークフローは `pull_request_target` を介して直接トリガーされます。
+コンテンツの変更（`opened`、`reopened`、`synchronize`）については、`label-manager` ワークフローは `pull_request_target` を介して直接トリガーされます。
 
 ```mermaid
 sequenceDiagram
     participant R as レビュアー
     participant GH as GitHub
     participant T as pr-review-trigger
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     R->>GH: レビューを送信（承認/変更要求/却下）
 
@@ -98,7 +103,7 @@ sequenceDiagram
 sequenceDiagram
     participant A as 作成者
     participant GH as GitHub
-    participant L as pr-approval-labels
+    participant L as label-manager
 
     A->>GH: PR をオープン/更新
 
@@ -113,8 +118,10 @@ sequenceDiagram
 
 - **`pr-review-trigger`**: 意図的に最小限 — シークレットなし、特権パーミッションなし。
   コメントは承認に影響しないため、`review.state == "commented"` を無視します。
-- **`pr-approval-labels`**: GitHub App トークン（`OTELBOT_DOCS_APP_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
+- **`label-manager`**: GitHub App トークン（`OTELBOT_DOCS_CLIENT_ID` / `OTELBOT_DOCS_PRIVATE_KEY`）で実行され、org/team メンバーシップの読み取りと PR ラベルの編集の権限を持ちます。
   `pull_request_target` と `workflow_run` を使用して、常に信頼されたベースリポジトリのコンテキストで実行されます。
+  ダウンロードされた `pr-number` アーティファクトは PR 自身の `pr-review-trigger` のコピーから取得されるため、非信頼の入力です。
+  チェックアウトの外部で展開され、整数の PR 番号としてのみ受け入れられます。
 - **`blog-publish-labels`**: GitHub App トークンと `SLACK_WEBHOOK_URL` シークレットを使用してスケジュールで実行されます。
   常に信頼されたベースリポジトリのコンテキストで実行されます（スケジュールイベントにはフォークバリアントがありません）。
 
@@ -212,6 +219,7 @@ sequenceDiagram
 - **`/fix:<name>`** は `npm run fix:<name>` を実行します（例: `/fix:format`）。
 - **`/fix:all`** はコマンドのセマンティクスが変更されたため `/fix` にマッピングされます（[#9291][]）。
 - **`/fix:ALL`** は `fix:all` にマッピングされ、メンテナーが `fix:all` を実行できるようにします。
+- **`/fix:refcache`**（非推奨）は `fix:refcache` 互換エイリアスを介して引き続き実行されます。結果のコメントは `/fix:link-cache` を案内します。
 
 ディレクティブはコメントの最初の行でなければなりません。
 それ以降の行は無視されるため、その後に説明を追加できます。
@@ -222,7 +230,10 @@ sequenceDiagram
 4 段階のパイプラインとして実行されます。
 
 1. **`ack`**（信頼済み）: ディレクティブを受信するとすぐに、ディレクティブコメントとランへのリンクを含む 🔄 進行中コメントを返信します。
-2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、fix コマンドを実行し、リンク refcache をプルーニングし、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
+2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、fix コマンドを実行し、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
+   チェックアウトの前に、信頼済みのステップが `link-cache.jsonc` より前の PR ヘッドや、CSV のみの `link-cache` をまだピン留めしている PR ヘッドを拒否します（そのリンクチェックが廃止された `.lycheecache` を再作成してしまうため）。
+   結果のコメントで、作成者にブランチの更新を案内します。
+   このステップはインラインシェルでテストされておらず、切り替え以前のオープン PR がなくなった時点で削除されます。
 3. **`apply-patch`**（信頼済み）: [`reusable-apply-patch.yml`][] ワークフローを呼び出します。
    これはデフォルトブランチから解決され、PR からは解決されません。
    GitHub App トークンでパッチを適用し、PR ブランチにコミットをプッシュします。
@@ -263,6 +274,10 @@ PR での新しい `/fix` コメントは、その PR の実行中のランを�
    `/fix` パイプラインとは異なり、ラン全体が信頼済みです。
    スケジュールおよびディスパッチトリガーはデフォルトブランチのコードのみを実行します。
    コマンドの失敗はジョブを失敗させますが、生成されたすべての fix は、PR 本文に部分的な結果の警告付きで公開されます。
+   デフォルトのコマンドでは、まずロケールチームレジストリ（`data/locale-teams.yaml`）をライブチームの直接メンバーシップからリフレッシュします。
+   この処理には読み取り専用のメンバースコープ付き App トークンが使用され、後続のステップからは参照できません。
+   差分は再生成された CODEOWNERS と同じ PR に含まれます。
+   リフレッシュが失敗した場合、レジストリは変更されずジョブが失敗します。
 2. **`publish-patch`**: [`reusable-patch-pr.yml`][] ワークフロー（PR コンテキストを持たない呼び出し元のための [`reusable-apply-patch.yml`][] の姉妹）を呼び出します。
    毎回の実行時に `main` から再作成される安定した `otelbot/housekeeping` ブランチにパッチを強制プッシュし、まだオープンな PR がない場合は PR をオープンします。
    そのため、ハウスキーピング PR は一度に最大 1 つで、常に最新の結果を持ちます。
@@ -275,9 +290,9 @@ PR での新しい `/fix` コメントは、その PR の実行中のランを�
 
 > [!NOTE]
 >
-> [`refcache-refresh.yml`][] ワークフローも毎日実行され `refcache.json` を変更するため、マージ順序によっては 2 つのボット PR が競合する可能性があります。
-> 両方のブランチが毎回の実行時に `main` から同期するため、競合は自然に解消されます。
-> refcache-refresh を再利用可能なパッチアクションに移行することで、設計上このような競合を排除することが [プロジェクト計画][project plan]で追跡されています。
+> [`refcache-refresh.yml`][] ワークフローも毎日実行され `link-cache.jsonc` を変更するため、マージ順序によっては 2 つのボット PR が競合する可能性があります。
+> 競合は自然に解消されます。ハウスキーピングブランチは毎回の実行時に `main` から再構築され、`refcache-refresh` は `main` をマージして、キャッシュのみの競合では `main` のファイルを採用し再プルーニングします。
+> `refcache-refresh` を再利用可能なパッチアクションに移行することで、設計上このような競合を排除することが[プロジェクト計画][project plan]で追跡されています。
 
 [#6592]: https://github.com/open-telemetry/opentelemetry.io/issues/6592
 [housekeeping]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/housekeeping.yml
@@ -305,29 +320,36 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 
 ## Spec インテグレーションブランチ {#spec-integration-branches}
 
-2 つのスケジュールワークフローが上流の spec リポジトリの未リリースの変更を追跡し、ドラフト PR（「インテグレーションブランチ」）を次の開発バージョンに合わせて最新に保ちます。
+スケジュール実行の [specs-integration.yml][] ワークフローは、上流の spec リポジトリのサイト更新サイクルを管理します（そのため `auto-update-versions.yml` はこれらを除外します）。
+上流リポジトリごとに 1 つのマトリックスジョブを実行します。
+リリース間では、各ジョブがドラフト PR（「インテグレーションブランチ」）を通じて上流の未リリースの変更を追跡し、上流がリリースされると、そのブランチと PR をリリース PR に仕上げます。
+毎回の実行時に `main` を長期インテグレーションブランチにマージします。
+`link-cache.jsonc` に限定された競合（双方がキャッシュを日次更新するため）は `main` のキャッシュを採用することで自動的に解消され、そのランのリンクチェックがブランチのエントリを再追加します。
 
-| ワークフローファイル                      | 上流リポジトリ                | ブランチスラッグ |
-| ----------------------------------------- | ----------------------------- | ---------------- |
-| [update-spec-integration-branch.yml][]    | `opentelemetry-specification` | `spec`           |
-| [update-semconv-integration-branch.yml][] | `semantic-conventions`        | `semconv`        |
+| マトリックスジョブ | 上流リポジトリ                | ブランチスラッグ |
+| ------------------ | ----------------------------- | ---------------- |
+| `otel`             | `opentelemetry-specification` | `spec`           |
+| `semconv`          | `semantic-conventions`        | `semconv`        |
 
-[update-spec-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-spec-integration-branch.yml
-[update-semconv-integration-branch.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/update-semconv-integration-branch.yml
+[specs-integration.yml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
 
-両方のワークフローは「次のバージョン + ブランチを選択する」ステップを共有の Node ヘルパー [scripts/gh/specs/pick-branch/cli.mjs][] に委譲します。
+各ジョブは「モード、バージョン、ブランチを選択する」ステップを共有のヘルパー [scripts/gh/specs/pick-branch.mjs][] に委譲します。
 このヘルパーは:
 
-- 既存の `otelbot/<slug>-integration-vX.Y.Z-dev` ブランチがあり、バージョンがまだリリースされていない場合はそれを再利用します。
-  それ以外の場合は、最新のリリースタグのマイナーバージョンをバンプします。
-- `VERSION` と `BRANCH` を `$GITHUB_ENV` に書き込み、下流のステップで使用できるようにします。
+- 実行の `MODE` を選択します。main にピン留めされたバージョンが最新の上流リリースである間は `dev`、より新しいリリースが存在する場合は `release` になります。
+- `MODE`、`VERSION`、`BRANCH` を `$GITHUB_ENV` に書き込み、下流のステップで使用できるようにします。
 - 古いインテグレーションブランチが複数あるなどの問題を検出した場合、トラッキングイシューをオープンします（ラベル `<slug>-integration-warning`、重複排除済み）。
 
-[scripts/gh/specs/pick-branch/cli.mjs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/specs/pick-branch
+[scripts/gh/specs/pick-branch.mjs]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/pick-branch.mjs
+
+最後のステップである [scripts/gh/specs/create-or-finalize-pr.mjs][] は、`MODE` に応じて PR を作成または仕上げます。dev モードではドラフトのインテグレーション PR がない場合に作成し、release モードではリリース PR を作成または仕上げます。
+自動化自身が書いた PR テキストのみを書き換え、メンテナーが編集したタイトルや本文はそのまま残します。
+
+[scripts/gh/specs/create-or-finalize-pr.mjs]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/specs/create-or-finalize-pr.mjs
 
 ### 実行モード {#run-modes}
 
-ヘルパーはドライランと書き込みモードを自動的に選択し、`[mode]` バナーを出力してその選択を説明します。
+両方のヘルパーはドライランと書き込みモードを自動的に選択し、`[mode]` バナーを出力してその選択を説明します。
 
 | コンテキスト       | デフォルト動作 | オーバーライド        |
 | ------------------ | -------------- | --------------------- |
@@ -336,16 +358,17 @@ CODEOWNERS と必須チェックがハードマージゲートとして残りま
 
 ローカルでは、ドライランでもすべての読み取り専用の `git`/`gh` コマンドは実行されます（そのためイシュー重複排除チェックは実行されます）が、書き込みはスキップされます。
 `--no-dry-run` を使用すると、ヘルパーはローカルの `gh` 資格情報を使用します。
-`GITHUB_ENV` が未設定の場合、`VERSION`/`BRANCH` は標準出力にのみ出力されます。
+`GITHUB_ENV` が未設定の場合、pick-branch は `MODE`/`VERSION`/`BRANCH` を標準出力にのみ出力します。
+これらをエクスポートすると、ローカルの create-or-finalize-pr の実行に渡せます。
 試してみましょう:
 
 ```sh
-node scripts/gh/specs/pick-branch/cli.mjs --spec=otel
-node scripts/gh/specs/pick-branch/cli.mjs --spec=semconv --no-dry-run
-node scripts/gh/specs/pick-branch/cli.mjs --help
+scripts/gh/specs/pick-branch.mjs --spec otel
+scripts/gh/specs/pick-branch.mjs --spec semconv --no-dry-run
+scripts/gh/specs/create-or-finalize-pr.mjs --help
 ```
 
-純粋なロジックと CLI 引数のパースは `index.mjs` にあり、同じフォルダ内の `*.test.mjs` ファイルでカバーされています（`npm run test:local-tools` で実行）。
+純粋なロジックは各ヘルパーの `index.mjs` にあり、同じフォルダ内の `*.test.mjs` ファイルでカバーされています（`npm run test:local-tools` で実行）。
 
 ## ワークフロー失敗レポート {#workflow-failure-reporting}
 
@@ -360,21 +383,21 @@ node scripts/gh/specs/pick-branch/cli.mjs --help
 
 リポジトリには他にもいくつかのワークフローがあります。
 
-| ワークフロー               | 目的                                                                                              |
-| -------------------------- | ------------------------------------------------------------------------------------------------- |
-| `check-links.yml`          | htmltest を使用したシャードリンクチェックと、ノンブロッキングの [Lychee][lychee-pilot] パイロット |
-| `check-text.yml`           | textlint の用語チェック                                                                           |
-| `check-i18n.yml`           | ローカリゼーションのフロントマター検証                                                            |
-| `check-spelling.yml`       | スペルチェック                                                                                    |
-| `test.yml`                 | テスト（`test:base` を除く）                                                                      |
-| `auto-update-registry.yml` | レジストリパッケージバージョンの自動更新                                                          |
-| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新                                                           |
-| `build-dev.yml`            | 開発ビルドとプレビュー                                                                            |
-| `lint-scripts.yml`         | `.github/scripts/` の ShellCheck リンティング                                                     |
-| `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                     |
-| `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                                  |
+| ワークフロー               | 目的                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------- |
+| `check-links.yml`          | サイトビルドと Lychee による[リンクチェック][link checking]                                    |
+| `check-text.yml`           | textlint の用語チェック                                                                        |
+| `check-i18n.yml`           | ローカリゼーションのフロントマター検証                                                         |
+| `check-spelling.yml`       | スペルチェック                                                                                 |
+| `test.yml`                 | テスト（`test:base` を除く）                                                                   |
+| `auto-update-registry.yml` | レジストリパッケージバージョンの自動更新                                                       |
+| `auto-update-versions.yml` | OTel コンポーネントバージョンの自動更新（[spec リポジトリ](#spec-integration-branches)を除く） |
+| `build-dev.yml`            | 開発ビルドとプレビュー                                                                         |
+| `lint-scripts.yml`         | `.github/scripts/` の ShellCheck リンティング                                                  |
+| `label-manager.yml`        | PR ラベル（コンポーネントラベルと承認フロー）                                                  |
+| `component-owners.yml`     | コンポーネント所有権に基づくレビュアーの割り当て                                               |
 
 <!-- prettier-ignore-start -->
-[lychee-pilot]: /site/build/npm-scripts/#notes
+[link checking]: /site/build/link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 <!-- prettier-ignore-end -->
