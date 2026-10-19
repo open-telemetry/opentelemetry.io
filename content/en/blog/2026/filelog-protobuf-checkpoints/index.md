@@ -13,7 +13,7 @@ sig: Collector SIG
 cSpell:ignore: benchstat Braydon braydonk fileconsumer filelog Kains Makwana Stencel Vihas
 ---
 
-If you run the [filelog receiver][filelog] with a `storage` extension, the
+If you run the [File Log receiver][filelog] with a `storage` extension, the
 Collector writes a checkpoint every time it polls your log files. That
 checkpoint is how the receiver remembers where it stopped reading, so a restart
 does not lose or duplicate logs. For years that checkpoint format was JSON.
