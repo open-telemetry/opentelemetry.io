@@ -133,7 +133,7 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
-      - uses: ./.github/actions/install-lychee
+      - uses: $/.github/actions/install-lychee
 
       - name: Update link cache
         env:
@@ -161,7 +161,7 @@ jobs:
   report-failure:
     needs: update-integration-branch
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read
