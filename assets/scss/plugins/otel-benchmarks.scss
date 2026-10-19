@@ -20,7 +20,7 @@ $title-gap-above: 2rem;
     align-items: center;
   }
 
-  // Chart titles are long identifiers with no break points of their own.
+  // Chart titles carry long identifiers with no break points of their own.
   h3 {
     max-width: 100%;
     overflow-wrap: anywhere;
