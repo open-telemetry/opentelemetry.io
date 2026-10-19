@@ -136,9 +136,11 @@ already done.
 We're also working to promote the lambda functions and their Go API into the v1
 guarantee. Lambdas are the biggest feature we've added to OTTL since the cache
 and they completely change how you write functions, unblocking transformation
-scenarios OTTL previously could not handle. If you use lambdas, tell us what's
-awkward. Once the profiles signal stabilizes, we'll look at bringing `xprofile`
-under the v1 guarantee too.
+scenarios OTTL previously could not handle. If you use lambdas, please send us
+feedback (what you liked or disliked) in the form of an issue in the
+[Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues).
+Once the profiles signal stabilizes, we'll look at bringing `xprofile` under the
+v1 guarantee too.
 
 If you want to help, the experimental functions are the easiest place to start.
 Try them and open an issue when one doesn't fit your use case. You can also
