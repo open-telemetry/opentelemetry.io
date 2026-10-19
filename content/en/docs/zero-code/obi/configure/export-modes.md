@@ -22,7 +22,7 @@ the endpoint requires authentication, also set `OTEL_EXPORTER_OTLP_HEADERS` with
 the credentials.
 
 For the Prometheus scrape endpoint, see the
-[data export documentation](../export-data/).
+[data export documentation](/docs/zero-code/obi/configure/export-data/).
 
 ## Configure and run OBI
 
