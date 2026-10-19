@@ -44,10 +44,11 @@ environment.
 
 Additionally, the Collector has included support for the
 [OpenTelemetry Configuration Schema](https://github.com/open-telemetry/opentelemetry-configuration/)
-since version v0.128.0. This is done via the include of the
+since version v0.128.0 for its internal telemetry. This is done via the
 [otelconf](https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf/v0.3.0)
-package, which also supports configuring resource detectors. Until now, the
-manifest had no way to say "I only want these detectors".
+package, which also supports resource detectors. That package is compiled into
+the Collector even if the resource detection processor is not included. Until
+now, the manifest had no way to say "I only want these detectors".
 
 ## Using go build flags
 
