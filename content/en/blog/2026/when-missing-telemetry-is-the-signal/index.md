@@ -3,9 +3,9 @@ title: 'When Missing Telemetry Is the Signal'
 linkTitle: 'Missing telemetry'
 date: 2026-10-19
 author: '[anarwal](https://github.com/anarwal)'
-cSpell:ignore: anarwal
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/12179#issuecomment-6259197734
 sig: 'Collector SIG'
+cSpell:ignore: anarwal
 ---
 
 An empty dashboard can mean that nothing happened. It can also mean that the
