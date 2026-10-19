@@ -10084,6 +10084,11 @@
     "when": "2026-10-16T05:45:24Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues": {
+    "result": 200,
+    "when": "2026-10-19T21:14:10Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418": {
     "result": 200,
     "when": "2026-10-16T05:44:21Z",
