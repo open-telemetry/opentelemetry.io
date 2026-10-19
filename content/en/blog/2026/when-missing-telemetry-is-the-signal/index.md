@@ -1,10 +1,10 @@
 ---
-title: "When Missing Telemetry Is the Signal"
-linkTitle: "Missing telemetry"
+title: 'When Missing Telemetry Is the Signal'
+linkTitle: 'Missing telemetry'
 date: 2026-10-19
 author: '[anarwal](https://github.com/anarwal)'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/12179#issuecomment-6259197734
-sig: "Collector SIG"
+sig: 'Collector SIG'
 ---
 
 An empty dashboard can mean that nothing happened. It can also mean that the
@@ -54,9 +54,9 @@ outcome. Avoid using a unique event or user identifier as a metric attribute.
 
 ## Use traces to locate the gap
 
-[Traces](/docs/concepts/signals/traces/) show how selected requests move
-through a system. A trace can reveal that work reached one stage but did not
-reach the next. Logs correlated with that trace can add the local reason.
+[Traces](/docs/concepts/signals/traces/) show how selected requests move through
+a system. A trace can reveal that work reached one stage but did not reach the
+next. Logs correlated with that trace can add the local reason.
 
 Traces should not be the only completeness check.
 [Sampling](/docs/concepts/sampling/) means that a missing trace may be an
@@ -84,8 +84,8 @@ finish.
 ## Monitor the telemetry path
 
 The OpenTelemetry Collector produces
-[internal telemetry](/docs/collector/internal-telemetry/) about its own
-work. Useful signals include:
+[internal telemetry](/docs/collector/internal-telemetry/) about its own work.
+Useful signals include:
 
 - records accepted or refused by receivers;
 - records sent or failed by exporters;
