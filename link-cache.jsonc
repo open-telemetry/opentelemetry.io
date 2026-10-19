@@ -5879,6 +5879,21 @@
     "when": "2026-10-19T05:46:49Z",
     "via": "lychee",
   },
+  "https://github.com/benchmark-action/github-action-benchmark": {
+    "result": 200,
+    "when": "2026-10-17T13:13:41Z",
+    "via": "lychee",
+  },
+  "https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts": {
+    "result": 200,
+    "when": "2026-10-17T13:13:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts": {
+    "result": 200,
+    "when": "2026-10-18T17:09:51Z",
+    "via": "lychee",
+  },
   "https://github.com/benjoseph-grafana": {
     "result": 200,
     "when": "2026-10-10T05:45:50Z",
@@ -23596,6 +23611,11 @@
     "when": "2026-10-17T05:41:03Z",
     "via": "lychee",
   },
+  "https://gohugo.io/methods/page/store/": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
   "https://gohugo.io/methods/site/regularpages/": {
     "result": 200,
     "when": "2026-10-17T05:41:03Z",
@@ -26174,6 +26194,11 @@
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
+    "via": "lychee",
+  },
+  "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js": {
+    "result": 200,
+    "when": "2026-10-17T13:13:38Z",
     "via": "lychee",
   },
   "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {
@@ -30859,6 +30884,46 @@
   "https://www.docsy.dev/docs/content/adding-content/#alerts": {
     "result": 200,
     "when": "2026-10-17T05:41:03Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/agent-support/#markdown-output": {
+    "result": 200,
+    "when": "2026-10-17T14:11:34Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#add-a-custom-script": {
+    "result": 200,
+    "when": "2026-10-16T00:43:10Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#configuration-reference": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#dependency-versions": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#page-flags-in-included-content": {
+    "result": 200,
+    "when": "2026-10-17T02:23:19Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#plugin-files": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
+    "via": "lychee",
+  },
+  "https://www.docsy.dev/docs/content/plugins/#security": {
+    "result": 200,
+    "when": "2026-10-17T13:54:33Z",
     "via": "lychee",
   },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
