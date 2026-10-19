@@ -32,10 +32,9 @@ page][].
 - Trask Stalnaker
 - Vibhanshu Singh
 
-You can check your eligibility by reviewing the [voter roll][]. If you have made
-contributions to our ecosystem not measured by the automatic process, you can
-[request an exception][] before 23:59 AoE on 23 October 2026 to participate in
-the election.
+To check your eligibility, see the [voter roll][]. If the automated eligibility
+check doesn't account for your contributions to the OpenTelemetry ecosystem, you
+can [request an exception][] before 23 October 2026 at 23:59 AoE to vote.
 
 <!-- prettier-ignore-start -->
 [Anywhere on Earth]: https://en.wikipedia.org/wiki/Anywhere_on_Earth
