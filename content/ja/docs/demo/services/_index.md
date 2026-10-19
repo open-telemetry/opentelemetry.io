@@ -1,7 +1,7 @@
 ---
 title: サービス
 aliases: [service_table, service-table]
-default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
+default_lang_commit: cb07a7f2f522075ab85baaca6b23625cad38b30f
 ---
 
 リクエストフローを可視化するには、[サービスのダイアグラム](../architecture/)を確認してください。
@@ -27,6 +27,6 @@ default_lang_commit: 49a4a61076ca6c7369666e858be884cd157f7d3c
 | [支払い](payment/)                        | JavaScript | 指定されたクレジットカード情報（モック）に対して、指定された金額を請求し、トランザクションのIDを返却します。                                  |
 | [商品カタログ](product-catalog/)          | Go         | JSONファイルに基づく商品のカタログと、商品検索機能及び個別商品の取得機能を提供します。                                                        |
 | [見積もり](quote/)                        | PHP        | 発送される商品の点数に基づいて、送料を計算します。                                                                                            |
-| [レコメンデーション](recommendation/)     | Python     | カートの内容に基づいて、他の商品をレコメンドします。                                                                                          |
+| [レコメンデーション](recommendation/)     | Java       | カートの内容に基づいて、他の商品をレコメンドします。                                                                                          |
 | [配送](shipping/)                         | Rust       | ショッピングカートに基づいて送料の見積もりを提示します。指定された住所に商品を配送します（モック）。                                          |
 | [React Nativeアプリ](react-native-app/)   | TypeScript | ショッピングサービスのためのUIを提供する、 React Native製のモバイルアプリケーションです。                                                     |

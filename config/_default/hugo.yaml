@@ -99,7 +99,7 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: [HTML, markdown, RSS]
+  home: [HTML, markdown, RSS, LLMS]
   page: [HTML, markdown]
   section: [HTML, markdown]
 
@@ -112,7 +112,7 @@ cascade:
 
   # Enable redirects for site root (and not locales)
   - outputs:
-      # This must match the equivalent of [outputs.home, LLMS, redirects]
+      # This must match the equivalent of [outputs.home, redirects]
       [HTML, markdown, RSS, LLMS, redirects]
     target:
       kind: home
@@ -127,6 +127,12 @@ cascade:
       path: '/blog'
 
 params:
+  # Site plugins: https://opentelemetry.io/site/implementation/plugins-and-scripts/#plugins
+  docsy:
+    plugins:
+      otel-benchmarks:
+        enable: true
+        version: 4.5.1 # Chart.js
   copyright:
     authors: >-
       OpenTelemetry Authors | Docs [CC BY
@@ -286,7 +292,7 @@ security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
       # Netlify build env var
-      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID|SITE_NAME)$
 #
 # mounts: are defined in module-template.yaml. See that file for processing
 # details. For information about Hugo config directories and files, see:

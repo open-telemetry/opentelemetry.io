@@ -3,6 +3,7 @@ title: 벤더
 description: 오픈텔레메트리를 기본적으로 지원하는 벤더
 aliases: [/vendors]
 default_lang_commit: 42ef3b8c965480f4d58b173ed95fcb05fbc7d429
+drifted_from_default: true
 ---
 
 {{% include freeze-notice.md %}}

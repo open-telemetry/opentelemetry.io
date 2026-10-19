@@ -3,6 +3,7 @@ title: 宣言的設定
 linkTitle: 宣言的設定
 weight: 30
 default_lang_commit: b2cbf3f2c569f1d68f0d2624a23359dc348283f5
+drifted_from_default: true
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

@@ -3,7 +3,7 @@ title: Skills for agents and maintainers
 linkTitle: Skills
 description: Skills for agents and maintainers to use when maintaining the site.
 weight: 22
-cSpell:ignore: agentskills
+cSpell:ignore: agentskills openai
 ---
 
 This section describes skills and procedures for agents and maintainers to use
@@ -13,7 +13,7 @@ We use the term **agent skill** to refer to reusable actions written in
 conformance to [agentskills.io][] that can be invoked by agents or followed
 manually by maintainers. We call a **_maintainer_ skill** (or maintainer
 procedure) a set of steps that an agent or maintainer can follow to accomplish a
-specific task. Agent skills are defined in [`.claude/skills/`][]. Maintainer
+specific task. Agent skills are defined in [`.agents/skills/`][]. Maintainer
 procedures are defined in this section.
 
 In skill and procedure steps, the prose states the intent of each action; a
@@ -23,7 +23,7 @@ follow it.
 
 ## Agent skills
 
-As mentioned above, skills are defined in [`.claude/skills/`][], they are:
+As mentioned above, skills are defined in [`.agents/skills/`][], they are:
 
 - [`/approve-registry-update [pr-number-or-url]`][approve-registry-update]:
   assist reviewers deciding whether to merge an otelbot registry version-bump
@@ -57,7 +57,29 @@ As mentioned above, skills are defined in [`.claude/skills/`][], they are:
 - [`/update-git-submodule <submodule>... <version|latest|HEAD>`][update-git-submodule]:
   update one or more git submodules to a target version.
 
-Some agent chats let you invoke a skill by typing `/` followed by its name.
+Codex discovers these skills in `.agents/skills/`. Claude Code uses the relative
+symlinks in `.claude/skills/`, which point to the same skill directories. Invoke
+a skill with `$skill-name` in Codex or `/skill-name` in Claude Code. Windows
+checkouts need Git symlink support (`core.symlinks=true`) for Claude Code.
+
+### Adding an agent skill
+
+1. Create `.agents/skills/<name>/SKILL.md` with `name` and `description` in its
+   YAML front matter, following [agentskills.io][].
+2. Add a relative symlink for Claude Code:
+   `ln -s ../../.agents/skills/<name> .claude/skills/<name>`.
+3. For an explicit-only skill, set `disable-model-invocation: true` in the front
+   matter for Claude Code and add `agents/openai.yaml` inside the skill
+   directory for Codex:
+
+   ```yaml
+   policy:
+     allow_implicit_invocation: false
+   ```
+
+4. Add the skill to the list above. Keep shared instructions and resources in
+   `.agents/skills/`; keep runtime-specific hooks and settings in their
+   runtime's configuration directory.
 
 ## Hooks
 
@@ -78,29 +100,29 @@ source lives under [`scripts/validate/`][validate].
 
 See the section index below.
 
-[`.claude/skills/`]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/.claude/skills
+[`.agents/skills/`]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/.agents/skills
 [agentskills.io]: https://agentskills.io
 [approve-registry-update]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/approve-registry-update/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/approve-registry-update/SKILL.md
 [draft-issue]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/draft-issue/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/draft-issue/SKILL.md
 [refresh-link-cache-pr-fix]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/refresh-link-cache-pr-fix/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/refresh-link-cache-pr-fix/SKILL.md
 [resolve-link-cache-conflicts]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/resolve-link-cache-conflicts/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/resolve-link-cache-conflicts/SKILL.md
 [review-blog-post]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-blog-post/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/review-blog-post/SKILL.md
 [review-pull-request]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/review-pull-request/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/review-pull-request/SKILL.md
 [setup-new-localization]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/setup-new-localization/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/setup-new-localization/SKILL.md
 [update-i18n-drift-status]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-i18n-drift-status/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-i18n-drift-status/SKILL.md
 [update-old-blog-ignores]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-old-blog-ignores/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-old-blog-ignores/SKILL.md
 [update-git-submodule]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/skills/update-git-submodule/SKILL.md
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/update-git-submodule/SKILL.md
 [hooks]: https://docs.claude.com/en/docs/claude-code/hooks
 [hooks-json]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.claude/hooks/hooks.json

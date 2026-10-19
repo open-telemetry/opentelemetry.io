@@ -44,3 +44,9 @@ collector_component_stability_footnote: >-
   Para detalhes sobre os níveis de estabilidade dos componentes, consulte as
   [definições de estabilidade dos componentes do OpenTelemetry
   Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
+
+# Distribution tables
+distributions_table_header_name: Nome
+distributions_table_header_components: Componentes
+distributions_table_header_learn_more: Saiba mais
+distributions_table_footnote: Listadas em ordem alfabética
