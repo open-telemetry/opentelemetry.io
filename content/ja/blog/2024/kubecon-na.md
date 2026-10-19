@@ -14,7 +14,7 @@ KubeCon 期間中の OpenTelemetry 関連のすべての情報をご紹介しま
 
 ## OpenTelemetry Contribfest {#opentelemetry-contribfest}
 
-OpenTelemetry メンテナーと一緒に [OpenTelemetry Contribfest](https://sched.co/1hoyF) に参加して、プロジェクトをより良いものにしましょう。
+OpenTelemetry メンテナーと一緒に [OpenTelemetry Contribfest](https://sched.co/1hoyF) に参加して、プロジェクトをすべての人にとってより良いものにしましょう。
 コントリビューションの機会は複数用意されており、ドキュメント、Collector、Java、JS、Ruby、Python、.NET など、さまざまなプロジェクト領域のメンテナーが最初の一歩をサポートしてくれます。
 
 ## KubeCon の講演とメンテナーセッション {#kubecon-talks-and-maintainer-sessions}
@@ -74,7 +74,7 @@ OpenTelemetry メンテナーと一緒に [OpenTelemetry Contribfest](https://sc
 
 ## Observability Day {#observability-day}
 
-_[Observability Day][] はクラウドネイティブオブザーバビリティプロジェクトにおけるコラボレーション、ディスカッション、知識共有を促進します。_
+_[Observability Day][] はクラウドネイティブのオブザーバビリティプロジェクトのコラボレーション、ディスカッション、知識共有を促進します。_
 このイベントは2024年11月12日の午前9時から午後6時まで開催されます。
 [スケジュール全体をチェック](https://colocatedeventsna2024.sched.com/overview/type/Observability+Day)して、オブザーバビリティと OpenTelemetry に関するお気に入りの講演を見つけてください。
 
