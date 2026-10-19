@@ -1,5 +1,5 @@
 ---
-title: 'Faster, smaller checkpoints: the filelog receiver now uses protobuf'
+title: 'Faster, smaller checkpoints: the File Log receiver now uses protobuf'
 linkTitle: Protobuf checkpoints in filelog
 date: 2026-10-22
 draft: true
