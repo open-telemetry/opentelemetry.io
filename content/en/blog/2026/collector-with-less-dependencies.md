@@ -54,8 +54,8 @@ manifest had no way to say "I only want these detectors".
 Because ocb produces a regular Go program, standard Go tooling can already help
 trim the result. For example, stripping debug information and symbol tables with
 `-ldflags="-s -w"` and removing local file system paths with `-trimpath` reduces
-the size of the binary. You can pass these through the `ldflags` and `gcflags`
-settings in the `dist` section of your manifest.
+the size of the binary. These are already defaults with ocb and can be
+overwritten as needed via command line flags.
 
 These flags only shrink what was compiled, though. They can't remove code that
 your binary still imports, so they don't solve the resource detector problem.
