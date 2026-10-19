@@ -25,15 +25,17 @@ add subresource integrity.
 Site plugins follow Docsy's [custom-script contract][Docsy plugins] under the
 `otel-` prefix. One that renders markup of its own is gated by a shortcode that
 owns the markup and marks the page, so the gate follows the content into every
-language that serves it; the shim reads the mark.
+language that serves it; the shim reads the mark. A shortcode in included
+content marks the included page, not the page that includes it ([Page flags in
+included content][]).
 
 ### Benchmarks plugin {#benchmarks}
 
 The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
-types][] and reads it in that [stock renderer][], the reference for this fork.
-The shortcode call names the data and says how to read it:
+types][] and reads it in that [stock renderer][]. The shortcode call names the
+data and says how to read it:
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
@@ -50,9 +52,11 @@ The shortcode call names the data and says how to read it:
 - `series_separator`: trim a series name split off by `group_separator` at its
   first occurrence
 
-Without `group_separator`, each bench name is its own chart with one series, on
-the commit axis the whole data set shares. The JavaScript and Python pages still
-carry the stock renderer inline. The plugin's parts:
+Without `group_separator`, each bench name is its own chart with one series,
+which assumes bench names are unique within a commit. Every chart shares the
+data set's commit axis; the stock renderer, which the JavaScript and Python
+pages still carry inline, gives each bench only its own commits. The plugin's
+parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
@@ -60,9 +64,7 @@ carry the stock renderer inline. The plugin's parts:
   [store][] as `otelBenchmarks`. A malformed `data_url`, an unknown or
   positional argument, or a second call naming other data fails the build. Links
   and text belong in the page's prose, where each language writes its own. Each
-  call renders a chart set where it stands. A call in included content marks the
-  included page, not the page that includes it ([Page flags in included
-  content][]).
+  call renders a chart set where it stands.
 - **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
   template's markup stays out of the page's [Markdown output][], which the site
   serves per [Agent support](../../design/agent-support/); the data file the
@@ -76,11 +78,12 @@ carry the stock renderer inline. The plugin's parts:
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid.
-- **Script**, `assets/js/plugins/otel-benchmarks/`: `index.js` is the renderer;
-  beside it, `legend.js` (the legend's shape and the chart height that fits it),
-  `commit.js` (a commit in the tooltip and the popover) and `point-popover.js`
-  (the click popover). Docsy resolves `js/plugins/otel-benchmarks.js` only, so
-  that file imports the folder's entry.
+- **Script**, `assets/js/plugins/otel-benchmarks/` ([Plugin files][]):
+  `index.js` is the renderer; beside it, `legend.js` (the legend's shape and the
+  chart height that fits it), `commit.js` (a point's value line and commit, in
+  the tooltip and the popover) and `point-popover.js` (the click popover). Docsy
+  resolves `js/plugins/otel-benchmarks.js` only, so that file imports the
+  folder's entry.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and
@@ -93,7 +96,7 @@ carry the stock renderer inline. The plugin's parts:
   converted, unconverted and fallback languages, and the Markdown output of the
   converted ones.
 
-#### Localized pages
+#### Convert a localized page
 
 To convert a localized copy that still inlines the script:
 

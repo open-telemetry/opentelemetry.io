@@ -1,6 +1,8 @@
 ---
 title: Benchmarks
-description: Load-test results of the Collector, charted per commit
+description: >-
+  CPU and memory use of the Collector under 10k-per-second log, metric and trace
+  loads
 weight: 99
 params:
   otel-benchmarks:
