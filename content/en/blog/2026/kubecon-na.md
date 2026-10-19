@@ -8,7 +8,7 @@ eventUrl: &eventUrl >-
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
 # prettier-ignore
-cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos OTTL Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Wenjia Yuchen Yunas
+cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos OTTL Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
