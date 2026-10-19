@@ -2,8 +2,8 @@
 // Run the site link check (lychee-norm-cache) and make the outcome
 // actionable: a notice when the committed link cache changed, and reports
 // that name what failed and where the fix is (also in the CI step summary).
-// `--production` is this wrapper's flag; other arguments pass through to
-// lychee.
+// `--production` is this wrapper's flag; other arguments, extra inputs
+// included, pass through to lychee.
 
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -23,10 +23,8 @@ const root = path.join(
   '..',
 );
 
-// The bin behind the `_check:links` npm script; invoked directly so that
-// output is captured npm-noise-free and the exit status observed; failures
-// are parsed for the reports. Kept in sync with package.json by the wiring
-// drift guard in ./index.test.mjs.
+// The link-cache bin, invoked by path so that its output is captured
+// npm-noise-free.
 //
 // Output streams through as it arrives: a link check can take minutes, and
 // buffering it until exit would leave the terminal frozen.
@@ -80,8 +78,7 @@ child.on('close', (code) => {
   process.exitCode = status;
 });
 
-// In CI (e.g., a bot `fix:link-cache` run), surface the report in the
-// workflow step summary as well.
+// In CI, surface the report in the workflow step summary as well.
 function appendToStepSummary(report, title) {
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
   if (!summaryPath) return;
@@ -91,7 +88,7 @@ function appendToStepSummary(report, title) {
   );
 }
 
-// True when link-cache.jsonc has unstaged changes: the local analogue of the CI
+// True when link-cache.jsonc has unstaged changes: an early read of the CI
 // `CACHE updates committed?` verdict (see .github/workflows/check-links.yml).
 function cacheModified() {
   const r = spawnSync('git', ['diff', '--quiet', '--', 'link-cache.jsonc'], {

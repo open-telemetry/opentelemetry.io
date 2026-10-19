@@ -5,3 +5,7 @@
 */ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
+{{/* Gating: /site/implementation/plugins-and-scripts/#gating-to-the-blog-index */ -}}
+{{ if eq .Path "/blog" -}}
+  {{ partial "script.html" (dict "src" "js/blog-sidebar-entry-opener.js") -}}
+{{ end -}}
