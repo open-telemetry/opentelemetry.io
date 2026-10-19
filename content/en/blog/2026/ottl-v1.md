@@ -14,12 +14,12 @@ The
 is now v1. Starting with opentelemetry-collector-contrib v0.164.0, OTTL is
 stable for traces, metrics, and logs.
 
-v1 means OTTL meets the Collector's
+The release of v1 means OTTL meets the Collector's
 ['stable' stability criteria](https://github.com/open-telemetry/opentelemetry-collector/blob/ebfdf90d82abe991c69554b31f2efc4a96622803/docs/component-stability.md#stable)
 for testing, benchmarking, documentation, and telemetry. It also comes with a
 compatibility promise for all of 1.x. If you write OTTL statements, the syntax
 and the standard functions stay backward compatible. If you build your own
-components on top of OTTL, the Go API does too.
+components on top of OTTL, the Go API will also remain compatible.
 
 ## What the v1 guarantee covers
 
