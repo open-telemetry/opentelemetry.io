@@ -10,7 +10,7 @@ name: Reusable - apply patch to PR
 #
 #   apply-patch:
 #     needs: generate-patch
-#     uses: ./.github/workflows/reusable-apply-patch.yml
+#     uses: $/.github/workflows/reusable-apply-patch.yml
 #     with:
 #       pr-number: ${{ github.event.issue.number }}
 #       patch-name: my-patch-${{ github.run_id }}
