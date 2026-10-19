@@ -11,7 +11,7 @@ const valueLabel = (series, point, formatted) => {
   return `${series}: ${formatted}${unit}${range ? ` (${range})` : ''}`;
 };
 
-// Canvas tooltips don't wrap text, and commit subjects run to 130 characters.
+// Canvas tooltips don't wrap text, and commit subjects run well past one line.
 const TOOLTIP_LINE_LENGTH = 60;
 const wrapLine = (text) => {
   const lines = [];

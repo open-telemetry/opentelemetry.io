@@ -27,7 +27,6 @@ export function aspectRatioFor(labels, width) {
   );
 }
 
-// Chart.js `plugins.legend` options.
 export const legendOptions = {
   display: true,
   position: 'right',

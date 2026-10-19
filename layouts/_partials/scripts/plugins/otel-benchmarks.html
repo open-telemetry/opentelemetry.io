@@ -24,5 +24,5 @@
     {{- "\n" -}}
   {{ end -}}
 {{ else -}}
-  {{ errorf "otel-benchmarks is enabled on %s without the benchmarks shortcode, whose page record its shim gates on." .Page.Path -}}
+  {{ errorf "otel-benchmarks is enabled on %s without the benchmarks shortcode; see https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" .Page.Path -}}
 {{ end -}}
