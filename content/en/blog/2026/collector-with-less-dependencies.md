@@ -142,7 +142,34 @@ $ ls -alh ./_build/otelcol-k8s-less-detectors
 -rwxr-xr-x@ 1 alexboten  alexboten   147M Oct 16 14:30 ./_build/otelcol-k8s-less-detectors
 ```
 
-The binary is roughly 20% smaller!
+The binary is roughly 20% smaller and comparing the dependencies between both, the list has shrunk by 13 packages:
+
+```sh
+$ go version -m ./_build/otelcol-k8s | grep -w dep | sort > /tmp/deps-all-detectors.txt
+$ go version -m ./_build/otelcol-k8s-less-detectors | grep -w dep | sort > /tmp/deps-less-detectors.txt
+$ diff --suppress-common-lines /tmp/deps-all-detectors.txt /tmp/deps-less-detectors.txt
+3d2
+<       dep     cloud.google.com/go/compute     v1.72.0 h1:cwmwK/ADu7G1DNRN2Dt+qTpdg1hrAqzArBSmgSFumXE=
+64d62
+<       dep     github.com/digitalocean/go-metadata     v0.0.0-20250129100319-e3650a3df44b      h1:2EkxDInMJ3ii8mk8kZs0Qq75JpsvNOOoa5etBJluzbI=
+178d175
+<       dep     github.com/linode/go-metadata   v0.3.1  h1:F34TL9aF2qNDEViTOxFf9cXOMrdhckczVg3T80h1XZY=
+228d224
+<       dep     github.com/open-telemetry/opentelemetry-collector-contrib/internal/aws/ecsutil  v0.163.0        h1:U8O65C/kBbHdsFNfCU3PG8wDn3llm2TXJafCOw9HOA4=
+330d325
+<       dep     github.com/stretchr/objx        v0.5.3  h1:jmXUvGomnU1o3W/V5h2VEradbpJDwGrzugQQvL0POH4=
+429,432d423
+<       dep     go.opentelemetry.io/contrib/detectors/aws/elasticbeanstalk      v0.19.0 h1:U5lXYh/n93SXxBOvBp9B1e1AeC+Nc5j/VYna6cBP5qI=
+<       dep     go.opentelemetry.io/contrib/detectors/azure/azureappservice     v0.19.0 h1:VKQWNR6IxVq9DyZxsGEciogNo8wQST3IeFw7Dp0jtV0=
+<       dep     go.opentelemetry.io/contrib/detectors/azure/azurecontainerapps  v0.19.0 h1:jod9iGbB4p8smBQ0IRILOXq444KGnvBMHDJF6jqVDTo=
+<       dep     go.opentelemetry.io/contrib/detectors/azure/azurefunctions      v0.19.0 h1:Dn5+LcOW0qvxP/2eNDZr3HA+RoJe3L/UhjwWAEFzPz0=
+435,437d425
+<       dep     go.opentelemetry.io/contrib/detectors/hetzner   v0.19.0 h1:bt2D4vPOIxDjgvZiBQ69UhMmWR7+K7TbXwv9c25+lQ4=
+<       dep     go.opentelemetry.io/contrib/detectors/ibmcloud/vpc      v0.19.0 h1:jxs+/EjbVFUyPmqWWF/4FZ8mzdKrjcjTE9FLAuK8g/c=
+<       dep     go.opentelemetry.io/contrib/detectors/vultr     v0.19.0 h1:xFmRazM+v0Kbk7YbkgeX5JajCL5HC+U6cGN3gbpow6k=
+487d474
+<       dep     google.golang.org/genproto      v0.0.0-20260715232425-e75dac1f907d      h1:C9v1o0/4quuhOAfmRXA2j+we0PqZIp8traLdeogF3Ms=
+```
 
 ## Try it out
 
