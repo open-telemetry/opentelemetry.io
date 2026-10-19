@@ -16,7 +16,7 @@ cSpell:ignore: benchstat Braydon braydonk fileconsumer filelog Kains Makwana Ste
 If you run the [filelog receiver][filelog] with a `storage` extension, the
 Collector writes a checkpoint every time it polls your log files. That
 checkpoint is how the receiver remembers where it stopped reading, so a restart
-does not lose or duplicate logs. For years that checkpoint was JSON.
+does not lose or duplicate logs. For years that checkpoint format was JSON.
 
 Starting with OpenTelemetry Collector Contrib v0.164.0, checkpoints are always
 written as protobuf. On our benchmarks, saving a checkpoint is almost 5 times
