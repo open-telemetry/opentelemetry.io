@@ -1178,6 +1178,7 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
+      - docs-ro-approvers
       - docs-triagers
       - ecosystem-explorer-approvers
       - javascript-approvers
@@ -1516,9 +1517,6 @@ maintainers:
       - docs-triagers
       - proto-approvers
       - proto-triagers
-      - sig-contributor-experience-approvers
-      - sig-contributor-experience-maintainers
-      - sig-contributor-experience-triagers
       - social-media-approvers
       - specs-approvers
       - specs-triagers
@@ -2061,6 +2059,11 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
+  - name: mateenali66
+    teams:
+      - cpp-approvers
+    html_url: https://github.com/mateenali66
+    avatar_url: https://avatars.githubusercontent.com/u/67343899?v=4
   - name: matt-hensley
     teams:
       - dotnet-approvers
@@ -2121,6 +2124,7 @@ approvers:
     teams:
       - collector-contrib-triagers
       - demo-approvers
+      - semconv-system-approvers
     html_url: https://github.com/osullivandonal
     avatar_url: https://avatars.githubusercontent.com/u/92297851?v=4
   - name: owent
@@ -2656,6 +2660,9 @@ members:
   - name: asuresh4
     html_url: https://github.com/asuresh4
     avatar_url: https://avatars.githubusercontent.com/u/17557526?v=4
+  - name: atharvamhaske
+    html_url: https://github.com/atharvamhaske
+    avatar_url: https://avatars.githubusercontent.com/u/143622968?v=4
   - name: athre0z
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
@@ -2980,9 +2987,6 @@ members:
   - name: martinjt
     html_url: https://github.com/martinjt
     avatar_url: https://avatars.githubusercontent.com/u/1699587?v=4
-  - name: mateenali66
-    html_url: https://github.com/mateenali66
-    avatar_url: https://avatars.githubusercontent.com/u/67343899?v=4
   - name: mateuszrzeszutek
     html_url: https://github.com/mateuszrzeszutek
     avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
@@ -3103,6 +3107,9 @@ members:
   - name: prestonvasquez
     html_url: https://github.com/prestonvasquez
     avatar_url: https://avatars.githubusercontent.com/u/24281431?v=4
+  - name: proost
+    html_url: https://github.com/proost
+    avatar_url: https://avatars.githubusercontent.com/u/34047134?v=4
   - name: rauno56
     html_url: https://github.com/rauno56
     avatar_url: https://avatars.githubusercontent.com/u/1334536?v=4
@@ -3142,6 +3149,9 @@ members:
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
+  - name: SatoshiKamiyama
+    html_url: https://github.com/SatoshiKamiyama
+    avatar_url: https://avatars.githubusercontent.com/u/55924931?v=4
   - name: scbjans
     html_url: https://github.com/scbjans
     avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4

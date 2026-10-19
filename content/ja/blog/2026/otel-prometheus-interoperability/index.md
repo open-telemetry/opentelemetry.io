@@ -4,13 +4,11 @@ linkTitle: Prometheus と OTel のサーベイ
 date: 2026-09-22
 author: >-
   [Dhruv Ahuja](https://github.com/dhruv-ahuja) (SigNoz), [Andrej
-  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
-  Muenz](https://github.com/vampirarte) (Independent), [Arthur
-  Sens](https://github.com/ArthurSens) (Grafana Labs)
+  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), Ana Muenz
+  (Independent), [Arthur Sens](https://github.com/ArthurSens) (Grafana Labs)
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
-default_lang_commit: 8f5064028cc6eeb3e2a8b60593f5f9784e6b6a6a
-drifted_from_default: true
+default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
 # prettier-ignore
 cSpell:ignore: Ahuja Dhruv György Heorku Kiripolsky Krajcsovits Krajo Muenz textfile
 ---
