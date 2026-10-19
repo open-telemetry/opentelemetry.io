@@ -28,16 +28,16 @@ const COLORS = [
   '#410472',
 ];
 
-// How a call reads the page's data (its container's `data-otel-benchmarks`
-// JSON): which benches to chart, and how `extra` names a chart's group and its
-// series. Without `group_separator`, each bench name is its own chart with one
-// series, on the shared commit axis.
-function init(reading) {
+// The call's options (its container's `data-otel-benchmarks` JSON): which
+// benches to chart, and how `extra` names a chart's group and its series.
+// Without `group_separator`, each bench name is its own chart with one series,
+// on the shared commit axis.
+function init(options) {
   const {
     filter,
     group_separator: groupSep,
     series_separator: seriesSep,
-  } = reading;
+  } = options;
   const charted = (bench) =>
     !filter || filter.some((token) => (bench.extra ?? '').includes(token));
   // `extra` as `GROUP<groupSep>SERIES<seriesSep>noise`; an `extra` without the

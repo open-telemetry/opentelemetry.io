@@ -92,17 +92,17 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
       const html = read(PAGE(lang));
       assert.equal(count(html, HOOK), 1, 'one plugin container');
       const container = html.match(HOOK)?.[0] ?? '';
-      const reading = JSON.parse(
+      const options = JSON.parse(
         attr(container, 'data-otel-benchmarks').replaceAll('&#34;', '"'),
       );
       assert.deepEqual(
-        reading,
+        options,
         {
           filter: ['10kDPS', '10kSPS'],
           group_separator: '/',
           series_separator: ' - ',
         },
-        'container carries the reading from the call',
+        'container carries the call options',
       );
       const css = html.match(PLUGIN_CSS) ?? [];
       assert.equal(css.length, 1, 'plugin stylesheet linked once');

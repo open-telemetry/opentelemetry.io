@@ -1,6 +1,6 @@
 {{/* Chart container for the otel-benchmarks plugin; records the data URL for
-  the plugin's shim and companion, and hands the renderer the call's reading of
-  the data. Design:
+  the plugin's shim and companion, and hands the renderer the call's options.
+  Design:
   https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
 
 {{ $docs := "https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" -}}
@@ -24,18 +24,18 @@
     {{ .Page.Store.Set "otelBenchmarks" $data -}}
   {{ end -}}
 
-  {{ $reading := dict -}}
+  {{ $options := dict -}}
   {{ range $name, $value := .Params -}}
     {{ if eq $name "filter" -}}
       {{ with complement (slice "") (apply (split $value ",") "strings.TrimSpace" ".") -}}
-        {{ $reading = merge $reading (dict $name .) -}}
+        {{ $options = merge $options (dict $name .) -}}
       {{ end -}}
     {{ else if in (slice "group_separator" "series_separator") $name -}}
-      {{ $reading = merge $reading (dict $name $value) -}}
+      {{ $options = merge $options (dict $name $value) -}}
     {{ else if ne $name "data_url" -}}
       {{ errorf "%s: shortcode %q: unknown argument %q; see %s" $.Position $.Name $name $docs -}}
     {{ end -}}
   {{ end -}}
 
-  <div data-otel-benchmarks="{{ $reading | jsonify }}"></div>
+  <div data-otel-benchmarks="{{ $options | jsonify }}"></div>
 {{ end -}}

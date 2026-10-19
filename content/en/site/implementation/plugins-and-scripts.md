@@ -56,7 +56,7 @@ carry the stock renderer inline. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
-  reading as JSON for the renderer, and records the data URL in the page
+  options as JSON for the renderer, and records the data URL in the page
   [store][] as `otelBenchmarks`. A malformed `data_url`, an unknown or
   positional argument, or a second call naming other data fails the build. Links
   and text belong in the page's prose, where each language writes its own. Each
