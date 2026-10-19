@@ -2389,6 +2389,11 @@
     "when": "2026-10-08T05:47:56Z",
     "via": "lychee",
   },
+  "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository": {
+    "result": 200,
+    "when": "2026-10-17T00:23:47Z",
+    "via": "lychee",
+  },
   "https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run": {
     "result": 200,
     "when": "2026-10-03T05:48:31Z",
@@ -5738,6 +5743,11 @@
     "result": 206,
     "when": "2026-10-09T05:50:14Z",
     "via": "double-check",
+  },
+  "https://github.com/atharvamhaske": {
+    "result": 200,
+    "when": "2026-10-18T03:49:00Z",
+    "via": "lychee",
   },
   "https://github.com/athre0z": {
     "result": 200,
