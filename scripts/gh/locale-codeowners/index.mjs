@@ -3,7 +3,8 @@
 // is generated from the data/locale-teams.yaml registry; this module holds
 // the pure logic so it is unit-testable. ./cli.mjs wires the file system.
 
-export const ORG_PREFIX = '@open-telemetry';
+export const ORG = 'open-telemetry';
+export const ORG_PREFIX = `@${ORG}`;
 export const DOCS_APPROVERS = `${ORG_PREFIX}/docs-approvers`;
 
 export const BEGIN_MARKER =
@@ -140,4 +141,171 @@ export function validateRegistry(registry, { localeDirs } = {}) {
     }
   }
   return problems;
+}
+
+// -- Live team roster sync ---------------------------------------------------
+// Reads the *direct* membership of each docs-<loc>-{maintainers,approvers}
+// team and renders it as the registry's `locales:` map, so the registry can be
+// refreshed from live state through a normal PR. Nothing here writes to
+// GitHub. Every GitHub call goes through an injected `runGh` runner.
+
+// `membership: IMMEDIATE` excludes members inherited from child teams, which
+// the REST members endpoint (and GraphQL's default) folds into the parent.
+export const TEAM_MEMBERS_QUERY = `query($org: String!, $slug: String!) {
+  organization(login: $org) {
+    team(slug: $slug) {
+      members(first: 100, membership: IMMEDIATE) {
+        totalCount
+        pageInfo { hasNextPage }
+        nodes { login }
+      }
+    }
+  }
+}`;
+
+/**
+ * Direct members of a team.
+ *
+ * @param {Object} opts
+ * @param {(args: string[]) => { stdout: string, stderr?: string,
+ *   status: number }} opts.runGh Injected `gh` runner.
+ * @param {string} opts.team Team slug.
+ * @returns {string[]} Logins.
+ * @throws If the roster cannot be fetched completely.
+ */
+export function fetchDirectMembers({ runGh, team }) {
+  const res = runGh([
+    'api',
+    'graphql',
+    '-f',
+    `query=${TEAM_MEMBERS_QUERY}`,
+    '-f',
+    `org=${ORG}`,
+    '-f',
+    `slug=${team}`,
+  ]);
+  if (res.status !== 0) {
+    throw new Error(
+      `${team}: gh failed (auth/access?): ${(res.stderr ?? '').trim()}`,
+    );
+  }
+  let body;
+  try {
+    body = JSON.parse(res.stdout);
+  } catch {
+    throw new Error(`${team}: unparsable gh output`);
+  }
+  if (body.errors?.length) {
+    throw new Error(`${team}: ${body.errors.map((e) => e.message).join('; ')}`);
+  }
+  // A missing team, and a team the token cannot read, both come back as
+  // `null` with a success status.
+  const members = body.data?.organization?.team?.members;
+  if (!members) {
+    throw new Error(`${team}: team not found or not readable with this token`);
+  }
+  if (
+    members.pageInfo.hasNextPage ||
+    members.nodes.length !== members.totalCount
+  ) {
+    throw new Error(`${team}: incomplete roster (more than one page)`);
+  }
+  return members.nodes.map((n) => n.login);
+}
+
+// Order used by validateRegistry: case-insensitive, code-unit order.
+const sortLogins = (list) =>
+  [...list].sort((a, b) => {
+    const [x, y] = [a.toLowerCase(), b.toLowerCase()];
+    return x < y ? -1 : x > y ? 1 : 0;
+  });
+
+/**
+ * Registry roles are disjoint: approvers are the direct approver-team members
+ * who are not direct maintainer-team members.
+ *
+ * @param {{ maintainers: string[], approvers: string[] }} direct
+ * @returns {{ maintainers: string[], approvers: string[] }}
+ */
+export function normalizeTeams({ maintainers, approvers }) {
+  const m = new Set(maintainers.map((u) => u.toLowerCase()));
+  return {
+    maintainers: sortLogins(maintainers),
+    approvers: sortLogins(approvers.filter((u) => !m.has(u.toLowerCase()))),
+  };
+}
+
+/**
+ * Live registry for the given locales. All-or-nothing: throws on the first
+ * team that cannot be fetched completely.
+ *
+ * @param {Object} opts
+ * @param {(args: string[]) => { stdout: string, stderr?: string,
+ *   status: number }} opts.runGh
+ * @param {string[]} opts.locales
+ * @returns {{ locales: Object }}
+ */
+export function fetchLiveRegistry({ runGh, locales }) {
+  const registry = { locales: {} };
+  for (const loc of [...locales].sort()) {
+    registry.locales[loc] = normalizeTeams({
+      maintainers: fetchDirectMembers({
+        runGh,
+        team: `docs-${loc}-maintainers`,
+      }),
+      approvers: fetchDirectMembers({ runGh, team: `docs-${loc}-approvers` }),
+    });
+  }
+  return registry;
+}
+
+// Logins are `[A-Za-z0-9-]`; quote the ones YAML would read as a number,
+// boolean or null.
+const yamlLogin = (u) =>
+  /^[A-Za-z][A-Za-z0-9-]*$/.test(u) &&
+  !/^(true|false|null|yes|no|on|off|y|n)$/i.test(u)
+    ? u
+    : JSON.stringify(u);
+
+/**
+ * Render the registry's `locales:` map in the file's flow-list style.
+ *
+ * @param {{ locales: Object }} registry
+ * @returns {string} Ends with a newline.
+ */
+export function genLocalesBlock(registry) {
+  const list = (l) => `[${l.map(yamlLogin).join(', ')}]`;
+  const locales = Object.keys(registry.locales).sort();
+  return (
+    'locales:\n' +
+    locales
+      .map((loc) => {
+        const { maintainers, approvers } = registry.locales[loc];
+        return (
+          `  ${loc}:\n` +
+          `    maintainers: ${list(maintainers)}\n` +
+          `    approvers: ${list(approvers)}\n`
+        );
+      })
+      .join('')
+  );
+}
+
+/**
+ * Swap the `locales:` map of a registry file for `block`, keeping the header
+ * comments verbatim (a YAML dump would drop them).
+ *
+ * @param {string} content Current registry file content.
+ * @param {string} block From genLocalesBlock.
+ * @returns {string}
+ * @throws If `locales:` is missing or is not the last top-level key.
+ */
+export function replaceLocalesBlock(content, block) {
+  const start = content.search(/^locales:/m);
+  if (start < 0) throw new Error('registry is missing the `locales:` map');
+  const trailing = content.slice(start).split('\n').slice(1);
+  if (trailing.some((l) => l && !/^\s/.test(l))) {
+    throw new Error('registry has content after the `locales:` map');
+  }
+  return content.slice(0, start) + block;
 }

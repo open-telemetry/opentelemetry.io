@@ -34,8 +34,9 @@ starter.
 > have to declare it after the OpenTelemetry BOMs.
 >
 > Gradle selects the
-> [latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
-> of a dependency when multiple BOMs, so the order of BOMs is not important.
+> [latest version](https://docs.gradle.org/current/userguide/dependency_constraints_conflicts.html#sub:resolving-version-conflicts)
+> of a dependency when multiple BOMs define it, so the order of BOMs is not
+> important.
 
 The following example shows how to import the OpenTelemetry BOMs using Maven:
 
@@ -62,7 +63,7 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 
 plugins {
   id("java")
-  id("org.springframework.boot") version "3.2.O"
+  id("org.springframework.boot") version "3.2.0"
 }
 
 dependencies {
@@ -77,7 +78,7 @@ and to import the BOMs in `dependencyManagement`:
 ```kotlin
 plugins {
   id("java")
-  id("org.springframework.boot") version "3.2.O"
+  id("org.springframework.boot") version "3.2.0"
   id("io.spring.dependency-management") version "1.1.0"
 }
 

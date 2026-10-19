@@ -56,6 +56,7 @@ guidance offered in this section.
     particular for [headings](#headings)
 - Create **copies of images and other assets**, unless you
   [localize text in them](#images)
+- Mark a localized page as a **[draft](#drafts)**
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
   - Presentation **style**, including: _formatting_, _layout_, and _design_
@@ -163,6 +164,24 @@ This would be translated in French as:
 [l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
 [Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
+
+### Draft pages {#drafts}
+
+Do **not** mark a localized page as a draft (`draft: true`), even when the
+English page is one. For docs pages, where your locale has no translation the
+site serves the English page at the same path (the English **fallback**). A
+localized draft takes that path but is omitted from the production build, so
+once the English page is published, readers of your locale get a 404 instead of
+it. Because the rule holds whether or not the English page is a draft,
+publishing an English page never leaves a localized draft behind. Translate a
+page once its English version is published.
+
+This is enforced by the [`WARNINGS in build log?`][warnings-check] check. To fix
+a flagged page: if its English page is published, drop `draft: true` and mark
+the page as [patched](#patched) unless you sync it in the same change;
+otherwise, remove the localized page until the English page is published.
+
+[warnings-check]: ../pr-checks/#localized-drafts
 
 ### Include files {#includes}
 
@@ -308,10 +327,11 @@ npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 
 ### Patching localized pages {#patched}
 
-[Build and check fixes](#keep-checks-green) sometimes require editing a
-localized page without syncing it to its English counterpart — for example,
-retargeting a link after an English page was moved. Mark each localized page
-fixed in this way as **patched**, whether or not the fix spans locales:
+Some fixes edit a localized page without syncing it to its English counterpart:
+[build fixes](#keep-checks-green), such as repairing a shortcode invocation
+after the shared shortcode changed, and fixes that a check requires, such as
+dropping a [draft](#drafts) flag. Mark each localized page fixed in this way as
+**patched**, whether or not the fix spans locales:
 
 - Make only the edits that the fix requires — no other changes to the page.
 - Append the `# patched` YAML comment to the page's `default_lang_commit` line:
@@ -422,8 +442,9 @@ with the task list given below:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level group for `LANG_ID` approvers
-     - [ ] Update components owners for `content/LANG_ID`
+     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
+     - [ ] Add the locale to `data/locale-teams.yaml` and run
+           `npm run fix:codeowners`
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
@@ -440,8 +461,8 @@ localization project started.
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-After your first PR is merged, maintainers will set up the issue label, the
-org-level group and the component owners.
+After your first PR is merged, maintainers will set up the issue label and the
+org-level teams.
 
 ### 4. Localize the glossary {#glossary}
 
@@ -511,12 +532,48 @@ when **Spelling** has no natural-language dictionary to add.
   - Under `dictionaries`, add the same `name` value as in the step above (not
     the file path).
 
+#### Teams and code owners
+
+Add the new locale to [`data/locale-teams.yaml`][] and run
+`npm run fix:codeowners` to regenerate the locale section of CODEOWNERS. Include
+these changes in the locale's first PR: CI requires the registry to agree with
+the locale directories under `content/`. A new locale usually starts
+[unstaffed](#locale-teams), so its CODEOWNERS lines carry the `docs-approvers`
+fallback until the locale [graduates](#locale-teams).
+
 #### Other tooling support
 
 - Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
   rules to `.prettierignore`
 
 ## Approver and maintainer guidance
+
+### Locale teams, code owners, and staffing {#locale-teams}
+
+Each locale has `docs-LANG_ID-approvers` and `docs-LANG_ID-maintainers` GitHub
+teams; maintainers are also approvers. The approvers team is the [code owner][]
+of the locale's paths, so a locale approver's review satisfies the required
+code-owner review of a locale-only PR. Locale maintainers can also
+[auto-merge](#auto-merge) such PRs.
+
+The expected membership of locale teams is recorded in the
+[`data/locale-teams.yaml`][] registry, which also drives the locale section of
+the repository's [CODEOWNERS][] file. Membership changes are proposed as PRs
+against the registry, giving an audit trail, and applied to the live teams by an
+org admin. For the generator and the conventions it encodes, see the
+[locale-codeowners README][].
+
+A locale without maintainers is **unstaffed**: its CODEOWNERS lines list
+`@open-telemetry/docs-approvers` as a fallback owner, so docs approvers can
+review and unblock the locale's PRs. A docs maintainer then merges such PRs
+manually, since [auto-merge](#auto-merge) requires locale maintainers.
+
+When an unstaffed locale gains maintainers, submit a registry PR that records
+them and regenerates the locale section of CODEOWNERS
+(`npm run fix:codeowners`). This drops the `docs-approvers` fallback from the
+locale's lines, and the locale team gates its own PRs from then on: the locale
+has **graduated**. For an example, see the [zh graduation PR][]. If a locale
+team later becomes dormant, the inverse registry change restores the fallback.
 
 ### Enabling auto-merge on locale-only PRs {#auto-merge}
 
@@ -572,24 +629,22 @@ PRs.
 > status-only edits alike. Such changes don't alter the meaning of localized
 > pages.
 
-#### Keeping the build and checks green {#keep-checks-green}
+#### Keeping the build green {#keep-checks-green}
 
 A PR that changes localized page **content** may span multiple locales only when
-that is strictly required to keep the site build and its checks green:
+that is strictly required to keep the site build green. Such **build fixes**
+repair site-build breakage on localized pages, for example, after a shared
+shortcode, include file, or data source changes. A page's
+[drift status](#drift-status) only shields it from link checking, not from the
+Hugo build. Mark every localized page that you fix as [patched](#patched).
 
-- **Link fixes**: repairing link-check failures on localized pages after an
-  English page is moved or deleted, or an external resource has moved. See
-  [Link fixes and resource updates](#link-fixes-and-resource-updates).
-- **Build fixes**: repairing site-build breakage on localized pages, for
-  example, after a shared shortcode, include file, or data source changes. A
-  page's [drift status](#drift-status) only shields it from link checking, not
-  from the Hugo build.
+Link-check failures on localized pages are **not** such a case; for how to
+resolve them, see
+[Link fixes and resource updates](#link-fixes-and-resource-updates).
 
-In both cases, mark every localized page that you fix as [patched](#patched).
-
-The check-green minimum applies to drift-status bookkeeping too: when a failing
-check calls for refreshing `drifted_from_default` (see the deleted-page case
-below), update only the pages that the failing check reports — the daily
+The same minimum-fix rule applies to drift-status bookkeeping: when a failing
+check calls for refreshing `drifted_from_default`, update only the pages that
+the failing check reports; the daily
 [Housekeeping run](/site/build/ci-workflows/#housekeeping) completes the rest.
 Status-only edits are [content-neutral maintenance](#semantic-changes).
 
@@ -602,53 +657,55 @@ adding a new glossary term.
 Changes to the English documentation can result in link-check failures for
 non-English locales. This happens when documentation pages, or sections within
 them, are moved or deleted; links to moved external resources can fail
-similarly. A moved or deleted page's localized copies themselves don't need to
-be touched: [drift tracking](#track-changes) flags them for their locale teams.
-What may need fixing are the localized pages that **link** to such targets.
-Proceed according to the fate of the link target:
+similarly. Fix such failures on English pages only; **never edit localized page
+content to fix links**. [Drift tracking](#track-changes) flags outdated
+localized copies for their locale teams, and reconciliation, link fixes
+included, is left to each team.
 
-- **A page was moved**:
+First, contain the fallout on the English side by fixing the failing links. Some
+target fates offer additional mitigations:
 
-  1. Ensure that the moved English page declares an [alias][aliases] for its old
-     path. The alias keeps previously published links to the page working, but
-     only for site visitors: aliases are published as server-side redirects, and
-     the link checker resolves links against the built site's canonical page
-     paths. Links to the old path therefore still need fixing.
-  2. Update the link to the new path on each non-English page that fails link
-     checking, and mark each edited page as [patched](#patched).
-     ([Drifted](#drift-status) pages are skipped by the link checker, so this
-     typically applies to in-sync pages.)
+- **A page was moved**: ensure that the moved English page declares an
+  [alias][aliases] for its old path. The alias keeps previously published links
+  to the page working, but only for site visitors: aliases are published as
+  server-side redirects, and the link checker resolves links against the built
+  site's canonical page paths. Links to the old path therefore still need fixing
+  on English pages.
+- **A section was moved within its page**: preserve its [heading ID](#headings)
+  so that links to the section keep working. Aliases can't help in this case:
+  they redirect page paths, not fragments.
 
-- **A section was moved**: aliases can't help in this case, since they redirect
-  page paths, not fragments. If the section moved within its page, preserve its
-  [heading ID](#headings) so that links to the section keep working. Otherwise,
-  update links to the section on each page that fails link checking, and mark
-  each edited localized page as [patched](#patched).
+The other fates have no such mitigation: a section moved to a different page, a
+moved external resource, or a deleted target. Fixing the English links is the
+whole English-side fix; for a deleted target, that means choosing a replacement
+target or dropping the reference on each linking page.
 
-- **A page or section was deleted**: choosing a replacement or dropping the
-  reference is a [semantic change](#semantic-changes) for each affected locale,
-  so don't patch such links. Fixing the English pages that linked to the deleted
-  target makes their localized copies drift; the link checker already skips such
-  copies as [drift pending](#drift-status), and the daily Housekeeping run
-  persists their status. If a localized page still fails link checking, refresh
-  its [drift status](#drift-status) directly:
-  `npm run fix:i18n:status -- <PATHS-TO-FAILING-LOCALIZED-PAGES>`.
-  Reconciliation is left to each page's locale team. In the rare case where a
-  failing link exists only in a localized page, coordinate a fix with its locale
-  team.
+Then let drift handling cover the localized pages: fixing the English pages
+makes their localized copies [drift](#drift-status), and the link checker skips
+drifted copies. If a localized page still fails link checking, refresh its drift
+status directly:
 
-- **An external resource was moved**, but is otherwise semantically unchanged
-  (such as a relocated GitHub file): update the link on each page that fails
-  link checking, marking each edited localized page as [patched](#patched).
+```sh
+npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
+```
 
-In all cases, rerun `npm run check:links` and confirm that no link failures
-remain.
+In the rare case where a failing link exists only in a localized page, report it
+and coordinate a fix with its locale team.
 
+Finally, rerun `npm run check:links` and confirm that no link failures remain.
+
+<!-- prettier-ignore-start -->
 [aliases]: https://gohugo.io/content-management/urls/#aliases
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [front matter]: https://gohugo.io/content-management/front-matter/
+[locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
+<!-- prettier-ignore-end -->

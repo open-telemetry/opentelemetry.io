@@ -54,20 +54,15 @@ pointing at the main repository.
 Status 5XX responses are usually transient. If the link check reports status 5XX
 for a URL, treat it as likely temporary (origin down, gateway errors, overload).
 **Do not** change site content or links solely to work around a 5XX; prefer
-re-running `npm run fix:link-cache` later. Only investigate a 5XX like a real
+re-running `npm run log:check:links` later. Only investigate a 5XX like a real
 defect if it **keeps** failing across multiple runs over time and you have
 confirmed the URL is not otherwise healthy.
 
 ## Resolve failing links
 
-The link checker (Lychee) only caches successful results in `.lycheecache`, so
-failing URLs are re-fetched on every run. For failures that look like
-bot-blocking rather than dead links, `npm run fix:link-cache:double-check`
-re-verifies them through a real browser; see
-[Double-check of failing links](/site/build/link-checking/#double-check).
-
-1. Build the site and check links: `npm run fix:link-cache`. This also updates
-   `.lycheecache`. See LinkedIn note below.
+1. Build the site and check links: `npm run log:check:links`. This also updates
+   `link-cache.jsonc` and captures the check log that the double-check step
+   below reads. See LinkedIn note below.
 2. If the check passes, [wrap up the PR](#wrap-up).
 3. **Otherwise**, list the failing URLs and their statuses from the check output
    (for the CI run, see the PR's failing `CHECK LINKS` job log).
@@ -79,7 +74,20 @@ re-verifies them through a real browser; see
    > LinkedIn links over such statuses; instead let a maintainer manually
    > validate them.
 
-4. **Analyze and recommend**. For each failing URL, report:
+4. For failures that look like bot-blocking rather than dead links (for example,
+   403/429/999 from sites that load fine in a browser), re-verify them through a
+   real browser before analyzing them:
+
+   ```sh
+   npm run fix:link-cache:double-check
+   ```
+
+   The probe reads the log captured in step 1. URLs that the probe clears are
+   cached; repeat from step 1 and analyze only the failures that remain. For
+   details, see
+   [Double-check of failing links](/site/build/link-checking/#double-check).
+
+5. **Analyze and recommend**. For each failing URL, report:
    - The URL and HTTP status.
    - Where it originates from: provide links to files or pages.
    - A recommended fix or follow-up action; see
@@ -92,13 +100,22 @@ re-verifies them through a real browser; see
 
    Stop and wait for reviewer approval -- never self-approve recommendations.
 
-5. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
-   actions, and only those. For edits outside `content/en/`, follow
-   [Localization][] gating requirements and conventions (e.g. `# patched` tags).
+6. **Apply approved fixes.** Perform the maintainer-approved fix and follow-up
+   actions, and only those. For page content under `content/`, edit English
+   pages only: **never edit localized page content**.
 
-6. Run `npm run fix:link-cache` to re-check links (and refresh `.lycheecache`)
-   after those source-link changes, then repeat the steps in this section (from
-   step 1) until the check passes.
+7. Run `npm run log:check:links` to re-check links and refresh
+   `link-cache.jsonc` after those source-link changes. If a localized page still
+   fails, refresh its [drift status][] instead of editing it:
+
+   ```sh
+   npm run fix:i18n:status -- PATHS_TO_FAILING_LOCALIZED_PAGES
+   ```
+
+   In the rare case where a failing link exists only in a localized page, report
+   it and coordinate a fix with its locale team. For more details, see [Link
+   fixes and resource updates][]. Repeat the steps in this section (from step 2)
+   until the check passes.
 
 ## Wrap up
 
@@ -106,10 +123,13 @@ Once the link check passes on the PR being processed:
 
 1. Share the link-check summary in your reply (URLs re-checked or fixed, and
    final status counts when shown).
-2. If `.lycheecache` changed, commit and push to upstream _`TARGET_BRANCH`_. Use
-   the link-check summary as the commit-message body (plain text; if the URL
-   list is long, include only the counts): it remains visible in the PR's commit
-   history even after a squash merge.
+2. If `link-cache.jsonc` changed, commit and push to upstream _`TARGET_BRANCH`_.
+   A later bot run that hits a cache-only merge conflict takes `main`'s file,
+   dropping these edits; the refresh lane re-runs the double-check afterwards,
+   the spec-integration lanes don't. Use the link-check summary as the
+   commit-message body (plain text; if the URL list is long, include only the
+   counts): it remains visible in the PR's commit history even after a squash
+   merge.
 3. Unless the skill invocation asks for no comment (e.g., it includes “no
    comment” or “silent”), add a comment to the PR
    (`gh pr comment <num> --body '…'`) consisting of:
@@ -173,5 +193,7 @@ Show that the fetched page names or otherwise matches the linked resource:
   [Keeping registry and list information current](/ecosystem/registry/updating/).
 
 <!-- prettier-ignore-start -->
-[Localization]: /docs/contributing/localization/#link-fixes-and-resource-updates
+[drift status]: /docs/contributing/localization/#drift-status
+[link fixes and resource updates]:
+  /docs/contributing/localization/#link-fixes-and-resource-updates
 <!-- prettier-ignore-end -->

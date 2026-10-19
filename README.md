@@ -25,10 +25,12 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
+<!--
 ### Add a project to the OpenTelemetry [Registry][]
 
 For details on how to add a project to the OpenTelemetry Registry, see [Adding
 to the registry][].
+-->
 
 ## Contributing
 
@@ -60,48 +62,47 @@ Here is a list of community roles with current and previous members:
 
 These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 
-- [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
-- [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Bronto
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), DoorDash
+- [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
 
 ### Approvers
 
 These are the members of [@open-telemetry/docs-approvers][] (members-only):
 
--
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 
 For more information about the approver role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
 
 ### Triagers
 
 These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
-- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
 For more information about the triager role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#triager).
 
 ### Emeritus
 
 - [Austin Parker](https://github.com/austinlparker), Maintainer
+- [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Maintainer
+- [Phillip Carter](https://github.com/cartermp), Maintainer
 - [jparsana](https://github.com/jparsana), Maintainer
 - [Kazunori Otani](https://github.com/katzchang), Triager
 - [Masaki Sugimoto](https://github.com/Msksgm), Triager
 - [Michael Hausenblas](https://github.com/mhausenblas), Approver
+- [Michael Yao](https://github.com/windsonsea), Triager
 - [Morgan McLean](https://github.com/mtwo), Maintainer
 - [Paul Bruce](https://github.com/paulsbruce), Approver
 - [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
@@ -119,7 +120,6 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
-[adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
@@ -129,13 +129,15 @@ already contributed][contributors]!
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:
-  https://github.com/open-telemetry/community/blob/main/community-membership.md
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 [contributing.md]: CONTRIBUTING.md
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors
 [opentelemetry]: https://opentelemetry.io
 [OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
-[registry]: https://opentelemetry.io/ecosystem/registry/
+
+<!--[registry]: https://opentelemetry.io/ecosystem/registry/-->
+
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/u/0/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977@group.calendar.google.com
 [google doc]:

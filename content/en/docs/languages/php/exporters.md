@@ -10,7 +10,7 @@ cSpell:ignore: fastcgi pecl
 >
 > If you use [zero-code instrumentation](/docs/zero-code/php/) you can set up
 > exporters with
-> [zero-code configuration to setup exporters](/docs/zero-code/php#configuration).
+> [zero-code configuration to setup exporters](/docs/zero-code/php/auto/#configuration).
 
 ## OTLP
 

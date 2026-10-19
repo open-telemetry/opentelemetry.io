@@ -6,7 +6,7 @@
 //
 // Rule configuration lives in .markdownlint.yaml under the rule name.
 
-import { createLinkPatternRule } from 'markdownlint-rule-link-pattern';
+import { createLinkPatternRule } from '@pchalin/markdownlint-rule-link-pattern';
 
 export default [
   createLinkPatternRule(

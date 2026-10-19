@@ -3,7 +3,7 @@ title: DockerコンテナとしてOBIを実行する
 linkTitle: Docker
 description: OBIをDockerコンテナとしてセットアップして実行し、別のコンテナを計装する方法を学びます。
 weight: 3
-default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
+default_lang_commit: b83edac6fdc7da4c53d10ce00c2f78d9aea0c89b
 cSpell:ignore: goblog
 ---
 
@@ -35,7 +35,7 @@ OBIコンテナイメージは、GitHub Actions の OIDC（OpenID Connect）プ�
 以下のコマンドを使用して、コンテナイメージの署名を検証できます。
 
 ```sh
-export VERSION=v0.10.0
+export VERSION=v0.12.1
 
 # Docker Hub のリリースイメージを検証する
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
@@ -69,7 +69,7 @@ The following checks were performed on each of these signatures:
 コンテナがない場合は、[Goで書かれたシンプルなブログエンジンサービス](https://macias.info)を使用できます。
 
 ```sh
-export VERSION=v0.10.0
+export VERSION=v0.12.1
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -142,4 +142,30 @@ services:
 
 ```sh
 docker compose -f compose-example.yml up
+```
+
+## コンテキスト伝搬 {#context-propagation}
+
+上記の例ではコンテキスト伝搬を有効にしていません。
+`OTEL_EBPF_BPF_CONTEXT_PROPAGATION` を設定する場合は、以下のホストパスもOBIコンテナにマウントしてください。
+
+- `/sys/kernel/tracing`: カーネル 6.6.128以降、6.12.75以降、6.18.14以降、および 6.19以降で、OBIはFIONREAD補正チェックを実行するためにこのマウントが必要です。
+  これがないと、OBIはコンテキスト伝搬を無効にします。
+  詳細は[コンテキスト伝搬に必要なホストマウント](../../security/#required-host-mount-for-context-propagation)を参照してください。
+- `/sys/fs/cgroup`: OBIはこのパスを使用して、新しく作成されたソケットをリッスンします。
+  これがないと、一部のリクエストでコンテキストが伝搬されない場合があります。
+  詳細は[分散トレース](../../distributed-traces/)を参照してください。
+
+```yaml
+services:
+  autoinstrumenter:
+    image: otel/ebpf-instrument:main
+    pid: 'host'
+    privileged: true
+    volumes:
+      - /sys/kernel/tracing:/sys/kernel/tracing
+      - /sys/fs/cgroup:/sys/fs/cgroup
+    environment:
+      OTEL_EBPF_OPEN_PORT: 8443
+      OTEL_EBPF_BPF_CONTEXT_PROPAGATION: headers
 ```

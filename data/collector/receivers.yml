@@ -115,6 +115,7 @@
     - contrib
   stability:
     logs: development
+    metrics: development
 - name: azuremonitorreceiver
   display_name: Azure Monitor Receiver
   repo: contrib
@@ -181,6 +182,13 @@
     logs: alpha
     metrics: alpha
     traces: alpha
+- name: dnscheckreceiver
+  display_name: DNS Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: dockerstatsreceiver
   display_name: Docker Stats Receiver
   repo: contrib
@@ -275,7 +283,7 @@
   distributions:
     - contrib
   stability:
-    logs: development
+    logs: alpha
 - name: googlecloudpubsubreceiver
   display_name: Google Pub/Sub Receiver
   repo: contrib
@@ -681,8 +689,7 @@
   distributions:
     - contrib
   stability:
-    metrics: unmaintained
-  unmaintained: true
+    metrics: beta
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib
@@ -823,13 +830,6 @@
     metrics: development
     profiles: development
     traces: development
-- name: wavefrontreceiver
-  display_name: Wavefront Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    metrics: deprecated
 - name: webhookeventreceiver
   display_name: Webhook Event Receiver
   repo: contrib
@@ -843,7 +843,7 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: beta
 - name: windowsperfcountersreceiver
   display_name: Windows Performance Counters Receiver
   repo: contrib

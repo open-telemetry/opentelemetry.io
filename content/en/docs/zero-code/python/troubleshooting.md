@@ -115,6 +115,22 @@ deadlocks described in [Python issue 6721](https://bugs.python.org/issue6721).
 
 #### Workarounds
 
+Initializing OpenTelemetry after the server forks is the preferred workaround.
+Each worker then has its own SDK components and resource, avoiding shared
+background threads and locks and giving each metrics writer a distinct resource
+identity.
+
+With OpenTelemetry Python SDK 1.44.0 or later, the SDK automatically generates a
+unique `service.instance.id` resource attribute for each Python process and
+regenerates it, along with other configured process-dependent resource
+attributes, in forked child processes. This gives each worker a distinct metrics
+stream identity without enabling the optional process resource detector. It does
+not restore inherited background threads or resolve locks; initialize the SDK
+after the fork to avoid those issues. Avoid configuring one shared
+`service.instance.id` for multiple workers; metrics producers are expected to
+follow the
+[single-writer principle](/docs/specs/otel/metrics/data-model/#single-writer).
+
 There are some workarounds for pre-fork servers with OpenTelemetry. The
 following table summarizes the current support of signal export by different
 auto-instrumented web server gateway stacks that have been pre-forked with
@@ -175,6 +191,26 @@ Then, run the server with:
 
 ```sh
 uvicorn main:app --workers 2
+```
+
+##### Use Gunicorn post-fork for programmatic auto-instrumentation
+
+If using Gunicorn, then you can initialize OpenTelemetry with
+[programmatic auto-instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)
+as part of your post-fork hooks, instead of with `opentelemetry-instrument`. For
+example, in a file `gunicorn_config.py` that is alongside `your_app.py`:
+
+```python
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+
+def post_fork(server, worker):
+    initialize()
+```
+
+Then, run with:
+
+```sh
+gunicorn --config gunicorn_config.py --workers=2 your_app:app
 ```
 
 ##### Use Prometheus with direct OTLP

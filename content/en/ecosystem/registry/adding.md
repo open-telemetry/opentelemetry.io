@@ -5,7 +5,9 @@ description: How to add entries to the registry.
 cSpell:ignore: zpages
 ---
 
-Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
+{{% include freeze-notice.md %}}
+
+<!-- Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the [registry](../)!
 
 To add your project, submit a [pull request][]. You'll need to create a data
@@ -14,7 +16,7 @@ file in [data/registry][] for your project, by using the following template:
 
 Make sure that your project names and descriptions follow our [marketing
 guidelines][] and are in line with the Linux Foundation's branding and
-[trademark usage guidelines][].
+[trademark usage guidelines][]. -->
 
 ## Registry Types
 
@@ -34,6 +36,24 @@ instrumentation libraries.
 > [!NOTE]
 >
 > This is the only registry type that allows commercial/proprietary licenses.
+
+### `api`
+
+**Use for**: Packages that implement the OpenTelemetry API for a language: the
+interfaces and no-op implementations that instrumented code and libraries depend
+on, independent of any SDK.
+
+**Examples**: The Ruby `opentelemetry-api`, `opentelemetry-metrics-api`, and
+`opentelemetry-logs-api` gems.
+
+### `connector`
+
+**Use for**: OpenTelemetry Collector connector components, which join two
+pipelines by acting as the exporter of one and the receiver of the other,
+possibly translating between signal types.
+
+**Examples**: Count connectors, span-to-metrics connectors, or failover
+connectors.
 
 ### `core`
 
@@ -60,6 +80,12 @@ functionality.
 health checks/pprof/zpages, or other components that augment Collector/SDK
 behavior.
 
+### `id-generator`
+
+**Use for**: SDK components that customize how trace and span IDs are generated.
+
+**Examples**: AWS X-Ray-compatible ID generators.
+
 ### `instrumentation`
 
 **Use for**: Instrumentation libraries or native instrumentations for specific
@@ -78,12 +104,24 @@ familiar logging APIs.
 SLF4J/Log4j/Logback, Python logging, JavaScript Winston/Pino, and Go
 log/slog/zap.
 
+### `metric-producer`
+
+**Use for**: SDK components that bridge metrics from third-party sources into an
+SDK metric reader.
+
 ### `processor`
 
 **Use for**: OpenTelemetry Collector processor components.
 
 **Examples**: Batch processors, attribute processors, sampling processors, or
 any component that processes telemetry data within the collector pipeline.
+
+### `propagator`
+
+**Use for**: Context propagators, which carry trace context and baggage across
+process boundaries in a specific wire format.
+
+**Examples**: B3, Jaeger, or AWS X-Ray propagators.
 
 ### `provider`
 
@@ -111,6 +149,25 @@ receives telemetry data from external sources.
 **Examples**: AWS resource detectors, GCP resource detectors, or any component
 that automatically detects and adds resource information to telemetry.
 
+### `sampler`
+
+**Use for**: SDK samplers, which decide which spans are recorded and exported.
+
+**Examples**: AWS X-Ray remote samplers or rule-based samplers.
+
+### `sdk`
+
+**Use for**: Packages that implement the OpenTelemetry SDK for a language.
+
+**Examples**: The Ruby `opentelemetry-sdk`, `opentelemetry-metrics-sdk`, and
+`opentelemetry-logs-sdk` gems.
+
+### `semantic-convention`
+
+**Use for**: Packages that provide semantic-convention constants for a language.
+
+**Examples**: The Ruby `opentelemetry-semantic_conventions` gem.
+
 ### `utilities`
 
 **Use for**: Any other tool that people can use to work with OpenTelemetry.
@@ -118,6 +175,7 @@ that automatically detects and adds resource information to telemetry.
 **Examples**: Testing utilities, debugging tools, migration tools, or any helper
 library that facilitates working with OpenTelemetry.
 
+<!--
 [data/registry]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry
 [pull request]:
@@ -127,3 +185,4 @@ library that facilitates working with OpenTelemetry.
 [marketing guidelines]: /community/marketing-guidelines/
 [trademark usage guidelines]:
   https://www.linuxfoundation.org/legal/trademark-usage
+  -->

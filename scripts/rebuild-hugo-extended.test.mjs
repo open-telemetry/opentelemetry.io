@@ -1,0 +1,278 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+import {
+  RETRY_DELAYS_SECONDS,
+  UNSAFE_HUGO_ENV,
+  rebuildHugoExtended,
+  runNpmRebuild,
+} from './rebuild-hugo-extended.mjs';
+
+const helperPath = fileURLToPath(
+  new URL('rebuild-hugo-extended.mjs', import.meta.url),
+);
+
+// Deliberately literal: content-pins the helper's UNSAFE_HUGO_ENV export
+// so a silently dropped name goes red here.
+const expectedUnsafeHugoEnv = [
+  'HUGO_BIN_PATH',
+  'HUGO_FORCE_STANDARD',
+  'HUGO_MIRROR_BASE_URL',
+  'HUGO_NO_EXTENDED',
+  'HUGO_OVERRIDE_VERSION',
+  'HUGO_SKIP_CHECKSUM',
+  'HUGO_SKIP_DOWNLOAD',
+  'HUGO_SKIP_VERIFY',
+];
+
+// The installer's env surface, verified against the installed package:
+// every HUGO_* token in hugo-extended is either a screened control or a
+// reviewed non-control, so an update:hugo bump that adds a knob goes red
+// here instead of silently escaping the screen.
+test('UNSAFE_HUGO_ENV covers the installed installer env surface', () => {
+  // Log-only controls, plus a comment-only mention the installer
+  // explicitly does not honor.
+  const reviewedNonControls = ['HUGO_QUIET', 'HUGO_SILENT', 'HUGO_VERSION'];
+  const packageDir = fileURLToPath(
+    new URL('../node_modules/hugo-extended', import.meta.url),
+  );
+  const tokens = new Set();
+  const scan = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const entryPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scan(entryPath);
+      } else if (/\.(mjs|cjs|js)$/.test(entry.name)) {
+        for (const [token] of readFileSync(entryPath, 'utf8').matchAll(
+          /\bHUGO_[A-Z][A-Z_]*\b/g,
+        )) {
+          tokens.add(token);
+        }
+      }
+    }
+  };
+  scan(packageDir);
+
+  assert.deepEqual(
+    [...tokens].sort(),
+    [...expectedUnsafeHugoEnv, ...reviewedNonControls].sort(),
+    'every installer HUGO_* token is a screened control or a reviewed non-control',
+  );
+});
+
+async function runProbe(succeedAt, env = {}) {
+  const attempts = [];
+  const errors = [];
+  const logs = [];
+  const waited = [];
+  const status = await rebuildHugoExtended({
+    env,
+    error: (message) => errors.push(message),
+    log: (message) => logs.push(message),
+    run: () => {
+      attempts.push(attempts.length + 1);
+      return attempts.length >= succeedAt ? 0 : 1;
+    },
+    wait: async (delay) => waited.push(delay),
+  });
+  return { attempts, errors, logs, status, waited };
+}
+
+test('Hugo rebuild policy is bounded and rejects installer controls', () => {
+  assert.deepEqual(
+    RETRY_DELAYS_SECONDS,
+    [0, 2, 5, 10],
+    'retry delays define four bounded attempts',
+  );
+  assert.deepEqual(
+    UNSAFE_HUGO_ENV,
+    expectedUnsafeHugoEnv,
+    'unsafe Hugo controls stay complete',
+  );
+});
+
+test('npm rebuild uses the current npm CLI and exact arguments', () => {
+  // Any existing file stands in for the npm CLI; spawn is mocked.
+  const env = { npm_execpath: helperPath };
+  const calls = [];
+  const status = runNpmRebuild({
+    env,
+    spawn(file, args, options) {
+      calls.push({ args, file, options });
+      return { status: 0 };
+    },
+  });
+
+  assert.equal(status, 0, 'successful npm rebuild returns zero');
+  assert.deepEqual(
+    calls,
+    [
+      {
+        args: [
+          helperPath,
+          'rebuild',
+          'hugo-extended',
+          '--ignore-scripts=false',
+        ],
+        file: process.execPath,
+        options: { env, stdio: 'inherit' },
+      },
+    ],
+    'rebuild runs the locked package through the current npm CLI',
+  );
+});
+
+test('npm rebuild reports a signal-terminated attempt', () => {
+  const errors = [];
+  const status = runNpmRebuild({
+    env: { npm_execpath: helperPath },
+    error: (message) => errors.push(message),
+    spawn: () => ({ status: null, signal: 'SIGTERM' }),
+  });
+
+  assert.equal(status, 1, 'a terminated attempt returns nonzero');
+  assert.deepEqual(
+    errors,
+    ['The Hugo rebuild attempt was terminated by SIGTERM'],
+    'the termination is reported',
+  );
+});
+
+test('npm rebuild reports a failure to start', () => {
+  const errors = [];
+  const status = runNpmRebuild({
+    env: { npm_execpath: helperPath },
+    error: (message) => errors.push(message),
+    spawn: () => ({ error: new Error('ENOENT'), status: null }),
+  });
+
+  assert.equal(status, 1, 'a failed start returns nonzero');
+  assert.deepEqual(
+    errors,
+    ['Unable to start the Hugo rebuild: ENOENT'],
+    'the start failure is reported',
+  );
+});
+
+test('Hugo rebuild retries with backoff until it succeeds', async () => {
+  const { attempts, errors, logs, status, waited } = await runProbe(3);
+
+  assert.equal(status, 0, 'retry policy returns zero after success');
+  assert.deepEqual(attempts, [1, 2, 3], 'retry policy stops after success');
+  assert.deepEqual(waited, [2, 5], 'retry policy uses the first two delays');
+  assert.deepEqual(errors, [], 'the error log stays empty on success');
+  assert.ok(
+    logs.includes('Hugo install attempt 3/4'),
+    'successful attempt is logged',
+  );
+});
+
+test('Hugo rebuild fails after four attempts', async () => {
+  const { attempts, errors, status, waited } = await runProbe(5);
+
+  assert.equal(status, 1, 'exhausted retry policy returns nonzero');
+  assert.deepEqual(attempts, [1, 2, 3, 4], 'retry policy makes four attempts');
+  assert.deepEqual(waited, [2, 5, 10], 'retry policy uses every delay');
+  assert.deepEqual(
+    errors,
+    ['Hugo install failed after 4 attempts'],
+    'retry exhaustion is reported',
+  );
+});
+
+test('Hugo rebuild rejects installer control variables', async () => {
+  for (const name of expectedUnsafeHugoEnv) {
+    const { attempts, errors, status, waited } = await runProbe(1, {
+      [name]: '1',
+    });
+
+    assert.equal(status, 1, `${name} returns nonzero`);
+    assert.deepEqual(attempts, [], `attempts stay empty under ${name}`);
+    assert.deepEqual(waited, [], `waits stay empty under ${name}`);
+    assert.deepEqual(
+      errors,
+      [`${name} must be unset for the pinned Hugo rebuild`],
+      `${name} rejection is reported`,
+    );
+  }
+});
+
+test('Hugo rebuild treats an empty control variable as unset', async () => {
+  // Pins the empty-string carve-out documented at the helper's env screen.
+  const { attempts, errors, status } = await runProbe(1, {
+    HUGO_SKIP_DOWNLOAD: '',
+  });
+
+  assert.equal(status, 0, 'an empty control variable permits the rebuild');
+  assert.deepEqual(attempts, [1], 'the rebuild runs once');
+  assert.deepEqual(errors, [], 'the error log stays empty');
+});
+
+test('Hugo rebuild fails fast without the npm CLI path', async () => {
+  // Whitespace-only or nonexistent is as unavailable as unset.
+  for (const npmExecPath of [undefined, '   ', '/no/such/npm-cli.js']) {
+    const errors = [];
+    const status = await rebuildHugoExtended({
+      env: npmExecPath === undefined ? {} : { npm_execpath: npmExecPath },
+      error: (message) => errors.push(message),
+      log: () => {},
+      wait: () => assert.fail('the helper returns before the first retry wait'),
+    });
+
+    assert.equal(status, 1, 'missing npm CLI path returns nonzero');
+    assert.deepEqual(
+      errors,
+      ['npm_execpath is unavailable; run this helper through npm'],
+      'missing npm CLI path is reported once',
+    );
+  }
+});
+
+// End-to-end: the entry point fires and the default rebuild reaches npm's
+// CLI with the exact argument vector, proving the wiring the in-memory
+// policy tests bypass.
+test('helper entry point runs the default npm rebuild', () => {
+  const tmp = mkdtempSync(path.join(os.tmpdir(), 'otel-hugo-entry-'));
+  const recorder = path.join(tmp, 'fake-npm-cli.js');
+  const argvFile = path.join(tmp, 'argv.json');
+  writeFileSync(
+    recorder,
+    `require('node:fs').writeFileSync(${JSON.stringify(argvFile)},` +
+      ` JSON.stringify(process.argv.slice(2)));`,
+  );
+
+  const env = { ...process.env, npm_execpath: recorder };
+  for (const name of expectedUnsafeHugoEnv) delete env[name];
+  let recorded;
+  try {
+    const result = spawnSync(process.execPath, [helperPath], {
+      encoding: 'utf8',
+      env,
+    });
+    assert.equal(
+      result.status,
+      0,
+      `entry point exits successfully: ${result.stderr}`,
+    );
+    assert.match(result.stdout, /Hugo install attempt 1\/4/);
+    recorded = JSON.parse(readFileSync(argvFile, 'utf8'));
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+  assert.deepEqual(
+    recorded,
+    ['rebuild', 'hugo-extended', '--ignore-scripts=false'],
+    'entry point drives the exact targeted rebuild through the npm CLI',
+  );
+});

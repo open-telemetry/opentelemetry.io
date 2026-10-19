@@ -1,8 +1,7 @@
 ---
 title: エクスポーター
 weight: 50
-default_lang_commit: 5a3937c47b391b207465e0e464006f3b03bf242f
-drifted_from_default: true
+default_lang_commit: c161165987d527c1efd6bc969d7fef905946c561
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -56,15 +55,10 @@ env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" rails server -p 8080
 
 ```shell
 docker run -d --name jaeger \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
   -p 5778:5778 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
   -p 9411:9411 \
   jaegertracing/jaeger:latest
 ```

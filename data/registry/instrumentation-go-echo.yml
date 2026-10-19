@@ -5,11 +5,12 @@ language: go
 tags:
   - go
   - instrumentation
-license: Apache 2.0
+license: MIT
 description: Go contrib plugin for the labstack/echo package.
 authors:
-  - name: OpenTelemetry Authors
+  - name: LabStack
+    url: https://github.com/labstack
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/labstack/echo
+  repo: https://github.com/labstack/echo-opentelemetry
 createdAt: 2020-06-08
 isFirstParty: false

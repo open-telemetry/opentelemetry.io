@@ -3,6 +3,7 @@ title: Convenção Semântica
 description: Nomes comuns para diferentes tipos de operações e dados.
 weight: 30
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+drifted_from_default: true
 ---
 
 O OpenTelemetry define [Convenção Semântica](/docs/specs/semconv/), algumas

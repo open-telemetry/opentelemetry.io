@@ -46,9 +46,7 @@ const recentDir = recentBlogDir();
 const recentYear = path.basename(recentDir);
 const recentPost = `${recentDir}/zz-old-blog-ignore-test/index.md`;
 
-// The newest existing blog-year folder that the tools must ignore. Like the
-// sidebar script in content/en/blog/_index.md, treat the current and previous
-// years as recent: old years are those <= currentYear - 2.
+// The newest existing blog-year folder that the tools must ignore.
 function oldBlogDir() {
   for (let year = new Date().getFullYear() - 2; year >= 2019; year--) {
     const dir = `content/en/blog/${year}`;
@@ -84,7 +82,7 @@ function run(cmd, args) {
   return { status: res.status, out: (res.stdout ?? '') + (res.stderr ?? '') };
 }
 
-const npx = (...args) => run('npx', ['--no-install', ...args]);
+const npx = (...args) => run('npm', ['exec', '--no', '--', ...args]);
 
 describe('old blog posts are ignored by lint/format tooling', () => {
   before(() => {

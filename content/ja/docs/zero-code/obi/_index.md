@@ -7,9 +7,8 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-default_lang_commit: c4f479b37a63a9dae8dee6864af56b7c6882ac5d
-drifted_from_default: true
-cSpell:ignore: Qwen
+default_lang_commit: df7ca870f2ec59453948ced42ca0d76bfd5e53d5
+cSpell:ignore: Aerospike HotSpot Ollama Qwen SunRPC uprobe
 ---
 
 OpenTelemetry ライブラリは、一般的なプログラミング言語やフレームワーク向けのテレメトリー収集機能を提供します。
@@ -17,7 +16,7 @@ OpenTelemetry ライブラリは、一般的なプログラミング言語やフ
 Go や Rust などの一部のコンパイル型言語では、コードにトレースポイントを手動で追加する必要があります。
 
 OpenTelemetry eBPF 計装（OBI）は、アプリケーションのオブザーバビリティを簡単に開始するための自動計装ツールです。
-OBI は eBPF を使用して、アプリケーションの実行可能ファイルと OS ネットワーク層を自動的に検査し、Web トランザクションや Linux HTTP/S および gRPC サービスの Rate Errors Duration（RED）指標に関連するトレーススパンをキャプチャします。
+OBI は eBPF を使用して、アプリケーションの実行可能ファイルと OS ネットワーク層を自動的に検査し、サポートされた Linux ワークロードのトレーススパン、Rate Errors Duration（RED）指標、ランタイム指標、アプリケーションおよびネットワークの関係をキャプチャします。
 すべてのデータキャプチャは、アプリケーションのコードや構成を変更することなく行われます。
 
 OBI は以下の機能を提供します。
@@ -26,35 +25,46 @@ OBI は以下の機能を提供します。
 - **軽量**: コード変更不要、ライブラリインストール不要、再起動不要
 - **効率的な計装**: トレースとメトリクスは、最小限のオーバーヘッドで eBPF プローブによってキャプチャ
 - **分散トレーシング**: 分散トレーススパンがキャプチャされ、Collector に送信される
-- **ログエンリッチメント**: JSON ログをトレースコンテキストでエンリッチしてトレースと相関させる
+- **ログエンリッチメント**: JSON およびプレーンテキストのログをトレースコンテキストでエンリッチしてトレースと相関させる
 - **Kubernetes ネイティブ**: Kubernetes アプリケーションに構成不要の自動計装を提供
 - **暗号化された通信の可視性**: TLS/SSL 経由のトランザクションを復号化せずにキャプチャ
 - **コンテキスト伝搬**: サービス間でトレースコンテキストを自動的に伝搬
-- **プロトコルサポート**: HTTP/S、gRPC、gRPC-Web、JSON-RPC、MQTT、NATS、AMQP 1.0、Memcached など
-- **データベース計装**: PostgreSQL（pgx ドライバーを含む）、MySQL、MSSQL、MongoDB、Redis、Couchbase（N1QL/SQL++ および KV プロトコル）
-- **生成 AI 計装**: OpenAI、Anthropic Claude、Google AI Studio（Gemini）、AWS Bedrock、Qwen（DashScope）、MCP over JSON-RPC、および Voyage AI、Cohere、Jina AI の埋め込みおよび再ランク API のトレースとメトリクス
+- **プロトコルサポート（クライアントおよびサーバー）**: HTTP/S、HTTP/2、gRPC、Kafka、NATS、MQTT、Memcached、SunRPC（NFS を含む）、および JSON-RPC
+- **プロトコルサポート（クライアントのみ）**: AMQP 1.0 および DNS クエリ
+- **データベース計装（クライアントおよびサーバー）**: PostgreSQL（pgx ドライバーを含む）、MySQL、MSSQL、および Redis
+- **データベース計装（クライアントのみ）**: MongoDB、Couchbase（N1QL/SQL++ および KV プロトコル）、Aerospike、Elasticsearch、および OpenSearch
+- **HTTP ペイロード計装**: サーバーサイドの GraphQL とクライアントサイドの Elasticsearch、OpenSearch、AWS S3、および AWS SQS、さらにクライアントとサーバーの両方での MCP over JSON-RPC
+- **生成 AI 計装**: OpenAI、OpenAI 互換ゲートウェイ、Ollama、Anthropic Claude、Google AI Studio（Gemini）、AWS Bedrock、Qwen（DashScope）、MCP over JSON-RPC、埋め込みおよび再ランク API、およびベクトル検索システムのトレースとメトリクス
+- **ランタイムメトリクス**: SDK を変更せずに Go、HotSpot JVM、および Node.js イベントループのメトリクスを収集
+- **GPU 計装**: Linux でサポートされた CUDA ランタイムオペレーションをキャプチャ
+- **スパンおよびサービスグラフメトリクス**: アプリケーションのスパンメトリクスとサービス間の関係をエクスポート
 - **低カーディナリティメトリクス**: コスト削減のための低カーディナリティの Prometheus 互換メトリクス
-- **ネットワークのオブザーバビリティ**: ホストレベルの TCP RTT 統計とともにサービス間のネットワークフローをキャプチャ
+- **ネットワークのオブザーバビリティ**: バイトおよびパケットカウンター、TCP RTT、再送、接続、ソケット I/O メトリクスとともにサービス間のネットワークフローをキャプチャ
 - **強化されたサービスディスカバリー**: DNS 解決によるサービス名の検索の改善
 - **Collector との統合**: OBI を OpenTelemetry Collector レシーバーコンポーネントとして実行
 
-## 最近のハイライト（v0.9.0） {#recent-highlights-v090}
+## 最近のハイライト（v0.12.1） {#recent-highlights-v0121}
 
-OBI v0.9.0 は、プロトコルカバレッジ、出力テレメトリー、および生成 AI 計装を拡張しました。
+OBI v0.12.1 は、v0.12.0 に向けて準備された変更の公開リリースです。
+v0.12.0 はタグ付けされましたが、リリースバリデーションが失敗したため公開されませんでした。
+v0.12.0 で意図された変更とリリース修正を含む v0.12.1 をインストールしてください。
 
-- **新しいメッセージングプロトコルサポート**: NATS と AMQP 1.0 のトレースとメトリクスを追加
-- **データベースカバレッジの拡大**: 準備済みステートメントの処理とエラー抽出を含む、MSSQL プロトコルサポートを追加
-- **より広い生成 AI カバレッジ**: Qwen（DashScope）、MCP over JSON-RPC、埋め込みプロバイダー（Voyage AI、Cohere、Jina AI）と再ランクプロバイダー（Cohere、Jina AI、Voyage AI、Qwen）を追加
-- **新しい統計メトリクス**: 既存の TCP RTT メトリクスに加え、TCP 接続失敗メトリクスを追加
-- **テレメトリースキーマレジストリ**: OBI が出力するメトリクスと属性向けの Weaver 互換スキーマレジストリを追加
-- **スパンおよびサービスグラフの整合**: OBI がスパンメトリクスおよびサービスグラフテレメトリーをドキュメント化し、collector-contrib コネクターと整合した形式で出力
+主な変更点は以下の通りです。
+
+- **Node.js 手動スパン**: アプリケーションが OpenTelemetry SDK を登録していない場合に、`@opentelemetry/api` で作成されたスパンをキャプチャ
+- **Node.js ランタイムメトリクス**: イベントループの時間、使用率、遅延のメトリクスを追加
+- **より精密な Config v2 フィルター**: プロトコルおよびシグナルごとにアプリケーションフィルターを独立して適用
+- **プロセスコンテキストエンリッチメント**: 計装対象プロセスが実験的な `OTEL_CTX` マッピングを通じて公開するリソース属性とメタデータを読み取り
+- **データベースサーバーメトリクス**: サーバーサイドの Redis、Memcached、および SQL オペレーション向けに `db.server.operation.duration` を追加
+- **改善された Java サービス名**: `java` にフォールバックする前に、Spring Boot アプリケーション名、JAR マニフェストタイトル、または JAR ベース名を使用
+- **信頼性の修正**: プライベートスタックカーネルを uprobe プリエンプションから保護し、必要なプローブがアタッチできない場合の安全でないコンテキスト伝搬を回避し、トレースの親子関係、ラップされた Go TLS 接続、短命プロセスのログエンリッチメント、および OTLP 属性処理を修正
 
 完全な変更リストとアップグレードノートについては、
-[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.9.0)を参照してください。
+[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1)を参照してください。
 
 上流のサンプルを確認するには、
-[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/nginx)と
-[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.9.0/examples/apache)を参照してください。
+[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx)と
+[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache)を参照してください。
 
 ## OBI の仕組み {#how-obi-works}
 
@@ -75,12 +85,11 @@ OBI は、以下の要件を満たす Linux 環境をサポートしています
 
 OBI は以下のサポートされたリリース成果物を公開しています。
 
-| 成果物                                            | サポートされるプラットフォーム |
-| :------------------------------------------------ | :----------------------------- |
-| `obi` バイナリアーカイブ                          | Linux `amd64`, Linux `arm64`   |
-| `k8s-cache` バイナリアーカイブ                    | Linux `amd64`, Linux `arm64`   |
-| `otel/ebpf-instrument` コンテナイメージ           | Linux `amd64`, Linux `arm64`   |
-| `otel/ebpf-instrument-k8s-cache` コンテナイメージ | Linux `amd64`, Linux `arm64`   |
+| 成果物                                               | サポートされるプラットフォーム |
+| :--------------------------------------------------- | :----------------------------- |
+| `obi` バイナリアーカイブ                             | Linux `amd64`, Linux `arm64`   |
+| `otel/ebpf-instrument` コンテナイメージ              | Linux `amd64`, Linux `arm64`   |
+| `otel/opentelemetry-ebpf-k8s-cache` コンテナイメージ | Linux `amd64`, Linux `arm64`   |
 
 OBI は、要件を満たす環境であれば、スタンドアロン Linux ホスト、コンテナ、および Kubernetes にデプロイできます。
 

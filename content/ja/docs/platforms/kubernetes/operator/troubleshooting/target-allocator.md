@@ -1,7 +1,6 @@
 ---
 title: ターゲットアロケーター
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea # patched
-drifted_from_default: true
+default_lang_commit: 21d692eb10d49a29a2cdecd51c753a202341c83c
 cSpell:ignore: bleh targetallocator
 ---
 
@@ -254,7 +253,7 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 
 > [!NOTE]
 >
-> `/jobs` エンドポイントのより詳細な情報については、[ターゲットアロケーターのREADME](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md?plain=1#L128-L134)を参照してください。
+> `/jobs` エンドポイントのより詳細な情報については、[ターゲットアロケーターのREADME](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/target-allocator/README.md#endpoints)を参照してください。
 
 ### ターゲットアロケーターは有効ですか？Prometheusのサービスディスカバリーは有効ですか？ {#is-the-target-allocator-enabled-is-prometheus-service-discovery-enabled}
 

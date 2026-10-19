@@ -1,118 +1,131 @@
 ---
 title: Manual Span Attributes
 aliases: [manual_span_attributes, ../manual-span-attributes]
+cSpell:ignore: enduser
 ---
 
 This page lists the manual Span Attributes used throughout the demo:
 
 ## Ad
 
-| Name                        | Type   | Description                           |
-| --------------------------- | ------ | ------------------------------------- |
-| `app.ads.category`          | string | Category for returned ad              |
-| `app.ads.contextKeys`       | string | Context keys used to find related ads |
-| `app.ads.contextKeys.count` | number | Count of unique context keys used     |
-| `app.ads.count`             | number | Count of ads returned to user         |
-| `app.ads.ad_request_type`   | string | Either `targeted` or `not_targeted`   |
-| `app.ads.ad_response_type`  | string | Either `targeted` or `random`         |
+| Name                         | Type   | Description                                    |
+| ---------------------------- | ------ | ---------------------------------------------- |
+| `demo.ad.context_keys`       | string | Context keys for ad targeting                  |
+| `demo.ad.context_keys.count` | number | Number of context keys                         |
+| `demo.ad.count`              | number | Number of advertisements served                |
+| `demo.ad.request_type`       | string | Type of ad request                             |
+| `demo.ad.response_type`      | string | Type of ad response                            |
+| `demo.ad.category`           | string | Advertisement category                         |
+| `session.id`                 | string | Unique identifier of a session                 |
+| `enduser.id`                 | string | Unique identifier of an end user in the system |
 
 ## Cart
 
-| Name                   | Type   | Description                    |
-| ---------------------- | ------ | ------------------------------ |
-| `app.cart.items.count` | number | Number of unique items in cart |
-| `app.product.id`       | string | Product ID for cart item       |
-| `app.product.quantity` | string | Quantity for cart item         |
-| `app.user.id`          | string | User ID                        |
+| Name                    | Type   | Description             |
+| ----------------------- | ------ | ----------------------- |
+| `user.id`               | string | User identifier         |
+| `demo.product.id`       | string | Product identifier      |
+| `demo.product.quantity` | number | Product quantity        |
+| `demo.cart.items.count` | number | Number of items in cart |
 
 ## Checkout
 
-| Name                         | Type   | Description                     |
-| ---------------------------- | ------ | ------------------------------- |
-| `app.cart.items.count`       | number | Total number of items in cart   |
-| `app.order.amount`           | number | Order amount                    |
-| `app.order.id`               | string | Order ID                        |
-| `app.order.items.count`      | number | Number of unique items in order |
-| `app.payment.transaction.id` | string | Payment transaction ID          |
-| `app.shipping.amount`        | number | Shipping amount                 |
-| `app.shipping.tracking.id`   | string | Shipping tracking ID            |
-| `app.user.currency`          | string | User currency                   |
-| `app.user.id`                | string | User ID                         |
+| Name                                   | Type    | Description                                                     |
+| -------------------------------------- | ------- | --------------------------------------------------------------- |
+| `demo.cart.items.count`                | number  | Total number of items in cart                                   |
+| `demo.order.amount`                    | number  | Order amount                                                    |
+| `demo.order.id`                        | string  | Order ID                                                        |
+| `demo.order.items.count`               | number  | Number of unique items in order                                 |
+| `user_agent.synthetic.type`            | string  | Category of synthetic traffic, such as `test`                   |
+| `demo.payment.card_cvv`                | number  | Card CVV, only when the `emitRawPii` feature flag is enabled    |
+| `demo.payment.card_number`             | string  | Card number, only when the `emitRawPii` feature flag is enabled |
+| `demo.payment.transaction.id`          | string  | Payment transaction ID                                          |
+| `demo.shipping.amount`                 | number  | Shipping amount                                                 |
+| `demo.shipping.tracking.id`            | string  | Shipping tracking ID                                            |
+| `demo.user_context.selected_currency`  | string  | User currency                                                   |
+| `messaging.kafka.producer.duration_ms` | number  | Time to get the Kafka producer acknowledgement, in milliseconds |
+| `messaging.kafka.producer.success`     | boolean | Whether the message was successfully written to Kafka           |
+| `user.email`                           | string  | User email, only when the `emitRawPii` feature flag is enabled  |
+| `user.id`                              | string  | User ID                                                         |
 
 ## Currency
 
-| Name                           | Type   | Description                   |
-| ------------------------------ | ------ | ----------------------------- |
-| `app.currency.conversion.from` | string | Currency code to convert from |
-| `app.currency.conversion.to`   | string | Currency code to convert to   |
+| Name                 | Type   | Description          |
+| -------------------- | ------ | -------------------- |
+| `demo.exchange.from` | string | Source currency code |
+| `demo.exchange.to`   | string | Target currency code |
 
 ## Email
 
-| Name                  | Type   | Description                       |
-| --------------------- | ------ | --------------------------------- |
-| `app.email.recipient` | string | Email used for order confirmation |
-| `app.order.id`        | string | Order ID                          |
+| Name            | Type   | Description      |
+| --------------- | ------ | ---------------- |
+| `demo.order.id` | string | Order identifier |
 
 ## Frontend
 
-| Name                     | Type   | Description                   |
-| ------------------------ | ------ | ----------------------------- |
-| `app.cart.size`          | number | Total number of items in cart |
-| `app.cart.items.count`   | number | Count of unique items in cart |
-| `app.cart.shipping.cost` | number | Cart shipping cost            |
-| `app.cart.total.price`   | number | Cart total price              |
-| `app.currency`           | string | User currency                 |
-| `app.currency.new`       | string | New currency to set           |
-| `app.order.total`        | number | Order total cost              |
-| `app.product.id`         | string | Product ID                    |
-| `app.product.quantity`   | number | Product quantity              |
-| `app.products.count`     | number | Total products displayed      |
-| `app.request.id`         | string | Request ID                    |
-| `app.session.id`         | string | Session ID                    |
-| `app.user.id`            | string | User ID                       |
+| Name                     | Type   | Description                                    |
+| ------------------------ | ------ | ---------------------------------------------- |
+| `demo.synthetic_request` | string | Whether the request is synthetic/test traffic  |
+| `session.id`             | string | Unique identifier of a session                 |
+| `enduser.id`             | string | Unique identifier of an end user in the system |
 
 ## Load Generator
 
-| Name     | Type | Description |
-| -------- | ---- | ----------- |
-| None yet |      |             |
+| Name                       | Type   | Description                                    |
+| -------------------------- | ------ | ---------------------------------------------- |
+| `session.id`               | string | Unique identifier of a session                 |
+| `demo.synthetic_request`   | string | Whether the request is synthetic/test traffic  |
+| `user.id`                  | string | User identifier                                |
+| `demo.request.flood.count` | number | Number of repeated requests sent in a flood    |
+| `demo.product.id`          | string | Product identifier                             |
+| `demo.product.quantity`    | number | Product quantity                               |
+| `demo.ad.category`         | string | Advertisement category                         |
+| `demo.cart.items.count`    | number | Number of items in cart                        |
+| `gen_ai.input.messages`    | string | Chat history provided to the model as an input |
 
 ## Payment
 
-| Name                     | Type    | Description                                           |
-| ------------------------ | ------- | ----------------------------------------------------- |
-| `app.payment.amount`     | number  | Total payment amount                                  |
-| `app.payment.card_type`  | string  | Type of card used for payment                         |
-| `app.payment.card_valid` | boolean | Was the card used valid                               |
-| `app.payment.charged`    | boolean | Was the charge successful (false with load generator) |
+| Name                              | Type    | Description                                    |
+| --------------------------------- | ------- | ---------------------------------------------- |
+| `user_agent.synthetic.type`       | string  | Category of synthetic traffic, such as `test`  |
+| `enduser.id`                      | string  | Unique identifier of an end user in the system |
+| `demo.user_context.loyalty_level` | string  | Customer loyalty level                         |
+| `demo.payment.card_type`          | string  | Credit card type                               |
+| `demo.payment.card_valid`         | boolean | Card validation status                         |
+| `demo.payment.card_number`        | string  | Credit card number                             |
+| `demo.payment.card_cvv`           | number  | Credit card CVV                                |
+| `demo.payment.charged`            | boolean | Whether payment was successfully charged       |
+| `demo.payment.amount`             | string  | Payment amount                                 |
 
 ## Product Catalog
 
-| Name                        | Type   | Description                           |
-| --------------------------- | ------ | ------------------------------------- |
-| `app.product.id`            | string | Product ID                            |
-| `app.product.name`          | string | Product name                          |
-| `app.products.count`        | number | Number of products in catalog         |
-| `app.products_search.count` | number | Number of products returned in search |
+| Name                        | Type   | Description                        |
+| --------------------------- | ------ | ---------------------------------- |
+| `demo.product.count`        | number | Total number of products available |
+| `demo.product.id`           | string | Product identifier                 |
+| `demo.product.name`         | string | Product name                       |
+| `demo.product.search.count` | number | Number of search results           |
 
 ## Quote
 
-| Name                    | Type   | Description          |
-| ----------------------- | ------ | -------------------- |
-| `app.quote.items.count` | number | Total items to ship  |
-| `app.quote.cost.total`  | number | Total shipping quote |
+| Name                              | Type   | Description              |
+| --------------------------------- | ------ | ------------------------ |
+| `demo.shipping.quote.items_count` | number | Number of items in quote |
+| `demo.shipping.quote.cost.total`  | number | Total quote cost         |
 
 ## Recommendation
 
-| Name                             | Type    | Description                             |
-| -------------------------------- | ------- | --------------------------------------- |
-| `app.filtered_products.count`    | number  | Number of filtered products returned    |
-| `app.products.count`             | number  | Number of products in catalog           |
-| `app.products_recommended.count` | number  | Number of recommended products returned |
-| `app.cache_hit`                  | boolean | If cache was accessed or not            |
+| Name                                     | Type     | Description                               |
+| ---------------------------------------- | -------- | ----------------------------------------- |
+| `demo.product.recommended.count`         | number   | Number of products recommended            |
+| `demo.feature_flag.recommendation_cache` | boolean  | Whether recommendation caching is enabled |
+| `demo.recommendation.cache_hit`          | boolean  | Whether the recommendation cache was hit  |
+| `demo.product.count`                     | number   | Total number of products available        |
+| `demo.product.filtered.count`            | number   | Number of products after filtering        |
+| `demo.product.filtered.list`             | string[] | List of filtered product IDs              |
 
 ## Shipping
 
-| Name                      | Type   | Description         |
-| ------------------------- | ------ | ------------------- |
-| `app.shipping.cost.total` | number | Total shipping cost |
+| Name                       | Type   | Description         |
+| -------------------------- | ------ | ------------------- |
+| `demo.shipping.cost.total` | string | Total shipping cost |

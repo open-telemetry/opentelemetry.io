@@ -18,4 +18,4 @@ isNative: true
 package:
   registry: gems
   name: elasticsearch
-  version: 9.4.3
+  version: 9.5.0

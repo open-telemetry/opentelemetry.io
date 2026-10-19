@@ -10,7 +10,6 @@
 
 # npm assets
 node_modules/
-package-lock.json
 pnpm-lock.yaml
 tmp/
 
@@ -21,6 +20,8 @@ tmp/
 scripts/collector.yaml
 assets/jsconfig.json
 /lychee.toml
+# Derived from link-cache.jsonc by the link check
+/.lycheecache
 /.netlify
 
 # IntelliJ
