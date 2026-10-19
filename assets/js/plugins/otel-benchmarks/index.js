@@ -8,8 +8,6 @@
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 
-'use strict';
-
 import { popoverContent, tooltipOptions } from './commit.js';
 import { aspectRatioFor, legendOptions } from './legend.js';
 import { pointPopover } from './point-popover.js';
@@ -55,12 +53,12 @@ function init(options) {
     const byGroup = new Map();
     const commitIds = [];
     for (const entry of entries) {
-      const { commit, date, tool, benches } = entry;
+      const { commit, benches } = entry;
       const commitId = commit.id.slice(0, 7);
       commitIds.push(commitId);
       for (const bench of benches) {
         if (!charted(bench)) continue;
-        const result = { commit, date, tool, bench };
+        const result = { commit, bench };
         const [group, series] = groupSep
           ? groupAndSeries(bench)
           : ['', bench.name];
@@ -162,7 +160,9 @@ function renderAllCharts(dataSets, main) {
         },
       },
       plugins: {
-        tooltip: tooltipOptions,
+        // A copy per chart: the popover toggles `enabled` on the chart's own
+        // tooltip options, and Chart.js writes that through to this object.
+        tooltip: { ...tooltipOptions },
         legend: legendOptions,
       },
     };
@@ -174,7 +174,7 @@ function renderAllCharts(dataSets, main) {
     });
   }
 
-  function renderBenchSet(name, benchSet, main) {
+  function renderBenchSet(benchSet, main) {
     const setElem = document.createElement('div');
     setElem.className = 'benchmark-set';
     main.appendChild(setElem);
@@ -196,7 +196,7 @@ function renderAllCharts(dataSets, main) {
   }
 
   for (const { name, dataSet } of dataSets) {
-    renderBenchSet(name, dataSet, main);
+    renderBenchSet(dataSet, main);
   }
 }
 

@@ -1,5 +1,5 @@
-// A commit as the charts show it: the tooltip's and the popover's content. No
-// words of ours: the plugin defines no i18n keys. Design:
+// A point as the tooltip and the popover show it: its value line and its
+// commit. No words of ours: the plugin defines no i18n keys. Design:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
 const subjectOf = (commit) => commit.message.split('\n')[0];

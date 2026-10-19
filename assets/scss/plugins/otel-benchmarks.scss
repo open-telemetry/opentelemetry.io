@@ -20,8 +20,7 @@ $title-gap-above: 2rem;
     align-items: center;
   }
 
-  // Titles pair a group with a bench name: long identifiers with no break
-  // points of their own.
+  // Chart titles are long identifiers with no break points of their own.
   h3 {
     max-width: 100%;
     overflow-wrap: anywhere;
