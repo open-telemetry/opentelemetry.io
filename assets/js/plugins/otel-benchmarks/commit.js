@@ -1,20 +1,19 @@
-// What a commit looks like in the charts: its subject line in the tooltip,
-// and the popover's content (the point's value line, the subject as a link,
-// date and author). No words of ours: the plugin defines no i18n keys. Design:
+// A commit as the charts show it: the tooltip's and the popover's content. No
+// words of ours: the plugin defines no i18n keys. Design:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
-export const subjectOf = (commit) => commit.message.split('\n')[0];
+const subjectOf = (commit) => commit.message.split('\n')[0];
 
-// The value line, Chart.js's number formatting (three decimals), the unit,
-// and the range when the data has one.
-export const valueLabel = (series, point, formatted) => {
+// `formatted` is Chart.js's own rendering of the value, so the popover shows
+// the tooltip's number.
+const valueLabel = (series, point, formatted) => {
   const { unit, range } = point.result.bench;
   return `${series}: ${formatted}${unit}${range ? ` (${range})` : ''}`;
 };
 
 // Canvas tooltips don't wrap text, and commit subjects run to 130 characters.
 const TOOLTIP_LINE_LENGTH = 60;
-export const wrapLine = (text) => {
+const wrapLine = (text) => {
   const lines = [];
   let line = '';
   for (const word of text.split(' ')) {
@@ -36,7 +35,7 @@ const parseUrl = (text) => {
   }
 };
 
-export function commitContent(commit, valueLabelText) {
+function commitContent(commit, valueLabelText) {
   const content = document.createElement('div');
   const value = document.createElement('div');
   value.textContent = valueLabelText;
@@ -64,3 +63,21 @@ export function commitContent(commit, valueLabelText) {
   content.appendChild(meta);
   return content;
 }
+
+// Chart.js `plugins.tooltip` options: the value line and the commit's subject.
+export const tooltipOptions = {
+  callbacks: {
+    title: () => '',
+    // The commit's body is PR-body length; only its subject fits.
+    afterBody: (items) => wrapLine(subjectOf(items[0].raw.result.commit)),
+    label: (item) =>
+      valueLabel(item.dataset.label, item.raw, item.formattedValue),
+  },
+};
+
+// The popover's body: the value as the y axis formats it, then the commit.
+export const popoverContent = (point, dataset, chart) =>
+  commitContent(
+    point.result.commit,
+    valueLabel(dataset.label, point, chart.scales.y.getLabelForValue(point.y)),
+  );

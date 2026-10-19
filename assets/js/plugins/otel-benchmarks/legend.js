@@ -9,7 +9,7 @@ const MAX_WIDTH = 260;
 // Labels past this length wrap at their separator: the cap above would clip
 // them (`Trace10kSPSJaegerGRPC - Dropped Span Count`).
 const WRAP_LENGTH = 28;
-export const legendLines = (label) =>
+const legendLines = (label) =>
   label.length > WRAP_LENGTH ? label.split(' - ') : [label];
 
 const LINE_HEIGHT = 24;

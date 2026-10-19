@@ -10,7 +10,7 @@
 
 'use strict';
 
-import { commitContent, subjectOf, valueLabel, wrapLine } from './commit.js';
+import { popoverContent, tooltipOptions } from './commit.js';
 import { aspectRatioFor, legendOptions } from './legend.js';
 import { pointPopover } from './point-popover.js';
 
@@ -30,8 +30,8 @@ const COLORS = [
 
 // How a call reads the page's data (its container's `data-otel-benchmarks`
 // JSON): which benches to chart, and how `extra` names a chart's group and its
-// series. Without a reading, each bench name is its own chart with one series,
-// on the shared commit axis.
+// series. Without `group_separator`, each bench name is its own chart with one
+// series, on the shared commit axis.
 function init(reading) {
   const {
     filter,
@@ -91,13 +91,6 @@ function init(reading) {
     dataSet: collectBenchesPerTestCase(data.entries[name]),
   }));
 }
-
-// The popover's body: the value as the y axis formats it, then the commit.
-const popoverContent = (point, dataset, chart) =>
-  commitContent(
-    point.result.commit,
-    valueLabel(dataset.label, point, chart.scales.y.getLabelForValue(point.y)),
-  );
 
 function renderAllCharts(dataSets, main) {
   function renderGraph(parent, name, commitIds, byName) {
@@ -169,16 +162,7 @@ function renderAllCharts(dataSets, main) {
         },
       },
       plugins: {
-        tooltip: {
-          callbacks: {
-            title: () => '',
-            // The commit's body is PR-body length; only its subject fits.
-            afterBody: (items) =>
-              wrapLine(subjectOf(items[0].raw.result.commit)),
-            label: (item) =>
-              valueLabel(item.dataset.label, item.raw, item.formattedValue),
-          },
-        },
+        tooltip: tooltipOptions,
         legend: legendOptions,
       },
     };
