@@ -1,8 +1,8 @@
 ---
 title: Plugins and scripts
 description: >-
-  Where the site's own JavaScript loads, how a script is gated to a page, and
-  what each gated script relies on
+  How the site loads and gates its own JavaScript, including the benchmarks
+  plugin and body-end scripts
 aliases: [scripts]
 cSpell:ignore: subresource
 ---
@@ -39,8 +39,8 @@ The shortcode call names the data and says how to read it:
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
 
-- `data_url`: the action's `data.js`, as `https://…` or as `param:NAME`, a page
-  param holding it; the Collector page keeps the URL in
+- `data_url`: the action's `data.js`, as `https://…` or as `param:`_`NAME`_, a
+  page param holding it; the Collector page keeps the URL in
   `params.otel-benchmarks.data_url` because its prose links it too, through
   `_param`
 - `filter`: keep a bench whose `extra` contains any of the comma-separated
@@ -76,14 +76,11 @@ carry the stock renderer inline. The plugin's parts:
   [`version`][Dependency versions] pin, then loads the data file from the
   record. The data stays a live remote script so the charts update between site
   builds, which a fixed integrity hash would forbid.
-- **Script**, `assets/js/plugins/otel-benchmarks/`, with `index.js` the
-  renderer: reads the data as the shortcode call says and renders the charts;
-  its header names what it assumes loaded. Beside it: `legend.js` (the legend's
-  width cap, label wrapping and the chart height that fits it), `commit.js` (a
-  commit's subject and the popover's content) and `point-popover.js` (the click
-  popover, from cue to dismissal). Docsy looks for
-  `js/plugins/otel-benchmarks.js` only, so that file imports the folder's entry;
-  Hugo's `js.Build` bundles all of it into the one file Docsy emits.
+- **Script**, `assets/js/plugins/otel-benchmarks/`: `index.js` is the renderer;
+  beside it, `legend.js` (the legend's shape and the chart height that fits it),
+  `commit.js` (a commit in the tooltip and the popover) and `point-popover.js`
+  (the click popover). Docsy resolves `js/plugins/otel-benchmarks.js` only, so
+  that file imports the folder's entry.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container (a horizontal scroller per chart
   for narrow columns, the minimum width the renderer sizes each chart from, and
@@ -98,17 +95,14 @@ carry the stock renderer inline. The plugin's parts:
 
 #### Localized pages
 
-A page's localized copies keep inlining the script until they convert. To
-convert a copy:
+To convert a localized copy that still inlines the script:
 
 1. Remove the stylesheet link above the prose, and replace the block below it
    (from the `markdownlint` comment through the last `<script>` tag) with the
    shortcode line from the English page.
-2. Copy the English page's `otel-benchmarks` params, translate its tip, and link
+2. Copy the English page's `otel-benchmarks` param, translate its tip, and link
    the data from the prose as it does.
-3. Add the language to the test's `CONVERTED` list: the tests check that each
-   page loads exactly one delivery mode, and that converted pages load the
-   plugin.
+3. Add the language to `CONVERTED` in `tests/public/otel-benchmarks.test.mjs`.
 
 Languages without their own copy serve the English page and convert with it.
 
