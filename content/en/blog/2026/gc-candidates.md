@@ -34,7 +34,8 @@ page][].
 
 To check your eligibility, see the [voter roll][]. If the automated eligibility
 check doesn't account for your contributions to the OpenTelemetry ecosystem, you
-can [request an exception][] before 23 October 2026 at 23:59 AoE to vote.
+can [request an exception][] before 23 October 2026 at 23:59
+[AoE][Anywhere on Earth] to vote.
 
 <!-- prettier-ignore-start -->
 [Anywhere on Earth]: https://en.wikipedia.org/wiki/Anywhere_on_Earth
