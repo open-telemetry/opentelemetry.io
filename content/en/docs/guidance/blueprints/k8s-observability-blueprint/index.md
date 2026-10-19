@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Observability
+title: Kubernetes Cluster Observability
 # prettier-ignore
 cSpell:ignore: autohealing hostmetrics kube kubelet kubeletstats resourceprocessor rollouts sattributesprocessor Statefulset tolerations
 ---
@@ -196,17 +196,9 @@ Outcomes:
 
 ## Implementation
 
-Use this decision tree to choose a collection method for any signal source in
-the cluster. The guiding principle: prefer OTel-native receivers for workload,
-host, cluster-state, container logs, and Kubernetes events/object logs. Those
-receivers already set core `k8s.*` (or host) identity attributes. Use
-`k8sattributesprocessor` for application OTLP, container logs, and
-Prometheus-scraped telemetry that lack that context, and optionally to attach
-pod labels/annotations onto pod-scoped metrics.
-
-The following diagram shows the resulting architecture with the chart's
-default values: one DaemonSet Collector per node, node-local receivers on every
-node, and cluster-scoped receivers running only on the elected leader.
+The following diagram shows the resulting architecture with the chart's default
+values: one DaemonSet Collector per node, node-local receivers on every node,
+and cluster-scoped receivers running only on the elected leader.
 
 ![Kubernetes cluster observability with the OpenTelemetry kube-stack](./k8s-otel-kube-stack-architecture.png)
 
