@@ -5,8 +5,8 @@ linkTitle:
 date: 2026-10-16
 author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
-issue:
-# sig:
+issue: 12217
+sig: Collector SIG
 cSpell:ignore: otelconf trimpath
 ---
 
@@ -21,9 +21,9 @@ One of the reasons I prefer to build my own distribution is to limit the size of
 the binary I have to ship around and to ensure that the least amount of
 dependencies are included. Fewer dependencies means a smaller binary, a smaller
 attack surface, and fewer third-party modules to track when a vulnerability is
-disclosed. The OpenTelemetry Collector Builder (ocb) makes this possible, you
-write a manifest file in YAML to select components you care about and ocb
-compiles into the resulting binary.
+disclosed. The OpenTelemetry Collector Builder (ocb) makes this possible: you
+write a manifest file in YAML to select the components you care about, and ocb
+compiles them into the resulting binary.
 
 ## Resource detectors
 
@@ -77,10 +77,10 @@ dist:
   build_tags: 'omit_detector_system'
 ```
 
-Each detector can be disabled via a `omit_` flag, which allows the Collector to
+Each detector can be disabled via an `omit_` flag, which allows the Collector to
 continue including all detectors by default, to remain backwards compatible with
 its existing behaviour. This offers great flexibility for end users, but can
-become cumbersome to configure, the following disables all detectors currently
+become cumbersome to configure. The following disables all detectors currently
 available:
 
 ```yaml
@@ -103,8 +103,8 @@ The
 [latest release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1)
 of the Collector and
 [ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-cmd/builder/v0.163.1)
-now also supports users wanting to filter out resource detectors with less
-configuration. It follows the configuration defined in the Configuration schema,
+now also support users wanting to filter out resource detectors with less
+configuration. It follows the configuration defined in the Configuration schema;
 the following removes all detectors except the ones configured in the `resource`
 block:
 
