@@ -277,7 +277,7 @@ flowchart LR
     L_Col1_Gateway@{ animation: fast }
     L_Col2_Gateway@{ animation: fast }
     L_Gateway_Backend@{ animation: fast }
-```mermaid
+```
 
 ### 1. Deploy the opentelemetry-kube-stack
 
