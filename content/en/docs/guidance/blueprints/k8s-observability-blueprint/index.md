@@ -200,7 +200,81 @@ The following diagram shows the resulting architecture with the chart's default
 values: one DaemonSet Collector per node, node-local receivers on every node,
 and cluster-scoped receivers running only on the elected leader.
 
-![Kubernetes cluster observability with the OpenTelemetry kube-stack](./k8s-otel-kube-stack-architecture.png)
+```mermaid
+---
+title: "Figure 1: OpenTelemetry Kube Stack architecture (DaemonSet defaults with an optional Gateway)."
+config:
+  flowchart:
+    curve: basis
+---
+flowchart LR
+    subgraph Cluster["Kubernetes Cluster"]
+        subgraph Node2["Node 2"]
+            SDK2["📦 App Pods<br>(OTel SDK)"]:::node
+            Prom2["📊 App Pods<br>(Prometheus)"]:::node
+            Kubelet2["☸️ Kubelet"]:::node
+            Host2["🖥️ Node Host"]:::node
+            Col2["🔀 Collector<br>(DaemonSet, leader)"]:::node
+        end
+
+        subgraph Node1["Node 1"]
+            SDK1["📦 App Pods<br>(OTel SDK)"]:::node
+            Prom1["📊 App Pods<br>(Prometheus)"]:::node
+            Kubelet1["☸️ Kubelet"]:::node
+            Host1["🖥️ Node Host"]:::node
+            Col1["🔀 Collector<br>(DaemonSet)"]:::node
+        end
+
+        Gateway["🔀 Collector Gateway<br>(Optional)"]:::optional
+
+        subgraph ControlPlane["Control Plane"]
+            APIServer["☸️ kube-apiserver"]:::node
+        end
+    end
+
+    Backend[("🗄️ Observability Backend")]:::node
+
+    SDK1 L_SDK1@-- OTLP --> Gateway
+    Prom1 L_Prom1@<-- prometheus --> Col1
+    Kubelet1 L_Kubelet1@<-- "kubelet_stats<br>prometheus (cAdvisor)" --> Col1
+    Host1 L_Host1@<-- "file_log<br>host_metrics" --> Col1
+
+    SDK2 L_SDK2@-- OTLP --> Gateway
+    Prom2 L_Prom2@<-- prometheus --> Col2
+    Kubelet2 L_Kubelet2@<-- "kubelet_stats<br>prometheus (cAdvisor)" --> Col2
+    Host2 L_Host2@<-- "file_log<br>host_metrics" --> Col2
+
+    Col2 L_Col2_API@-- "k8s_cluster<br>k8s_objects" --> APIServer
+
+    Col1 L_Col1_Gateway@-- OTLP --> Gateway
+    Col2 L_Col2_Gateway@-- OTLP --> Gateway
+    Gateway L_Gateway_Backend@-- OTLP --> Backend
+    %% Invisible link: keep the Backend in the last column
+    ControlPlane ~~~ Backend
+
+    classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+    classDef optional fill:#ffffff, stroke:#818cf8, stroke-width:2px, stroke-dasharray:5 5, color:#6b7280
+    style Cluster fill:#eef2ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style ControlPlane fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style Node1 fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    style Node2 fill:#dde4ff, stroke:#818cf8, stroke-width:1px, color:#818cf8
+    linkStyle 0,4,8,9,10,11 stroke:#a3e635, fill:none, stroke-width:3px
+    %% Pull-based receivers: keep only the source-side arrowhead and reverse the dash animation,
+    %% so both point from the Collector to what it scrapes
+    linkStyle 1,2,3,5,6,7 stroke:#a3e635, fill:none, stroke-width:3px, marker-end:none, animation-direction:reverse
+
+    L_SDK1@{ animation: fast }
+    L_Prom1@{ animation: fast }
+    L_Kubelet1@{ animation: fast }
+    L_Host1@{ animation: fast }
+    L_SDK2@{ animation: fast }
+    L_Prom2@{ animation: fast }
+    L_Kubelet2@{ animation: fast }
+    L_Host2@{ animation: fast }
+    L_Col2_API@{ animation: fast }
+    L_Col1_Gateway@{ animation: fast }
+    L_Col2_Gateway@{ animation: fast }
+    L_Gateway_Backend@{ animation: fast }
 
 ### 1. Deploy the opentelemetry-kube-stack
 
