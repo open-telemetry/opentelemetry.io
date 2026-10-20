@@ -389,9 +389,35 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
   const details = runUrl ? ` Details: [workflow run](${runUrl}).` : '';
   return (
     `❌ Failed to ${action} auto-merge (\`gh pr merge\` exited ${status})${reason}\n\n` +
-    `Comment \`/auto-merge\` again to retry; if it fails twice, ping ` +
-    `\`@open-telemetry/docs-maintainers\`.${details}`
+    `To retry, post a new comment with \`/auto-merge\`; if it fails twice, ` +
+    `ping \`@open-telemetry/docs-maintainers\`.${details}`
   );
+}
+
+/**
+ * Re-read whether auto-merge is enabled on the PR; `null` when the read fails.
+ *
+ * @param {(args: string[]) => GhResult} runGh
+ * @param {string|number} prNum
+ * @param {string} repo
+ * @returns {boolean|null}
+ */
+function readAutoMergeEnabled(runGh, prNum, repo) {
+  const { stdout, status } = runGh([
+    'pr',
+    'view',
+    String(prNum),
+    '--repo',
+    repo,
+    '--json',
+    'autoMergeRequest',
+  ]);
+  if (status !== 0) return null;
+  try {
+    return JSON.parse(stdout).autoMergeRequest != null;
+  } catch {
+    return null;
+  }
 }
 
 /**
@@ -680,15 +706,27 @@ export function runAutoMergeCommand({
         ? ['pr', 'merge', String(prNum), '--repo', repo, '--auto', '--squash']
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
     const { status, stderr } = mutatingRunGh(args);
+    // gh can report an error after the mutation committed (seen once: an
+    // isolated GraphQL "Something went wrong" on an enable that landed), so
+    // re-read the state before declaring failure. An unreadable state counts
+    // as not landed.
     if (status !== 0) {
-      outcome = 'mutation-failed';
-      exitCode = 1;
-      message = mutationFailedMessage({
-        action: verdict.apply,
-        status,
-        stderr,
-        runUrl,
-      });
+      const wanted = verdict.apply === 'enable';
+      if (readAutoMergeEnabled(runGh, prNum, repo) === wanted) {
+        log(
+          `[gh] pr merge exited ${status}, but auto-merge is ` +
+            `${wanted ? 'enabled' : 'disabled'}; reporting success`,
+        );
+      } else {
+        outcome = 'mutation-failed';
+        exitCode = 1;
+        message = mutationFailedMessage({
+          action: verdict.apply,
+          status,
+          stderr,
+          runUrl,
+        });
+      }
     }
   }
 

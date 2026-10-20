@@ -454,9 +454,10 @@ const KNOWN = new Set(['ja', 'pt']);
 /**
  * Run an eligible, authorized `/auto-merge` (or `:disable`) whose `gh pr merge`
  * mutation fails with `stderr`; return the result, the posted comment body and
- * the log lines.
+ * the log lines. `afterMerge` optionally overrides the `gh pr view` re-read
+ * that follows the failed mutation (default: the PR state is unchanged).
  */
-function runFailingEnable({ stderr, runUrl, action = 'enable' }) {
+function runFailingEnable({ stderr, runUrl, action = 'enable', afterMerge }) {
   const calls = [];
   const logs = [];
   const base = makeRunGh({
@@ -470,10 +471,19 @@ function runFailingEnable({ stderr, runUrl, action = 'enable' }) {
     calls,
   });
   // Wrap the runner so the merge mutation fails, but reads still succeed.
-  const runGh = (args) =>
-    args[0] === 'pr' && args[1] === 'merge'
-      ? { stdout: '', stderr, status: 1 }
-      : base(args);
+  let merged = false;
+  const runGh = (args) => {
+    if (args[0] === 'pr' && args[1] === 'merge') {
+      calls.push(args);
+      merged = true;
+      return { stdout: '', stderr, status: 1 };
+    }
+    if (merged && afterMerge && args[0] === 'pr' && args[1] === 'view') {
+      calls.push(args);
+      return afterMerge(args);
+    }
+    return base(args);
+  };
   const r = runAutoMergeCommand({
     repo: 'open-telemetry/opentelemetry.io',
     prNum: 42,
@@ -486,7 +496,7 @@ function runFailingEnable({ stderr, runUrl, action = 'enable' }) {
   });
   const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
   const body = comment[comment.indexOf('--body') + 1];
-  return { r, body, logs };
+  return { r, body, logs, calls };
 }
 
 describe('locale-auto-merge: workflowRunUrl', () => {
@@ -991,7 +1001,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       /: `GraphQL: Something went wrong while executing your query\. Please include 'D40E:21FF18' when reporting this issue\.`/,
     );
     assert.doesNotMatch(body, /second line/);
-    assert.match(body, /Comment `\/auto-merge` again/);
+    assert.match(body, /post a new comment with `\/auto-merge`/);
     assert.match(body, /ping `@open-telemetry\/docs-maintainers`/);
     assert.match(
       body,
@@ -1010,7 +1020,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       /Failed to enable auto-merge \(`gh pr merge` exited 1\)\./,
     );
     assert.doesNotMatch(body, /``/, 'no empty code span');
-    assert.match(body, /Comment `\/auto-merge` again/);
+    assert.match(body, /post a new comment with `\/auto-merge`/);
     // No run link outside GitHub Actions (local or test runs).
     assert.doesNotMatch(body, /workflow run/);
   });
@@ -1037,6 +1047,40 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.match(body, /Failed to disable auto-merge .*: `boom`/);
+  });
+
+  test('a failed mutation that did land is reported as success', () => {
+    // gh can report an error after the mutation committed: verify the PR
+    // state before declaring failure.
+    const { r, body, logs } = runFailingEnable({
+      stderr: 'GraphQL: Something went wrong while executing your query.',
+      afterMerge: () => ({
+        stdout: JSON.stringify({
+          autoMergeRequest: { enabledAt: '2026-10-16T15:12:07Z' },
+        }),
+        status: 0,
+      }),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    assert.match(body, /^✅ Auto-merge enabled/);
+    assert.doesNotMatch(body, /Failed/);
+    assert.ok(
+      logs.some((m) => /exited 1.*auto-merge is enabled/.test(m)),
+      'log records the discrepancy',
+    );
+  });
+
+  test('a failed mutation whose state re-read fails stays a failure', () => {
+    const { r, body, calls } = runFailingEnable({
+      stderr: 'boom',
+      afterMerge: () => ({ stdout: '', status: 1 }),
+    });
+    assert.equal(r.outcome, 'mutation-failed');
+    assert.equal(r.exitCode, 1);
+    assert.match(body, /Failed to enable auto-merge/);
+    const views = calls.filter((a) => a[0] === 'pr' && a[1] === 'view');
+    assert.equal(views.length, 2, 'state is re-read once after the failure');
   });
 
   test('disable on an enabled PR issues gh pr merge --disable-auto', () => {
