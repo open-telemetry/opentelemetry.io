@@ -577,6 +577,31 @@ describe('locale-auto-merge: workflowRunUrl', () => {
       }),
       undefined,
     );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com:99999',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://user@github.com/path',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    // A dot-only slug component would escape the repository path.
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/..',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
   });
 });
 
@@ -1044,7 +1069,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.doesNotMatch(steps, /:disable/);
     assert.match(
       steps,
-      /\n- If it fails the same way, the error under Details says why\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
+      /\n- If it fails the same way, check the error under Details\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
     );
     assert.match(
       details,
@@ -1098,7 +1123,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       stderr: '  \n\n',
       runUrl: undefined,
     });
-    assert.match(body, /\n- `gh pr merge` exited 1\.\n/);
+    assert.match(body, /\n- `gh pr merge` exited 1 \(no error output\)\.\n/);
     assert.doesNotMatch(body, /``/, 'every code span has content');
     assert.match(body, /post a new comment with `\/auto-merge`/i);
     assert.doesNotMatch(body, /Workflow run/);
@@ -1164,7 +1189,6 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
   });
 
   test('a PR no longer open after a failed mutation stays a failure', () => {
-    // A disable whose PR merged meanwhile must not read as "disabled".
     let { r } = runFailingMutation({
       stderr: 'boom',
       action: 'disable',
@@ -1183,6 +1207,13 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       undefined, // read exits non-zero
       () => ({ stdout: 'not json', status: 0 }),
       () => ({ stdout: '{}', status: 0 }),
+      () => ({
+        stdout: prState({})().stdout.replace(
+          '"autoMergeRequest":null',
+          '"autoMergeRequest":[]',
+        ),
+        status: 0,
+      }),
       () => ({ stdout: prState({ queued: true })().stdout, status: 1 }),
       () => {
         throw new Error('runner blew up');

@@ -336,25 +336,40 @@ export function resolveVerdict({
 /**
  * URL of the current workflow run, from the GitHub Actions default environment
  * (`GITHUB_SERVER_URL`, `GITHUB_REPOSITORY`, `GITHUB_RUN_ID`), or `undefined`
- * outside Actions. The values are treated as untrusted input: anything but an
- * https origin, an `owner/name` slug and a numeric run id yields `undefined`
- * rather than a link.
+ * outside Actions. The values are treated as untrusted input: anything but a
+ * bare https origin, an `owner/name` slug and a numeric run id yields
+ * `undefined` rather than a link.
  *
  * @param {NodeJS.ProcessEnv} env
  * @returns {string|undefined}
  */
 export function workflowRunUrl(env) {
-  const server = (env.GITHUB_SERVER_URL ?? '').replace(/\/+$/, '');
-  const repo = env.GITHUB_REPOSITORY;
-  const runId = env.GITHUB_RUN_ID;
-  if (
-    !/^https:\/\/[\w.-]+(?::\d+)?$/.test(server) ||
-    !/^[\w.-]+\/[\w.-]+$/.test(repo ?? '') ||
-    !/^\d+$/.test(runId ?? '')
-  ) {
+  let origin;
+  try {
+    const url = new URL(env.GITHUB_SERVER_URL ?? '');
+    if (
+      url.protocol !== 'https:' ||
+      url.username ||
+      url.password ||
+      url.search ||
+      url.hash ||
+      !/^\/?$/.test(url.pathname) ||
+      !/^[\w.-]+$/.test(url.hostname)
+    ) {
+      return undefined;
+    }
+    origin = url.origin;
+  } catch {
     return undefined;
   }
-  return `${server}/${repo}/actions/runs/${runId}`;
+  const repo = env.GITHUB_REPOSITORY ?? '';
+  const runId = env.GITHUB_RUN_ID ?? '';
+  const slug = /^[\w.-]+\/[\w.-]+$/.test(repo) ? repo.split('/') : [];
+  if (slug.length !== 2 || slug.some((s) => /^\.+$/.test(s))) {
+    return undefined;
+  }
+  if (!/^\d+$/.test(runId)) return undefined;
+  return `${origin}/${repo}/actions/runs/${runId}`;
 }
 
 // Cap on the quoted `gh` error line in the failure reply, so a verbose or
@@ -393,7 +408,8 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
   }
   const directive = action === 'enable' ? '/auto-merge' : '/auto-merge:disable';
   const details = [
-    `- \`gh pr merge\` exited ${status}${line === undefined ? '.' : `: \`${line}\``}`,
+    `- \`gh pr merge\` exited ${status}` +
+      (line === undefined ? ' (no error output).' : `: \`${line}\``),
     ...(runUrl ? [`- [Workflow run](${runUrl})`] : []),
   ];
   return [
@@ -403,7 +419,7 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
     `- Post a new comment with \`${directive}\` to retry; a one-off GitHub ` +
       `error clears on retry. Editing an existing comment won't trigger a ` +
       `retry.\n` +
-      `- If it fails the same way, the error under Details says why. If ` +
+      `- If it fails the same way, check the error under Details. If ` +
       `that's not something you can fix, ping ` +
       `\`@open-telemetry/docs-maintainers\`.`,
     `<details>\n<summary>Error details</summary>\n\n${details.join('\n')}\n\n</details>`,
@@ -414,8 +430,7 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
  * Re-read the PR after a failed mutation: is it open, and is auto-merge in
  * effect? `null` when the read fails or carries no readable state. On a base
  * branch with a merge queue, enabling auto-merge on a ready PR enqueues it
- * directly, with no auto-merge request, so queue membership counts as enabled;
- * `gh pr view --json` exposes no queue field, hence GraphQL.
+ * directly, with no auto-merge request, so queue membership counts as enabled.
  *
  * @param {(args: string[]) => GhResult} runGh
  * @param {string|number} prNum
@@ -425,6 +440,7 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
 function readAutoMergeState(runGh, prNum, repo) {
   const [owner, name] = repo.split('/');
   try {
+    // `gh pr view --json` exposes no queue field, hence GraphQL.
     const { stdout, status } = runGh([
       'api',
       'graphql',
@@ -444,6 +460,7 @@ function readAutoMergeState(runGh, prNum, repo) {
     if (
       typeof pr?.state !== 'string' ||
       typeof pr.isInMergeQueue !== 'boolean' ||
+      Array.isArray(pr.autoMergeRequest) ||
       (pr.autoMergeRequest !== null && typeof pr.autoMergeRequest !== 'object')
     ) {
       return null;
