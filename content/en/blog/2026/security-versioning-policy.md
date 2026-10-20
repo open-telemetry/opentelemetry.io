@@ -8,17 +8,16 @@ sig: Specification
 cSpell:ignore: Pająk
 ---
 
-OpenTelemetry has updated its client versioning policy to make room for security
-fixes that need to change behavior. Stable SDKs and Contrib components, such as
-instrumentation libraries and exporters, can now make narrowly scoped, necessary
-security changes in minor or patch releases, even when those changes affect
-existing users. Public API compatibility remains protected.
+OpenTelemetry has updated its [client versioning policy][policy-pr] to make
+room for security fixes that need to change behavior. Stable SDKs and Contrib
+components, such as instrumentation libraries and exporters, can now make
+narrowly scoped, necessary security changes in minor or patch releases, even
+when those changes affect existing users. Public API compatibility remains
+protected.
 
 The intent is to help users receive security improvements within the major
 version they already use. Some upgrades may require configuration or operational
 changes. In such cases, release notes must explain the impact and what to do.
-
-The [policy change][policy-pr] applies across OpenTelemetry language clients.
 
 ## Why stability needs a path for security fixes
 
