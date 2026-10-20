@@ -362,10 +362,12 @@ export function workflowRunUrl(env) {
 const MAX_QUOTED_STDERR = 200;
 
 /**
- * Build the PR reply for a failed `gh pr merge` mutation: the exit code, the
- * first non-empty stderr line as a single code span (so it reads as data and
- * any `@` in it is not a mention; backticks are neutralized so the span can't
- * be broken), the retry guidance, and a link to the workflow run when known.
+ * Build the PR reply for a failed `gh pr merge` mutation, reader first: the
+ * outcome and that the commenter is not at fault, the next steps, then the
+ * evidence folded in a `<details>` block: the exit code, the first non-empty
+ * stderr line as a single code span (so it reads as data and any `@` in it is
+ * not a mention; backticks are neutralized so the span can't be broken), and a
+ * link to the workflow run when known.
  *
  * @param {Object} input
  * @param {'enable'|'disable'} input.action
@@ -385,13 +387,19 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
       line = line.slice(0, MAX_QUOTED_STDERR) + '…';
     }
   }
-  const reason = line === undefined ? '.' : `: \`${line}\``;
-  const details = runUrl ? ` Details: [workflow run](${runUrl}).` : '';
-  return (
-    `❌ Failed to ${action} auto-merge (\`gh pr merge\` exited ${status})${reason}\n\n` +
-    `To retry, post a new comment with \`/auto-merge\`; if it fails twice, ` +
-    `ping \`@open-telemetry/docs-maintainers\`.${details}`
-  );
+  const details = [
+    `- \`gh pr merge\` exited ${status}${line === undefined ? '.' : `: \`${line}\``}`,
+    ...(runUrl ? [`- [Workflow run](${runUrl})`] : []),
+  ];
+  return [
+    `❌ Auto-merge could not be ${action}d: an unexpected internal error ` +
+      `occurred (nothing in your request caused it).`,
+    'Next steps:',
+    `- Post a new comment with \`/auto-merge\` to retry. Editing an existing ` +
+      `comment won't re-trigger the check.\n` +
+      `- If it fails again, ping \`@open-telemetry/docs-maintainers\`.`,
+    `<details>\n<summary>Details</summary>\n\n${details.join('\n')}\n\n</details>`,
+  ].join('\n\n');
 }
 
 /**
@@ -706,10 +714,9 @@ export function runAutoMergeCommand({
         ? ['pr', 'merge', String(prNum), '--repo', repo, '--auto', '--squash']
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
     const { status, stderr } = mutatingRunGh(args);
-    // gh can report an error after the mutation committed (seen once: an
-    // isolated GraphQL "Something went wrong" on an enable that landed), so
-    // re-read the state before declaring failure. An unreadable state counts
-    // as not landed.
+    // gh can report an error after the mutation has committed, so re-read the
+    // state before declaring failure. An unreadable state counts as not
+    // landed.
     if (status !== 0) {
       const wanted = verdict.apply === 'enable';
       if (readAutoMergeEnabled(runGh, prNum, repo) === wanted) {

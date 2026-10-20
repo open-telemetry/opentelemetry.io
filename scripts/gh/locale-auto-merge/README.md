@@ -77,12 +77,12 @@ infrastructure failure (`mutation-failed`, or a failed `gh` read) exits `1`.
 | `mutation-failed` | 1    | The `gh pr merge` call failed, and a re-read of the PR confirmed the change didn't land.                                |
 
 When `gh pr merge` exits non-zero, the helper re-reads the PR's auto-merge state
-before declaring failure: `gh` can report an error after the mutation committed
-(seen once, an isolated GitHub-side GraphQL error on an enable that landed), and
-such a run is reported as a normal `apply`, with the discrepancy in the run log.
-A `mutation-failed` reply quotes the first line of `gh`'s error output as a code
-span (truncated to 200 characters; the full output stays in the run log), links
-the workflow run when the helper runs under GitHub Actions, and tells the
-commenter to retry by posting a new `/auto-merge` comment (editing the original
-comment does not re-trigger the workflow), pinging
-`@open-telemetry/docs-maintainers` if it fails twice.
+before declaring failure, since `gh` can report an error after the mutation has
+committed; such a run is reported as a normal `apply`, with the discrepancy in
+the run log. A `mutation-failed` reply leads with the outcome and that the
+commenter is not at fault, then the next steps (retry by posting a new
+`/auto-merge` comment, since editing a comment does not re-trigger the workflow;
+ping `@open-telemetry/docs-maintainers` if it fails again), then the evidence in
+a collapsed details block: the exit code, the first line of `gh`'s error output
+as a code span (truncated to 200 characters; the full output stays in the run
+log), and a link to the workflow run when the helper runs under GitHub Actions.

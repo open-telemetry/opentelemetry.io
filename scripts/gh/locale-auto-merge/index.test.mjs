@@ -990,23 +990,33 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.equal(r.exitCode, 1);
+    // Lead: outcome and that the commenter is not at fault; then next steps;
+    // then the evidence, folded.
     assert.match(
       body,
-      /Failed to enable auto-merge \(`gh pr merge` exited 1\)/,
+      /^❌ Auto-merge could not be enabled: an unexpected internal error occurred/,
+    );
+    const [lead, steps, details] = body.split(
+      /\n\nNext steps:\n\n|\n\n<details>/,
+    );
+    assert.ok(lead && steps && details, 'lead, next steps, details in order');
+    assert.match(steps, /^- Post a new comment with `\/auto-merge` to retry/);
+    assert.match(
+      steps,
+      /\n- If it fails again, ping `@open-telemetry\/docs-maintainers`\.$/,
     );
     // First non-empty stderr line, quoted as one code span, backticks
     // neutralized so the span can't be broken; later lines stay in the log.
     assert.match(
-      body,
-      /: `GraphQL: Something went wrong while executing your query\. Please include 'D40E:21FF18' when reporting this issue\.`/,
+      details,
+      /- `gh pr merge` exited 1: `GraphQL: Something went wrong while executing your query\. Please include 'D40E:21FF18' when reporting this issue\.`/,
     );
     assert.doesNotMatch(body, /second line/);
-    assert.match(body, /post a new comment with `\/auto-merge`/);
-    assert.match(body, /ping `@open-telemetry\/docs-maintainers`/);
     assert.match(
-      body,
-      /\[workflow run\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)/,
+      details,
+      /- \[Workflow run\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)/,
     );
+    assert.match(details, /<\/details>$/);
     assert.ok(
       logs.some((m) => m.startsWith('[mutation-failed] ')),
       'log line keeps the outcome token',
@@ -1015,21 +1025,18 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
 
   test('mutation failure with empty stderr falls back to a bare reason', () => {
     const { body } = runFailingEnable({ stderr: '  \n\n', runUrl: undefined });
-    assert.match(
-      body,
-      /Failed to enable auto-merge \(`gh pr merge` exited 1\)\./,
-    );
+    assert.match(body, /\n- `gh pr merge` exited 1\.\n/);
     assert.doesNotMatch(body, /``/, 'no empty code span');
-    assert.match(body, /post a new comment with `\/auto-merge`/);
+    assert.match(body, /post a new comment with `\/auto-merge`/i);
     // No run link outside GitHub Actions (local or test runs).
-    assert.doesNotMatch(body, /workflow run/);
+    assert.doesNotMatch(body, /Workflow run/);
   });
 
   test('mutation failure quotes stderr as data: bounded, mention-safe', () => {
     const { body } = runFailingEnable({
       stderr: '@open-telemetry/docs-maintainers ' + 'x'.repeat(300),
     });
-    const quoted = body.match(/: `([^`]*)`/)[1];
+    const quoted = body.match(/exited 1: `([^`]*)`/)[1];
     assert.ok(
       quoted.length <= 201,
       `quoted line is bounded (${quoted.length})`,
@@ -1046,7 +1053,8 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       action: 'disable',
     });
     assert.equal(r.outcome, 'mutation-failed');
-    assert.match(body, /Failed to disable auto-merge .*: `boom`/);
+    assert.match(body, /^❌ Auto-merge could not be disabled: /);
+    assert.match(body, /exited 1: `boom`/);
   });
 
   test('a failed mutation that did land is reported as success', () => {
@@ -1064,7 +1072,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.equal(r.outcome, 'apply');
     assert.equal(r.exitCode, 0);
     assert.match(body, /^✅ Auto-merge enabled/);
-    assert.doesNotMatch(body, /Failed/);
+    assert.doesNotMatch(body, /could not be enabled/);
     assert.ok(
       logs.some((m) => /exited 1.*auto-merge is enabled/.test(m)),
       'log records the discrepancy',
@@ -1078,7 +1086,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.equal(r.exitCode, 1);
-    assert.match(body, /Failed to enable auto-merge/);
+    assert.match(body, /^❌ Auto-merge could not be enabled/);
     const views = calls.filter((a) => a[0] === 'pr' && a[1] === 'view');
     assert.equal(views.length, 2, 'state is re-read once after the failure');
   });
