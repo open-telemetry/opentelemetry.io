@@ -36,8 +36,8 @@ waited weeks for a review, you've felt this.
 Measuring this cleanly is hard because of confounding factors: a lack of data
 for maintainership over time, large numbers of automated PRs (e.g., Renovate,
 Dependabot) and reviews which distort the data, and maintainer burden not being
-shared equally. I pulled all PR and review data for OpenTelemetry repos since
-2024 and analyzed it locally. I found that (probably to nobody's surprise)
+shared equally. I pulled all PR and review data for OpenTelemetry repositories
+since 2024 and analyzed it locally. I found that (probably to nobody's surprise)
 starting in early 2026, growth in incoming PRs began outpacing growth in engaged
 reviewers (my proxy for maintainer capacity). From September 2024 to September
 2026, the incoming PR / reviewer ratio has grown by 56%.
@@ -65,11 +65,11 @@ workstreams can take a long time. But OSS and OpenTelemetry are not inherently
 slow. I've seen parts of the project move extremely fast, and I've watched
 individual repositories swing from fast to slow and back again.
 
-My read is that the biggest factor in whether a repo moves fast or slow is
+My read is that the biggest factor in whether a repository moves fast or slow is
 whether it has enough engaged maintainers to keep up with its contribution rate.
 That's the difference between a virtuous cycle and a vicious one.
 
-When a repo has enough engaged maintainers:
+When a repository has enough engaged maintainers:
 
 - Each maintainer has a manageable number of PRs and issues needing their
   attention, so they can respond promptly without constantly context switching.
@@ -94,8 +94,8 @@ When it doesn't, whether from too few maintainers or too little engagement:
   maintainers from stepping up. Review load stays high.
 
 Both cycles reinforce themselves. It may only take one or two engaged
-maintainers to tip a repo from one cycle to the other. And engagement can be
-fragile, changing quickly with new jobs, shifting priorities, or life events.
+maintainers to tip a repository from one cycle to the other. And engagement can
+be fragile, changing quickly with new jobs, shifting priorities, or life events.
 
 ## Aligning incentives: individuals and companies
 
@@ -190,8 +190,8 @@ have an advantage.
 investing in proprietary instrumentation. OpenTelemetry is becoming the shared
 foundation of every observability vendor's story, and a weak foundation weakens
 every story built on it. If every company waits for others to sustain that
-foundation, repos slide into the vicious cycle, and the features and fixes your
-product depends on arrive slowly for everyone.
+foundation, repositories slide into the vicious cycle, and the features and
+fixes your product depends on arrive slowly for everyone.
 
 ## Becoming a maintainer
 
@@ -252,10 +252,10 @@ when attention is scarce, stating the case for why a thing matters synchronously
 in the SIG meeting can be an effective way to gain consensus and make progress.
 
 Aside: The
-[open-telemetry/community](https://github.com/open-telemetry/community/) repo is
-a great resource for finding your way around OpenTelemetry. It has SIG meeting
-schedules and links, plus documentation on roles, responsibilities, and
-processes.
+[open-telemetry/community](https://github.com/open-telemetry/community/)
+repository is a great resource for finding your way around OpenTelemetry. It has
+SIG meeting schedules and links, plus documentation on roles, responsibilities,
+and processes.
 
 ## Takeaways
 
