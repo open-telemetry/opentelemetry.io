@@ -3,15 +3,10 @@ title: Strengthening OpenTelemetry security while preserving API stability
 linkTitle: Versioning and security fixes
 date: 2026-10-22
 author: '[Robert Pająk](https://github.com/pellared) (Splunk)'
-draft: true
 issue: 12105
 sig: Specification
 cSpell:ignore: Pająk
 ---
-
-<!-- Publication draft: do not publish before specification PR #5357 is merged.
-Recheck the final policy, obtain sponsor review, and update the date before
-removing draft: true. This announcement is written for publication after adoption. -->
 
 OpenTelemetry has updated its client versioning policy to make room for security
 fixes that need to change behavior. Stable SDKs and Contrib components, such as
