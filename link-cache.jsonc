@@ -26231,6 +26231,16 @@
     "when": "2026-10-17T05:41:04Z",
     "via": "lychee",
   },
+  "https://open-telemetry.github.io/opentelemetry-js/benchmarks/": {
+    "result": 200,
+    "when": "2026-10-20T18:13:13Z",
+    "via": "lychee",
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js": {
+    "result": 200,
+    "when": "2026-10-20T18:13:13Z",
+    "via": "lychee",
+  },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.ContextAPI.html": {
     "result": 200,
     "when": "2026-10-08T05:47:47Z",
@@ -26254,6 +26264,16 @@
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html": {
     "result": 200,
     "when": "2026-10-16T00:01:58Z",
+    "via": "lychee",
+  },
+  "https://open-telemetry.github.io/opentelemetry-python/benchmarks/": {
+    "result": 200,
+    "when": "2026-10-20T18:13:13Z",
+    "via": "lychee",
+  },
+  "https://open-telemetry.github.io/opentelemetry-python/benchmarks/data.js": {
+    "result": 200,
+    "when": "2026-10-20T18:13:13Z",
     "via": "lychee",
   },
   "https://open-telemetry.github.io/otel-arrow/compare/": {
