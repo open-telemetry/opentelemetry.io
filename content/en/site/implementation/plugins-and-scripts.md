@@ -53,9 +53,10 @@ data and says how to read it:
 - `series_separator`: trim a series name split off by `group_separator` at its
   first occurrence
 
-Without `group_separator`, each bench name is its own chart with one series, on
-its own commit axis (the commits where the bench has data, as the stock renderer
-draws it), which assumes bench names are unique within a commit. Grouped charts
+Without `group_separator`, the call is bare: each bench name is its own chart
+with one series, which assumes bench names are unique within a commit. A bare
+call's chart draws on its own commit axis (the commits where the bench has data)
+and its tooltip names no series, as the stock renderer draws it; grouped charts
 share the data set's commit axis, so their series line up. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart

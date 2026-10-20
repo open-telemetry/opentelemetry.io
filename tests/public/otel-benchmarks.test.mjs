@@ -28,10 +28,10 @@ const PLUGIN_CSS =
   /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
 
 const GH_PAGES = 'https://open-telemetry.github.io';
-// The benchmarks pages: each with its data, its call's options, and the
-// languages whose own copy still carries the stock renderer inline. A locale
-// moving over leaves its page's `inline` list; when the last one does, the
-// delivery-mode duality here goes with the inline copies.
+// The benchmarks pages, each with the languages whose own copy still carries
+// the stock renderer inline. A locale moving over leaves its page's `inline`
+// list; when the last one does, the delivery-mode duality here goes with the
+// inline copies.
 const PAGES = [
   {
     path: 'docs/collector/benchmarks',

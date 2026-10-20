@@ -1,8 +1,8 @@
 ---
 title: Benchmarks
 description: >-
-  Performance trend of critical OpenTelemetry JavaScript SDK operations, per
-  commit
+  Commit-by-commit performance trend of critical OpenTelemetry JavaScript SDK
+  operations
 weight: 101
 params:
   otel-benchmarks:
@@ -10,9 +10,8 @@ params:
 ---
 
 The OpenTelemetry JavaScript SDK runs benchmark tests on every commit to the
-[opentelemetry-js][] repository. The intent of these tests is to track the
-performance trend of critical operations over time. These tests are not a
-replacement for end-to-end performance testing.
+[opentelemetry-js][] repository. These tests are not a replacement for
+end-to-end performance testing.
 
 This page charts the benchmark [data][]. For the full dashboard, see [JavaScript
 Benchmarks][].

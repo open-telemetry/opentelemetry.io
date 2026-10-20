@@ -5,10 +5,14 @@
 const subjectOf = (commit) => commit.message.split('\n')[0];
 
 // `formatted` is Chart.js's own rendering of the value, so the popover shows
-// the tooltip's number.
+// the tooltip's number. A bare call's series is the chart's title, so its line
+// goes unnamed (the Python page's names run past the canvas). A unit that is a
+// word gets a space (`ops/sec`, `MiB`); a symbol stays attached (`%`).
 const valueLabel = (series, point, formatted) => {
   const { unit, range } = point.result.bench;
-  return `${series}: ${formatted}${unit}${range ? ` (${range})` : ''}`;
+  const spaced = /^[A-Za-z]/.test(unit ?? '') ? ` ${unit}` : (unit ?? '');
+  const value = `${formatted}${spaced}${range ? ` (${range})` : ''}`;
+  return series ? `${series}: ${value}` : value;
 };
 
 // Canvas tooltips don't wrap text, and commit subjects run well past one line.
@@ -64,20 +68,25 @@ function commitContent(commit, valueLabelText) {
   return content;
 }
 
-// Chart.js `plugins.tooltip` options: the value line and the commit's subject.
-export const tooltipOptions = {
+// Chart.js `plugins.tooltip` options for one chart: the value line and the
+// commit's subject. `bare`: the call's, so the series goes unnamed.
+export const tooltipOptions = (bare) => ({
   callbacks: {
     title: () => '',
     // The commit's body is PR-body length; only its subject fits.
     afterBody: (items) => wrapLine(subjectOf(items[0].raw.result.commit)),
     label: (item) =>
-      valueLabel(item.dataset.label, item.raw, item.formattedValue),
+      valueLabel(bare ? '' : item.dataset.label, item.raw, item.formattedValue),
   },
-};
+});
 
 // The popover's body: the value as the y axis formats it, then the commit.
-export const popoverContent = (point, dataset, chart) =>
+export const popoverContent = (bare) => (point, dataset, chart) =>
   commitContent(
     point.result.commit,
-    valueLabel(dataset.label, point, chart.scales.y.getLabelForValue(point.y)),
+    valueLabel(
+      bare ? '' : dataset.label,
+      point,
+      chart.scales.y.getLabelForValue(point.y),
+    ),
   );

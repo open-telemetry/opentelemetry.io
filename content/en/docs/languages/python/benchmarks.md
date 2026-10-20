@@ -1,7 +1,8 @@
 ---
 title: Benchmarks
 description: >-
-  Performance trend of critical OpenTelemetry Python SDK operations, per commit
+  Commit-by-commit performance trend of critical OpenTelemetry Python SDK
+  operations
 weight: 190
 params:
   otel-benchmarks:
@@ -9,9 +10,8 @@ params:
 ---
 
 The OpenTelemetry Python SDK runs benchmark tests on every commit to the
-[opentelemetry-python][] repository. The intent of these tests is to track the
-performance trend of critical operations over time. These tests are not a
-replacement for end-to-end performance testing.
+[opentelemetry-python][] repository. These tests are not a replacement for
+end-to-end performance testing.
 
 This page charts the benchmark [data][]. For the full dashboard, see [Python
 Benchmarks][].

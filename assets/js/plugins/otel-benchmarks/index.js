@@ -28,12 +28,8 @@ const COLORS = [
 
 // The call's options (its container's `data-otel-benchmarks` JSON): which
 // benches to chart, and how `extra` names a chart's group and its series.
-// Without `group_separator`, each bench name is its own chart with one series,
-// on its own commit axis (the commits where the bench has data, in history
-// order), as the stock renderer draws it: a bench that joined the history late
-// draws dense rather than mostly empty (the js page's benches span 67 to 1,449
-// of its commits). Grouped charts share the data set's commit axis, so their
-// series line up.
+// Without `group_separator`, the call is bare: each bench name is its own
+// chart with one series, drawn as the stock renderer draws it.
 function init(options) {
   const {
     filter,
@@ -91,11 +87,10 @@ function init(options) {
   return Object.keys(data.entries).map((name) => ({
     name,
     dataSet: collectBenchesPerTestCase(data.entries[name]),
-    ownAxis: !groupSep,
+    bare: !groupSep,
   }));
 }
 
-// The commits a chart's series have data on, in history order.
 function chartedCommitIds(commitIds, byName) {
   const charted = new Set();
   for (const byCommitId of byName.values()) {
@@ -105,7 +100,7 @@ function chartedCommitIds(commitIds, byName) {
 }
 
 function renderAllCharts(dataSets, main) {
-  function renderGraph(parent, name, commitIds, byName) {
+  function renderGraph(parent, name, commitIds, byName, bare) {
     const chartTitle = document.createElement('h3');
     chartTitle.textContent = name;
     parent.append(chartTitle);
@@ -156,7 +151,7 @@ function renderAllCharts(dataSets, main) {
 
     const options = {
       maintainAspectRatio: false,
-      ...pointPopover(wrapper, scroller, popoverContent),
+      ...pointPopover(wrapper, scroller, popoverContent(bare)),
       scales: {
         x: {
           title: {
@@ -174,9 +169,9 @@ function renderAllCharts(dataSets, main) {
         },
       },
       plugins: {
-        // A copy per chart: the popover toggles `enabled` on the chart's own
+        // Options per chart: the popover toggles `enabled` on the chart's own
         // tooltip options, and Chart.js writes that through to this object.
-        tooltip: { ...tooltipOptions },
+        tooltip: tooltipOptions(bare),
         legend: legendOptions,
       },
     };
@@ -188,7 +183,7 @@ function renderAllCharts(dataSets, main) {
     });
   }
 
-  function renderBenchSet(benchSet, ownAxis, main) {
+  function renderBenchSet(benchSet, bare, main) {
     const setElem = document.createElement('div');
     setElem.className = 'benchmark-set';
     main.appendChild(setElem);
@@ -204,18 +199,22 @@ function renderAllCharts(dataSets, main) {
     }
     groups.sort((a, b) => a.name.localeCompare(b.name));
 
+    // A bare call's chart draws on the commits its bench has data on: a bench
+    // that joined the history late draws dense rather than mostly empty.
+    // Grouped charts share the data set's axis, so their series line up.
     for (const { name, byName } of groups) {
       renderGraph(
         graphsElem,
         name,
-        ownAxis ? chartedCommitIds(commitIds, byName) : commitIds,
+        bare ? chartedCommitIds(commitIds, byName) : commitIds,
         byName,
+        bare,
       );
     }
   }
 
-  for (const { dataSet, ownAxis } of dataSets) {
-    renderBenchSet(dataSet, ownAxis, main);
+  for (const { dataSet, bare } of dataSets) {
+    renderBenchSet(dataSet, bare, main);
   }
 }
 
