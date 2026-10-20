@@ -8,8 +8,8 @@ sig: Specification
 cSpell:ignore: Pająk
 ---
 
-OpenTelemetry has updated its [client versioning policy][policy-pr] to make
-room for security fixes that need to change behavior. Stable SDKs and Contrib
+OpenTelemetry has updated its [client versioning policy][policy-pr] to make room
+for security fixes that need to change behavior. Stable SDKs and Contrib
 components, such as instrumentation libraries and exporters, can now make
 narrowly scoped, necessary security changes in minor or patch releases, even
 when those changes affect existing users. Public API compatibility remains
