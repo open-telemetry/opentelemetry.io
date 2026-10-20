@@ -9439,6 +9439,21 @@
     "when": "2026-10-15T05:44:00Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/9c30b48354004ef818bcf3661ece2b32ca4dd787/elections/2026/governance-committee-candidates.md?from_branch=main": {
+    "result": 200,
+    "when": "2026-10-19T07:40:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/9c30b48354004ef818bcf3661ece2b32ca4dd787/elections/2026/governance-committee-election.md?from_branch=main#voter-eligibility": {
+    "result": 200,
+    "when": "2026-10-19T07:40:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/9c30b48354004ef818bcf3661ece2b32ca4dd787/elections/2026/voters-roll.csv?from_branch=main": {
+    "result": 200,
+    "when": "2026-10-19T07:40:31Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/b35f0f6c9801bfbe894211fb3d95afa3157662ec/community-members.md?from_branch=main#governance-committee": {
     "result": 200,
     "when": "2026-10-03T05:48:30Z",
