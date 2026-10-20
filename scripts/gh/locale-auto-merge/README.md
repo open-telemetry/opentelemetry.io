@@ -74,15 +74,16 @@ infrastructure failure (`mutation-failed`, or a failed `gh` read) exits `1`.
 | `too-many-files`  | 0    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed).                        |
 | `ineligible`      | 0    | A changed file is outside the locale-owned set.                                                                         |
 | `unauthorized`    | 0    | The commenter isn't on the maintainer team for every touched locale.                                                    |
-| `mutation-failed` | 1    | The `gh pr merge` call failed, and a re-read of the PR confirmed the change didn't land.                                |
+| `mutation-failed` | 1    | The `gh pr merge` call failed, and a re-read of the PR could not confirm that the change landed.                        |
 
 When `gh pr merge` exits non-zero, the helper re-reads the PR's auto-merge state
 before declaring failure, since `gh` can report an error after the mutation has
 committed; such a run is reported as a normal `apply`, with the discrepancy in
 the run log. A `mutation-failed` reply leads with the outcome and that the
-commenter is not at fault, then the next steps (retry by posting a new
-`/auto-merge` comment, since editing a comment does not re-trigger the workflow;
-ping `@open-telemetry/docs-maintainers` if it fails again), then the evidence in
-a collapsed details block: the exit code, the first line of `gh`'s error output
-as a code span (truncated to 200 characters; the full output stays in the run
-log), and a link to the workflow run when the helper runs under GitHub Actions.
+commenter is not at fault, then the next steps (retry by posting a new comment
+with the same directive, since editing a comment does not re-trigger the
+workflow; ping `@open-telemetry/docs-maintainers` if it fails again), then the
+evidence in a collapsed details block: the exit code, the first line of `gh`'s
+error output that isn't one of its `!` warnings, as a code span (truncated to
+200 characters; the full output stays in the run log), and a link to the
+workflow run when the helper runs under GitHub Actions.

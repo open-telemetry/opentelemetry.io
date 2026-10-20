@@ -58,9 +58,10 @@ function fail(message) {
 }
 
 /**
- * Run `gh` and return `{ stdout, stderr, status }` without throwing. stderr is
- * echoed to this process's stderr (so the run log keeps it in full) and also
- * returned, so the orchestrator can quote its first line in a failure reply.
+ * Run `gh` and return its captured output and exit status; throw only if `gh`
+ * cannot be started. stderr is echoed to this process's stderr (so the run log
+ * keeps it in full) and also returned, so the orchestrator can quote its first
+ * error line in a failure reply.
  *
  * @param {string[]} args
  * @returns {{ stdout: string, stderr: string, status: number }}

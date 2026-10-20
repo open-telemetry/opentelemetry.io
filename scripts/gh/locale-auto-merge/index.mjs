@@ -338,23 +338,24 @@ export function resolveVerdict({
  * URL of the current workflow run, from the GitHub Actions default environment
  * (`GITHUB_SERVER_URL`, `GITHUB_REPOSITORY`, `GITHUB_RUN_ID`), or `undefined`
  * outside Actions. The values are treated as untrusted input: anything but an
- * `owner/name` slug and a numeric run id yields `undefined` rather than a link.
+ * https origin, an `owner/name` slug and a numeric run id yields `undefined`
+ * rather than a link.
  *
  * @param {NodeJS.ProcessEnv} env
  * @returns {string|undefined}
  */
 export function workflowRunUrl(env) {
-  const server = env.GITHUB_SERVER_URL;
+  const server = (env.GITHUB_SERVER_URL ?? '').replace(/\/+$/, '');
   const repo = env.GITHUB_REPOSITORY;
   const runId = env.GITHUB_RUN_ID;
   if (
-    !server?.startsWith('https://') ||
+    !/^https:\/\/[\w.-]+(?::\d+)?$/.test(server) ||
     !/^[\w.-]+\/[\w.-]+$/.test(repo ?? '') ||
     !/^\d+$/.test(runId ?? '')
   ) {
     return undefined;
   }
-  return `${server.replace(/\/+$/, '')}/${repo}/actions/runs/${runId}`;
+  return `${server}/${repo}/actions/runs/${runId}`;
 }
 
 // Cap on the quoted `gh` error line in the failure reply, so a verbose or
@@ -362,12 +363,14 @@ export function workflowRunUrl(env) {
 const MAX_QUOTED_STDERR = 200;
 
 /**
- * Build the PR reply for a failed `gh pr merge` mutation, reader first: the
- * outcome and that the commenter is not at fault, the next steps, then the
- * evidence folded in a `<details>` block: the exit code, the first non-empty
- * stderr line as a single code span (so it reads as data and any `@` in it is
- * not a mention; backticks are neutralized so the span can't be broken), and a
- * link to the workflow run when known.
+ * Build the PR reply for a failed `gh pr merge` mutation, reader first. The
+ * outcome and a no-fault note lead, the next steps follow, and the evidence
+ * sits folded in a `<details>` block. The quoted evidence is `gh`'s first
+ * non-empty stderr line that isn't one of its `! ` warnings (the merge-queue
+ * warning precedes the real error on every run), rendered as a single code
+ * span so it reads as data and any `@` in it is not a mention; backticks are
+ * neutralized so the span can't be broken, and CR counts as a line break
+ * because Markdown treats it as one.
  *
  * @param {Object} input
  * @param {'enable'|'disable'} input.action
@@ -377,16 +380,18 @@ const MAX_QUOTED_STDERR = 200;
  * @returns {string}
  */
 function mutationFailedMessage({ action, status, stderr, runUrl }) {
-  let line = (stderr ?? '')
-    .split('\n')
-    .map((l) => l.trim())
-    .find((l) => l !== '');
+  const lines = (stderr ?? '')
+    .split(/\r\n|\r|\n/)
+    .map((l) => l.replace(/[\p{Cc}]/gu, '').trim())
+    .filter((l) => l !== '');
+  let line = lines.find((l) => !l.startsWith('! ')) ?? lines[0];
   if (line !== undefined) {
     line = line.replaceAll('`', "'");
     if (line.length > MAX_QUOTED_STDERR) {
       line = line.slice(0, MAX_QUOTED_STDERR) + '…';
     }
   }
+  const directive = action === 'enable' ? '/auto-merge' : '/auto-merge:disable';
   const details = [
     `- \`gh pr merge\` exited ${status}${line === undefined ? '.' : `: \`${line}\``}`,
     ...(runUrl ? [`- [Workflow run](${runUrl})`] : []),
@@ -395,7 +400,7 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
     `❌ Auto-merge could not be ${action}d: an unexpected internal error ` +
       `occurred (nothing in your request caused it).`,
     'Next steps:',
-    `- Post a new comment with \`/auto-merge\` to retry. Editing an existing ` +
+    `- Post a new comment with \`${directive}\` to retry. Editing an existing ` +
       `comment won't re-trigger the check.\n` +
       `- If it fails again, ping \`@open-telemetry/docs-maintainers\`.`,
     `<details>\n<summary>Details</summary>\n\n${details.join('\n')}\n\n</details>`,
@@ -403,7 +408,8 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
 }
 
 /**
- * Re-read whether auto-merge is enabled on the PR; `null` when the read fails.
+ * Re-read whether auto-merge is enabled on the PR; `null` when the read fails
+ * or carries no readable auto-merge state.
  *
  * @param {(args: string[]) => GhResult} runGh
  * @param {string|number} prNum
@@ -422,7 +428,11 @@ function readAutoMergeEnabled(runGh, prNum, repo) {
   ]);
   if (status !== 0) return null;
   try {
-    return JSON.parse(stdout).autoMergeRequest != null;
+    const pr = JSON.parse(stdout);
+    if (!Object.hasOwn(pr, 'autoMergeRequest')) return null;
+    const request = pr.autoMergeRequest;
+    if (request !== null && typeof request !== 'object') return null;
+    return request !== null;
   } catch {
     return null;
   }
