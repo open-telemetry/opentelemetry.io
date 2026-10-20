@@ -12,6 +12,7 @@ import {
   authorizeForLocales,
   resolveVerdict,
   runAutoMergeCommand,
+  workflowRunUrl,
   NO_OWNER_PATHS,
 } from './index.mjs';
 
@@ -449,6 +450,86 @@ function makeRunGh({ pr, teams = {}, calls }) {
 }
 
 const KNOWN = new Set(['ja', 'pt']);
+
+/**
+ * Run an eligible, authorized `/auto-merge` (or `:disable`) whose `gh pr merge`
+ * mutation fails with `stderr`; return the result, the posted comment body and
+ * the log lines.
+ */
+function runFailingEnable({ stderr, runUrl, action = 'enable' }) {
+  const calls = [];
+  const logs = [];
+  const base = makeRunGh({
+    pr: {
+      state: 'OPEN',
+      files: [{ path: 'content/ja/docs/a.md' }],
+      autoMergeRequest:
+        action === 'disable' ? { enabledAt: '2026-01-01T00:00:00Z' } : null,
+    },
+    teams: { 'docs-ja-maintainers': ['alice'] },
+    calls,
+  });
+  // Wrap the runner so the merge mutation fails, but reads still succeed.
+  const runGh = (args) =>
+    args[0] === 'pr' && args[1] === 'merge'
+      ? { stdout: '', stderr, status: 1 }
+      : base(args);
+  const r = runAutoMergeCommand({
+    repo: 'open-telemetry/opentelemetry.io',
+    prNum: 42,
+    commentAuthor: 'alice',
+    commentBody: `/auto-merge:${action}`,
+    knownLocales: KNOWN,
+    runGh,
+    runUrl,
+    log: (m) => logs.push(m),
+  });
+  const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+  const body = comment[comment.indexOf('--body') + 1];
+  return { r, body, logs };
+}
+
+describe('locale-auto-merge: workflowRunUrl', () => {
+  test('builds the run URL from the Actions default environment', () => {
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'open-telemetry/opentelemetry.io',
+        GITHUB_RUN_ID: '38921928401',
+      }),
+      'https://github.com/open-telemetry/opentelemetry.io/actions/runs/38921928401',
+    );
+  });
+
+  test('is undefined when any variable is missing or malformed', () => {
+    assert.equal(workflowRunUrl({}), undefined);
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'open-telemetry/opentelemetry.io',
+      }),
+      undefined,
+    );
+    // Values are fetched text: anything but a plain repo slug and a numeric run
+    // id is dropped rather than interpolated into a link.
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/r)[x](https://evil',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1)',
+      }),
+      undefined,
+    );
+  });
+});
 
 describe('locale-auto-merge: runAutoMergeCommand', () => {
   test('no recognized command is a no-op', () => {
@@ -890,34 +971,72 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
   });
 
   test('enable applies but gh pr merge failure yields mutation-failed', () => {
-    const calls = [];
-    const base = makeRunGh({
-      pr: {
-        state: 'OPEN',
-        files: [{ path: 'content/ja/docs/a.md' }],
-        autoMergeRequest: null,
-      },
-      teams: { 'docs-ja-maintainers': ['alice'] },
-      calls,
-    });
-    // Wrap the runner so the merge mutation fails, but reads still succeed.
-    const runGh = (args) =>
-      args[0] === 'pr' && args[1] === 'merge'
-        ? { stdout: '', status: 1 }
-        : base(args);
-    const r = runAutoMergeCommand({
-      repo: 'open-telemetry/opentelemetry.io',
-      prNum: 42,
-      commentAuthor: 'alice',
-      commentBody: '/auto-merge',
-      knownLocales: KNOWN,
-      runGh,
+    const { r, body, logs } = runFailingEnable({
+      stderr:
+        'GraphQL: Something went wrong while executing your query. ' +
+        'Please include `D40E:21FF18` when reporting this issue.\n' +
+        'second line is not quoted\n',
+      runUrl: 'https://github.com/o/r/actions/runs/38921928401',
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.equal(r.exitCode, 1);
-    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
-    const body = comment[comment.indexOf('--body') + 1];
-    assert.match(body, /Failed to enable auto-merge/);
+    assert.match(
+      body,
+      /Failed to enable auto-merge \(`gh pr merge` exited 1\)/,
+    );
+    // First non-empty stderr line, quoted as one code span, backticks
+    // neutralized so the span can't be broken; later lines stay in the log.
+    assert.match(
+      body,
+      /: `GraphQL: Something went wrong while executing your query\. Please include 'D40E:21FF18' when reporting this issue\.`/,
+    );
+    assert.doesNotMatch(body, /second line/);
+    assert.match(body, /Comment `\/auto-merge` again/);
+    assert.match(body, /ping `@open-telemetry\/docs-maintainers`/);
+    assert.match(
+      body,
+      /\[workflow run\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)/,
+    );
+    assert.ok(
+      logs.some((m) => m.startsWith('[mutation-failed] ')),
+      'log line keeps the outcome token',
+    );
+  });
+
+  test('mutation failure with empty stderr falls back to a bare reason', () => {
+    const { body } = runFailingEnable({ stderr: '  \n\n', runUrl: undefined });
+    assert.match(
+      body,
+      /Failed to enable auto-merge \(`gh pr merge` exited 1\)\./,
+    );
+    assert.doesNotMatch(body, /``/, 'no empty code span');
+    assert.match(body, /Comment `\/auto-merge` again/);
+    // No run link outside GitHub Actions (local or test runs).
+    assert.doesNotMatch(body, /workflow run/);
+  });
+
+  test('mutation failure quotes stderr as data: bounded, mention-safe', () => {
+    const { body } = runFailingEnable({
+      stderr: '@open-telemetry/docs-maintainers ' + 'x'.repeat(300),
+    });
+    const quoted = body.match(/: `([^`]*)`/)[1];
+    assert.ok(
+      quoted.length <= 201,
+      `quoted line is bounded (${quoted.length})`,
+    );
+    assert.ok(quoted.endsWith('…'), 'truncation is marked');
+    // The only `@` mentions in the reply are inside code spans.
+    const outsideCode = body.replace(/`[^`]*`/g, '');
+    assert.doesNotMatch(outsideCode, /@/);
+  });
+
+  test('disable failure names the disable action', () => {
+    const { r, body } = runFailingEnable({
+      stderr: 'boom',
+      action: 'disable',
+    });
+    assert.equal(r.outcome, 'mutation-failed');
+    assert.match(body, /Failed to disable auto-merge .*: `boom`/);
   });
 
   test('disable on an enabled PR issues gh pr merge --disable-auto', () => {

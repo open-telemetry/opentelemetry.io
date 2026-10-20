@@ -75,3 +75,11 @@ infrastructure failure (`mutation-failed`, or a failed `gh` read) exits `1`.
 | `ineligible`      | 0    | A changed file is outside the locale-owned set.                                                                         |
 | `unauthorized`    | 0    | The commenter isn't on the maintainer team for every touched locale.                                                    |
 | `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                                                   |
+
+A `mutation-failed` reply quotes the first line of `gh`'s error output as a code
+span (truncated to 200 characters; the full output stays in the run log), links
+the workflow run when the helper runs under GitHub Actions, and tells the
+commenter to comment `/auto-merge` again, pinging
+`@open-telemetry/docs-maintainers` if it fails twice. The one such failure seen
+so far was a transient GitHub-side GraphQL error on the mutation, after both
+guards had passed.

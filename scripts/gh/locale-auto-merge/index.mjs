@@ -329,8 +329,70 @@ export function resolveVerdict({
  *
  * @typedef {Object} GhResult
  * @property {string} stdout
+ * @property {string} [stderr]  Captured stderr, when the runner provides it;
+ *   quoted in the reply after a failed mutation.
  * @property {number} status   Exit code (0 on success).
  */
+
+/**
+ * URL of the current workflow run, from the GitHub Actions default environment
+ * (`GITHUB_SERVER_URL`, `GITHUB_REPOSITORY`, `GITHUB_RUN_ID`), or `undefined`
+ * outside Actions. The values are treated as untrusted input: anything but an
+ * `owner/name` slug and a numeric run id yields `undefined` rather than a link.
+ *
+ * @param {NodeJS.ProcessEnv} env
+ * @returns {string|undefined}
+ */
+export function workflowRunUrl(env) {
+  const server = env.GITHUB_SERVER_URL;
+  const repo = env.GITHUB_REPOSITORY;
+  const runId = env.GITHUB_RUN_ID;
+  if (
+    !server?.startsWith('https://') ||
+    !/^[\w.-]+\/[\w.-]+$/.test(repo ?? '') ||
+    !/^\d+$/.test(runId ?? '')
+  ) {
+    return undefined;
+  }
+  return `${server.replace(/\/+$/, '')}/${repo}/actions/runs/${runId}`;
+}
+
+// Cap on the quoted `gh` error line in the failure reply, so a verbose or
+// hostile stderr can't bloat the PR comment.
+const MAX_QUOTED_STDERR = 200;
+
+/**
+ * Build the PR reply for a failed `gh pr merge` mutation: the exit code, the
+ * first non-empty stderr line as a single code span (so it reads as data and
+ * any `@` in it is not a mention; backticks are neutralized so the span can't
+ * be broken), the retry guidance, and a link to the workflow run when known.
+ *
+ * @param {Object} input
+ * @param {'enable'|'disable'} input.action
+ * @param {number} input.status `gh` exit code.
+ * @param {string} [input.stderr] Captured `gh` stderr, if any.
+ * @param {string} [input.runUrl] Workflow run URL, if running under Actions.
+ * @returns {string}
+ */
+function mutationFailedMessage({ action, status, stderr, runUrl }) {
+  let line = (stderr ?? '')
+    .split('\n')
+    .map((l) => l.trim())
+    .find((l) => l !== '');
+  if (line !== undefined) {
+    line = line.replaceAll('`', "'");
+    if (line.length > MAX_QUOTED_STDERR) {
+      line = line.slice(0, MAX_QUOTED_STDERR) + '…';
+    }
+  }
+  const reason = line === undefined ? '.' : `: \`${line}\``;
+  const details = runUrl ? ` Details: [workflow run](${runUrl}).` : '';
+  return (
+    `❌ Failed to ${action} auto-merge (\`gh pr merge\` exited ${status})${reason}\n\n` +
+    `Comment \`/auto-merge\` again to retry; if it fails twice, ping ` +
+    `\`@open-telemetry/docs-maintainers\`.${details}`
+  );
+}
 
 /**
  * Run `gh` via the injected runner and throw with context on a non-zero exit.
@@ -404,6 +466,8 @@ function requireGh(runGh, args) {
  *   classified (locale-owned / shared / not-owned) and each locale-team
  *   membership check (pass/fail), up to `verboseLimit` file lines.
  * @param {number} [input.verboseLimit] Cap on per-file verbose lines.
+ * @param {string} [input.runUrl] URL of the current workflow run (see
+ *   `workflowRunUrl`), linked from the reply when a mutation fails.
  * @returns {CommandResult}
  */
 export function runAutoMergeCommand({
@@ -417,6 +481,7 @@ export function runAutoMergeCommand({
   log = () => {},
   verbose = false,
   verboseLimit = DEFAULT_VERBOSE_FILE_LIMIT,
+  runUrl,
 }) {
   const org = repo.split('/')[0];
 
@@ -614,11 +679,16 @@ export function runAutoMergeCommand({
       verdict.apply === 'enable'
         ? ['pr', 'merge', String(prNum), '--repo', repo, '--auto', '--squash']
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
-    const { status } = mutatingRunGh(args);
+    const { status, stderr } = mutatingRunGh(args);
     if (status !== 0) {
       outcome = 'mutation-failed';
       exitCode = 1;
-      message = `❌ Failed to ${verdict.apply} auto-merge (\`gh pr merge\` exited ${status}).`;
+      message = mutationFailedMessage({
+        action: verdict.apply,
+        status,
+        stderr,
+        runUrl,
+      });
     }
   }
 
