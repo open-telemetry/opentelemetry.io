@@ -61,25 +61,25 @@ telemetry differs.
 
 ## Checking
 
-| Script                 | Description                                                  |
-| ---------------------- | ------------------------------------------------------------ |
-| `check:all`            | Run all check scripts in sequence.                           |
-| `check:code-excerpts`  | Check code excerpts, fail if updates needed.                 |
-| `check:codeowners`     | Verify CODEOWNERS locale section matches the registry.       |
-| `check:collector-sync` | Run collector-sync checks.                                   |
-| `check:expired`        | List expired content (by front matter).                      |
-| `check:filenames`      | [Validate file naming & detect obsolete files/folders][fn].  |
-| `check:format`         | Prettier and prose-wrap checks.                              |
-| `check:i18n`           | Validate localization front matter (`default_lang_commit`).  |
-| `check:l10n`           | Run localization checks.                                     |
-| `check:links:internal` | Offline link check (internal links only); lean build first.  |
-| `check:links`          | [Link check][] the whole site with Lychee; lean build first. |
-| `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                  |
-| `check:markdown`       | Markdown lint (content and projects).                        |
-| `check:registry`       | Validate registry YAML under `data/registry/`.               |
-| `check:spelling`       | cspell over content, data, and layout Markdown.              |
-| `check:text`           | textlint over content and data.                              |
-| `check`                | Run the most commonly needed check scripts in sequence.      |
+| Script                            | Description                                                                 |
+| --------------------------------- | --------------------------------------------------------------------------- |
+| `check:all`                       | Run all check scripts in sequence.                                          |
+| `check:code-excerpts`             | Check code excerpts, fail if updates needed.                                |
+| `check:codeowners`                | Verify CODEOWNERS locale section matches the registry.                      |
+| `check:collector-sync`            | Run collector-sync checks.                                                  |
+| `check:expired`                   | List expired content (by front matter).                                     |
+| `check:filenames`                 | [Validate file naming & detect obsolete files/folders][fn].                 |
+| `check:format`                    | Prettier and prose-wrap checks.                                             |
+| `check:i18n`                      | Validate localization front matter (`default_lang_commit`).                 |
+| `check:l10n`                      | Run localization checks.                                                    |
+| `check:links:internal`            | Offline link check (internal links only); lean build first.                 |
+| `check:links:production-internal` | [Offline check of internal links over a lean production build][prod-check]. |
+| `check:links`                     | [Link check][] with Lychee; lean build first.                               |
+| `check:markdown:specs`            | Markdown lint for spec fragments in `tmp/`.                                 |
+| `check:markdown`                  | Markdown lint (content and projects).                                       |
+| `check:spelling`                  | cspell over content, data, and layout Markdown.                             |
+| `check:text`                      | textlint over content and data.                                             |
+| `check`                           | Run the most commonly needed check scripts in sequence.                     |
 
 ## Fixing
 
@@ -162,18 +162,19 @@ telemetry differs.
 | `seq`                          | Run given script names in sequence; exit on first failure.                        |
 
 <!-- prettier-ignore-start -->
-[Hugo bump]: ../dependencies/#hugo
 [`link-cache.jsonc`]: ../link-checking/#link-cache
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [build kinds]: ../#build-kinds
 [dc]: ../link-checking/#double-check
 [fetch the pinned Hugo binary]: ../dependencies/#install-contracts
 [fn]: /docs/contributing/pr-checks/#filename-check
+[Hugo bump]: ../dependencies/#hugo
 [link check]: ../link-checking/
 [locale-auto-merge]: ../ci-workflows/#locale-auto-merge
 [lock-exact inert install]: ../dependencies/#install-contracts
 [lock-exact local setup]: ../dependencies/#install-contracts
 [lock-exact theme dependency install]: ../dependencies/#install-contracts
+[prod-check]: ../link-checking/#production-internal
 [release cooldown]: ../dependencies/#release-cooldown
 [website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->

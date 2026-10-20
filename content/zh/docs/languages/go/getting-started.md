@@ -3,6 +3,7 @@ title: 通过示例入门
 description: 5 分钟内为你的应用接入遥测数据！
 weight: 10
 default_lang_commit: 6dae53b63ae3197dcc140fddcc867ac635541799
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
