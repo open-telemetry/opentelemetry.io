@@ -20856,6 +20856,11 @@
     "when": "2026-10-08T05:47:47Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions-mainframe": {
+    "result": 200,
+    "when": "2026-10-20T10:34:15Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md": {
     "result": 200,
     "when": "2026-10-19T05:46:38Z",
