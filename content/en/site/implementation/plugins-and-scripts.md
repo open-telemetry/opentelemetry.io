@@ -34,7 +34,8 @@ included content][]).
 The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
-types][] and reads it in that [stock renderer][]. The shortcode call names the
+types][] and reads it in that [stock renderer][]. It serves the English
+Collector, JavaScript and Python benchmarks pages. The shortcode call names the
 data and says how to read it:
 
 ```markdown
@@ -42,8 +43,8 @@ data and says how to read it:
 ```
 
 - `data_url`: the action's `data.js`, as `https://…` or as `param:`_`NAME`_, a
-  page param holding it; the Collector page keeps the URL in
-  `params.otel-benchmarks.data_url` because its prose links it too, through
+  page param holding it; the pages keep the URL in
+  `params.otel-benchmarks.data_url` because their prose links it too, through
   `_param`
 - `filter`: keep a bench whose `extra` contains any of the comma-separated
   strings
@@ -52,11 +53,10 @@ data and says how to read it:
 - `series_separator`: trim a series name split off by `group_separator` at its
   first occurrence
 
-Without `group_separator`, each bench name is its own chart with one series,
-which assumes bench names are unique within a commit. Every chart shares the
-data set's commit axis; the stock renderer, which the JavaScript and Python
-pages still carry inline, gives each bench only its own commits. The plugin's
-parts:
+Without `group_separator`, each bench name is its own chart with one series, on
+its own commit axis (the commits where the bench has data, as the stock renderer
+draws it), which assumes bench names are unique within a commit. Grouped charts
+share the data set's commit axis, so their series line up. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
@@ -92,20 +92,24 @@ parts:
   selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
-- **Tests**, `tests/public/otel-benchmarks.test.mjs`: the built pages across
-  converted, unconverted and fallback languages, and the Markdown output of the
-  converted ones.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: each page's built copies
+  across converted, inline and fallback languages, and the Markdown output of
+  the converted ones.
 
 #### Convert a localized page
 
-To convert a localized copy that still inlines the script:
+To convert a localized copy that still inlines the script (the Collector page in
+ja, pt and zh; the JavaScript page in ja, pt and zh; the Python page in ja and
+pt):
 
-1. Remove the stylesheet link above the prose, and replace the block below it
-   (from the `markdownlint` comment through the last `<script>` tag) with the
-   shortcode line from the English page.
+1. Remove the stylesheet link above the prose (and the Python page's `<style>`
+   block), and replace the block below it (from the `markdownlint` comment
+   through the last `<script>` tag) with the shortcode line from the English
+   page.
 2. Copy the English page's `otel-benchmarks` param, translate its tip, and link
    the data from the prose as it does.
-3. Add the language to `CONVERTED` in `tests/public/otel-benchmarks.test.mjs`.
+3. Remove the language from the page's `inline` list in
+   `tests/public/otel-benchmarks.test.mjs`.
 
 Languages without their own copy serve the English page and convert with it.
 
