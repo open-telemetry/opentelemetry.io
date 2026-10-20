@@ -1,7 +1,6 @@
 ---
 title: React Native アプリ
-default_lang_commit: a44df6dd383b504864f60165b21459b7f5e005c5
-drifted_from_default: true
+default_lang_commit: 1b7f33e30a91ebf48b6c9d00f7808b4021fb74dd
 ---
 
 React Native アプリは、Android および iOS デバイスのユーザーがデモのサービスと対話するためのモバイル UI を提供します。
@@ -31,13 +30,17 @@ const { loaded: tracerLoaded } = useTracer();
 `hooks/useTracer.ts` には、TracerProvider の初期化、OTLP エクスポートの確立、トレースコンテキスト伝搬の登録、ネットワークリクエストの自動計装の登録など、計装のセットアップに必要なすべてのコードが含まれています。
 
 ```typescript
+import { trace, context, propagation } from '@opentelemetry/api';
 import {
   CompositePropagator,
   W3CBaggagePropagator,
   W3CTraceContextPropagator,
 } from '@opentelemetry/core';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  BatchSpanProcessor,
+  TracerProvider,
+  StackContextManager,
+} from '@opentelemetry/sdk-trace';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -71,29 +74,29 @@ const Tracer = async () => {
     [ATTR_DEVICE_ID]: getDeviceId(),
   });
 
-  const provider = new WebTracerProvider({
+  const provider = new TracerProvider({
     resource,
     spanProcessors: [
-      new BatchSpanProcessor(
-        new OTLPTraceExporter({
+      new BatchSpanProcessor({
+        exporter: new OTLPTraceExporter({
           url: `http://${localhost}:${process.env.EXPO_PUBLIC_FRONTEND_PROXY_PORT}/otlp-http/v1/traces`,
         }),
-        {
-          scheduledDelayMillis: 500,
-        },
-      ),
+        scheduledDelayMillis: 500,
+      }),
       new SessionIdProcessor(),
     ],
   });
 
-  provider.register({
-    propagator: new CompositePropagator({
+  context.setGlobalContextManager(new StackContextManager().enable());
+  propagation.setGlobalPropagator(
+    new CompositePropagator({
       propagators: [
         new W3CBaggagePropagator(),
         new W3CTraceContextPropagator(),
       ],
     }),
-  });
+  );
+  trace.setGlobalTracerProvider(provider);
 
   registerInstrumentations({
     instrumentations: [
