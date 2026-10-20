@@ -9029,6 +9029,11 @@
     "when": "2026-10-19T05:46:48Z",
     "via": "lychee",
   },
+  "https://github.com/nsavoire": {
+    "result": 200,
+    "when": "2026-10-20T03:51:28Z",
+    "via": "lychee",
+  },
   "https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating": {
     "result": 200,
     "when": "2026-10-19T05:46:27Z",
