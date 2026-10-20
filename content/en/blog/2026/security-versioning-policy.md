@@ -44,7 +44,7 @@ defenders have to respond. Even subtle weaknesses deserve attention when tools
 can help attackers find and exploit them faster. For OpenTelemetry, that
 reinforces the need to make security updates practical to adopt.
 
-## What can change in a security release?
+## What can change in a security release
 
 When necessary to address a security risk, stable SDK and Contrib components may
 change behavior, configuration defaults, or supported configuration values
