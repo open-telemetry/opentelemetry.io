@@ -69,8 +69,7 @@ memory exhaustion. An application could continue to compile while oversized
 values are truncated, reducing memory pressure but also changing what reaches a
 dashboard. That impact matters during an incident. A change like this must
 follow the specification and explain its security benefit, telemetry impact, and
-migration options. This policy does not choose a limit or specify how exceeding
-it is handled.
+migration options.
 
 ## The exception has firm boundaries
 
@@ -94,8 +93,7 @@ They must also describe available migration paths and their security
 implications.
 
 Where safe and feasible, implementations should offer an override or another
-migration path. An override is not guaranteed, and restoring old behavior can
-restore the risk it carried.
+migration path.
 
 For teams adopting an SDK or Contrib update:
 
