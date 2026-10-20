@@ -2,6 +2,7 @@
 title: SDK 設定
 weight: 30
 default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+drifted_from_default: true
 cSpell:ignore: distro
 ---
 

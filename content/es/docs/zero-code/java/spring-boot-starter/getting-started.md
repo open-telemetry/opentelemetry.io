@@ -2,6 +2,7 @@
 title: Primeros pasos
 weight: 20
 default_lang_commit: f304b22c356b4ad4046b8ce5550ddf503a510d69
+drifted_from_default: true
 cSpell:ignore: autoconfiguración springboot
 ---
 
