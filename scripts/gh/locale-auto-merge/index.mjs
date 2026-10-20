@@ -329,8 +329,7 @@ export function resolveVerdict({
  *
  * @typedef {Object} GhResult
  * @property {string} stdout
- * @property {string} [stderr]  Captured stderr, when the runner provides it;
- *   quoted in the reply after a failed mutation.
+ * @property {string} [stderr]  Captured stderr, when the runner provides it.
  * @property {number} status   Exit code (0 on success).
  */
 
@@ -363,14 +362,11 @@ export function workflowRunUrl(env) {
 const MAX_QUOTED_STDERR = 200;
 
 /**
- * Build the PR reply for a failed `gh pr merge` mutation, reader first. The
- * outcome and a no-fault note lead, the next steps follow, and the evidence
- * sits folded in a `<details>` block. The quoted evidence is `gh`'s first
- * non-empty stderr line that isn't one of its `! ` warnings (the merge-queue
- * warning precedes the real error on every run), rendered as a single code
- * span so it reads as data and any `@` in it is not a mention; backticks are
- * neutralized so the span can't be broken, and CR counts as a line break
- * because Markdown treats it as one.
+ * Build the PR reply for a failed `gh pr merge` mutation, reader first: the
+ * outcome and a no-fault note, then the next steps, then the evidence folded
+ * in a `<details>` block. The evidence quotes `gh`'s first non-empty stderr
+ * line that isn't a `! ` warning (else the first line, if any) as one
+ * mention-safe code span, plus the workflow run link when known.
  *
  * @param {Object} input
  * @param {'enable'|'disable'} input.action
@@ -381,14 +377,18 @@ const MAX_QUOTED_STDERR = 200;
  */
 function mutationFailedMessage({ action, status, stderr, runUrl }) {
   const lines = (stderr ?? '')
+    // A lone CR is a Markdown line break too.
     .split(/\r\n|\r|\n/)
-    .map((l) => l.replace(/[\p{Cc}]/gu, '').trim())
+    .map((l) => l.replace(/\p{Cc}/gu, ' ').trim())
     .filter((l) => l !== '');
+  // On enable runs, gh's merge-queue warning precedes the real error.
   let line = lines.find((l) => !l.startsWith('! ')) ?? lines[0];
   if (line !== undefined) {
+    // A backtick would close the code span early.
     line = line.replaceAll('`', "'");
-    if (line.length > MAX_QUOTED_STDERR) {
-      line = line.slice(0, MAX_QUOTED_STDERR) + '…';
+    const chars = Array.from(line);
+    if (chars.length > MAX_QUOTED_STDERR) {
+      line = chars.slice(0, MAX_QUOTED_STDERR).join('') + '…';
     }
   }
   const directive = action === 'enable' ? '/auto-merge' : '/auto-merge:disable';
@@ -401,38 +401,54 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
       `occurred (nothing in your request caused it).`,
     'Next steps:',
     `- Post a new comment with \`${directive}\` to retry. Editing an existing ` +
-      `comment won't re-trigger the check.\n` +
+      `comment won't trigger a retry.\n` +
       `- If it fails again, ping \`@open-telemetry/docs-maintainers\`.`,
-    `<details>\n<summary>Details</summary>\n\n${details.join('\n')}\n\n</details>`,
+    `<details>\n<summary>Error details</summary>\n\n${details.join('\n')}\n\n</details>`,
   ].join('\n\n');
 }
 
 /**
- * Re-read whether auto-merge is enabled on the PR; `null` when the read fails
- * or carries no readable auto-merge state.
+ * Re-read the PR after a failed mutation: is it open, and is auto-merge in
+ * effect? `null` when the read fails or carries no readable state. On a base
+ * branch with a merge queue, enabling auto-merge on a ready PR enqueues it
+ * directly, with no auto-merge request, so queue membership counts as enabled;
+ * `gh pr view --json` exposes no queue field, hence GraphQL.
  *
  * @param {(args: string[]) => GhResult} runGh
  * @param {string|number} prNum
  * @param {string} repo
- * @returns {boolean|null}
+ * @returns {{ open: boolean, enabled: boolean }|null}
  */
-function readAutoMergeEnabled(runGh, prNum, repo) {
-  const { stdout, status } = runGh([
-    'pr',
-    'view',
-    String(prNum),
-    '--repo',
-    repo,
-    '--json',
-    'autoMergeRequest',
-  ]);
-  if (status !== 0) return null;
+function readAutoMergeState(runGh, prNum, repo) {
+  const [owner, name] = repo.split('/');
   try {
-    const pr = JSON.parse(stdout);
-    if (!Object.hasOwn(pr, 'autoMergeRequest')) return null;
-    const request = pr.autoMergeRequest;
-    if (request !== null && typeof request !== 'object') return null;
-    return request !== null;
+    const { stdout, status } = runGh([
+      'api',
+      'graphql',
+      '-f',
+      `owner=${owner}`,
+      '-f',
+      `name=${name}`,
+      '-F',
+      `number=${Number(prNum)}`,
+      '-f',
+      'query=query($owner: String!, $name: String!, $number: Int!) {' +
+        ' repository(owner: $owner, name: $name) { pullRequest(number: $number) {' +
+        ' state isInMergeQueue autoMergeRequest { enabledAt } } } }',
+    ]);
+    if (status !== 0) return null;
+    const pr = JSON.parse(stdout)?.data?.repository?.pullRequest;
+    if (
+      typeof pr?.state !== 'string' ||
+      typeof pr.isInMergeQueue !== 'boolean' ||
+      (pr.autoMergeRequest !== null && typeof pr.autoMergeRequest !== 'object')
+    ) {
+      return null;
+    }
+    return {
+      open: pr.state === 'OPEN',
+      enabled: pr.autoMergeRequest !== null || pr.isInMergeQueue,
+    };
   } catch {
     return null;
   }
@@ -725,11 +741,12 @@ export function runAutoMergeCommand({
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
     const { status, stderr } = mutatingRunGh(args);
     // gh can report an error after the mutation has committed, so re-read the
-    // state before declaring failure. An unreadable state counts as not
-    // landed.
+    // state before declaring failure. An unreadable state, or a PR no longer
+    // open, counts as not landed.
     if (status !== 0) {
       const wanted = verdict.apply === 'enable';
-      if (readAutoMergeEnabled(runGh, prNum, repo) === wanted) {
+      const after = readAutoMergeState(runGh, prNum, repo);
+      if (after?.open && after.enabled === wanted) {
         log(
           `[gh] pr merge exited ${status}, but auto-merge is ` +
             `${wanted ? 'enabled' : 'disabled'}; reporting success`,

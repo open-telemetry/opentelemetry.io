@@ -14,6 +14,7 @@
 //   FAKE_GH_LOG       File to append each invocation's args to (one per line).
 //   FAKE_GH_FAIL      First two args of the call that should exit non-zero
 //                     (e.g. "pr view"), to simulate an infrastructure error.
+//   FAKE_GH_STDERR    Text the failing call writes to stderr before exiting.
 
 import { appendFileSync } from 'node:fs';
 
@@ -27,16 +28,20 @@ if (process.env.FAKE_GH_LOG) {
 }
 
 if (process.env.FAKE_GH_FAIL && key === process.env.FAKE_GH_FAIL) {
+  if (process.env.FAKE_GH_STDERR) {
+    process.stderr.write(process.env.FAKE_GH_STDERR);
+  }
   process.exit(1);
 }
+
+const autoMergeRequest = process.env.FAKE_GH_AUTOMERGE === '1' ? {} : null;
+const state = process.env.FAKE_GH_STATE ?? 'OPEN';
 
 if (key === 'pr view') {
   const files = (process.env.FAKE_GH_FILES ?? '')
     .split(',')
     .filter(Boolean)
     .map((path) => ({ path }));
-  const autoMergeRequest = process.env.FAKE_GH_AUTOMERGE === '1' ? {} : null;
-  const state = process.env.FAKE_GH_STATE ?? 'OPEN';
   const changedFiles = process.env.FAKE_GH_CHANGED
     ? Number(process.env.FAKE_GH_CHANGED)
     : files.length;
@@ -45,6 +50,12 @@ if (key === 'pr view') {
   );
 } else if (key === 'api user') {
   process.stdout.write(`${process.env.FAKE_GH_LOGIN ?? 'octocat'}\n`);
+} else if (key === 'api graphql') {
+  // The post-failure state re-read.
+  const pullRequest = { state, isInMergeQueue: false, autoMergeRequest };
+  process.stdout.write(
+    JSON.stringify({ data: { repository: { pullRequest } } }),
+  );
 } else if (args[0] === 'api') {
   // Team membership: /orgs/<org>/teams/<slug>/members
   const ref = args.find((a) => a.includes('/teams/'));

@@ -76,14 +76,19 @@ infrastructure failure (`mutation-failed`, or a failed `gh` read) exits `1`.
 | `unauthorized`    | 0    | The commenter isn't on the maintainer team for every touched locale.                                                    |
 | `mutation-failed` | 1    | The `gh pr merge` call failed, and a re-read of the PR could not confirm that the change landed.                        |
 
-When `gh pr merge` exits non-zero, the helper re-reads the PR's auto-merge state
-before declaring failure, since `gh` can report an error after the mutation has
-committed; such a run is reported as a normal `apply`, with the discrepancy in
-the run log. A `mutation-failed` reply leads with the outcome and that the
-commenter is not at fault, then the next steps (retry by posting a new comment
-with the same directive, since editing a comment does not re-trigger the
-workflow; ping `@open-telemetry/docs-maintainers` if it fails again), then the
-evidence in a collapsed details block: the exit code, the first line of `gh`'s
-error output that isn't one of its `!` warnings, as a code span (truncated to
-200 characters; the full output stays in the run log), and a link to the
-workflow run when the helper runs under GitHub Actions.
+When `gh pr merge` exits non-zero, the helper re-reads the PR before declaring
+failure, since `gh` can report an error after the mutation has committed. On
+`main`, which has a merge queue, a ready PR is enqueued directly when auto-merge
+is enabled, so queue membership counts as enabled.
+
+- If the PR is still open and the requested change is in effect, the run is
+  reported as a normal `apply`, and the run log records the discrepancy.
+- Otherwise, the `mutation-failed` reply:
+  - says auto-merge could not be enabled (or disabled) and that the request was
+    not at fault
+  - asks the commenter to retry by posting a new comment with the same directive
+    (editing a comment doesn't trigger a retry), and to ping
+    `@open-telemetry/docs-maintainers` if it fails again
+  - folds the evidence into a details block: `gh`'s exit code and error line
+    (the full output is in the run log) and, under GitHub Actions, a link to the
+    workflow run
