@@ -29,7 +29,11 @@ const COLORS = [
 // The call's options (its container's `data-otel-benchmarks` JSON): which
 // benches to chart, and how `extra` names a chart's group and its series.
 // Without `group_separator`, each bench name is its own chart with one series,
-// on the shared commit axis.
+// on its own commit axis (the commits where the bench has data, in history
+// order), as the stock renderer draws it: a bench that joined the history late
+// draws dense rather than mostly empty (the js page's benches span 67 to 1,449
+// of its commits). Grouped charts share the data set's commit axis, so their
+// series line up.
 function init(options) {
   const {
     filter,
@@ -87,7 +91,17 @@ function init(options) {
   return Object.keys(data.entries).map((name) => ({
     name,
     dataSet: collectBenchesPerTestCase(data.entries[name]),
+    ownAxis: !groupSep,
   }));
+}
+
+// The commits a chart's series have data on, in history order.
+function chartedCommitIds(commitIds, byName) {
+  const charted = new Set();
+  for (const byCommitId of byName.values()) {
+    for (const commitId of byCommitId.keys()) charted.add(commitId);
+  }
+  return commitIds.filter((commitId) => charted.has(commitId));
 }
 
 function renderAllCharts(dataSets, main) {
@@ -174,7 +188,7 @@ function renderAllCharts(dataSets, main) {
     });
   }
 
-  function renderBenchSet(benchSet, main) {
+  function renderBenchSet(benchSet, ownAxis, main) {
     const setElem = document.createElement('div');
     setElem.className = 'benchmark-set';
     main.appendChild(setElem);
@@ -191,12 +205,17 @@ function renderAllCharts(dataSets, main) {
     groups.sort((a, b) => a.name.localeCompare(b.name));
 
     for (const { name, byName } of groups) {
-      renderGraph(graphsElem, name, commitIds, byName);
+      renderGraph(
+        graphsElem,
+        name,
+        ownAxis ? chartedCommitIds(commitIds, byName) : commitIds,
+        byName,
+      );
     }
   }
 
-  for (const { name, dataSet } of dataSets) {
-    renderBenchSet(dataSet, main);
+  for (const { dataSet, ownAxis } of dataSets) {
+    renderBenchSet(dataSet, ownAxis, main);
   }
 }
 
