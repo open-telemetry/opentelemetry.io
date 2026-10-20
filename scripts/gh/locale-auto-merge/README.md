@@ -84,11 +84,12 @@ is enabled, so queue membership counts as enabled.
 - If the PR is still open and the requested change is in effect, the run is
   reported as a normal `apply`, and the run log records the discrepancy.
 - Otherwise, the `mutation-failed` reply:
-  - says auto-merge could not be enabled (or disabled) and that the request was
-    not at fault
+  - says auto-merge could not be enabled (or disabled), the command being valid
+    but the request not accepted by GitHub
   - asks the commenter to retry by posting a new comment with the same directive
-    (editing a comment doesn't trigger a retry), and to ping
-    `@open-telemetry/docs-maintainers` if it fails again
+    (editing a comment doesn't trigger a retry) and, if it fails the same way,
+    to read the error and ping `@open-telemetry/docs-maintainers` when it isn't
+    something they can fix
   - folds the evidence into a details block: `gh`'s exit code and error line
     (the full output is in the run log) and, under GitHub Actions, a link to the
     workflow run

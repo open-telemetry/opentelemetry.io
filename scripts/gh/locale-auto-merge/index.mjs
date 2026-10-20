@@ -363,8 +363,8 @@ const MAX_QUOTED_STDERR = 200;
 
 /**
  * Build the PR reply for a failed `gh pr merge` mutation, reader first: the
- * outcome and a no-fault note, then the next steps, then the evidence folded
- * in a `<details>` block. The evidence quotes `gh`'s first non-empty stderr
+ * outcome and that the command was valid, then the next steps, then the
+ * evidence folded in a `<details>` block. The evidence quotes `gh`'s first non-empty stderr
  * line that isn't a `! ` warning (else the first line, if any) as one
  * mention-safe code span, plus the workflow run link when known.
  *
@@ -397,12 +397,15 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
     ...(runUrl ? [`- [Workflow run](${runUrl})`] : []),
   ];
   return [
-    `❌ Auto-merge could not be ${action}d: an unexpected internal error ` +
-      `occurred (nothing in your request caused it).`,
+    `❌ Auto-merge could not be ${action}d: your command was valid, but ` +
+      `GitHub did not accept the request.`,
     'Next steps:',
-    `- Post a new comment with \`${directive}\` to retry. Editing an existing ` +
-      `comment won't trigger a retry.\n` +
-      `- If it fails again, ping \`@open-telemetry/docs-maintainers\`.`,
+    `- Post a new comment with \`${directive}\` to retry; a one-off GitHub ` +
+      `error clears on retry. Editing an existing comment won't trigger a ` +
+      `retry.\n` +
+      `- If it fails the same way, the error under Details says why. If ` +
+      `that's not something you can fix, ping ` +
+      `\`@open-telemetry/docs-maintainers\`.`,
     `<details>\n<summary>Error details</summary>\n\n${details.join('\n')}\n\n</details>`,
   ].join('\n\n');
 }

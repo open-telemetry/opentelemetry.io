@@ -1031,7 +1031,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.equal(r.exitCode, 1);
     assert.match(
       body,
-      /^❌ Auto-merge could not be enabled: an unexpected internal error occurred/,
+      /^❌ Auto-merge could not be enabled: your command was valid, but GitHub did not accept the request\.$/m,
     );
     const [lead, steps, details] = body.split(
       /\n\nNext steps:\n\n|\n\n<details>/,
@@ -1044,7 +1044,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.doesNotMatch(steps, /:disable/);
     assert.match(
       steps,
-      /\n- If it fails again, ping `@open-telemetry\/docs-maintainers`\.$/,
+      /\n- If it fails the same way, the error under Details says why\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
     );
     assert.match(
       details,
