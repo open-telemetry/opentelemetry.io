@@ -2,8 +2,7 @@
 title: サンプリング
 weight: 80
 description: 生成されるテレメトリの量を削減する
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
-drifted_from_default: true
+default_lang_commit: 06bcb558c71da67124b77dfd7ddf1de659cb2da7
 ---
 
 [サンプリング](/docs/concepts/sampling/)は、システムによって生成されるトレースの量を制限するプロセスです。
@@ -37,7 +36,7 @@ TraceIdRatioBasedSamplerはコードでも設定できます。Node.jsの例は�
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
+import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace';
 
 const samplePercentage = 0.1;
 
@@ -50,7 +49,7 @@ const sdk = new NodeSDK({
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-node');
+const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace');
 
 const samplePercentage = 0.1;
 
@@ -71,13 +70,13 @@ TraceIdRatioBasedSamplerはコードでも設定できます。
 
 ```ts
 import {
-  WebTracerProvider,
+  TracerProvider,
   TraceIdRatioBasedSampler,
-} from '@opentelemetry/sdk-trace-web';
+} from '@opentelemetry/sdk-trace';
 
 const samplePercentage = 0.1;
 
-const provider = new WebTracerProvider({
+const tracerProvider = new TracerProvider({
   sampler: new TraceIdRatioBasedSampler(samplePercentage),
 });
 ```
@@ -86,13 +85,13 @@ const provider = new WebTracerProvider({
 
 ```js
 const {
-  WebTracerProvider,
+  TracerProvider,
   TraceIdRatioBasedSampler,
-} = require('@opentelemetry/sdk-trace-web');
+} = require('@opentelemetry/sdk-trace');
 
 const samplePercentage = 0.1;
 
-const provider = new WebTracerProvider({
+const tracerProvider = new TracerProvider({
   sampler: new TraceIdRatioBasedSampler(samplePercentage),
 });
 ```

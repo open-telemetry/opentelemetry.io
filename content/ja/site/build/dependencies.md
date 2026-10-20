@@ -3,8 +3,7 @@ title: 依存関係の管理
 description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: f0f60aff064f269589ed414f37fe7559c8602ef9
-drifted_from_default: true
+default_lang_commit: a92bba88db05bd6684fabb0648c351f1c6d937ad
 cSpell:ignore: EBADENGINE
 ---
 
@@ -91,8 +90,8 @@ npm install --package-lock-only --ignore-scripts
 1. 新しいバージョンのライフサイクルスクリプトをレビューする。
 2. 結果を、依存関係の変更と一緒にコミットし、PR レビューで検証する。
    必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
-3. 新しい承認の場合、[`.github/renovate.jsonc`][] の Renovate 自動マージ除外リストにもそのパッケージを追加する。
-   承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR はコントリビューターを待つ必要がある。
+3. 直接的依存関係の新しい承認の場合、[`.github/renovate.jsonc`][] で `Puppeteer` ルールを参考に（配置も含め）、そのパッケージに専用の Renovate グループを作成し、自動マージから除外する。
+   承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR は共有の patch/minor グループを止めることなくコントリビューターを待つ必要がある。
 
 ### Hugo {#hugo}
 
