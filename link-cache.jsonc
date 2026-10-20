@@ -13319,6 +13319,11 @@
     "when": "2026-10-03T05:48:23Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0": {
+    "result": 200,
+    "when": "2026-10-19T04:23:43Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
