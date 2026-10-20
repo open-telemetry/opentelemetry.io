@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
+drifted_from_default: true
 ---
 
 Bun venit la documentația OpenTelemetry {{ $name }}. Această secțiune prezintă
