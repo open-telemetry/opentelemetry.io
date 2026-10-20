@@ -1,7 +1,7 @@
 ---
 title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2026
 linkTitle: KubeCon NA '26
-date: 2026-10-19
+date: 2026-10-20
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 eventUrl: &eventUrl >-
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
