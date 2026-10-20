@@ -85,10 +85,6 @@ conventions, or bypass signal deprecation and removal rules. It cannot carry
 unrelated incompatible changes. Stable API packages retain their compatibility
 guarantees within the same major version.
 
-Maintainers must still follow the normal specification process and existing
-requirements. Existing support rules still apply; the policy does not promise to
-backport fixes to older minor releases.
-
 ## What to check when upgrading
 
 Release notes are part of the security change. They must describe the risk and
