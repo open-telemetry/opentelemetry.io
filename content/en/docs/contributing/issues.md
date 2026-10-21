@@ -35,7 +35,7 @@ Some accepted issues are closed as _not planned_ and labeled
 `triage:accepted:parked`. The problem is real and a fix is welcome, but
 maintainers lack the capacity to work on it, or to review it, for now. These
 issues are closed to keep the active list focused, not because they were
-declined, so they're a good place to look for work. To pick one up:
+declined. If one interests you:
 
 1. Browse the [parked issues][]. Issues labeled `CI/infra` are excluded: they
    remain [for maintainers only](#ci-infra), parked or not.
