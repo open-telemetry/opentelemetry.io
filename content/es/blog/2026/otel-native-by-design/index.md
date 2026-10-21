@@ -12,13 +12,13 @@ issue: 10300
 sig: SIG End User
 default_lang_commit: c6df13913b1b0133aa46fdf9183c3a3f9ba64092
 # prettier-ignore
-cSpell:ignore: Ahuja autoalojado autoalojados correlacionarlos Dhruv enrutadores Gohain Nityananda paginación
+cSpell:ignore: Ahuja correlacionarlos Dhruv enrutadores Gohain Nityananda paginación
 ---
 
 Con contribuciones de [Dan Gomez Blanco](https://github.com/danielgblanco) (New
 Relic).
 
-Si estás construyendo un producto autoalojado o SaaS, tus usuarios tarde o
+Si estás construyendo un producto self-hosted o SaaS, tus usuarios tarde o
 temprano van a pedir enviar **logs, trazas y métricas** a su propio stack de
 observabilidad, ya sea para cumplir requisitos normativos, gestionar costos o
 centralizar todos sus datos de observabilidad en un solo lugar.
@@ -26,7 +26,7 @@ centralizar todos sus datos de observabilidad en un solo lugar.
 Encerrar a los usuarios en tus dashboards integrados o limitar la exportación a
 ciertos proveedores crea fricción innecesaria. En cambio, permitir la
 exportación a cualquier backend compatible con OpenTelemetry (OTel) es una
-práctica independiente del proveedor y preparada para el futuro, que les da la
+práctica independiente al proveedor y lista para el futuro, que les da la
 libertad de escoger su stack de observabilidad.
 
 Esta publicación describe cómo puedes diseñar tu producto para que los usuarios
@@ -104,10 +104,10 @@ La manera de añadir la exportación mediante OTel depende de **quién controla 
 sistema** que produce la telemetría. Definir esto correctamente te ayuda a
 elegir el enfoque adecuado.
 
-### Software autoalojado {#self-hosted-software}
+### Software self-hosted {#self-hosted-software}
 
 Tu producto es una aplicación o sistema (por ejemplo, un servidor de identidad,
-una malla de servicios o una base de datos) que los clientes instalan y ejecutan
+una red de servicios o una base de datos) que los clientes instalan y ejecutan
 en _su_ entorno: su centro de datos, su nube o su clúster de Kubernetes.
 
 Aquí, tú **instrumentas tu producto** con OpenTelemetry. Cuando un cliente
@@ -163,7 +163,7 @@ señales** o un subconjunto de ellas, y qué podemos aprender de sus enfoques.
 | Cloudflare Workers | Sí   | Sí     | No\*     | Plataforma                        | \*Exportación de métricas aún no disponible            |
 | Heroku             | Sí   | Sí     | Sí       | Plataforma                        | El usuario escoge las señales con `--signals`          |
 
-### El enfoque autoalojado: Kuma y Keycloak {#the-self-hosted-approach-kuma-and-keycloak}
+### El enfoque self-hosted: Kuma y Keycloak {#the-self-hosted-approach-kuma-and-keycloak}
 
 Si tus usuarios despliegan tu software en sus propios entornos, la mejor
 práctica es entregar la aplicación ya instrumentada con OpenTelemetry y exponer
@@ -224,7 +224,7 @@ Para más detalles:
 
 #### Keycloak {#keycloak}
 
-Keycloak es otro ejemplo de software autoalojado que permite exportar
+Keycloak es otro ejemplo de software self-hosted que permite exportar
 telemetría.
 
 En lugar de requerir un sidecar independiente o una funcionalidad de plataforma,
@@ -537,7 +537,7 @@ es una opción.
 
 El protocolo unificado de OpenTelemetry preserva el contexto, entrega datos casi
 en tiempo real y ha demostrado funcionar a escala en despliegues en la nube y
-autoalojados, como los de Cloudflare, Heroku, Kuma y Keycloak. Además, la
+self-hosted, como los de Cloudflare, Heroku, Kuma y Keycloak. Además, la
 independencia del proveedor permite a los usuarios cambiar de backend de
 observabilidad según las necesidades del negocio sin rehacer por completo sus
 pipelines de telemetría.
