@@ -195,9 +195,9 @@ kernel includes the functionality but is lower than 5.17.
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
 approach is that it works for HTTP and HTTPS. For HTTP/2 and gRPC, OBI can
-inject context on new and reused HTTP/2 and gRPC connections when HTTPS isn't
-used. Using `bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or
-running it as a privileged container.
+inject context on new and reused HTTP/2 and gRPC connections. Using
+`bpf_probe_write_user` requires granting OBI `CAP_SYS_ADMIN` or running it as a
+privileged container.
 
 #### Instrument applications that use the Go Trace API
 
