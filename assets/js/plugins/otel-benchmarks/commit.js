@@ -6,11 +6,12 @@ const subjectOf = (commit) => commit.message.split('\n')[0];
 
 // `formatted` is Chart.js's own rendering of the value, so the popover shows
 // the tooltip's number. A bare call's series is the chart's title, so its line
-// goes unnamed (the Python page's names run past the canvas). A unit that is a
-// word gets a space (`ops/sec`, `MiB`); a symbol stays attached (`%`).
+// goes unnamed (the Python page's names run past the canvas). A unit that
+// starts with a letter or digit gets a space (`ops/sec`, `MiB`, `µs`, `1/s`); a
+// symbol stays attached (`%`).
 const valueLabel = (series, point, formatted) => {
   const { unit, range } = point.result.bench;
-  const spaced = /^[A-Za-z]/.test(unit ?? '') ? ` ${unit}` : (unit ?? '');
+  const spaced = /^[\p{L}\p{N}]/u.test(unit ?? '') ? ` ${unit}` : (unit ?? '');
   const value = `${formatted}${spaced}${range ? ` (${range})` : ''}`;
   return series ? `${series}: ${value}` : value;
 };

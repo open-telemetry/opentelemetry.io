@@ -65,6 +65,8 @@ const htmlPage = (page, lang) =>
   `${lang === 'en' ? '' : `${lang}/`}${page.path}/index.html`;
 const mdPage = (page, lang) => htmlPage(page, lang).replace(/\.html$/, '.md');
 const dataSrc = (page) => new RegExp(`^${RegExp.escape(page.dataUrl)}$`);
+// Any benchmark feed: a page loading another page's data draws its charts.
+const ANY_DATA_SRC = new RegExp(`^${RegExp.escape(GH_PAGES)}/.*/data\\.js$`);
 
 const read = (rel) => {
   const file = path.join(publicDir, rel);
@@ -102,7 +104,11 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         const plugin = tagsWithSrc(html, PLUGIN_SRC).length;
         const inline = count(html, INLINE_ID);
         assert.equal(plugin + inline, 1, 'one of plugin or inline script');
-        assert.equal(tagsWithSrc(html, DATA_SRC).length, 1, 'data.js tag once');
+        assert.deepEqual(
+          tagsWithSrc(html, ANY_DATA_SRC).map((t) => attr(t, 'src')),
+          [page.dataUrl],
+          'data.js tag once, and the page’s own',
+        );
         assert.equal(
           tagsWithSrc(html, CHARTJS_SRC).length,
           plugin,
