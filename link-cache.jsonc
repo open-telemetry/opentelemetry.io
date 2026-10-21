@@ -10419,6 +10419,11 @@
     "when": "2026-10-03T05:48:32Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/40444": {
+    "result": 200,
+    "when": "2026-10-21T10:36:06Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791": {
     "result": 200,
     "when": "2026-10-16T05:44:22Z",
@@ -21454,6 +21459,11 @@
   "https://github.com/open-telemetry/semantic-conventions/issues/4121": {
     "result": 200,
     "when": "2026-10-14T10:35:06Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4133": {
+    "result": 200,
+    "when": "2026-10-21T10:36:06Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
