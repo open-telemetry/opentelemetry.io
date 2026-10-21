@@ -329,8 +329,147 @@ export function resolveVerdict({
  *
  * @typedef {Object} GhResult
  * @property {string} stdout
+ * @property {string} [stderr]  Captured stderr, when the runner provides it.
  * @property {number} status   Exit code (0 on success).
  */
+
+/**
+ * URL of the current workflow run, from the GitHub Actions default environment
+ * (`GITHUB_SERVER_URL`, `GITHUB_REPOSITORY`, `GITHUB_RUN_ID`), or `undefined`
+ * outside Actions. The values are treated as untrusted input: anything but a
+ * bare https origin, an `owner/name` slug and a numeric run id yields
+ * `undefined` rather than a link.
+ *
+ * @param {NodeJS.ProcessEnv} env
+ * @returns {string|undefined}
+ */
+export function workflowRunUrl(env) {
+  let origin;
+  try {
+    const url = new URL(env.GITHUB_SERVER_URL ?? '');
+    if (
+      url.protocol !== 'https:' ||
+      url.username ||
+      url.password ||
+      url.search ||
+      url.hash ||
+      !/^\/?$/.test(url.pathname) ||
+      !/^[\w.-]+$/.test(url.hostname)
+    ) {
+      return undefined;
+    }
+    origin = url.origin;
+  } catch {
+    return undefined;
+  }
+  const repo = env.GITHUB_REPOSITORY ?? '';
+  const runId = env.GITHUB_RUN_ID ?? '';
+  const slug = /^[\w.-]+\/[\w.-]+$/.test(repo) ? repo.split('/') : [];
+  // A dot-only component would escape the repository path.
+  if (slug.length !== 2 || slug.some((s) => /^\.+$/.test(s))) {
+    return undefined;
+  }
+  if (!/^\d+$/.test(runId)) return undefined;
+  return `${origin}/${repo}/actions/runs/${runId}`;
+}
+
+const MAX_QUOTED_STDERR = 200;
+
+/**
+ * Build the PR reply for a failed `gh pr merge` mutation: the outcome with the
+ * run link, the next steps, then `gh`'s error folded in a `<details>` block.
+ *
+ * @param {Object} input
+ * @param {'enable'|'disable'} input.action
+ * @param {number} input.status `gh` exit code.
+ * @param {string} [input.stderr] Captured `gh` stderr, if any.
+ * @param {string} [input.runUrl] Workflow run URL, if running under Actions.
+ * @returns {string}
+ */
+function mutationFailedMessage({ action, status, stderr, runUrl }) {
+  const lines = (stderr ?? '')
+    // A lone CR is a Markdown line break too.
+    .split(/\r\n|\r|\n/)
+    .map((l) => l.replace(/\p{Cc}/gu, ' ').trim())
+    .filter((l) => l !== '');
+  // On enable runs, gh's merge-queue warning precedes the real error.
+  let line = lines.find((l) => !l.startsWith('! ')) ?? lines[0];
+  if (line !== undefined) {
+    // A backtick would close the code span early.
+    line = line.replaceAll('`', "'");
+    const chars = Array.from(line);
+    if (chars.length > MAX_QUOTED_STDERR) {
+      line = chars.slice(0, MAX_QUOTED_STDERR).join('') + '…';
+    }
+  }
+  const directive = action === 'enable' ? '/auto-merge' : '/auto-merge:disable';
+  // Same idiom as the /fix family's replies, so the two bots read alike.
+  const run = runUrl
+    ? ` See [run ${runUrl.split('/').at(-1)}](${runUrl}).`
+    : '';
+  const error =
+    `\`gh pr merge\` exited ${status}` +
+    (line === undefined ? ' (no error output).' : `: \`${line}\``);
+  return [
+    `❌ Auto-merge could not be ${action}d: your command was valid, but ` +
+      `GitHub did not accept the request.${run}`,
+    'Next steps:',
+    `- Post a new comment with \`${directive}\` to retry. Editing an ` +
+      `existing comment won't re-run the workflow.\n` +
+      `- If it fails the same way, check the error details below. If ` +
+      `that's not something you can fix, ping ` +
+      `\`@open-telemetry/docs-maintainers\`.`,
+    `<details>\n<summary>Error details</summary>\n\n${error}\n\n</details>`,
+  ].join('\n\n');
+}
+
+/**
+ * Re-read the PR after a failed mutation: is it open, and is auto-merge in
+ * effect? `null` when the read fails or carries no readable state. On a base
+ * branch with a merge queue, enabling auto-merge on a ready PR enqueues it
+ * directly, with no auto-merge request, so queue membership counts as enabled.
+ *
+ * @param {(args: string[]) => GhResult} runGh
+ * @param {string|number} prNum
+ * @param {string} repo
+ * @returns {{ open: boolean, enabled: boolean }|null}
+ */
+function readAutoMergeState(runGh, prNum, repo) {
+  const [owner, name] = repo.split('/');
+  try {
+    // `gh pr view --json` exposes no queue field, hence GraphQL.
+    const { stdout, status } = runGh([
+      'api',
+      'graphql',
+      '-f',
+      `owner=${owner}`,
+      '-f',
+      `name=${name}`,
+      '-F',
+      `number=${Number(prNum)}`,
+      '-f',
+      'query=query($owner: String!, $name: String!, $number: Int!) {' +
+        ' repository(owner: $owner, name: $name) { pullRequest(number: $number) {' +
+        ' state isInMergeQueue autoMergeRequest { enabledAt } } } }',
+    ]);
+    if (status !== 0) return null;
+    const pr = JSON.parse(stdout)?.data?.repository?.pullRequest;
+    if (
+      typeof pr?.state !== 'string' ||
+      typeof pr.isInMergeQueue !== 'boolean' ||
+      Array.isArray(pr.autoMergeRequest) ||
+      (pr.autoMergeRequest !== null && typeof pr.autoMergeRequest !== 'object')
+    ) {
+      return null;
+    }
+    return {
+      open: pr.state === 'OPEN',
+      enabled: pr.autoMergeRequest !== null || pr.isInMergeQueue,
+    };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Run `gh` via the injected runner and throw with context on a non-zero exit.
@@ -404,6 +543,9 @@ function requireGh(runGh, args) {
  *   classified (locale-owned / shared / not-owned) and each locale-team
  *   membership check (pass/fail), up to `verboseLimit` file lines.
  * @param {number} [input.verboseLimit] Cap on per-file verbose lines.
+ * @param {string} [input.runUrl] URL of the current workflow run (see
+ *   `workflowRunUrl`), included in the failure reply when the change did not
+ *   land.
  * @returns {CommandResult}
  */
 export function runAutoMergeCommand({
@@ -417,6 +559,7 @@ export function runAutoMergeCommand({
   log = () => {},
   verbose = false,
   verboseLimit = DEFAULT_VERBOSE_FILE_LIMIT,
+  runUrl,
 }) {
   const org = repo.split('/')[0];
 
@@ -614,11 +757,27 @@ export function runAutoMergeCommand({
       verdict.apply === 'enable'
         ? ['pr', 'merge', String(prNum), '--repo', repo, '--auto', '--squash']
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
-    const { status } = mutatingRunGh(args);
+    const { status, stderr } = mutatingRunGh(args);
+    // gh can report an error after the mutation has committed, so re-read the
+    // state before declaring failure.
     if (status !== 0) {
-      outcome = 'mutation-failed';
-      exitCode = 1;
-      message = `❌ Failed to ${verdict.apply} auto-merge (\`gh pr merge\` exited ${status}).`;
+      const wanted = verdict.apply === 'enable';
+      const after = readAutoMergeState(runGh, prNum, repo);
+      if (after?.open && after.enabled === wanted) {
+        log(
+          `[gh] pr merge exited ${status}, but auto-merge is ` +
+            `${wanted ? 'enabled' : 'disabled'}; reporting success`,
+        );
+      } else {
+        outcome = 'mutation-failed';
+        exitCode = 1;
+        message = mutationFailedMessage({
+          action: verdict.apply,
+          status,
+          stderr,
+          runUrl,
+        });
+      }
     }
   }
 
