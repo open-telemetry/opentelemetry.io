@@ -7119,6 +7119,11 @@
     "when": "2026-10-15T05:44:19Z",
     "via": "lychee",
   },
+  "https://github.com/elifsamedin": {
+    "result": 200,
+    "when": "2026-10-21T03:51:47Z",
+    "via": "lychee",
+  },
   "https://github.com/elli-lib/elli": {
     "result": 200,
     "when": "2026-10-08T05:47:43Z",
@@ -33239,6 +33244,11 @@
   "https://zipkin.io/zipkin-api/": {
     "result": 200,
     "when": "2026-10-08T05:47:39Z",
+    "via": "lychee",
+  },
+  "https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry?view=week": {
+    "result": 200,
+    "when": "2026-10-21T12:16:31Z",
     "via": "lychee",
   },
 }
