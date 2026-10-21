@@ -26651,6 +26651,11 @@
     "when": "2026-10-15T20:42:29Z",
     "via": "lychee",
   },
+  "https://opentelemetry.io/docs/contributing/issues/": {
+    "result": 200,
+    "when": "2026-10-21T15:58:00Z",
+    "via": "lychee",
+  },
   "https://opentelemetry.io/docs/specs/otlp/": {
     "result": 200,
     "when": "2026-10-19T05:46:38Z",

@@ -138,9 +138,9 @@ Additional valuable resources to review are
       > This is still a valid improvement that we'd accept. We're closing it as
       > _not planned_ for now because we lack the capacity to work on it, not
       > because it has been declined. It stays listed under
-      > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
-      > To pick it up, comment here or open a draft PR that references this
-      > issue, and a maintainer will reopen it.
+      > [parked issues](https://opentelemetry.io/docs/contributing/issues/). To
+      > pick it up, comment here or open a draft PR that references this issue,
+      > and a maintainer will reopen it.
   - A `triage:rejected*` label: the request won't be worked on
     (`triage:rejected`, `triage:rejected:wontfix`), or it's a duplicate or
     invalid. Leave a short rationale so that the decision isn't re-triaged.
