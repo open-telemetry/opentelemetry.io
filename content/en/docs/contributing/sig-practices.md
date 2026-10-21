@@ -125,14 +125,13 @@ Additional valuable resources to review are
   re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
   should be removed within 7 days. Pinging the participants and removing the
   label is sufficient activity.
-- Close an issue as _completed_ when its request has been fulfilled, as a
-  _duplicate_ when it duplicates another issue, and as **not planned**
-  otherwise. In the last case, the issue carries one of the following labels so
-  that the reason stays visible:
+- Close an issue as _completed_ only when its request has been fulfilled, and
+  otherwise as a _duplicate_ or as _not planned_. A _not planned_ issue carries
+  one of the following labels, so that the reason stays visible:
   - `triage:accepted:parked`: the issue is accepted, but nobody has the capacity
     to work on it, or to review a contribution, for now. When parking an issue:
-    - Keep the ownership, estimate, and priority labels. Remove
-      `good first issue` and `triage:accepted:needs-pr`.
+    - Swap any other `triage:*` label for `triage:accepted:parked`, and remove
+      `good first issue`. Keep the ownership, estimate, and priority labels.
     - Close the issue with a comment that gives the reason and the way back. For
       an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
