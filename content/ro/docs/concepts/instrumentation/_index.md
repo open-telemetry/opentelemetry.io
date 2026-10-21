@@ -42,7 +42,7 @@ sau fără cod. Următoarele aspecte fac, de asemenea, parte din OpenTelemetry:
   în care SDK-ul OpenTelemetry este importat.
 - Pentru fiecare dintre [semnale][signals], ai la dispoziție mai multe metode
   pentru a le crea, procesa și exporta.
-- Datorită [propagării contextului][../context-propagation/], integrată în
+- Datorită [propagării contextului](../context-propagation/), integrată în
   implementări, poți corela semnalele indiferent de locul în care sunt generate.
 - [Resursele](../resources/) și
   [Domeniile de instrumentare](../instrumentation-scope/) permit gruparea
