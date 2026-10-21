@@ -94,7 +94,8 @@ Additional valuable resources to review are
       - `docs:registry`
       - `docs:ux`
   - Mandatory: A `triage:*` label:
-    - `triage:accepted`, `triage:accepted:needs-pr`, `triage:accepted:parked`
+    - `triage:accepted`, `triage:accepted:needs-pr`, and, alongside either,
+      `triage:accepted:parked`
     - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
@@ -130,8 +131,8 @@ Additional valuable resources to review are
   one of the following labels, so that the reason stays visible:
   - `triage:accepted:parked`: the issue is accepted, but nobody has the capacity
     to work on it, or to review a contribution, for now. When parking an issue:
-    - Swap any other `triage:*` label for `triage:accepted:parked`, and remove
-      `good first issue`. Keep the ownership, estimate, and priority labels.
+    - Add `triage:accepted:parked` and leave the other labels as they are, so
+      that unparking restores the issue exactly.
     - Close the issue with a comment that gives the reason and the way back. For
       an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
@@ -147,7 +148,7 @@ Additional valuable resources to review are
     the request is declined or invalid. Leave a short rationale for the triagers
     who check the [declined issues][] before accepting a request.
 - When a contributor asks to pick up a [parked issue](../issues/#parked), reopen
-  it and replace `triage:accepted:parked` with `triage:accepted:needs-pr`.
+  it and remove `triage:accepted:parked`.
 - Review the [parked issues][] at each quarter rollover, and before events that
   bring in contributors.
 
@@ -158,8 +159,8 @@ Additional valuable resources to review are
 
 ### PRs
 
-- PRs must have a linked issue labelled `triage:accepted`, or one of its
-  `triage:accepted:*` sub-labels, with the following exceptions:
+- PRs must have a linked issue labelled `triage:accepted` with the following
+  exceptions:
   - Automatic PRs
   - hotfixes by maintainers/approvers
 - Automation will ensure that PRs are
