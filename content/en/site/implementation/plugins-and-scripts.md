@@ -54,10 +54,9 @@ data and says how to read it:
 
 Without `group_separator`, the call is bare: each bench name is its own chart
 with one series, which assumes bench names are unique within a commit. A bare
-call's chart draws on its own commit axis (the commits where the bench has data)
-and its value line names no series, as the stock renderer draws it; grouped
-charts share the data set's commit axis, so their series line up. The plugin's
-parts:
+call's chart draws on the commits where its bench has data, with no legend and
+no series name in the value line (the title names the series); grouped charts
+share the data set's commit axis, so their series line up. The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
@@ -107,9 +106,10 @@ To convert a localized copy that still inlines the script, tracked in
    block), and replace the block below it (from the `markdownlint` comment
    through the last `<script>` tag) with the shortcode line from the English
    page.
-2. Copy the English page's `otel-benchmarks` param and `description`, translate
-   its tip, link the data from the prose as it does, and drop the
-   `cSpell:ignore` line that only the inline script needed.
+2. Mirror the English page's front matter (the `otel-benchmarks` param, the
+   `description`) and prose (the tip, the paragraph linking the data and the
+   dashboard), translated, and drop the `cSpell:ignore` line that only the
+   inline script needed.
 3. Remove the language from the page's `inline` list in
    `tests/public/otel-benchmarks.test.mjs`, and tick the copy's box in
    [#12266][].

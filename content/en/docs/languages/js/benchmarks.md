@@ -1,8 +1,7 @@
 ---
 title: Benchmarks
 description: >-
-  Throughput of span, metric, log and baggage operations in the JavaScript SDK,
-  charted per commit
+  Throughput of span, metric, log and baggage operations in the JavaScript SDK
 weight: 101
 params:
   otel-benchmarks:

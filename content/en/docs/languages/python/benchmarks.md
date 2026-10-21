@@ -2,7 +2,7 @@
 title: Benchmarks
 description: >-
   Throughput of tracing, metrics, logging and baggage operations in the Python
-  SDK, charted per commit
+  SDK
 weight: 190
 params:
   otel-benchmarks:

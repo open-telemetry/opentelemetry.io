@@ -23,7 +23,6 @@ const PLUGIN_SRC = /\/js\/plugins\/otel-benchmarks[.\w-]*\.js/;
 const CHARTJS_SRC = /\/js\/vendor\/chart-\d[.\w-]*\.js/;
 const ANY_CHARTJS_SRC = /chart/i;
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
-// The stock page's stylesheet, which the inline copies keep.
 const STOCK_CSS =
   /<link\b[^>]*\bhref=["']?\/css\/benchmarks\.css(?=["'\s>])[^>]*>/g;
 const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])[^>]*>/g;
@@ -32,9 +31,8 @@ const PLUGIN_CSS =
 
 const GH_PAGES = 'https://open-telemetry.github.io';
 // The benchmarks pages, each with the languages whose own copy still carries
-// the stock renderer inline. A locale moving over leaves its page's `inline`
-// list; when the last one does, the delivery-mode duality here goes with the
-// inline copies.
+// the stock renderer inline (the conversion recipe: Site § Implementation,
+// Plugins and scripts).
 const PAGES = [
   {
     path: 'docs/collector/benchmarks',
@@ -184,7 +182,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         const md = read(mdPage(page, lang));
         assert.doesNotMatch(
           md,
-          /<(main|div|link|script)\b/,
+          /<(main|div|link|style|footer|script)\b/,
           'chart markup absent',
         );
         assert.ok(md.includes(page.dataUrl), 'prose links the data');

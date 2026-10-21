@@ -5,8 +5,8 @@
 const subjectOf = (commit) => commit.message.split('\n')[0];
 
 // `formatted` is Chart.js's own rendering of the value, so the popover shows
-// the tooltip's number. An empty `series` leaves the line unnamed. A unit that
-// reads as a word is spaced; a symbol such as `%` stays attached.
+// the tooltip's number. A unit that starts with a letter or digit is spaced; a
+// symbol such as `%` stays attached.
 const valueLabel = (series, point, formatted) => {
   const { unit, range } = point.result.bench;
   const spaced = /^[\p{L}\p{N}]/u.test(unit ?? '') ? ` ${unit}` : (unit ?? '');

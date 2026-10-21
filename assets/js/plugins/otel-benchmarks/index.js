@@ -142,10 +142,7 @@ function renderAllCharts(dataSets, main) {
     const minWidth =
       parseFloat(getComputedStyle(wrapper).minWidth) || wrapper.clientWidth;
     wrapper.style.aspectRatio = String(
-      aspectRatioFor(
-        datasets.map((d) => d.label),
-        minWidth,
-      ),
+      aspectRatioFor(bare ? [] : datasets.map((d) => d.label), minWidth),
     );
 
     const options = {
@@ -171,8 +168,7 @@ function renderAllCharts(dataSets, main) {
         // Options per chart: the popover toggles `enabled` on the chart's own
         // tooltip options, and Chart.js writes that through to this object.
         tooltip: tooltipOptions(bare),
-        // A bare chart's one series is its title; a legend would repeat it,
-        // clipped, at the plot's expense.
+        // A bare chart's one series is its title; a legend would only repeat it.
         legend: { ...legendOptions, display: !bare },
       },
     };
