@@ -16,7 +16,7 @@ interviewed OpenTelemetry end users and practitioners from the Japanese cloud
 native community, and learned how they got involved with OTel:
 
 - [Yuzuru Ohira](https://github.com/yuzujoe) (LayerX)
-- [Mikata Chikahisa](https://github.com/chmikata) (Loglass)
+- [Chikahisa Mikata](https://github.com/chmikata) (Loglass)
 - [Yoshiki Fujikane](https://github.com/ffjlabo) (CyberAgent)
 - [Takashi Okamoto](https://github.com/okamototk) (NTT DATA)
 - [Kohei Sugimoto](https://github.com/kohbis) (MIXI)
