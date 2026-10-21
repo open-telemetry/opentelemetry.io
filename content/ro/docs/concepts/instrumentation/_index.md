@@ -37,20 +37,6 @@ Poți folosi ambele tipuri de soluții simultan.
 OpenTelemetry oferă mai mult decât simple soluții de telemetrie bazate pe cod
 sau fără cod. Următoarele aspecte fac, de asemenea, parte din OpenTelemetry:
 
-- With [context propagation](../context-propagation/) built into the
-  implementations, you can correlate signals regardless of where they are
-  generated.
-- [Resources](../resources/) and
-  [Instrumentation Scopes](../instrumentation-scope/) allow grouping of signals,
-  by different entities, like, the [host](/docs/specs/semconv/resource/host/),
-  [operating system](/docs/specs/semconv/resource/os/) or
-  [K8s cluster](/docs/specs/semconv/resource/k8s/#cluster)
-- Each language-specific implementation of the API and SDK follows the
-  requirements and expectations of the
-  [OpenTelemetry specification](/docs/specs/otel/).
-- [Semantic Conventions](../semantic-conventions/) provide a common naming
-  schema that can be used for standardization across code bases and platforms.
-
 - Bibliotecile pot utiliza API-ul OpenTelemetry ca dependență, fără a avea vreun
   impact asupra aplicațiilor care folosesc acea bibliotecă, cu excepția cazului
   în care SDK-ul OpenTelemetry este importat.
