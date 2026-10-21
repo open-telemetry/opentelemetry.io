@@ -8,7 +8,7 @@
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
-	spec-pin = v1.61.0-35-g3e4f2ff1
+	spec-pin = v1.61.0-37-ge30cae5c
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
