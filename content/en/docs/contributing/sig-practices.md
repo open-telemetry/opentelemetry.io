@@ -129,38 +129,31 @@ Additional valuable resources to review are
   _duplicate_ when it duplicates another issue, and as **not planned**
   otherwise. In the last case, the issue carries one of the following labels so
   that the reason stays visible:
-  - `triage:accepted:parked`: the issue is valid and accepted, but nobody has
-    the capacity to work on it, or to review the work, for now. The issue isn't
-    declined, it's parked until someone can pick it up. When parking an issue:
+  - `triage:accepted:parked`: the issue is accepted, but nobody has the capacity
+    to work on it, or to review a contribution, for now. When parking an issue:
     - Keep the ownership, estimate, and priority labels. Remove
       `good first issue` and `triage:accepted:needs-pr`.
     - Close the issue with a comment that gives the reason and the way back. For
       an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
       <!-- markdownlint-disable no-otel-io-external-urls -->
-      > This improvement is still wanted. We're closing the issue as _not
-      > planned_ for now because we lack the capacity to work on it or to review
-      > a contribution, not because it has been declined. It stays listed under
+      > We still want this, but we lack the capacity to work on it or to review
+      > a contribution for now, so we're closing this issue as _not planned_. It
+      > stays listed under
       > [parked issues](https://opentelemetry.io/docs/contributing/issues/). To
       > pick it up, comment here or open a draft PR that references this issue,
       > and a maintainer will reopen it.
       <!-- markdownlint-enable no-otel-io-external-urls -->
-  - A `triage:rejected*` label: the request won't be worked on
-    (`triage:rejected`, `triage:rejected:wontfix`), or it's invalid. Leave a
-    short rationale so that the decision isn't re-triaged.
-- When a contributor asks to pick up a parked issue, by commenting or by opening
-  a draft PR that references it, reopen the issue and replace
-  `triage:accepted:parked` with `triage:accepted:needs-pr`.
+  - `triage:rejected`, `triage:rejected:wontfix`, or `triage:rejected:invalid`:
+    the request is declined or invalid. Leave a short rationale for the triagers
+    who check the [declined issues][] before accepting a request.
+- When a contributor asks to pick up a [parked issue](../issues/#parked), reopen
+  it and replace `triage:accepted:parked` with `triage:accepted:needs-pr`.
 - Review the [parked issues][] at each quarter rollover, and before events that
-  bring in contributors. Issues labeled `CI/infra` stay
-  [maintainers only](../issues/#ci-infra), parked or not: [parked CI/infra
-  issues][]. The [declined issues][] list is for triagers: check it before
-  accepting a request that was declined before.
+  bring in contributors.
 
 [parked issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Aaccepted%3Aparked
-[parked CI/infra issues]:
-  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Aaccepted%3Aparked+label%3ACI%2Finfra
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
 

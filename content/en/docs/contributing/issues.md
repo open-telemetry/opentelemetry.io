@@ -32,10 +32,10 @@ issue.
 ## Parked issues {#parked}
 
 Some accepted issues are closed as _not planned_ and labeled
-`triage:accepted:parked`. The problem is real and a fix is welcome, but
-maintainers lack the capacity to work on it, or to review it, for now. These
-issues are closed to keep the active list focused, not because they were
-declined. If one interests you:
+`triage:accepted:parked`. Maintainers still want the work done, but lack the
+capacity to do it, or to review a contribution, for now. These issues are closed
+to keep the active list focused, not because they were declined. If one
+interests you:
 
 1. Browse the [parked issues][]. Issues labeled `CI/infra` are excluded: they
    remain [for maintainers only](#ci-infra), parked or not.
