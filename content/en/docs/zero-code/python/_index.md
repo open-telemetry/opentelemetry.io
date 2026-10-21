@@ -4,7 +4,7 @@ linkTitle: Python
 weight: 40
 aliases: [/docs/languages/python/automatic]
 cascade:
-  collector_vers: 0.163.0
+  collector_vers: 0.163.2
 cSpell:ignore: distro
 ---
 
