@@ -55,8 +55,9 @@ data and says how to read it:
 Without `group_separator`, the call is bare: each bench name is its own chart
 with one series, which assumes bench names are unique within a commit. A bare
 call's chart draws on its own commit axis (the commits where the bench has data)
-and its tooltip names no series, as the stock renderer draws it; grouped charts
-share the data set's commit axis, so their series line up. The plugin's parts:
+and its value line names no series, as the stock renderer draws it; grouped
+charts share the data set's commit axis, so their series line up. The plugin's
+parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
@@ -99,17 +100,19 @@ share the data set's commit axis, so their series line up. The plugin's parts:
 
 #### Convert a localized page
 
-To convert a localized copy that still inlines the script (the remaining copies:
-[#12266][]):
+To convert a localized copy that still inlines the script, tracked in
+[#12266][]:
 
 1. Remove the stylesheet link above the prose (and the Python page's `<style>`
    block), and replace the block below it (from the `markdownlint` comment
    through the last `<script>` tag) with the shortcode line from the English
    page.
-2. Copy the English page's `otel-benchmarks` param, translate its tip, and link
-   the data from the prose as it does.
+2. Copy the English page's `otel-benchmarks` param and `description`, translate
+   its tip, link the data from the prose as it does, and drop the
+   `cSpell:ignore` line that only the inline script needed.
 3. Remove the language from the page's `inline` list in
-   `tests/public/otel-benchmarks.test.mjs`.
+   `tests/public/otel-benchmarks.test.mjs`, and tick the copy's box in
+   [#12266][].
 4. If that was the site's last inline copy, delete this section, the test's
    `inline` lists and inline delivery-mode checks, and
    `static/css/benchmarks.css`.

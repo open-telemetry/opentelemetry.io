@@ -5,10 +5,8 @@
 const subjectOf = (commit) => commit.message.split('\n')[0];
 
 // `formatted` is Chart.js's own rendering of the value, so the popover shows
-// the tooltip's number. A bare call's series is the chart's title, so its line
-// goes unnamed (the Python page's names run past the canvas). A unit that
-// starts with a letter or digit gets a space (`ops/sec`, `MiB`, `µs`, `1/s`); a
-// symbol stays attached (`%`).
+// the tooltip's number. An empty `series` leaves the line unnamed. A unit that
+// reads as a word is spaced; a symbol such as `%` stays attached.
 const valueLabel = (series, point, formatted) => {
   const { unit, range } = point.result.bench;
   const spaced = /^[\p{L}\p{N}]/u.test(unit ?? '') ? ` ${unit}` : (unit ?? '');
@@ -70,7 +68,8 @@ function commitContent(commit, valueLabelText) {
 }
 
 // Chart.js `plugins.tooltip` options for one chart: the value line and the
-// commit's subject. `bare`: the call's, so the series goes unnamed.
+// commit's subject. `bare` (a call without `group_separator`): the chart's one
+// series is its title, so the value line names none.
 export const tooltipOptions = (bare) => ({
   callbacks: {
     title: () => '',
@@ -81,7 +80,8 @@ export const tooltipOptions = (bare) => ({
   },
 });
 
-// The popover's body: the value as the y axis formats it, then the commit.
+// The popover's body: the value as the y axis formats it, then the commit;
+// `bare` as above.
 export const popoverContent = (bare) => (point, dataset, chart) =>
   commitContent(
     point.result.commit,

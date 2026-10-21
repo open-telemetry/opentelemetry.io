@@ -23,6 +23,9 @@ const PLUGIN_SRC = /\/js\/plugins\/otel-benchmarks[.\w-]*\.js/;
 const CHARTJS_SRC = /\/js\/vendor\/chart-\d[.\w-]*\.js/;
 const ANY_CHARTJS_SRC = /chart/i;
 const INLINE_ID = /<script\b[^>]*\bid=["']?main-script(?=["'\s>])/g;
+// The stock page's stylesheet, which the inline copies keep.
+const STOCK_CSS =
+  /<link\b[^>]*\bhref=["']?\/css\/benchmarks\.css(?=["'\s>])[^>]*>/g;
 const HOOK = /<div\b[^>]*\bdata-otel-benchmarks(?=[\s>=])[^>]*>/g;
 const PLUGIN_CSS =
   /<link\b[^>]*\bhref=["']?[^"'\s>]*\/scss\/plugins\/otel-benchmarks[.\w-]*\.css(?=["'\s>])[^>]*>/g;
@@ -107,7 +110,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         assert.deepEqual(
           tagsWithSrc(html, ANY_DATA_SRC).map((t) => attr(t, 'src')),
           [page.dataUrl],
-          'data.js tag once, and the page’s own',
+          "data.js tag once, and the page's own",
         );
         assert.equal(
           tagsWithSrc(html, CHARTJS_SRC).length,
@@ -118,6 +121,11 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
           plugin,
           converted ? 1 : 0,
           'plugin on converted pages only',
+        );
+        assert.equal(
+          count(html, STOCK_CSS),
+          inline,
+          'stock stylesheet accompanies the inline script, and only it',
         );
       });
 

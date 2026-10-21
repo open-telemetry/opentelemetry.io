@@ -1,8 +1,8 @@
 ---
 title: Benchmarks
 description: >-
-  Commit-by-commit performance trend of critical OpenTelemetry JavaScript SDK
-  operations
+  Throughput of span, metric, log and baggage operations in the JavaScript SDK,
+  charted per commit
 weight: 101
 params:
   otel-benchmarks:

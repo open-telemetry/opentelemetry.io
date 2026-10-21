@@ -1,8 +1,8 @@
 ---
 title: Benchmarks
 description: >-
-  Commit-by-commit performance trend of critical OpenTelemetry Python SDK
-  operations
+  Throughput of tracing, metrics, logging and baggage operations in the Python
+  SDK, charted per commit
 weight: 190
 params:
   otel-benchmarks:

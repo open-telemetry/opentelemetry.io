@@ -28,8 +28,8 @@ const COLORS = [
 
 // The call's options (its container's `data-otel-benchmarks` JSON): which
 // benches to chart, and how `extra` names a chart's group and its series.
-// Without `group_separator`, the call is bare: each bench name is its own
-// chart with one series, drawn as the stock renderer draws it.
+// Without `group_separator`, the call is bare: one chart per bench name, one
+// series.
 function init(options) {
   const {
     filter,
@@ -85,7 +85,6 @@ function init(options) {
   const data = window.BENCHMARK_DATA;
 
   return Object.keys(data.entries).map((name) => ({
-    name,
     dataSet: collectBenchesPerTestCase(data.entries[name]),
     bare: !groupSep,
   }));
@@ -172,7 +171,9 @@ function renderAllCharts(dataSets, main) {
         // Options per chart: the popover toggles `enabled` on the chart's own
         // tooltip options, and Chart.js writes that through to this object.
         tooltip: tooltipOptions(bare),
-        legend: legendOptions,
+        // A bare chart's one series is its title; a legend would repeat it,
+        // clipped, at the plot's expense.
+        legend: { ...legendOptions, display: !bare },
       },
     };
 
@@ -199,9 +200,8 @@ function renderAllCharts(dataSets, main) {
     }
     groups.sort((a, b) => a.name.localeCompare(b.name));
 
-    // A bare call's chart draws on the commits its bench has data on: a bench
-    // that joined the history late draws dense rather than mostly empty.
-    // Grouped charts share the data set's axis, so their series line up.
+    // A bench that joined the history late would draw mostly empty on the data
+    // set's axis; grouped charts keep that axis so their series line up.
     for (const { name, byName } of groups) {
       renderGraph(
         graphsElem,
