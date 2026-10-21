@@ -4129,6 +4129,11 @@
     "when": "2026-10-09T05:48:28Z",
     "via": "lychee",
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/cncf-hosted-co-located-schedule/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog": {
     "result": 200,
     "when": "2026-10-09T05:48:27Z",
@@ -4137,6 +4142,196 @@
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog": {
     "result": 200,
     "when": "2026-10-09T05:48:27Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/?utm_source=opentelemetry&amp;utm_medium=website&amp;utm_content=blog#schedule": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1230227": {
+    "result": 200,
+    "when": "2026-10-19T20:43:03Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1230488": {
+    "result": 200,
+    "when": "2026-10-19T20:43:10Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1230983": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1233585": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1237843": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1238630": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1239823": {
+    "result": 200,
+    "when": "2026-10-19T20:43:06Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1241330": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1243089": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1243292": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1244576": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1244682": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1245970": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1246166": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1246179": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1246551": {
+    "result": 200,
+    "when": "2026-10-19T20:43:08Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1247277": {
+    "result": 200,
+    "when": "2026-10-19T20:43:06Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1247513": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1247991": {
+    "result": 200,
+    "when": "2026-10-19T20:43:04Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1248216": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1248218": {
+    "result": 200,
+    "when": "2026-10-19T20:43:04Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1249351": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1249409": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1249846": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1249896": {
+    "result": 200,
+    "when": "2026-10-19T20:43:04Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1250076": {
+    "result": 200,
+    "when": "2026-10-19T20:43:09Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1250513": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1250770": {
+    "result": 200,
+    "when": "2026-10-19T20:43:05Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1289874": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1294771": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1336060": {
+    "result": 200,
+    "when": "2026-10-19T20:43:09Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1361545": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1362463": {
+    "result": 200,
+    "when": "2026-10-19T20:43:07Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1362631": {
+    "result": 200,
+    "when": "2026-10-19T20:43:03Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1362642": {
+    "result": 200,
+    "when": "2026-10-19T20:43:09Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1362689": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
+    "via": "lychee",
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/?id=1363966": {
+    "result": 200,
+    "when": "2026-10-19T20:43:02Z",
     "via": "lychee",
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/": {
@@ -9129,6 +9324,11 @@
     "when": "2026-10-19T05:46:48Z",
     "via": "lychee",
   },
+  "https://github.com/nsavoire": {
+    "result": 200,
+    "when": "2026-10-20T03:51:28Z",
+    "via": "lychee",
+  },
   "https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating": {
     "result": 200,
     "when": "2026-10-19T05:46:27Z",
@@ -13427,6 +13627,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0": {
     "result": 200,
     "when": "2026-10-03T05:48:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0": {
+    "result": 200,
+    "when": "2026-10-19T04:23:43Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0": {
