@@ -8,7 +8,8 @@
 //                     number of FAKE_GH_FILES; set higher to simulate the
 //                     >100-file truncation that trips the fail-closed guard).
 //   FAKE_GH_AUTOMERGE `1` => auto-merge already enabled; anything else => off.
-//   FAKE_GH_STATE     PR state for `pr view`. Default: OPEN.
+//   FAKE_GH_STATE     PR state for `pr view` and the GraphQL re-read. Default:
+//                     OPEN.
 //   FAKE_GH_TEAMS     JSON object of team-slug -> [logins] for membership API.
 //   FAKE_GH_LOGIN     Login returned by `api user`. Default: octocat.
 //   FAKE_GH_LOG       File to append each invocation's args to (one per line).

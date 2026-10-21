@@ -1160,7 +1160,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
   test('a failed enable that did land is reported as success', () => {
     for (const landed of [
       prState({ enabledAt: '2026-10-16T15:12:07Z' }),
-      prState({ queued: true }), // enqueued directly, no auto-merge request
+      prState({ queued: true }), // queued, no auto-merge request
     ]) {
       const { r, body, logs } = runFailingMutation({
         stderr: 'GraphQL: Something went wrong while executing your query.',

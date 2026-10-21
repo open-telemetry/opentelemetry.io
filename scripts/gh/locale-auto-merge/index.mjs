@@ -412,9 +412,8 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
     `❌ Auto-merge could not be ${action}d: your command was valid, but ` +
       `GitHub did not accept the request.`,
     'Next steps:',
-    `- Post a new comment with \`${directive}\` to retry; a one-off GitHub ` +
-      `error clears on retry. Editing an existing comment won't re-run ` +
-      `the workflow.\n` +
+    `- Post a new comment with \`${directive}\` to retry. Editing an ` +
+      `existing comment won't re-run the workflow.\n` +
       `- If it fails the same way, check the error details below. If ` +
       `that's not something you can fix, ping ` +
       `\`@open-telemetry/docs-maintainers\`.`,
@@ -543,7 +542,8 @@ function requireGh(runGh, args) {
  *   membership check (pass/fail), up to `verboseLimit` file lines.
  * @param {number} [input.verboseLimit] Cap on per-file verbose lines.
  * @param {string} [input.runUrl] URL of the current workflow run (see
- *   `workflowRunUrl`), linked from the reply when a mutation fails.
+ *   `workflowRunUrl`), included in the failure reply when the change did not
+ *   land.
  * @returns {CommandResult}
  */
 export function runAutoMergeCommand({
