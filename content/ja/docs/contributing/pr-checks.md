@@ -1,7 +1,7 @@
 ---
 title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
-description: プルリクエストがすべてのチェックをパスする方法学ぶ
+description: プルリクエストがすべてのチェックをパスする方法を学ぶ
 weight: 40
 default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
 ---
