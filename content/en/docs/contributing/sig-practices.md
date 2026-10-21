@@ -132,7 +132,7 @@ Additional valuable resources to review are
   - `triage:accepted:parked`: the issue is accepted, but nobody has the capacity
     to work on it, or to review a contribution, for now. When parking an issue:
     - Add `triage:accepted:parked` and leave the other labels as they are, so
-      that unparking restores the issue exactly.
+      that reopening restores the issue exactly.
     - Close the issue with a comment that gives the reason and the way back. For
       an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
