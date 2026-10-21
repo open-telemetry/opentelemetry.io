@@ -90,40 +90,41 @@ să eviți eșantionarea dacă îndeplinești oricare dintre următoarele criter
 1. Costul computațional direct pentru a eșantiona eficient date, precum un proxy
    de eșantionare de coadă.
 2. Costul indirect de inginerie pentru a menține metodologii de eșantionare
-   eficiente cu cât mai multe aplicații, sisteme și date sunt impșicate.
+   eficiente cu cât mai multe aplicații, sisteme și date sunt implicate.
 3. Costul indirect al oportunității de a rata informații critice cu metode
    ineficiente de eșantionare.
 
 Eșantionarea, deși este eficientă la reducerea costurilor de monitorizare, ar
 putea introduce alte costuri neașteptate dacă nu este efectuată bine. Ar fi mai
 ieftin să aloci mai multe resurse pentru monitorizare în loc, fie printr-un
-vendor sau computațional când tu găzduiești, depinzând de backend-ul de
+furnizor sau computațional când tu găzduiești, depinzând de backend-ul de
 monitorizare, natura datelor tale și încercările tale de a eșantiona eficient.
 
-## Head Sampling
+## Eșantionare de cap {#head-sampling}
 
-Head sampling is a sampling technique used to make a sampling decision as early
-as possible. A decision to sample or drop a span or trace is not made by
-inspecting the trace as a whole.
+Eșantionarea de cap este o metodă folosită pentru a lua decizia de a eșantiona
+cât de curând posibil. Decizia de a eșantiona sau a renunța la o urmă sau un
+interval nu este luată prin inspectarea intervalului în întregime.
 
-For example, the most common form of head sampling is
-[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
-This is also referred to as Deterministic Sampling. In this case, a sampling
-decision is made based on the trace ID and the desired percentage of traces to
-sample. This ensures that whole traces are sampled - no missing spans - at a
-consistent rate, such as 5% of all traces.
+De exemplu, cea mai comună formă de eșantionare de cap este
+[Eșantionare probabilistă consecventă](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
+Acest procedeu este cunoscut și sub denumirea de eșantionare deterministă. În
+acest caz, decizia de eșantionare se ia pe baza identificatorului de urmă (trace
+ID) și a procentului dorit de urme care trebuie eșantionate. Asta asigură
+eșantionarea completă a urmelor – fără intervale lipsă – la o rată constantă, de
+exemplu 5% din totalul urmelor.
 
-The upsides to head sampling are:
+Avantajele eșantionării de cap sunt:
 
-- Easy to understand
-- Easy to configure
-- Efficient
-- Can be done at any point in the trace collection pipeline
+- Ușor de înțeles
+- Ușor de configurat
+- Eficient
+- Poate fi făcută în orice punct al procesului de colectare a urmelor
 
-The primary downside to head sampling is that it is not possible to make a
-sampling decision based on data in the entire trace. For example, you cannot
-ensure that all traces with an error within them are sampled with head sampling
-alone. For this situation and many others, you need tail sampling.
+Principalul dezavantaj la eșantionarea de cap este că nu este posibilă să iei o
+decizie de eșantionare bazată pe date din întregul urmelor. De exemplu, nu poți
+garanta că toate urmele care conțin o eroare sunt eșantionate folosind doar
+eșantionarea de cap.
 
 ## Tail Sampling
 
