@@ -365,6 +365,7 @@ export function workflowRunUrl(env) {
   const repo = env.GITHUB_REPOSITORY ?? '';
   const runId = env.GITHUB_RUN_ID ?? '';
   const slug = /^[\w.-]+\/[\w.-]+$/.test(repo) ? repo.split('/') : [];
+  // A dot-only component would escape the repository path.
   if (slug.length !== 2 || slug.some((s) => /^\.+$/.test(s))) {
     return undefined;
   }
@@ -372,16 +373,11 @@ export function workflowRunUrl(env) {
   return `${origin}/${repo}/actions/runs/${runId}`;
 }
 
-// Cap on the quoted `gh` error line in the failure reply, so a verbose or
-// hostile stderr can't bloat the PR comment.
 const MAX_QUOTED_STDERR = 200;
 
 /**
- * Build the PR reply for a failed `gh pr merge` mutation, reader first: the
- * outcome and that the command was valid, then the next steps, then the
- * evidence folded in a `<details>` block. The evidence quotes `gh`'s first non-empty stderr
- * line that isn't a `! ` warning (else the first line, if any) as one
- * mention-safe code span, plus the workflow run link when known.
+ * Build the PR reply for a failed `gh pr merge` mutation: the outcome, the
+ * next steps, then `gh`'s evidence folded in a `<details>` block.
  *
  * @param {Object} input
  * @param {'enable'|'disable'} input.action
@@ -417,9 +413,9 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
       `GitHub did not accept the request.`,
     'Next steps:',
     `- Post a new comment with \`${directive}\` to retry; a one-off GitHub ` +
-      `error clears on retry. Editing an existing comment won't trigger a ` +
-      `retry.\n` +
-      `- If it fails the same way, check the error under Details. If ` +
+      `error clears on retry. Editing an existing comment won't re-run ` +
+      `the workflow.\n` +
+      `- If it fails the same way, check the error details below. If ` +
       `that's not something you can fix, ping ` +
       `\`@open-telemetry/docs-maintainers\`.`,
     `<details>\n<summary>Error details</summary>\n\n${details.join('\n')}\n\n</details>`,
@@ -761,8 +757,7 @@ export function runAutoMergeCommand({
         : ['pr', 'merge', String(prNum), '--repo', repo, '--disable-auto'];
     const { status, stderr } = mutatingRunGh(args);
     // gh can report an error after the mutation has committed, so re-read the
-    // state before declaring failure. An unreadable state, or a PR no longer
-    // open, counts as not landed.
+    // state before declaring failure.
     if (status !== 0) {
       const wanted = verdict.apply === 'enable';
       const after = readAutoMergeState(runGh, prNum, repo);

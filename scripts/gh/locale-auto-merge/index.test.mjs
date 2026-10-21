@@ -455,17 +455,17 @@ const KNOWN = new Set(['ja', 'pt']);
  * Run an eligible, authorized enable or disable whose `gh pr merge` mutation
  * fails with `stderr`; return the result, the posted comment body, the log
  * lines, and the `gh` calls. `reread` answers the GraphQL state read that
- * follows the failed mutation (default: unreadable).
+ * follows the failed mutation (default: the PR unchanged, still open).
  */
 function runFailingMutation({ stderr, runUrl, action = 'enable', reread }) {
   const calls = [];
   const logs = [];
+  const enabledAt = action === 'disable' ? '2026-01-01T00:00:00Z' : null;
   const base = makeRunGh({
     pr: {
       state: 'OPEN',
       files: [{ path: 'content/ja/docs/a.md' }],
-      autoMergeRequest:
-        action === 'disable' ? { enabledAt: '2026-01-01T00:00:00Z' } : null,
+      autoMergeRequest: enabledAt === null ? null : { enabledAt },
     },
     teams: { 'docs-ja-maintainers': ['alice'] },
     calls,
@@ -477,7 +477,7 @@ function runFailingMutation({ stderr, runUrl, action = 'enable', reread }) {
     }
     if (args[0] === 'api' && args[1] === 'graphql') {
       calls.push(args);
-      return reread ? reread(args) : { stdout: '', status: 1 };
+      return (reread ?? prState({ enabledAt }))(args);
     }
     return base(args);
   };
@@ -593,7 +593,7 @@ describe('locale-auto-merge: workflowRunUrl', () => {
       }),
       undefined,
     );
-    // A dot-only slug component would escape the repository path.
+    // Dot-only slug component.
     assert.equal(
       workflowRunUrl({
         GITHUB_SERVER_URL: 'https://github.com',
@@ -1069,7 +1069,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     assert.doesNotMatch(steps, /:disable/);
     assert.match(
       steps,
-      /\n- If it fails the same way, check the error under Details\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
+      /\n- If it fails the same way, check the error details below\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
     );
     assert.match(
       details,
@@ -1203,32 +1203,49 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
   });
 
   test('an unreadable state re-read stays a failure', () => {
+    const open = prState({})().stdout;
+    const without = (field) =>
+      JSON.parse(open, (key, value) => (key === field ? undefined : value));
     for (const reread of [
-      undefined, // read exits non-zero
+      () => ({ stdout: '', status: 1 }),
       () => ({ stdout: 'not json', status: 0 }),
       () => ({ stdout: '{}', status: 0 }),
       () => ({
-        stdout: prState({})().stdout.replace(
+        stdout: open.replace(
           '"autoMergeRequest":null',
           '"autoMergeRequest":[]',
         ),
         status: 0,
       }),
+      () => ({
+        stdout: JSON.stringify(without('autoMergeRequest')),
+        status: 0,
+      }),
+      () => ({ stdout: JSON.stringify(without('isInMergeQueue')), status: 0 }),
+      () => ({ stdout: JSON.stringify(without('state')), status: 0 }),
       () => ({ stdout: prState({ queued: true })().stdout, status: 1 }),
       () => {
         throw new Error('runner blew up');
       },
     ]) {
-      const { r, body, calls } = runFailingMutation({ stderr: 'boom', reread });
-      assert.equal(r.outcome, 'mutation-failed');
-      assert.equal(r.exitCode, 1);
-      assert.match(body, /^❌ Auto-merge could not be enabled/);
-      const rereads = calls.filter((a) => a[0] === 'api' && a[1] === 'graphql');
-      assert.equal(
-        rereads.length,
-        1,
-        'state is re-read once after the failure',
-      );
+      for (const action of ['enable', 'disable']) {
+        const { r, body, calls } = runFailingMutation({
+          stderr: 'boom',
+          action,
+          reread,
+        });
+        assert.equal(r.outcome, 'mutation-failed');
+        assert.equal(r.exitCode, 1);
+        assert.match(body, /^❌ Auto-merge could not be /);
+        const rereads = calls.filter(
+          (a) => a[0] === 'api' && a[1] === 'graphql',
+        );
+        assert.equal(
+          rereads.length,
+          1,
+          'state is re-read once after the failure',
+        );
+      }
     }
   });
 

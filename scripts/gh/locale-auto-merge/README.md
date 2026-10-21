@@ -90,6 +90,6 @@ is enabled, so queue membership counts as enabled.
     (editing a comment doesn't trigger a retry) and, if it fails the same way,
     to read the error and ping `@open-telemetry/docs-maintainers` when it isn't
     something they can fix
-  - folds the evidence into a details block: `gh`'s exit code and error line
-    (the full output is in the run log) and, under GitHub Actions, a link to the
-    workflow run
+  - folds the evidence (`gh`'s exit code and error line, plus a workflow-run
+    link under GitHub Actions) into a details block; the full output is in the
+    run log
