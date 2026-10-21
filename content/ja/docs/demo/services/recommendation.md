@@ -3,6 +3,7 @@ title: レコメンデーションサービス
 linkTitle: レコメンデーション
 aliases: [recommendationservice]
 default_lang_commit: 524c62c4d0a3794fc15e206f8a6b634c12c60d8f
+drifted_from_default: true
 cSpell:ignore: cpython NOTSET
 ---
 

@@ -1,3 +1,4 @@
+acceseazǎ
 actualizeaz
 actualizeazǎ
 actualizezi
@@ -10,10 +11,13 @@ aprobatorul
 asiguri
 aspirațional
 autogenerat
+automaticǎ
 bifând
 calificatori
 colaboreze
 colectezi
+colectoarele
+colectorii
 colectorului
 commiturile
 comunitǎții
@@ -34,6 +38,7 @@ deții
 dezvoltatori
 dezvoltatorii
 discutǎ
+doreşti
 editezi
 elimini
 emiți
@@ -41,11 +46,14 @@ emojiilor
 enumerează
 explorezi
 exportatorilor
+exportatorului
+foloseşti
 formatorul
 forțezi
 franceză
 gestionezi
 identificatorii
+implementezi
 incluzi
 informatica
 informatică
@@ -63,7 +71,9 @@ intervalurilor
 întreab-o
 întreținători
 întreținătorii
+librǎriilor
 limitezi
+manualǎ
 mărești
 microservicii
 migrare
@@ -84,10 +94,12 @@ prepopulată
 propagatoarele
 propagatorul
 propagi
+provii
 randată
 randează
 receptoarelor
 reconstruiește
+referinţă
 remediează
 remediezi
 reobține
@@ -96,6 +108,7 @@ revizuii
 revizuitori
 revizuitorii
 sanitizezi
+selecteazǎ
 semantică
 semnalizate
 semneazǎ

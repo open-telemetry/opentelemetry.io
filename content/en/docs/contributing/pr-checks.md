@@ -144,7 +144,7 @@ The check flags these obsolete paths:
 
 ### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-These two checks build the website and verify that all links are valid.
+These two checks build the website and verify that its links are valid.
 
 > [!NOTE]
 >
@@ -175,6 +175,15 @@ When you add `link-check=no`, record the date of your manual validation by also
 appending a `last-validated=YYYY-MM-DD` parameter, for example:
 
 - `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CHECK LINKS (production, internal)` {#check-links-production-internal .notranslate lang=en}
+
+This check fails when a page links to a **draft** or **future-dated** page: such
+a page renders in the deploy preview, but the production site omits it. Either
+link to a published page instead, or publish the target first. If `CHECK LINKS`
+reports the same page as missing, it doesn't exist at all: fix the link. For
+what the check builds and covers, see
+[Links into unpublished pages](/site/build/link-checking/#production-internal).
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
@@ -231,6 +240,11 @@ The following code enforces the link requirement described in this section:
   [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+#### Never mark a localized page as a draft {#localized-drafts}
+
+The build warns about a localized page marked as a draft. For the rule and the
+remedy, see [Draft pages](../localization/#drafts).
 
 ### `LOCALIZATION` guidelines {.notranslate lang=en #localization}
 

@@ -10,7 +10,7 @@ OpenTelemetry is:
 
 - An **[observability][] framework and toolkit** designed to facilitate the
   - [Generation][instr]
-  - Export
+  - [Export](../concepts/components/#exporters)
   - [Collection](../concepts/components/#collector)
 
   of [telemetry data][] such as [traces][], [metrics][], and [logs][].
