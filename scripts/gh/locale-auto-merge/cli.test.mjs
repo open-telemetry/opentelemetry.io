@@ -197,7 +197,7 @@ describe('locale-auto-merge cli', { skip }, () => {
     assert.ok(
       res.ghCalls.some((c) =>
         c.includes(
-          '(https://github.com/open-telemetry/opentelemetry.io/actions/runs/38921928401)',
+          'See [run 38921928401](https://github.com/open-telemetry/opentelemetry.io/actions/runs/38921928401).',
         ),
       ),
       'reply links the workflow run from the Actions environment',

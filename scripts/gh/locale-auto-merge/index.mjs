@@ -376,8 +376,8 @@ export function workflowRunUrl(env) {
 const MAX_QUOTED_STDERR = 200;
 
 /**
- * Build the PR reply for a failed `gh pr merge` mutation: the outcome, the
- * next steps, then `gh`'s evidence folded in a `<details>` block.
+ * Build the PR reply for a failed `gh pr merge` mutation: the outcome with the
+ * run link, the next steps, then `gh`'s error folded in a `<details>` block.
  *
  * @param {Object} input
  * @param {'enable'|'disable'} input.action
@@ -403,21 +403,23 @@ function mutationFailedMessage({ action, status, stderr, runUrl }) {
     }
   }
   const directive = action === 'enable' ? '/auto-merge' : '/auto-merge:disable';
-  const details = [
-    `- \`gh pr merge\` exited ${status}` +
-      (line === undefined ? ' (no error output).' : `: \`${line}\``),
-    ...(runUrl ? [`- [Workflow run](${runUrl})`] : []),
-  ];
+  // Same idiom as the /fix family's replies, so the two bots read alike.
+  const run = runUrl
+    ? ` See [run ${runUrl.split('/').at(-1)}](${runUrl}).`
+    : '';
+  const error =
+    `\`gh pr merge\` exited ${status}` +
+    (line === undefined ? ' (no error output).' : `: \`${line}\``);
   return [
     `❌ Auto-merge could not be ${action}d: your command was valid, but ` +
-      `GitHub did not accept the request.`,
+      `GitHub did not accept the request.${run}`,
     'Next steps:',
     `- Post a new comment with \`${directive}\` to retry. Editing an ` +
       `existing comment won't re-run the workflow.\n` +
       `- If it fails the same way, check the error details below. If ` +
       `that's not something you can fix, ping ` +
       `\`@open-telemetry/docs-maintainers\`.`,
-    `<details>\n<summary>Error details</summary>\n\n${details.join('\n')}\n\n</details>`,
+    `<details>\n<summary>Error details</summary>\n\n${error}\n\n</details>`,
   ].join('\n\n');
 }
 

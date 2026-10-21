@@ -1054,9 +1054,11 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.equal(r.exitCode, 1);
+    // The run link rides the lead line, as the /fix replies do; the details
+    // block holds only gh's error.
     assert.match(
       body,
-      /^❌ Auto-merge could not be enabled: your command was valid, but GitHub did not accept the request\.$/m,
+      /^❌ Auto-merge could not be enabled: your command was valid, but GitHub did not accept the request\. See \[run 38921928401\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)\.$/m,
     );
     const [lead, steps, details] = body.split(
       /\n\nNext steps:\n\n|\n\n<details>/,
@@ -1071,16 +1073,13 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       steps,
       /\n- If it fails the same way, check the error details below\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
     );
-    assert.match(
+    assert.equal(
       details,
-      /- `gh pr merge` exited 1: `GraphQL: Something went wrong while executing your query\. Please include 'D40E:21FF18' when reporting this issue\.`/,
+      '\n<summary>Error details</summary>\n\n' +
+        "`gh pr merge` exited 1: `GraphQL: Something went wrong while executing your query. Please include 'D40E:21FF18' when reporting this issue.`\n\n" +
+        '</details>',
     );
     assert.doesNotMatch(body, /second line/);
-    assert.match(
-      details,
-      /- \[Workflow run\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)/,
-    );
-    assert.match(details, /<\/details>$/);
     assert.ok(
       logs.some((m) => m.startsWith('[mutation-failed] ')),
       'log line keeps the outcome token',
@@ -1123,10 +1122,12 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       stderr: '  \n\n',
       runUrl: undefined,
     });
-    assert.match(body, /\n- `gh pr merge` exited 1 \(no error output\)\.\n/);
+    assert.match(body, /\n\n`gh pr merge` exited 1 \(no error output\)\.\n/);
     assert.doesNotMatch(body, /``/, 'every code span has content');
     assert.match(body, /post a new comment with `\/auto-merge`/i);
-    assert.doesNotMatch(body, /Workflow run/);
+    // No run link outside GitHub Actions: the lead ends at the request.
+    assert.match(body, /did not accept the request\.\n\nNext steps:/);
+    assert.doesNotMatch(body, /See \[run/);
   });
 
   test('mutation failure quotes stderr as data: bounded, mention-safe', () => {

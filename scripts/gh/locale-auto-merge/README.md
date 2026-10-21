@@ -85,11 +85,11 @@ is enabled, so queue membership counts as enabled.
   reported as a normal `apply`, and the run log records the discrepancy.
 - Otherwise, the `mutation-failed` reply:
   - says auto-merge could not be enabled (or disabled), the command being valid
-    but the request not accepted by GitHub
+    but the request not accepted by GitHub, and links the workflow run (under
+    GitHub Actions)
   - asks the commenter to retry by posting a new comment with the same directive
     (editing a comment doesn't trigger a retry) and, if it fails the same way,
     to read the error and ping `@open-telemetry/docs-maintainers` when it isn't
     something they can fix
-  - folds the evidence (`gh`'s exit code and error line, plus a workflow-run
-    link under GitHub Actions) into a details block; the full stderr is in the
-    run log
+  - folds `gh`'s exit code and error line into a details block; the full stderr
+    is in the run log
