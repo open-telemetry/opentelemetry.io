@@ -29,6 +29,19 @@ issue.
 6. Work on fixing the issue. Let maintainers know if you run into any problems.
 7. When ready, [submit your work through a pull request](../pull-requests) (PR).
 
+## Parked issues {#parked}
+
+Some accepted issues are closed as _not planned_ and labeled
+`triage:accepted:parked`. The problem is real and a fix is welcome, but
+maintainers lack the capacity to work on it, or to review it, for now. These
+issues are closed to keep the active list focused, not because they were
+declined, so they're a good place to look for work. To pick one up:
+
+1. Browse the [parked issues][]. Issues labeled `CI/infra` are excluded: they
+   remain [for maintainers only](#ci-infra), parked or not.
+2. Comment on the issue, or open a draft PR that references it. A maintainer
+   will reopen the issue, after which the usual steps apply.
+
 ## CI and infrastructure issues {#ci-infra}
 
 Issues labeled [CI/infra][] are for **maintainers _only_**: they concern the
@@ -96,6 +109,7 @@ Keep the following in mind when filing an issue:
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Aaccepted%3Aparked+-label%3ACI%2Finfra
 <!-- prettier-ignore-end -->
 <!-- markdownlint-disable link-image-reference-definitions -->
 
