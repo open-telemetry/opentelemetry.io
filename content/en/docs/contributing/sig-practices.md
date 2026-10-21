@@ -135,12 +135,15 @@ Additional valuable resources to review are
       `good first issue` and `triage:accepted:needs-pr`.
     - Close the issue with a comment that gives the reason and the way back, for
       example:
+      <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
+      <!-- markdownlint-disable no-otel-io-external-urls -->
       > This is still a valid improvement that we'd accept. We're closing it as
       > _not planned_ for now because we lack the capacity to work on it, not
       > because it has been declined. It stays listed under
       > [parked issues](https://opentelemetry.io/docs/contributing/issues/). To
       > pick it up, comment here or open a draft PR that references this issue,
       > and a maintainer will reopen it.
+      <!-- markdownlint-enable no-otel-io-external-urls -->
   - A `triage:rejected*` label: the request won't be worked on
     (`triage:rejected`, `triage:rejected:wontfix`), or it's a duplicate or
     invalid. Leave a short rationale so that the decision isn't re-triaged.
