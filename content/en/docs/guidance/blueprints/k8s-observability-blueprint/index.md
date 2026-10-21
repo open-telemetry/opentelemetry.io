@@ -202,7 +202,7 @@ and cluster-scoped receivers running only on the elected leader.
 
 An optional Collector Gateway, not in the scope of this blueprint, is
 illustrated in the diagram. See the
-[Managed Telemetry Platforms for Kubernetes Workloads](https://opentelemetry.io/docs/guidance/blueprints/managed-telemetry-platforms-for-k8s-workloads/)
+[Managed Telemetry Platforms for Kubernetes Workloads](/docs/guidance/blueprints/managed-telemetry-platforms-for-k8s-workloads/)
 blueprint for more information about the Collector Gateway pattern for
 application-level telemetry.
 
