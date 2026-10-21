@@ -34,8 +34,7 @@ included content][]).
 The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
-types][] and reads it in that [stock renderer][]. It serves the English
-Collector, JavaScript and Python benchmarks pages. The shortcode call names the
+types][] and reads it in that [stock renderer][]. The shortcode call names the
 data and says how to read it:
 
 ```markdown
@@ -93,15 +92,15 @@ share the data set's commit axis, so their series line up. The plugin's parts:
   selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
-- **Tests**, `tests/public/otel-benchmarks.test.mjs`: each page's built copies
-  across converted, inline and fallback languages, and the Markdown output of
-  the converted ones.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: its `PAGES` table is the
+  inventory of the pages on the plugin and of the localized copies still inline;
+  the checks cover each page's built copies across converted, inline and
+  fallback languages, and the Markdown output of the converted ones.
 
 #### Convert a localized page
 
-To convert a localized copy that still inlines the script (the Collector page in
-ja, pt and zh; the JavaScript page in ja, pt and zh; the Python page in ja and
-pt):
+To convert a localized copy that still inlines the script (the remaining copies:
+[#12266][]):
 
 1. Remove the stylesheet link above the prose (and the Python page's `<style>`
    block), and replace the block below it (from the `markdownlint` comment
@@ -111,6 +110,9 @@ pt):
    the data from the prose as it does.
 3. Remove the language from the page's `inline` list in
    `tests/public/otel-benchmarks.test.mjs`.
+4. If that was the site's last inline copy, delete this section, the test's
+   `inline` lists and inline delivery-mode checks, and
+   `static/css/benchmarks.css`.
 
 Languages without their own copy serve the English page and convert with it.
 
@@ -156,6 +158,7 @@ after fetching the nav, too late for a body-end script. With JavaScript
 disabled, the sidebar stays hidden.
 
 <!-- prettier-ignore-start -->
+[#12266]: https://github.com/open-telemetry/opentelemetry.io/issues/12266
 [Adjust a plugin per page]: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page
 [Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
 [Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
