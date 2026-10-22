@@ -1,7 +1,7 @@
 ---
 title: Help us understand how you use OpenTelemetry's ecosystem lists
 linkTitle: Share your ecosystem list needs
-date: 2026-10-21
+date: 2026-10-23
 author: '[Severin Neumann](https://github.com/svrnm)'
 issue: 12078
 sig: Communications SIG
