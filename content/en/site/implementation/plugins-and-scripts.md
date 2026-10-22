@@ -33,7 +33,7 @@ included content][]).
 
 The `benchmarks` shortcode charts a repository's benchmark history, the
 `data.js` that [github-action-benchmark][] publishes on GitHub Pages (its shape:
-the action's [source types][]). The call names the data; three optional
+the action's [source types][]). The shortcode names the data; three optional
 arguments say how to read it. With `data_url` alone, each benchmark gets a chart
 of its own, drawn on the commits it has data for (benchmark names must be unique
 within a commit):
@@ -49,9 +49,9 @@ is how the Collector page reads its data:
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
 
-A grouped call's charts share the data set's commit axis, so their series line
-up, and get a legend and a series name in the tooltip; an ungrouped call's
-charts have neither, the title naming the one series.
+With `group_separator`, charts share the data set's commit axis, so their series
+line up, and get a legend and a series name in the tooltip; without it, each
+chart has neither, its title naming the one series.
 
 - `data_url`: the action's `data.js`, as `https://…` or as `param:`_`NAME`_, a
   page param holding it, so that the page's prose can link the same URL through
@@ -74,14 +74,15 @@ The `otel-benchmarks` plugin behind the shortcode is a fork of the action's
 [stock renderer][]. Its parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
-  container and records the data URL for the shim and companion; each call
+  container and records the data URL for the shim and companion; each use
   renders a chart set where it stands.
 - **Markdown variant**, `benchmarks.md` beside it: empty, so the chart markup
   stays out of the page's [Markdown output][]
   ([Agent support](../../design/agent-support/)).
 - **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
-  ([Adjust a plugin per page][]): disables the plugin on pages without a call,
-  which keeps the remote data script off every other page ([Security][]).
+  ([Adjust a plugin per page][]): disables the plugin on pages without the
+  shortcode, which keeps the remote data script off every other page
+  ([Security][]).
 - **Companion**, `layouts/_partials/scripts/plugins/otel-benchmarks.html`
   ([Plugin files][]): vendors Chart.js on the entry's
   [`version`][Dependency versions] pin, then loads the data file. The data stays
