@@ -1811,7 +1811,7 @@ func createExponentialView() sdkmetric.View {
 	// to use exponential histograms while keeping explicit buckets for others.
 	return sdkmetric.NewView(
 		sdkmetric.Instrument{Name: "device.command.duration"},
-		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}!},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}},
 	)
 }
 ```
