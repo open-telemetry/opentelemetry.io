@@ -196,7 +196,6 @@ from opentelemetry.util.genai.handler import get_telemetry_handler
 def wrap_execute_task(wrapped, instance, args, kwargs):
     handler = get_telemetry_handler()
     with handler.invoke_local_agent(agent_name=instance.role) as invocation:
-        invocation.agent_id = str(instance.id)
         if invocation.should_capture_content:
             invocation.agent_description = instance.goal
         return wrapped(*args, **kwargs)
