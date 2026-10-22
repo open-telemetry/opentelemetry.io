@@ -116,6 +116,11 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
           'vendored Chart.js accompanies the plugin, and only it',
         );
         assert.equal(
+          tagsWithSrc(html, ANY_CHARTJS_SRC).length,
+          1,
+          'one Chart.js tag, vendored or the stock CDN',
+        );
+        assert.equal(
           plugin,
           converted ? 1 : 0,
           'plugin on converted pages only',
