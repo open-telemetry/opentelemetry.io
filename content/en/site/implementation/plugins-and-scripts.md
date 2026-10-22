@@ -31,23 +31,27 @@ included content][]).
 
 ### Benchmarks plugin {#benchmarks}
 
-The `otel-benchmarks` plugin is a fork of the renderer that
-[github-action-benchmark][] publishes with a repository's benchmark history (a
-`data.js` on GitHub Pages); the action defines the data's shape in its [source
-types][] and reads it in that [stock renderer][]. The shortcode call names the
-data; three optional arguments say how to read it. With `data_url` alone, each
-benchmark gets a chart of its own, drawn on the commits it has data for
-(benchmark names must be unique within a commit):
+The `benchmarks` shortcode charts a repository's benchmark history, the
+`data.js` that [github-action-benchmark][] publishes on GitHub Pages (its shape:
+the action's [source types][]). The call names the data; three optional
+arguments say how to read it. With `data_url` alone, each benchmark gets a chart
+of its own, drawn on the commits it has data for (benchmark names must be unique
+within a commit):
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" */>}}
 ```
 
-The Collector page's call reads several benchmarks into each chart:
+With `group_separator`, each chart carries several benchmarks as series, which
+is how the Collector page reads its data:
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
+
+A grouped call's charts share the data set's commit axis, so their series line
+up, and get a legend and a series name in the tooltip; an ungrouped call's
+charts have neither, the title naming the one series.
 
 - `data_url`: the action's `data.js`, as `https://…` or as `param:`_`NAME`_, a
   page param holding it, so that the page's prose can link the same URL through
@@ -56,75 +60,45 @@ The Collector page's call reads several benchmarks into each chart:
   comma-separated strings
 - `group_separator` (optional): split `extra` into a group, joined to the bench
   name as the chart's title, and a series name; an `extra` without the separator
-  is both. Charts with several series share the data set's commit axis, so the
-  series line up, and get a legend; a single-series chart draws neither, its
-  title naming the series
+  is both
   - `series_separator` (optional): trim the series name at its first occurrence;
     without `group_separator` there is no series name, and the argument does
     nothing
 
-The plugin's parts:
+The arguments' contract, validation included, is the shortcode's doc comment.
+Links and text belong in the page's prose, where each language writes its own;
+the data link is also an agent's path to the numbers, since the shortcode's
+Markdown output is empty.
+
+The `otel-benchmarks` plugin behind the shortcode is a fork of the action's
+[stock renderer][]. Its parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
-  container, a `div` whose `data-otel-benchmarks` attribute carries the call's
-  options as JSON for the renderer, and records the data URL in the page
-  [store][] as `otelBenchmarks`. A malformed `data_url`, an unknown or
-  positional argument, or a second call naming other data fails the build. Links
-  and text belong in the page's prose, where each language writes its own. Each
-  call renders a chart set where it stands.
-- **Markdown variant**, `benchmarks.md` beside it: empty by design, so the HTML
-  template's markup stays out of the page's [Markdown output][], which the site
-  serves per [Agent support](../../design/agent-support/); the data file the
-  prose links is an agent's path to the numbers.
+  container and records the data URL for the shim and companion; each call
+  renders a chart set where it stands.
+- **Markdown variant**, `benchmarks.md` beside it: empty, so the chart markup
+  stays out of the page's [Markdown output][]
+  ([Agent support](../../design/agent-support/)).
 - **Shim**, `layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`
-  ([Adjust a plugin per page][]): disables the plugin on pages without the
-  record, which keeps the remote data script off every other page
-  ([Security][]).
+  ([Adjust a plugin per page][]): disables the plugin on pages without a call,
+  which keeps the remote data script off every other page ([Security][]).
 - **Companion**, `layouts/_partials/scripts/plugins/otel-benchmarks.html`
   ([Plugin files][]): vendors Chart.js on the entry's
-  [`version`][Dependency versions] pin, then loads the data file from the
-  record. The data stays a live remote script so the charts update between site
-  builds, which a fixed integrity hash would forbid.
-- **Script**, `assets/js/plugins/otel-benchmarks/` ([Plugin files][]):
-  `index.js` is the renderer; beside it, `legend.js` (the legend's shape and the
-  chart height that fits it), `commit.js` (a point's value line and commit, in
-  the tooltip and the popover) and `point-popover.js` (the click popover). Docsy
-  resolves `js/plugins/otel-benchmarks.js` only, so that file imports the
-  folder's entry.
+  [`version`][Dependency versions] pin, then loads the data file. The data stays
+  a live remote script so the charts update between site builds, which a fixed
+  integrity hash would forbid.
+- **Script**, `assets/js/plugins/otel-benchmarks/` ([Plugin files][]): the
+  renderer, `index.js`, and its helpers for the legend, the point's value line
+  and commit, and the click popover.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
-  the charts' layout, scoped to the container (a horizontal scroller per chart
-  for narrow columns, the minimum width the renderer sizes each chart from, and
-  spacing); Docsy emits it with the plugin. The inline copies keep the stock
+  the charts' layout, scoped to the container. The inline copies keep the stock
   page's `static/css/benchmarks.css`, whose bare `main`, `button` and `footer`
   selectors also reach Docsy's chrome.
 - **Registration**, `config/_default/hugo.yaml` ([Configuration reference][]):
   one site-level entry, since the shim decides per page.
-- **Tests**, `tests/public/otel-benchmarks.test.mjs`: its `PAGES` table is the
-  inventory of the pages on the plugin and of the localized copies still inline;
-  the checks cover each page's built copies across converted, inline and
-  fallback languages, and the Markdown output of the converted ones.
-
-#### Convert a localized page
-
-To convert a localized copy that still inlines the script, tracked in
-[#12266][]:
-
-1. Remove the stylesheet link above the prose (and the Python page's `<style>`
-   block), and replace the block below it (from the `markdownlint` comment
-   through the last `<script>` tag) with the shortcode line from the English
-   page.
-2. Mirror the English page's front matter (the `otel-benchmarks` param, the
-   `description`) and prose (the tip, the paragraph linking the data and the
-   dashboard), translated, and drop the `cSpell:ignore` line that only the
-   inline script needed.
-3. Remove the language from the page's `inline` list in
-   `tests/public/otel-benchmarks.test.mjs`, and tick the copy's box in
-   [#12266][].
-4. If that was the site's last inline copy, delete this section, the test's
-   `inline` lists and inline delivery-mode checks, and
-   `static/css/benchmarks.css`.
-
-Languages without their own copy serve the English page and convert with it.
+- **Tests**, `tests/public/otel-benchmarks.test.mjs`: delivery on each page's
+  built copies; its `PAGES` table is the inventory of the pages on the plugin
+  and of the localized copies still inline, whose conversion [#12266][] tracks.
 
 ## Body-end scripts
 
@@ -180,5 +154,4 @@ disabled, the sidebar stays hidden.
 [Security]: https://www.docsy.dev/docs/content/plugins/#security
 [source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts
 [stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
-[store]: https://gohugo.io/methods/page/store/
 <!-- prettier-ignore-end -->

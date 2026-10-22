@@ -31,8 +31,7 @@ const PLUGIN_CSS =
 
 const GH_PAGES = 'https://open-telemetry.github.io';
 // The benchmarks pages, each with the languages whose own copy still carries
-// the stock renderer inline (the conversion recipe: Site § Implementation,
-// Plugins and scripts).
+// the stock renderer inline (their conversion: issue #12266).
 const PAGES = [
   {
     path: 'docs/collector/benchmarks',

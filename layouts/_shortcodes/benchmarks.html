@@ -1,11 +1,22 @@
-{{/* Chart container for the otel-benchmarks plugin; records the data URL for
-  the plugin's shim and companion, and hands the renderer the call's options.
-  Design:
-  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
+{{/* Renders a set of benchmark charts from a github-action-benchmark data.js:
+  emits the chart container, whose data-otel-benchmarks attribute carries the
+  call's options as JSON for the otel-benchmarks renderer, and records the data
+  URL in the page store as otelBenchmarks for the plugin's shim and companion.
+  Each call renders where it stands; a page's calls must name the same data.
+  Fails the build on a positional or unknown argument, a data_url that is
+  neither an https URL nor a set page param, or a second data source.
+  Guide: https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
+
+  @param {string} data_url The data.js URL, https, or param:NAME naming a page param that holds it.
+  @param {string} [filter] Comma-separated strings; a bench is charted when its extra contains any of them.
+  @param {string} [group_separator] Splits extra into a group, joined to the bench name as the chart's title, and a series name; an extra without it is both. Absent, each bench is its own chart.
+  @param {string} [series_separator] Trims the series name at its first occurrence; nothing without group_separator.
+  @example {{< benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " >}}
+*/ -}}
 
 {{ $docs := "https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks" -}}
 {{ if or (not .Params) (not .IsNamedParams) -}}
-  {{ errorf "%s: shortcode %q: takes named arguments (data_url, filter, group_separator, series_separator); see %s" .Position .Name $docs -}}
+  {{ errorf "%s: shortcode %q: takes named arguments only; see %s" .Position .Name $docs -}}
 {{ else -}}
   {{ $src := .Get "data_url" | default "" -}}
   {{ $data := $src -}}
