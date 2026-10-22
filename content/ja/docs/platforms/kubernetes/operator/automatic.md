@@ -982,7 +982,7 @@ kubectl get events -n <your_app_namespace>
 - 自動計装のアノテーションにエラーがあるか、アノテーションが間違った場所にあります - 以下の#4を参照してください。
 
 `kubectl get events` の出力にエラーがないか確認してください。
-これらのエラーは、問題の原因特定役立つかもしれません。
+これらのエラーは、問題の原因特定に役立つかもしれません。
 
 ### 自動計装のアノテーションは正しいですか？ {#is-the-auto-instrumentation-annotation-correct}
 

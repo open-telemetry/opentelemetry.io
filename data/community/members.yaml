@@ -1899,6 +1899,11 @@ approvers:
       - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
+  - name: elifsamedin
+    teams:
+      - docs-ro-approvers
+    html_url: https://github.com/elifsamedin
+    avatar_url: https://avatars.githubusercontent.com/u/20319172?v=4
   - name: eternalcuriouslearner
     teams:
       - python-genai-approvers
@@ -3105,6 +3110,9 @@ members:
   - name: peschinskiy
     html_url: https://github.com/peschinskiy
     avatar_url: https://avatars.githubusercontent.com/u/7569513?v=4
+  - name: PetarJerinic
+    html_url: https://github.com/PetarJerinic
+    avatar_url: https://avatars.githubusercontent.com/u/11459860?v=4
   - name: petern48
     html_url: https://github.com/petern48
     avatar_url: https://avatars.githubusercontent.com/u/115442597?v=4
@@ -3195,6 +3203,9 @@ members:
   - name: shanduur
     html_url: https://github.com/shanduur
     avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
+  - name: shardool-patil
+    html_url: https://github.com/shardool-patil
+    avatar_url: https://avatars.githubusercontent.com/u/166506912?v=4
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
