@@ -27,7 +27,7 @@ Maintainers do the unglamorous, continuous work that keeps the project running:
 releases, triage, issue and pull request review, security advisories, mentoring,
 maintaining user trust, and more. Every contribution matters, but maintainers
 are the connective tissue that makes the rest possible. Without maintainers,
-there are no other contributions.
+other contributions will never be shipped.
 
 OpenTelemetry has grown in nearly every dimension: contributors, contributions,
 repositories, adoption. The maintainer pool hasn't kept pace. If you've ever
@@ -37,7 +37,7 @@ Measuring this cleanly is hard because of confounding factors: a lack of data
 for maintainership over time, large numbers of automated PRs (e.g., Renovate,
 Dependabot) and reviews which distort the data, and maintainer burden not being
 shared equally. I pulled all PR and review data for OpenTelemetry repositories
-since 2024 and analyzed it locally. I found that (probably to nobody's surprise)
+since 2024 and analyzed it. I found that, probably to nobody's surprise,
 starting in early 2026, growth in incoming PRs began outpacing growth in engaged
 reviewers (my proxy for maintainer capacity). From September 2024 to September
 2026, the incoming PR / reviewer ratio has grown by 56%.
@@ -54,8 +54,8 @@ Similar points were made in a recent blog post
 [OTel Isn't Going Well (And I Made A Spreadsheet About It)](https://matduggan.com/otel-isnt-going-well-and-i-made-a-spreadsheet-about-it/),
 but in more detail and for specific areas of OpenTelemetry.
 
-This post is my case for why you should consider becoming a maintainer, and why
-the companies that depend on OpenTelemetry should support you doing so.
+Here, I'll make the case for why you should consider becoming a maintainer, and
+why the companies that depend on OpenTelemetry should support you doing so.
 
 ## Virtuous and vicious cycles
 

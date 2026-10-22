@@ -9539,6 +9539,11 @@
     "when": "2026-10-17T05:41:01Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/issues/3437": {
+    "result": 200,
+    "when": "2026-10-20T19:32:19Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "result": 200,
     "when": "2026-10-17T05:40:59Z",
@@ -25474,6 +25479,11 @@
   "https://mastodon.social/": {
     "result": 200,
     "when": "2026-10-17T05:41:00Z",
+    "via": "lychee",
+  },
+  "https://matduggan.com/otel-isnt-going-well-and-i-made-a-spreadsheet-about-it/": {
+    "result": 200,
+    "when": "2026-10-20T19:32:19Z",
     "via": "lychee",
   },
   "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs": {
