@@ -25,7 +25,7 @@ OpenTelemetry oferă în prezent suport pentru:
 
 De asemenea, în curs de dezvoltare sau în stadiu de [propunere][proposal]:
 
-- [Evenimente][], un tip specific de [jurnal](logs)
+- [Evenimente][Events], un tip specific de [jurnal](logs)
 - [Profil](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
