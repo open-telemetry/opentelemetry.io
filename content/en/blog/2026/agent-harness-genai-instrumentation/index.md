@@ -225,31 +225,35 @@ registry.
 
 The Observation Agent does not call Weaver directly. It drives the run through
 the conformance runner, which starts the scenario, points it at an OTLP
-endpoint, and hands what it emits to `weaver registry live-check`. One of our
-conformance directories, run as a gate:
+endpoint, and hands what it emits to `weaver registry live-check`. For a public
+example, run the CrewAI/OpenInference scenario from the root of the
+[semantic-conventions-conformance](https://github.com/open-telemetry/semantic-conventions-conformance)
+repository:
 
 ```sh
-otel-conformance scenarios/gen-ai/python/crewai/loongsuite-crewai
+otel-conformance scenarios/gen-ai/python/crewai/openinference
 ```
 
-The directory contains the conformance settings. Its `conformance.yaml` names
-the wrapper:
+Its `conformance.yaml` names the runner and the instrumentation:
 
 ```yaml
 runner: genai-conformance
 instrumented_library: crewai
-instrumentation_library: loongsuite-instrumentation-crewai
+instrumentation_library: openinference-instrumentation-crewai
 ```
 
-The wrapper supplies the semantic-convention registry pin and advice policies,
-so repeated runs use the same definitions.
+This public scenario demonstrates the runner with OpenInference, not our
+LoongSuite plugin. The `genai-conformance` wrapper supplies the
+semantic-convention registry pin and advice policies, so repeated runs use the
+same definitions.
 
 Each scenario then runs under its own live-check, and a violation fails the run.
 That is the default; `--report-only` is the opt-out, and it downgrades semantic
 findings to warnings while still failing on a scenario that crashed or produced
 nothing to measure.
 
-Each sample entity comes back augmented with findings:
+In a separate run with our LoongSuite plugin, a sample entity came back with
+this finding:
 
 ```json
 {
@@ -273,13 +277,10 @@ The runner's domain-agnostic advice policy flags an instrumentation that sets
 span status to OK. The Coding Agent did that on a tool span. Weaver's non-zero
 exit code sent the finding back for a fix.
 
-The same runner produces the other artifact we rely on. To see how much of the
-GenAI spec a generated plugin actually covers, we use the
-[semantic-conventions-conformance](https://github.com/open-telemetry/semantic-conventions-conformance)
-project, whose reduction step turns a run into a coverage matrix: which
-registry-defined attributes a plugin emits and which it misses. Coverage is
-measurement rather than gating, so those runs are the `--report-only` kind — a
-missing attribute is recorded, not a build break.
+The same runner also produces a coverage matrix showing which registry-defined
+attributes a plugin emits and which it misses. Coverage is measurement rather
+than gating, so those runs use `--report-only`: a missing attribute is recorded,
+not a build break.
 
 ![Coverage matrix for invoke-agent internal spans across fourteen generated instrumentations, with the GenAI attributes grouped by requirement level: required, conditionally required, recommended, and opt-in](invoke-agent-internal-spans.png)
 
