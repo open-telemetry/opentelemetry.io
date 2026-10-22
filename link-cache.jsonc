@@ -26609,6 +26609,11 @@
     "when": "2026-10-15T20:42:29Z",
     "via": "lychee",
   },
+  "https://opentelemetry.io/docs/contributing/issues/": {
+    "result": 200,
+    "when": "2026-10-22T23:23:16Z",
+    "via": "lychee",
+  },
   "https://opentelemetry.io/docs/guidance/blueprints/managed-telemetry-platforms-for-k8s-workloads/": {
     "result": 200,
     "when": "2026-10-21T22:50:33Z",
