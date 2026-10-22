@@ -35,28 +35,33 @@ The `otel-benchmarks` plugin is a fork of the renderer that
 [github-action-benchmark][] publishes with a repository's benchmark history (a
 `data.js` on GitHub Pages); the action defines the data's shape in its [source
 types][] and reads it in that [stock renderer][]. The shortcode call names the
-data and says how to read it:
+data; three optional arguments say how to read it. With `data_url` alone, each
+benchmark gets a chart of its own, drawn on the commits it has data for
+(benchmark names must be unique within a commit):
+
+```markdown
+{{</* benchmarks data_url="param:otel-benchmarks.data_url" */>}}
+```
+
+The Collector page's call reads several benchmarks into each chart:
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
 
 - `data_url`: the action's `data.js`, as `https://…` or as `param:`_`NAME`_, a
-  page param holding it; the pages keep the URL in
-  `params.otel-benchmarks.data_url` because their prose links it too, through
+  page param holding it, so that the page's prose can link the same URL through
   `_param`
-- `filter`: keep a bench whose `extra` contains any of the comma-separated
-  strings
-- `group_separator`: split `extra` into a group, joined to the bench name as the
-  chart's title, and a series name; an `extra` without the separator is both
-- `series_separator`: trim a series name split off by `group_separator` at its
-  first occurrence
+- `filter` (optional): keep a bench whose `extra` contains any of the
+  comma-separated strings
+- `group_separator` (optional): split `extra` into a group, joined to the bench
+  name as the chart's title, and a series name; an `extra` without the separator
+  is both. Charts with several series share the data set's commit axis, so the
+  series line up, and get a legend; a single-series chart draws neither, its
+  title naming the series
+- `series_separator` (optional): trim the series name at its first occurrence
 
-Without `group_separator`, the call is bare: each bench name is its own chart
-with one series, which assumes bench names are unique within a commit. A bare
-call's chart draws on the commits where its bench has data, with no legend and
-no series name in the value line (the title names the series); grouped charts
-share the data set's commit axis, so their series line up. The plugin's parts:
+The plugin's parts:
 
 - **Shortcode**, `layouts/_shortcodes/benchmarks.html`: emits the chart
   container, a `div` whose `data-otel-benchmarks` attribute carries the call's
