@@ -26,9 +26,10 @@ const COLORS = [
   '#410472',
 ];
 
-// The call's options (its container's `data-otel-benchmarks` JSON): which
-// benches to chart, and how `extra` names a chart's group and its series;
-// without `group_separator`, each bench is its own chart with one series.
+// The shortcode's options, from the chart container's `data-otel-benchmarks`
+// JSON: which benches to chart, and how `extra` names a chart's group and its
+// series; without `group_separator`, each bench is its own chart with one
+// series.
 function init(options) {
   const {
     filter,

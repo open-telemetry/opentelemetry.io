@@ -143,7 +143,7 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
         assert.deepEqual(
           options,
           page.options,
-          'container carries the call options',
+          'container carries the shortcode options',
         );
         const css = html.match(PLUGIN_CSS) ?? [];
         assert.equal(css.length, 1, 'plugin stylesheet linked once');

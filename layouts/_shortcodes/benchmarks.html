@@ -30,7 +30,7 @@
   {{ else if or (ne $url.Scheme "https") (not $url.Hostname) -}}
     {{ errorf "%s: shortcode %q: `data_url` must be an https URL or `param:NAME` naming one, got %q; see %s" .Position .Name $data $docs -}}
   {{ else if and $prior (ne $prior $data) -}}
-    {{ errorf "%s: shortcode %q: `data_url` differs from an earlier call's (%s): one data source per page; see %s" .Position .Name $prior $docs -}}
+    {{ errorf "%s: shortcode %q: `data_url` differs from an earlier use on this page (%s): one data source per page; see %s" .Position .Name $prior $docs -}}
   {{ else -}}
     {{ .Page.Store.Set "otelBenchmarks" $data -}}
   {{ end -}}
