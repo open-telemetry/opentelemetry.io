@@ -43,7 +43,7 @@ within a commit):
 ```
 
 With `group_separator`, each chart carries several benchmarks as series, which
-is how the Collector page reads its data:
+is how the [Collector benchmarks][] page reads its data:
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
@@ -145,6 +145,7 @@ disabled, the sidebar stays hidden.
 <!-- prettier-ignore-start -->
 [#12266]: https://github.com/open-telemetry/opentelemetry.io/issues/12266
 [Adjust a plugin per page]: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page
+[Collector benchmarks]: /docs/collector/benchmarks/
 [Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
 [Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
 [Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
