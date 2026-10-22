@@ -7679,6 +7679,11 @@
     "when": "2026-10-15T05:44:48Z",
     "via": "lychee",
   },
+  "https://github.com/grpc/proposal/blob/master/A66-otel-stats.md#units": {
+    "result": 200,
+    "when": "2026-10-22T10:35:24Z",
+    "via": "lychee",
+  },
   "https://github.com/grpc/proposal/blob/master/A72-open-telemetry-tracing.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
@@ -21602,6 +21607,11 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3921": {
     "result": 200,
     "when": "2026-10-14T10:35:08Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/4185": {
+    "result": 200,
+    "when": "2026-10-22T10:35:27Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/625": {
