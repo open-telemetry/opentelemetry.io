@@ -94,8 +94,7 @@ Additional valuable resources to review are
       - `docs:registry`
       - `docs:ux`
   - Mandatory: A `triage:*` label:
-    - `triage:accepted`, `triage:accepted:needs-pr`, and, alongside either,
-      `triage:accepted:parked`
+    - `triage:accepted`, `triage:accepted:needs-pr`
     - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
@@ -122,6 +121,7 @@ Additional valuable resources to review are
     - `maintainers only`
     - `forever`
     - `stale`
+    - `parked`, when closing an issue for lack of capacity (see below)
 - Automation will mark an issue in `triage:deciding` with `triage:followup` for
   re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
   should be removed within 7 days. Pinging the participants and removing the
@@ -129,31 +129,37 @@ Additional valuable resources to review are
 - Close an issue as _completed_ only when its request has been fulfilled, and
   otherwise as a _duplicate_ or as _not planned_. A _not planned_ issue carries
   one of the following labels, so that the reason stays visible:
-  - `triage:accepted:parked`: the issue is accepted, but nobody has the capacity
-    to work on it, or to review a contribution, for now. When parking an issue:
-    - Add `triage:accepted:parked` and leave the other labels as they are, so
-      that reopening restores the issue exactly.
+  - `parked`: nobody has the capacity to take the issue further for now, at
+    whatever triage stage it has reached. The issue isn't declined. Parking
+    doesn't require triage. When parking an issue:
+    - Add `parked` and leave the other labels as they are, so that reopening
+      restores the issue exactly.
     - Close the issue with a comment that gives the reason and the way back. For
       an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
       <!-- markdownlint-disable no-otel-io-external-urls -->
-      > We still want this, but we lack the capacity to work on it or to review
-      > a contribution for now, so we're closing this issue as _not planned_. It
-      > stays listed under
-      > [parked issues](https://opentelemetry.io/docs/contributing/issues/). To
-      > pick it up, comment here or open a draft PR that references this issue,
-      > and a maintainer will reopen it.
+      > We're parking this issue: closing it as _not planned_ for now because we
+      > lack the capacity to take it further, not because it has been declined.
+      > It stays listed as a
+      > [parked issue](https://opentelemetry.io/docs/contributing/issues/). To
+      > pick it up, comment here or open a PR that references this issue, and a
+      > maintainer will reopen it.
       <!-- markdownlint-enable no-otel-io-external-urls -->
   - `triage:rejected`, `triage:rejected:wontfix`, or `triage:rejected:invalid`:
-    the request is declined or invalid. Leave a short rationale for the triagers
-    who check the [declined issues][] before accepting a request.
-- When a contributor asks to pick up a [parked issue](../issues/#parked), reopen
-  it and remove `triage:accepted:parked`.
+    the request is declined or invalid. For a declined request, leave a short
+    rationale for the triagers who check the [declined issues][] before
+    accepting a request.
+- When a contributor comments on a [parked issue](../issues/#parked) or opens a
+  PR that references it, reopen the issue and remove `parked` before reviewing
+  the PR.
+- Close a new issue that duplicates a parked one as a _duplicate_ of it. The
+  parked issue stays parked, unless the reporter wants to pick it up.
 - Review the [parked issues][] at each quarter rollover, and before events that
-  bring in contributors.
+  bring in contributors. For each issue: reopen it, keep it parked, or decline
+  it.
 
 [parked issues]:
-  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Aaccepted%3Aparked
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
 

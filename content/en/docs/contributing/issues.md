@@ -31,16 +31,17 @@ issue.
 
 ## Parked issues {#parked}
 
-Some accepted issues are closed as _not planned_ and labeled
-`triage:accepted:parked`, to keep the active list focused. Maintainers still
-want the work done, but lack the capacity to do it, or to review a contribution,
-for now. If one interests you:
+Some issues are closed as _not planned_ and labeled `parked`, to keep the active
+list focused: maintainers lack the capacity to take them further for now. These
+issues aren't declined. If one interests you:
 
-1. Browse the [parked issues][]. Issues labeled `CI/infra` are excluded: they
-   remain [for maintainers only](#ci-infra).
+1. Browse the [parked issues][]; the search excludes
+   [`CI/infra` issues](#ci-infra). The issue's `triage:*` label, if any, says
+   how far it got: a `triage:accepted*` issue is ready to work on; a
+   `triage:deciding*` issue needs a maintainer decision first, so ask before
+   starting.
 2. Comment on the issue, or open a draft PR that references it. A maintainer
-   will reopen the issue, after which the
-   [usual steps](#fixing-an-existing-issue) apply.
+   will reopen the issue; then proceed as for any other issue.
 
 ## CI and infrastructure issues {#ci-infra}
 
@@ -109,7 +110,7 @@ Keep the following in mind when filing an issue:
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
-[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Aaccepted%3Aparked+-label%3ACI%2Finfra
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Aparked+-label%3ACI%2Finfra
 <!-- prettier-ignore-end -->
 <!-- markdownlint-disable link-image-reference-definitions -->
 
