@@ -59,7 +59,9 @@ The Collector page's call reads several benchmarks into each chart:
   is both. Charts with several series share the data set's commit axis, so the
   series line up, and get a legend; a single-series chart draws neither, its
   title naming the series
-- `series_separator` (optional): trim the series name at its first occurrence
+  - `series_separator` (optional): trim the series name at its first occurrence;
+    without `group_separator` there is no series name, and the argument does
+    nothing
 
 The plugin's parts:
 
