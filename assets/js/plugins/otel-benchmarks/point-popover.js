@@ -1,6 +1,11 @@
-// The popover a chart point opens: one at a time, anchored at the point, with
-// Bootstrap's Popover (Docsy's main bundle). The chart's canvas tooltip is off
-// while it's open. Design:
+// This module opens a popover from a chart point, one at a time, anchored at
+// the point, with Bootstrap's Popover (Docsy's main bundle); the chart's canvas
+// tooltip is off while it's open. One export:
+//
+// - `pointPopover(wrapper, scroller, contentOf)`: the Chart.js options that
+//   wire a chart's points to the popover, `contentOf` building its body.
+//
+// Design:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
 let open = null;

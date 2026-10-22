@@ -1,5 +1,14 @@
-// A point as the tooltip and the popover show it: its value line and its
-// commit. No words of ours: the plugin defines no i18n keys. Design:
+// This module builds what a point shows when hovered or clicked, through two
+// factories the renderer calls per chart:
+//
+// - `tooltipOptions(hasGroups)`: Chart.js `plugins.tooltip` options whose
+//   lines are the point's value line and its commit's subject.
+// - `popoverContent(hasGroups)`: the body of the click popover, the value line
+//   then the commit's subject (linked), author and date.
+//
+// The value line is the number as Chart.js formats it, the unit, the range when
+// the data has one and, with groups, the series name. Everything shown is the
+// data's own text: the plugin adds no words, so it needs no i18n keys. Design:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
 const subjectOf = (commit) => commit.message.split('\n')[0];

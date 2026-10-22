@@ -1,4 +1,6 @@
-// Chart renderer of the `benchmarks` shortcode, docs:
+// This module is the `benchmarks` shortcode's renderer, the plugin's entry: on
+// load it draws a chart set into every container the shortcode emitted on the
+// page. Docs:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
 // Assumes these globals, loaded by the plugin's companion before this runs:
