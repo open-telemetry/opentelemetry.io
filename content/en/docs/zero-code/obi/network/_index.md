@@ -49,8 +49,9 @@ availability zones, from the application point of view.
 > The metrics are captured from the host perspective, so they include the
 > overhead of the network stack (protocol headers, etc.).
 
-By default, only the following attributes are reported for network flow bytes:
-`k8s.src.owner.name`, `k8s.src.namespace`, `k8s.dst.owner.name`,
+By default, network flow bytes include `direction`. When Kubernetes metadata is
+enabled, they also include `k8s.src.owner.name`, `k8s.src.owner.type`,
+`k8s.src.namespace`, `k8s.dst.owner.name`, `k8s.dst.owner.type`,
 `k8s.dst.namespace`, and `k8s.cluster.name`.
 
 For the inter-zone bytes metric, the default attributes are `k8s.cluster.name`,
@@ -62,7 +63,8 @@ Network metrics are labeled with the following attributes:
 
 | Attribute                                         | Description                                                                                                                                                                                                  |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `direction`                                       | `ingress` for incoming traffic, `egress` for outgoing traffic                                                                                                                                                |
+| `direction`                                       | Flow direction relative to the connection: `request`, `response`, or `unknown`                                                                                                                               |
+| `iface.direction`                                 | `ingress` or `egress` relative to the observed network interface                                                                                                                                             |
 | `dst.address`                                     | Destination IP address (remote for egress, local for ingress)                                                                                                                                                |
 | `dst.cidr`                                        | Destination CIDR (if configured)                                                                                                                                                                             |
 | `dst.name`                                        | Destination service name (resolved from service discovery)                                                                                                                                                   |
@@ -103,44 +105,39 @@ Network metrics are labeled with the following attributes:
 For high-cardinality reductions, the network metrics are pre-aggregated at the
 process level to reduce the number of metrics sent to the metrics backend.
 
-By default, all metrics are aggregated by the following attributes:
+The metric's selected attributes determine the aggregation keys. OBI leaves many
+high-cardinality attributes, including endpoint addresses and ports, out by
+default. See the [exported metrics](../metrics/) page for the default selection.
+Configure additional keys under `attributes.select`.
 
-- `direction`
-- `transport`
-- `src.address`
-- `dst.address`
-- `src.port`
-- `dst.port`
-
-You can specify which attributes are allowed in the OBI configuration, to
-aggregate the metric by them.
-
-For example, to aggregate network metrics by source and destination Kubernetes
-owner (instead of the default individual pod names), you can use the following
-configuration:
+For example, to aggregate network metrics only by source and destination
+Kubernetes owner name and type, you can use the following configuration. It
+replaces the default attribute selection, including `direction`:
 
 ```yaml
-network:
-  allowed_attributes:
-    - k8s.src.owner.name
-    - k8s.dst.owner.name
-    - k8s.src.owner.type
-    - k8s.dst.owner.type
+attributes:
+  select:
+    obi_network_flow_bytes:
+      include:
+        - k8s.src.owner.name
+        - k8s.dst.owner.name
+        - k8s.src.owner.type
+        - k8s.dst.owner.type
 ```
 
 Then, the equivalent Prometheus metric would be:
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
   k8s_dst_owner_name="backend"
   k8s_dst_owner_type="deployment"
 ```
 
-The previous example would aggregate the `obi.network.flow.bytes` value by
-source and destination Kubernetes owner name and type, instead of individual pod
-names.
+This example aggregates `obi.network.flow.bytes` by source and destination
+Kubernetes owner name and type. It omits the default direction, namespace, and
+cluster labels.
 
 ## CIDR-based metrics
 
@@ -166,7 +163,7 @@ network:
 Then, the equivalent Prometheus metric would be:
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   src_cidr="cluster-internal"
   dst_cidr="private"
 ```

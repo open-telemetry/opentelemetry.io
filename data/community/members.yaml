@@ -1899,6 +1899,11 @@ approvers:
       - python-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
+  - name: elifsamedin
+    teams:
+      - docs-ro-approvers
+    html_url: https://github.com/elifsamedin
+    avatar_url: https://avatars.githubusercontent.com/u/20319172?v=4
   - name: eternalcuriouslearner
     teams:
       - python-genai-approvers
