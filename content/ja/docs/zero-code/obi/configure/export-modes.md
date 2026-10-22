@@ -4,6 +4,7 @@ linkTitle: エクスポートモード
 description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成する
 weight: 1
 default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
+drifted_from_default: true
 ---
 
 > [!NOTE]

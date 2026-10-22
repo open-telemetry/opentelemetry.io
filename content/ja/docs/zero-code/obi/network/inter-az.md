@@ -4,6 +4,7 @@ linkTitle: クラウドアベイラビリティゾーン間のトラフィック
 description: 異なるクラウドアベイラビリティゾーン間のネットワークトラフィックを測定する方法
 weight: 1
 default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+drifted_from_default: true
 ---
 
 > [!NOTE]

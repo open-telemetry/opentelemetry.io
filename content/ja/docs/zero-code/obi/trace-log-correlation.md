@@ -4,6 +4,7 @@ linkTitle: トレースとログの相関
 weight: 35
 description: より迅速なデバッグとトラブルシューティングのために、OBI がアプリケーションログを分散トレースとどのように相関付けるかを学びます。
 default_lang_commit: b2cbf3f2c569f1d68f0d2624a23359dc348283f5
+drifted_from_default: true
 cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED
 ---
 
