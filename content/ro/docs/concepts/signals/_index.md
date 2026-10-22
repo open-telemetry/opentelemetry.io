@@ -8,7 +8,7 @@ default_lang_commit: 1cf18d8b1b5f3e84865cc3f0ba9a37fc82a89fbc
 ---
 
 Scopul OpenTelemetry este de a colecta, procesa și exporta [semnale][signals].
-Semnalele sunt date furnizate de sistem care descriu activitatea de bază a
+Semnalele sunt date furnizate de sistem care descriu activitatea internă a
 sistemului de operare și a aplicațiilor ce rulează pe o platformă. Un semnal
 poate fi un parametru pe care dorești să-l măsori la un anumit moment dat — cum
 ar fi temperatura sau utilizarea memoriei — ori un eveniment care traversează
@@ -18,7 +18,7 @@ internă a unei anumite tehnologii din perspective diferite.
 
 OpenTelemetry oferă în prezent suport pentru:
 
-- [Urme](traces)
+- [Urme sau traces](traces)
 - [Metrici](metrics)
 - [Jurnale](logs)
 - [Bagaj](baggage)
