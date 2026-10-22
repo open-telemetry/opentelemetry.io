@@ -8,7 +8,10 @@
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 
-import { popoverContent, tooltipOptions } from './commit.js';
+import {
+  popoverContent,
+  tooltipOptions,
+} from './point-content-for-tooltip-and-popover.js';
 import { aspectRatioFor, legendOptions } from './legend.js';
 import { pointPopover } from './point-popover.js';
 

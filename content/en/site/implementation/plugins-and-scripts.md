@@ -89,8 +89,8 @@ The `otel-benchmarks` plugin behind the shortcode is a fork of the action's
   a live remote script so the charts update between site builds, which a fixed
   integrity hash would forbid.
 - **Script**, `assets/js/plugins/otel-benchmarks/` ([Plugin files][]): the
-  renderer, `index.js`, and its helpers for the legend, the point's value line
-  and commit, and the click popover.
+  renderer, `index.js`, and its helpers for the legend, the content a point
+  shows in the tooltip and the popover, and the popover itself.
 - **Stylesheet**, `assets/scss/plugins/otel-benchmarks.scss` ([Plugin files][]):
   the charts' layout, scoped to the container. The inline copies keep the stock
   page's `static/css/benchmarks.css`, whose bare `main`, `button` and `footer`
