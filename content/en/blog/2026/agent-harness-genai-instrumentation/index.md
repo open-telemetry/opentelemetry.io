@@ -1,6 +1,6 @@
 ---
 title:
-  Building Agent Harness for OTel Instrumentation with GenAI Semantic
+  Building an Agent Harness for OTel Instrumentation with GenAI Semantic
   Conventions and Weaver
 linkTitle: An agent harness for GenAI instrumentation
 date: 2026-08-20
