@@ -31,6 +31,7 @@ selection criteria for the services OBI can instrument.
 | `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details.                                                                                                                                                                               | list of objects | (unset)                                                                                                      |
 | `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                                                                           | list of objects | (unset)                                                                                                      |
 | `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and services running in certain Kubernetes system namespaces. Set to empty to allow OBI to instrument itself, the collector, and services in these namespaces. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. | list of objects | Path: `{*/obi,obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
+| `disabled_route_harvesters`                                                                                      | Disables framework route harvesting for selected languages. Accepted values: `dotnet`, `go`, `java`, `nodejs`, `php`, `python`, and `ruby`.                                                                                                                                                                                                                           | list of strings | (empty)                                                                                                      |
 | `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details.                                                                           | boolean         | false                                                                                                        |
 | `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                                              | boolean         | true                                                                                                         |
 | `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                  | boolean         | false                                                                                                        |
@@ -435,7 +436,7 @@ namespaces continue to take precedence.
 In Config v1, use `discovery.process_context_poll_interval` or
 `OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL` to change the polling interval. Set
 the interval to `0` to keep the initial check and disable later polling. Config
-v2 uses the default interval in v0.12.1 and does not expose this setting.
+v2 uses the default interval and does not expose this setting.
 
 ## Override service name and namespace
 
@@ -547,7 +548,7 @@ export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns
 # Or enable eBPF-captured DNS lookups (requires DNS event capture)
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,rdns
 
-# Enable all resolver sources
+# Enable Kubernetes and both DNS resolver sources
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns,rdns
 
 # Optional: Adjust cache size (default: 1024)
@@ -587,3 +588,38 @@ With enhanced lookup enabled:
 service.name: "frontend"
 peer.service: "backend-api"
 ```
+
+### AWS Route53 endpoint names
+
+Starting with v0.15.2, the opt-in `route53` resolver maps endpoint IP addresses
+to names from selected hosted zones on detected EC2 hosts. For Config v1:
+
+```yaml
+name_resolver:
+  sources: [k8s, ecs, route53]
+cloud_metadata:
+  route53:
+    hosted_zone_ids: [Z0123456789EXAMPLE]
+    refresh_interval: 5m
+```
+
+The environment variables `OTEL_EBPF_NAME_RESOLVER_SOURCES`,
+`OTEL_EBPF_NAME_RESOLVER_ROUTE53_HOSTED_ZONE_IDS`, and
+`OTEL_EBPF_NAME_RESOLVER_ROUTE53_REFRESH_INTERVAL` override these fields. Hosted
+zone IDs are required when the source is enabled. Use the AWS SDK's standard
+credentials configuration and grant `route53:ListResourceRecordSets` on those
+zones.
+
+For Config v2, place the source list at
+`extensions.obi.enrich.service_name.sources` and the Route53 settings at
+`extensions.obi.enrich.enrichers.cloud.route53`. The migration command preserves
+Route53 settings in the Config v1 file.
+
+Kubernetes and ECS names take precedence over Route53; Route53 takes precedence
+over captured and reverse DNS. Only literal A and AAAA records contribute
+mappings; aliases, CNAMEs, and wildcard records are excluded. Failed refreshes
+retain the last successful mappings. Each OBI instance polls the configured
+zones independently, so size the refresh interval for the number of instances
+and zones. See the
+[Route53 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/route53-name-resolution.md)
+for polling behavior and name selection.
