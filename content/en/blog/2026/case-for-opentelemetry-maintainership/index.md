@@ -42,7 +42,7 @@ starting in early 2026, growth in incoming PRs began outpacing growth in engaged
 reviewers (my proxy for maintainer capacity). From September 2024 to September
 2026, the incoming PR / reviewer ratio has grown by 56%.
 
-![Placeholder for a chart comparing incoming pull requests and engaged reviewers from 2024 to 2026.](maintainer-burden.png)
+![Chart comparing incoming pull requests and engaged reviewers from 2024 to 2026.](maintainer-burden.png)
 
 | Measure                           | September 2024 | September 2026 |  Change |
 | :-------------------------------- | -------------: | -------------: | ------: |
@@ -167,9 +167,10 @@ If you're a manager or a stakeholder weighing whether to fund maintainer time,
 this is for you.
 
 **More effective contributions.** Maintainers don't get special treatment, but
-they know the codebase and the project's norms and priorities, and they
-typically have rapport with other maintainers. This helps them shape proposals
-that fit the project and avoid dead ends.
+they know the codebase and the project's norms and priorities, they typically
+have rapport with other maintainers, and know whom to involve to get the context
+needed for a good decision. This helps them shape proposals that fit the project
+and avoid dead ends.
 
 **Security.** Security advisories have surged since LLMs made finding
 vulnerabilities cheap. Maintainers help triage and fix advisories before they're
@@ -198,6 +199,13 @@ fixes your product depends on arrive slowly for everyone.
 If I've convinced you, the natural next questions are what it takes and where to
 start.
 
+> [!NOTE] Contributor ladder
+>
+> At a repository level, the
+> [contributor ladder](https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/guides/contributor/membership.md)
+> runs from member → triager → approver → maintainer. Different SIGs have their
+> own norms for progression.
+
 ### What maintainers look for
 
 In my experience, getting invited to be a maintainer is conceptually
@@ -207,12 +215,20 @@ show up consistently with an ownership mentality.
 **Exercise good judgment.** The project puts a lot of trust in maintainers. They
 can merge code and publish releases that end up in many production systems.
 Existing maintainers want to extend that trust to people with good judgment. In
-practice, that means all the classic software engineering stuff.
+practice, that means all the classic software engineering stuff, including
+understanding what you're proposing and its tradeoffs. But in OSS, soft skills
+carry particular weight. Consider other perspectives and follow through on
+feedback. Help discussions move forward by summarizing points of agreement and
+disagreement, identifying missing information or pending decisions that block
+progress, and breaking proposals into smaller steps that can proceed
+independently.
 
 **Show up consistently.** How much time maintainership takes varies with the
 project's size, maturity, and so on. Whatever the total, showing up consistently
 in small chunks is much more useful than showing up in large, infrequent ones.
 If you have 5 hours a week, 1 hour a day for 5 days beats 5 hours in one day.
+Showing up week after week gives maintainers confidence that you'll stick around
+and share responsibility for the project.
 
 **Have an ownership mentality.** A maintainer is responsible for every aspect of
 their project's lifecycle: build, testing, roadmap, style, documentation,
