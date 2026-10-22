@@ -28,9 +28,6 @@ De asemenea, în curs de dezvoltare sau în stadiu de [propunere][proposal]:
 - [Evenimente][], un tip specific de [jurnal](logs)
 - [Profil](profiles)
 
-- [Evenimente][], a specific type of [jurnal](logs)
-- [Profiluri](profiles)
-
 [Events]: /docs/specs/otel/logs/data-model/#events
 [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
