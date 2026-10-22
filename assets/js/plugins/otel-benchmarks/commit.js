@@ -68,25 +68,28 @@ function commitContent(commit, valueLabelText) {
 }
 
 // Chart.js `plugins.tooltip` options for one chart: the value line and the
-// commit's subject. `bare` (a call without `group_separator`): the chart's one
-// series is its title, so the value line names none.
-export const tooltipOptions = (bare) => ({
+// commit's subject. Without groups, a chart's one series is its title, so the
+// value line names none.
+export const tooltipOptions = (hasGroups) => ({
   callbacks: {
     title: () => '',
     // The commit's body is PR-body length; only its subject fits.
     afterBody: (items) => wrapLine(subjectOf(items[0].raw.result.commit)),
     label: (item) =>
-      valueLabel(bare ? '' : item.dataset.label, item.raw, item.formattedValue),
+      valueLabel(
+        hasGroups ? item.dataset.label : '',
+        item.raw,
+        item.formattedValue,
+      ),
   },
 });
 
-// The popover's body: the value as the y axis formats it, then the commit;
-// `bare` as above.
-export const popoverContent = (bare) => (point, dataset, chart) =>
+// The popover's body: the value as the y axis formats it, then the commit.
+export const popoverContent = (hasGroups) => (point, dataset, chart) =>
   commitContent(
     point.result.commit,
     valueLabel(
-      bare ? '' : dataset.label,
+      hasGroups ? dataset.label : '',
       point,
       chart.scales.y.getLabelForValue(point.y),
     ),

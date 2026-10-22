@@ -27,9 +27,8 @@ const COLORS = [
 ];
 
 // The call's options (its container's `data-otel-benchmarks` JSON): which
-// benches to chart, and how `extra` names a chart's group and its series.
-// Without `group_separator`, the call is bare: one chart per bench name, one
-// series.
+// benches to chart, and how `extra` names a chart's group and its series;
+// without `group_separator`, each bench is its own chart with one series.
 function init(options) {
   const {
     filter,
@@ -86,7 +85,7 @@ function init(options) {
 
   return Object.keys(data.entries).map((name) => ({
     dataSet: collectBenchesPerTestCase(data.entries[name]),
-    bare: !groupSep,
+    hasGroups: Boolean(groupSep),
   }));
 }
 
@@ -99,7 +98,7 @@ function chartedCommitIds(commitIds, byName) {
 }
 
 function renderAllCharts(dataSets, main) {
-  function renderGraph(parent, name, commitIds, byName, bare) {
+  function renderGraph(parent, name, commitIds, byName, hasGroups) {
     const chartTitle = document.createElement('h3');
     chartTitle.textContent = name;
     parent.append(chartTitle);
@@ -142,12 +141,12 @@ function renderAllCharts(dataSets, main) {
     const minWidth =
       parseFloat(getComputedStyle(wrapper).minWidth) || wrapper.clientWidth;
     wrapper.style.aspectRatio = String(
-      aspectRatioFor(bare ? [] : datasets.map((d) => d.label), minWidth),
+      aspectRatioFor(hasGroups ? datasets.map((d) => d.label) : [], minWidth),
     );
 
     const options = {
       maintainAspectRatio: false,
-      ...pointPopover(wrapper, scroller, popoverContent(bare)),
+      ...pointPopover(wrapper, scroller, popoverContent(hasGroups)),
       scales: {
         x: {
           title: {
@@ -167,9 +166,9 @@ function renderAllCharts(dataSets, main) {
       plugins: {
         // Options per chart: the popover toggles `enabled` on the chart's own
         // tooltip options, and Chart.js writes that through to this object.
-        tooltip: tooltipOptions(bare),
-        // A bare chart's one series is its title; a legend would only repeat it.
-        legend: { ...legendOptions, display: !bare },
+        tooltip: tooltipOptions(hasGroups),
+        // A lone bench's chart is titled by its name; a legend would only repeat it.
+        legend: { ...legendOptions, display: hasGroups },
       },
     };
 
@@ -180,7 +179,7 @@ function renderAllCharts(dataSets, main) {
     });
   }
 
-  function renderBenchSet(benchSet, bare, main) {
+  function renderBenchSet(benchSet, hasGroups, main) {
     const setElem = document.createElement('div');
     setElem.className = 'benchmark-set';
     main.appendChild(setElem);
@@ -202,15 +201,15 @@ function renderAllCharts(dataSets, main) {
       renderGraph(
         graphsElem,
         name,
-        bare ? chartedCommitIds(commitIds, byName) : commitIds,
+        hasGroups ? commitIds : chartedCommitIds(commitIds, byName),
         byName,
-        bare,
+        hasGroups,
       );
     }
   }
 
-  for (const { dataSet, bare } of dataSets) {
-    renderBenchSet(dataSet, bare, main);
+  for (const { dataSet, hasGroups } of dataSets) {
+    renderBenchSet(dataSet, hasGroups, main);
   }
 }
 
