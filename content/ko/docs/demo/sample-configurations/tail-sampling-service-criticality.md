@@ -2,6 +2,7 @@
 title: service.criticality를 사용한 테일 기반 샘플링
 linkTitle: 테일 샘플링
 default_lang_commit: 944f1dc350e95a68e89edc2407dea0085671dd4c
+drifted_from_default: true
 ---
 
 이 예제는 오픈텔레메트리(OpenTelemetry) 컬렉터에서

@@ -44,7 +44,7 @@ jobs:
       - run: npm run ci:min
       - run: npm run ci:prepare
 
-      - uses: ./.github/actions/install-lychee
+      - uses: $/.github/actions/install-lychee
 
       # Create the App token right before the step that uses it, keeping its
       # lifetime clear of the dependency-controlled install steps above.
@@ -73,7 +73,7 @@ jobs:
   report-failure:
     needs: auto-update
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read

@@ -178,7 +178,7 @@
     "prettier": "3.9.9",
     "puppeteer": "25.13.0",
     "puppeteer-core": "25.13.0",
-    "sass-embedded": "1.105.0",
+    "sass-embedded": "1.105.1",
     "smol-toml": "1.9.0",
     "textlint": "15.8.0",
     "textlint-filter-rule-allowlist": "4.0.0",
