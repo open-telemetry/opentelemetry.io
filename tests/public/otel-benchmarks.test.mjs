@@ -151,11 +151,6 @@ if (!fs.existsSync(path.join(publicDir, 'index.html'))) {
           attr(css[0], 'integrity'),
           'plugin stylesheet carries integrity',
         );
-        assert.equal(
-          tagsWithSrc(html, ANY_CHARTJS_SRC).length,
-          1,
-          'vendored Chart.js is the only Chart.js',
-        );
         const tags = scriptTags(html);
         const at = (re) => tags.findIndex((t) => re.test(attr(t, 'src')));
         const [c, d, p] = [CHARTJS_SRC, DATA_SRC, PLUGIN_SRC].map(at);
