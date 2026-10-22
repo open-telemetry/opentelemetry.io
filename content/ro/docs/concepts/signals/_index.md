@@ -12,7 +12,7 @@ Semnalele sunt date furnizate de sistem care descriu activitatea de bază a
 sistemului de operare și a aplicațiilor ce rulează pe o platformă. Un semnal
 poate fi un parametru pe care dorești să-l măsori la un anumit moment dat — cum
 ar fi temperatura sau utilizarea memoriei — ori un eveniment care traversează
-componentele sistemului tău distribuit și pe care dorești să-l urmăresti (să-i
+componentele sistemului tău distribuit și pe care dorești să-l urmărești (să-i
 obții trasabilitatea). Poți grupa diverse semnale pentru a observa funcționarea
 internă a unei anumite tehnologii din perspective diferite.
 
