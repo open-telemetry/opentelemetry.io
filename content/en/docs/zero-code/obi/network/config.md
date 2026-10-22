@@ -14,15 +14,16 @@ environment variables prefixed as `OTEL_EBPF_NETWORK_`.
 Example YAML:
 
 ```yaml
+metrics:
+  features: [network]
 network:
-  enable: true
   cidrs:
     - 10.10.0.0/24
     - 10.0.0.0/8
     - 10.30.0.0/16
 attributes:
   kubernetes:
-    enable: true
+    enable: 'true'
   select:
     obi_network_flow_bytes:
       include:
@@ -47,16 +48,16 @@ To enable network metrics, add one of the following `features` to the
 first-level
 [metrics section](../../configure/export-data/#metrics-export-features):
 
-- `network` enables the `obi_network_flow_bytes` metric: the number of bytes
+- `network` enables the `obi.network.flow.bytes` metric: the number of bytes
   between two endpoints of your cluster
-- `network_inter_zone` enables `obi_network_inter_zone_bytes` metric: the number
-  of bytes between different availability zones in your Cloud cluster
+- `network_inter_zone` enables the `obi.network.inter.zone.bytes` metric: the
+  number of bytes between different availability zones in your Cloud cluster
 
 > [!CAUTION]
 >
-> The `obi_network_inter_zone_bytes` specification is currently in experimental
-> and only available for Kubernetes cluster. The specification is not final and
-> future version of OBI may introduce breaking changes.
+> The `obi.network.inter.zone.bytes` specification is currently experimental and
+> only available for Kubernetes clusters. The specification is not final, and
+> future versions of OBI may introduce breaking changes.
 
 | YAML     | Environment variable       | Type   | Default         |
 | -------- | -------------------------- | ------ | --------------- |
@@ -127,9 +128,9 @@ value of the `obi.ip` attribute. Accepted values are: `external` (default),
 
 If the `agent_ip` configuration property is set, this property has no effect.
 
-| YAML            | Environment variable | Type   | Default |
-| --------------- | -------------------- | ------ | ------- |
-| `agent_ip_type` | `OTEL_EBPF`          | string | `any`   |
+| YAML            | Environment variable              | Type   | Default |
+| --------------- | --------------------------------- | ------ | ------- |
+| `agent_ip_type` | `OTEL_EBPF_NETWORK_AGENT_IP_TYPE` | string | `any`   |
 
 Specifies which type of IP address (IPv4 or IPv6 or both) OBI should report in
 the `obi.ip` field of each flow. Accepted values are: `any` (default), `ipv4`,
@@ -164,7 +165,7 @@ If you set this property via environment variable each entry must be separated
 by a comma, for example:
 
 ```sh
-OTEL_BPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
+OTEL_EBPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
 ```
 
 | YAML        | Environment variable          | Type     | Default |
