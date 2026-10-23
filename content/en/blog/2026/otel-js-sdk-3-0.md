@@ -82,6 +82,14 @@ This cadence allows us to stay current with
 [new major Node.js releases](https://github.com/nodejs/release#release-schedule)
 and more recent JavaScript ecosystem and tooling improvements.
 
+For 3.0 specifically:
+
+- Node.js 20 reached end-of-life in April 2026.
+- Shipping proper ESM exports required changes to package entry points.
+- Removing deprecated and unmaintained packages lets the SIG focus on current
+  features.
+- Logs stabilization and complex attribute support required API and SDK changes.
+
 ## How can I get involved?
 
 - Try out the [v3.0.0][sdk-v3.0.0] and [v0.300.0][sdk-v0.300.0] releases and
