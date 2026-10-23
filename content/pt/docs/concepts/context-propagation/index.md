@@ -3,8 +3,7 @@ title: Propagação de contexto
 weight: 10
 description:
   Entenda os conceitos que tornam possível o Rastreamento Distribuído.
-default_lang_commit: 2eff1a357d20c7b9ba6e07f8c5b1ac057ac005c7
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Com a propagação de contexto, [sinais](../signals/)
@@ -95,12 +94,12 @@ execução.
 No caso de métricas, a propagação de contexto permite que você agregue medições
 naquele contexto. Por exemplo, em vez de apenas olhar para o tempo de resposta
 de todas as requisições `GET /product`, você também pode obter métricas para
-combinações de `POST /cart/add > GET /product` e `GET /checkout < GET /product`.
+combinações de `POST /cart/add > GET /product` e `GET /checkout > GET /product`.
 
 | Nome                            | Chamadas por Segundo | Tempo Médio de Resposta |
 | ------------------------------- | -------------------- | ----------------------- |
 | `* > GET /product`              | 370                  | 300ms                   |
-| `POST /card/add > GET /product` | 330                  | 130ms                   |
+| `POST /cart/add > GET /product` | 330                  | 130ms                   |
 | `GET /checkout > GET /product`  | 40                   | 1703ms                  |
 
 ## Propagação de contexto personalizada {#custom-context-propagation}
@@ -182,14 +181,12 @@ nas respectivas páginas de documentação:
 - Rust
 - Swift
 
-{{% alert title="Ajuda necessária" color="secondary" %}}
-
-Para as linguagens .NET, Rust e Swift, a documentação específica da linguagem
-para propagação de contexto está ausente. Se você conhece alguma dessas
-linguagens e possui interesse em ajudar,
-[saiba como você pode contribuir](/docs/contributing/)!
-
-{{% /alert %}}
+> [!IMPORTANT] Ajuda necessária
+>
+> Para as linguagens .NET, Rust e Swift, a documentação específica da linguagem
+> para propagação de contexto está ausente. Se você conhece alguma dessas
+> linguagens e possui interesse em ajudar,
+> [saiba como você pode contribuir](/docs/contributing/)!
 
 ## Especificação {#specification}
 
