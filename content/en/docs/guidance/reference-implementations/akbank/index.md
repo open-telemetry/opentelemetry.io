@@ -154,12 +154,12 @@ local open-weight LLM, so no telemetry leaves the bank.
 graph LR
   subgraph Workloads
     J[Java BFF services<br/>OTel Java agent]
-    N[.NET, other languages<br/>and vendor apps<br/>Operator-injected]
+    N[".NET, other languages<br/>and vendor apps<br/>Operator-injected"]
   end
-  subgraph Every cluster, per node
+  subgraph edge["Every cluster, per node"]
     A[Agent Collector<br/>DaemonSet]
   end
-  subgraph Central cluster
+  subgraph central["Central cluster"]
     LB[Load-balancing Collectors<br/>route by trace ID]
     G[Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling]
   end
