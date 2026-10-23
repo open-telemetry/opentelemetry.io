@@ -103,9 +103,7 @@ To pick one up:
    far it got: a `triage:accepted*` issue is ready to work on; for any other,
    ask first.
 
-   > [!NOTE]
-   >
-   > [First-time contributor](../#first-time-contributing) rules still apply!
+   > [!NB] [First-time contributor](../#first-time-contributing) rules still apply!
 
 2. Comment on the issue. A maintainer will reopen it; then proceed as for any
    other issue.
