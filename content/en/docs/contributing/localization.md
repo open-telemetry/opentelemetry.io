@@ -442,9 +442,15 @@ with the task list given below:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
+     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers, and
+           grant the approvers team write access
      - [ ] Add the locale to `data/locale-teams.yaml` and run
            `npm run fix:codeowners`
+     - [ ] Promotion checkpoint: once a listed approver meets the
+           [membership bar](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md),
+           complete their org membership, add them to the approvers team and
+           verify their access. For details, see
+           [GitHub org-level setup](https://opentelemetry.io/site/build/localization/#gh-org).
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see
          [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
