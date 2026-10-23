@@ -28,7 +28,7 @@ implementation "io.opentelemetry.instrumentation:opentelemetry-spring-boot-start
 ### gRPC スパン {#grpc-spans}
 
 スターターは gRPC を計装しないため、このサービスは [gRPC 計装ライブラリ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/grpc-1.6/library/README.md)を追加し、そのインターセプターを Spring gRPC のグローバルインターセプターとして登録しています。
-これにより、`ListRecommendations` サーバースパンと `ListProducts` クライアントスパンが作成され、トレースコンテキストがプロダクトカタログサービスに伝搬されます。
+これにより、`ListRecommendations` サーバースパンと `ListProducts` クライアントスパンが作成され、トレースコンテキストが商品カタログサービスに伝搬されます。
 
 ```java
 @Bean
