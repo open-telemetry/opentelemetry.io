@@ -47,7 +47,7 @@ stack, and tracing from a commercial APM product licensed for a limited number
 of hosts. Only some pods ran its agent, so every request that crossed an
 unmonitored host lost its trace, and no transaction could be followed end to
 end. Incident calls often started with "which system has the data?" rather than
-"what is broken?", and each tool came with its own agents and licence terms, so
+"what is broken?", and each tool came with its own agents and license terms, so
 changing a backend meant re-instrumenting applications.
 
 The bank wanted three things:
@@ -61,7 +61,7 @@ The bank wanted three things:
 
 OpenTelemetry gave the first two through zero-code instrumentation and OTLP, and
 the third because every component runs inside the bank's own clusters. Because
-instrumentation no longer depends on a per-host licence, every service is
+instrumentation no longer depends on a per-host license, every service is
 instrumented, and traces are complete from the API gateway to the database.
 
 ## OpenTelemetry components in use
@@ -184,7 +184,6 @@ flowchart LR
     LB["fa:fa-scale-balanced<br/>Load-balancing Collectors<br/>route by trace ID"]:::node
     G["fa:fa-filter<br/>Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling"]:::node
   end
-  DB[("fa:fa-database<br/>Oracle, Db2,<br/>SQL Server")]:::store
   K[("fa:fa-chart-line<br/>Thanos<br/>KEDA autoscaling")]:::store
   T[("fa:fa-diagram-project<br/>Grafana Tempo")]:::store
   EA[("fa:fa-diagram-project<br/>Elastic APM")]:::store
@@ -209,8 +208,6 @@ flowchart LR
   E L_E_C@-. "logs by trace_id" .-> C
   GW L_GW_A@== OTLP ==> A
   GW -- requests --> J
-  J -- "SQL calls<br/>(client spans)" --> DB
-  N --> DB
 
   classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
   classDef store fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
@@ -222,7 +219,7 @@ flowchart LR
   linkStyle 4,5,9 stroke:#7dd3fc, fill:none, stroke-width:3px
   linkStyle 11,12 stroke:#fbbf24, fill:none, stroke-width:3px
   linkStyle 10,13,14 stroke:#c4b5fd, fill:none, stroke-width:3px
-  linkStyle 16,17,18 stroke:#64748b, fill:none, stroke-width:1.5px
+  linkStyle 16 stroke:#64748b, fill:none, stroke-width:1.5px
 
   L_J_A@{ animation: fast }
   L_N_A@{ animation: fast }
@@ -242,10 +239,10 @@ flowchart LR
   L_GW_A@{ animation: fast }
 ```
 
-Thin grey arrows show the request path, from the API gateway to the databases.
-The colored, animated arrows show telemetry: OTLP from the workloads in grey,
-traces in green, metrics in blue, logs in yellow and Coremetry's reads in
-purple.
+The thin grey arrow shows the request path from the API gateway to the BFF
+services. The colored, animated arrows show telemetry: OTLP from the workloads
+in grey, traces in green, metrics in blue, logs in yellow and Coremetry's reads
+in purple.
 
 Each trace backend receives its own sampled stream (see below). When an engineer
 follows a trace ID from a log line or an Oracle error row, Coremetry looks in
