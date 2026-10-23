@@ -10,6 +10,7 @@ cascade:
     otel: 1.67.0
     contrib: 1.54.0
 default_lang_commit: a459c277ddca991f34713849f13328de01222930
+drifted_from_default: true
 ---
 
 Javaでゼロコード計装を行う一般的なオプションには、Java エージェント JAR、Spring Boot Starter、Quarkus OpenTelemetry Extension があります。

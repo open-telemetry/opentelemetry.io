@@ -4,6 +4,7 @@ description: 既存イシューの修正方法、またはバグ、セキュリ�
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
+drifted_from_default: true
 ---
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}
