@@ -64,7 +64,7 @@ the 2.x versions of stable SDK packages will be supported for one year from the
 - [Multiple Tracing SDK packages have been consolidated](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-base-package-removed)
   into the `@opentelemetry/sdk-trace` package, eliminating some confusing APIs
   and bringing consistency with the SDKs for the other signals.
-- Many deprecated packages have been removed.
+- Many deprecated packages have been removed, including `@opentelemetry/propagator-jaeger`, `@opentelemetry/exporter-jaeger`, `@opentelemetry/shim-opentracing`, and `@opentelemetry/shim-opencensus`. See the migration guide for the full list.
 - The **public interface has changed**.
 
 The _API_ package (`@opentelemetry/api`) does not have breaking changes. As
