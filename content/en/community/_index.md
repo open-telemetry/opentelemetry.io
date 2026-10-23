@@ -20,7 +20,8 @@ We organize the community into
 [Special Interest Groups (SIGs)](https://github.com/open-telemetry/community#special-interest-groups)
 in order to improve our workflow and more easily manage a community project.
 Read more from our
-[community repository](https://github.com/open-telemetry/community).
+[community repository](https://github.com/open-telemetry/community), and find
+when each group meets in the [meeting schedule](meetings/).
 
 ## Ecosystem
 
