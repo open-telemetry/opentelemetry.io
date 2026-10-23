@@ -71,8 +71,8 @@ validates and the local fix command. Caveats:
 
 - CLA: every commit author email is covered (CNCF EasyCLA) —
   [`pr-checks.md#easy-cla`][cla].
-- Linked issue: PR references an issue labeled `triage:accepted`. Exceptions:
-  auto-update PRs and hotfixes by maintainers/approvers —
+- Linked issue: PR references an open issue labeled `triage:accepted`.
+  Exceptions: auto-update PRs and hotfixes by maintainers/approvers —
   [`sig-practices.md#prs`][prs].
 - Co-owned PRs: docs approver + SIG/locale approver —
   [`sig-practices.md#co-owned-prs`][co-owned] and
@@ -123,7 +123,7 @@ Walk this checklist before writing the review:
 - [ ] `Easy CLA` green (or author has a fix path).
 - [ ] Netlify preview builds.
 - [ ] Each failing `check-*` assessed against [`pr-checks.md#checks`][checks].
-- [ ] Linked issue is `triage:accepted` (or this is an auto/hotfix PR).
+- [ ] Linked issue is open and `triage:accepted` (or this is an auto/hotfix PR).
 - [ ] Does not span locales — or does so only for [build fixes][keep-green]
       (marked `# patched`) or content-neutral maintenance.
 - [ ] First-time-contributor AI checklist in the PR description is filled in and
