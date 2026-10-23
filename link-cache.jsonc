@@ -9449,6 +9449,11 @@
     "when": "2026-10-23T05:44:48Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/guides/contributor/membership.md": {
+    "result": 200,
+    "when": "2026-10-23T18:16:43Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md": {
     "result": 200,
     "when": "2026-10-23T05:44:45Z",
