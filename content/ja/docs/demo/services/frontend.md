@@ -1,6 +1,7 @@
 ---
 title: フロントエンド
 default_lang_commit: 6f4576bc4128278688d3400c5b2dfda0bb1d1491
+drifted_from_default: true
 cSpell:ignore: typeof
 ---
 

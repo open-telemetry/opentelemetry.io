@@ -4,6 +4,7 @@ weight: 35
 vers:
   contrib: 1.54.0
 default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+drifted_from_default: true
 cSpell:ignore: customizer fileconfig
 ---
 

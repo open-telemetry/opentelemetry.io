@@ -4,7 +4,7 @@ description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 ---
 
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 This page will show you how to get started with OpenTelemetry in Java.
 

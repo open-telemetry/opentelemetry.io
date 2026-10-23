@@ -43,6 +43,12 @@ agent -.->|HTTP| frontend
 agent -.->|HTTP| mcp
 
 ad --->|gRPC| flagd
+checkout --->|gRPC| flagd
+product-catalog --->|gRPC| flagd
+email --->|gRPC| flagd
+shipping --->|gRPC| flagd
+agent --->|gRPC| flagd
+load-generator -->|HTTP| flagd
 
 checkout -->|gRPC| currency
 checkout -->|gRPC| cart

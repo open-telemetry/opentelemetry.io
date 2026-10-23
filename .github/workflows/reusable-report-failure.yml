@@ -6,7 +6,7 @@ name: Reusable - report workflow failure
 #   report-failure:
 #     needs: [my-job]
 #     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-#     uses: ./.github/workflows/reusable-report-failure.yml
+#     uses: $/.github/workflows/reusable-report-failure.yml
 #     permissions:
 #       issues: write  # Pass through for failure tracking issues
 #       contents: read

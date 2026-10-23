@@ -1,0 +1,8 @@
+{{/* Loads the plugin only on pages the benchmarks shortcode marked. Design:
+  https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks */ -}}
+
+{{ $entry := .Plugin -}}
+{{ if not (.Page.Store.Get "otelBenchmarks") -}}
+  {{ $entry = merge $entry (dict "enable" false) -}}
+{{ end -}}
+{{ return $entry -}}

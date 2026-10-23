@@ -2,6 +2,7 @@
 title: 内部テレメトリー
 weight: 25
 default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
+drifted_from_default: true
 cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
