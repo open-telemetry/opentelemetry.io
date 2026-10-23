@@ -39,7 +39,7 @@ guide][].
 
 In addition,
 [all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages)
-have been upgrade to JS SDK 3.x and released.
+have been upgraded to JS SDK 3.x and released.
 
 ## What has changed?
 
