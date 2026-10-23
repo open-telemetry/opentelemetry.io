@@ -247,7 +247,8 @@ The generated CODEOWNERS references `@open-telemetry/docs-<lang>-approvers`;
 GitHub flags it as invalid until that team exists **and holds write access**.
 The org-side procedure (team creation and the repository grant in one
 `open-telemetry/admin` PR, org membership, adding members, verification) is the
-setup guide's [Step 6][]; don't restate it here.
+setup guide's [Step 6][]; the Slack channel and the community `sigs.md` listing
+are its [Step 7][]. Don't restate them here.
 
 Agent deltas: the admin PR is separate from the setup PR and needs an **org
 admin** to merge and apply; you can prepare and describe it (example:
@@ -255,6 +256,7 @@ admin** to merge and apply; you can prepare and describe it (example:
 Report both as owner actions in the hand-off.
 
 [Step 6]: https://opentelemetry.io/site/build/localization/#gh-org
+[Step 7]: https://opentelemetry.io/site/build/localization/#slack
 [admin-716]: https://github.com/open-telemetry/admin/pull/716
 
 ## Validation checklist

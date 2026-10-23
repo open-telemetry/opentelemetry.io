@@ -325,13 +325,18 @@ The third, run for each member (replace `USER` with their GitHub handle), must
 report `write` or higher (`admin` also passes); `read` means the member's access
 is missing.
 
-## Step 7 — Slack channel {#slack}
+## Step 7 — Slack channel and community listing {#slack}
 
 Create a channel for the locale in the [CNCF Slack workspace][], using the
 naming convention `#otel-localization-LANG_ID` (for example,
 `#otel-localization-pl` for Polish). After creating the channel, add the
 [OpenTelemetry Admin](https://cloud-native.slack.com/team/U07DR07KAEQ) as a
 channel manager.
+
+Then list the locale team under [Localization Teams][] in the community
+repository's `sigs.md`, with the same fields as the existing entries (Slack
+channel, sponsors, and liaison); this is a PR against
+[`open-telemetry/community`][].
 
 ## Step 8 — Project tracking {#projects}
 
@@ -400,7 +405,8 @@ requesting a review:
       holds write access; eligible members added and verified (pending
       promotions tracked in the kickoff issue)
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
-      OpenTelemetry Admin added as channel manager
+      OpenTelemetry Admin added as channel manager; team listed in the community
+      `sigs.md`
 - [ ] **Step 8** — `projects/localization.md` updated with the language entry,
       team entry, label, and Slack channel link
 
@@ -454,3 +460,6 @@ correct:
 [unstaffed]: /docs/contributing/localization/#locale-teams
 [ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
 [CNCF Slack workspace]: https://cloud-native.slack.com
+[Localization Teams]:
+  https://github.com/open-telemetry/community/blob/main/sigs.md#localization-teams-part-of-sig-communications
+[`open-telemetry/community`]: https://github.com/open-telemetry/community
