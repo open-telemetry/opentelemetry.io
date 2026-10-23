@@ -37,8 +37,8 @@ issues aren't declined. If one interests you:
 
 1. Browse the [parked issues][]; the search excludes
    [`CI/infra` issues](#ci-infra). The issue's `triage:*` label, if any, says
-   how far it got: a `triage:accepted*` issue is ready to work on; otherwise,
-   ask for a maintainer decision before starting.
+   how far it got: a `triage:accepted*` issue is ready to work on, unless it's
+   also `blocked`; otherwise, ask for a maintainer decision before starting.
 2. Comment on the issue, or open a draft PR that references it, and a maintainer
    will reopen it.
 

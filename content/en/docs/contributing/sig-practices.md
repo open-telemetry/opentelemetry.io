@@ -154,7 +154,8 @@ Additional valuable resources to review are
   parked issue stays parked, unless the reporter wants to pick it up.
 - Review the [parked issues][] at each quarter rollover, and before events that
   bring in contributors. For each issue: reopen it (remove `parked`), keep it
-  parked, or decline it (remove `parked`, apply `triage:rejected*`).
+  parked, or decline it (remove `parked`, replace its `triage:*` label with
+  `triage:rejected*`).
 
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
@@ -163,7 +164,7 @@ Additional valuable resources to review are
 
 ### PRs
 
-- PRs must have a linked issue labelled `triage:accepted` (an open one: reopen a
+- PRs must have an open linked issue labelled `triage:accepted` (reopen a
   [parked](#issues) issue first) with the following exceptions:
   - Automatic PRs
   - hotfixes by maintainers/approvers
