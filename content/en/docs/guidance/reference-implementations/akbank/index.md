@@ -7,7 +7,7 @@ cSpell:ignore: Akbank atilsensalduz Atıl Sensalduz Cirit emrullahcirit Emrullah
 
 By [Cenk Çil](https://github.com/cilcenk) (Akbank),
 [Emrullah Cirit](https://github.com/emrullahcirit) (Akbank),
-[Atıl Sensalduz](https://github.com/atilsensalduz) (Akbank) | October 20, 2026
+[Atıl Sensalduz](https://github.com/atilsensalduz) (Akbank) | October 23, 2026
 
 Akbank is one of Türkiye's largest private banks. Its digital channels (mobile
 and internet banking, branch systems, lending and payments) run on thousands of
@@ -152,15 +152,14 @@ pipeline and released under the Apache-2.0 license
 receives traces over OTLP and reads the metrics it shows from VictoriaMetrics
 with PromQL. It relies on the semantic conventions directly, for example
 `http.request.method`, `http.route` and `http.response.status_code` on spans and
-the `http.server.request.duration` histogram in VictoriaMetrics, so the numbers
-on a trace and on a metrics view agree.
+the `http.server.request.duration` histogram in VictoriaMetrics.
 
 Coremetry stores traces in ClickHouse and opens trace and metric data to
 developers as a self-service tool: a team looks at its own services, operations
 and traces without asking the SRE team for access or a dashboard. Its AI
 assistant, CoSRE, lets users ask about the same telemetry in plain language and
 explains what it shows, for example why a service is slow or which dependency is
-failing. CoSRE runs on a local open-weight LLM, so no telemetry leaves the bank.
+failing. CoSRE runs on a local open-weight LLM inside the bank's network.
 
 ## Architecture
 
@@ -185,6 +184,7 @@ flowchart LR
     LB["fa:fa-scale-balanced<br/>Load-balancing Collectors<br/>route by trace ID"]:::node
     G["fa:fa-filter<br/>Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling"]:::node
   end
+  DB[("fa:fa-database<br/>Oracle, Db2,<br/>SQL Server")]:::store
   K[("fa:fa-chart-line<br/>Thanos<br/>KEDA autoscaling")]:::store
   T[("fa:fa-diagram-project<br/>Grafana Tempo")]:::store
   EA[("fa:fa-diagram-project<br/>Elastic APM")]:::store
@@ -208,6 +208,9 @@ flowchart LR
   T L_T_C@-. "trace fallback" .-> C
   E L_E_C@-. "logs by trace_id" .-> C
   GW L_GW_A@== OTLP ==> A
+  GW -- requests --> J
+  J -- "SQL calls<br/>(client spans)" --> DB
+  N --> DB
 
   classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
   classDef store fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
@@ -219,6 +222,7 @@ flowchart LR
   linkStyle 4,5,9 stroke:#7dd3fc, fill:none, stroke-width:3px
   linkStyle 11,12 stroke:#fbbf24, fill:none, stroke-width:3px
   linkStyle 10,13,14 stroke:#c4b5fd, fill:none, stroke-width:3px
+  linkStyle 16,17,18 stroke:#64748b, fill:none, stroke-width:1.5px
 
   L_J_A@{ animation: fast }
   L_N_A@{ animation: fast }
@@ -238,10 +242,15 @@ flowchart LR
   L_GW_A@{ animation: fast }
 ```
 
+Thin grey arrows show the request path, from the API gateway to the databases.
+The coloured, animated arrows show telemetry: OTLP from the workloads in grey,
+traces in green, metrics in blue, logs in yellow and Coremetry's reads in
+purple.
+
 Each trace backend receives its own sampled stream (see below). When an engineer
 follows a trace ID from a log line or an Oracle error row, Coremetry looks in
-its own ClickHouse store first and falls back to Tempo, which keeps a fuller set
-of traces.
+its own ClickHouse store first and falls back to Tempo, which receives a larger
+share of traces.
 
 ### Deployment and lifecycle management
 
