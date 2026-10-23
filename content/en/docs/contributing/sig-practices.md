@@ -135,7 +135,7 @@ Additional valuable resources to review are
     labeled `CI/infra`, for example:
     <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
     <!-- markdownlint-disable no-otel-io-external-urls -->
-    > This issue isn't declined, we're parking it for lack of capacity. To pick
+    > This issue isn't declined; we're parking it for lack of capacity. To pick
     > it up, comment here. For details, see
     > [parked issues](https://opentelemetry.io/docs/contributing/issues/).
     <!-- markdownlint-enable no-otel-io-external-urls -->
