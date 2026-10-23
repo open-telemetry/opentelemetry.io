@@ -93,6 +93,7 @@ For 3.0 specifically:
 
 ## How can I get involved?
 
+There are several ways to help shape SDK 3.x and beyond:
 - Try out the [v3.0.0][sdk-v3.0.0] and [v0.300.0][sdk-v0.300.0] releases and
   provide feedback.
 - Review our
