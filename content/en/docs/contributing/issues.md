@@ -31,16 +31,15 @@ issue.
 
 ## Parked issues {#parked}
 
-Some issues are closed as _not planned_ and labeled `parked`, to keep the active
-list focused: maintainers lack the capacity to take them further for now. These
-issues aren't declined. If one interests you:
+Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
+the capacity to take them further for now, but the issues aren't declined. To
+pick one up:
 
-1. Browse the [parked issues][]; the search excludes
-   [`CI/infra` issues](#ci-infra). The issue's `triage:*` label, if any, says
-   how far it got: a `triage:accepted*` issue is ready to work on, unless it's
-   also `blocked`; otherwise, ask for a maintainer decision before starting.
-2. Comment on the issue, or open a draft PR that references it, and a maintainer
-   will reopen it.
+1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
+   far it got: a `triage:accepted*` issue is ready to work on; for any other,
+   ask first.
+2. Comment on the issue. A maintainer will reopen it; then proceed as for any
+   other issue.
 
 ## CI and infrastructure issues {#ci-infra}
 
