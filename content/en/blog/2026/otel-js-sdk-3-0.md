@@ -65,7 +65,7 @@ the 2.x versions of stable SDK packages will be supported for one year from the
   into the `@opentelemetry/sdk-trace` package, eliminating some confusing APIs
   and bringing consistency with the SDKs for the other signals.
 - Many deprecated packages have been removed, including `@opentelemetry/propagator-jaeger`, `@opentelemetry/exporter-jaeger`, `@opentelemetry/shim-opentracing`, and `@opentelemetry/shim-opencensus`. See the migration guide for the full list.
-- The **public interface has changed**.
+- The **public interface has changed**. Several public types and class names have been renamed or moved.
 
 The _API_ package (`@opentelemetry/api`) does not have breaking changes. As
 well, users using the `@opentelemetry/auto-instrumentations-node` package as
