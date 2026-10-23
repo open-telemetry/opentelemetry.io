@@ -141,8 +141,7 @@ Additional valuable resources to review are
     <!-- markdownlint-enable no-otel-io-external-urls -->
   - `triage:rejected*`: the request is declined. Leave a short rationale for the
     triagers who check the [declined issues][].
-- To revive a parked issue, reopen it and remove `parked`.
-- Review the [parked issues][] at each quarter rollover.
+- Review the [parked issues][] periodically.
 
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
