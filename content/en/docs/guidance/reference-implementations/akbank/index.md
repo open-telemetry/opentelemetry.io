@@ -2,12 +2,13 @@
 title: 'Akbank: OpenTelemetry across an on-premises banking platform'
 linkTitle: Akbank
 # prettier-ignore
-cSpell:ignore: Akbank otelbin autoscale coremetry loadbalancing Cenk sattributes spanmetrics Çil cilcenk Coremetry CoSRE cosretr KEDA OperatorHub Thanos VictoriaMetrics WildFly
+cSpell:ignore: Akbank Cirit emrullahcirit Emrullah otelbin autoscale coremetry loadbalancing Cenk sattributes spanmetrics Çil cilcenk Coremetry CoSRE cosretr KEDA OperatorHub Thanos VictoriaMetrics Türkiye WildFly
 ---
 
-By [Cenk Çil](https://github.com/cilcenk) (Akbank) | October 20, 2026
+By [Cenk Çil](https://github.com/cilcenk) (Akbank),
+[Emrullah Cirit](https://github.com/emrullahcirit) (Akbank) | October 20, 2026
 
-Akbank is one of Turkey's largest private banks. Its digital channels (mobile
+Akbank is one of Türkiye's largest private banks. Its digital channels (mobile
 and internet banking, branch systems, lending and payments) run on thousands of
 services across several on-premises OpenShift clusters in multiple regions. The
 estate mixes Java applications on JBoss EAP / WildFly and Spring, .NET services,
