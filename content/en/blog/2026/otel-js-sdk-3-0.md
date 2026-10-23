@@ -3,22 +3,29 @@ title: Announcing the OpenTelemetry JavaScript SDK 3.0
 linkTitle: OTel JS SDK 3.0
 date: 2026-10-22
 author: >
-  [Trent Mick](https://github.com/trentm) (Elastic), [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
+  [Trent Mick](https://github.com/trentm) (Elastic), [Marylia
+  Gutierrez](https://github.com/maryliag) (Grafana Labs)
 sig: OpenTelemetry JS
 ---
 
-[OpenTelemetry JavaScript](/docs/languages/js/) has released SDK 3.0 ([stable v3.0.0 packages][sdk-v3.0.0] and [experimental v0.300.0 packages][sdk-v0.300.0]) and API [1.10.0][api-v1.10.0].
+[OpenTelemetry JavaScript](/docs/languages/js/) has released SDK 3.0 ([stable
+v3.0.0 packages][sdk-v3.0.0] and [experimental v0.300.0 packages][sdk-v0.300.0])
+and API [1.10.0][api-v1.10.0].
 
-[sdk-v3.0.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/v3.0.0
-[sdk-v0.300.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.300.0
-[api-v1.10.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/api%2Fv1.10.0
+[sdk-v3.0.0]:
+  https://github.com/open-telemetry/opentelemetry-js/releases/tag/v3.0.0
+[sdk-v0.300.0]:
+  https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.300.0
+[api-v1.10.0]:
+  https://github.com/open-telemetry/opentelemetry-js/releases/tag/api%2Fv1.10.0
 
 > [!NOTE] Migration guide
 >
 > For a detailed description of breaking changes, see the **migration guide**:
 > [OpenTelemetry JS SDK 3.x migration guide][migration guide].
 
-[migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md
+[migration guide]:
+  https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md
 
 ## What is JS SDK 3.x?
 
@@ -30,15 +37,16 @@ new major will be `>=3.0.0` for the stable and `>=0.300.0` for the unstable
 packages. Details on the full list of packages can be found in the [migration
 guide][].
 
-In addition, [all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages)
+In addition,
+[all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages)
 have been upgrade to JS SDK 3.x and released.
 
 ## What has changed?
 
-- The **minimum supported Node.js has been raised to `>=22.15.0`**.
-  This means that support for Node.js 18 and 20 has been dropped.
-- All packages now ship **proper ES Module (ESM) and CommonJS exports**.
-  The result should be much more friendly to ESM and bundler users.
+- The **minimum supported Node.js has been raised to `>=22.15.0`**. This means
+  that support for Node.js 18 and 20 has been dropped.
+- All packages now ship **proper ES Module (ESM) and CommonJS exports**. The
+  result should be much more friendly to ESM and bundler users.
 - Support for **complex attributes**, per OTEP 4485, has been added.
 - The `@opentelemetry/api-logs` package has been folded into
   `@opentelemetry/api`, as the **Logs signal has been stabilized!**. There will
@@ -49,21 +57,25 @@ have been upgrade to JS SDK 3.x and released.
 - Many deprecated packages have been removed.
 - The **public interface has changed**.
 
-The *API* package (`@opentelemetry/api`) does not have breaking changes.
-As well, users of the `@opentelemetry/auto-instrumentations-node` package for [zero-code instrumentation](/docs/zero-code/js/) likely do not need to change.
+The _API_ package (`@opentelemetry/api`) does not have breaking changes. As
+well, users of the `@opentelemetry/auto-instrumentations-node` package for
+[zero-code instrumentation](/docs/zero-code/js/) likely do not need to change.
 
-For more details and notes on migrating to 3.x / 0.300.x, see the [migration guide][].
+For more details and notes on migrating to 3.x / 0.300.x, see the [migration
+guide][].
 
 ## Why was this done?
 
 Starting with the [SDK 2.0 release](/blog/2025/otel-js-sdk-2-0/) in March 2025,
 the OTel JS SIG has had a goal of a new SDK major release roughly every year.
-This cadence allows us to stay current with [new major Node.js releases](https://github.com/nodejs/release#release-schedule)
+This cadence allows us to stay current with
+[new major Node.js releases](https://github.com/nodejs/release#release-schedule)
 and more recent JavaScript ecosystem and tooling improvements.
 
 ## How can I get involved?
 
-- Try out the [v3.0.0][sdk-v3.0.0] and [v0.300.0][sdk-v0.300.0] releases and provide feedback.
+- Try out the [v3.0.0][sdk-v3.0.0] and [v0.300.0][sdk-v0.300.0] releases and
+  provide feedback.
 - Review our
   [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/CONTRIBUTING.md)
   for details on contributing.
