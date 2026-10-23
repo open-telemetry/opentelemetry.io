@@ -11,10 +11,11 @@ By [Cenk Çil](https://github.com/cilcenk) (Akbank),
 
 Akbank is one of Türkiye's largest private banks. Its digital channels (mobile
 and internet banking, branch systems, lending and payments) run on thousands of
-services across several on-premises OpenShift clusters in multiple regions. The
-estate mixes Java backend-for-frontend (BFF) services on JBoss EAP / WildFly and
-Spring, services in .NET and other languages, and applications bought from
-third-party vendors whose code the bank cannot change or rebuild.
+services across several on-premises Red Hat OpenShift and Kubernetes clusters in
+multiple regions. The estate mixes Java backend-for-frontend (BFF) services on
+JBoss EAP / WildFly and Spring, services in .NET and other languages, and
+applications bought from third-party vendors whose code the bank cannot change
+or rebuild.
 
 Banking regulation shapes every observability decision: telemetry contains
 customer and transaction context, so every component, from collection to storage
@@ -32,7 +33,7 @@ workloads are onboarded with a pod annotation.
 
 | Dimension                | Details                                                                                                              |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Infrastructure           | On-premises Red Hat OpenShift, tens of clusters across multiple regions                                              |
+| Infrastructure           | On-premises Red Hat OpenShift and Kubernetes, tens of clusters across multiple regions                               |
 | Languages instrumented   | Java BFF services (JBoss EAP / WildFly, Spring), .NET and other languages, third-party vendor applications           |
 | Number of services       | Thousands: more than 1,000 Java applications, hundreds of .NET services, plus vendor products                        |
 | Scale                    | Billions of spans per day, even after tail sampling                                                                  |
@@ -101,7 +102,7 @@ instrumentation:
 
 ### OpenTelemetry Collector
 
-The Collectors run in three tiers: an agent in every OpenShift cluster, and the
+The Collectors run in three tiers: an agent in every cluster, and the
 load-balancing and gateway tiers in a central cluster:
 
 1. **Agent:** a DaemonSet on every node of every cluster. Applications send OTLP
@@ -253,8 +254,8 @@ share of traces.
 
 The SRE team deploys the OpenTelemetry Operator and all three Collector tiers
 with Helm charts through GitOps with Argo CD: the Operator and the agent tier to
-every OpenShift cluster, the load-balancing and gateway tiers to the central
-cluster. A sampling, processing or export change is a pull request to the GitOps
+every cluster, the load-balancing and gateway tiers to the central cluster. A
+sampling, processing or export change is a pull request to the GitOps
 repository; Argo CD applies it cluster by cluster, and no application deployment
 is touched. Collector and agent versions are upgraded monthly, through the same
 GitOps flow: the new image tag is a pull request, and Argo CD rolls it out
