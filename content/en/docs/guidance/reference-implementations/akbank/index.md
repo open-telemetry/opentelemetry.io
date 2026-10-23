@@ -7,16 +7,16 @@ cSpell:ignore: Akbank otelbin autoscale coremetry loadbalancing Cenk sattributes
 
 By [Cenk Çil](https://github.com/cilcenk) (Akbank) | October 20, 2026
 
-Akbank is one of Turkey's largest private banks. Its digital channels — mobile
-and internet banking, branch systems, lending and payments — run on thousands of
+Akbank is one of Turkey's largest private banks. Its digital channels (mobile
+and internet banking, branch systems, lending and payments) run on thousands of
 services across several on-premises OpenShift clusters in multiple regions. The
 estate mixes Java applications on JBoss EAP / WildFly and Spring, .NET services,
 and applications bought from third-party vendors whose code the bank cannot
 change or rebuild.
 
 Banking regulation shapes every observability decision: telemetry contains
-customer and transaction context, so every component — collection, storage and
-analysis — runs inside the bank's own network.
+customer and transaction context, so every component, from collection to storage
+and analysis, runs inside the bank's own network.
 
 ## Organizational structure
 
@@ -48,7 +48,7 @@ The bank wanted three things:
 
 - One wire format for traces, metrics and logs, so that instrumentation in
   thousands of applications would not be tied to any one backend.
-- Trace context everywhere, including in places a bank cannot change quickly —
+- Trace context everywhere, including in places a bank cannot change quickly:
   legacy application servers, vendor applications and Oracle application error
   tables.
 - Components that can all run on-premises.
@@ -71,38 +71,38 @@ instrumentation:
   annotation. This is what let the team cover applications it cannot rebuild
   without asking every vendor for a code change.
 - **Manual instrumentation:** where the business flow is invisible to
-  auto-instrumentation — batch jobs, message consumers, internal steps of a long
-  transaction — teams add spans and attributes with the OpenTelemetry API on top
-  of the agent.
+  auto-instrumentation, such as batch jobs, message consumers and internal steps
+  of a long transaction, teams add spans and attributes with the OpenTelemetry
+  API on top of the agent.
 - **Resource attributes:** `service.name`, `service.namespace`,
   `service.version`, `deployment.environment.name` and the `k8s.*` attributes
   are set consistently, so every signal can be attributed to a team, a cluster
   and a release.
 - **Log correlation:** the Java agent injects `trace_id` and `span_id` into the
-  logging context, so every log line can be joined with its trace — even when
-  the trace itself was not sampled.
+  logging context, so every log line can be joined with its trace, even when the
+  trace itself was not sampled.
 
 ### OpenTelemetry Collector
 
 Every cluster runs three Collector roles:
 
-1. **Agent** — a DaemonSet on every node. Applications send OTLP to a node-local
+1. **Agent:** a DaemonSet on every node. Applications send OTLP to a node-local
    endpoint. The agent does the work that is cheapest close to the source:
    - drops noise spans (health, readiness and liveness checks, actuator, metrics
      scrapes, Swagger, favicon) before they cross the network;
    - adds Kubernetes metadata with `k8sattributes` (pod, node, namespace,
      deployment, container image and tag) and copies two **team ownership pod
-     labels** — the development team and the SRE team — onto every span, which
-     is how every trace is attributed to a team;
+     labels** (the development team and the SRE team) onto every span, which is
+     how every trace is attributed to a team;
    - deletes `process.command_line` / `process.command_args`, which can carry
      secrets;
    - extracts business codes (function code, channel code) from the Kafka
      message key into span attributes.
-2. **Load-balancing tier** — a Deployment running the `loadbalancing` exporter
+2. **Load-balancing tier:** a Deployment running the `loadbalancing` exporter
    with `routing_key: traceID` and the `k8s` resolver on the gateway's headless
    Service, so every span of a trace, whichever node and service produced it,
    reaches the same gateway pod.
-3. **Gateway** — a Deployment that sees each trace complete. It derives span
+3. **Gateway:** a Deployment that sees each trace complete. It derives span
    metrics, applies tail sampling per backend, drops high-cardinality attributes
    and exports.
 
@@ -130,10 +130,10 @@ Collector Helm chart.
 **Coremetry** is the OpenTelemetry-native APM the bank built on top of this
 pipeline and released under the Apache-2.0 license
 ([github.com/cosretr/coremetry](https://github.com/cosretr/coremetry)). It reads
-OTLP data and relies on the semantic conventions directly — for example
+OTLP data and relies on the semantic conventions directly, for example
 `http.request.method`, `http.route` and `http.response.status_code` on spans and
-the `http.server.request.duration` histogram — so the numbers on a trace and on
-a metrics view agree. Its SRE assistant, CoSRE, runs on a local open-weight LLM,
+the `http.server.request.duration` histogram, so the numbers on a trace and on a
+metrics view agree. Its SRE assistant, CoSRE, runs on a local open-weight LLM,
 so no telemetry leaves the bank.
 
 ## Architecture
@@ -520,7 +520,7 @@ config:
   the unsampled stream behind a `forward` connector kept dashboards and alerts
   accurate.
 - **One sampling policy does not fit every backend.** A `forward` connector with
-  one pipeline per backend let each store keep the share it needs — full traces
+  one pipeline per backend let each store keep the share it needs: full traces
   in Tempo, errors plus a small baseline elsewhere.
 - **Tail sampling needs trace-aware load balancing.** Spans of one trace come
   from many services on many nodes. Without routing by trace ID they land on
@@ -549,8 +549,8 @@ Based on Akbank's experience, a few lessons stand out:
   the node agent, before they cost network, memory and storage.
 - Put team ownership on every span from pod labels with `k8sattributes`; it
   makes per-team views possible without asking teams to change their code.
-- Propagate trace context into every place an engineer looks — logs and error
-  tables — not only into the tracing backend.
+- Propagate trace context into every place an engineer looks (logs and error
+  tables), not only into the tracing backend.
 
 ## What's next
 
