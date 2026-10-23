@@ -62,7 +62,7 @@ The bank wanted three things:
 OpenTelemetry gave the first two through zero-code instrumentation and OTLP, and
 the third because every component runs inside the bank's own clusters. Because
 instrumentation no longer depends on a per-host licence, every service is
-instrumented, and traces are complete from the first hop to the last.
+instrumented, and traces are complete from the API gateway to the database.
 
 ## OpenTelemetry components in use
 
@@ -83,6 +83,10 @@ instrumentation:
   the Operator adds the instrumentation libraries through an init container.
   This is what let the team cover applications it cannot rebuild without asking
   every vendor for a code change.
+- **Entry points:** the API gateway, where client requests first enter the
+  bank's systems, is instrumented as well. A trace therefore starts at the
+  gateway and runs through the BFF services and the microservices behind them
+  down to the database calls on Oracle, Db2 and SQL Server.
 - **Manual instrumentation:** where the business flow is invisible to
   auto-instrumentation, such as batch jobs, message consumers and internal steps
   of a long transaction, teams add spans and attributes with the OpenTelemetry
@@ -163,6 +167,7 @@ config:
 flowchart LR
   subgraph Workloads["Workloads"]
     direction TB
+    GW["fa:fa-door-open<br/>API gateway<br/>client entry point"]:::node
     J["fab:fa-java<br/>Java BFF services<br/>OTel Java agent"]:::node
     N["fa:fa-cubes<br/>.NET, other languages<br/>and vendor apps<br/>Operator-injected"]:::node
   end
@@ -196,13 +201,14 @@ flowchart LR
   N L_N_E@-.-> E
   T L_T_C@-. "trace fallback" .-> C
   E L_E_C@-. "logs by trace_id" .-> C
+  GW L_GW_A@== OTLP ==> A
 
   classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
   classDef store fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
   style Workloads fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
   style edge fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
   style central fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
-  linkStyle 0,1 stroke:#94a3b8, fill:none, stroke-width:3px
+  linkStyle 0,1,15 stroke:#94a3b8, fill:none, stroke-width:3px
   linkStyle 2,3,6,7,8 stroke:#a3e635, fill:none, stroke-width:3px
   linkStyle 4,5,9 stroke:#7dd3fc, fill:none, stroke-width:3px
   linkStyle 11,12 stroke:#fbbf24, fill:none, stroke-width:3px
@@ -223,6 +229,7 @@ flowchart LR
   L_N_E@{ animation: slow }
   L_T_C@{ animation: slow }
   L_E_C@{ animation: slow }
+  L_GW_A@{ animation: fast }
 ```
 
 Each trace backend receives its own sampled stream (see below). When an engineer
