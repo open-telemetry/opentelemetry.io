@@ -4,6 +4,7 @@ linkTitle: Collector レシーバー
 weight: 75
 description: テレメトリーを一元的に処理するために、OBI を OpenTelemetry Collector のレシーバーコンポーネントとして使用する方法を学びます。
 default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
+drifted_from_default: true
 cSpell:ignore: bpftool PERFMON
 ---
 
