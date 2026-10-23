@@ -1,3 +1,4 @@
+# cSpell:ignore OTTL, ottl
 title: Partitioning Processor
 registryType: processor
 language: collector
@@ -10,9 +11,9 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/partitioningprocessor
 license: Apache 2.0
 description:
-  The Partitioning Processor splits incoming batches into sub-batches using
-  OTTL value expressions, and forwards each sub-batch with the evaluated
-  partition keys added to the outgoing request metadata.
+  The Partitioning Processor splits incoming batches into sub-batches using OTTL
+  value expressions, and forwards each sub-batch with the evaluated partition
+  keys added to the outgoing request metadata.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2026-10-21
