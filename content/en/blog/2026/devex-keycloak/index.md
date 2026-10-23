@@ -4,11 +4,11 @@ linkTitle: "Keycloak's observability journey"
 date: 2026-10-16
 author: >-
   [Marcin "Perk" Stożek](https://github.com/perk) (Elastic), [Martin
-  Bartoš](https://github.com/mabartos) (Red Hat), [Juliano
+  Bartoš](https://github.com/mabartos) (IBM), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Johanna
   Öjeling](https://github.com/johannaojeling) (community), [Fabrizia
   Rossano](https://github.com/frossano-grafana) (Grafana Labs), [Alexander
-  Schwartz](https://github.com/ahus1) (Red Hat)
+  Schwartz](https://github.com/ahus1) (IBM)
 issue: 10950
 sig: Developer Experience SIG
 cSpell:ignore: Bartoš exemplars Fabrizia Keycloak Rossano Stożek Öjeling
@@ -85,6 +85,12 @@ Tracing is enabled through Keycloak's own configuration. OpenTelemetry support
 is turned on by default, but you need to enable at least one component, such as
 tracing, to actively use it. With the following configuration, Keycloak starts
 exporting traces:
+
+```sh
+bin/kc.sh start --tracing-enabled=true ...
+```
+
+Or when deploying Keycloak in Kubernetes with its Operator:
 
 ```yaml
 apiVersion: k8s.keycloak.org/v2alpha1
