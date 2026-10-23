@@ -241,35 +241,22 @@ npm run check:codeowners   # must report "up to date"
   (North Korea). Choose the endonym matching the language's primary country.
 - **Never assume an upstream cSpell dict exists** — see step (d).
 
-## Out-of-repo: create the org teams {#out-of-repo-create-the-org-teams}
+## Out-of-repo: org and community setup {#out-of-repo-create-the-org-teams}
 
 The generated CODEOWNERS references `@open-telemetry/docs-<lang>-approvers`;
-GitHub flags it as invalid until that team exists. The two teams live in the
-[`open-telemetry/admin`][admin] repo's `teams.tf`, with
-`docs-<lang>-maintainers` as a **child** of `docs-<lang>-approvers`:
+GitHub flags it as invalid until that team exists **and holds write access**.
+The org-side procedure (team creation and the repository grant in one
+`open-telemetry/admin` PR, org membership, adding members, verification) is the
+setup guide's [Step 6][]; the Slack channel and the community listing are its
+[Step 7][].
 
-```hcl
-resource "github_team" "docs-<lang>-approvers" {
-  name        = "docs-<lang>-approvers"
-  description = ""
-  privacy     = "closed"
-}
+Agent deltas: the admin PR and the community PR are separate from the setup PR.
+You can prepare and describe them, but you can't merge the admin PR, add team
+members, or create the Slack channel: report these as owner actions in your
+final summary.
 
-resource "github_team" "docs-<lang>-maintainers" {
-  name           = "docs-<lang>-maintainers"
-  parent_team_id = github_team.docs-<lang>-approvers.id
-  description    = ""
-  privacy        = "closed"
-}
-```
-
-This is a **separate PR against `open-telemetry/admin`** (example:
-[admin#716][admin-716]) that an **org admin** must merge; the admin then applies
-team membership to match `data/locale-teams.yaml`. You can prepare and describe
-this PR, but you can't merge it.
-
-[admin]: https://github.com/open-telemetry/admin
-[admin-716]: https://github.com/open-telemetry/admin/pull/716
+[Step 6]: https://opentelemetry.io/site/build/localization/#gh-org
+[Step 7]: https://opentelemetry.io/site/build/localization/#slack
 
 ## Validation checklist
 

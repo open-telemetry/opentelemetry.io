@@ -432,22 +432,35 @@ with the task list given below:
    - [ ] Locale team info:
      - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
      - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-   - [ ] Read through
-         [Localization](https://opentelemetry.io/docs/contributing/localization/)
-         and all other pages in the Contributing section
+   - [ ] Read through [Localization][] and all other pages in the Contributing
+         section
    - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
-         For details, see
-         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
+         For details, see [Localize the homepage][].
    - [ ] OTel maintainers:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
      - [ ] Add the locale to `data/locale-teams.yaml` and run
            `npm run fix:codeowners`
+     - [ ] [GitHub org-level setup][]:
+       - [ ] Create the `LANG_ID` approvers and maintainers teams
+       - [ ] Grant the approvers team write access to the repository
+       - [ ] Promotion checkpoint: once a listed mentor or contributor meets the
+             community's [member and approver requirements][], have them request
+             org membership, then add them to the approvers team
+       - [ ] Verify the approvers team's write access, then each member's
    - [ ] Create an issue to track the localization of the **glossary**. Add the
-         issue number here. For details, see
-         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
+         issue number here. For details, see [Localize the glossary][].
+
+   [GitHub org-level setup]:
+     https://opentelemetry.io/site/build/localization/#gh-org
+   [Localization]: https://opentelemetry.io/docs/contributing/localization/
+   [Localize the glossary]:
+     https://opentelemetry.io/docs/contributing/localization/#glossary
+   [Localize the homepage]:
+     https://opentelemetry.io/docs/contributing/localization/#homepage
+   [member and approver requirements]:
+     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
    ```
 
 ### 3. Localize the homepage {#homepage}
