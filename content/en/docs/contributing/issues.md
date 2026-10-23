@@ -29,19 +29,6 @@ issue.
 6. Work on fixing the issue. Let maintainers know if you run into any problems.
 7. When ready, [submit your work through a pull request](../pull-requests) (PR).
 
-## Parked issues {#parked}
-
-Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
-the capacity to take them further for now, but the issues aren't declined. To
-pick one up ([first-time contributor](../#first-time-contributing) rules still
-apply):
-
-1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
-   far it got: a `triage:accepted*` issue is ready to work on; for any other,
-   ask first.
-2. Comment on the issue. A maintainer will reopen it; then proceed as for any
-   other issue.
-
 ## CI and infrastructure issues {#ci-infra}
 
 Issues labeled [CI/infra][] are for **maintainers _only_**: they concern the
@@ -104,6 +91,24 @@ Keep the following in mind when filing an issue:
   character. For example, `Introduced by #987654`.
 - Follow the [Code of Conduct][]. Respect your fellow contributors. For example,
   "The docs are terrible" is not helpful or polite feedback.
+
+## Parked issues {#parked}
+
+Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
+the capacity to take them further for now, but the issues aren't declined.
+
+To pick one up:
+
+1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
+   far it got: a `triage:accepted*` issue is ready to work on; for any other,
+   ask first.
+
+   > [!NOTE]
+   >
+   > [First-time contributor](../#first-time-contributing) rules still apply!
+
+2. Comment on the issue. A maintainer will reopen it; then proceed as for any
+   other issue.
 
 <!-- prettier-ignore-start -->
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
