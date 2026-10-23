@@ -1103,6 +1103,14 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 Order matters! The `Instrumentation` resource needs to be deployed before
 deploying the application, otherwise the auto-instrumentation won't work.
 
+### Note on eBPF header enrichment for Go/nginx
+
+When using eBPF instrumentation for Go, Nginx, or C++ servers, HTTP header enrichment (such as `http.request.header.authorization`) is performed in userspace Go enricher (`HTTPEnricher` / `HTTPInfoEventToSpan`), not in BPF C code (`protocol_http.h` legacy path).
+
+If Nginx or generic server spans miss headers, the root cause is typically SSL connection map collision in forked workers corrupting the response buffer, not missing BPF enrichment. This was fixed in opentelemetry-ebpf-instrumentation#3833 (see discussion in #3578).
+
+For debugging, check the Go enricher logs rather than BPF maps.
+
 Recall the auto-instrumentation annotation:
 
 ```yaml
