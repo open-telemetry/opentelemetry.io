@@ -10,7 +10,7 @@ name: Reusable - apply patch to PR
 #
 #   apply-patch:
 #     needs: generate-patch
-#     uses: ./.github/workflows/reusable-apply-patch.yml
+#     uses: $/.github/workflows/reusable-apply-patch.yml
 #     with:
 #       pr-number: ${{ github.event.issue.number }}
 #       patch-name: my-patch-${{ github.run_id }}
@@ -80,7 +80,7 @@ jobs:
       committed: ${{ steps.commit.outputs.committed }}
 
     steps:
-      - uses: step-security/harden-runner@e14015d583714f6e62063499dc959a02595150a1 # v2.21.1
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 

@@ -7,7 +7,7 @@ cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdoutt
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/go/dice/instrumented"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/dice/instrumented"?>
 
 This page will show you how to get started with OpenTelemetry in Go.
 

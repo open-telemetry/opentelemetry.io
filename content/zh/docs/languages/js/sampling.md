@@ -3,6 +3,7 @@ title: 采样
 weight: 80
 description: 减少遥测数据量
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+drifted_from_default: true
 ---
 
 [采样](/docs/concepts/sampling/)是一个限制系统生成链路数量的过程。JavaScript SDK 提供了几种[头部采样器](/docs/concepts/sampling#head-sampling)。

@@ -75,10 +75,11 @@ health_check:
   port: 8080
 ```
 
-| YAML<br>environment variable                                                 | Description                                                                                                             | Type   | Default |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------ | ------- |
-| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | Opens the health endpoint on the specified TCP port. `0` disables TCP health checks.                                    | int    | `0`     |
-| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | Binds the health endpoint to an absolute filesystem path or `@`-prefixed abstract socket. Takes precedence over `port`. | string | (unset) |
+| YAML<br>environment variable                                                 | Description                                                                                                             | Type   | Default     |
+| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------ | ----------- |
+| `health_check.listen_address`<br>`OTEL_EBPF_HEALTH_CHECK_LISTEN_ADDRESS`     | IP address for the TCP health endpoint. Set `0.0.0.0` or `::` when external probes need access.                         | string | `127.0.0.1` |
+| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | Opens the health endpoint on the specified TCP port. `0` disables TCP health checks.                                    | int    | `0`         |
+| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | Binds the health endpoint to an absolute filesystem path or `@`-prefixed abstract socket. Takes precedence over `port`. | string | (unset)     |
 
 For example, `unix_socket_path: /var/run/obi-health.sock` creates a filesystem
 socket, while `unix_socket_path: '@obi-health'` uses an abstract socket.
@@ -181,6 +182,7 @@ the following formats:
 - **`text`**: Prints a concise line of text
 - **`json`**: Prints a compact JSON object
 - **`json_indent`**: Prints an indented JSON object
+- **`counter`**: Prints a count of instrumented traces
 
 ## System capabilities
 

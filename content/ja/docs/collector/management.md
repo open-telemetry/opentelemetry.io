@@ -87,7 +87,7 @@ $ go run .
 #### ステップ 2 - OpenTelemetry コレクターのインストール {#step-2---install-the-opentelemetry-collector}
 
 OpAMPスーパーバイザーが管理できるOpenTelemetryコレクターのバイナリが必要です。
-そのために、[OpenTelemetry Collector Contrib][otelcolcontrib]ディストーションをインストールします。
+そのために、[OpenTelemetry Collector Contrib][otelcolcontrib]ディストリビューションをインストールします。
 コレクターバイナリをインストールしたパスは、以下の設定では `$OTEL_COLLECTOR_BINARY` として参照されます。
 
 #### ステップ3 - OpAMPスーパーバイザーのインストール {#step-3---install-the-opamp-supervisor}
