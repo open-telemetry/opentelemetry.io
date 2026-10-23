@@ -243,7 +243,7 @@ flowchart LR
 
 The thin gray arrow shows the request path from the API gateway to the BFF
 services. The colored, animated arrows show telemetry: OTLP from the workloads
-in grey, traces in green, metrics in blue, logs in yellow and Coremetry's reads
+in gray, traces in green, metrics in blue, logs in yellow and Coremetry's reads
 in purple.
 
 Each trace backend receives its own sampled stream (see below). When an engineer
