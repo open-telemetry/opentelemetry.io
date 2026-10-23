@@ -244,31 +244,17 @@ npm run check:codeowners   # must report "up to date"
 ## Out-of-repo: create the org teams {#out-of-repo-create-the-org-teams}
 
 The generated CODEOWNERS references `@open-telemetry/docs-<lang>-approvers`;
-GitHub flags it as invalid until that team exists. The two teams live in the
-[`open-telemetry/admin`][admin] repo's `teams.tf`, with
-`docs-<lang>-maintainers` as a **child** of `docs-<lang>-approvers`:
+GitHub flags it as invalid until that team exists **and holds write access**.
+The org-side procedure (team creation and the repository grant in one
+`open-telemetry/admin` PR, org membership, adding members, verification) is the
+setup guide's [Step 6][]; don't restate it here.
 
-```hcl
-resource "github_team" "docs-<lang>-approvers" {
-  name        = "docs-<lang>-approvers"
-  description = ""
-  privacy     = "closed"
-}
+Agent deltas: the admin PR is separate from the setup PR and needs an **org
+admin** to merge and apply; you can prepare and describe it (example:
+[admin#716][admin-716]) but you can't merge it, and you can't add team members.
+Report both as owner actions in the hand-off.
 
-resource "github_team" "docs-<lang>-maintainers" {
-  name           = "docs-<lang>-maintainers"
-  parent_team_id = github_team.docs-<lang>-approvers.id
-  description    = ""
-  privacy        = "closed"
-}
-```
-
-This is a **separate PR against `open-telemetry/admin`** (example:
-[admin#716][admin-716]) that an **org admin** must merge; the admin then applies
-team membership to match `data/locale-teams.yaml`. You can prepare and describe
-this PR, but you can't merge it.
-
-[admin]: https://github.com/open-telemetry/admin
+[Step 6]: ../../../content/en/site/build/localization/_index.md#gh-org
 [admin-716]: https://github.com/open-telemetry/admin/pull/716
 
 ## Validation checklist
