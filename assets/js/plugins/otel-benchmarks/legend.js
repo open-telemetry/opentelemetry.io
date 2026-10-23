@@ -1,6 +1,11 @@
-// The right-hand legend's shape: a width cap, long labels wrapped at their
-// ` - ` separator, and the chart height that fits the legend's lines in one
-// column. Design:
+// This module shapes the right-hand legend:
+//
+// - `legendOptions`: Chart.js `plugins.legend` options with a width cap and
+//   long labels wrapped at their ` - ` separator.
+// - `aspectRatioFor(labels, width)`: the chart's aspect ratio at that width,
+//   deep enough to fit the legend's lines in one column.
+//
+// Design:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 
 // Widest the legend may grow; the plot keeps the rest.
