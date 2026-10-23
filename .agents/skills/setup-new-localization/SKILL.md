@@ -241,23 +241,22 @@ npm run check:codeowners   # must report "up to date"
   (North Korea). Choose the endonym matching the language's primary country.
 - **Never assume an upstream cSpell dict exists** — see step (d).
 
-## Out-of-repo: create the org teams {#out-of-repo-create-the-org-teams}
+## Out-of-repo: org and community setup {#out-of-repo-create-the-org-teams}
 
 The generated CODEOWNERS references `@open-telemetry/docs-<lang>-approvers`;
 GitHub flags it as invalid until that team exists **and holds write access**.
 The org-side procedure (team creation and the repository grant in one
 `open-telemetry/admin` PR, org membership, adding members, verification) is the
-setup guide's [Step 6][]; the Slack channel and the community `sigs.md` listing
-are its [Step 7][]. Don't restate them here.
+setup guide's [Step 6][]; the Slack channel and the community listing are its
+[Step 7][].
 
-Agent deltas: the admin PR is separate from the setup PR and needs an **org
-admin** to merge and apply; you can prepare and describe it (example:
-[admin#716][admin-716]) but you can't merge it, and you can't add team members.
-Report both as owner actions in the hand-off.
+Agent deltas: the admin PR and the community PR are separate from the setup PR.
+You can prepare and describe them, but you can't merge the admin PR, add team
+members, or create the Slack channel: report these as owner actions in your
+final summary.
 
 [Step 6]: https://opentelemetry.io/site/build/localization/#gh-org
 [Step 7]: https://opentelemetry.io/site/build/localization/#slack
-[admin-716]: https://github.com/open-telemetry/admin/pull/716
 
 ## Validation checklist
 

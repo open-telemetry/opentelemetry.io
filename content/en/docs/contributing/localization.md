@@ -445,10 +445,10 @@ with the task list given below:
      - [ ] [GitHub org-level setup][]:
        - [ ] Create the `LANG_ID` approvers and maintainers teams
        - [ ] Grant the approvers team write access to the repository
-       - [ ] Promotion checkpoint: once a listed contributor meets the
-             community's [member and approver requirements][], complete their
-             org membership and add them to the approvers team
-       - [ ] Verify that team members hold write access
+       - [ ] Promotion checkpoint: once a listed mentor or contributor meets the
+             community's [member and approver requirements][], have them request
+             org membership, then add them to the approvers team
+       - [ ] Verify the approvers team's write access, then each member's
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see [Localize the glossary][].
 
