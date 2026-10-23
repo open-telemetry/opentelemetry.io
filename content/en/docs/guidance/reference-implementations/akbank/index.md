@@ -159,23 +159,23 @@ config:
 flowchart LR
   subgraph Workloads["Workloads"]
     direction TB
-    J["☕ Java BFF services<br/>OTel Java agent"]:::node
-    N["📦 .NET, other languages<br/>and vendor apps<br/>Operator-injected"]:::node
+    J["fab:fa-java<br/>Java BFF services<br/>OTel Java agent"]:::node
+    N["fa:fa-cubes<br/>.NET, other languages<br/>and vendor apps<br/>Operator-injected"]:::node
   end
   subgraph edge["Every cluster, per node"]
-    A["🔀 Agent Collector<br/>DaemonSet"]:::node
+    A["fa:fa-shuffle<br/>Agent Collector<br/>DaemonSet"]:::node
   end
   subgraph central["Central cluster"]
     direction TB
-    LB["⚖️ Load-balancing Collectors<br/>route by trace ID"]:::node
-    G["🔀 Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling"]:::node
+    LB["fa:fa-scale-balanced<br/>Load-balancing Collectors<br/>route by trace ID"]:::node
+    G["fa:fa-filter<br/>Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling"]:::node
   end
-  K[("📈 Thanos<br/>KEDA autoscaling")]:::store
-  T[("🧵 Grafana Tempo")]:::store
-  EA[("🧵 Elastic APM")]:::store
-  C[("🔎 Coremetry<br/>ClickHouse")]:::store
-  M[("📈 VictoriaMetrics")]:::store
-  E[("📜 Elasticsearch<br/>logs")]:::store
+  K[("fa:fa-chart-line<br/>Thanos<br/>KEDA autoscaling")]:::store
+  T[("fa:fa-diagram-project<br/>Grafana Tempo")]:::store
+  EA[("fa:fa-diagram-project<br/>Elastic APM")]:::store
+  C[("fa:fa-magnifying-glass<br/>Coremetry<br/>ClickHouse")]:::store
+  M[("fa:fa-chart-line<br/>VictoriaMetrics")]:::store
+  E[("fa:fa-file-lines<br/>Elasticsearch<br/>logs")]:::store
 
   J L_J_A@== OTLP ==> A
   N L_N_A@== OTLP ==> A
