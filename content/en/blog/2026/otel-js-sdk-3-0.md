@@ -21,8 +21,8 @@ and API [1.10.0][api-v1.10.0].
 
 > [!NOTE] Migration guide
 >
-> For a detailed description of breaking changes, see the
-> [OpenTelemetry JS SDK 3.x migration guide][migration guide].
+> For a detailed description of breaking changes, see the [OpenTelemetry JS SDK
+> 3.x migration guide][migration guide].
 
 [migration guide]:
   https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md
@@ -59,13 +59,19 @@ the 2.x versions of stable SDK packages will be supported for one year from the
   attributes). See
   [the explainer in the migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-support-for-complex-attribute-values).
 - The `@opentelemetry/api-logs` package has been folded into
-  `@opentelemetry/api`, as the **Logs signal has been stabilized!** With Logs stabilized, all three OpenTelemetry signals (Traces, Metrics, and Logs) are now stable in JavaScript. There will
-  be a separate blog post on this stabilization.
+  `@opentelemetry/api`, as the **Logs signal has been stabilized!** With Logs
+  stabilized, all three OpenTelemetry signals (Traces, Metrics, and Logs) are
+  now stable in JavaScript. There will be a separate blog post on this
+  stabilization.
 - [Multiple Tracing SDK packages have been consolidated](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-base-package-removed)
   into the `@opentelemetry/sdk-trace` package, eliminating some confusing APIs
   and bringing consistency with the SDKs for the other signals.
-- Many deprecated packages have been removed, including `@opentelemetry/propagator-jaeger`, `@opentelemetry/exporter-jaeger`, `@opentelemetry/shim-opentracing`, and `@opentelemetry/shim-opencensus`. See the migration guide for the full list.
-- The **public interface has changed**. Several public types and class names have been renamed or moved.
+- Many deprecated packages have been removed, including
+  `@opentelemetry/propagator-jaeger`, `@opentelemetry/exporter-jaeger`,
+  `@opentelemetry/shim-opentracing`, and `@opentelemetry/shim-opencensus`. See
+  the migration guide for the full list.
+- The **public interface has changed**. Several public types and class names
+  have been renamed or moved.
 
 The _API_ package (`@opentelemetry/api`) does not have breaking changes. As
 well, users using the `@opentelemetry/auto-instrumentations-node` package as
@@ -94,6 +100,7 @@ For 3.0 specifically:
 ## How can I get involved?
 
 There are several ways to help shape SDK 3.x and beyond:
+
 - Try out the [v3.0.0][sdk-v3.0.0] and [v0.300.0][sdk-v0.300.0] releases and
   provide feedback.
 - Review our
@@ -103,12 +110,11 @@ There are several ways to help shape SDK 3.x and beyond:
   [SIG meetings](https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/sigs.md#javascript-sdk).
 - Collaborate on [Slack](https://cloud-native.slack.com/archives/C01NL1GRPQR).
 
-
 ## Acknowledgments
 
 Shipping a major release is a lot of coordinated work, and SDK 3.0 would not
 exist without the many people who put time into it. Thank you to the
 OpenTelemetry JavaScript SIG for the design discussions, the migration PRs, the
 long reviews, and the many careful decisions about what to break and what to
-keep. Thanks also to the broader OpenTelemetry community and to everyone who 
+keep. Thanks also to the broader OpenTelemetry community and to everyone who
 contributed to this release.
