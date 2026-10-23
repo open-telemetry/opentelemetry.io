@@ -97,15 +97,7 @@ Keep the following in mind when filing an issue:
 Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
 the capacity to take them further for now, but the issues aren't declined.
 
-To pick one up (**the [first-timer rules](../#first-time-contributing) and those
-for [fixing an existing issue](#fixing-an-existing-issue) still apply**):
-
-1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
-   far it got: a `triage:accepted*` issue needs no further triage; for any
-   other, ask first.
-
-2. Comment on the issue. A maintainer will reopen it; then proceed as for any
-   other issue.
+Maintainers reopen [parked issues][] when capacity allows.
 
 <!-- prettier-ignore-start -->
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
