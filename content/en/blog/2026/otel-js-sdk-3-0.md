@@ -52,7 +52,7 @@ the 2.x versions of stable SDK packages will be supported for one year from the
   that support for Node.js 18 and 20 has been dropped.
 - All packages now ship
   [**proper ES Module (ESM) and CommonJS exports**](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-dual-cjsesm-exports).
-  The result should be much more friendly to ESM and bundler users.
+  The result should be much friendlier to ESM and bundler users.
 - Support for **complex attributes**, per OTEP 4485, has been added to some
   parts of the API (e.g. span attributes, log record attributes). Some parts of
   the API only support simple attributes (e.g. resource attributes, metric
