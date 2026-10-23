@@ -102,3 +102,13 @@ There are several ways to help shape SDK 3.x and beyond:
 - Attend our
   [SIG meetings](https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/sigs.md#javascript-sdk).
 - Collaborate on [Slack](https://cloud-native.slack.com/archives/C01NL1GRPQR).
+
+
+## Acknowledgments
+
+Shipping a major release is a lot of coordinated work, and SDK 3.0 would not
+exist without the many people who put time into it. Thank you to the
+OpenTelemetry JavaScript SIG for the design discussions, the migration PRs, the
+long reviews, and the many careful decisions about what to break and what to
+keep. Thanks also to the broader OpenTelemetry community and to everyone who 
+contributed to this release.
