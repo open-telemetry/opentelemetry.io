@@ -153,8 +153,14 @@ receives traces over OTLP and reads the metrics it shows from VictoriaMetrics
 with PromQL. It relies on the semantic conventions directly, for example
 `http.request.method`, `http.route` and `http.response.status_code` on spans and
 the `http.server.request.duration` histogram in VictoriaMetrics, so the numbers
-on a trace and on a metrics view agree. Its SRE assistant, CoSRE, runs on a
-local open-weight LLM, so no telemetry leaves the bank.
+on a trace and on a metrics view agree.
+
+Coremetry stores traces in ClickHouse and opens trace and metric data to
+developers as a self-service tool: a team looks at its own services, operations
+and traces without asking the SRE team for access or a dashboard. Its AI
+assistant, CoSRE, lets users ask about the same telemetry in plain language and
+explains what it shows, for example why a service is slow or which dependency is
+failing. CoSRE runs on a local open-weight LLM, so no telemetry leaves the bank.
 
 ## Architecture
 
