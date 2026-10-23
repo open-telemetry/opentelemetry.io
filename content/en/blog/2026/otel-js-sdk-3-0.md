@@ -68,8 +68,9 @@ the 2.x versions of stable SDK packages will be supported for one year from the
 - The **public interface has changed**.
 
 The _API_ package (`@opentelemetry/api`) does not have breaking changes. As
-well, users of the `@opentelemetry/auto-instrumentations-node` package for
-[zero-code instrumentation](/docs/zero-code/js/) likely do not need to change.
+well, users using the `@opentelemetry/auto-instrumentations-node` package as
+described at [zero-code instrumentation](/docs/zero-code/js/) do not need to
+change.
 
 For more details and notes on migrating to 3.x / 0.300.x, see the [migration
 guide][].
