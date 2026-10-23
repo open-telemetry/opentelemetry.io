@@ -33,9 +33,9 @@ workloads are onboarded with a pod annotation.
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | Infrastructure           | On-premises Red Hat OpenShift, tens of clusters across multiple regions                                              |
 | Languages instrumented   | Java BFF services (JBoss EAP / WildFly, Spring), .NET and other languages, third-party vendor applications           |
-| Number of services       | Thousands                                                                                                            |
+| Number of services       | Thousands: more than 1,000 Java applications, hundreds of .NET services, plus vendor products                        |
 | Scale                    | Billions of spans per day, even after tail sampling                                                                  |
-| Collector fleet          | Per cluster: a DaemonSet agent on every node, ~20 load-balancing and ~30 gateway pods                                |
+| Collector fleet          | A DaemonSet agent on every node of every cluster; ~20 load-balancing and ~30 gateway pods in a central cluster       |
 | Observability backend(s) | Grafana Tempo, VictoriaMetrics, Thanos (KEDA), Elastic APM, Elasticsearch (logs), Coremetry (Apache-2.0, ClickHouse) |
 
 ## Why OpenTelemetry
@@ -43,7 +43,9 @@ workloads are onboarded with a pod annotation.
 Before OpenTelemetry, telemetry at the bank was split across tools that did not
 share identifiers: application logs in Elasticsearch, metrics in a separate
 stack, and tracing in only a few teams. Incident calls often started with "which
-system has the data?" rather than "what is broken?".
+system has the data?" rather than "what is broken?", and each tool came with its
+own agents and licence terms, so changing a backend meant re-instrumenting
+applications.
 
 The bank wanted three things:
 
@@ -65,13 +67,17 @@ Instrumentation is a combination of zero-code auto-instrumentation and manual
 instrumentation:
 
 - **Java (BFF services):** the OpenTelemetry Java agent on JBoss EAP / WildFly
-  and Spring applications, with no code changes in the first phase. HTTP servers
-  and clients, JDBC, JMS and Kafka are covered by the agent's instrumentations.
+  and Spring applications, with no code changes in the first phase. The agent
+  JAR is added to the application images and enabled with a `-javaagent` JVM
+  flag, which is how more than 1,000 Java applications started sending traces
+  and metrics. HTTP servers and clients, JDBC, JMS and Kafka are covered by the
+  agent's instrumentations.
 - **.NET, other languages and vendor applications:** zero-code
   auto-instrumentation injected by the OpenTelemetry Operator through an
-  `Instrumentation` resource and a pod annotation. This is what let the team
-  cover applications it cannot rebuild without asking every vendor for a code
-  change.
+  `Instrumentation` resource and an annotation at namespace or deployment level;
+  the Operator adds the instrumentation libraries through an init container.
+  This is what let the team cover applications it cannot rebuild without asking
+  every vendor for a code change.
 - **Manual instrumentation:** where the business flow is invisible to
   auto-instrumentation, such as batch jobs, message consumers and internal steps
   of a long transaction, teams add spans and attributes with the OpenTelemetry
@@ -86,10 +92,12 @@ instrumentation:
 
 ### OpenTelemetry Collector
 
-Every cluster runs three Collector roles:
+The Collectors run in three tiers: an agent in every OpenShift cluster, and the
+load-balancing and gateway tiers in a central cluster:
 
-1. **Agent:** a DaemonSet on every node. Applications send OTLP to a node-local
-   endpoint. The agent does the work that is cheapest close to the source:
+1. **Agent:** a DaemonSet on every node of every cluster. Applications send OTLP
+   to a node-local endpoint. The agent does the work that is cheapest close to
+   the source:
    - drops noise spans (health, readiness and liveness checks, actuator, metrics
      scrapes, Swagger, favicon) before they cross the network;
    - adds Kubernetes metadata with `k8sattributes` (pod, node, namespace,
@@ -100,13 +108,13 @@ Every cluster runs three Collector roles:
      secrets;
    - extracts business codes (function code, channel code) from the Kafka
      message key into span attributes.
-2. **Load-balancing tier:** a Deployment running the `loadbalancing` exporter
-   with `routing_key: traceID` and the `k8s` resolver on the gateway's headless
-   Service, so every span of a trace, whichever node and service produced it,
-   reaches the same gateway pod.
-3. **Gateway:** a Deployment that sees each trace complete. It derives span
-   metrics, applies tail sampling per backend, drops high-cardinality attributes
-   and exports.
+2. **Load-balancing tier:** a Deployment in the central cluster running the
+   `loadbalancing` exporter with `routing_key: traceID` and the `k8s` resolver
+   on the gateway's headless Service, so every span of a trace, whichever
+   cluster, node and service produced it, reaches the same gateway pod.
+3. **Gateway:** a Deployment in the central cluster that sees each trace
+   complete. It derives span metrics, applies tail sampling per backend, drops
+   high-cardinality attributes and exports.
 
 Only traces need trace-aware routing, so metrics go from the agents straight to
 the gateway tier. The agents also send the HTTP and RPC server metrics
@@ -147,10 +155,10 @@ graph LR
     J[Java BFF services<br/>OTel Java agent]
     N[.NET, other languages<br/>and vendor apps<br/>Operator-injected]
   end
-  subgraph Per node
+  subgraph Every cluster, per node
     A[Agent Collector<br/>DaemonSet]
   end
-  subgraph Per cluster
+  subgraph Central cluster
     LB[Load-balancing Collectors<br/>route by trace ID]
     G[Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling]
   end
@@ -179,8 +187,9 @@ of traces.
 ### Deployment and lifecycle management
 
 The SRE team deploys the OpenTelemetry Operator and all three Collector tiers
-with Helm charts, rolled out to every OpenShift cluster through GitOps with Argo
-CD. A sampling, processing or export change is a pull request to the GitOps
+with Helm charts through GitOps with Argo CD: the Operator and the agent tier to
+every OpenShift cluster, the load-balancing and gateway tiers to the central
+cluster. A sampling, processing or export change is a pull request to the GitOps
 repository; Argo CD applies it cluster by cluster, and no application deployment
 is touched. Collector and agent versions are upgraded monthly, through the same
 GitOps flow: the new image tag is a pull request, and Argo CD rolls it out
@@ -544,13 +553,17 @@ config:
   one pipeline per backend let each store keep the share it needs: full traces
   in Tempo, errors plus a small baseline elsewhere.
 - **Tail sampling needs trace-aware load balancing.** Spans of one trace come
-  from many services on many nodes. Without routing by trace ID they land on
-  different gateway pods, and each pod decides on a fragment.
+  from many services on many nodes and clusters. Without routing by trace ID
+  they land on different gateway pods, and each pod decides on a fragment.
 - **Sampling must be visible to engineers.** People need to know when a trace
   was not kept; logs and error tables keyed by trace ID fill the gap.
 - **Semantic convention migrations move dashboards.** Moving from
   `http.server.duration` to `http.server.request.duration` changed metric names
   underneath existing views; the team handled both during the migration.
+
+- **A shared trace changes incident calls.** When the BFF, the microservice
+  behind it and a vendor product show up in one trace, the discussion moves from
+  whose component is slow to what the trace shows.
 
 ## Advice for others
 
