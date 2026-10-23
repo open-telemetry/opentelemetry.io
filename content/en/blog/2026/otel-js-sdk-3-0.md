@@ -49,7 +49,7 @@ have been upgrade to JS SDK 3.x and released.
   result should be much more friendly to ESM and bundler users.
 - Support for **complex attributes**, per OTEP 4485, has been added.
 - The `@opentelemetry/api-logs` package has been folded into
-  `@opentelemetry/api`, as the **Logs signal has been stabilized!**. There will
+  `@opentelemetry/api`, as the **Logs signal has been stabilized!** There will
   be a separate blog post on this stabilization.
 - Multiple Tracing SDK packages have been consolidated into the
   `@opentelemetry/sdk-trace` package, eliminating some confusing APIs and
