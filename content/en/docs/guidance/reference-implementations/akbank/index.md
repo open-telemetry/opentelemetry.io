@@ -151,33 +151,74 @@ local open-weight LLM, so no telemetry leaves the bank.
 ## Architecture
 
 ```mermaid
-graph LR
-  subgraph Workloads
-    J[Java BFF services<br/>OTel Java agent]
-    N[".NET, other languages<br/>and vendor apps<br/>Operator-injected"]
+---
+config:
+  flowchart:
+    curve: basis
+---
+flowchart LR
+  subgraph Workloads["Workloads"]
+    direction TB
+    J["☕ Java BFF services<br/>OTel Java agent"]:::node
+    N["📦 .NET, other languages<br/>and vendor apps<br/>Operator-injected"]:::node
   end
   subgraph edge["Every cluster, per node"]
-    A[Agent Collector<br/>DaemonSet]
+    A["🔀 Agent Collector<br/>DaemonSet"]:::node
   end
   subgraph central["Central cluster"]
-    LB[Load-balancing Collectors<br/>route by trace ID]
-    G[Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling]
+    direction TB
+    LB["⚖️ Load-balancing Collectors<br/>route by trace ID"]:::node
+    G["🔀 Gateway Collectors<br/>span metrics +<br/>per-backend tail sampling"]:::node
   end
-  J -->|OTLP| A
-  N -->|OTLP| A
-  A -->|traces| LB
-  LB -->|traces| G
-  A -->|metrics| G
-  A -->|HTTP / RPC metrics| K[(Thanos<br/>KEDA autoscaling)]
-  G -->|traces| T[(Grafana Tempo)]
-  G -->|traces| EA[(Elastic APM)]
-  G -->|traces| C[(Coremetry<br/>ClickHouse)]
-  G -->|metrics| M[(VictoriaMetrics)]
-  M -.->|metrics via PromQL| C
-  J -.->|logs with trace_id<br/>existing log pipeline| E[(Elasticsearch<br/>logs)]
-  N -.-> E
-  T -.->|trace fallback| C
-  E -.->|logs by trace_id| C
+  K[("📈 Thanos<br/>KEDA autoscaling")]:::store
+  T[("🧵 Grafana Tempo")]:::store
+  EA[("🧵 Elastic APM")]:::store
+  C[("🔎 Coremetry<br/>ClickHouse")]:::store
+  M[("📈 VictoriaMetrics")]:::store
+  E[("📜 Elasticsearch<br/>logs")]:::store
+
+  J L_J_A@== OTLP ==> A
+  N L_N_A@== OTLP ==> A
+  A L_A_LB@== traces ==> LB
+  LB L_LB_G@== traces ==> G
+  A L_A_G@== metrics ==> G
+  A L_A_K@== "HTTP / RPC metrics" ==> K
+  G L_G_T@== traces ==> T
+  G L_G_EA@== traces ==> EA
+  G L_G_C@== traces ==> C
+  G L_G_M@== metrics ==> M
+  M L_M_C@-. "metrics via PromQL" .-> C
+  J L_J_E@-. "logs with trace_id<br/>existing log pipeline" .-> E
+  N L_N_E@-.-> E
+  T L_T_C@-. "trace fallback" .-> C
+  E L_E_C@-. "logs by trace_id" .-> C
+
+  classDef node fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+  classDef store fill:#ffffff, stroke:#818cf8, stroke-width:2px, color:#6b7280
+  style Workloads fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  style edge fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  style central fill:#eef2ff, stroke:#818cf8, stroke-width:2px, color:#818cf8
+  linkStyle 0,1 stroke:#94a3b8, fill:none, stroke-width:3px
+  linkStyle 2,3,6,7,8 stroke:#a3e635, fill:none, stroke-width:3px
+  linkStyle 4,5,9 stroke:#7dd3fc, fill:none, stroke-width:3px
+  linkStyle 11,12 stroke:#fbbf24, fill:none, stroke-width:3px
+  linkStyle 10,13,14 stroke:#c4b5fd, fill:none, stroke-width:3px
+
+  L_J_A@{ animation: fast }
+  L_N_A@{ animation: fast }
+  L_A_LB@{ animation: fast }
+  L_LB_G@{ animation: fast }
+  L_A_G@{ animation: fast }
+  L_A_K@{ animation: fast }
+  L_G_T@{ animation: fast }
+  L_G_EA@{ animation: fast }
+  L_G_C@{ animation: fast }
+  L_G_M@{ animation: fast }
+  L_M_C@{ animation: slow }
+  L_J_E@{ animation: slow }
+  L_N_E@{ animation: slow }
+  L_T_C@{ animation: slow }
+  L_E_C@{ animation: slow }
 ```
 
 Each trace backend receives its own sampled stream (see below). When an engineer
