@@ -11,9 +11,9 @@ By [Cenk Çil](https://github.com/cilcenk) (Akbank),
 Akbank is one of Türkiye's largest private banks. Its digital channels (mobile
 and internet banking, branch systems, lending and payments) run on thousands of
 services across several on-premises OpenShift clusters in multiple regions. The
-estate mixes Java applications on JBoss EAP / WildFly and Spring, .NET services,
-and applications bought from third-party vendors whose code the bank cannot
-change or rebuild.
+estate mixes Java backend-for-frontend (BFF) services on JBoss EAP / WildFly and
+Spring, services in .NET and other languages, and applications bought from
+third-party vendors whose code the bank cannot change or rebuild.
 
 Banking regulation shapes every observability decision: telemetry contains
 customer and transaction context, so every component, from collection to storage
@@ -24,15 +24,15 @@ and analysis, runs inside the bank's own network.
 Akbank has around 2,000 developers. Observability is owned centrally by the SRE
 team: it runs the OpenTelemetry Operator, the Collector tiers and Coremetry, and
 owns the instrumentation defaults. Application teams get traces, metrics and
-correlated logs without changing their code; vendor and .NET workloads are
-onboarded with a pod annotation.
+correlated logs without changing their code; vendor, .NET and other-language
+workloads are onboarded with a pod annotation.
 
 ## Environment and scale
 
 | Dimension                | Details                                                                                                              |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
 | Infrastructure           | On-premises Red Hat OpenShift, tens of clusters across multiple regions                                              |
-| Languages instrumented   | Java (JBoss EAP / WildFly, Spring), .NET, third-party vendor applications                                            |
+| Languages instrumented   | Java BFF services (JBoss EAP / WildFly, Spring), .NET and other languages, third-party vendor applications           |
 | Number of services       | Thousands                                                                                                            |
 | Scale                    | Billions of spans per day, even after tail sampling                                                                  |
 | Collector fleet          | Per cluster: a DaemonSet agent on every node, ~20 load-balancing and ~30 gateway pods                                |
@@ -64,13 +64,14 @@ the third because every component runs inside the bank's own clusters.
 Instrumentation is a combination of zero-code auto-instrumentation and manual
 instrumentation:
 
-- **Java:** the OpenTelemetry Java agent on JBoss EAP / WildFly and Spring
-  applications, with no code changes in the first phase. HTTP servers and
-  clients, JDBC, JMS and Kafka are covered by the agent's instrumentations.
-- **.NET and vendor applications:** zero-code auto-instrumentation injected by
-  the OpenTelemetry Operator through an `Instrumentation` resource and a pod
-  annotation. This is what let the team cover applications it cannot rebuild
-  without asking every vendor for a code change.
+- **Java (BFF services):** the OpenTelemetry Java agent on JBoss EAP / WildFly
+  and Spring applications, with no code changes in the first phase. HTTP servers
+  and clients, JDBC, JMS and Kafka are covered by the agent's instrumentations.
+- **.NET, other languages and vendor applications:** zero-code
+  auto-instrumentation injected by the OpenTelemetry Operator through an
+  `Instrumentation` resource and a pod annotation. This is what let the team
+  cover applications it cannot rebuild without asking every vendor for a code
+  change.
 - **Manual instrumentation:** where the business flow is invisible to
   auto-instrumentation, such as batch jobs, message consumers and internal steps
   of a long transaction, teams add spans and attributes with the OpenTelemetry
@@ -122,9 +123,9 @@ deployments.
 ### OpenTelemetry Operator
 
 The Operator is installed with its Helm chart (OperatorHub is also an option on
-OpenShift). It manages auto-instrumentation injection for .NET and vendor
-workloads. The Collectors themselves are deployed with the OpenTelemetry
-Collector Helm chart.
+OpenShift). It manages auto-instrumentation injection for .NET, other-language
+and vendor workloads. The Collectors themselves are deployed with the
+OpenTelemetry Collector Helm chart.
 
 ### Other components
 
@@ -143,8 +144,8 @@ local open-weight LLM, so no telemetry leaves the bank.
 ```mermaid
 graph LR
   subgraph Workloads
-    J[Java services<br/>OTel Java agent]
-    N[.NET and vendor apps<br/>Operator-injected]
+    J[Java BFF services<br/>OTel Java agent]
+    N[.NET, other languages<br/>and vendor apps<br/>Operator-injected]
   end
   subgraph Per node
     A[Agent Collector<br/>DaemonSet]
@@ -232,9 +233,10 @@ Two things fill the gap left by unsampled traces:
 
 ### SDK configuration
 
-A representative `Instrumentation` resource for the Operator-injected .NET and
-vendor workloads (simplified, not the production manifest). Java services use
-the OpenTelemetry Java agent with the same exporter endpoint and propagators.
+A representative `Instrumentation` resource for the Operator-injected .NET,
+other-language and vendor workloads (simplified, not the production manifest).
+Java BFF services use the OpenTelemetry Java agent with the same exporter
+endpoint and propagators.
 
 ```yaml
 # Zero-code instrumentation for .NET and vendor workloads, injected by the Operator.
@@ -556,9 +558,9 @@ Based on Akbank's experience, a few lessons stand out:
 
 - Start with zero-code instrumentation, and add manual spans only where the
   business flow is invisible (batch jobs, message consumers).
-- Use the Operator for code you don't own: vendor and .NET applications joined
-  the same traces as the bank's own Java services without a code change on their
-  side.
+- Use the Operator for code you don't own: vendor, .NET and other-language
+  applications joined the same traces as the bank's own Java BFF services
+  without a code change on their side.
 - Put a gateway between applications and backends, so every processing or export
   change happens in Collector configuration rather than in application
   deployments.
