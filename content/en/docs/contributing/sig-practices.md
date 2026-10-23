@@ -114,14 +114,14 @@ Additional valuable resources to review are
     - `p1-high`
     - `p2-medium`
     - `p3-low`
-  - Optional: One of the following special tags:
+  - Optional: Any of the following special tags:
     - `good first issue`
     - `help wanted`
     - `contribfest`
     - `maintainers only`
     - `forever`
     - `stale`
-    - `parked`, when closing an issue for lack of capacity (see below)
+    - `parked` (see below)
 - Automation will mark an issue in `triage:deciding` with `triage:followup` for
   re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
   should be removed within 7 days. Pinging the participants and removing the
@@ -129,9 +129,8 @@ Additional valuable resources to review are
 - Close an issue as _completed_ only when its request has been fulfilled, and
   otherwise as a _duplicate_ or as _not planned_. A _not planned_ issue carries
   one of the following labels, so that the reason stays visible:
-  - `parked`: nobody has the capacity to take the issue further for now, at
-    whatever triage stage it has reached. The issue isn't declined. Parking
-    doesn't require triage. When parking an issue:
+  - `parked`: nobody has the capacity to take the issue further for now, at any
+    triage stage. The issue isn't declined. When parking an issue:
     - Add `parked` and leave the other labels as they are, so that reopening
       restores the issue exactly.
     - Close the issue with a comment that gives the reason and the way back. For
@@ -142,31 +141,30 @@ Additional valuable resources to review are
       > lack the capacity to take it further, not because it has been declined.
       > It stays listed as a
       > [parked issue](https://opentelemetry.io/docs/contributing/issues/). To
-      > pick it up, comment here or open a PR that references this issue, and a
-      > maintainer will reopen it.
+      > pick it up, comment here and a maintainer will reopen it.
       <!-- markdownlint-enable no-otel-io-external-urls -->
   - `triage:rejected`, `triage:rejected:wontfix`, or `triage:rejected:invalid`:
     the request is declined or invalid. For a declined request, leave a short
     rationale for the triagers who check the [declined issues][] before
     accepting a request.
-- When a contributor comments on a [parked issue](../issues/#parked) or opens a
-  PR that references it, reopen the issue and remove `parked` before reviewing
-  the PR.
+- When a contributor offers to pick up a [parked issue](../issues/#parked), or
+  opens a PR that references it, reopen the issue and remove `parked` before
+  reviewing the PR.
 - Close a new issue that duplicates a parked one as a _duplicate_ of it. The
   parked issue stays parked, unless the reporter wants to pick it up.
 - Review the [parked issues][] at each quarter rollover, and before events that
-  bring in contributors. For each issue: reopen it, keep it parked, or decline
-  it.
+  bring in contributors. For each issue: reopen it (remove `parked`), keep it
+  parked, or decline it (remove `parked`, apply `triage:rejected*`).
 
-[parked issues]:
-  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
+[parked issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 
 ### PRs
 
-- PRs must have a linked issue labelled `triage:accepted` with the following
-  exceptions:
+- PRs must have a linked issue labelled `triage:accepted` (an open one: reopen a
+  [parked](#issues) issue first) with the following exceptions:
   - Automatic PRs
   - hotfixes by maintainers/approvers
 - Automation will ensure that PRs are
