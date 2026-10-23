@@ -4,6 +4,7 @@ linkTitle: ルートデコレーター
 description: OBI がパイプラインの次のステージにデータを送信する前に、ルートデコレーターコンポーネントを設定します。
 weight: 50
 default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
+drifted_from_default: true
 ---
 
 > [!NOTE]
