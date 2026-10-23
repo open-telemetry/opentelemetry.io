@@ -43,10 +43,12 @@ workloads are onboarded with a pod annotation.
 
 Before OpenTelemetry, telemetry at the bank was split across tools that did not
 share identifiers: application logs in Elasticsearch, metrics in a separate
-stack, and tracing in only a few teams. Incident calls often started with "which
-system has the data?" rather than "what is broken?", and each tool came with its
-own agents and licence terms, so changing a backend meant re-instrumenting
-applications.
+stack, and tracing from a commercial APM product licensed for a limited number
+of hosts. Only some pods ran its agent, so every request that crossed an
+unmonitored host lost its trace, and no transaction could be followed end to
+end. Incident calls often started with "which system has the data?" rather than
+"what is broken?", and each tool came with its own agents and licence terms, so
+changing a backend meant re-instrumenting applications.
 
 The bank wanted three things:
 
@@ -58,7 +60,9 @@ The bank wanted three things:
 - Components that can all run on-premises.
 
 OpenTelemetry gave the first two through zero-code instrumentation and OTLP, and
-the third because every component runs inside the bank's own clusters.
+the third because every component runs inside the bank's own clusters. Because
+instrumentation no longer depends on a per-host licence, every service is
+instrumented, and traces are complete from the first hop to the last.
 
 ## OpenTelemetry components in use
 
