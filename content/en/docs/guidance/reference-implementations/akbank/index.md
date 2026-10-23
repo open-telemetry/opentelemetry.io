@@ -51,7 +51,7 @@ end. Incident calls often started with "which system has the data?" rather than
 "what is broken?", and each tool came with its own agents and license terms, so
 changing a backend meant re-instrumenting applications.
 
-The bank wanted three things:
+The SRE team wanted three things:
 
 - One wire format for traces, metrics and logs, so that instrumentation in
   thousands of applications would not be tied to any one backend.
