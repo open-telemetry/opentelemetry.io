@@ -59,7 +59,7 @@ the 2.x versions of stable SDK packages will be supported for one year from the
   attributes). See
   [the explainer in the migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-support-for-complex-attribute-values).
 - The `@opentelemetry/api-logs` package has been folded into
-  `@opentelemetry/api`, as the **Logs signal has been stabilized!** There will
+  `@opentelemetry/api`, as the **Logs signal has been stabilized!** With Logs stabilized, all three OpenTelemetry signals (Traces, Metrics, and Logs) are now stable in JavaScript. There will
   be a separate blog post on this stabilization.
 - [Multiple Tracing SDK packages have been consolidated](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-base-package-removed)
   into the `@opentelemetry/sdk-trace` package, eliminating some confusing APIs
