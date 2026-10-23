@@ -33,7 +33,8 @@ issue.
 
 Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
 the capacity to take them further for now, but the issues aren't declined. To
-pick one up:
+pick one up ([first-time contributor](../#first-time-contributing) rules still
+apply):
 
 1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
    far it got: a `triage:accepted*` issue is ready to work on; for any other,
