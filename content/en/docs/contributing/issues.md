@@ -104,8 +104,8 @@ still apply**):
    far it got: a `triage:accepted*` issue is ready to work on; for any other,
    ask first.
 
-2. Comment on the issue. A maintainer will reopen it; then proceed as for any
-   other issue.
+2. Comment on the issue. A maintainer will reopen it; then proceed as for
+   [any other issue](#fixing-an-existing-issue).
 
 <!-- prettier-ignore-start -->
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
