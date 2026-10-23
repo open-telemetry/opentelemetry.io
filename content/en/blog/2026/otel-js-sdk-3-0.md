@@ -30,7 +30,7 @@ new major will be `>=3.0.0` for the stable and `>=0.300.0` for the unstable
 packages. Details on the full list of packages can be found in the [migration
 guide][].
 
-In addition, [all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)
+In addition, [all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages)
 have been upgrade to JS SDK 3.x and released.
 
 ## What has changed?
@@ -56,7 +56,7 @@ For more details and notes on migrating to 3.x / 0.300.x, see the [migration gui
 
 ## Why was this done?
 
-Starting with the [SDK 2.0 release](https://opentelemetry.io/blog/2025/otel-js-sdk-2-0/) in March 2025,
+Starting with the [SDK 2.0 release](/blog/2025/otel-js-sdk-2-0/) in March 2025,
 the OTel JS SIG has had a goal of a new SDK major release roughly every year.
 This cadence allows us to stay current with [new major Node.js releases](https://github.com/nodejs/release#release-schedule)
 and more recent JavaScript ecosystem and tooling improvements.
@@ -68,5 +68,5 @@ and more recent JavaScript ecosystem and tooling improvements.
   [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/CONTRIBUTING.md)
   for details on contributing.
 - Attend our
-  [SIG meetings](https://github.com/open-telemetry/community/blob/main/sigs.md#javascript-sdk).
+  [SIG meetings](https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/sigs.md#javascript-sdk).
 - Collaborate on [Slack](https://cloud-native.slack.com/archives/C01NL1GRPQR).
