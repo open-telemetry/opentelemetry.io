@@ -21,7 +21,7 @@ and API [1.10.0][api-v1.10.0].
 
 > [!NOTE] Migration guide
 >
-> For a detailed description of breaking changes, see the **migration guide**:
+> For a detailed description of breaking changes, see the
 > [OpenTelemetry JS SDK 3.x migration guide][migration guide].
 
 [migration guide]:
