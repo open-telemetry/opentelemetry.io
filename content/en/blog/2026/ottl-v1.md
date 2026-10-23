@@ -3,7 +3,6 @@ title: OpenTelemetry Transformation Language reaches v1
 linkTitle: OTTL v1
 date: 2026-10-27
 author: '[Tyler Helmuth](https://github.com/TylerHelmuth) (Grafana Labs)'
-draft: true # TODO: remove once the Collector release ships
 issue: 12163
 sig: Collector SIG
 cSpell:ignore: Genesys Helmuth ottl SigNoz xottl xprofile
