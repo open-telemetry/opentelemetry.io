@@ -81,9 +81,9 @@ private credentials in the application bundle.
 | `disabled`         | Disable SDK initialization.                  |
 | `logLevel`         | Diagnostic logging level.                    |
 
-Setting `logLevel` to `DEBUG` switches the quick-start exporters to console
-output instead of OTLP. Leave it unset to use the default `INFO` level and
-export to your receiver.
+Setting `logLevel` to `DEBUG` or a more verbose level also prints log records
+and spans to the browser console, while the SDK keeps exporting to your
+receiver. The default level is `INFO`.
 
 For custom resources, processors, exporters, or configuration per signal, use
 `startBrowserSdk`. The package also provides separate entry points for logs and
