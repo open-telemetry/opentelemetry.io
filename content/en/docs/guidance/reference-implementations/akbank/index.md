@@ -243,7 +243,7 @@ flowchart LR
 ```
 
 Thin grey arrows show the request path, from the API gateway to the databases.
-The coloured, animated arrows show telemetry: OTLP from the workloads in grey,
+The colored, animated arrows show telemetry: OTLP from the workloads in grey,
 traces in green, metrics in blue, logs in yellow and Coremetry's reads in
 purple.
 
