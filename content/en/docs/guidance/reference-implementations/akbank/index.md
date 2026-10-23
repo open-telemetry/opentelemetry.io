@@ -13,9 +13,9 @@ Akbank is one of Türkiye's largest private banks. Its digital channels (mobile
 and internet banking, branch systems, lending and payments) run on thousands of
 services across several on-premises Red Hat OpenShift and Kubernetes clusters in
 multiple regions. The estate mixes Java backend-for-frontend (BFF) services on
-JBoss EAP / WildFly and Spring, services in .NET and other languages, and
-applications bought from third-party vendors whose code the bank cannot change
-or rebuild.
+JBoss EAP / WildFly and Spring, services in other languages such as Python and
+.NET, and applications bought from third-party vendors whose code the bank
+cannot change or rebuild.
 
 Banking regulation shapes every observability decision: telemetry contains
 customer and transaction context, so every component, from collection to storage
@@ -31,14 +31,14 @@ workloads are onboarded with a pod annotation.
 
 ## Environment and scale
 
-| Dimension                | Details                                                                                                              |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Infrastructure           | On-premises Red Hat OpenShift and Kubernetes, tens of clusters across multiple regions                               |
-| Languages instrumented   | Java BFF services (JBoss EAP / WildFly, Spring), .NET and other languages, third-party vendor applications           |
-| Number of services       | Thousands: more than 1,000 Java applications, hundreds of .NET services, plus vendor products                        |
-| Scale                    | Billions of spans per day, even after tail sampling                                                                  |
-| Collector fleet          | A DaemonSet agent on every node of every cluster; ~20 load-balancing and ~30 gateway pods in a central cluster       |
-| Observability backend(s) | Grafana Tempo, VictoriaMetrics, Thanos (KEDA), Elastic APM, Elasticsearch (logs), Coremetry (Apache-2.0, ClickHouse) |
+| Dimension                | Details                                                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| Infrastructure           | On-premises Red Hat OpenShift and Kubernetes, tens of clusters across multiple regions                                       |
+| Languages instrumented   | Java BFF services (JBoss EAP / WildFly, Spring), other languages (Python, .NET and others), third-party vendor applications  |
+| Number of services       | Thousands: more than 1,000 Java applications, plus services in other languages (Python, .NET and others) and vendor products |
+| Scale                    | Billions of spans per day, even after tail sampling                                                                          |
+| Collector fleet          | A DaemonSet agent on every node of every cluster; ~20 load-balancing and ~30 gateway pods in a central cluster               |
+| Observability backend(s) | Grafana Tempo, VictoriaMetrics, Thanos (KEDA), Elastic APM, Elasticsearch (logs), Coremetry (Apache-2.0, ClickHouse)         |
 
 ## Why OpenTelemetry
 
