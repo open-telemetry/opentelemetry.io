@@ -137,7 +137,7 @@ Additional valuable resources to review are
     <!-- markdownlint-disable no-otel-io-external-urls -->
     > This issue isn't declined; we're parking it for lack of capacity. To pick
     > it up, comment here. For details, see
-    > [parked issues](https://opentelemetry.io/docs/contributing/issues/).
+    > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
     <!-- markdownlint-enable no-otel-io-external-urls -->
   - `triage:rejected*`: the request is declined. Leave a short rationale for the
     triagers who check the [declined issues][].
