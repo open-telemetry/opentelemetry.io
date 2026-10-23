@@ -63,8 +63,8 @@ The SRE team wanted three things:
 OpenTelemetry gave the first two through zero-code instrumentation and OTLP, and
 the third because every component runs inside the bank's own clusters. Because
 instrumentation no longer depends on a per-host license, every service is
-instrumented, and traces are complete from the API gateway to the databases and
-the mainframe.
+instrumented, and traces are complete from the API gateway down to the
+databases, the mainframe and message queues.
 
 ## OpenTelemetry components in use
 
@@ -88,7 +88,7 @@ instrumentation:
 - **Entry points:** the API gateway, where client requests first enter the
   bank's systems, is instrumented as well. A trace therefore starts at the
   gateway and runs through the BFF services and the microservices behind them
-  down to the calls to Oracle, SQL Server and the mainframe.
+  down to the calls to databases, the mainframe and message queues.
 - **Manual instrumentation:** where the business flow is invisible to
   auto-instrumentation, such as batch jobs, message consumers and internal steps
   of a long transaction, teams add spans and attributes with the OpenTelemetry
