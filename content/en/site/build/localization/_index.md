@@ -281,38 +281,49 @@ In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
 ### 6b. Grant the approvers team write access {#gh-org-grant}
 
 In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
-list of `repo-opentelemetry-io.tf`. Without this grant the teams exist but have
-no write access to the repository: GitHub ignores CODEOWNERS lines that
-reference a team without write access, so the locale silently falls back to
-`docs-approvers` and reviews from the locale's approvers don't satisfy the
-required code-owner review.
+list of `repo-opentelemetry-io.tf`. The approvers team itself must hold write
+access to count as a [code owner][]; GitHub ignores a CODEOWNERS owner without
+it, whatever access its members hold through other teams. Until the grant is
+applied, the locale's own reviews don't satisfy the required code-owner review
+and its pages stay with the `docs-approvers` fallback owner.
 
 ### 6c. Add team members {#gh-org-members}
 
 Team members must be members of the `open-telemetry` GitHub organization. A
-contributor who meets the bar of the community [membership guidelines][] files a
-`REQUEST: New membership` issue in the [community repository][] and gets two
-sponsors; an org admin then invites them. The registry lists a locale's
-approvers from the kickoff on, but they join the live team only once they are
-org members; until then maintainers treat their "LGTM" as approval, as described
-in [New localizations][].
+contributor who meets the member and approver requirements of the community
+[membership guidelines][] files a `REQUEST: New membership` issue in the
+[community repository][] and gets two sponsors; an org admin then invites them.
+The registry lists a locale's approvers from the kickoff on, but they join the
+live team only once they qualify; until then maintainers treat their "LGTM" as
+approval, as described in [New localizations][].
 
 [Team members are added manually][admin#58] by an org admin, since memberships
-aren't managed by the admin repository. Give the locale's leads the **team
-maintainer** role on both teams so they can manage their own roster. The
-`docs-LANG_ID-maintainers` team can stay empty at first: the locale is then
-[unstaffed][] and `docs-approvers` remains a fallback owner until it graduates.
+aren't managed by the admin repository. Once the locale has maintainers, give
+them the GitHub [team maintainer][] role on both teams so they can manage the
+roster themselves (a team maintainer must be a member of that team, so don't
+grant the role on the maintainers team to someone who isn't a locale
+maintainer). The `docs-LANG_ID-maintainers` team can stay empty at first; the
+registry's empty `maintainers` list then marks the locale as [unstaffed][], with
+`docs-approvers` as a fallback owner until it graduates.
 
 ### 6d. Verify access {#gh-org-verify}
 
+First confirm the team's own grant, then each member's effective access:
+
 ```sh
+gh api -H 'Accept: application/vnd.github.v3.repository+json' \
+  orgs/open-telemetry/teams/docs-LANG_ID-approvers/repos/open-telemetry/opentelemetry.io \
+  --jq .permissions.push
 gh api orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
 gh api repos/open-telemetry/opentelemetry.io/collaborators/USER/permission --jq .permission
 ```
 
-The first command lists the live team members; the second must print `write` for
-each of them (replace `USER` with the member's GitHub handle). A member reading
-`read` means the grant in Step 6b is missing or not yet applied.
+The first command prints `true` when the approvers team holds write access; a
+`404` means the team has no access to the repository at all, so the grant in
+Step 6b is missing or not yet applied. The second lists the live team members.
+The third, run for each member (replace `USER` with their GitHub handle), must
+report `write` or higher (`admin` also passes); `read` means the member's access
+is missing.
 
 ## Step 7 — Slack channel {#slack}
 
@@ -386,7 +397,8 @@ requesting a review:
       `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
       regenerated
 - [ ] **Step 6** — Team PR merged against `open-telemetry/admin`; approvers team
-      holds write access; team members added and verified
+      holds write access; eligible members added and verified (pending
+      promotions tracked in the kickoff issue)
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
       OpenTelemetry Admin added as channel manager
 - [ ] **Step 8** — `projects/localization.md` updated with the language entry,
@@ -426,10 +438,14 @@ correct:
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
 [admin#58]: https://github.com/open-telemetry/admin/issues/58?link-check=no
 [admin#588]: https://github.com/open-telemetry/admin/pull/588?link-check=no
+[code owner]:
+  https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [community repository]:
   https://github.com/open-telemetry/community/issues/new/choose
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[team maintainer]:
+  https://docs.github.com/en/organizations/organizing-members-into-teams/assigning-the-team-maintainer-role-to-a-team-member
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/

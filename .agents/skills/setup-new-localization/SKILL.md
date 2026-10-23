@@ -254,7 +254,7 @@ admin** to merge and apply; you can prepare and describe it (example:
 [admin#716][admin-716]) but you can't merge it, and you can't add team members.
 Report both as owner actions in the hand-off.
 
-[Step 6]: ../../../content/en/site/build/localization/_index.md#gh-org
+[Step 6]: https://opentelemetry.io/site/build/localization/#gh-org
 [admin-716]: https://github.com/open-telemetry/admin/pull/716
 
 ## Validation checklist
