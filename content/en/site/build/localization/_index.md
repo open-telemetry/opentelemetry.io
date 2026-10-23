@@ -268,17 +268,51 @@ file are no longer required as of June 2026.
 ## Step 6 — GitHub org-level setup {#gh-org}
 
 These steps happen outside the repository and require maintainer-level access to
-the `open-telemetry` GitHub organization.
+the `open-telemetry` GitHub organization. Team creation and the repository grant
+go into one pull request against the private [`open-telemetry/admin`][]
+repository; team membership is applied by an org admin.
 
-Team creation is done by opening a pull request against the
-[`open-telemetry/admin`][] repository (private). See
-[this PR](https://github.com/open-telemetry/admin/pull/588?link-check=no) for an
-example of the expected format.
+### 6a. Create the teams {#gh-org-teams}
 
-> [!NOTE]
->
-> [Team members should be added manually](https://github.com/open-telemetry/admin/issues/58?link-check=no),
-> since they aren't currently being managed by this repository.
+In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
+`docs-LANG_ID-maintainers`. For an example of the expected format, see
+[admin#588][].
+
+### 6b. Grant the approvers team write access {#gh-org-grant}
+
+In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
+list of `repo-opentelemetry-io.tf`. Without this grant the teams exist but have
+no write access to the repository: GitHub ignores CODEOWNERS lines that
+reference a team without write access, so the locale silently falls back to
+`docs-approvers` and reviews from the locale's approvers don't satisfy the
+required code-owner review.
+
+### 6c. Add team members {#gh-org-members}
+
+Team members must be members of the `open-telemetry` GitHub organization. A
+contributor who meets the bar of the community [membership guidelines][] files a
+`REQUEST: New membership` issue in the [community repository][] and gets two
+sponsors; an org admin then invites them. The registry lists a locale's
+approvers from the kickoff on, but they join the live team only once they are
+org members; until then maintainers treat their "LGTM" as approval, as described
+in [New localizations][].
+
+[Team members are added manually][admin#58] by an org admin, since memberships
+aren't managed by the admin repository. Give the locale's leads the **team
+maintainer** role on both teams so they can manage their own roster. The
+`docs-LANG_ID-maintainers` team can stay empty at first: the locale is then
+[unstaffed][] and `docs-approvers` remains a fallback owner until it graduates.
+
+### 6d. Verify access {#gh-org-verify}
+
+```sh
+gh api orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
+gh api repos/open-telemetry/opentelemetry.io/collaborators/USER/permission --jq .permission
+```
+
+The first command lists the live team members; the second must print `write` for
+each of them (replace `USER` with the member's GitHub handle). A member reading
+`read` means the grant in Step 6b is missing or not yet applied.
 
 ## Step 7 — Slack channel {#slack}
 
@@ -351,8 +385,8 @@ requesting a review:
 - [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
       `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
       regenerated
-- [ ] **Step 6** — Team PR opened against `open-telemetry/admin`; team members
-      added manually
+- [ ] **Step 6** — Team PR merged against `open-telemetry/admin`; approvers team
+      holds write access; team members added and verified
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
       OpenTelemetry Admin added as channel manager
 - [ ] **Step 8** — `projects/localization.md` updated with the language entry,
@@ -390,6 +424,12 @@ correct:
 [`config/_default/module-template.yaml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
+[admin#58]: https://github.com/open-telemetry/admin/issues/58?link-check=no
+[admin#588]: https://github.com/open-telemetry/admin/pull/588?link-check=no
+[community repository]:
+  https://github.com/open-telemetry/community/issues/new/choose
+[membership guidelines]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
