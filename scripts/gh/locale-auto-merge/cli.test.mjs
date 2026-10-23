@@ -40,6 +40,8 @@ const skip = process.platform === 'win32';
  * @param {Object<string,string[]>} [opts.teams] team-slug -> [logins].
  * @param {string} [opts.author] COMMENT_AUTHOR env value.
  * @param {string} [opts.fail] First two `gh` args that should fail.
+ * @param {string} [opts.stderr] What the failing `gh` call writes to stderr.
+ * @param {Object<string,string>} [opts.env] Extra environment for the CLI.
  * @returns {{ status: number, stdout: string, stderr: string, ghCalls: string[] }}
  */
 function runCli({
@@ -51,6 +53,8 @@ function runCli({
   teams = { 'docs-ja-maintainers': ['alice'] },
   author = 'alice',
   fail,
+  stderr,
+  env: extraEnv = {},
 } = {}) {
   const binDir = mkdtempSync(path.join(tmpdir(), 'fake-gh-'));
   const ghLog = path.join(binDir, 'gh.log');
@@ -70,8 +74,10 @@ function runCli({
     FAKE_GH_TEAMS: JSON.stringify(teams),
     FAKE_GH_LOG: ghLog,
     ...(fail ? { FAKE_GH_FAIL: fail } : {}),
+    ...(stderr ? { FAKE_GH_STDERR: stderr } : {}),
     // Ensure dry-run defaulting is deterministic (not under Actions).
     GITHUB_ACTIONS: 'false',
+    ...extraEnv,
   };
 
   const res = spawnSync('node', [cliPath, ...args], { encoding: 'utf8', env });
@@ -164,5 +170,37 @@ describe('locale-auto-merge cli', { skip }, () => {
     assert.equal(res.status, 1);
     // It never got far enough to mutate auto-merge.
     assert.ok(!res.ghCalls.some((c) => c.startsWith('pr merge')));
+  });
+
+  test('failed gh pr merge: reply quotes gh stderr and links the run', () => {
+    const res = runCli({
+      args: ['--pr', '42', '--enable', '--no-dry-run'],
+      fail: 'pr merge',
+      stderr: 'GraphQL: Something went wrong while executing your query.\n',
+      env: {
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'open-telemetry/opentelemetry.io',
+        GITHUB_RUN_ID: '38921928401',
+      },
+    });
+    assert.equal(res.status, 1);
+    // The comment body is logged across lines; the quoted error and the run
+    // link each sit on one.
+    assert.ok(
+      res.ghCalls.some((c) =>
+        c.includes(
+          '`GraphQL: Something went wrong while executing your query.`',
+        ),
+      ),
+      'reply quotes the real gh stderr',
+    );
+    assert.ok(
+      res.ghCalls.some((c) =>
+        c.includes(
+          'See [run 38921928401](https://github.com/open-telemetry/opentelemetry.io/actions/runs/38921928401).',
+        ),
+      ),
+      'reply links the workflow run from the Actions environment',
+    );
   });
 });

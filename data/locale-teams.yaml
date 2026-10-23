@@ -38,7 +38,7 @@ locales:
     approvers: [kota-sakuma]
   ko:
     maintainers: []
-    approvers: []
+    approvers: [abel9851, krapie]
   pl:
     maintainers: []
     approvers: [andrzej-stencel, Kielek, pellared]
@@ -47,7 +47,7 @@ locales:
     approvers: [joaopgrassi]
   ro:
     maintainers: [didiViking]
-    approvers: []
+    approvers: [elifsamedin, maryliag, svrnm]
   uk:
     maintainers: []
     approvers: []

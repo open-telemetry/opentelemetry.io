@@ -689,8 +689,7 @@
   distributions:
     - contrib
   stability:
-    metrics: unmaintained
-  unmaintained: true
+    metrics: beta
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib
@@ -844,7 +843,7 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: beta
 - name: windowsperfcountersreceiver
   display_name: Windows Performance Counters Receiver
   repo: contrib

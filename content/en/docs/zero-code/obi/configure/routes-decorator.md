@@ -5,6 +5,7 @@ description:
   Configure the routes decorator component before OBI sends data to the next
   stage of the pipeline.
 weight: 50
+cSpell:ignore: Blazor
 ---
 
 > [!NOTE]
@@ -15,12 +16,23 @@ weight: 50
 
 YAML section: `routes`
 
+Starting with v0.14.0, OBI can harvest framework-defined HTTP routes from
+Django, FastAPI, Flask, Rails, .NET, Symfony, Laravel, and Slim applications.
+When a framework route is available, it provides a low-cardinality `http.route`
+without requiring you to list that route in `patterns`. Configure patterns or
+the heuristic mode for applications whose routes OBI cannot harvest.
+
+In v0.15.2, route harvesting also covers Rails GraphQL engines and more .NET
+endpoint forms, including route groups, MVC and Razor Pages, health checks,
+SignalR, and Blazor endpoints.
+
 You can configure the component under the `routes` section of your YAML
 configuration or with environment variables.
 
-You must configure this section in the YAML file. If you don't provide a
-`routes` section, OBI creates a default routes pipeline stage and uses the
-`heuristic` routes decorator.
+To customize route decoration, configure this section in the YAML file. If you
+don't provide a `routes` section, OBI creates a default routes pipeline stage
+and uses the `heuristic` routes decorator. To disable framework route harvesting
+for selected languages, set `discovery.disabled_route_harvesters`.
 
 For example:
 

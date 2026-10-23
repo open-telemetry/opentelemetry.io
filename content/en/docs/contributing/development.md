@@ -199,7 +199,7 @@ In the English source page, place a file excerpt directive immediately before
 the fenced code block that it updates:
 
 ````md
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 <?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
 

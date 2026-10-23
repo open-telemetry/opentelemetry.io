@@ -3,7 +3,7 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: e76ca67d0f5b6906f7a9c90cde82380fc31e6e85
+default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
@@ -401,7 +401,8 @@ Hugo は変更を監視し、必要に応じてサイトをリビルドします
 PR を提出したら、Netlify は [deploy preview][] を作成し、変更をレビューできます。
 PR がマージされると、Netlify はプロダクションサーバーに更新されたサイトを本番サーバーにデプロイします。
 
-> **Note**: PR プレビューには ドラフトページ が含まれますが、本番ビルドには含まれません。
+> **Note**: PR プレビューにはドラフトページや未来の日付のページが含まれますが、本番ビルドには含まれません。
+> [`CHECK LINKS (production, internal)`](../pr-checks/#check-links-production-internal) チェックがそれらへのリンクを検出します。
 
 デプロイログなどを確認するには、プロジェクトの [dashboard][] を確認してください。
 Netlify ログインが必要です。

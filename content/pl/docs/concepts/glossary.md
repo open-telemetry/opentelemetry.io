@@ -4,6 +4,7 @@ description:
   Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
 default_lang_commit: 4f8b46449bcc2980fd81c8e726733e1df1defddd
+drifted_from_default: true
 ---
 
 Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne

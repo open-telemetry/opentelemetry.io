@@ -645,7 +645,7 @@ processors:
 ```
 
 リテラル `$` を示すには `$$` を使用します。
-たとえば、`$DataVisualization` 使うときは、次のようになります。
+たとえば、`$DataVisualization` を使うときは、次のようになります。
 
 ```yaml
 exporters:
