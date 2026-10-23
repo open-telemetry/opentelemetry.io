@@ -41,19 +41,29 @@ In addition,
 [all the packages from the `opentelemetry-js-contrib` repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages)
 have been upgraded to JS SDK 3.x and released.
 
+Per
+[OpenTelemetry guidelines](/docs/specs/otel/versioning-and-stability/#sdk-support),
+the 2.x versions of stable SDK packages will be supported for one year from the
+3.0.0 release.
+
 ## What has changed?
 
 - The **minimum supported Node.js has been raised to `>=22.15.0`**. This means
   that support for Node.js 18 and 20 has been dropped.
-- All packages now ship **proper ES Module (ESM) and CommonJS exports**. The
-  result should be much more friendly to ESM and bundler users.
-- Support for **complex attributes**, per OTEP 4485, has been added.
+- All packages now ship
+  [**proper ES Module (ESM) and CommonJS exports**](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-dual-cjsesm-exports).
+  The result should be much more friendly to ESM and bundler users.
+- Support for **complex attributes**, per OTEP 4485, has been added to some
+  parts of the API (e.g. span attributes, log record attributes). Some parts of
+  the API only support simple attributes (e.g. resource attributes, metric
+  attributes). See
+  [the explainer in the migration guide](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-support-for-complex-attribute-values).
 - The `@opentelemetry/api-logs` package has been folded into
   `@opentelemetry/api`, as the **Logs signal has been stabilized!** There will
   be a separate blog post on this stabilization.
-- Multiple Tracing SDK packages have been consolidated into the
-  `@opentelemetry/sdk-trace` package, eliminating some confusing APIs and
-  bringing consistency with the SDKs for the other signals.
+- [Multiple Tracing SDK packages have been consolidated](https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-base-package-removed)
+  into the `@opentelemetry/sdk-trace` package, eliminating some confusing APIs
+  and bringing consistency with the SDKs for the other signals.
 - Many deprecated packages have been removed.
 - The **public interface has changed**.
 
