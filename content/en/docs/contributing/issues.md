@@ -97,8 +97,8 @@ Keep the following in mind when filing an issue:
 Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
 the capacity to take them further for now, but the issues aren't declined.
 
-To pick one up (**note that [first-timer rules](../#first-time-contributing)
-and the [rules above](#fixing-an-existing-issue) still apply**):
+To pick one up (**note that [first-timer rules](../#first-time-contributing) and
+the [rules above](#fixing-an-existing-issue) still apply**):
 
 1. Browse the [parked issues][]. The issue's `triage:*` label, if any, says how
    far it got: a `triage:accepted*` issue is ready to work on; for any other,
