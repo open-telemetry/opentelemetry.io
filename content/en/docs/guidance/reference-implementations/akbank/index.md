@@ -288,23 +288,47 @@ Two things fill the gap left by unsampled traces:
 
 ### SDK configuration
 
-A representative `Instrumentation` resource for the Operator-injected .NET,
-other-language and vendor workloads (simplified, not the production manifest).
-Java BFF services use the OpenTelemetry Java agent with the same exporter
-endpoint and propagators.
+Each application namespace has an `Instrumentation` resource for the
+Operator-injected .NET, other-language and vendor workloads. The excerpt below
+is trimmed from a production manifest: the images are mirrored to an internal
+registry, and the Go, Node.js, Python, Apache HTTPD and NGINX sections are left
+out. Java BFF services use the OpenTelemetry Java agent with the same exporter
+endpoint, protocol and propagators.
+
+The SDKs keep every trace (`parentbased_always_on`), because the sampling
+decision is made later, at the gateway, once the whole trace is visible. The SDK
+log exporter is turned off (`OTEL_LOGS_EXPORTER=none`), because logs keep
+flowing through the existing log pipeline and are joined with traces by
+`trace_id`.
 
 ```yaml
-# Zero-code instrumentation for .NET and vendor workloads, injected by the Operator.
 apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
-  name: default
+  name: <namespace>-instrumentation
+  namespace: <namespace>
 spec:
   exporter:
-    endpoint: http://$(OTEL_NODE_IP):4318 # node-local agent Collector
+    endpoint: http://$(OTEL_NODE_IP):4317 # node-local agent Collector
   propagators: [tracecontext, baggage]
-  resource:
-    addK8sUIDAttributes: true
+  sampler:
+    type: parentbased_always_on # sampling happens at the gateway
+  java:
+    image: registry.example.internal/open-telemetry/opentelemetry-operator/autoinstrumentation-java:2.20.0
+    env:
+      - { name: OTEL_EXPORTER_OTLP_PROTOCOL, value: grpc }
+      - { name: OTEL_LOGS_EXPORTER, value: none } # logs use the existing pipeline
+    resources:
+      limits: { cpu: 500m, memory: 256Mi }
+      requests: { cpu: 50m, memory: 64Mi }
+  dotnet:
+    image: registry.example.internal/open-telemetry/opentelemetry-operator/autoinstrumentation-dotnet:1.8.0
+    env:
+      - { name: OTEL_EXPORTER_OTLP_PROTOCOL, value: grpc }
+      - { name: OTEL_LOGS_EXPORTER, value: none }
+    resourceRequirements:
+      limits: { cpu: 500m, memory: 256Mi }
+      requests: { cpu: 50m, memory: 128Mi }
 ```
 
 ### Collector configuration
