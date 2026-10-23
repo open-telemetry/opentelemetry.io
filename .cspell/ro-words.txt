@@ -16,6 +16,7 @@ bifând
 calificatori
 colaboreze
 colectezi
+colectoarele
 colectorii
 colectorului
 commiturile
@@ -45,6 +46,8 @@ emojiilor
 enumerează
 explorezi
 exportatorilor
+exportatorului
+foloseşti
 formatorul
 forțezi
 franceză
@@ -91,6 +94,7 @@ prepopulată
 propagatoarele
 propagatorul
 propagi
+provii
 randată
 randează
 receptoarelor
@@ -126,9 +130,12 @@ telemetrie
 traducă
 traduci
 tranzacţie
+trasabilitate
+trasabilitatea
 tuplu
 urci
 urmǎrirea
+urmărești
 valideze
 verificatoarele
 verificatorul
