@@ -119,6 +119,7 @@ Additional valuable resources to review are
     - `help wanted`
     - `contribfest`
     - `maintainers only`
+    - `blocked`
     - `forever`
     - `stale`
     - `parked` (see below)
@@ -133,8 +134,8 @@ Additional valuable resources to review are
     triage stage. The issue isn't declined. When parking an issue:
     - Add `parked` and leave the other labels as they are, so that reopening
       restores the issue exactly.
-    - Close the issue with a comment that gives the reason and the way back. For
-      an issue not labeled `CI/infra`, for example:
+    - Close the issue as _not planned_, with a comment that gives the reason and
+      the way back. For an issue not labeled `CI/infra`, for example:
       <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
       <!-- markdownlint-disable no-otel-io-external-urls -->
       > We're parking this issue: closing it as _not planned_ for now because we
@@ -146,16 +147,16 @@ Additional valuable resources to review are
   - `triage:rejected`, `triage:rejected:wontfix`, or `triage:rejected:invalid`:
     the request is declined or invalid. For a declined request, leave a short
     rationale for the triagers who check the [declined issues][] before
-    accepting a request.
+    accepting a similar request.
 - When a contributor offers to pick up a [parked issue](../issues/#parked), or
-  opens a PR that references it, reopen the issue and remove `parked` before
-  reviewing the PR.
+  opens a PR that references it, reopen the issue and remove `parked` (before
+  reviewing any PR).
 - Close a new issue that duplicates a parked one as a _duplicate_ of it. The
   parked issue stays parked, unless the reporter wants to pick it up.
 - Review the [parked issues][] at each quarter rollover, and before events that
   bring in contributors. For each issue: reopen it (remove `parked`), keep it
-  parked, or decline it (remove `parked`, replace its `triage:*` label with
-  `triage:rejected*`).
+  parked, or decline it (remove `parked`, set its `triage:*` label to
+  `triage:rejected*`, and comment with the rationale).
 
 [declined issues]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
@@ -164,7 +165,7 @@ Additional valuable resources to review are
 
 ### PRs
 
-- PRs must have an open linked issue labelled `triage:accepted` (reopen a
+- PRs must have an open linked issue labeled `triage:accepted` (reopen a
   [parked](#issues) issue first) with the following exceptions:
   - Automatic PRs
   - hotfixes by maintainers/approvers
