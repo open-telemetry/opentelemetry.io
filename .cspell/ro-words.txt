@@ -130,9 +130,12 @@ telemetrie
 traducă
 traduci
 tranzacţie
+trasabilitate
+trasabilitatea
 tuplu
 urci
 urmǎrirea
+urmărești
 valideze
 verificatoarele
 verificatorul
