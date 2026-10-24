@@ -227,7 +227,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 ## 次のステップ {#what-next}
 
-詳細については。
+詳細については、以下を参照してください。
 
 - この例を別の[エクスポーター][exporter]でテレメトリーデータ用に実行してください。
 - 自分のアプリの1つで[ゼロコード計装](/docs/zero-code/java/agent/)を試してください。

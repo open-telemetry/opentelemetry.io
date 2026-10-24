@@ -4,6 +4,7 @@ linkTitle: ネットワーク
 description: OBI をポイントツーポイントのネットワークメトリクスの観察用に設定する
 weight: 8
 default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
+drifted_from_default: true
 cSpell:ignore: OpenShift replicaset statefulset
 ---
 
