@@ -4,8 +4,7 @@ linkTitle: Práticas do SIG
 description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
-default_lang_commit: 6acef01464b667456e7ba6d151235e56d39c12ca # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: branch Comms contribfest mergeados
 ---
 
@@ -174,9 +173,22 @@ Outros recursos valiosos para revisão:
 - Se o contribuidor estiver com problemas para assinar o CLA ou usou o e-mail
   errado em algum _commit_, solicite a correção ou o _rebase_ do PR. No pior dos
   casos, feche e reabra o PR para disparar nova verificação do CLA.
-- Palavras desconhecidas para o cspell devem ser adicionadas pelo autor do PR à
-  lista local de _ignore_ da página. Apenas aprovadores e mantenedores adicionam
-  termos globais.
+- Palavras desconhecidas para o cSpell podem ser adicionadas à lista de _ignore_
+  em um destes três lugares:
+  - **_Front matter_ da página**: geralmente preferível para palavras pontuais
+    que dificilmente aparecerão em outras páginas. Consulte [Verificação
+    ortográfica][Spell Checking].
+  - **Dicionário do idioma**: preferível para palavras que provavelmente serão
+    usadas em várias páginas do mesmo idioma, como `.cspell/en-words.txt`.
+  - **Lista de palavras compartilhada (todos os idiomas)**:
+    `.cspell/all-words.txt`. Preferível para termos cuja grafia é válida em
+    todos os idiomas, como nomes de produtos ou de pessoas. Consulte
+    [Verificação ortográfica][Spell Checking].
+
+  Revisores e aprovadores podem avaliar se o local escolhido é adequado durante
+  o processo de revisão.
+
+[Spell Checking]: ../style-guide/#spell-checking
 
 ### PRs co-gerenciados {#co-owned-prs}
 
@@ -214,7 +226,7 @@ PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador d
 _docs_ e outra de aprovador de tradução. As mesmas práticas sugeridas para PRs
 co-gerenciados se aplicam aqui.
 
-### Fazendo merge dos PRs {#merging-prs}
+## Fazendo merge dos PRs {#merging-prs}
 
 Mantenedores podem seguir este fluxo para dar _merge_ nos PRs:
 
@@ -227,3 +239,47 @@ Mantenedores podem seguir este fluxo para dar _merge_ nos PRs:
   ```shell
   export PR=<ID DO PR>; gh pr checks ${PR} --watch && gh pr merge ${PR} --squash
   ```
+
+## PRs de especificação e _branches_ de integração {#spec-integration-branches}
+
+O site integra continuamente mudanças ainda não lançadas dos repositórios
+[opentelemetry-specification][] e [semantic-conventions][]. Dois _workflows_
+agendados ([detalhes][ci-section]) são executados diariamente e mantêm um PR
+rascunho de "integração" atualizado com a próxima versão de desenvolvimento:
+
+- Padrão de _branch_: `otelbot/spec-integration-vX.Y.Z-dev` e
+  `otelbot/semconv-integration-vX.Y.Z-dev`.
+- Lista de _branches_ ativas: [spec][spec-branches] ·
+  [semconv][semconv-branches].
+
+[opentelemetry-specification]:
+  https://github.com/open-telemetry/opentelemetry-specification
+[semantic-conventions]: https://github.com/open-telemetry/semantic-conventions
+[ci-section]: /site/build/ci-workflows/#spec-integration-branches
+[spec-branches]:
+  https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration
+[semconv-branches]:
+  https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
+
+### Mantenedores dos SIGs de especificação / semconv {#spec--semconv-sig-maintainers}
+
+Logo antes de gerar uma nova versão:
+
+1. Encontre a _branch_ de integração mais recente da sua especificação nos links
+   da seção anterior (por exemplo, `otelbot/spec-integration-v1.56.0-dev`).
+2. Abra o PR associado (com link a partir da página da _branch_).
+3. Dispare uma nova execução do _workflow_ [specs-integration.yml][] para
+   incorporar suas mudanças mais recentes.
+4. Se os testes do PR estiverem passando, a especificação pode ser lançada com
+   segurança. Caso contrário, mencione `@open-telemetry/docs-maintainers` para
+   que possamos corrigir os problemas antes do lançamento.
+
+### Mantenedores do SIG Comms {#comms-sig-maintainers}
+
+Ao longo do mês, verifique regularmente os PRs de integração e faça _commits_ de
+correções incrementais para manter os testes de CI passando. Identificar
+problemas cedo — enquanto o conjunto de mudanças _upstream_ ainda é pequeno — é
+muito mais fácil do que apagar incêndios no dia do lançamento.
+
+[specs-integration.yml]:
+  https://github.com/open-telemetry/opentelemetry.io/actions/workflows/specs-integration.yml
