@@ -5654,6 +5654,11 @@
     "when": "2026-10-23T05:45:15Z",
     "via": "lychee",
   },
+  "https://github.com/ahus1": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
+    "via": "lychee",
+  },
   "https://github.com/ajimenez1503": {
     "result": 200,
     "when": "2026-10-23T05:45:15Z",
@@ -7359,6 +7364,11 @@
     "when": "2026-10-10T05:46:21Z",
     "via": "lychee",
   },
+  "https://github.com/frossano-grafana": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
+    "via": "lychee",
+  },
   "https://github.com/frzifus": {
     "result": 200,
     "when": "2026-10-19T05:46:46Z",
@@ -8707,6 +8717,11 @@
   "https://github.com/lzchen": {
     "result": 200,
     "when": "2026-10-19T05:46:48Z",
+    "via": "lychee",
+  },
+  "https://github.com/mabartos": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
     "via": "lychee",
   },
   "https://github.com/mackjmr": {
@@ -15817,6 +15832,11 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/8629": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases": {
@@ -32067,6 +32087,11 @@
   "https://www.keycloak.org/observability/telemetry": {
     "result": 200,
     "when": "2026-10-19T05:46:24Z",
+    "via": "lychee",
+  },
+  "https://www.keycloak.org/observability/tracing": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
     "via": "lychee",
   },
   "https://www.konghq.com/": {
