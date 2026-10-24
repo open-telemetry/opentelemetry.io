@@ -5,8 +5,7 @@ description:
   possível melhoria.
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 ## Corrigindo uma _issue_ existente {#fixing-an-existing-issue}
@@ -17,11 +16,10 @@ corrigir um problema já existente.
 1. Navegue pela lista de [_issues_]({{% param _issues %}}).
 2. Selecione uma issue com a qual você gostaria de contribuir.
 
-   {{% alert color="warning" %}}
-
-   {{% param chooseAnIssueAtYourLevel %}}
-
-   {{% /alert %}}
+   > [!WARNING] Importante!
+   >
+   > {{% param chooseAnIssueAtYourLevel %}} _Issues_ com o rótulo
+   > [`CI/infra` são exclusivas para mantenedores](#ci-infra).
 
 3. Leia os comentários existentes na _issue_, se houver.
 4. Pergunte aos mantenedores se a _issue_ ainda é relevante e esclareça
@@ -31,6 +29,26 @@ corrigir um problema já existente.
    mantenedores.
 7. Quando estiver pronto,
    [submeta seu trabalho via _pull request_](../pull-requests) (PR).
+
+## _Issues_ de CI e infraestrutura {#ci-infra}
+
+_Issues_ com o rótulo [CI/infra][] são **exclusivas para mantenedores**: elas
+tratam dos próprios _workflows_, verificações obrigatórias, ferramentas e
+configurações do repositório. Diferentemente do trabalho com conteúdo e
+localização:
+
+- Mudanças nesta área não podem ser testadas de forma significativa por quem não
+  é mantenedor; por exemplo, modos de falha surgem na CI do repositório
+  principal e no comportamento durante o _merge_.
+- O trabalho frequentemente depende de planejamentos e contexto dos mantenedores
+  que não estão visíveis no texto da _issue_.
+- Parte do contexto é deliberadamente privada: trabalhos que afetam a postura de
+  segurança do site (correções de reforço e remediação) não são discutidos
+  publicamente antes de serem mesclados.
+
+Observe que o rótulo `triage:accepted` em uma _issue_ desse tipo significa que o
+problema foi confirmado, e não que o trabalho está disponível para qualquer
+pessoa.
 
 ## Reportando um problema {#reporting-an-issue}
 
@@ -55,16 +73,10 @@ Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe
 exatamente onde ela se encaixa, ainda assim pode abrir uma _issue_. Também é
 possível relatar bugs ou vulnerabilidades de segurança.
 
-1. Acesse a aba de
-   [_Issues_ no GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/).
-
-2. Clique em **New issue**.
-
-3. Escolha o tipo de _issue_ mais apropriado para sua sugestão ou dúvida.
-
-4. Preencha o modelo.
-
-5. Envie a _issue_.
+1. Acesse o GitHub e selecione **[New issue][]** na aba **Issues**.
+2. Escolha o tipo de _issue_ mais apropriado para sua sugestão ou dúvida.
+3. Preencha o modelo.
+4. Envie a _issue_.
 
 ### Como enviar boas _issues_ {#how-to-file-great-issues}
 
@@ -82,7 +94,14 @@ Ao criar uma _issue_, considere as seguintes boas práticas:
 - Se a nova _issue_ estiver relacionada a outra _issue_ ou _pull request_, faça
   referência usando a URL completa ou o número precedido por `#`, por exemplo:
   `Introduzido por #987654`.
-- Siga o
-  [Código de Conduta](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
-  Respeite os demais colaboradores. Comentários como "A documentação está
-  péssima" não são úteis nem apropriados.
+- Siga o [Código de Conduta][Code of Conduct]. Respeite os demais colaboradores.
+  Comentários como "A documentação está péssima" não são úteis nem apropriados.
+
+<!-- prettier-ignore-start -->
+[CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
+[Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+<!-- prettier-ignore-end -->
+<!-- markdownlint-disable link-image-reference-definitions -->
+
+[choose an issue]: <{{% param _issues %}}>
