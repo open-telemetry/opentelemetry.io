@@ -3,7 +3,6 @@ title: The case for OpenTelemetry maintainership
 linkTitle: The case for OpenTelemetry maintainership
 date: 2026-10-26
 author: '[Jack Berg](https://github.com/jack-berg)'
-draft: true
 issue: 12218
 sig: Technical Committee
 cSpell:ignore: Duggan subcomponent subcomponents workstreams
