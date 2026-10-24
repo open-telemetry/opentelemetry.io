@@ -2,8 +2,7 @@
 title: O que é o OpenTelemetry?
 description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 cSpell:ignore: youtube
 ---
 
@@ -40,9 +39,10 @@ Para mais vídeos nesta série e mais recursos, consulte
 ## O que é observabilidade? {#what-is-observability}
 
 [Observabilidade][observability] é a capacidade de entender o estado interno de
-um sistema ao examinar os dados que ele emite. No contexto de software, isso
-significa ser capaz de entender o estado interno do sistema analisando seus
-dados de telemetria, que incluem rastros, métricas e logs.
+um sistema ao examinar os dados que ele emite.
+
+Em software, isso normalmente é alcançado por meio da análise de dados de
+telemetria, como rastros, métricas e logs.
 
 Para tornar um sistema observável, ele deve ser [instrumentado][instr]. Ou seja,
 o código deve emitir [rastros][traces], [métricas][metrics] ou [logs][]. Os
