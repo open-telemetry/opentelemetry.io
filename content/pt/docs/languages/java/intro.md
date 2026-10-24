@@ -2,8 +2,7 @@
 title: Introdução ao OpenTelemetry Java
 description: Introdução ao ecossistema OpenTelemetry Java
 weight: 9
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: boms
 ---
 
@@ -75,44 +74,14 @@ A documentação do OpenTelemetry Java está organizada da seguinte forma:
 
 O código-fonte do OpenTelemetry Java está organizado em vários repositórios:
 
-| Repositório | Descrição | ID do Grupo | Versão atual | Cadência de lançamento
-|\n|
-
----
-
-## |
-
-## | ---------------------------------- | ------------------------------------ |
-
-| | [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) |
-Componentes principais da API e do SDK | `io.opentelemetry` |
-`{{% param vers.otel %}}` |
-[Sexta-feira após a primeira segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java/blob/main/RELEASING.md#release-cadence)
-| |
-[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
-| Instrumentação mantida pelo OpenTelemetry, incluindo o agente Java
-OpenTelemetry | `io.opentelemetry.instrumentation` |
-`{{% param vers.instrumentation %}}` |
-[Quarta-feira após a segunda segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/RELEASING.md#release-cadence)
-| |
-[opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)
-| Componentes mantidos pela comunidade que não se encaixam no escopo expresso de
-outros repositórios | `io.opentelemetry.contrib` | `{{% param vers.contrib %}}`
-|
-[Sexta-feira após a segunda segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/RELEASING.md#release-cadence)
-| |
-[semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java)
-| Código gerado para convenções semânticas | `io.opentelemetry.semconv` |
-`{{% param vers.semconv %}}` | Segue os lançamentos de
-[semantic-conventions](https://github.com/open-telemetry/semantic-conventions) |
-|
-[opentelemetry-proto-java](https://github.com/open-telemetry/opentelemetry-proto-java)
-| _Bindings_ gerados para OTLP | `io.opentelemetry.proto` | `1.3.2-alpha` |
-Segue os lançamentos de
-[opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto) | |
-[opentelemetry-java-examples](https://github.com/open-telemetry/opentelemetry-java-examples)
-| Exemplos de código completos demonstrando uma variedade de padrões usando a
-API, SDK e instrumentação | n/a | n/a | n/a |
+| Repositório                                                                                                | Descrição                                                                                             | ID do grupo                        | Versão atual                         | Cadência de lançamento                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)                                 | Componentes principais da API e do SDK                                                                | `io.opentelemetry`                 | `{{% param vers.otel %}}`            | [Sexta-feira após a primeira segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java/blob/main/RELEASING.md#release-cadence)                 |
+| [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation) | Instrumentação mantida pelo OpenTelemetry, incluindo o agente Java OpenTelemetry                      | `io.opentelemetry.instrumentation` | `{{% param vers.instrumentation %}}` | [Quarta-feira após a segunda segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/RELEASING.md#release-cadence) |
+| [opentelemetry-java-contrib](https://github.com/open-telemetry/opentelemetry-java-contrib)                 | Componentes mantidos pela comunidade que não se encaixam no escopo expresso de outros repositórios    | `io.opentelemetry.contrib`         | `{{% param vers.contrib %}}`         | [Sexta-feira após a segunda segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/RELEASING.md#release-cadence)          |
+| [semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java)                   | Código gerado para convenções semânticas                                                              | `io.opentelemetry.semconv`         | `{{% param vers.semconv %}}`         | Segue os lançamentos de [semantic-conventions](https://github.com/open-telemetry/semantic-conventions)                                                          |
+| [opentelemetry-proto-java](https://github.com/open-telemetry/opentelemetry-proto-java)                     | _Bindings_ gerados para OTLP                                                                          | `io.opentelemetry.proto`           | `1.3.2-alpha`                        | Segue os lançamentos de [opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto)                                                            |
+| [opentelemetry-java-examples](https://github.com/open-telemetry/opentelemetry-java-examples)               | Exemplos de código completos demonstrando uma variedade de padrões usando a API, SDK e instrumentação | n/a                                | n/a                                  | n/a                                                                                                                                                             |
 
 `opentelemetry-java`, `opentelemetry-java-instrumentation` e
 `opentelemetry-java-contrib` publicam grandes catálogos de artefatos. Consulte
@@ -148,9 +117,11 @@ manter alinhadas as versões de dependências relacionadas. O OpenTelemetry Java
 publica várias BOMs para diferentes casos de uso, listados abaixo em ordem
 crescente de escopo. Recomendamos fortemente o uso de uma BOM.
 
-{{% alert %}} Como as BOMs são hierárquicas, adicionar dependências em múltiplas
-BOMs não é recomendado, pois é redundante e pode levar a resoluções de versão de
-dependência não intuitivas. {{% /alert %}}
+> [!NOTE]
+>
+> Como as BOMs são hierárquicas, adicionar dependências em múltiplas BOMs não é
+> recomendado, pois é redundante e pode levar a resoluções de versão de
+> dependência não intuitivas.
 
 Clique no link na coluna "Dependências gerenciadas" para ver uma lista dos
 artefatos gerenciados pela BOM.

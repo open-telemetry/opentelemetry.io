@@ -2,12 +2,10 @@
 title: Primeiros passos com exemplo
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
-drifted_from_default: true
+default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
 ---
 
-<!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 Esta página mostrará como começar a utilizar o OpenTelemetry em Java.
 
@@ -65,8 +63,8 @@ dependencies {
 No mesmo diretório, crie um arquivo chamado `DiceApplication.java` e adicione o
 seguinte código ao arquivo:
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/DiceApplication.java"?>
+
 ```java
 package otel;
 
@@ -83,13 +81,12 @@ public class DiceApplication {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Crie outro arquivo chamado `RollController.java` e adicione o seguinte código ao
 arquivo:
 
-<!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/RollController.java"?>
+
 ```java
 package otel;
 
@@ -121,7 +118,6 @@ public class RollController {
   }
 }
 ```
-<!-- prettier-ignore-end -->
 
 Compile e execute a aplicação com o seguinte comando, e então abra
 <http://localhost:8080/rolldice> no seu navegador para ter certeza que está
@@ -143,12 +139,12 @@ maneiras, os passos abaixo utilizam variáveis de ambiente.
    do repositório `opentelemetry-java-instrumentation`. O arquivo JAR contém o
    agente e todos os pacotes de instrumentação automática:
 
-   ```console
+   ```sh
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
-   to the JAR file.{{% /alert %}}
+   > [!IMPORTANT] <i class="fas fa-edit"></i> Anote o caminho para o arquivo
+   > JAR.
 
 2. Configure e exporte as variáveis que especificam o JAR do agente Java e um
    [exportador de console][console exporter], utilizando a notação adequada para
@@ -156,19 +152,23 @@ maneiras, os passos abaixo utilizam variáveis de ambiente.
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging \
+     OTEL_TRACES_EXPORTER=console \
+     OTEL_METRICS_EXPORTER=console \
+     OTEL_LOGS_EXPORTER=console \
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   {{% alert title="Important" color="warning" %}}
-   - Replace `PATH/TO` above, with your path to the JAR.
-   - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
-     illustrate above, **only during testing** to help you more quickly ensure
-     that metrics are properly generated.
+   <!-- markdownlint-disable no-blanks-blockquote -->
 
-   {{% /alert %}}
+   > [!NOTE]
+   >
+   > Substitua `PATH/TO` acima pelo caminho para o seu JAR.
+
+   > [!WARNING]
+   >
+   > Defina `OTEL_METRIC_EXPORT_INTERVAL` com um valor bem abaixo do padrão,
+   > como ilustrado acima, **apenas durante os testes**, para garantir mais
+   > rapidamente que as métricas estão sendo geradas corretamente.
 
 3. Execute a **aplicação** mais uma vez:
 

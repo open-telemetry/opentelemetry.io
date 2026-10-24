@@ -2,22 +2,21 @@
 title: Registrar Telemetria com a API
 weight: 11
 aliases: [/docs/languages/java/api-components]
-logBridgeWarning: >
+logBridgeWarning: >-
   Embora as APIs `LoggerProvider` / `Logger` sejam estruturalmente semelhantes
   às APIs equivalentes de rastros e métricas, elas atendem a um caso de uso
   diferente. Até o momento, `LoggerProvider` / `Logger` e classes associadas
   representam a [Log Bridge API](/docs/specs/otel/logs/api/), que existe para
-  escrever anexadores de log _(log appenders)_ a fim de _ integrar logs
+  escrever anexadores de log _(log appenders)_ a fim de integrar logs
   registrados por meio de outras APIs / _frameworks_ de log no OpenTelemetry.
   Elas não são destinadas ao uso do usuário final como alternativas para Log4j /
   SLF4J / Logback / etc.
-default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae # patched
-drifted_from_default: true
+default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
 cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 
 A API é um conjunto de classes e interfaces para registrar telemetria em sinais
 de observabilidade chave. O [SDK](../sdk/) é a implementação de referência
@@ -55,10 +54,11 @@ Bibliotecas e _frameworks_ devem depender apenas da API, invocar somente seus
 métodos e instruir aplicações e usuários finais a adicionar uma dependência no
 SDK e configurar uma instância adequada.
 
-{{% alert title=Javadoc %}} Para a referência Javadoc de todos os componentes
-Java do OpenTelemetry, consulte
-[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
-{{% /alert %}}
+> [!NOTE] Javadoc
+>
+> Para a referência Javadoc de todos os componentes Java do OpenTelemetry,
+> consulte
+> [javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
 
 ## Componentes da API {#api-components}
 
@@ -400,7 +400,9 @@ registrar telemetria relativa a um determinado escopo:
 - [LoggerProvider](#loggerprovider) fornece [Loggers](#logger) com escopo para
   registrar logs.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 Um escopo é identificado pelo triplo (nome, versão, schemaUrl). É importante
 garantir que a identidade do escopo seja única. Uma prática comum é definir o
@@ -582,13 +584,14 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} O _Spring Boot starter_ é um caso
-especial em que `OpenTelemetry` está disponível como um _Spring bean_. Basta
-injetar `OpenTelemetry` em seus componentes Spring.
-
-Saiba mais sobre
-[como estender o Spring Boot starter com instrumentação manual personalizada](/docs/zero-code/java/spring-boot-starter/api/).
-{{% /alert %}}
+> [!NOTE] Spring Boot Starter
+>
+> O _Spring Boot starter_ é um caso especial em que `OpenTelemetry` está
+> disponível como um _Spring bean_. Basta injetar `OpenTelemetry` em seus
+> componentes Spring.
+>
+> Saiba mais sobre
+> [como estender o Spring Boot starter com instrumentação manual personalizada](/docs/zero-code/java/spring-boot-starter/api/).
 
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)
 é um agregador dos componentes principais da API de alto nível, conveniente para
@@ -635,13 +638,14 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
-{{% alert title="Java agent" %}} O Java agent é um caso especial em que
-`GlobalOpenTelemetry` é configurado pelo agente. Basta chamar
-`GlobalOpenTelemetry.getOrNoop()` para acessar a instância de `OpenTelemetry`.
-
-Saiba mais sobre
-[como estender o Java agent com instrumentação manual personalizada](/docs/zero-code/java/agent/api/).
-{{% /alert %}}
+> [!NOTE] Java agent
+>
+> O Java agent é um caso especial em que `GlobalOpenTelemetry` é configurado
+> pelo agente. Basta chamar `GlobalOpenTelemetry.getOrNoop()` para acessar a
+> instância de `OpenTelemetry`.
+>
+> Saiba mais sobre
+> [como estender o Java agent com instrumentação manual personalizada](/docs/zero-code/java/agent/api/).
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 mantém uma instância global única _(singleton)_ de
@@ -736,7 +740,7 @@ Como resultado:
 **Para instrumentação manual, use por padrão:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 <?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
 ```java
 package otel;
@@ -763,7 +767,7 @@ public class GlobalOpenTelemetryManualInstrumentationUsage {
   }
 }
 ```
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 <!-- prettier-ignore-end -->
 
 Como resultado:
@@ -1480,7 +1484,9 @@ public class AsyncGaugeUsage {
 [provedores e escopos](#providers-and-scopes) para informações sobre provedores
 e escopos.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 #### Logger
 
@@ -1678,14 +1684,15 @@ para ajudar as instrumentações a manterem conformidade:
 | Código gerado para convenções semânticas estáveis | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
 | Código gerado para convenções semânticas em teste | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
-{{% alert %}} Embora ambos `opentelemetry-semconv` e
-`opentelemetry-semconv-incubating` incluam o sufixo `-alpha` e possam sofrer
-alterações incompatíveis, a intenção é estabilizar `opentelemetry-semconv` e
-manter o sufixo `-alpha` permanentemente em `opentelemetry-semconv-incubating`.
-Bibliotecas podem usar `opentelemetry-semconv-incubating` para testes, mas não
-devem incluí-lo como dependência, pois os atributos podem mudar entre versões,
-causando erros em tempo de execução devido a conflitos de versões transitivas.
-{{% /alert %}}
+> [!NOTE]
+>
+> Embora ambos `opentelemetry-semconv` e `opentelemetry-semconv-incubating`
+> incluam o sufixo `-alpha` e possam sofrer alterações incompatíveis, a intenção
+> é estabilizar `opentelemetry-semconv` e manter o sufixo `-alpha`
+> permanentemente em `opentelemetry-semconv-incubating`. Bibliotecas podem usar
+> `opentelemetry-semconv-incubating` para testes, mas não devem incluí-lo como
+> dependência, pois os atributos podem mudar entre versões, causando erros em
+> tempo de execução devido a conflitos de versões transitivas.
 
 As constantes de atributos geradas a partir de convenções semânticas são
 instâncias de `AttributeKey<T>` e podem ser usadas em qualquer lugar onde a API
