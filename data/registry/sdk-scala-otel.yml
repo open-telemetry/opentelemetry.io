@@ -1,6 +1,6 @@
 # cSpell:ignore typelevel Maksym Ochenashko
 title: otel4s
-registryType: instrumentation
+registryType: sdk
 language: scala
 tags:
   - scala

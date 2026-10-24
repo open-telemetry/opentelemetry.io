@@ -14629,6 +14629,11 @@
     "when": "2026-10-22T05:45:15Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api#activity-creation-options": {
     "result": 200,
     "when": "2026-10-19T05:46:22Z",
@@ -15469,9 +15474,29 @@
     "when": "2026-10-10T05:46:18Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/main/log": {
+    "result": 200,
+    "when": "2026-10-02T20:33:45Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/main/metric": {
+    "result": 200,
+    "when": "2026-10-02T20:33:45Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/main/sdk": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv/": {
     "result": 200,
     "when": "2026-10-16T05:45:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/main/trace": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts": {
@@ -16639,6 +16664,11 @@
     "when": "2026-10-17T05:40:58Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/declarative-config": {
     "result": 200,
     "when": "2026-10-19T05:46:29Z",
@@ -17172,6 +17202,21 @@
   "https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin": {
     "result": 200,
     "when": "2026-10-10T05:46:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node": {
+    "result": 200,
+    "when": "2026-10-02T20:33:45Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-web": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-kotlin": {
@@ -18452,6 +18497,16 @@
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-proto-http": {
     "result": 200,
     "when": "2026-10-10T05:46:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api": {
+    "result": 200,
+    "when": "2026-10-02T20:33:45Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/propagator/opentelemetry-propagator-b3": {
@@ -20237,6 +20292,16 @@
   "https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/Exporters/Stdout": {
     "result": 200,
     "when": "2026-10-13T05:50:15Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetryApi": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetrySdk": {
+    "result": 200,
+    "when": "2026-10-02T20:33:46Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-swift/blob/cc8fff2d3e72171d559f1d9a4a13d87b0f55427f/Sources/OpenTelemetryApi/OpenTelemetry.swift": {

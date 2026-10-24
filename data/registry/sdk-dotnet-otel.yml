@@ -1,0 +1,13 @@
+title: OpenTelemetry .NET SDK
+registryType: sdk
+language: dotnet
+tags:
+  - c#
+  - .net
+license: Apache 2.0
+description: The OpenTelemetry SDK for .NET (C#, F#)
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry
+createdAt: 2020-02-04
