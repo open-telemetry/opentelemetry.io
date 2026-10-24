@@ -4,28 +4,25 @@ aliases:
   - /docs/languages/js/api/tracing
   - manual
 weight: 30
-default_lang_commit: 9cdf79c9345a05fb82d0e67132c9f68dabddadba
-drifted_from_default: true
+default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
 description: Instrumentação para OpenTelemetry JavaScript
 cSpell:ignore: dicelib instrumentacao Millis rolldice versao
 ---
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Nota" %}}
-
-Nesta página você irá aprender como adicionar rastros, métricas e logs ao código
-manualmente. No entanto, não é necessário utilizar apenas um tipo de
-instrumentação: utilize a [instrumentação automática](/docs/zero-code/js/) para
-começar e depois enriqueça o código com a instrumentação manual conforme
-necessário.
-
-Além disso, para bibliotecas das quais o código depende, não é necessário
-escrever o código de instrumentação manualmente, pois elas podem vir com
-OpenTelemetry integrado de forma nativa ou é possível utilizar
-[bibliotecas de instrumentação](/docs/languages/js/libraries/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Nesta página você irá aprender como adicionar rastros, métricas e logs ao
+> código _manualmente_. No entanto, não é necessário utilizar apenas um tipo de
+> instrumentação: utilize a [instrumentação automática](/docs/zero-code/js/)
+> para começar e depois enriqueça o código com a instrumentação manual conforme
+> necessário.
+>
+> Além disso, para bibliotecas das quais o código depende, não é necessário
+> escrever o código de instrumentação manualmente, pois elas podem vir com
+> OpenTelemetry integrado de forma _nativa_ ou é possível utilizar
+> [bibliotecas de instrumentação](/docs/languages/js/libraries/).
 
 ## Preparação da aplicação de exemplo {#example-app}
 
@@ -36,6 +33,8 @@ aprendizado sobre instrumentação manual.
 Não é obrigatório utilizar a aplicação de exemplo: caso deseje instrumentar uma
 aplicação ou biblioteca própria, basta seguir as instruções desta seção para
 adaptar o processo ao seu código.
+
+{{% include esm-support-note.md %}}
 
 ### Dependências {#example-app-dependencies}
 
@@ -197,14 +196,13 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Inicializar o SDK {#initialize-the-sdk}
 
-{{% alert title="Note" %}} Caso esteja instrumentando uma biblioteca, **ignore
-esta etapa**. {{% /alert %}}
+> [!NB] Caso esteja instrumentando uma biblioteca, **ignore esta etapa**.
 
 Para instrumentar uma aplicação Node.js, instale o
 [SDK OpenTelemetry para Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
 
 ```shell
-npm install @opentelemetry/sdk-node
+npm install @opentelemetry/sdk-node @opentelemetry/sdk-trace @opentelemetry/sdk-metrics
 ```
 
 Antes que qualquer outro módulo da aplicação seja carregado, é necessário
@@ -218,7 +216,7 @@ um Tracer ou Meter da API.
 ```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
@@ -231,8 +229,8 @@ import {
 
 const sdk = new NodeSDK({
   resource: resourceFromAttributes({
-    [ATTR_SERVICE_NAME]: 'nomeDoServico',
-    [ATTR_SERVICE_VERSION]: '1.0',
+    [ATTR_SERVICE_NAME]: 'dice-server',
+    [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -248,7 +246,7 @@ sdk.start();
 ```js
 /*instrumentation.mjs*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
@@ -289,10 +287,11 @@ serviço.
 Existem métodos alternativos para definir atributos de recurso. Para mais
 informações, consulte [Recursos](/docs/languages/js/resources/).
 
-{{% alert title="Note" %}} Os exemplos a seguir que utilizam
-`--import instrumentation.ts` (TypeScript) requerem Node.js v20 ou posterior.
-Caso esteja utilizando Node.js v18, utilize o exemplo em JavaScript.
-{{% /alert %}}
+> [!NOTE]
+>
+> Os exemplos a seguir que utilizam `--import instrumentation.ts` (TypeScript)
+> requerem Node.js v20 ou posterior. Caso esteja utilizando Node.js v18, utilize
+> o exemplo em JavaScript.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -321,8 +320,7 @@ dependências. Para mais informações, veja
 
 ### Inicializar rastros {#initialize-tracing}
 
-{{% alert title="Nota" %}} Caso esteja instrumentando uma biblioteca, **ignore
-esta etapa**. {{% /alert %}}
+> [!NB] Caso esteja instrumentando uma biblioteca, **ignore esta etapa**.
 
 Para habilitar [rastros](/docs/concepts/signals/traces/) em uma aplicação, será
 necessário ter um
@@ -347,7 +345,11 @@ com [obter um Tracer](#acquiring-a-tracer).
 Primeiro, certifique-se de ter instalado os pacotes corretos:
 
 ```shell
-npm install @opentelemetry/sdk-trace-web
+npm install @opentelemetry/api \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
+  @opentelemetry/sdk-trace \
+  @opentelemetry/core
 ```
 
 Em seguida, atualize o arquivo `instrumentation.ts` (ou `instrumentation.js`)
@@ -356,6 +358,7 @@ para conter todo o código de inicialização do SDK:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
+import { context, propagation, trace } from '@opentelemetry/api';
 import {
   defaultResource,
   resourceFromAttributes,
@@ -364,11 +367,17 @@ import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import {
   BatchSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-base';
+  StackContextManager,
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 
 const resource = defaultResource().merge(
   resourceFromAttributes({
@@ -377,34 +386,45 @@ const resource = defaultResource().merge(
   }),
 );
 
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-
-const provider = new WebTracerProvider({
-  resource: resource,
-  spanProcessors: [processor],
+const tracerProvider = new TracerProvider({
+  resource,
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register();
+context.setGlobalContextManager(new StackContextManager().enable());
+
+const propagator = new CompositePropagator({
+  propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
+});
+propagation.setGlobalPropagator(propagator);
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { context, propagation, trace } require('@opentelemetry/api');
 const {
   defaultResource,
   resourceFromAttributes,
-} = require('@opentelemetry/resources');
+} require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
-} = require('@opentelemetry/semantic-conventions');
-const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
+} require('@opentelemetry/semantic-conventions');
 const {
-  ConsoleSpanExporter,
   BatchSpanProcessor,
-} = require('@opentelemetry/sdk-trace-base');
+  ConsoleSpanExporter,
+  StackContextManager,
+  TracerProvider,
+} require('@opentelemetry/sdk-trace');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} require('@opentelemetry/core');
 
 const resource = defaultResource().merge(
   resourceFromAttributes({
@@ -413,15 +433,23 @@ const resource = defaultResource().merge(
   }),
 );
 
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-
-const provider = new WebTracerProvider({
-  resource: resource,
-  spanProcessors: [processor],
+const tracerProvider = new TracerProvider({
+  resource,
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ]
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register();
+context.setGlobalContextManager(new StackContextManager().enable());
+
+const propagator = new CompositePropagator({
+  propagators: [
+    new W3CBaggagePropagator(),
+    new W3CTraceContextPropagator(),
+  ],
+});
+propagation.setGlobalPropagator(propagator);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -460,10 +488,10 @@ manual, deve-se chamar `getTracer` para obter um Tracer. Exemplo:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { trace } from '@opentelemetry/api';
 //...
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'nome-do-escopo-de-instrumentacao',
   'versao-do-escopo-de-instrumentacao',
 );
@@ -474,10 +502,10 @@ const tracer = opentelemetry.trace.getTracer(
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { trace } = require('@opentelemetry/api');
 //...
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'nome-do-escopo-de-instrumentacao',
   'versao-do-escopo-de-instrumentacao',
 );
@@ -1114,7 +1142,7 @@ quando combinado com a definição de [estado do trecho](#span-status).
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
+import { trace, SpanStatusCode } from '@opentelemetry/api';
 
 // ...
 
@@ -1131,7 +1159,7 @@ try {
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { SpanStatusCode } = require('@opentelemetry/api');
 
 // ...
 
@@ -1141,93 +1169,92 @@ try {
   if (ex instanceof Error) {
     span.recordException(ex);
   }
-  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+  span.setStatus({ code: SpanStatusCode.ERROR });
 }
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usando `sdk-trace-base` e propagando manualmente o contexto do trecho {#using-sdk-trace-base-and-manually-propagating-span-context}
+### Usando `sdk-trace` e propagando manualmente o contexto do trecho {#using-sdk-trace-and-manually-propagating-span-context}
 
 Em alguns casos, pode não ser possível utilizar o SDK do Node.js nem o SDK para
 Web. A maior diferença, além do código de inicialização, é que será necessário
 definir manualmente trechos como ativos no contexto atual para poder criar
 trechos aninhados.
 
-#### Inicializando rastreamento com `sdk-trace-base` {#initializing-tracing-with-sdk-trace-base}
+#### Inicializando rastreamento com `sdk-trace` {#initializing-tracing-with-sdk-trace}
 
 A inicialização é semelhante a como seria feito com Node.js ou o SDK Web.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { trace, propagation } from '@opentelemetry/api';
 import {
   CompositePropagator,
   W3CTraceContextPropagator,
   W3CBaggagePropagator,
 } from '@opentelemetry/core';
 import {
-  BasicTracerProvider,
   BatchSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-base';
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
 
-opentelemetry.trace.setGlobalTracerProvider(
-  new BasicTracerProvider({
-    // Configura o Span Processor para enviar trechos ao exportador
-    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
-  }),
+trace.setGlobalTracerProvider(
+  new TracerProvider({
+    spanProcessors: [
+      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    ],
+  }
 );
 
-opentelemetry.propagation.setGlobalPropagator(
+propagation.setGlobalPropagator(
   new CompositePropagator({
     propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
   }),
 );
 
 // Isso é o que será acessado em todo o código de instrumentação
-const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+const tracer = trace.getTracer('example-basic-tracer-node');
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { trace, context, propagation } = require('@opentelemetry/api');
 const {
   CompositePropagator,
   W3CTraceContextPropagator,
   W3CBaggagePropagator,
 } = require('@opentelemetry/core');
 const {
-  BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
-} = require('@opentelemetry/sdk-trace-base');
+  TracerProvider,
+} = require('@opentelemetry/sdk-trace');
 
-opentelemetry.trace.setGlobalTracerProvider(
-  new BasicTracerProvider({
-    // Configura o Span Processor para enviar trechos ao exportador
-    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+trace.setGlobalTracerProvider(
+  new TracerProvider({
+    spanProcessors: [
+      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+    ],
   }),
 );
 
-opentelemetry.propagation.setGlobalPropagator(
+propagation.setGlobalPropagator(
   new CompositePropagator({
     propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
   }),
 );
 
 // Isso é o que será acessado em todo o código de instrumentação
-const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+const tracer = trace.getTracer('example-basic-tracer-node');
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-Assim como os outros exemplos neste documento, isso exporta um Tracer que pode
-ser usado em toda a aplicação.
-
-#### Criando trechos aninhados com `sdk-trace-base` {#creating-nested-spans-with-sdk-trace-base}
+#### Criando trechos aninhados com `sdk-trace` {#creating-nested-spans-with-sdk-trace}
 
 Para criar trechos aninhados, é necessário definir qualquer trecho atualmente
 criado como o trecho ativo no contexto atual. O uso de `startActiveSpan` não é
@@ -1248,10 +1275,7 @@ const mainWork = () => {
 const doWork = (parent, i) => {
   // Para criar um trecho filho, é necessário marcar o trecho atual (pai) como o trecho ativo
   // no contexto, e então utilizar o contexto resultante para criar um trecho filho.
-  const ctx = opentelemetry.trace.setSpan(
-    opentelemetry.context.active(),
-    parent,
-  );
+  const ctx = trace.setSpan(context.active(), parent);
   const span = tracer.startSpan(`doWork:${i}`, undefined, ctx);
 
   // simular alguma operação aleatória.
@@ -1265,7 +1289,7 @@ const doWork = (parent, i) => {
 };
 ```
 
-Todas as outras APIs se comportam da mesma forma ao usar o `sdk-trace-base`, em
+Todas as outras APIs se comportam da mesma forma ao usar o `sdk-trace`, em
 comparação com os SDKs do Node.js ou Web.
 
 ## Métricas {#metrics}
@@ -1278,8 +1302,7 @@ telemetria sobre o tempo de execução da aplicação.
 
 ### Inicializar métricas {#initialize-metrics}
 
-{{% alert %}} Caso esteja instrumentando uma biblioteca, ignore esta etapa.
-{{% /alert %}}
+> [!NB] Caso esteja instrumentando uma biblioteca, **ignore esta etapa**.
 
 Para ativar [métricas](/docs/concepts/signals/metrics/) em sua aplicação, é
 necessário inicializar um
@@ -1318,7 +1341,7 @@ Caso ainda não tenha feito isso, crie um arquivo `instrumentation.ts` (ou
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { metrics } from '@opentelemetry/api';
 import {
   ConsoleMetricExporter,
   MeterProvider,
@@ -1352,7 +1375,7 @@ const myServiceMeterProvider = new MeterProvider({
 });
 
 // Defina este MeterProvider para ser global para a aplicação que está sendo instrumentada.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+metrics.setGlobalMeterProvider(myServiceMeterProvider);
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
