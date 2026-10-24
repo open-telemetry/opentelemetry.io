@@ -19519,6 +19519,16 @@
     "when": "2026-10-14T10:35:06Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.62.0/oteps/0232-maturity-of-otel.md": {
+    "result": 200,
+    "when": "2026-10-24T10:33:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.62.0/spec-compliance-matrix.md#logs": {
+    "result": 200,
+    "when": "2026-10-24T10:33:36Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "result": 200,
     "when": "2026-10-23T05:44:52Z",
