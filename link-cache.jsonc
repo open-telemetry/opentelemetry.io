@@ -14024,6 +14024,26 @@
     "when": "2026-10-16T05:44:17Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/README.md": {
+    "result": 200,
+    "when": "2026-10-24T00:17:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/main/java/oteldemo/recommendation/GrpcTelemetryConfiguration.java": {
+    "result": 200,
+    "when": "2026-10-24T00:17:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/main/java/oteldemo/recommendation/RecommendationService.java": {
+    "result": 200,
+    "when": "2026-10-24T00:17:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/test/java/oteldemo/recommendation/RecommendationServiceTests.java": {
+    "result": 200,
+    "when": "2026-10-24T00:17:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1": {
     "result": 200,
     "when": "2026-10-16T05:44:10Z",
@@ -14182,6 +14202,11 @@
   "https://github.com/open-telemetry/opentelemetry-demo/pull/3604": {
     "result": 200,
     "when": "2026-10-20T05:44:49Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/3966": {
+    "result": 200,
+    "when": "2026-10-24T00:17:13Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme": {
@@ -20812,6 +20837,11 @@
   "https://github.com/open-telemetry/opentelemetry.io/pull/11649": {
     "result": 200,
     "when": "2026-10-19T05:46:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/11667": {
+    "result": 200,
+    "when": "2026-10-24T00:17:12Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry.io/pull/5891": {
