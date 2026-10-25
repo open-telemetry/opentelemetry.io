@@ -66,7 +66,7 @@ OpenTelemetry では、独自のコンポーネントとコミュニティコン
 ## 既存のメトリクスシステムと OpenTelemetry の統合方法 {#how-we-integrated-opentelemetry-with-our-current-metric-system}
 
 Cloud Foundry では、ログとメトリクスの転送を担当する一連のエージェントがあります。
-入り口となるのは「Forwarder Agent」で、独自のカスタムフォーマットでログとメトリクスを受け取り、他のエージェントに多重化します。
+入り口となるのは「Forwarder Agent」で、独自のカスタムフォーマットでログとメトリクスを受け取り、他のエージェント向けに多重化します。
 
 私たちはエージェントにメトリクスを OTLP に変換して OpenTelemetry Collector に転送するサポートを追加しました。
 これに必要だったのは[わずか 200 行の Go コード](https://github.com/cloudfoundry/loggregator-agent-release/blob/1fd275fe85d6190bac73dc1195007cc8726c1871/src/pkg/otelcolclient/otelcolclient.go#L108-L153)で、その多くの行は単に波括弧を閉じているだけでした。
@@ -89,7 +89,7 @@ OpenTelemetry は、私たちが過去に遭遇した多くのエッジケース
 ## 今後について {#whats-next}
 
 この作業に着手した際、メトリクスだけに焦点を当てました。
-OpenTelemetry Collector 統合のもう一つのサポートシグナルタイプとしてログを追加する明確な道筋があります。
+OpenTelemetry Collector 統合でサポートする別のシグナルタイプとして、ログを追加する明確な道筋があります。
 Cloud Foundry の組み込みシグナルとしてトレースはまだサポートしていませんが、プラットフォームコンポーネントとプラットフォーム上で実行されるアプリケーションの両方にトレースが提供できる可能性に期待しています。
 
 現在の OpenTelemetry Collector 統合は、私たちが「集約ドレイン」と呼んでいるものを提供しています。
