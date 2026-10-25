@@ -276,17 +276,16 @@ repository, which an org admin merges and applies.
 ### 6a. Create the teams {#gh-org-teams}
 
 In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
-`docs-LANG_ID-maintainers`. For an example of the expected format, teams and
-grant together, see [admin#243][].
+`docs-LANG_ID-maintainers`. For an example of the team declarations, see
+[admin#588][].
 
 ### 6b. Grant the approvers team write access {#gh-org-grant}
 
 In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
 list of `repo-opentelemetry-io.tf`. The approvers team itself must hold write
-access to count as a [code owner][]; GitHub ignores a CODEOWNERS owner without
-it, whatever access its members hold through other teams. Until the grant is
-applied, the locale's own reviews don't satisfy the required code-owner review
-and its pages stay with the `docs-approvers` fallback owner.
+access to count as a [code owner][], whatever access its members hold through
+other teams; without the grant, GitHub ignores the team in CODEOWNERS and the
+locale's pages stay with the `docs-approvers` fallback owner.
 
 ### 6c. Add team members {#gh-org-members}
 
@@ -294,9 +293,8 @@ Team members must be members of the `open-telemetry` GitHub organization. A
 contributor who meets the member and approver requirements of the community
 [membership guidelines][] requests membership as that guide describes (a
 [`REQUEST: New membership` issue][membership request]). Kickoff contributors
-join the live team only once they qualify; until then maintainers treat their
-"LGTM" as approval, as described in [New localizations][], and the kickoff issue
-tracks their promotion.
+join the live team only once they qualify (for how their reviews count until
+then, see [New localizations][]); the kickoff issue tracks their promotion.
 
 [Team members are added manually][admin#58] by an org admin, since memberships
 aren't managed by the admin repository. The `docs-LANG_ID-maintainers` team can
@@ -313,15 +311,16 @@ First confirm the team's own grant, then each member's effective access:
 ```sh
 gh api --paginate repos/open-telemetry/opentelemetry.io/teams --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
 gh api orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
-gh api repos/open-telemetry/opentelemetry.io/collaborators/USER/permission --jq .permission
+gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permission --jq .permission
 ```
 
-The first command prints `push` when the approvers team holds write access;
-nothing printed means the team has no access to the repository (the grant in
-Step 6b is missing or not yet applied), and `pull` or `triage` means a grant
-below write. The second lists the live team members. The third, run for each
-member (replace `USER` with their GitHub handle), must report `write` or
-`admin`; anything else means the member isn't getting access through the team.
+- The first command prints `push` when the approvers team holds write access.
+  Nothing printed means the team has no access to the repository (the grant in
+  Step 6b is missing or not yet applied); `pull` or `triage` means a grant below
+  write.
+- The third command, run for each member the second one lists (replace
+  `GITHUB_HANDLE` with theirs), reports the member's effective permission from
+  all sources; it must be at least `write` (`write`, `maintain`, or `admin`).
 
 ## Step 7 — Slack channel and community listing {#slack}
 
@@ -441,7 +440,7 @@ correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
 [admin#58]: https://github.com/open-telemetry/admin/issues/58?link-check=no
-[admin#243]: https://github.com/open-telemetry/admin/pull/243?link-check=no
+[admin#588]: https://github.com/open-telemetry/admin/pull/588?link-check=no
 [code owner]:
   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [membership guidelines]:

@@ -243,12 +243,9 @@ npm run check:codeowners   # must report "up to date"
 
 ## Out-of-repo: org and community setup {#out-of-repo-create-the-org-teams}
 
-The generated CODEOWNERS references `@open-telemetry/docs-<lang>-approvers`;
-GitHub flags it as invalid until that team exists **and holds write access**.
-The org-side procedure (team creation and the repository grant in one
-`open-telemetry/admin` PR, org membership, adding members, verification) is the
-setup guide's [Step 6][]; the Slack channel and the community listing are its
-[Step 7][].
+Follow the setup guide's [Step 6][] (GitHub org-level setup: teams, the write
+grant, membership, verification) and [Step 7][] (Slack channel and community
+listing).
 
 Agent deltas: the admin PR and the community PR are separate from the setup PR.
 You can prepare and describe them, but you can't merge the admin PR, add team
