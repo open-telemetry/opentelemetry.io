@@ -5,6 +5,7 @@ description: >-
   の読み込みとゲート処理の仕組み
 aliases: [scripts]
 default_lang_commit: 06bcb558c71da67124b77dfd7ddf1de659cb2da7
+drifted_from_default: true
 ---
 
 サイトは Docsy のスクリプトに加えて `assets/js/` 配下にいくつか独自のスクリプトを追加しており、3 つの方法で読み込まれます。
