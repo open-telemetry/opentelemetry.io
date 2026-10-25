@@ -8,11 +8,11 @@ cSpell:ignore: ansible Ishan ishanjainn Jain
 ---
 
 [Ansible](https://www.ansible.com/) を使って、複数の Linux ホストに
-[OpenTelemetry Collector](/docs/collector/deploy/) のデプロイをスケールし、オブザーバビリティアーキテクチャ内で[ゲートウェイ](/docs/collector/deploy/gateway/)と[エージェント](/docs/collector/deploy/agent/)の両方として機能させることができます。
-OpenTelemetry Collector をこのように二重の役割で使用することで、メトリクス、トレース、ログを分析・可視化プラットフォームへ堅牢に収集・転送できます。
+[OpenTelemetry Collector](/docs/collector/deploy/) のデプロイの規模を拡大し、オブザーバビリティアーキテクチャ内で[ゲートウェイ](/docs/collector/deploy/gateway/)と[エージェント](/docs/collector/deploy/agent/)の両方として機能させることができます。
+OpenTelemetry Collector をこのように二重の役割で使用することで、分析・可視化プラットフォームへのメトリクス、トレース、ログの堅牢な収集・転送が可能になります。
 
 ここでは、Ansible を使ってインフラストラクチャ全体に OpenTelemetry Collector のスケーラブルなインスタンスをデプロイ・管理する戦略を概説します。
-以下の例では、メトリクスのターゲットバックエンドとして [Grafana](https://grafana.com/) を使用します。
+以下の例では、メトリクスのターゲットとなるバックエンドとして [Grafana](https://grafana.com/) を使用します。
 
 ## 前提条件 {#prerequisites}
 
