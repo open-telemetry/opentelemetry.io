@@ -103,7 +103,7 @@ Packaging SIG は、2026年5月に正式に[設立](https://github.com/open-tele
 
 ### 本番環境に向けて {#towards-production}
 
-リポジトリは GitHub Pages 上の GitHub でホストされています。
+リポジトリは GitHub 上で GitHub Pages を通じてホストされています。
 これは本番ワークロード向けではなく、[本番環境レベルのホスティングソリューション](https://github.com/open-telemetry/opentelemetry-packaging/issues/4)を検討する予定です。
 
 [パッケージの署名はまだ行われていません](https://github.com/open-telemetry/opentelemetry-packaging/issues/23)。
