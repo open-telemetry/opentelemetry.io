@@ -35,8 +35,8 @@ PHP 8.0 より前は、トレーシング機能を追加する最も一般的な
 function hook(
     ?string $class,
     string $function,
-    ?\\Closure $pre = null,
-    ?\\Closure $post = null,
+    ?\Closure $pre = null,
+    ?\Closure $post = null,
 ): bool {}
 ```
 
@@ -48,7 +48,7 @@ function helloWorld() {
   echo 'helloWorld';
 }
 
-\\OpenTelemetry\\Instrumentation\\hook(null, 'helloWorld',
+\OpenTelemetry\Instrumentation\hook(null, 'helloWorld',
     static function (?string $class, array $params, ?string $classname, string $functionname, ?string $filename, ?int $lineno)
     {
       echo 'before';
