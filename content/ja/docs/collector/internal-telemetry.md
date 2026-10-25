@@ -1,8 +1,7 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
-drifted_from_default: true
+default_lang_commit: 2cc7b050cecdab1a7daadb6b78ce51b15a18bec8
 cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
@@ -142,8 +141,9 @@ service:
 
 > [!NOTE]
 >
-> 内部メトリクス用の Prometheus エクスポーターを手動で（`readers` を使って）設定する場合、`otelcol_process_uptime` は `without_type_suffix` と `without_units` が `true` に設定されていない限り、`otelcol_process_uptime_seconds_total` としてエクスポートされる可能性があります。
-> それにかかわらず、views では `instrument_name` の値 `otelcol_process_uptime`（OTLP 名）を使用してください。
+> Collector は `without_type_suffix` と `without_units` がデフォルトで `true` であるため、`otelcol_process_uptime` を Prometheus の接尾辞なしでエクスポートします（たとえば、`otelcol_process_uptime_seconds_total` としてはエクスポートしません）。
+> これは、内部メトリクス用の Prometheus エクスポーターを手動で（`readers` を使って）設定しているかどうかにかかわらず同様です。
+> views では `instrument_name` の値 `otelcol_process_uptime`（OTLP 名）を使用してください。
 > Prometheus 固有の接尾辞を制御するには、[単位接尾辞](#unit-suffixes) を参照してください。
 
 ```yaml
@@ -315,27 +315,31 @@ v0.106.1 より前のコレクターのバージョンにおいて、Prometheus 
 
 #### `_total` 接尾辞 {#total-suffix}
 
-デフォルトで Prometheus 固有の動作として、Prometheus エクスポーターは`otelcol_exporter_send_failed_spans_total` のように、Prometheus の命名規則に従うため合計メトリクスに `_total` 接尾辞を追加します。
-この動作は、Prometheus エクスポーターの設定で `without_type_suffix: true` を設定することで無効化できます。
+Prometheus 固有の動作として、Prometheus エクスポーターはカウンター（合計）メトリクスに `_total` 接尾辞を追加できます。
+これにより `otelcol_exporter_send_failed_spans_total` のような Prometheus の命名規則に従った名前になります。
+この動作は `without_type_suffix` オプションで制御されます。
 
-コレクターの設定で `service::telemetry::metrics::readers` を省略する場合、コレクターによって設定されるデフォルトの Prometheus エクスポーターは、すでに `without_type_suffix` が `false` に設定されています。
-ただし、readers をカスタマイズして Prometheus エクスポーターを手動で追加する場合は、「raw」メトリクス名に戻すためにそのオプションを設定する必要があります。
-詳細については、[コレクター v1.25.0/v0.119.0 リリースノート](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190)を参照してください。
+デフォルトでは、Collector は `without_type_suffix: true` を設定してこの接尾辞を無効化しているため、カウンターは `otelcol_exporter_send_failed_spans` のような「生の」名を維持します。
+このデフォルトは `service::telemetry::metrics::readers` を設定しているかどうかにかかわらず適用されます。
+セクションを省略した場合、Collector が設定するデフォルトの Prometheus エクスポーターは `without_type_suffix: true` を使用し、オプションを設定せずに Prometheus リーダーを手動で設定した場合も、[Collector v1.58.0/v0.152.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0) 以降は Collector が `true` を適用します。
+接尾辞を再度有効にするには、`without_type_suffix: false` を明示的に設定してください。
 
 OTLP を通じてエクスポートされる内部メトリクスは、この動作がありません。
 このページの [内部メトリクス](#lists-of-internal-metrics) は、`otelcol_exporter_send_failed_spans` のような OTLP 形式で一覧化されています。
 
 #### `_seconds` とその他の単位接尾辞 {#unit-suffixes}
 
-Prometheus エクスポーターは、単位を持つメトリクスに単位接尾辞を付加します。
+Prometheus エクスポーターは、単位を持つメトリクスに単位接尾辞を付加できます。
 たとえば、`otelcol_process_uptime`（単位: 秒）は `otelcol_process_uptime_seconds_total` としてエクスポートされることがあります。
-つまり、`_seconds` の単位接尾辞が先に追加され、その後に `_total` のカウンタを示す接尾辞が追加されます。
+つまり、`_seconds` の単位接尾辞が先に追加され、その後に `_total` のカウンター接尾辞が追加されます。
+この動作は `without_units` オプションで制御されます。
 
-コレクターによって設定されるデフォルトの Prometheus エクスポーター（`readers` が指定されていない場合）は、すでに後方互換性のために `without_type_suffix` と `without_units` を `true` に設定しています。
-そのため、 `otelcol_process_uptime` はそのまま使用されます。
+デフォルトでは、Collector は後方互換性のために `without_units: true` を設定して単位接尾辞を無効化しているため、`otelcol_process_uptime` はそのまま使用されます。
+[`_total` 接尾辞](#total-suffix) と同様に、このデフォルトは `service::telemetry::metrics::readers` を指定しているかどうかにかかわらず適用されます。
+[Collector v1.58.0/v0.152.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0) 以降、オプションを設定せずに手動で設定した Prometheus リーダーもデフォルトで `true` になります。
 
-しかし、`service::telemetry::metrics::readers` の下で Prometheus エクスポーターを手動で設定する場合、それらのオプションはデフォルトでは設定されません。
-元のより短いメトリクス名を維持するには、以下のように両方のオプションを明示的に `true` に設定してください。
+`without_units`（単位接尾辞）と `without_type_suffix`（カウンター接尾辞）は対になるオプションであり、通常は一緒に設定します。
+完全な Prometheus スタイルの名前に戻すには、両方を `false` に設定してください。
 
 ```yaml
 service:
@@ -347,11 +351,11 @@ service:
               prometheus:
                 host: '0.0.0.0'
                 port: 8888
-                without_type_suffix: true
-                without_units: true
+                without_type_suffix: false
+                without_units: false
 ```
 
-この設定では、`otelcol_process_uptime_seconds_total` は `otelcol_process_uptime` としてエクスポートされます。
+この設定では、`otelcol_process_uptime` は `otelcol_process_uptime_seconds_total` としてエクスポートされます。
 
 #### ドット (`.`) とアンダースコア (`_`) {#dots-v-underscores}
 

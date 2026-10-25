@@ -26799,6 +26799,16 @@
     "when": "2026-10-15T20:42:29Z",
     "via": "lychee",
   },
+  "https://opentelemetry.io/docs/contributing/issues/": {
+    "result": 200,
+    "when": "2026-10-22T23:23:16Z",
+    "via": "lychee",
+  },
+  "https://opentelemetry.io/docs/contributing/issues/#parked": {
+    "result": 200,
+    "when": "2026-10-23T16:40:31Z",
+    "via": "lychee",
+  },
   "https://opentelemetry.io/docs/guidance/blueprints/managed-telemetry-platforms-for-k8s-workloads/": {
     "result": 200,
     "when": "2026-10-21T22:50:33Z",
@@ -29359,9 +29369,19 @@
     "when": "2026-10-20T05:44:55Z",
     "via": "lychee",
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.33.0-alpha/opentelemetry-instrumentation-bom-alpha-2.33.0-alpha.pom": {
+    "result": 200,
+    "when": "2026-10-23T19:23:51Z",
+    "via": "lychee",
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.32.0/opentelemetry-instrumentation-bom-2.32.0.pom": {
     "result": 200,
     "when": "2026-10-20T05:44:55Z",
+    "via": "lychee",
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.33.0/opentelemetry-instrumentation-bom-2.33.0.pom": {
+    "result": 200,
+    "when": "2026-10-23T19:23:51Z",
     "via": "lychee",
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.67.0-alpha/opentelemetry-bom-alpha-1.67.0-alpha.pom": {
