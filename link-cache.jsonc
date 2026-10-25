@@ -16406,7 +16406,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spark-2.3": {
     "result": "error",
-    "when": "2026-10-24T05:42:57Z",
+    "when": "2026-10-25T05:43:09Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring": {
@@ -29325,8 +29325,8 @@
     "via": "lychee",
   },
   "https://rubydoc.info/gems/opentelemetry-instrumentation-all/0.96.0": {
-    "result": "timeout",
-    "when": "2026-10-24T05:42:57Z",
+    "result": 200,
+    "when": "2026-10-25T05:43:28Z",
     "via": "lychee",
   },
   "https://rubydoc.info/gems/opentelemetry-instrumentation-anthropic/0.5.0": {
