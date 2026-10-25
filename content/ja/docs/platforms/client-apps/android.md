@@ -4,9 +4,8 @@ description: >-
   Android プラットフォーム上で動作するアプリで OpenTelemetry を使う
 weight: 10
 vers:
-  ot-android: 1.7.0
-default_lang_commit: 635c7435bab2fbc655d08e5bb84b127e10242a7d
-drifted_from_default: true
+  ot-android: 1.8.0
+default_lang_commit: ce13abdfc9fac8e92bf420b1f758451f63082c69
 cSpell:ignore: inactivity
 ---
 

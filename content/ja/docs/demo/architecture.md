@@ -3,8 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 0f387a04d1d4029af5139505eb4c1f780ae238cc
-drifted_from_default: true
+default_lang_commit: ce13abdfc9fac8e92bf420b1f758451f63082c69
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -44,6 +43,12 @@ agent -.->|HTTP| frontend
 agent -.->|HTTP| mcp
 
 ad --->|gRPC| flagd
+checkout --->|gRPC| flagd
+product-catalog --->|gRPC| flagd
+email --->|gRPC| flagd
+shipping --->|gRPC| flagd
+agent --->|gRPC| flagd
+load-generator -->|HTTP| flagd
 
 checkout -->|gRPC| currency
 checkout -->|gRPC| cart
