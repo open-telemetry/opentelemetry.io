@@ -2,15 +2,14 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: c1e141558ab36cc1ab9f864728e4665e272ac131
-drifted_from_default: true
+default_lang_commit: 4cc5cb830e724c286159bf143639b914f876ab17
 ---
 
 OpenTelemetry とは、次のようなものです。
 
 - **[オブザーバビリティ][observability]フレームワークでありツールキット**です。[トレース][traces]、[メトリクス][metrics]、[ログ][logs]のような[テレメトリーデータ][telemetry data] の次の処理を容易にするために設計されています
   - [生成][instr]
-  - エクスポート
+  - [エクスポート](../concepts/components/#exporters)
   - [収集](../concepts/components/#collector)
 
 - **オープンソース**であり、**ベンダーやツールにとらわれません**。つまり、[Jaeger][]や[Prometheus][]のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。OpenTelemetry はオブザーバビリティバックエンドでは**ありません**。
@@ -80,13 +79,13 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 
 ## 歴史 {#history}
 
-OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが[統合された][]成果物です。
+OpenTelemetryは、[Cloud Native Computing Foundation][]（CNCF）プロジェクトであり、[OpenTracing](https://opentracing.io) と [OpenCensus](https://opencensus.io) の2つのプロジェクトが[統合された][merger]成果物です。
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。
 どちらのプロジェクトも、独立してこの問題を完全には解決できなかったので、協力するためにOpenTelemetryプロジェクトとして合併し、単一のソリューションを提供しながら、それぞれの強みを組み合わせました。
 
 現在OpenTracingまたはOpenCensusを使っている場合は、[移行ガイド](../compatibility/migration/)でOpenTelemetryへの移行方法を確認してください。
 
-[統合された]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
+[merger]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## 次のステップ {#what-next}
 
