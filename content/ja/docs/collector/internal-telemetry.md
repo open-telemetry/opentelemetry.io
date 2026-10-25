@@ -319,7 +319,7 @@ Prometheus 固有の動作として、Prometheus エクスポーターはカウ�
 これにより `otelcol_exporter_send_failed_spans_total` のような Prometheus の命名規則に従った名前になります。
 この動作は `without_type_suffix` オプションで制御されます。
 
-デフォルトでは、Collector は `without_type_suffix: true` を設定してこの接尾辞を無効化しているため、カウンターは `otelcol_exporter_send_failed_spans` のような「raw」名を維持します。
+デフォルトでは、Collector は `without_type_suffix: true` を設定してこの接尾辞を無効化しているため、カウンターは `otelcol_exporter_send_failed_spans` のような「生の」名を維持します。
 このデフォルトは `service::telemetry::metrics::readers` を設定しているかどうかにかかわらず適用されます。
 セクションを省略した場合、Collector が設定するデフォルトの Prometheus エクスポーターは `without_type_suffix: true` を使用し、オプションを設定せずに Prometheus リーダーを手動で設定した場合も、[Collector v1.58.0/v0.152.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0) 以降は Collector が `true` を適用します。
 接尾辞を再度有効にするには、`without_type_suffix: false` を明示的に設定してください。
