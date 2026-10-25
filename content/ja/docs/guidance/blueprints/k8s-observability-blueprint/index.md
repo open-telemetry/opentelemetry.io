@@ -84,7 +84,7 @@ Collector と SDK パイプラインにおけるサイレントなギャップ �
 | `kubeletstats` **レシーバー**          | `kubeletMetrics`        | **cAdvisor / kubelet メトリクス**             | kubelet からのノード、Pod、コンテナの CPU/メモリ（およびボリューム）リソースメトリクスの優先ソース。                                             |
 | `hostmetrics` **レシーバー**           | `hostMetrics`           | `node-exporter`（部分的）                     | `kubeletstats` がカバーしないホスト OS メトリクス — たとえばプロセス、ファイルシステム、ディスク I/O、ネットワーク、負荷、ページングメトリクス。 |
 | `filelog` **レシーバー**               | `logsCollection`        | Fluent Bit / ノードログエージェント           | ランタイムが `/var/log/pods/*/*/*.log` に書き込むコンテナの stdout/stderr。DaemonSet を使用してノードごとに1回収集します。                       |
-| `k8s_objects` **レシーバー**           | `kubernetesObjects`     | N/A                                           | API サーバーからのログとしての Kubernetes オブジェクトリソースの状態（pull および/または watch）。                                               |
+| `k8s_objects` **レシーバー**           | `kubernetesObjects`     | N/A                                           | API サーバーからログとして取得する Kubernetes オブジェクトリソースの状態（pull および/または watch）。                                           |
 | `k8s_events` **レシーバー**            | `kubernetesEvents`      | N/A                                           | 発生時のクラスターイベント（Eviction、OOM など）。                                                                                               |
 
 成果:
@@ -100,7 +100,7 @@ Collector と SDK パイプラインにおけるサイレントなギャップ �
 
 - **OTel ネイティブ Kubernetes レシーバー**（`k8s_cluster`、`kubeletstats`、`k8s_objects`、`k8s_events`）は、コアとなる識別属性（`k8s.pod.name`、`k8s.namespace.name`、`k8s.node.name`、ワークロード UID など）をすでに出力しています。
   これらのレシーバーの組み込み属性を優先し、再導出は避けてください。
-- **アプリケーション OTLP および Prometheus スクレイプされたテレメトリー** は通常そのコンテキストを持ちません。
+- **アプリケーション OTLP および Prometheus でスクレイプされたテレメトリー** は通常そのコンテキストを持ちません。
   `k8sattributesprocessor` を使用してデータを Pod に関連付け、標準の `k8s.`\* 属性を追加することでエンリッチします。
 - **組織ラベル/アノテーション**（チーム、環境、ティア）はインフラレシーバーからは出力されません。
   アプリまたは Pod スコープのシグナルにそれらが必要な場合は、`k8sattributesprocessor` の `extract.labels` / `extract.annotations` を使用して抽出します。
@@ -135,7 +135,7 @@ Operator はさらに、ゼロコード自動計装の注入のための `Instru
 
 ## 実装 {#implementation}
 
-以下の図は、チャートのデフォルト値による結果のアーキテクチャを示しています。
+以下の図は、チャートのデフォルト値で得られるアーキテクチャを示しています。
 ノードごとに1つの DaemonSet Collector、すべてのノードにノードローカルレシーバー、選出されたリーダー上でのみクラスタースコープレシーバーが動作します。
 
 オプションの Collector Gateway はこのブループリントのスコープ外ですが、図に示されています。
