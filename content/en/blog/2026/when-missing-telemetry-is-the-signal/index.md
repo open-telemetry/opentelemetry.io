@@ -9,8 +9,8 @@ cSpell:ignore: anarwal
 ---
 
 An empty dashboard can mean that nothing happened. It can also mean that the
-system stopped reporting what happened. On a dashboard they look the same. One
-needs no action. The other means you are working blind.
+system stopped reporting what happened. On a dashboard, they look the same. One
+needs no action. The other means you are missing the information you need to act.
 
 Take a workflow where events enter a service, pass through a processing stage,
 and reach storage. An operator then uses the stored result. Every service can
