@@ -25,7 +25,7 @@ about 35% smaller.
 
 ## Why checkpoints were worth optimizing
 
-The filelog receiver keeps a small record for every file it tracks: a
+The File Log receiver keeps a small record for every file it tracks: a
 fingerprint built from the first bytes of the file, the read offset, the record
 number, the file attributes, and some state used to flush partial lines. When
 storage is configured, that whole list is serialized and written to the storage
