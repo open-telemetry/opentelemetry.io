@@ -30539,6 +30539,11 @@
     "when": "2026-10-19T05:46:27Z",
     "via": "lychee",
   },
+  "https://vote.heliosvoting.org/helios/e/otel-gc-election-2026/vote": {
+    "result": 200,
+    "when": "2026-10-26T19:29:30Z",
+    "via": "lychee",
+  },
   "https://vote.heliosvoting.org/helios/elections/9bad2b3c-d2df-4634-b801-a6926fdd2251/view": {
     "result": 200,
     "when": "2026-10-23T05:44:44Z",
