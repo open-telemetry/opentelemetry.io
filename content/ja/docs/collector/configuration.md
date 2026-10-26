@@ -2,7 +2,7 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 5ec6f9be2f6645aca56794b24524a6f5316613b6
+default_lang_commit: 5d6a81cbc10c0d041125802495b0a09c4ff835d6
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
@@ -490,8 +490,19 @@ exporters:
 
 > コネクターは[service](#service)セクション内のパイプラインを通じて有効になります。
 
-次の例は、`count` コネクターと、`pipelines` 節での設定方法を示しています。
-このコネクターは、トレースのエクスポーターとして、またメトリクスのレシーバーとして機能し、両方のパイプラインを接続していることに注意してください。
+たとえば、トレース内の特定のスパンイベントをカウントするメトリクスが必要だとします。
+プロセッサーはパイプライン内のデータを変更やフィルタリングできますが、そのパイプラインから別のパイプラインへトレースをメトリクスとしてエクスポートすることはできません。
+コネクターはトレースを消費し、別のメトリクスパイプライン向けにメトリクスを生成できます。
+
+次の例では、`count` コネクターを使用して `my.prod.event.count` という名前のメトリクスを生成します。
+このメトリクスは、`env` 属性が `prod` である**か**、名前が `prodevent` であるスパンイベントをカウントします。
+条件は OR で評価されます。イベントはカウントされるためにいずれか1つの条件に一致するだけで十分です。
+これらの条件はカウントするイベントを選択するものであり、トレーシングバックエンド向けにトレースをフィルタリングするものではありません。
+
+`pipelines` セクションでは、`count` はトレースのエクスポーターとして、またメトリクスのレシーバーとして機能します。
+トレースパイプラインはデータを `count` に送り、メトリクスパイプラインは結果のカウントを `bar` に送ります。
+この例では、元のトレースをトレーシングバックエンドにエクスポートしません。
+トレースも保持するには、トレースパイプラインの `exporters` リストにトレースエクスポーターを追加してください。
 
 ```yaml
 receivers:
@@ -504,7 +515,7 @@ connectors:
   count:
     spanevents:
       my.prod.event.count:
-        description: The number of span events from my prod environment.
+        description: The number of span events matching either condition.
         conditions:
           - 'attributes["env"] == "prod"'
           - 'name == "prodevent"'

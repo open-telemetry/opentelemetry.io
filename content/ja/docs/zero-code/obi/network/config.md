@@ -4,6 +4,7 @@ linkTitle: 設定
 description: OBI ネットワークメトリクスで利用可能な設定オプションについて学びます
 weight: 3
 default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+drifted_from_default: true
 cSpell:ignore: BEETPH UDPLITE
 ---
 
