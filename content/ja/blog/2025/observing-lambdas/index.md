@@ -14,7 +14,7 @@ Collector をセットアップして、アプリケーションからデータ�
 これはおよそ1分ごとに行われ、1秒遅れたり早まったりしても誰も気にしません。
 しかし、アプリケーションが長時間存在しない場合はどうでしょうか。
 データの収集を待つ1秒ごとに課金される場合はどうでしょうか。
-それはおそらく Function-as-a-Service（FaaS）環境のことを考えているでしょう。
+その場合、おそらく Function-as-a-Service（FaaS）環境を考えているでしょう。
 最もよく知られているのが AWS Lambda です。
 
 この実行モデルでは、関数は直接呼び出され、実行後に環境がフリーズされます。
@@ -44,7 +44,7 @@ Lambda の [Extensions API](https://docs.aws.amazon.com/lambda/latest/dg/runtime
 これにより、すべてのデータが送信されていなくても Lambda がレスポンスを返すことが可能になります。
 次の呼び出し時（またはシャットダウン時）に、Collector は関数が処理を行っている間もデータのエクスポートを継続します。
 
-{{< figure src="diagram-execution-timing.svg" caption="Diagram showcasing how execution timing differs with and without a Collector">}}
+{{< figure src="diagram-execution-timing.svg" caption="Collector の有無による実行タイミングの違いを示す図">}}
 
 ## どうすれば使えるのか {#how-can-i-use-it}
 
