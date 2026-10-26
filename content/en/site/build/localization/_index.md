@@ -287,22 +287,21 @@ access, whatever its members hold through other teams.
 
 ### 6c. Add team members {#gh-org-members}
 
-Team members must be members of the `open-telemetry` GitHub organization. A
-contributor who meets the member requirements of the community [membership
-guidelines][] requests membership as that guide describes (a
-[`REQUEST: New membership` issue][membership request]); they join the approvers
-team once elected approver per that guide's [Becoming an Approver][]. Kickoff
-contributors join the live team only once they qualify (for how their reviews
-count until then, see [New localizations][]); the kickoff issue tracks their
-promotion.
+An org admin [adds team members manually][admin#58]; the admin repository
+doesn't manage memberships.
 
-[Team members are added manually][admin#58] by an org admin, since memberships
-aren't managed by the admin repository. The `docs-LANG_ID-maintainers` team can
-stay empty at first (the locale is then [unstaffed][]). Once the locale has
-maintainers, give them the GitHub [team maintainer][] role on both teams so they
-can add and remove members themselves; a team maintainer must be a member of
-that team, so don't grant the role on the maintainers team to someone who isn't
-a locale maintainer.
+- **Who qualifies**:
+  - Org members elected approver per the community [membership guidelines][]
+    ([Becoming an Approver][]).
+  - Kickoff contributors usually qualify later: until then their reviews count
+    as described in [New localizations][], and the kickoff issue tracks their
+    promotion.
+- **Maintainers team**: can stay empty at first; the locale is then
+  [unstaffed][].
+- **Delegation**: once the locale has maintainers, give them the GitHub [team
+  maintainer][] role on both teams so they can manage membership themselves. The
+  role requires membership in the team, so on the maintainers team grant it only
+  to locale maintainers.
 
 ### 6d. Verify access {#gh-org-verify}
 
@@ -447,8 +446,6 @@ correct:
   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-[membership request]:
-  https://github.com/open-telemetry/community/issues/new?template=membership.md
 [team maintainer]:
   https://docs.github.com/en/organizations/organizing-members-into-teams/assigning-the-team-maintainer-role-to-a-team-member
 [Updating SIG information]:
