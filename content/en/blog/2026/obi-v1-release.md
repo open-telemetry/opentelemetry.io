@@ -13,16 +13,6 @@ sig: SIG eBPF Instrumentation
 # cSpell:ignore Ollama Qwen reranking Roquetto Yahn
 ---
 
-<!--
-Publication note: This announcement was prepared ahead of OBI v1.0.0's planned
-release on Friday, October 30, 2026. It is intentionally written in release-day
-voice and future-dated to that day. Keep draft: true until the final release is
-published, the blog proposal and reviews are approved, and the release-dependent
-claims and links have been checked. If the release slips, update date and
-publishDate before publication. Replace RC2 references with final release
-references where appropriate, and recheck artifact and SBOM limitations.
--->
-
 We're excited to announce v1.0.0 of OpenTelemetry eBPF Instrumentation—OBI!
 
 [OBI](/docs/zero-code/obi/) brings OpenTelemetry observability to running Linux
