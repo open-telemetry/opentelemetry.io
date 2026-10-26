@@ -282,10 +282,8 @@ In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
 ### 6b. Grant the approvers team write access {#gh-org-grant}
 
 In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
-list of `repo-opentelemetry-io.tf`. The approvers team itself must hold write
-access to count as a [code owner][], whatever access its members hold through
-other teams; without the grant, GitHub ignores the team in CODEOWNERS and the
-locale's pages stay with the `docs-approvers` fallback owner.
+list of `repo-opentelemetry-io.tf`: a [code owner][] team must itself hold write
+access, whatever its members hold through other teams.
 
 ### 6c. Add team members {#gh-org-members}
 
