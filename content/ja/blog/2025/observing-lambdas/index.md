@@ -91,7 +91,7 @@ service:
 
 <p>
   <video controls style="width: 100%">
-    <source src="./video-lambda-real-time.webm" />
+    <source src="/blog/2025/observing-lambdas/video-lambda-real-time.webm" />
   </video>
 </p>
 
