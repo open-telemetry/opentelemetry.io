@@ -2,10 +2,8 @@
 title: OpenTelemetry eBPF Instrumentation reaches v1.0.0
 linkTitle: OBI v1.0.0
 date: 2026-10-30
-publishDate: 2026-10-30
 author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
-draft: true
 issue: 12395
 sig: SIG eBPF Instrumentation
 # cSpell:ignore Aerospike Avni Beyla GenAI Giuseppe Grcevski
