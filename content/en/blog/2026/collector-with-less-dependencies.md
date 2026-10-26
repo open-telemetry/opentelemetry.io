@@ -21,9 +21,10 @@ One of the reasons I prefer to build my own distribution is to limit the size of
 the binary I have to ship around and to ensure that the least amount of
 dependencies are included. Fewer dependencies means a smaller binary, a smaller
 attack surface, and fewer third-party modules to track when a vulnerability is
-disclosed. The [OpenTelemetry Collector Builder (ocb)](/docs/collector/extend/ocb/) makes this possible: you
-write a manifest file in YAML to select the components you care about, and ocb
-compiles them into the resulting binary.
+disclosed. The
+[OpenTelemetry Collector Builder (ocb)](/docs/collector/extend/ocb/) makes this
+possible: you write a manifest file in YAML to select the components you care
+about, and ocb compiles them into the resulting binary.
 
 ## Resource detectors
 
