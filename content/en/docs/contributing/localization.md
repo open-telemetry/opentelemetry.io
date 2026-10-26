@@ -436,25 +436,18 @@ with the task list given below:
          section
    - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
          For details, see [Localize the homepage][].
-   - [ ] OTel maintainers:
+   - [ ] OTel maintainers, per the [new-locale setup guide][]:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Add the locale to `data/locale-teams.yaml` and run
            `npm run fix:codeowners`
-     - [ ] [GitHub org-level setup][]:
-       - [ ] Create the `LANG_ID` approvers and maintainers teams
-       - [ ] Grant the approvers team write access to the repository
-       - [ ] Promotion checkpoint: once a listed mentor or contributor meets the
-             community's [member requirements][], have them request org
-             membership; once [elected approver][], add them to the approvers
-             team
-       - [ ] Verify the approvers team's write access, then each member's
+     - [ ] Create the org-level teams for `LANG_ID` approvers and maintainers,
+           grant the approvers team write access, and verify ([GitHub org-level
+           setup][])
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see [Localize the glossary][].
 
-   [elected approver]:
-     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver
    [GitHub org-level setup]:
      https://opentelemetry.io/site/build/localization/#gh-org
    [Localization]: https://opentelemetry.io/docs/contributing/localization/
@@ -462,8 +455,7 @@ with the task list given below:
      https://opentelemetry.io/docs/contributing/localization/#glossary
    [Localize the homepage]:
      https://opentelemetry.io/docs/contributing/localization/#homepage
-   [member requirements]:
-     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
+   [new-locale setup guide]: https://opentelemetry.io/site/build/localization/
    ```
 
 ### 3. Localize the homepage {#homepage}
