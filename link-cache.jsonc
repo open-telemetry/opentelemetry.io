@@ -9619,6 +9619,11 @@
     "when": "2026-10-15T20:42:28Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver": {
+    "result": 200,
+    "when": "2026-10-26T18:22:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager": {
     "result": 200,
     "when": "2026-10-15T20:42:28Z",

@@ -290,11 +290,13 @@ locale's pages stay with the `docs-approvers` fallback owner.
 ### 6c. Add team members {#gh-org-members}
 
 Team members must be members of the `open-telemetry` GitHub organization. A
-contributor who meets the member and approver requirements of the community
-[membership guidelines][] requests membership as that guide describes (a
-[`REQUEST: New membership` issue][membership request]). Kickoff contributors
-join the live team only once they qualify (for how their reviews count until
-then, see [New localizations][]); the kickoff issue tracks their promotion.
+contributor who meets the member requirements of the community [membership
+guidelines][] requests membership as that guide describes (a
+[`REQUEST: New membership` issue][membership request]); they join the approvers
+team once elected approver per that guide's [Becoming an Approver][]. Kickoff
+contributors join the live team only once they qualify (for how their reviews
+count until then, see [New localizations][]); the kickoff issue tracks their
+promotion.
 
 [Team members are added manually][admin#58] by an org admin, since memberships
 aren't managed by the admin repository. The `docs-LANG_ID-maintainers` team can
@@ -310,7 +312,7 @@ First confirm the team's own grant, then each member's effective access:
 
 ```sh
 gh api --paginate repos/open-telemetry/opentelemetry.io/teams --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
-gh api orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
+gh api --paginate orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
 gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permission --jq .permission
 ```
 
@@ -441,6 +443,8 @@ correct:
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
 [admin#58]: https://github.com/open-telemetry/admin/issues/58?link-check=no
 [admin#588]: https://github.com/open-telemetry/admin/pull/588?link-check=no
+[Becoming an Approver]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver
 [code owner]:
   https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [membership guidelines]:

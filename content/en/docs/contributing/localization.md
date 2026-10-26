@@ -446,12 +446,15 @@ with the task list given below:
        - [ ] Create the `LANG_ID` approvers and maintainers teams
        - [ ] Grant the approvers team write access to the repository
        - [ ] Promotion checkpoint: once a listed mentor or contributor meets the
-             community's [member and approver requirements][], have them request
-             org membership, then add them to the approvers team
+             community's [member requirements][], have them request org
+             membership; once [elected approver][], add them to the approvers
+             team
        - [ ] Verify the approvers team's write access, then each member's
    - [ ] Create an issue to track the localization of the **glossary**. Add the
          issue number here. For details, see [Localize the glossary][].
 
+   [elected approver]:
+     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver
    [GitHub org-level setup]:
      https://opentelemetry.io/site/build/localization/#gh-org
    [Localization]: https://opentelemetry.io/docs/contributing/localization/
@@ -459,8 +462,8 @@ with the task list given below:
      https://opentelemetry.io/docs/contributing/localization/#glossary
    [Localize the homepage]:
      https://opentelemetry.io/docs/contributing/localization/#homepage
-   [member and approver requirements]:
-     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+   [member requirements]:
+     https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
    ```
 
 ### 3. Localize the homepage {#homepage}
