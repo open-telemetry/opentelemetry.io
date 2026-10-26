@@ -2,7 +2,7 @@
 title: Only include resource detectors you need by building your own Collector
 linkTitle:
   Only include resource detectors you need by building your own Collector
-date: 2026-10-16
+date: 2026-11-03
 author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
 issue: 12217
@@ -21,7 +21,7 @@ One of the reasons I prefer to build my own distribution is to limit the size of
 the binary I have to ship around and to ensure that the least amount of
 dependencies are included. Fewer dependencies means a smaller binary, a smaller
 attack surface, and fewer third-party modules to track when a vulnerability is
-disclosed. The OpenTelemetry Collector Builder (ocb) makes this possible: you
+disclosed. The [OpenTelemetry Collector Builder (ocb)](/docs/collector/extend/ocb/) makes this possible: you
 write a manifest file in YAML to select the components you care about, and ocb
 compiles them into the resulting binary.
 
@@ -101,7 +101,7 @@ processors:
 ## New OCB configuration
 
 The
-[latest release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1)
+[v0.163.1 release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1)
 of the Collector and
 [ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-cmd/builder/v0.163.1)
 now also support users wanting to filter out resource detectors with less
