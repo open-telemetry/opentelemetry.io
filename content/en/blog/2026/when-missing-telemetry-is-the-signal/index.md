@@ -108,8 +108,8 @@ different ways:
 
 | Check               | What it tells you                                    |
 | :------------------ | :--------------------------------------------------- |
-| Expected signal     | Activity should have appeared by now                 |
-| Cross-stage counts  | Work entered but did not leave as expected           |
+| Expected signal     | Activity appeared within the expected window         |
+| Cross-stage counts  | Work entered and left each stage as expected         |
 | Synthetic event     | The full path can carry known activity               |
 | Collector telemetry | The telemetry pipeline is accepting and sending data |
 
