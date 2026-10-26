@@ -4,6 +4,7 @@ linkTitle: Config v2 リファレンス
 description: スタンドアロン OBI または OBI Collector レシーバーを Config v2 で設定する方法を学びます。
 weight: 3
 default_lang_commit: df7ca870f2ec59453948ced42ca0d76bfd5e53d5
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sqlpp
 ---

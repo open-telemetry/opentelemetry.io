@@ -3,6 +3,7 @@ title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
 default_lang_commit: 5ec6f9be2f6645aca56794b24524a6f5316613b6
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
@@ -645,7 +646,7 @@ processors:
 ```
 
 リテラル `$` を示すには `$$` を使用します。
-たとえば、`$DataVisualization` 使うときは、次のようになります。
+たとえば、`$DataVisualization` を使うときは、次のようになります。
 
 ```yaml
 exporters:
