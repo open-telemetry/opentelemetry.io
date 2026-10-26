@@ -1,7 +1,7 @@
 ---
 title: 'Batching in the OpenTelemetry Collector'
 linkTitle: 'Batching in the OpenTelemetry Collector: deprecating the batchprocessor'
-date: 2026-10-30
+date: 2026-11-02
 author: >-
   [Bogdan Drutu](https://github.com/bogdandrutu),
   [Dmitry Anoshin](https://github.com/dmitryax), and
