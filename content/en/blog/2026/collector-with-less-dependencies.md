@@ -12,8 +12,8 @@ cSpell:ignore: otelconf trimpath
 
 There are many reasons for building your own OpenTelemetry Collector
 distribution. The existing distributions are designed to be broadly useful,
-which means they include many components that any single deployment will never
-use. Building your own gives you the ability to select only the components you
+which means they include many more components than what an individual deployment
+uses. Building your own gives you the ability to select only the components you
 care about, add your own custom components, and control exactly what ends up in
 the binary you run in production.
 
@@ -32,7 +32,7 @@ Limiting components is great, but as a user
 [reported recently](https://github.com/open-telemetry/opentelemetry-collector/issues/16075),
 resource detectors can bloat the size of the binary with dependencies you never
 use. Resource detectors are used to
-[automatically inject resource attributes](/docs/specs/otel/resource/sdk/#detecting-resource-information-from-the-environment)
+[automatically inject resource attributes](/docs/specs/otel/resource/sdk/#resource-detector)
 into the telemetry a process produces. They are great in cloud environments,
 where you want to have as much information as possible about the deployment of
 your applications and services.
