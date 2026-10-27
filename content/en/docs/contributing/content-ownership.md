@@ -10,88 +10,85 @@ weight: 990
 This page describes how ownership of this site's content maps to GitHub teams:
 
 - Which approvals a pull request (PR) needs before it can merge:
-  [the model](#model).
-- Which teams own content, and how: [localization teams](#locales) with
-  dedicated teams, [SIGs](#sigs) with their existing ones.
+  [the model](#model) and [why code owners need write access](#write).
+- Who owns what, and how: [localization teams](#locales) through dedicated
+  teams, [SIGs](#sigs) through their existing ones.
 - Who can let a PR merge on its own: [auto-merge](#auto-merge).
 - How a SIG comes to own its docs:
   [take ownership of your SIG's docs](#sig-ownership).
 
 ## The model {#model}
 
-**The team that owns a body of content owns its docs path.** For a path it owns,
-a team's approvers team is the path's [code owner][], and its maintainers team
-can enable [auto-merge](#auto-merge) on PRs confined to that path.
+**Whoever owns a body of content owns its docs.** A content owner, a SIG or a
+localization team, has two GitHub teams, each holding one lever over the
+content's paths:
 
-Two mechanisms assign reviewers to a PR, and they differ in what they enforce:
+- Its **approvers team** is the paths' [code owner][]: a PR confined to those
+  paths needs that team's approval, and merges on it.
+- Its **maintainers team** can [auto-merge](#auto-merge) such a PR.
 
-- **Code owners**, the content-owning teams: the hard gate.
-  - Defined in: [`.github/CODEOWNERS`][].
-  - Reviewers: required; the team must hold write access.
-  - An approval satisfies the required code-owner review; without one, the PR
-    can't merge.
-  - By default, every file is owned by `@open-telemetry/docs-approvers`; a more
-    specific CODEOWNERS entry replaces that default for its path (the last
-    matching entry wins), so a PR confined to a tree owned by another team
-    merges on that team's approval, without a docs-approvers review.
-- **Component owners**, suggested reviewers: the soft gate.
-  - Defined in: [`.github/component-owners.yml`][].
-  - Reviewers: suggested; works without write access.
-  - An approval clears the [`missing:sig-approval` label][]; a docs maintainer
-    may still merge after a grace period.
-  - The component-owners automation requests the team's review and the [label
-    manager][] tracks whether one arrived, but GitHub doesn't require it.
-    SIG-owned content is on component owners unless the SIG has
-    [taken ownership](#sig-ownership) of its tree.
+Code owners are one of two mechanisms that assign reviewers to a PR. They differ
+in what they enforce:
+
+- **Code owners**: required reviewers, the hard gate.
+  - Declared in [`.github/CODEOWNERS`][]; the team named must hold write access.
+  - Without the code owner's approval, the PR can't merge.
+  - By default, `@open-telemetry/docs-approvers` owns every file. A more
+    specific entry replaces that default for its paths (the last matching entry
+    wins), so a PR confined to a content owner's paths merges on that owner's
+    approval, with no docs-approvers review.
+- **Component owners**: suggested reviewers, the soft gate.
+  - Declared in [`.github/component-owners.yml`][]; no write access needed.
+  - Automation requests the team's review and the [label manager][] tracks it:
+    an approval clears the [`missing:sig-approval` label][]. GitHub doesn't
+    require it, and a docs maintainer may merge after a grace period.
+  - SIG content uses component owners until the SIG
+    [takes ownership](#sig-ownership) of its tree.
 
 ### Why code owners need write access {#write}
 
-GitHub counts a review toward branch protection only when the reviewer has write
-access to the repository, whether the requirement comes from CODEOWNERS or from
-a ruleset's required-reviewers rule; a CODEOWNERS entry naming a team without
-write access is ignored. So which teams gate which paths is really a question of
-which teams hold write access; the mechanisms above follow from that.
+GitHub counts an approval toward branch protection only from a reviewer with
+write access to the repository, whether CODEOWNERS or a ruleset's
+required-reviewers rule names them, and it silently ignores a CODEOWNERS entry
+for a team without write access. Which teams gate which paths is therefore a
+question of which teams hold write access.
 
-Write access on this repository buys **approvals that count**, and little else:
+On this repository, write access buys **approvals that count**, and little else:
 
-- Nobody pushes to `main`: branch protection restricts pushes to the docs bot,
-  and PRs land through the merge queue after required reviews and checks pass.
-- Repository settings and rulesets need the Maintain or Admin role; tags are
-  protected by an organization ruleset.
-- The residual exposure is GitHub Actions: a workflow pushed to a branch of this
-  repository (not a fork) by someone with write access runs with the secrets
-  visible to the repository. This is the same for every team that holds write
-  today. Scoping those secrets to a `main`-only environment is a prerequisite
-  for extending write to further teams.
+- No path to `main`: branch protection restricts pushes to the docs bot, and PRs
+  land through the merge queue after required reviews and checks pass.
+- No settings: repository settings and rulesets need the Maintain or Admin role,
+  and an organization ruleset protects tags.
+- One residual exposure, GitHub Actions: a workflow pushed to a branch of this
+  repository (not a fork) runs with the secrets visible to the repository, as it
+  does for every write holder today. Scoping those secrets to a `main`-only
+  environment is the prerequisite for extending write access to more teams.
 
-## Content-owning teams {#teams}
+## Content owners {#teams}
 
 ### Localization teams {#locales}
 
 Each locale has dedicated `docs-LANG_ID-approvers` and
-`docs-LANG_ID-maintainers` teams, since no other team exists for a locale. The
+`docs-LANG_ID-maintainers` teams, because a locale has no other team. The
 approvers team owns `content/LANG_ID/` and the locale's spell-checking and `prh`
-files; the maintainers team can auto-merge locale-only PRs. Locale specifics,
-including [unstaffed locales and the fallback to
-`docs-approvers`][locale teams], are in the localization guide; the
-[localization setup guide][] covers creating the teams.
+files; the maintainers team can auto-merge locale-only PRs. For [unstaffed
+locales and the `docs-approvers` fallback][locale teams], see the localization
+guide; for creating the teams, the [localization setup guide][].
 
 ### SIGs {#sigs}
 
 A SIG that owns a body of content, such as a language's SDK and its
 documentation under `content/en/docs/languages/`, uses its **existing** teams:
-its approvers team(s) become the code owner of the docs tree, and its
+its approvers team or teams become the code owner of the docs tree, and its
 maintainers team can auto-merge PRs confined to it. No separate docs teams are
-created for a SIG: whoever the SIG trusts to approve its code is trusted to
-approve its docs. The approvers team is granted write access on this repository
-when the SIG [takes ownership](#sig-ownership).
-
-SIGs that haven't asked for ownership stay on [component owners](#model):
-reviews are requested, tracked by label, and not required.
+created: whoever the SIG trusts to approve its code is trusted to approve its
+docs. The approvers team gains write access on this repository when the SIG
+[takes ownership](#sig-ownership); until then, the SIG's content is on
+[component owners](#model).
 
 ## Auto-merge {#auto-merge}
 
-A member of the owning team's maintainers team can enable GitHub auto-merge on a
+A member of a content owner's maintainers team can enable GitHub auto-merge on a
 PR by commenting `/auto-merge` (`/auto-merge:enable`, or `/auto-merge:disable`
 to turn it off). The directive is honored only when **every** changed file is
 owned by a team the commenter maintains; the PR then merges once all required
@@ -110,20 +107,20 @@ The locale section of CODEOWNERS is generated from the
 and their expected membership. Team rosters live on GitHub, not in the registry:
 the daily [Housekeeping][] run syncs the registry with the live locale teams and
 opens a PR for any drift, so roster changes leave an audit trail. Generalizing
-the registry from locales to all content-owning teams is tracked in [#12285][].
+the registry from locales to all content owners is tracked in [#12285][].
 
 ## Take ownership of your SIG's docs {#sig-ownership}
 
-A SIG that wants to own its docs tree [opens an issue][] in this repository,
-naming the tree and the approvers and maintainers teams that will own it. What
-the SIG agrees to:
+To own its docs tree, a SIG [opens an issue][] in this repository naming the
+tree and the approvers and maintainers teams that will own it. By asking, the
+SIG agrees that:
 
-- Its approvers team(s) gain write access to this repository and become the
-  tree's required reviewers.
+- Its approvers team gains write access to this repository and becomes the
+  tree's required reviewer.
 - Its maintainers team can [auto-merge](#auto-merge) PRs confined to the tree.
-- PRs confined to the tree no longer require a docs-approvers review. Docs
-  approvers remain available for style and structure reviews on request, and the
-  [style guide][] still applies.
+- PRs confined to the tree no longer require a docs-approvers review; the [style
+  guide][] still applies, and docs approvers remain available for style and
+  structure reviews on request.
 - Team membership stays the SIG's; promotion follows the community [membership
   guidelines][].
 
