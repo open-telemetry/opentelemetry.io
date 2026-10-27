@@ -28,8 +28,10 @@ checklist for the merge decision.
 ## Never, to get to green
 
 Never edit `.npmrc`, `allowScripts`, `netlify.toml`, or the audit test so that a
-check passes. Each line there is a control, and the failing check is the point.
-A PR that touches them is one to [escalate][].
+check passes. PR builds, on CI and in deploy previews, run the PR's own files
+unattended, so those lines are the attack path, not formatting: each is a
+control, and the failing check is the point. A PR that touches them is one to
+[escalate][].
 
 <!-- prettier-ignore-start -->
 [cooldown]: ../triage/#cooldown

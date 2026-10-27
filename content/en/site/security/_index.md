@@ -13,14 +13,43 @@ for the step you pick. You don't need a security background. The safe default is
 usually to let the bot path bring the fix, and the rare urgent cases are listed
 below, [Escalate now](#escalate).
 
-## What the repository already enforces
+## Who we protect, and from what
 
-Installs are lock-exact, version resolution waits out a 7-day cooldown, and
-dependency install scripts run only when approved by exact version; a
-supply-chain audit test checks all of this on every CI run. The controls and
-their enforcement: [Supply-chain controls][]; the threat model behind them:
-[Supply-chain security][]. So your job is not to add security review. It is to
-**not weaken these controls** and to **not rush**.
+- **Visitors to the published site.** The harm: a served page carrying malicious
+  script, or install instructions and version pins altered to point at attacker
+  code; a docs site is a trust anchor, and developers run what it says. The way
+  in: a compromised build or deploy, or one of the few dependencies that ship
+  into the built site. Covered by lock-exact installs, the inert Netlify
+  auto-install, and review of what lands on `main`.
+- **Maintainers and contributors, on their own machines.** The harm: credential
+  theft (npm, GitHub, SSH, cloud) and spread to every other project they touch;
+  the 2026 npm worm was exactly this. The way in: `npm install` running a fresh
+  malicious release's install script, opening a poisoned branch, or an agent
+  session following hostile text with the maintainer's tools. Covered by the
+  release cooldown, the `allowScripts` allowlist, no bare `npx`, and treating
+  fetched text as data.
+- **The project and its other repositories.** The harm: stolen job tokens and
+  bot credentials, which reach beyond this repository (the August 2026 incident
+  did), and a poisoned artifact reaching visitors. The way in: unattended
+  installs on GitHub Actions runners and the Netlify build image, and the fact
+  that PR builds run the PR's own files, so a change to `.npmrc`,
+  `netlify.toml`, `allowScripts`, or the install scripts is itself the attack.
+  Covered by the supply-chain audit, which pins that surface, workflow
+  permissions, branch protection, and required review.
+- **Reporters, and the users of whatever they report on.** The harm: a report
+  disclosed, or left to wait while it belongs to another component. Covered by
+  keeping private reports private and rerouting them fast.
+
+Three kinds of threat, which is what lets you calibrate: automated supply-chain
+worms, fast and credential-harvesting, entering through fresh installs (the
+cooldown and script gates are aimed at them); targeted attackers who would use a
+developer site as a watering hole or intercept the toolchain (rare, high stakes:
+the escalate card); and prompt-injection campaigns against maintainers' agents.
+Almost no advisory you receive is any of these; it is a bug in build tooling
+that nobody is exploiting against a static site. That asymmetry is why the safe
+default is to **not rush** and to **not weaken the controls**, rather than to
+add security review. The controls and their enforcement: [Supply-chain
+controls][]; the threat model behind them: [Supply-chain security][].
 
 ## What arrived?
 
