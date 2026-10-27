@@ -691,6 +691,7 @@ Finally, rerun `npm run check:links` and confirm that no link failures remain.
 [code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
 [`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+[Docs ownership]: ../docs-ownership/
 [front matter]: https://gohugo.io/content-management/front-matter/
 [locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
