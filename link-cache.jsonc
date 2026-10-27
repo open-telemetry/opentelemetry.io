@@ -1305,8 +1305,8 @@
     "via": "double-check",
   },
   "https://conan.io/center/recipes/opentelemetry-cpp": {
-    "result": "error",
-    "when": "2026-10-27T05:46:34Z",
+    "result": 200,
+    "when": "2026-10-27T07:59:44Z",
     "via": "lychee",
   },
   "https://connectrpc.com/": {
@@ -17019,6 +17019,11 @@
     "when": "2026-10-16T05:44:23Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-web-package-removed": {
+    "result": 200,
+    "when": "2026-10-27T08:05:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main": {
     "result": 200,
     "when": "2026-10-20T05:44:56Z",
@@ -17081,7 +17086,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/3.x/migration-guide.md#opentelemetrysdk-trace-web-package-removed": {
     "result": "error",
-    "when": "2026-10-27T05:46:34Z",
+    "when": "2026-10-27T07:59:43Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
