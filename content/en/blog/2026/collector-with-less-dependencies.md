@@ -2,7 +2,7 @@
 title: Only include resource detectors you need by building your own Collector
 linkTitle:
   Only include resource detectors you need by building your own Collector
-date: 2026-11-03
+date: 2026-10-29
 author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
 issue: 12217
