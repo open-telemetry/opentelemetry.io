@@ -305,21 +305,31 @@ doesn't manage memberships.
 
 ### 6d. Verify access {#gh-org-verify}
 
-First confirm the team's own grant, then each member's effective access:
+Once the admin PR is applied and members are added, confirm:
 
-```sh
-gh api --paginate repos/open-telemetry/opentelemetry.io/teams --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
-gh api --paginate orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
-gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permission --jq .permission
-```
+- The `docs-LANG_ID-approvers` team is listed under the repository's
+  collaborators and teams with the **Write** role. For example, using the GitHub
+  CLI:
 
-- The first command prints `push` when the approvers team holds write access.
-  Nothing printed means the team has no access to the repository (the grant in
-  Step 6b is missing or not yet applied); `pull` or `triage` means a grant below
-  write.
-- The third command, run for each member the second one lists (replace
-  `GITHUB_HANDLE` with theirs), reports the member's effective permission from
-  all sources; it must be at least `write` (`write`, `maintain`, or `admin`).
+  ```sh
+  gh api --paginate repos/open-telemetry/opentelemetry.io/teams \
+    --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
+  ```
+
+  Expect `push`. Nothing printed means the team has no access at all (the grant
+  in Step 6b is missing or not yet applied); `pull` or `triage` means a grant
+  below write.
+
+- Every team member appears in the live team, and each has at least write access
+  to the repository. For example:
+
+  ```sh
+  gh api --paginate orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
+  gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permission --jq .permission
+  ```
+
+  Expect `write`, `maintain`, or `admin` for each member listed (the permission
+  reported is the member's effective one, from all sources).
 
 ## Step 7 — Slack channel and community listing {#slack}
 
@@ -395,8 +405,8 @@ setup PR; Steps 6 and 7 complete outside the repository.
 - [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
       `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
       regenerated
-- [ ] **Step 6** — Team `open-telemetry/admin` PR merged; approvers team
-      holds write access; eligible members added and verified
+- [ ] **Step 6** — Team `open-telemetry/admin` PR merged; approvers team holds
+      write access; eligible members added and verified
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
       OpenTelemetry Admin added as channel manager; team listed in the community
       `sigs.md`
