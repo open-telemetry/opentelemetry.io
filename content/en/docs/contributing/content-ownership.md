@@ -20,10 +20,10 @@ can enable [auto-merge](#auto-merge) on PRs confined to that path.
 
 Two mechanisms assign reviewers to a PR, and they differ in what they enforce:
 
-| Mechanism                               | Defined in                               | Reviewers                                 | What an approval does                                                                                                |
-| --------------------------------------- | ---------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Code owners** (content-owning teams)  | [`.github/CODEOWNERS`][CODEOWNERS]       | Required; the team must hold write access | Satisfies the required code-owner review. Without it, the PR can't merge.                                            |
-| **Component owners** (suggested review) | [`.github/component-owners.yml`][owners] | Suggested; works without write access     | Clears the `missing:sig-approval` label ([details][labels]); a docs maintainer may still merge after a grace period. |
+| Mechanism                               | Defined in                         | Reviewers                                 | What an approval does                                                                                |
+| --------------------------------------- | ---------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Code owners** (content-owning teams)  | [`.github/CODEOWNERS`][]           | Required; the team must hold write access | Satisfies the required code-owner review. Without it, the PR can't merge.                            |
+| **Component owners** (suggested review) | [`.github/component-owners.yml`][] | Suggested; works without write access     | Clears the [`missing:sig-approval` label][]; a docs maintainer may still merge after a grace period. |
 
 Code owners are the hard gate. By default, every file is owned by
 `@open-telemetry/docs-approvers`; a more specific CODEOWNERS entry replaces that
@@ -32,9 +32,9 @@ owned by another team merges on that team's approval, without a docs-approvers
 review.
 
 Component owners are a soft gate: the component-owners automation requests the
-team's review and the [label manager][labels] tracks whether one arrived, but
-GitHub doesn't require it. SIG-owned content is on component owners unless the
-SIG has [taken ownership](#sig-ownership) of its tree.
+team's review and the [label manager][] tracks whether one arrived, but GitHub
+doesn't require it. SIG-owned content is on component owners unless the SIG has
+[taken ownership](#sig-ownership) of its tree.
 
 ### Why code owners need write access {#write}
 
@@ -64,9 +64,9 @@ Each locale has dedicated `docs-LANG_ID-approvers` and
 `docs-LANG_ID-maintainers` teams, since no other team exists for a locale. The
 approvers team owns `content/LANG_ID/` and the locale's spell-checking and `prh`
 files; the maintainers team can auto-merge locale-only PRs. Locale specifics,
-including unstaffed locales and the fallback to `docs-approvers`, are in [Site
-localization][locale-teams]; creating the teams is covered in the [localization
-setup guide][setup].
+including [unstaffed locales and the fallback to
+`docs-approvers`][locale teams], are in the localization guide; the
+[localization setup guide][] covers creating the teams.
 
 ### SIGs {#sigs}
 
@@ -90,10 +90,10 @@ owned by a team the commenter maintains; the PR then merges once all required
 reviews and checks pass. Branch protection and CODEOWNERS remain the gate: the
 command only flips GitHub's "merge when ready" switch.
 
-Today the command is implemented for localization teams; for the command's
-placement rules and eligibility details, see [Enabling auto-merge on locale-only
-PRs][locale-auto-merge] and the [helper README][]. Extending it to SIG-owned
-trees is tracked in [#12285][].
+Today the command is implemented for localization teams; for its [placement
+rules][locale auto-merge] and [eligibility details][helper README], see the
+localization guide and the helper README. Extending it to SIG-owned trees is
+tracked in [#12285][].
 
 ## The registry {#registry}
 
@@ -104,11 +104,11 @@ the daily [Housekeeping][] run syncs the registry with the live locale teams and
 opens a PR for any drift, so roster changes leave an audit trail. Generalizing
 the registry from locales to all content-owning teams is tracked in [#12285][].
 
-## How a SIG takes ownership of its docs {#sig-ownership}
+## Take ownership of your SIG's docs {#sig-ownership}
 
-A SIG that wants to own its docs tree [opens an issue][issues] in this
-repository, naming the tree and the approvers and maintainers teams that will
-own it. What the SIG agrees to:
+A SIG that wants to own its docs tree [opens an issue][] in this repository,
+naming the tree and the approvers and maintainers teams that will own it. What
+the SIG agrees to:
 
 - Its approvers team(s) gain write access to this repository and become the
   tree's required reviewers.
@@ -120,27 +120,24 @@ own it. What the SIG agrees to:
   guidelines][].
 
 Docs maintainers then perform the grant and ownership change, and verify them:
-[Team access and code ownership][team-access]. The [secrets scoping](#write)
-prerequisite applies before the first SIG grant.
+[Team access and code ownership][]. The [secrets scoping](#write) prerequisite
+applies before the first SIG grant.
 
-[`data/locale-teams.yaml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+<!-- prettier-ignore-start -->
+[`.github/CODEOWNERS`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`.github/component-owners.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+[`missing:sig-approval` label]: /site/build/ci-workflows/#pr-approval-labels
 [#12285]: https://github.com/open-telemetry/opentelemetry.io/issues/12285
-[CODEOWNERS]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
-[code owner]:
-  https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-[helper README]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[helper README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
 [Housekeeping]: /site/build/ci-workflows/#housekeeping
-[issues]: ../issues/
-[labels]: /site/build/ci-workflows/#pr-approval-labels
-[locale-auto-merge]: ../localization/#auto-merge
-[locale-teams]: ../localization/#locale-teams
-[membership guidelines]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-[owners]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
-[setup]: /site/build/localization/#gh-org
+[label manager]: /site/build/ci-workflows/#pr-approval-labels
+[locale auto-merge]: ../localization/#auto-merge
+[locale teams]: ../localization/#locale-teams
+[localization setup guide]: /site/build/localization/#gh-org
+[membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[opens an issue]: ../issues/
 [style guide]: ../style-guide/
-[team-access]: /site/admin/team-access/
+[Team access and code ownership]: /site/admin/team-access/
+<!-- prettier-ignore-end -->

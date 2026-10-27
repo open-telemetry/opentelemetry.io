@@ -222,13 +222,14 @@ one by a SIG approver:
   general, but may be less in urgent cases), docs maintainer may use their own
   judgement to merge that PR.
 
-### Owning your SIG's docs {#sig-docs-ownership}
+### Own your SIG's docs {#sig-docs-ownership}
 
 A SIG can take ownership of its docs tree: its approvers team becomes the tree's
 required reviewer, with write access, and its maintainers can auto-merge PRs
 confined to the tree, which then no longer need a docs-approvers review. To ask,
-and for what the SIG agrees to, see
-[How a SIG takes ownership of its docs](../content-ownership/#sig-ownership).
+and for what the SIG agrees to, see [Take ownership of your SIG's docs][].
+
+[Take ownership of your SIG's docs]: ../content-ownership/#sig-ownership
 
 ### PRs from bots
 
