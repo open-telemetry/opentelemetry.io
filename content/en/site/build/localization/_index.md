@@ -395,9 +395,8 @@ setup PR; Steps 6 and 7 complete outside the repository.
 - [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
       `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
       regenerated
-- [ ] **Step 6** — Team PR merged into `open-telemetry/admin`; approvers team
-      holds write access; eligible members added and verified (pending
-      promotions tracked in the kickoff issue)
+- [ ] **Step 6** — Team `open-telemetry/admin` PR merged; approvers team
+      holds write access; eligible members added and verified
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
       OpenTelemetry Admin added as channel manager; team listed in the community
       `sigs.md`
