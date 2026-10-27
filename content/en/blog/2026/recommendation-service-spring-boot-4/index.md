@@ -65,17 +65,17 @@ The
 also retains the demo attributes for product counts, the filtered list and the
 cache flag. These describe the work inside the request, beyond the RPC duration.
 
-There is a small naming trap in the metric. `demo.recommendation.requests` is a
-counter, but the code adds the number of products recommended, with
+I kept the metric name `demo.recommendation.requests` and the Python service's
+counting logic. The counter still adds the number of products recommended, with
 `recommendation.type` set to `catalog`. A request returning five recommendations
-adds five. Preserving the name while changing the increment to one would change
-what the metric means.
+still adds five. Changing the increment to one during the rewrite would have
+changed what the metric means.
 
 A migration review needs to look at those operations as well as the emitted
 names. Otherwise a dashboard can continue receiving data while its
 interpretation changes.
 
-## Preserving the awkward behavior
+## Preserving client behavior and the cache failure
 
 The product-ID conversion accepts both the character elements sent by the
 frontend and complete IDs sent by other clients. The
@@ -83,12 +83,11 @@ frontend and complete IDs sent by other clients. The
 exercise the frontend representation. That keeps a compatibility detail from
 becoming an assumption buried in a comment.
 
-The cache has a different reason to stay awkward. The
-`recommendationCacheFailure` flag deliberately enables a growing cache. On a
-miss, it appends catalog IDs and then copies a quarter of the accumulated cache
-back into itself. The service deduplicates the IDs when selecting
-recommendations, so the response can still look reasonable while the stored list
-grows.
+The cache preserves a deliberate failure scenario. The
+`recommendationCacheFailure` flag enables a growing cache. On a miss, it appends
+catalog IDs and then copies a quarter of the accumulated cache back into itself.
+The service deduplicates the IDs when selecting recommendations, so the response
+can still look reasonable while the stored list grows.
 
 Cleaning up that cache during the rewrite would remove a failure scenario the
 demo is meant to expose. The implementation keeps the cache attributes on the
@@ -98,26 +97,16 @@ tests turn the flag on and inspect the corresponding telemetry.
 This is one place where a demo migration differs from ordinary cleanup. The
 broken behavior is part of the example people are trying to observe.
 
-## Testing the response and the telemetry together
+## Checking the service boundary
 
-The service tests use an in-memory span exporter and metric reader, along with a
-fake product catalog. That lets them check the recommendation response and the
-emitted telemetry within the same test setup.
+For the Java service, I added tests with a fake product catalog, an in-memory
+span exporter and a metric reader. They check the recommendation response and
+the server, product-list and catalog-client spans together, and verify that five
+returned recommendations add five to the counter.
 
-The checks include the server span, the internal product-list span and the
-catalog client span. They inspect trace relationships and application
-attributes, and compare the counter before and after a request. A test that only
-asserted a successful response would miss those regressions.
-
-There is also a timing detail: the server span can finish after the client
-receives its response. The test waits for the expected span with a bounded
-timeout. Reading the exporter immediately after the RPC would make the assertion
-depend on when the server finished exporting.
-
-These tests cover the service boundary with a fake dependency. For a full demo
-migration, the frontend and catalog trace and the exported signals in the
-running stack need their own inspection, cause a local exporter cannot establish
-that deployment configuration is correct.
+These are service-level checks. The Demo's end-to-end tests and inspection of
+the running stack are separate, cause a local exporter cannot establish that
+deployment configuration is correct.
 
 ## Reviewing the migration as a whole
 
