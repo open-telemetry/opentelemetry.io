@@ -1,7 +1,7 @@
 ---
 title: Announcing the OpenTelemetry JavaScript SDK 3.0
 linkTitle: OTel JS SDK 3.0
-date: 2026-10-22
+date: 2026-11-05
 author: >
   [Trent Mick](https://github.com/trentm) (Elastic), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
