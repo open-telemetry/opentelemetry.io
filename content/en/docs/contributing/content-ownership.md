@@ -7,10 +7,15 @@ description:
 weight: 990
 ---
 
-This page describes how ownership of this site's content maps to GitHub teams,
-which approvals a pull request (PR) needs before it can merge, and who can let a
-PR merge on its own. The model is the same for every content-owning team;
-localization teams and SIGs instantiate it differently, as described below.
+This page describes how ownership of this site's content maps to GitHub teams:
+
+- Which approvals a pull request (PR) needs before it can merge:
+  [the model](#model).
+- Which teams own content, and how: [localization teams](#locales) with
+  dedicated teams, [SIGs](#sigs) with their existing ones.
+- Who can let a PR merge on its own: [auto-merge](#auto-merge).
+- How a SIG comes to own its docs:
+  [take ownership of your SIG's docs](#sig-ownership).
 
 ## The model {#model}
 
