@@ -7,15 +7,17 @@ description:
 weight: 990
 ---
 
-This page describes how ownership of this site's content maps to GitHub teams:
+Who owns which parts of this site, and what that ownership lets a team do. Read
+this page if you:
 
-- Which approvals a pull request (PR) needs before it can merge:
-  [the model](#model) and [why code owners need write access](#write).
-- Who owns what, and how: [localization teams](#locales) through dedicated
-  teams, [SIGs](#sigs) through their existing ones.
-- Who can let a PR merge on its own: [auto-merge](#auto-merge).
-- How a SIG comes to own its docs:
-  [take ownership of your SIG's docs](#sig-ownership).
+- **Approve PRs for a SIG or a localization team**: find out when your approval
+  is required and when it's only requested, and why ([the model](#model),
+  [write access](#write)).
+- **Maintain such a team**: land your team's PRs without a docs maintainer
+  ([auto-merge](#auto-merge)) and, for a SIG, take ownership of your docs
+  ([how to ask, and what you agree to](#sig-ownership)).
+- **Review as a docs approver**: see which PRs still need you, and which no
+  longer do ([the model](#model)).
 
 ## The model {#model}
 
