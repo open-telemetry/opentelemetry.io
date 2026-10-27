@@ -3,7 +3,7 @@ title: Administration
 description: >-
   Maintainer procedures on the GitHub side of the website: team access, code
   ownership, branch rules, secrets, and bot identities
-weight: 45
+weight: 25
 ---
 
 This section covers what docs maintainers configure on GitHub and in the private
