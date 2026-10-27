@@ -93,17 +93,25 @@ docs. The approvers team gains write access on this repository when the SIG
 
 ## Auto-merge {#auto-merge}
 
-A member of a docs owner's maintainers team can enable GitHub auto-merge on a PR
-by commenting `/auto-merge` (`/auto-merge:enable`, or `/auto-merge:disable` to
-turn it off). The directive is honored only when **every** changed file is owned
-by a team the commenter maintains; the PR then merges once all required reviews
-and checks pass. Branch protection and CODEOWNERS remain the gate: the command
-only flips GitHub's "merge when ready" switch.
+A member of a docs owner's maintainers team can enable [GitHub auto-merge][] on
+a PR by commenting `/auto-merge` (or `/auto-merge:enable`; `/auto-merge:disable`
+turns it off) on its own line, as the first or last line of the comment:
 
-Today the command is implemented for localization teams; for its [placement
-rules][locale auto-merge] and [eligibility details][helper README], see the
-localization guide and the helper README. Extending it to SIG-owned trees is
-tracked in [#12285][].
+```text
+LGTM
+/auto-merge
+```
+
+This lets a docs owner land its own PRs without waiting on a docs maintainer.
+The command is honored only when **every** changed file is owned by a team the
+commenter maintains, so it can't reach content outside the owner's paths; the PR
+then merges once all required reviews and checks pass. Branch protection and
+CODEOWNERS remain the gate: the command only flips GitHub's "merge when ready"
+switch. For the placement and eligibility rules in full, see the [helper
+README][].
+
+Today the command works for localization teams; extending it to SIG-owned trees
+is tracked in [#12285][].
 
 ## The registry {#registry}
 
@@ -140,10 +148,10 @@ applies before the first SIG grant.
 [`missing:sig-approval` label]: /site/build/ci-workflows/#pr-approval-labels
 [#12285]: https://github.com/open-telemetry/opentelemetry.io/issues/12285
 [code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[GitHub auto-merge]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [helper README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
 [Housekeeping]: /site/build/ci-workflows/#housekeeping
 [label manager]: /site/build/ci-workflows/#pr-approval-labels
-[locale auto-merge]: ../localization/#auto-merge
 [locale teams]: ../localization/#locale-teams
 [localization setup guide]: /site/build/localization/#gh-org
 [membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md

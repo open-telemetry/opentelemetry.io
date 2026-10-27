@@ -406,8 +406,7 @@ must be a member of the `docs-<loc>-maintainers` team for every locale the PR
 touches. The helper's eligibility and authorization rules (and how to dry-run
 them locally) are documented in its [README][locale-auto-merge-script]; its unit
 and integration tests run with `npm run test:local-tools`. Contributor-facing
-usage lives in the [localization guide][localization-auto-merge]; the ownership
-model it implements, in [Docs ownership][].
+usage and the ownership model it implements: [Docs ownership][auto-merge].
 
 [Docs ownership]: /docs/contributing/docs-ownership/
 [GitHub auto-merge]:
@@ -416,7 +415,7 @@ model it implements, in [Docs ownership][].
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/locale-auto-merge.yml
 [locale-auto-merge-script]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
-[localization-auto-merge]: /docs/contributing/localization/#auto-merge
+[auto-merge]: /docs/contributing/docs-ownership/#auto-merge
 
 ## Spec integration branches {#spec-integration-branches}
 
