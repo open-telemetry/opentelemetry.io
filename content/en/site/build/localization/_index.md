@@ -276,7 +276,8 @@ repository, which an org admin merges and applies.
 ### 6a. Create the teams {#gh-org-teams}
 
 In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
-`docs-LANG_ID-maintainers`. For an example of the team declarations, see
+`docs-LANG_ID-maintainers`, both with `privacy = "closed"` (a secret team can't
+be nested or act as a code owner). For an example of the team declarations, see
 [admin#588][].
 
 ### 6b. Grant the approvers team write access {#gh-org-grant}
@@ -298,14 +299,15 @@ doesn't manage memberships.
     promotion.
 - **Maintainers team**: can stay empty at first; the locale is then
   [unstaffed][].
-- **Delegation**: once the locale has maintainers, give them the GitHub [team
-  maintainer][] role on both teams so they can manage membership themselves. The
-  role requires membership in the team, so on the maintainers team grant it only
-  to locale maintainers.
+- **Delegation**: once the locale has maintainers, add them to both teams and
+  give them the GitHub [team maintainer][] role on both, so they can manage
+  membership themselves. The role requires membership in the team, so on the
+  maintainers team grant it only to locale maintainers.
 
 ### 6d. Verify access {#gh-org-verify}
 
-Once the admin PR is applied and members are added, confirm:
+Confirm the team's grant once the admin PR is applied, and each member's access
+as members are added:
 
 - The `docs-LANG_ID-approvers` team is listed under the repository's
   collaborators and teams with the **Write** role. For example, using the GitHub
@@ -316,9 +318,10 @@ Once the admin PR is applied and members are added, confirm:
     --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
   ```
 
-  Expect `push`. Nothing printed means the team has no access at all (the grant
-  in Step 6b is missing or not yet applied); `pull` or `triage` means a grant
-  below write.
+  Expect `push`, the API's name for the Write role. Nothing printed means the
+  team isn't in the repository's access list (the grant in Step 6b is missing or
+  not yet applied, or the team doesn't exist yet); `pull` or `triage` means a
+  grant below write.
 
 - Every team member appears in the live team, and each has at least write access
   to the repository. For example:

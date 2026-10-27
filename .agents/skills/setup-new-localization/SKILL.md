@@ -243,17 +243,17 @@ npm run check:codeowners   # must report "up to date"
 
 ## Out-of-repo: org and community setup {#out-of-repo-create-the-org-teams}
 
-Follow the setup guide's [Step 6][] (GitHub org-level setup: teams, the write
-grant, membership, verification) and [Step 7][] (Slack channel and community
-listing).
+Follow the setup guide's [Step 6, GitHub org-level setup][] (teams, the write
+grant, membership, verification) and [Step 7, Slack channel and community
+listing][].
 
 Agent deltas: the admin PR and the community PR are separate from the setup PR.
-You can prepare and describe them, but you can't merge the admin PR, add team
-members, or create the Slack channel: report these as owner actions in your
-final summary.
+You can prepare and describe them, but you can't merge either, add team members,
+or create the Slack channel: report these as owner actions in your final
+summary.
 
-[Step 6]: https://opentelemetry.io/site/build/localization/#gh-org
-[Step 7]: https://opentelemetry.io/site/build/localization/#slack
+[Step 6, GitHub org-level setup]: /site/build/localization/#gh-org
+[Step 7, Slack channel and community listing]: /site/build/localization/#slack
 
 ## Validation checklist
 
