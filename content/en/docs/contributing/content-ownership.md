@@ -119,22 +119,12 @@ own it. What the SIG agrees to:
 - Team membership stays the SIG's; promotion follows the community [membership
   guidelines][].
 
-Docs maintainers then:
-
-1. Grant write access: a PR against the private [`open-telemetry/admin`][]
-   repository moves the SIG's approvers team(s) from the repository's `triagers`
-   to its `approvers` list in `repo-opentelemetry-io.tf`.
-2. Add CODEOWNERS entries for the tree, pointing at the SIG's approvers team(s),
-   and remove the tree's component-owners entries, in a PR to this repository.
-3. Verify the grant and the gate, as in the setup guide's [Step 6d][verify] for
-   locales: the team appears in the repository's teams list with the Write role,
-   and a test PR to the tree requests the SIG team's review as a code owner.
-
-The [secrets scoping](#write) prerequisite applies before the first SIG grant.
+Docs maintainers then perform the grant and ownership change, and verify them:
+[Team access and code ownership][team-access]. The [secrets scoping](#write)
+prerequisite applies before the first SIG grant.
 
 [`data/locale-teams.yaml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
-[`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
 [#12285]: https://github.com/open-telemetry/opentelemetry.io/issues/12285
 [CODEOWNERS]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
@@ -153,4 +143,4 @@ The [secrets scoping](#write) prerequisite applies before the first SIG grant.
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [setup]: /site/build/localization/#gh-org
 [style guide]: ../style-guide/
-[verify]: /site/build/localization/#gh-org-verify
+[team-access]: /site/admin/team-access/
