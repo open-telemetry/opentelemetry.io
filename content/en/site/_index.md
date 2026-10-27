@@ -37,9 +37,6 @@ Tentatively planned content organization:
 - [**Administration**](./admin/) — Maintainer procedures on the GitHub side:
   team access, code ownership, branch rules, secrets, and bot identities.
 - **Deployment** — Deployment-specific behavior for the OpenTelemetry website.
-- [**Security**](./security/) — Security posture of the website and its
-  repository: vulnerability reporting, credential scoping, supply-chain
-  safeguards.
 - [**Testing**](./testing/) — Link checking, accessibility standards, tests,
   review practices, and other quality-related processes.
 - **Roadmap** — Milestones, backlog, priorities, technical debt, and
