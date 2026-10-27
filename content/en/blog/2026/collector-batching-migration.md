@@ -1,7 +1,7 @@
 ---
 title: 'Deprecating the Collector Batch Processor'
 linkTitle: 'Deprecating the Collector Batch Processor'
-date: 2026-10-6
+date: 2026-11-04
 author: >-
   [Bogdan Drutu](https://github.com/bogdandrutu),
   [Dmitry Anoshin](https://github.com/dmitryax), and
@@ -130,7 +130,7 @@ stabilized. By then, `batch` processor users had identified three major
 limitations of the design, wanting:
 
 1. Control over size limits, to set limits in terms of _bytes_
-2. Control over concurrency, to set limits on concurrent request counts
+2. Control over concurrency, to set limits on concurrent request count limit.
 3. Control over back-pressure and error propagation.
 
 Independently from these matters, the `batch` processor added partitioning, the
