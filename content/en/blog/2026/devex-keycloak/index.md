@@ -1,7 +1,7 @@
 ---
 title: "Keycloak's observability journey: a guide for project maintainers"
 linkTitle: "Keycloak's observability journey"
-date: 2026-10-30
+date: 2026-11-02
 author: >-
   [Marcin "Perk" Stożek](https://github.com/perk) (Elastic), [Martin
   Bartoš](https://github.com/mabartos) (IBM), [Juliano
