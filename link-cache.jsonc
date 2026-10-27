@@ -9584,6 +9584,11 @@
     "when": "2026-10-23T17:34:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/main/README.md#localization-teams-part-of-sig-communications": {
+    "result": 200,
+    "when": "2026-10-27T17:31:27Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/main/code-of-conduct.md": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
