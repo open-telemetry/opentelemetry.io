@@ -20,21 +20,24 @@ can enable [auto-merge](#auto-merge) on PRs confined to that path.
 
 Two mechanisms assign reviewers to a PR, and they differ in what they enforce:
 
-| Mechanism                               | Defined in                         | Reviewers                                 | What an approval does                                                                                |
-| --------------------------------------- | ---------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **Code owners** (content-owning teams)  | [`.github/CODEOWNERS`][]           | Required; the team must hold write access | Satisfies the required code-owner review. Without it, the PR can't merge.                            |
-| **Component owners** (suggested review) | [`.github/component-owners.yml`][] | Suggested; works without write access     | Clears the [`missing:sig-approval` label][]; a docs maintainer may still merge after a grace period. |
-
-Code owners are the hard gate. By default, every file is owned by
-`@open-telemetry/docs-approvers`; a more specific CODEOWNERS entry replaces that
-default for its path (the last matching entry wins), so a PR confined to a tree
-owned by another team merges on that team's approval, without a docs-approvers
-review.
-
-Component owners are a soft gate: the component-owners automation requests the
-team's review and the [label manager][] tracks whether one arrived, but GitHub
-doesn't require it. SIG-owned content is on component owners unless the SIG has
-[taken ownership](#sig-ownership) of its tree.
+- **Code owners**, the content-owning teams: the hard gate.
+  - Defined in: [`.github/CODEOWNERS`][].
+  - Reviewers: required; the team must hold write access.
+  - An approval satisfies the required code-owner review; without one, the PR
+    can't merge.
+  - By default, every file is owned by `@open-telemetry/docs-approvers`; a more
+    specific CODEOWNERS entry replaces that default for its path (the last
+    matching entry wins), so a PR confined to a tree owned by another team
+    merges on that team's approval, without a docs-approvers review.
+- **Component owners**, suggested reviewers: the soft gate.
+  - Defined in: [`.github/component-owners.yml`][].
+  - Reviewers: suggested; works without write access.
+  - An approval clears the [`missing:sig-approval` label][]; a docs maintainer
+    may still merge after a grace period.
+  - The component-owners automation requests the team's review and the [label
+    manager][] tracks whether one arrived, but GitHub doesn't require it.
+    SIG-owned content is on component owners unless the SIG has
+    [taken ownership](#sig-ownership) of its tree.
 
 ### Why code owners need write access {#write}
 
