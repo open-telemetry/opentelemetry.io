@@ -31,18 +31,18 @@ default for its path (the last matching entry wins), so a PR confined to a tree
 owned by another team merges on that team's approval, without a docs-approvers
 review.
 
-Component owners are a soft gate: the [label manager][labels] asks the
-component's team for a review and tracks whether one arrived, but GitHub doesn't
-require it. SIG-owned content is on component owners unless the SIG has
-[taken ownership](#sig-ownership) of its tree.
+Component owners are a soft gate: the component-owners automation requests the
+team's review and the [label manager][labels] tracks whether one arrived, but
+GitHub doesn't require it. SIG-owned content is on component owners unless the
+SIG has [taken ownership](#sig-ownership) of its tree.
 
 ### Why code owners need write access {#write}
 
 GitHub counts a review toward branch protection only when the reviewer has write
 access to the repository, whether the requirement comes from CODEOWNERS or from
-a ruleset's required-reviewers rule. A code-owner team whose members lack write
-is ignored. So which teams gate which paths is really a question of which teams
-hold write access; the mechanisms above follow from that.
+a ruleset's required-reviewers rule; a CODEOWNERS entry naming a team without
+write access is ignored. So which teams gate which paths is really a question of
+which teams hold write access; the mechanisms above follow from that.
 
 Write access on this repository buys **approvals that count**, and little else:
 
@@ -99,11 +99,10 @@ trees is tracked in [#12285][].
 
 The locale section of CODEOWNERS is generated from the
 [`data/locale-teams.yaml`][] registry, which records which teams own which paths
-and their expected membership. Team membership is managed by each team's own
-maintainers on GitHub; the daily [Housekeeping][] run syncs the registry with
-the live locale teams and opens a PR for any drift, so roster changes leave an
-audit trail. Generalizing the registry from locales to all content-owning teams
-is tracked in [#12285][].
+and their expected membership. Team rosters live on GitHub, not in the registry:
+the daily [Housekeeping][] run syncs the registry with the live locale teams and
+opens a PR for any drift, so roster changes leave an audit trail. Generalizing
+the registry from locales to all content-owning teams is tracked in [#12285][].
 
 ## How a SIG takes ownership of its docs {#sig-ownership}
 
