@@ -13,14 +13,15 @@ cSpell:ignore: Aditya
 The OpenTelemetry Demo's recommendation service now has a Java implementation
 built on Spring Boot 4. The rewrite replaced Python, though the frontend still
 calls the same gRPC API and the service still asks the product catalog for
-products. A customer looking at a product should get recommendations that
-exclude that product.
+products. A customer looking at a product should get the same recommendations
+that they would before the change.
 
-That last part exposed a detail the protobuf contract alone would not tell you.
-The frontend was sending product IDs as one repeated element per character. The
-old service joined those characters and split the result on commas. A rewrite
-that accepted only complete IDs could serve a valid gRPC response and still
-recommend the product already on the screen.
+Preserving those recommendations exposed a detail the protobuf contract alone
+would not tell you. The frontend was sending product IDs as one repeated element
+per character. The old service joined those characters and split the result on
+commas. A rewrite that accepted only complete IDs could serve a valid gRPC
+response and still recommend the product already on the screen, which the old
+service never did.
 
 I kept that behavior in the
 [merged rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966).
@@ -30,7 +31,7 @@ depend on, and how do we check that it survives a new implementation?
 ## Choosing the instrumentation path
 
 The
-[service README](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/README.md)
+[recommendation service README](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/README.md)
 says the Java agent remains the default choice for Spring Boot applications. The
 recommendation service uses the Spring Boot starter so the demo can show another
 way to instrument Java. It does not need a Java agent attached to its process.
