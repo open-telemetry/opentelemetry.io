@@ -21044,6 +21044,11 @@
     "when": "2026-10-22T05:45:20Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions-client-side": {
+    "result": 200,
+    "when": "2026-10-27T10:36:34Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions-conformance": {
     "result": 200,
     "when": "2026-10-24T05:43:07Z",
@@ -32297,6 +32302,11 @@
   "https://www.mongodb.com/docs/manual/reference/command/": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://www.mongodb.com/docs/manual/reference/command/find/": {
+    "result": 200,
+    "when": "2026-10-27T10:36:34Z",
     "via": "lychee",
   },
   "https://www.mongodb.com/docs/manual/reference/error-codes/": {
