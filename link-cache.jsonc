@@ -2439,6 +2439,11 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://docs.github.com/en/organizations/organizing-members-into-teams/assigning-the-team-maintainer-role-to-a-team-member": {
+    "result": 200,
+    "when": "2026-10-23T16:43:02Z",
+    "via": "lychee",
+  },
   "https://docs.github.com/en/pull-requests": {
     "result": 200,
     "when": "2026-10-20T05:44:58Z",
@@ -9574,6 +9579,11 @@
     "when": "2026-10-16T05:44:19Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md#updating-sig-information": {
+    "result": 200,
+    "when": "2026-10-23T17:34:05Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/main/code-of-conduct.md": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
@@ -9614,6 +9624,11 @@
     "when": "2026-10-15T20:42:28Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver": {
+    "result": 200,
+    "when": "2026-10-26T18:22:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager": {
     "result": 200,
     "when": "2026-10-15T20:42:28Z",
@@ -9642,6 +9657,11 @@
   "https://github.com/open-telemetry/community/blob/main/project-management.md": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/main/sigs.md#localization-teams-part-of-sig-communications": {
+    "result": 200,
+    "when": "2026-10-23T16:43:02Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/community/blob/main/social-media-guide.md": {
