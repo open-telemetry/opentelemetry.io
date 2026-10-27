@@ -71,7 +71,7 @@ Download, verify, and run the `.sh` script:
 
 ```shell
 # Download the installer into a private directory
-version="v1.17.0"
+version="v1.18.0"
 repository="open-telemetry/opentelemetry-dotnet-instrumentation"
 release_workflow="$repository/.github/workflows/release.yml"
 download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
@@ -146,7 +146,7 @@ On Windows, use the PowerShell module as an Administrator.
 # PowerShell 5.1 is required
 #Requires -PSEdition Desktop
 
-$version = "v1.17.0"
+$version = "v1.18.0"
 $repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
 $release_workflow = "$repository/.github/workflows/release.yml"
 $skip_release_verification = $false
