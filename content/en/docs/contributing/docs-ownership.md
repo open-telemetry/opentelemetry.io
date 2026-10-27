@@ -1,6 +1,6 @@
 ---
-title: Content ownership, required reviews, and auto-merge
-linkTitle: Content ownership
+title: Docs ownership, required reviews, and auto-merge
+linkTitle: Docs ownership
 description:
   Which team's approval is required to merge a docs PR, how a team comes to own
   its docs, and who can enable auto-merge.
@@ -19,13 +19,18 @@ This page describes how ownership of this site's content maps to GitHub teams:
 
 ## The model {#model}
 
-**Whoever owns a body of content owns its docs.** A content owner, a SIG or a
-localization team, has two GitHub teams, each holding one lever over the
-content's paths:
+**Whoever owns a body of content owns its docs.** A docs owner, a SIG or a
+localization team, has two GitHub teams, each holding one lever over the paths
+it owns:
 
 - Its **approvers team** is the paths' [code owner][]: a PR confined to those
   paths needs that team's approval, and merges on it.
 - Its **maintainers team** can [auto-merge](#auto-merge) such a PR.
+
+The two kinds of owner differ less than they look: in the community's [SIG
+registry][], each localization team is a cross-cutting SIG under SIG
+Communications. The only difference is that a localization team has no code
+repository, so no pre-existing approvers team.
 
 Code owners are one of two mechanisms that assign reviewers to a PR. They differ
 in what they enforce:
@@ -35,7 +40,7 @@ in what they enforce:
   - Without the code owner's approval, the PR can't merge.
   - By default, `@open-telemetry/docs-approvers` owns every file. A more
     specific entry replaces that default for its paths (the last matching entry
-    wins), so a PR confined to a content owner's paths merges on that owner's
+    wins), so a PR confined to a docs owner's paths merges on that owner's
     approval, with no docs-approvers review.
 - **Component owners**: suggested reviewers, the soft gate.
   - Declared in [`.github/component-owners.yml`][]; no write access needed.
@@ -69,11 +74,11 @@ On this repository, write access buys **approvals that count**, and little else:
 ### Localization teams {#locales}
 
 Each locale has dedicated `docs-LANG_ID-approvers` and
-`docs-LANG_ID-maintainers` teams, because a locale has no other team. The
-approvers team owns `content/LANG_ID/` and the locale's spell-checking and `prh`
-files; the maintainers team can auto-merge locale-only PRs. For [unstaffed
-locales and the `docs-approvers` fallback][locale teams], see the localization
-guide; for creating the teams, the [localization setup guide][].
+`docs-LANG_ID-maintainers` teams. The approvers team owns `content/LANG_ID/` and
+the locale's spell-checking and `prh` files; the maintainers team can auto-merge
+locale-only PRs. For [unstaffed locales and the `docs-approvers`
+fallback][locale teams], see the localization guide; for creating the teams, the
+[localization setup guide][].
 
 ### SIGs {#sigs}
 
@@ -88,12 +93,12 @@ docs. The approvers team gains write access on this repository when the SIG
 
 ## Auto-merge {#auto-merge}
 
-A member of a content owner's maintainers team can enable GitHub auto-merge on a
-PR by commenting `/auto-merge` (`/auto-merge:enable`, or `/auto-merge:disable`
-to turn it off). The directive is honored only when **every** changed file is
-owned by a team the commenter maintains; the PR then merges once all required
-reviews and checks pass. Branch protection and CODEOWNERS remain the gate: the
-command only flips GitHub's "merge when ready" switch.
+A member of a docs owner's maintainers team can enable GitHub auto-merge on a PR
+by commenting `/auto-merge` (`/auto-merge:enable`, or `/auto-merge:disable` to
+turn it off). The directive is honored only when **every** changed file is owned
+by a team the commenter maintains; the PR then merges once all required reviews
+and checks pass. Branch protection and CODEOWNERS remain the gate: the command
+only flips GitHub's "merge when ready" switch.
 
 Today the command is implemented for localization teams; for its [placement
 rules][locale auto-merge] and [eligibility details][helper README], see the
@@ -107,7 +112,7 @@ The locale section of CODEOWNERS is generated from the
 and their expected membership. Team rosters live on GitHub, not in the registry:
 the daily [Housekeeping][] run syncs the registry with the live locale teams and
 opens a PR for any drift, so roster changes leave an audit trail. Generalizing
-the registry from locales to all content owners is tracked in [#12285][].
+the registry from locales to all docs owners is tracked in [#12285][].
 
 ## Take ownership of your SIG's docs {#sig-ownership}
 
@@ -143,6 +148,7 @@ applies before the first SIG grant.
 [localization setup guide]: /site/build/localization/#gh-org
 [membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 [opens an issue]: ../issues/
+[SIG registry]: https://github.com/open-telemetry/community/blob/main/README.md#localization-teams-part-of-sig-communications
 [style guide]: ../style-guide/
 [Team access and code ownership]: /site/admin/team-access/
 <!-- prettier-ignore-end -->

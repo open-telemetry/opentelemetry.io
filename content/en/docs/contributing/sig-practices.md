@@ -229,7 +229,7 @@ required reviewer, with write access, and its maintainers can auto-merge PRs
 confined to the tree, which then no longer need a docs-approvers review. To ask,
 and for what the SIG agrees to, see [Take ownership of your SIG's docs][].
 
-[Take ownership of your SIG's docs]: ../content-ownership/#sig-ownership
+[Take ownership of your SIG's docs]: ../docs-ownership/#sig-ownership
 
 ### PRs from bots
 

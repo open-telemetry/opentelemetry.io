@@ -25,7 +25,7 @@ script-free, with build jobs re-enabling only the reviewed Hugo rebuild.
 
 The following workflows work together to automatically manage approval-related
 labels on pull requests. For which approvals are required, as opposed to tracked
-by label, see [Content ownership][].
+by label, see [Docs ownership][].
 
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
@@ -407,9 +407,9 @@ touches. The helper's eligibility and authorization rules (and how to dry-run
 them locally) are documented in its [README][locale-auto-merge-script]; its unit
 and integration tests run with `npm run test:local-tools`. Contributor-facing
 usage lives in the [localization guide][localization-auto-merge]; the ownership
-model it implements, in [Content ownership][].
+model it implements, in [Docs ownership][].
 
-[Content ownership]: /docs/contributing/content-ownership/
+[Docs ownership]: /docs/contributing/docs-ownership/
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [locale-auto-merge.yml]:

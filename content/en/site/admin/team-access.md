@@ -7,9 +7,9 @@ weight: 10
 ---
 
 Follow this procedure when a team becomes the owner of a docs tree under the
-[content ownership model][]: a SIG that has [asked to own its docs][], or a
-locale whose dedicated teams are being set up (for locales, the [localization
-setup guide][] Step 6 covers team creation as well; this page is the grant and
+[docs ownership model][]: a SIG that has [asked to own its docs][], or a locale
+whose dedicated teams are being set up (for locales, the [localization setup
+guide][] Step 6 covers team creation as well; this page is the grant and
 ownership part that both cases share).
 
 ## Grant write access {#grant}
@@ -57,8 +57,8 @@ Once the admin PR is applied and the ownership PR merged:
 [`component-owners.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
-[asked to own its docs]: /docs/contributing/content-ownership/#sig-ownership
+[asked to own its docs]: /docs/contributing/docs-ownership/#sig-ownership
 [code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-[content ownership model]: /docs/contributing/content-ownership/
+[docs ownership model]: /docs/contributing/docs-ownership/
 [localization setup guide]: ../../build/localization/#gh-org
 <!-- prettier-ignore-end -->

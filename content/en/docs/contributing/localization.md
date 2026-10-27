@@ -563,7 +563,7 @@ teams; maintainers are also approvers. The approvers team is the [code owner][]
 of the locale's paths, so a locale approver's review satisfies the required
 code-owner review of a locale-only PR. Locale maintainers can also
 [auto-merge](#auto-merge) such PRs. For the ownership model behind this, which
-also covers SIG-owned content, see [Content ownership][].
+also covers SIG-owned content, see [Docs ownership][].
 
 The expected membership of locale teams is recorded in the
 [`data/locale-teams.yaml`][] registry, which also drives the locale section of
@@ -602,14 +602,14 @@ LGTM
 This lets established localization teams land their own PRs without waiting on a
 docs maintainer. GitHub, branch protection, and CODEOWNERS rules still gate the
 merge: the PR only merges once all required reviews are in and checks pass. For
-how auto-merge fits the ownership model, see [Content ownership][].
+how auto-merge fits the ownership model, see [Docs ownership][].
 
 An auto-merge comment is honored only when every changed file is owned by a
 locale you maintain, so it can't be used to make changes to shared or English
 content. For the eligibility rules and command details, see the [helper
 README][].
 
-[Content ownership]: ../content-ownership/
+[Docs ownership]: ../docs-ownership/
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [helper README]:
