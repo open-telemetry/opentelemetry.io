@@ -20,35 +20,40 @@ exceed limits. Batching combines a number of concerns that are
 critical to performance, reliability, and cost in running Collectors.
 
 Since OpenTelemetry began in 2019, its Collector has included a
-`batch` processor component, responsible for managing the process of
-combining and splitting requests, making outbound requests, monitoring
+`batch` processor component, responsible for combining and splitting
+requests before sending them to downstream consumers, monitoring
 inbound and outbound timeouts, and holding back new requests when the
 pipeline is full.
 
 ## TL;DR
 
-The batch processor will be deprecated starting with version `v0.165.0`
-(November 2026) in favor of exporter-level batching and the
-`queuebatch` processor component.
+We are deprecating the `batch` processor. Batching is now supported
+directly in exporters, called _exporter-level batching_, and a new
+`queuebatch` processor replaces the original processor
+component. Integrated queue and batch behavior brings numerous
+improvements described below.
 
 Most users can migrate immediately to exporter-level batching. Common
-before- and after-configurations are shown in the table below.
+before and after configurations are shown below.
 
-<table>
-  <th><td>Before</td><td>After</td></th>
-  <tr>
-<td>
+**Before:**
+
 ```yaml
 receivers:
   host_metrics:
+    scrapers:
+      cpu: {}
 
 processors:
   batch:
 
 exporters:
   otlp:
+    ...
     sending_queue:
+      enabled: true
       # batch not enabled
+
 
 service:
   pipelines:
@@ -58,18 +63,22 @@ service:
       exporters: [otlp]
 ```
 
-</td>
-<td>
+**After:**
+
 ```yaml
 receivers:
   host_metrics:
+    scrapers:
+      cpu: {}
 
-# no batch processor
+
 
 
 exporters:
   otlp:
+    ...
     sending_queue:
+      enabled: true
       batch:
         enabled: true
 
@@ -77,18 +86,18 @@ service:
   pipelines:
     metrics:
       receivers: [host_metrics]
-
       exporters: [otlp]
 ```
 
-</td>
-  </tr>
-</table>
-
 Exporter-level batching will be enabled by default for most components
-in release `v0.171.0` (February 2027), and users can set a feature flag
-to experiment with this mode today. The `batch` processor will be removed from the
-core repository and distributions in `v0.177.0` (May 2027).
+in release `v0.171.0` (February 2027), and users can set a feature
+flag to experiment with this mode today. The `batch` processor will be
+removed from the core repository and distributions in `v0.177.0` (May
+2027).
+
+Use exporter-level batching in most cases. If you need batching before
+another processor or shared batching for multiple exporters, use the
+`queuebatch` processor instead.
 
 ## Batchprocessor: now deprecated!
 
@@ -167,7 +176,7 @@ pending batch reaches the `flush_timeout` before reaching `min_size`,
 it exports immediately. If partitioning is configured, each partition
 keeps a pending batch independently. 
 
-Complete batches are handed to one of the queue's `num_consumer`
+Complete batches are handed to one of the queue's `num_consumers`
 concurrent workers. Requests exiting the combined queue and batch
 logic then pass to the exporter's configured timeout and retry
 configuration. Here is the default configuration:
@@ -195,11 +204,26 @@ In detail:
 - `block_on_overflow` false means fail fast; true means wait until the deadline
 - `wait_for_result` false means do not wait for acknowledgement; true means wait for success or failure.
 
-Because exporter-level batching was introduced after queueing behavior defaults were
-settled, it remains disabled by default. However, exporter-level batching defaults
-match the batch processor. At this time, we recommend that OpenTelemetry Collector users
-replace their `batch` processor configuration with equivalent exporter-level batching. That means for most exporters today, you
-can already opt in to exporter-level batching, for example:
+Because exporter-level batching was introduced after queueing behavior
+stabilized, batching remains disabled by default. After enabling
+exporter-level batching, the default for `sizer`, `min_size`, and
+`flush_timeout` match the original `batch` processor.
+
+For most exporters today, you can migrate from the default `batch`
+processor settings by removing it from the pipeline and enabling
+exporter-level batching:
+
+```yaml
+exporters:
+  otlp:
+    sending_queue:
+      batch:
+        enabled: true
+```
+
+### Optional tuning
+
+After migrating, you can configure byte-based limits instead of item counts.
 
 ```yaml
 exporters:
@@ -209,25 +233,15 @@ exporters:
       batch:
         enabled:         true        # exporter-level batching
         sizer:           bytes       # measure in bytes
-        min_size         1_000_000   # minimum bytes
-        max_size         10_000_000  # maximum bytes
+        min_size:        1_000_000   # minimum bytes
+        max_size:        10_000_000  # maximum bytes
         flush_timeout:   200ms       # maximum delay
 ```
 
 Like the `batch` processor, the queuebatch mechanism supports partitioning
 by metadata; see [queuebatch documentation][QUEUEBATCH] for more
-details. Note that if you simply enable exporter-level batching, the default behavior
-matches the `batch` processor: a `min_size` limit of 8192 items with
-`max_size` unset.
-
-```yaml
-exporters:
-  <many>:
-    sending_queue:     # exporter queuebatch behavior
-      <...>
-      batch:
-        enabled: true  # default batching
-```
+details. Without explicit batch-size settings, `min_size` is 8192 items,
+`max_size` is unset, and `flush_timeout` is 200ms.
 
 The Collector's storage extension is available for all `sending_queue`
 configurations, supporting configuration of [persistent
@@ -263,7 +277,7 @@ processor makes sense, for example:
 For such cases, we've introduced a new [`queuebatch`
 processor][QUEUEBATCHPROCESSOR] as a `batch` processor replacement. It
 uses the same configuration structure as `sending_queue`, and its
-default settings match the original `batch` processor:
+default item threshold and flush timeout match the original `batch` processor:
 
 ```yaml
 processors:
@@ -288,7 +302,7 @@ propagation consistently whether in a processor or an exporter.
 
 ## Batching by default in 2027
 
-The queuebatch-based `sending_queue` configuration has been stable
+The `sending_queue` configuration has been stable
 since around `v0.126.0`, and the replacement is completely ready. One
 of the remaining tasks is to **enable batching by default** in most
 exporters.
@@ -300,11 +314,11 @@ plan][MIGRATION]. The `batch` processor is now officially deprecated.
 
 In the upcoming Collector release, the `batch` processor will begin to
 issue a deprecation warning. Users who do nothing will experience a
-planned change of default. Batching will be enabled by default some
-time around release `v0.170.0` in early 2027; the `batch` processor will
-be removed from the Collector codebase at that time.
+planned change of default. Batching will be enabled by default in
+release `v0.171.0` (February 2027); the `batch` processor will
+be removed from the core repository and distributions in `v0.177.0` (May 2027).
 
-Until then, several immediate steps are available to developers:
+Until then, several immediate steps are available to users:
 
 1. Configure exporter `sending_queue` instead of the `batch` processor. Most
    exporters already support this feature. By configuring your own
@@ -320,18 +334,20 @@ mitigation steps are ready to use today.
   a `batch` processor and a `sending_queue` with batching enabled. This
   will issue a warning, and in this case the `batch` processor can be
   simply removed.
-- The [Collector `mdatagen` command][MDATAGEN] supports declaring the
-  queuebatch configuration in the component's `metadata.yaml`,
-  declaring whether `sending_queue` takes the default behavior, has
-  specific overrides, or is entirely omitted.
 
-[MDATAGEN](https://github.com/open-telemetry/opentelemetry-collector/blob/main/cmd/mdatagen/README.md)
+### For component developers
+
+The [Collector `mdatagen` command][MDATAGEN] supports declaring the
+`sending_queue` configuration in the component's `metadata.yaml`,
+declaring whether `sending_queue` takes the default behavior, has
+specific overrides, or is entirely omitted.
+
+[MDATAGEN]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/cmd/mdatagen/README.md#exporter-queuebatch-sender-defaults
 
 ## Thanks
 
-There have been many contributors to the queuebatch codebase, from the
-earliest issues to finishing touches. Almost, but not quite, too many
-to mention.
+There have been many contributors to the queueing and batching
+codebase, from the earliest issues to the finishing touches.
 
 The queuebatch lead authors are [Bogdan
 Drutu](https://github.com/bogdandrutu) and [Dmitry
@@ -355,6 +371,7 @@ Thanks to so many more contributors, including
 [Israel Blancas](https://github.com/iblancasa),
 [Jade Guiton](https://github.com/jade-guiton-dd),
 [Jan Korona](https://github.com/jkoronaAtCisco),
+[Joshua MacDonald](https://github.com/jmacd),
 [Matthieu Morel](https://github.com/mmorel-35),
 [Mike Terhar](https://github.com/mterhar),
 [Pablo Baeyens](https://github.com/mx-psi),
