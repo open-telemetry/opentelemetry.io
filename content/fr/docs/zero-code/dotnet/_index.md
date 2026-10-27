@@ -218,7 +218,7 @@ vous. Si l'application est hébergée sur IIS dans .NET Framework, cela utiliser
 `SiteName\VirtualDirectoryPath` ex : `MySite\MyApp`
 
 Pour les applications ASP.NET Core, vous pouvez utiliser les éléments
-[`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
+[`<environmentVariable>`](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
 à l'intérieur du bloc `<aspNetCore>` de votre fichier `Web.config` pour définir
 la configuration via des variables d'environnement.
 
@@ -229,7 +229,7 @@ exécutant `iisreset.exe`. {{% /alert %}}
 ### Configuration avancée {#advanced-configuration}
 
 Vous pouvez ajouter les
-[`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
+[`<environmentVariables>`](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
 dans `applicationHost.config` pour définir des variables d'environnement pour
 des pools d'applications donnés.
 

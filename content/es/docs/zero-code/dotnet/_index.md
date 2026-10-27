@@ -216,7 +216,7 @@ usted. Si la aplicación está alojada en IIS en el Framework de .NET, se usará
 `SiteName\VirtualDirectoryPath`, por ejemplo: `MySite\MyApp`.
 
 Para las aplicaciones ASP.NET Core, puede usar los elementos
-[`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
+[`<environmentVariable>`](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
 dentro del bloque `<aspNetCore>` del archivo `Web.config` para establecer la
 configuración mediante variables de entorno.
 
@@ -227,7 +227,7 @@ realizar cambios de configuración. Puede hacerlo ejecutando `iisreset.exe`.
 ### Configuración avanzada
 
 Puede agregar las
-[`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
+[`<environmentVariables>`](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
 en `applicationHost.config` para establecer variables de entorno para grupos de
 aplicaciones determinados.
 
