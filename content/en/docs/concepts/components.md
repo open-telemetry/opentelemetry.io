@@ -73,11 +73,29 @@ For more information, see
 
 ### Exporters
 
-An exporter sends telemetry data from an instrumented application through the OpenTelemetry SDK to the OpenTelemetry Collector or directly to a backend such as [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/), or a [vendor-specific backend](/ecosystem/vendors/). The Collector uses its own exporters to forward processed telemetry to backends (see the [Collector exporters list](/docs/collector/components/exporter/)) and is recommended for production because it can process and filter telemetry before forwarding it.
+An exporter sends telemetry data from an instrumented application through the
+OpenTelemetry SDK to the OpenTelemetry Collector or directly to a backend such
+as [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
+[Prometheus](https://prometheus.io/), or a
+[vendor-specific backend](/ecosystem/vendors/). The Collector uses its own
+exporters to forward processed telemetry to backends (see the
+[Collector exporters list](/docs/collector/components/exporter/)) and is
+recommended for production because it can process and filter telemetry before
+forwarding it.
 
-Many popular programming languages support OpenTelemetry instrumentation. The way you configure exporters in your application depends on the language it's written in, so see the [APIs & SDKs documentation](/docs/languages/) for your application's language. The [registry](ecosystem/registry/?component=exporter) also lists exporters from the community.
+Many popular programming languages support OpenTelemetry instrumentation. The
+way you configure exporters in your application depends on the language it's
+written in, so see the [APIs & SDKs documentation](/docs/languages/) for your
+application's language. The [registry](/ecosystem/registry/?component=exporter)
+also lists exporters from the community.
 
-The [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/) is the protocol OpenTelemetry uses to send telemetry between SDKs, the Collector, and backends. Among exporters, OTLP exporters are designed with the OpenTelemetry data model in mind, emitting OTel data without any loss of information. Furthermore, many tools that operate on telemetry data support OTLP (such as Prometheus, Jaeger, and most vendors), providing you with a high degree of flexibility when you need it.
+The [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/) is the protocol
+OpenTelemetry uses to send telemetry between SDKs, the Collector, and backends.
+Among exporters, OTLP exporters are designed with the OpenTelemetry data model
+in mind, emitting OTel data without any loss of information. Furthermore, many
+tools that operate on telemetry data support OTLP (such as Prometheus, Jaeger,
+and most vendors), providing you with a high degree of flexibility when you need
+it.
 
 ### Zero-code instrumentation
 
