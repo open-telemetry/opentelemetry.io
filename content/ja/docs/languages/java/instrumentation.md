@@ -8,8 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
-drifted_from_default: true
+default_lang_commit: bae0689d264b08de4272ae5cd76a3ed6121273d0
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
