@@ -14,9 +14,8 @@ reviewer: the point is to make the safe default obvious and the rare urgent case
 recognizable.
 
 The procedures themselves (how to update a dependency, what the cooldown is,
-what the supply-chain audit checks) live in [Dependency management][deps] and
-[Supply-chain security][design]; this page links to them rather than repeating
-them.
+what the supply-chain audit checks) live in [Dependency management][] and
+[Supply-chain security][]; this page links to them rather than repeating them.
 
 ## The repository already does most of the work
 
@@ -39,7 +38,7 @@ notification means:
 
 So the day-to-day job is not to add security review; it is to **not weaken these
 controls** and to **not rush**. For the controls and their enforcement, see
-[Supply-chain controls][controls].
+[Supply-chain controls][].
 
 ## What arrives, and what it means
 
@@ -47,7 +46,7 @@ controls** and to **not rush**. For the controls and their enforcement, see
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Dependabot alert email, or a Dependabot security-update PR                   | A known bug (CVE or GHSA) in a package in the lock, with a fix version                                    | Triage below; the PR is the fix path. Note the alert; don't dismiss it                                           |
 | Renovate PR titled `[SECURITY]`                                              | Same, for a direct dependency                                                                             | Same                                                                                                             |
-| Routine Renovate PR (Monday morning)                                         | A version bump that has aged 7 or more days                                                               | Review per [Updating dependencies][updating]; merge when green                                                   |
+| Routine Renovate PR (Monday morning)                                         | A version bump that has aged 7 or more days                                                               | Review per [Updating dependencies][]; merge when green                                                           |
 | Private vulnerability report (repository **Security** tab, maintainer email) | Someone reports a problem; often not about the website at all                                             | Acknowledge within a few days; if it concerns another OpenTelemetry component, reroute it; keep its text private |
 | Code scanning or secret scanning alert                                       | A pattern in the site's own code, or a credential in the repository                                       | Secret: escalate now. Code scanning: triage like a bug report                                                    |
 | Node.js or Hugo security release announcement                                | A toolchain pin will need a bump                                                                          | Renovate brings it after the cooldown; ride that PR                                                              |
@@ -95,7 +94,7 @@ Then route:
   cooldown exception.
 - **Bug reaching visitors or untrusted input**: raise it with the other
   maintainers the same day; fix on the normal path if the fix has aged,
-  otherwise ask for a vetted exception (see [The cooldown](#cooldown)).
+  otherwise ask for a [vetted exception](#cooldown).
 - **Compromise notice, package in the lock at an affected version**: do not
   install anything; stop merging; [escalate](#escalate) so that CI tokens and
   Netlify can be checked and rotated. Lock-exact installs and the cooldown make
@@ -118,24 +117,22 @@ Then route:
   unclear, **wait**: for a build-time dependency, waiting 7 days is the
   default-safe move, not negligence.
 - Anything that **installs a release younger than 7 days** on purpose (a
-  cooldown exemption, see [Transitive refreshes][refresh]) is a security
-  decision. Don't take it alone; ask.
+  [cooldown exemption][]) is a security decision. Don't take it alone; ask.
 - "Development-only" and "cooldown passed" together still mean only this: a
   known bug in build tooling, probably not freshly poisoned. They are reasons
   for calm, not evidence of safety.
 
 ## Bot PRs: safe-to-merge checklist
 
-The [dependency docs][updating] own the procedures; this is the short list for a
+The [dependency docs][] own the procedures; this is the short list for a
 security-motivated PR:
 
 - The lock delta contains only the packages the PR title names, plus what they
   require. Anything else: ask.
 - CI is green, including the supply-chain audit. If the audit fails naming
   `allowScripts`, the PR bumps a package with an install script: the fix is a
-  reviewed, version-exact approval per [Script-bearing packages][scripts], never
-  a loosened assertion or `.npmrc`. Leave these for someone who can review the
-  install script.
+  reviewed, [version-exact approval][], never a loosened assertion or `.npmrc`.
+  Leave these for someone who can review the install script.
 - Never edit `.npmrc`, `allowScripts`, `netlify.toml`, or the audit test to get
   to green. Each line there is a control; the failure is the point.
 
@@ -243,12 +240,14 @@ it.
   documented residual (build-time, trusted input), then withdrawn upstream.
   Documenting the acceptance was the whole job.
 
+<!-- prettier-ignore-start -->
 [CNCF Slack]: https://slack.cncf.io/
-[controls]: ../../build/dependencies/#controls
-[deps]: ../../build/dependencies/
-[design]: ../../design/supply-chain-security/
-[refresh]: ../../build/dependencies/#transitive-refresh
-[scripts]: ../../build/dependencies/#script-bearing-packages
-[security policy]:
-  https://github.com/open-telemetry/opentelemetry.io/security/policy
-[updating]: ../../build/dependencies/#updating
+[cooldown exemption]: ../../build/dependencies/#transitive-refresh
+[Dependency management]: ../../build/dependencies/
+[dependency docs]: ../../build/dependencies/#updating
+[security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[Supply-chain controls]: ../../build/dependencies/#controls
+[Supply-chain security]: ../../design/supply-chain-security/
+[Updating dependencies]: ../../build/dependencies/#updating
+[version-exact approval]: ../../build/dependencies/#script-bearing-packages
+<!-- prettier-ignore-end -->

@@ -14,14 +14,18 @@ at the controls and procedures that already live elsewhere in the site docs:
   to triage it, and when to escalate. Start here when an alert, a bot PR, or a
   report arrives.
 - The supply-chain controls on the site's npm dependencies: threat model and
-  rationale in [Supply-chain security](../design/supply-chain-security/), the
-  controls and update recipes in
-  [Dependency management](../build/dependencies/#controls), and the test that
-  verifies them in [Supply-chain audit design](../design/supply-chain-audit/).
-- Workflow triggers, token privileges, and untrusted inputs in CI:
-  [CI workflows](../build/ci-workflows/#security-model).
+  rationale in [Supply-chain security][], the controls and update recipes in
+  [Dependency management][], and the test that verifies them in [Supply-chain
+  audit design][].
+- Workflow triggers, token privileges, and untrusted inputs in CI: [CI
+  workflows][].
 - How to report a vulnerability in the website: the repository's [security
   policy][].
 
-[security policy]:
-  https://github.com/open-telemetry/opentelemetry.io/security/policy
+<!-- prettier-ignore-start -->
+[CI workflows]: ../build/ci-workflows/#security-model
+[Dependency management]: ../build/dependencies/#controls
+[security policy]: https://github.com/open-telemetry/opentelemetry.io/security/policy
+[Supply-chain audit design]: ../design/supply-chain-audit/
+[Supply-chain security]: ../design/supply-chain-security/
+<!-- prettier-ignore-end -->
