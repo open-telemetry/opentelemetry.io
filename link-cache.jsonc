@@ -20644,6 +20644,11 @@
     "when": "2026-10-21T19:11:12Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/12285": {
+    "result": 200,
+    "when": "2026-10-27T15:06:00Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/issues/6592": {
     "result": 200,
     "when": "2026-10-17T05:41:07Z",
