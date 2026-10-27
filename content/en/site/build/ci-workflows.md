@@ -24,7 +24,8 @@ script-free, with build jobs re-enabling only the reviewed Hugo rebuild.
 ## PR approval labels {#pr-approval-labels}
 
 The following workflows work together to automatically manage approval-related
-labels on pull requests:
+labels on pull requests. For which approvals are required, as opposed to tracked
+by label, see [Content ownership][].
 
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
@@ -405,8 +406,10 @@ must be a member of the `docs-<loc>-maintainers` team for every locale the PR
 touches. The helper's eligibility and authorization rules (and how to dry-run
 them locally) are documented in its [README][locale-auto-merge-script]; its unit
 and integration tests run with `npm run test:local-tools`. Contributor-facing
-usage lives in the [localization guide][localization-auto-merge].
+usage lives in the [localization guide][localization-auto-merge]; the ownership
+model it implements, in [Content ownership][].
 
+[Content ownership]: /docs/contributing/content-ownership/
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [locale-auto-merge.yml]:
