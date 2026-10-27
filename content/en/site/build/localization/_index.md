@@ -323,16 +323,16 @@ gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permiss
 
 ## Step 7 — Slack channel and community listing {#slack}
 
-Create a channel for the locale in the [CNCF Slack workspace][], using the
-naming convention `#otel-localization-LANG_ID` (for example,
-`#otel-localization-pl` for Polish). After creating the channel, add the
-[OpenTelemetry Admin](https://cloud-native.slack.com/team/U07DR07KAEQ) as a
-channel manager.
-
-Then open a PR against [`open-telemetry/community`][] that adds a
-`localization-LANG_ID` entry to `workstreams.yml`, modeled on the existing
-locale entries, so that the team appears under [Localization Teams][] in the
-generated `sigs.md`. For the procedure, see [Updating SIG information][].
+1. Create a channel for the locale in the [CNCF Slack workspace][], named
+   `#otel-localization-LANG_ID` (for example, `#otel-localization-pl` for
+   Polish).
+2. Add the
+   [OpenTelemetry Admin](https://cloud-native.slack.com/team/U07DR07KAEQ) as a
+   channel manager.
+3. Open a PR against [`open-telemetry/community`][] that adds a
+   `localization-LANG_ID` entry to `workstreams.yml`, modeled on the existing
+   locale entries, so that the team appears under [Localization Teams][] in the
+   generated `sigs.md`. For the procedure, see [Updating SIG information][].
 
 ## Step 8 — Project tracking {#projects}
 
