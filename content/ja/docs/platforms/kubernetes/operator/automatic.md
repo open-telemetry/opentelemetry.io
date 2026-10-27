@@ -460,7 +460,7 @@ Instrumentationオブジェクトが作成されたので、クラスターは�
 ただし、OpenTelemetryオペレーターを使用した自動計装は、オプトインモデルに従います。
 自動計装を有効にするには、Deploymentにアノテーションを追加する必要があります。
 
-## 既存のDeploymentへのアノテーション追加 #add-annotations-to-existing-deployments
+## 既存のDeploymentへのアノテーション追加 {#add-annotations-to-existing-deployments}
 
 最後のステップは、サービスを自動計装にオプトインすることです。
 これは、サービスの `spec.template.metadata.annotations` を更新して、言語固有のアノテーションを含めることで実行されます。

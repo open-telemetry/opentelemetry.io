@@ -5,6 +5,7 @@ description: >-
   Step-by-step maintainer guide for onboarding a new language localization to
   the OpenTelemetry website.
 weight: 50
+cSpell:ignore: workstreams
 ---
 
 This guide walks OTel website maintainers through every change required to
@@ -268,25 +269,81 @@ file are no longer required as of June 2026.
 ## Step 6 — GitHub org-level setup {#gh-org}
 
 These steps happen outside the repository and require maintainer-level access to
-the `open-telemetry` GitHub organization.
+the `open-telemetry` GitHub organization. Team creation and the repository grant
+go into one pull request against the private [`open-telemetry/admin`][]
+repository, which an org admin merges and applies.
 
-Team creation is done by opening a pull request against the
-[`open-telemetry/admin`][] repository (private). See
-[this PR](https://github.com/open-telemetry/admin/pull/588?link-check=no) for an
-example of the expected format.
+### 6a. Create the teams {#gh-org-teams}
 
-> [!NOTE]
->
-> [Team members should be added manually](https://github.com/open-telemetry/admin/issues/58?link-check=no),
-> since they aren't currently being managed by this repository.
+In `teams.tf`, declare `docs-LANG_ID-approvers` and, as its child team,
+`docs-LANG_ID-maintainers`, both with `privacy = "closed"` (a secret team can't
+be nested or act as a code owner). For an example of the team declarations, see
+[admin#588][].
 
-## Step 7 — Slack channel {#slack}
+### 6b. Grant the approvers team write access {#gh-org-grant}
 
-Create a channel for the locale in the [CNCF Slack workspace][], using the
-naming convention `#otel-localization-LANG_ID` (for example,
-`#otel-localization-pl` for Polish). After creating the channel, add the
-[OpenTelemetry Admin](https://cloud-native.slack.com/team/U07DR07KAEQ) as a
-channel manager.
+In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
+list of `repo-opentelemetry-io.tf`: a [code owner][] team must itself hold write
+access, whatever its members hold through other teams.
+
+### 6c. Add team members {#gh-org-members}
+
+An org admin [adds team members manually][admin#58]; the admin repository
+doesn't manage memberships.
+
+- **Who qualifies**:
+  - Org members elected approver per the community [membership guidelines][]
+    ([Becoming an Approver][]).
+  - Kickoff contributors usually qualify later: until then their reviews count
+    as described in [New localizations][], and the kickoff issue tracks their
+    promotion.
+- **Maintainers team**: can stay empty at first; the locale is then
+  [unstaffed][].
+- **Delegation**: once the locale has maintainers, add them to both teams and
+  give them the GitHub [team maintainer][] role on both, so they can manage
+  membership themselves. The role requires membership in the team, so on the
+  maintainers team grant it only to locale maintainers.
+
+### 6d. Verify access {#gh-org-verify}
+
+Confirm the team's grant once the admin PR is applied, and each member's access
+as members are added:
+
+- The `docs-LANG_ID-approvers` team is listed under the repository's
+  collaborators and teams with the **Write** role. For example, using the GitHub
+  CLI:
+
+  ```sh
+  gh api --paginate repos/open-telemetry/opentelemetry.io/teams \
+    --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
+  ```
+
+  Expect `push`, the API's name for the Write role. Nothing printed means the
+  team isn't in the repository's access list (the grant in Step 6b is missing or
+  not yet applied, or the team doesn't exist yet); `pull` or `triage` means a
+  grant below write.
+
+- Every team member appears in the live team, and each has at least write access
+  to the repository. For example:
+
+  ```sh
+  gh api --paginate orgs/open-telemetry/teams/docs-LANG_ID-approvers/members --jq '.[].login'
+  gh api repos/open-telemetry/opentelemetry.io/collaborators/GITHUB_HANDLE/permission --jq .permission
+  ```
+
+  Expect `write`, `maintain`, or `admin` for each member listed (the permission
+  reported is the member's effective one, from all sources).
+
+## Step 7 — Slack channel and community listing {#slack}
+
+1. Create a channel for the locale in the [CNCF Slack workspace][], named
+   `#otel-localization-LANG_ID` (for example, `#otel-localization-pl` for
+   Polish).
+2. Add the [OpenTelemetry Admin][] as a channel manager.
+3. Open a PR against [`open-telemetry/community`][] that adds a
+   `localization-LANG_ID` entry to `workstreams.yml`, modeled on the existing
+   locale entries, so that the team appears under [Localization Teams][] in the
+   generated `sigs.md`. For the procedure, see [Updating SIG information][].
 
 ## Step 8 — Project tracking {#projects}
 
@@ -338,8 +395,8 @@ Update [`projects/localization.md`][] with the new locale's information:
 
 ### Setup checklist
 
-Use this checklist to confirm that every setup step is complete before
-requesting a review:
+Use this checklist to track setup to completion. Steps 1-5 and 8 land in the
+setup PR; Steps 6 and 7 complete outside the repository.
 
 - [ ] **Step 1** — Language entry added to `config/_default/hugo.yaml`
 - [ ] **Step 2** — Content mounts added to
@@ -351,10 +408,11 @@ requesting a review:
 - [ ] **Step 5** — `.github/component-label-map.yml` (label entry) and
       `data/locale-teams.yaml` (registry entry) updated; `.github/CODEOWNERS`
       regenerated
-- [ ] **Step 6** — Team PR opened against `open-telemetry/admin`; team members
-      added manually
+- [ ] **Step 6** — Team `open-telemetry/admin` PR merged; approvers team holds
+      write access; eligible members added and verified
 - [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
-      OpenTelemetry Admin added as channel manager
+      OpenTelemetry Admin added as channel manager; team listed in the community
+      `sigs.md`
 - [ ] **Step 8** — `projects/localization.md` updated with the language entry,
       team entry, label, and Slack channel link
 
@@ -373,28 +431,31 @@ correct:
   `content/LANG_ID/` and confirm the `lang:LANG_ID` label is applied
   automatically.
 
-[`.cspell.yml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
-[`.prettierignore`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore
-[`.github/component-label-map.yml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
-[`.github/CODEOWNERS`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
-[`data/locale-teams.yaml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
-[`.github/component-owners.yml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
-[`projects/localization.md`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
-[`config/_default/module-template.yaml`]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
+<!-- prettier-ignore-start -->
+[`.cspell.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+[`.github/CODEOWNERS`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
+[`.github/component-label-map.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
+[`.github/component-owners.yml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
+[`.prettierignore`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore
+[`config/_default/module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
+[`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
 [`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
-[kickoff issue]: /docs/contributing/localization/#kickoff
-[New localizations]: /docs/contributing/localization/#new-localizations
-[Site localization]: /docs/contributing/localization/
-[`setup-new-localization` skill]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/setup-new-localization/SKILL.md
-[unstaffed]: /docs/contributing/localization/#locale-teams
-[ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+[`open-telemetry/community`]: https://github.com/open-telemetry/community
+[`projects/localization.md`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
+[`setup-new-localization` skill]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.agents/skills/setup-new-localization/SKILL.md
+[admin#58]: https://github.com/open-telemetry/admin/issues/58?link-check=no
+[admin#588]: https://github.com/open-telemetry/admin/pull/588?link-check=no
+[Becoming an Approver]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#becoming-an-approver
 [CNCF Slack workspace]: https://cloud-native.slack.com
+[code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+[ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+[kickoff issue]: /docs/contributing/localization/#kickoff
+[Localization Teams]: https://github.com/open-telemetry/community/blob/main/sigs.md#localization-teams-part-of-sig-communications
+[membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[New localizations]: /docs/contributing/localization/#new-localizations
+[OpenTelemetry Admin]: https://cloud-native.slack.com/team/U07DR07KAEQ
+[Site localization]: /docs/contributing/localization/
+[team maintainer]: https://docs.github.com/en/organizations/organizing-members-into-teams/assigning-the-team-maintainer-role-to-a-team-member
+[unstaffed]: /docs/contributing/localization/#locale-teams
+[Updating SIG information]: https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md#updating-sig-information
+<!-- prettier-ignore-end -->

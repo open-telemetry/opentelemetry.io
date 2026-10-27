@@ -1,13 +1,12 @@
 ---
 title: SDK 設定
 weight: 30
-default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
-drifted_from_default: true
+default_lang_commit: 4cc5cb830e724c286159bf143639b914f876ab17
 cSpell:ignore: distro
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 この Spring スターターは[設定メタデータ](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)をサポートしており、IDE で利用可能なすべてのプロパティを確認・自動補完できます。
 

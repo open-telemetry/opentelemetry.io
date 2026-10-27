@@ -5,6 +5,7 @@ description:
   Aprenda a configurar o Collector para atender às necessidades de
   observabilidade
 default_lang_commit: a12d86209bb807217742cc14e0a29095beaf978f
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey initca oidc pprof prodevent spanevents unredacted upsert zpages
 ---
