@@ -155,9 +155,15 @@ observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 ## OpenTelemetry at the Project Pavilion
 
-Come meet the OpenTelemetry community at the Project Pavilion on Thursday,
-November 12, from 10:00 to 14:00! Stop by for an informal chat, ask questions,
-share your experiences, or find out how to get involved in the project.
+Come meet the OpenTelemetry community at the Project Pavilion! We'll be at kiosk
+**16A** on the following days:
+
+- Tuesday, November 10, from 10:30 to 14:30
+- Wednesday, November 11, from 10:15 to 13:25
+- Thursday, November 12, from 10:15 to 11:55
+
+Stop by for an informal chat, ask questions, share your experiences, or find out
+how to get involved in the project.
 
 ## OpenTelemetry Community Awards
 
