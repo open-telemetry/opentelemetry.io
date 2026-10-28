@@ -460,7 +460,7 @@ Instrumentationオブジェクトが作成されたので、クラスターは�
 ただし、OpenTelemetryオペレーターを使用した自動計装は、オプトインモデルに従います。
 自動計装を有効にするには、Deploymentにアノテーションを追加する必要があります。
 
-## 既存のDeploymentへのアノテーション追加 #add-annotations-to-existing-deployments
+## 既存のDeploymentへのアノテーション追加 {#add-annotations-to-existing-deployments}
 
 最後のステップは、サービスを自動計装にオプトインすることです。
 これは、サービスの `spec.template.metadata.annotations` を更新して、言語固有のアノテーションを含めることで実行されます。
@@ -982,7 +982,7 @@ kubectl get events -n <your_app_namespace>
 - 自動計装のアノテーションにエラーがあるか、アノテーションが間違った場所にあります - 以下の#4を参照してください。
 
 `kubectl get events` の出力にエラーがないか確認してください。
-これらのエラーは、問題の原因特定役立つかもしれません。
+これらのエラーは、問題の原因特定に役立つかもしれません。
 
 ### 自動計装のアノテーションは正しいですか？ {#is-the-auto-instrumentation-annotation-correct}
 

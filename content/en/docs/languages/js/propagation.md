@@ -61,11 +61,13 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
   instrumentations: [new UndiciInstrumentation()],
 });
 sdk.start();
@@ -85,11 +87,13 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
   instrumentations: [new UndiciInstrumentation()],
 });
 sdk.start();
@@ -473,10 +477,12 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
 });
 
 sdk.start();

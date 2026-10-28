@@ -2,6 +2,7 @@
 title: ベンチマーク
 weight: 99
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
 ---
 
 <link rel="stylesheet" href="/css/benchmarks.css">
