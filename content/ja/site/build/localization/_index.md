@@ -5,6 +5,7 @@ description: >-
   OpenTelemetry ウェブサイトに新しい言語のローカリゼーションをオンボーディングするための、メンテナー向けステップバイステップガイド。
 weight: 50
 default_lang_commit: 67a2f014da28cd56bcadc56c94d7037398547329
+drifted_from_default: true
 ---
 
 このガイドでは、OTel ウェブサイトのメンテナーが新しい言語のローカリゼーションをオンボーディングするために必要なすべての変更手順を説明します。

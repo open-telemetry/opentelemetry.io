@@ -3,9 +3,10 @@ title: Integrações
 description:
   Bibliotecas, serviços e aplicações com suporte nativo para o OpenTelemetry.
 aliases: [/integrations]
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
+
+{{% include freeze-notice.md %}}
 
 A missão do OpenTelemetry é
 [possibilitar uma observabilidade eficaz, tornando a telemetria de alta qualidade algo portátil e ubíquo](/community/mission/).
@@ -42,11 +43,12 @@ fornecem um plugin nativo que se encaixa em seu próprio ecossistema de
 extensibilidade.
 
 Projetos de código aberto (OSS) aparecem no início da lista, seguidos por
-projetos comerciais. Projetos uqe fazem parte da [CNCF](https://www.cncf.io/)
+projetos comerciais. Projetos que fazem parte da [CNCF](https://www.cncf.io/)
 possuem o logotipo da CNCF ao lado de seus nomes.
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
+<!--
 ## Adicionando sua integração {#how-to-add}
 
 Para que sua biblioteca, serviço ou aplicativo seja listado, [envie um PR][] com
@@ -57,22 +59,22 @@ incluir o seguinte:
 - Link para a documentação que explica como habilitar a observabilidade
   utilizando o OpenTelemetry
 
-{{% alert title="Nota" %}}
-
-Caso você forneça integração externa do OpenTelemetry para qualquer tipo de
-biblioteca, serviço ou aplicação,
-[considere adicioná-la ao registro](/ecosystem/registry/adding).
-
-Se você adota o OpenTelemetry para Observabilidade como um usuário final e não
-fornece nenhum tipo de serviço relacionado ao OpenTelemetry, consulte
-[Adotantes](/ecosystem/adopters).
-
-Se você oferece uma solução que consome o OpenTelemetry para fornecer
-observabilidade aos usuários finais, consulte
-[Fornecedores](/ecosystem/vendors).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Caso você forneça integração externa do OpenTelemetry para qualquer tipo de
+> biblioteca, serviço ou aplicação,
+> [considere adicioná-la ao registro](/ecosystem/registry/adding).
+>
+> Se você adota o OpenTelemetry para Observabilidade como um usuário final e não
+> fornece nenhum tipo de serviço relacionado ao OpenTelemetry, consulte
+> [Adotantes](/ecosystem/adopters).
+>
+> Se você oferece uma solução que consome o OpenTelemetry para fornecer
+> observabilidade aos usuários finais, consulte
+> [Fornecedores](/ecosystem/vendors).
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md integrações %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md integrações % } }
+-->

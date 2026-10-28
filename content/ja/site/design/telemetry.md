@@ -5,6 +5,7 @@ description: >-
   を使わない理由、Collector がエクスポーターに追いついていないときにエクスポートの失敗がどう現れるかについて
 weight: 30
 default_lang_commit: cb07a7f2f522075ab85baaca6b23625cad38b30f
+drifted_from_default: true
 ---
 
 [ウェブサイトのテレメトリー](/site/features/#website-telemetry)機能の設計メモです。
