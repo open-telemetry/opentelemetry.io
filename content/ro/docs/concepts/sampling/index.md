@@ -126,57 +126,64 @@ decizie de eșantionare bazată pe date din întregul urmelor. De exemplu, nu po
 garanta că toate urmele care conțin o eroare sunt eșantionate folosind doar
 eșantionarea de cap.
 
-## Tail Sampling
+## Eșantionarea de coadă {#tail-sampling}
 
-Tail sampling is where the decision to sample a trace takes place by considering
-all or most of the spans within the trace. Tail Sampling gives you the option to
-sample your traces based on specific criteria derived from different parts of a
-trace, which isn’t an option with Head Sampling.
+Eșantionarea de coadă este metoda în care decizia de eșantionare a unei urme are
+loc prin luarea în considerare a tuturor sau a majorității intervalelor din
+urmă. Eșantionarea de coadă îți oferă opțiunea de a eșantiona urmele tale bazat
+pe criterii specifice derivate din părți diferite ale unei urme, opțiune
+indisponibilă în eșantionarea de cap.
 
-![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail-sampling-process.svg)
+![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesaor de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
 
-Some examples of how you can use Tail Sampling include:
+Niște exemple despre cum poți folosi eșantionarea de coadă sunt:
 
-- Always sampling traces that contain an error
-- Sampling traces based on overall latency
-- Sampling traces based on the presence or value of specific attributes on one
-  or more spans in a trace; for example, sampling more traces originating from a
-  newly deployed service
-- Applying different sampling rates to traces based on certain criteria, such as
-  when traces only come from low-volume services versus traces with high-volume
-  services.
+- Mereu să eșantionezi urme ce conțin o eroare
+- Eșantionarea urmelor în funcție de latența generală
+- Eșantionarea urmelor în funcție de prezența sau valoare unor atribute
+  specifice de pe unul sau mai multe intervale într-o urmă; de exemplu,
+  eșantionarea mai multor urme ce provin din servicii noi.
+- Aplicând rate de eșantionare diferite pe urme în funcție de anumite criterii,
+  precum când urmele vin numai din servicii cu volum mic de date versus urme din
+  servicii cu volum mare de date.
 
-As you can see, tail sampling allows for a much higher degree of sophistication
-in how you sample data. For larger systems that must sample telemetry, it is
-almost always necessary to use Tail Sampling to balance data volume with the
-usefulness of that data.
+După cum poți vedea, eșantionarea de coadă permite un grad mai mare de
+sofisticare în felul în care sunt eșantionate datele. Pentru sisteme mai mari ce
+trebuie să eșantioneze telemetrie, este aproape mereu necesar să folosești
+eșantionarea de coadă pentru a echilibra volumul de date cu utilitatea acelor
+date.
 
-There are three primary downsides to tail sampling today:
+În momentul de față, sunt trei mari dezavantaje la eșantionarea de coadă:
 
-1. Tail sampling can be difficult to implement. Depending on the kind of
-   sampling techniques available to you, it is not always a "set and forget"
-   kind of thing. As your systems change, so too will your sampling strategies.
-   For a large and sophisticated distributed system, rules that implement
-   sampling strategies can also be large and sophisticated.
-2. Tail sampling can be difficult to operate. The component(s) that implement
-   tail sampling must be stateful systems that can accept and store a large
-   amount of data. Depending on traffic patterns, this can require dozens or
-   even hundreds of compute nodes that all utilize resources differently.
-   Furthermore, a tail sampler might need to "fall back" to less computationally
-   intensive sampling techniques if it is unable to keep up with the volume of
-   data it is receiving. Because of these factors, it is critical to monitor
-   tail-sampling components to ensure that they have the resources they need to
-   make the correct sampling decisions.
-3. Tail samplers often end up as vendor-specific technology today. If you're
-   using a paid vendor for Observability, the most effective tail sampling
-   options available to you might be limited to what the vendor offers.
+1. Eșantionarea de coadă poate fi greu de implementat. Depinzând de tipul de
+   metodă de eșantionare disponibilă, nu este mereu un caz de "setează și uită".
+   Cum sistemele tale se schimbă, la fel se vor schimba și tehnicile de
+   eșantionare. Pentru un sistem distribuit mare și sofisticat, regulile care
+   implementează strategiile de eșantionare pot de asemenea să fie mari și
+   sofisticate.
+2. Eșantionarea de coadă poate fi greu de operat. Componenta (componentele) care
+   implementează eșantionarea de coadă trebuie să fie sisteme stateful care pot
+   accepta și stoca o cantitate mare de date. În funcție de tiparele de trafic,
+   poate necesita zeci sau chiar sute de noduri de calcul, care utilizează toate
+   resursele în moduri diferite. Mai mult, un eșantionator de coadă ar putea fi
+   nevoit să recurgă la tehnici de eșantionare care necesită un efort
+   computațional mai redus, în cazul în care nu reușește să facă față volumului
+   de date pe care îl primește. Datorită acestor factori, este critic să
+   monitorizezi componentele de eșantionare de coadă pentru a asigura că au
+   resursele necesare pentru a lua deciziile corecte pentru eșantionare.
+3. Eșantionatoarele de coadă ajung adesea astăzi să fie o tehnologie specifică
+   unui furnizor. Dacă plătești un furnizor pentru Monitorizare, cele mai
+   eficiente opțiuni de eșantionare disponibile ție ar putea fi limitate la ce
+   oferă furnizorul
 
-Finally, for some systems, tail sampling might be used in conjunction with Head
-Sampling. For example, a set of services that produce an extremely high volume
-of trace data might first use head sampling to sample only a small percentage of
-traces, and then later in the telemetry pipeline use tail sampling to make more
-sophisticated sampling decisions before exporting to a backend. This is often
-done in the interest of protecting the telemetry pipeline from being overloaded.
+În final, pentru unele sisteme, eșantionarea de coadă ar putea fi folosită
+împreună cu eșantionarea de cap. De exemplu, un set de servicii care produce un
+volume extrem de mare de date cu urme ar putea folosi inițial eșantionarea de
+cap pentru a eșantiona un procentaj mic de urme, iar ulterior in lanțul de
+telemetrie să folosească eșantionarea de coadă pentru a lua decizii mai
+sofisticate de eșantionare înainte să le exporte la un backend. Acest lucru se
+întâmplă des cu scopul de a proteja lanțul de telemetrie de la a fi
+supraîncărcat.
 
 ## Suport {#support}
 
