@@ -2,7 +2,6 @@
 title: 'Faster, smaller checkpoints: the File Log receiver now uses protobuf'
 linkTitle: Protobuf checkpoints in File Log
 date: 2026-10-28
-draft: true
 author: >-
   [Andrzej Stencel](https://github.com/andrzej-stencel) (Elastic), [Braydon
   Kains](https://github.com/braydonk) (Google), [Paulo
