@@ -63,7 +63,7 @@ criterii:
   obicei că ceva este în neregulă
 - Ai criterii specifice domeniului pe care le poți folosi pentru a determina ce
   date sunt relevante, mai departe de erori și latență.
-- Poți descrie niște reguli comunie care determină dacă datele ar trebui
+- Poți descrie niște reguli comune care determină dacă datele ar trebui
   eșantionate sau eliminate.
 - Ai o metodă de a-ți distinge serviciile, astfel că eșantionarea se face
   diferit pentru serviciile cu volum mare sau mic de date.
@@ -134,7 +134,7 @@ urmă. Eșantionarea de coadă îți oferă opțiunea de a eșantiona urmele tal
 pe criterii specifice derivate din părți diferite ale unei urme, opțiune
 indisponibilă în eșantionarea de cap.
 
-![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesaor de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
+![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesator de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
 
 Niște exemple despre cum poți folosi eșantionarea de coadă sunt:
 
