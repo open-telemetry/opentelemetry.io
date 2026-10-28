@@ -8,7 +8,7 @@ issue: 12395
 sig: SIG eBPF Instrumentation
 # cSpell:ignore Aerospike Avni Beyla GenAI Giuseppe Grcevski
 # cSpell:ignore Haibin Macias marctc Mattia Meleleo Nimrod Ognibene
-# cSpell:ignore Ollama Qwen reranking Roquetto Yahn
+# cSpell:ignore Ollama Qwen reranking Roquetto Tudurí Yahn
 ---
 
 We're excited to announce v1.0.0 of OpenTelemetry eBPF Instrumentation—OBI!
@@ -148,9 +148,10 @@ this milestone possible:
   correctness.
 - [Stephen Lang](https://github.com/skl), for strengthening CI, integration
   tests, and ARM coverage, alongside application instrumentation improvements.
-- [@marctc](https://github.com/marctc), for expanding protocol instrumentation,
-  Python asynchronous tracing, and Python and .NET runtime metrics.
-- [@NameHaibinZhang](https://github.com/NameHaibinZhang), for expanding GenAI
+- [Marc Tudurí](https://github.com/marctc), for expanding protocol
+  instrumentation, Python asynchronous tracing, and Python and .NET runtime
+  metrics.
+- [Haibin Zhang](https://github.com/NameHaibinZhang), for expanding GenAI
   instrumentation, including embeddings, reranking, Qwen, and MCP.
 
 Thank you, too, to every community member who contributed code, reviewed
