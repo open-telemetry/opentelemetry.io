@@ -3,8 +3,7 @@ title: Node.js
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-default_lang_commit: 6ffcc4d3f434c2af67e1983ec732fc700052a93d
-drifted_from_default: true
+default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
 cSpell:ignore: autoinstrumentations rolldice
 ---
 
@@ -13,10 +12,12 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e exibi-los no
 console.
 
-{{% alert title="Nota" %}} A biblioteca para logs do OpenTelemetry para Node.js
-ainda está em desenvolvimento, portanto, um exemplo não será fornecido a seguir.
-Para informações sobre o status, consulte
-[Estado e Lançamentos](/docs/languages/js/#status-and-releases). {{% /alert %}}
+> [!NOTE]
+>
+> A biblioteca para logs do OpenTelemetry para Node.js ainda está em
+> desenvolvimento, portanto, um exemplo não será fornecido a seguir. Para
+> informações sobre o status, consulte
+> [Estado e Lançamentos](/docs/languages/js/#status-and-releases).
 
 ## Pré-requisitos {#prerequisites}
 
@@ -157,7 +158,7 @@ npm install @opentelemetry/sdk-node \
   @opentelemetry/api \
   @opentelemetry/auto-instrumentations-node \
   @opentelemetry/sdk-metrics \
-  @opentelemetry/sdk-trace-node
+  @opentelemetry/sdk-trace
 ```
 
 Para encontrar todos os módulos de autoinstrumentação, você pode consultar o
@@ -173,17 +174,18 @@ Crie um arquivo chamado `instrumentation.ts` (ou `instrumentation.mjs`, caso nã
 esteja utilizando TypeScript), que deverá conter o código de configuração de
 instrumentação.
 
-{{% alert title="Nota" %}} Os exemplos a seguir que utilizam a _flag_
-`--import instrumentation.ts` (TypeScript) requerem Node.js v.20 ou superior. Se
-você estiver utilizando Node.js v.18, por favor, utilize o exemplo em
-JavaScript. {{% /alert %}}
+> [!NOTE]
+>
+> Os exemplos a seguir que utilizam a _flag_ `--import instrumentation.ts`
+> (TypeScript) requerem Node.js v.20 ou superior. Se você estiver utilizando
+> Node.js v.18, por favor, utilize o exemplo em JavaScript.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,
@@ -206,7 +208,7 @@ sdk.start();
 ```js
 /*instrumentation.mjs*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,
@@ -250,6 +252,14 @@ Aguardando requisições em http://localhost:8080
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+(Nota: Se a sua aplicação for escrita em JavaScript como ECMAScript Modules
+(ESM), ou compilada para ESM a partir de TypeScript, um _hook_ de carregamento
+será necessário para oferecer suporte adequado à instrumentação. Utilize
+`node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js`.
+Consulte a
+[documentação de suporte a ESM](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md)
+para mais detalhes sobre o suporte a ESM no OpenTelemetry.)
 
 Acesse <http://localhost:8080/rolldice> no seu navegador e recarregue a página
 algumas vezes. Depois de um tempo, você deverá ver os trechos exibidos no
@@ -559,6 +569,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+{{% include esm-support-note.md %}}
 
 [rastros]: /docs/concepts/signals/traces/
 [métricas]: /docs/concepts/signals/metrics/
