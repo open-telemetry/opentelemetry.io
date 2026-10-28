@@ -261,7 +261,7 @@ rascunho de "integração" atualizado com a próxima versão de desenvolvimento:
 [semconv-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
 
-### Mantenedores dos SIGs de especificação / semconv {#spec--semconv-sig-maintainers}
+### Mantenedores dos SIGs de especificação / semconv {#spec-semconv-sig-maintainers}
 
 Logo antes de gerar uma nova versão:
 
