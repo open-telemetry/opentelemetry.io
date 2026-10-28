@@ -7,7 +7,7 @@ weight: 50
 cSpell:ignore: zizmor
 ---
 
-Handling a security notification takes three steps, in order:
+When a security notification arrives:
 
 1. [Assess what arrived](#assess) and where it runs.
 2. [Follow the defaults](#defaults).
