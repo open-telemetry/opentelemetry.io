@@ -5,8 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
@@ -42,7 +41,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -95,14 +94,12 @@ func main() {
 
 Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
 
-{{% alert title="Importante" color="warning" %}}
-
-Se você estiver adicionando trechos manuais em conjunto com a
-[instrumentação sem código para Go](/docs/zero-code/go) baseada em eBPF, como o
-[OBI](/docs/zero-code/obi), não defina um Tracer Provider global. Consulte a
-documentação [Auto SDK](/docs/zero-code/go/autosdk) para mais informações.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> Se você estiver adicionando trechos manuais em conjunto com a
+> [instrumentação sem código para Go](/docs/zero-code/go) baseada em eBPF, como
+> o [OBI](/docs/zero-code/obi), não defina um Tracer Provider global. Consulte a
+> documentação [Auto SDK](/docs/zero-code/go/autosdk) para mais informações.
 
 ### Criando Trechos {#creating-spans}
 
@@ -205,7 +202,7 @@ OpenTelemetry][opentelemetry specification] para fornecer um conjunto comum de
 chaves de atributos entre várias linguagens, frameworks e ambientes de execução.
 Esses atributos representam conceitos como métodos HTTP, códigos de estado, user
 agents e outros. Estes atributos estão disponíveis no pacote
-`go.opentelemetry.io/otel/semconv/v1.37.0`.
+`go.opentelemetry.io/otel/semconv/v1.43.0`.
 
 Para mais detalhes, consulte as [Convenções Semânticas de
 Rastros][trace semantic conventions].
@@ -348,8 +345,7 @@ A seguir, você poderá encontrar uma documentação mais detalhada para os paco
 
 ### Inicializar Métricas {#initialize-metrics}
 
-{{% alert %}} Caso você esteja instrumentando uma biblioteca, pule esta etapa.
-{{% /alert %}}
+> [!NB] Caso você esteja instrumentando uma biblioteca, **pule esta etapa**.
 
 Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação,
 você precisará de um
@@ -389,7 +385,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func main() {
@@ -495,6 +491,23 @@ Em casos como estes, muitas vezes é melhor realizar a medição de um valor
 cumulativo diretamente, em vez de agregar uma série de deltas no
 pós-processamento (como ocorre no exemplo síncrono).
 
+### Otimização de desempenho para instrumentos síncronos {#performance-optimization-for-synchronous-instruments}
+
+Para instrumentos síncronos, é possível utilizar o método `Enabled` para
+verificar se o instrumento está habilitado antes de realizar operações custosas
+para calcular atributos ou valores.
+
+```go
+if apiCounter.Enabled(ctx) {
+    // calcule atributos ou valores
+    apiCounter.Add(ctx, 1, metric.WithAttributes(attributes...))
+}
+```
+
+Isso garante que a instrumentação não sofra uma penalidade de desempenho quando
+nenhum MeterProvider estiver configurado, ou quando uma _view_ estiver
+configurada para descartar a métrica.
+
 ### Utilizando Contadores (Counters) {#using-counters}
 
 Contadores (Counters) podem ser utilizados para medir valores incrementais e
@@ -520,7 +533,9 @@ func init() {
 		panic(err)
 	}
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		apiCounter.Add(r.Context(), 1)
+		if apiCounter.Enabled(r.Context()) {
+			apiCounter.Add(r.Context(), 1)
+		}
 
 		// implementação da chamada da API
 	})
@@ -559,13 +574,19 @@ func init() {
 func addItem() {
 	// código que insere um item na coleção
 
-	itemsCounter.Add(context.Background(), 1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, 1)
+	}
 }
 
 func removeItem() {
 	// código que remove um item da coleção
 
-	itemsCounter.Add(context.Background(), -1)
+	ctx := context.Background()
+	if itemsCounter.Enabled(ctx) {
+		itemsCounter.Add(ctx, -1)
+	}
 }
 ```
 
@@ -619,7 +640,9 @@ func init() {
 func recordFanSpeed() {
 	ctx := context.Background()
 	for fanSpeed := range fanSpeedSubscription {
-		speedGauge.Record(ctx, fanSpeed)
+		if speedGauge.Enabled(ctx) {
+			speedGauge.Record(ctx, fanSpeed)
+		}
 	}
 }
 ```
@@ -655,7 +678,9 @@ func init() {
 		// insira algum código na chamada da API
 
 		duration := time.Since(start)
-		histogram.Record(r.Context(), duration.Seconds())
+		if histogram.Enabled(r.Context()) {
+			histogram.Record(r.Context(), duration.Seconds())
+		}
 	})
 }
 ```
@@ -793,7 +818,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func init() {
@@ -1040,11 +1065,11 @@ import (
 	"context"
 	"fmt"
 
+	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp"
-	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.43.0"
 )
 
 func main() {
@@ -1070,11 +1095,11 @@ func main() {
 		}
 	}()
 
-	// Registre o LoggerProvider globalmente, permitindo que seja acessado via global.LoggerProvider.
+	// Registre o LoggerProvider globalmente, permitindo que seja acessado via log.LoggerProvider.
 	// A maioria dos Log Bridges utilizam o LoggerProvider global como padrão.
 	// Caso o LoggerProvider global não esteja definido, será utilizada uma implementação sem operação
 	// e dados de logs não serão gerados.
-	global.SetLoggerProvider(loggerProvider)
+	otel.SetLoggerProvider(loggerProvider)
 }
 
 func newResource() (*resource.Resource, error) {
