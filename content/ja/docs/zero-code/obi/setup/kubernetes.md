@@ -4,6 +4,7 @@ linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
 weight: 4
 default_lang_commit: 0a410d00f789607f64e6e71b785b9c027305117b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
