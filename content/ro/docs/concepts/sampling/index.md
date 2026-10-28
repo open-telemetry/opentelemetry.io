@@ -61,18 +61,18 @@ criterii:
   date.
 - Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de
   obicei că ceva este în neregulă
-- You have domain-specific criteria you can use to determine relevant data
-  beyond errors and latency.
-- You can describe some common rules that determine if data should be sampled or
-  dropped.
-- You have a way to tell your services apart, so that high- and low-volume
-  services are sampled differently.
-- You have the ability to route unsampled data (for "just in case" scenarios) to
-  low-cost storage systems.
+- Ai criterii specifice domeniului pe care le poți folosi pentru a determina ce
+  date sunt relevante, mai departe de erori și latență.
+- Poți descrie niște reguli comunie care determină dacă datele ar trebui
+  eșantionate sau eliminate.
+- Ai o metodă de a-ți distinge serviciile, astfel că eșantionarea se face
+  diferit pentru serviciile cu volum mare sau mic de date.
+- Ai abilitatea de a ruta date neeșantionate (pentru scenarii de tip "pentru
+  orice eventualitate") către sisteme de stocare cu costuri reduse.
 
-Finally, consider your overall budget. If you have limited budget for
-observability, but can afford to spend time to effectively sample, then sampling
-can generally be worth it.
+În final, ia în considerare bugetul per total. Dacă ai un buget limita pentru
+monitorizare, dar îți permiți să petreci timp pentru a eșantiona eficient,
+atunci eșantionarea poate în general fie utilă.
 
 ### Când să nu eșantionezi {#when-not-to-sample}
 
