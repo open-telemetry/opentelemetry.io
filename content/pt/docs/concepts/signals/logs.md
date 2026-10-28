@@ -2,8 +2,7 @@
 title: Logs
 description: Um registro de um evento.
 weight: 3
-default_lang_commit: 53606c1471278a89ebf8344fb8cfaa79ab6916a2
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -132,7 +131,7 @@ CLF combinados com um _blob_ JSON ao final).
 
 Nesses casos, analise ou extraia as partes necessárias para um registro
 normalizado, de modo que as ferramentas _downstream_ possam analisá-las de forma
-consistente. O `filelogreceiver`no [OpenTelemetry Collector](/docs/collector/)
+consistente. O `filelogreceiver` no [OpenTelemetry Collector](/docs/collector/)
 fornece auxiliares para analisar formatos mistos.
 
 Logs estruturados são preferidos em produção porque seu esquema estável facilita
@@ -184,6 +183,47 @@ Exemplo de um log semiestruturado:
 
 Logs semiestruturados podem exigir mapeamento e coerção de tipos durante a
 ingestão para serem totalmente úteis na análise _downstream_.
+
+## Verificando se o _logging_ está habilitado {#checking-whether-logging-is-enabled}
+
+Uma dúvida comum é se o código da aplicação deve verificar se o _logging_ está
+habilitado antes de fazer uma chamada de log, por exemplo:
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Hello {name}", name);
+}
+```
+
+Na maioria dos casos, essa verificação é desnecessária e não é recomendada. Os
+SDKs do OpenTelemetry são projetados para serem eficientes -- a invocação da API
+de logs tem uma sobrecarga mínima quando o _logger_ não está habilitado. Fazer
+uma chamada extra a `logger.Enabled` reduz o desempenho e torna o código mais
+complexo.
+
+A API `Enabled` é útil apenas quando _avaliar os argumentos_ passados para a
+chamada de log é, por si só, custoso, e se deseja evitar esse custo quando o
+_logger_ não está habilitado. Por exemplo, se o corpo ou um atributo precisar
+ser obtido de um banco de dados ou calculado por meio de uma operação custosa:
+
+```text
+if (logger.Enabled(...)) {
+  logger.Info("Order total {total}", ComputeExpensiveTotal());
+}
+```
+
+Proteja apenas expressões livres de efeitos colaterais, já que o código
+protegido é executado somente quando o _logging_ está habilitado. Proteger
+código que tenha efeitos colaterais, ou do qual outra lógica dependa, faz com
+que o comportamento da aplicação dependa da configuração de _logging_, o que
+costuma ser uma fonte de _bugs_ sutis.
+
+Mesmo assim, tenha em mente que o resultado de `Enabled` não é estático: ele
+pode mudar ao longo do tempo conforme a configuração muda, portanto deve ser
+avaliado a cada registro de log e não armazenado em cache.
+
+Para orientações normativas sobre a API, consulte a
+[especificação da API de Logs](/docs/specs/otel/logs/api/#enabled).
 
 ## Componentes de logs do OpenTelemetry {#opentelemetry-logging-components}
 
@@ -248,6 +288,7 @@ Os campos de nível superior são:
 | Resource             | Descreve a origem do log.                                 |
 | InstrumentationScope | Descreve o escopo que emitiu o log.                       |
 | Attributes           | Informações adicionais sobre o evento.                    |
+| EventName            | Nome que identifica a classe ou o tipo do evento.         |
 
 Para mais detalhes sobre registros de log e campos de log, consulte
 [Modelo de Dados de Logs](/docs/specs/otel/logs/data-model/).
