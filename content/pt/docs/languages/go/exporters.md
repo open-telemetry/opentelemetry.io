@@ -47,24 +47,24 @@ import (
 func main() {
 	ctx := context.Background()
 
-	// Create trace exporter using environment variables
+	// Cria trace exporter usando variável de ambiente
 	spanExporter, err := autoexport.NewSpanExporter(ctx)
 	if err != nil {
-		// handle error
+		// lida com o erro
 	}
 
-	// Create trace provider with the exporter
+	// Cria trace provider com o exporter
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(spanExporter),
 	)
 
-	// Create metric reader using environment variables
+	// Cria metric reader usando variável de ambiente
 	metricReader, err := autoexport.NewMetricReader(ctx)
 	if err != nil {
-		// handle error
+		// lida com o erro
 	}
 
-	// Create meter provider with the reader
+	// Cria meter provider com o reader
 	meterProvider := sdkmetric.NewMeterProvider(
 		sdkmetric.WithReader(metricReader),
 	)
