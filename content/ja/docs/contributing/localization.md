@@ -4,6 +4,7 @@ description: 非英語ローカリゼーションのサイトページの作成�
 linkTitle: ローカリゼーション
 weight: 25
 default_lang_commit: 1b7f33e30a91ebf48b6c9d00f7808b4021fb74dd
+drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
 
