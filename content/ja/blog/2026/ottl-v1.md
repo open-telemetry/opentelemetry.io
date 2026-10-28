@@ -12,7 +12,7 @@ cSpell:ignore: Genesys Helmuth ottl SigNoz xottl xprofile
 [OpenTelemetry Transformation Language（OTTL）](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl)が v1 になりました。
 opentelemetry-collector-contrib v0.164.0 以降、OTTL はトレース、メトリクス、ログに対して安定版となりました。
 
-v1 のリリースは、OTTL がテスト、ベンチマーク、ドキュメント、テレメトリーに関する Collector の['安定版'安定性基準](https://github.com/open-telemetry/opentelemetry-collector/blob/ebfdf90d82abe991c69554b31f2efc4a96622803/docs/component-stability.md#stable)を満たしていることを意味します。
+v1 のリリースは、OTTL がテスト、ベンチマーク、ドキュメント、テレメトリーに関する Collector の[「安定版」安定性基準](https://github.com/open-telemetry/opentelemetry-collector/blob/ebfdf90d82abe991c69554b31f2efc4a96622803/docs/component-stability.md#stable)を満たしていることを意味します。
 また、1.x 全体にわたる互換性の約束も伴います。
 OTTL ステートメントを書く場合、構文と標準関数は後方互換性を維持します。
 OTTL の上に独自のコンポーネントを構築する場合、Go API も互換性を維持します。
@@ -60,7 +60,7 @@ v0.164.0 では `ottl.set.allowNil` gate を削除しています。
 
 ## ここに至るまでの道のり {#how-we-got-here}
 
-OTTL は 2022 年に transform processor の設定言語として始まりました。
+OTTL は 2022年に transform processor の設定言語として始まりました。
 現在、opentelemetry-collector-contrib の14個のコンポーネントが設定で OTTL を受け付けます。
 
 - プロセッサー: transform、filter、tail sampling、adaptive tail sampling、log deduplication、lookup、partitioning、span pruning
@@ -70,12 +70,12 @@ OTTL は 2022 年に transform processor の設定言語として始まりまし
 [2026年の Collector 調査](/blog/2026/otel-collector-follow-up-survey-analysis/)では、transform processor と routing コネクターの両方で 2025年と比較して使用率の大幅な増加が見られました。
 
 OTTL の安定化は、Collector SIG の[「デフォルトで安定版」](/blog/2025/stability-proposal-announcement/)の取り組みと、[最も使用されている Collector コンポーネントの安定化](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130)に向けた広範な取り組みの一部です。
-2026年4月に [OTTL 安定性追跡イシュー](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47305)を作成し、夏の間にテスト、ドキュメント、可観測性の要件に取り組みました。
-より難しい問題は、関数セットにとって「凍結」が何を意味するかということでした。
+2026年4月に [OTTL 安定性追跡イシュー](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47305)を作成し、夏の間にテスト、ドキュメント、オブザーバビリティの要件に取り組みました。
+より難しい問題は、関数セットにとって「凍結」がどうあるべきかということでした。
 [#50927](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/50927) でその答えを出し、そこから実験的な関数のプロセスが生まれました。
 
 [卒業リクエスト](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/51068)では、New Relic、Grafana Labs、SigNoz、Genesys から本番環境での推薦を集めました。
-New Relic は顧客が使用しないホストメトリクスを削除し、取り込みコストを削減しています。
+New Relic は顧客が使用しないホストメトリクスを削除し、顧客の取り込みコストを削減しています。
 Grafana Labs は自社の Grafana Cloud パイプラインですべてのシグナルにクラスターおよび名前空間の属性をコピーしています。
 SigNoz は顧客が取り込み量を制御する方法として filter processor の条件をドキュメント化しています。
 Genesys は OTTL を使用して Prometheus メトリクスを OpenTelemetry にマッピングし、CloudWatch メトリクスを処理しています。
@@ -89,7 +89,7 @@ OTTL が v1 に到達した今、次は transform processor です。
 テスト、ドキュメント、設定、可観測性のレビューはすでに完了しています。
 
 また、ラムダ関数とその Go API を v1 保証に組み込む作業も進めています。
-ラムダはキャッシュ以来 OTTL に追加された最大の機能であり、関数の書き方を根本的に変え、OTTL では以前処理できなかった変換シナリオを可能にします。
+ラムダはキャッシュ機能以来 OTTL に追加された最大の機能であり、関数の書き方を根本的に変え、OTTL では以前処理できなかった変換シナリオを可能にします。
 ラムダを使用している方は、[Collector Contrib リポジトリ](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues)でイシューとしてフィードバック（気に入った点や気に入らなかった点）をお寄せください。
 プロファイルシグナルが安定化したら、`xprofile` を v1 保証の対象に含めることも検討します。
 
