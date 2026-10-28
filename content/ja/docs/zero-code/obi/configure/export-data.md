@@ -6,6 +6,7 @@ description:
   OpenTelemetry 形式のトレースをエクスポートするよう設定する
 weight: 10
 default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Aerospike AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---

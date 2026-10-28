@@ -15,7 +15,7 @@ subgraph Service Diagram
 accounting(Accounting):::dotnet
 ad(Ad):::java
 agent(Agent):::python
-cache[(Cache<br/>&#40Valkey&#41)]
+cache[(Cache<br/>Valkey)]
 cart(Cart):::dotnet
 chatbot(Chatbot):::python
 checkout(Checkout):::golang
@@ -25,8 +25,8 @@ flagd(Flagd):::golang
 flagd-ui(Flagd-ui):::elixir
 fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
-frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
-image-provider(Image Provider <br/>&#40nginx&#41):::cpp
+frontend-proxy(Frontend Proxy <br/>Envoy):::cpp
+image-provider(Image Provider <br/>nginx):::cpp
 load-generator([Load Generator]):::python
 mcp(MCP):::python
 payment(Payment):::javascript
@@ -34,15 +34,21 @@ product-catalog(Product Catalog):::golang
 quote(Quote):::php
 recommendation(Recommendation):::python
 shipping(Shipping):::rust
-queue[(queue<br/>&#40Kafka&#41)]:::java
+queue[(queue<br/>Kafka)]:::java
 react-native-app(React Native App):::typescript
-postgresql[(astronomy-db<br/>&#40PostgreSQL&#41)]
+postgresql[(astronomy-db<br/>PostgreSQL)]
 
 chatbot -->|HTTP| agent
 agent -.->|HTTP| frontend
 agent -.->|HTTP| mcp
 
 ad --->|gRPC| flagd
+checkout --->|gRPC| flagd
+product-catalog --->|gRPC| flagd
+email --->|gRPC| flagd
+shipping --->|gRPC| flagd
+agent --->|gRPC| flagd
+load-generator -->|HTTP| flagd
 
 checkout -->|gRPC| currency
 checkout -->|gRPC| cart

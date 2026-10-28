@@ -48,6 +48,9 @@ Keep pages short and high signal.
 - Prefer concise summaries over long background sections.
 - Link to issues, plans, or code for detail instead of repeating them here.
 - Add only the content needed to explain how the site works and why.
+- Split a feature's record by role: what it does and when, under
+  [Features](./features/); why it is designed that way, under
+  [Design](./design/); how to build or run it, under [Build](./build/).
 
 ## Site build information
 

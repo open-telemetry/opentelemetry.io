@@ -6,7 +6,11 @@
 import { spawnSync } from 'node:child_process';
 import { parseArgs } from 'node:util';
 
-import { discoverLocales, runAutoMergeCommand } from './index.mjs';
+import {
+  discoverLocales,
+  runAutoMergeCommand,
+  workflowRunUrl,
+} from './index.mjs';
 
 const DEFAULT_REPO = 'open-telemetry/opentelemetry.io';
 
@@ -54,16 +58,19 @@ function fail(message) {
 }
 
 /**
- * Run `gh` and return `{ stdout, status }` without throwing.
+ * Run `gh` and return its captured output and exit status; throw only on a
+ * spawn error. stderr is also echoed to this process's stderr, so the run log
+ * keeps it in full.
  *
  * @param {string[]} args
- * @returns {{ stdout: string, status: number }}
+ * @returns {{ stdout: string, stderr: string, status: number }}
  */
 function runGh(args) {
   const res = spawnSync('gh', args, { encoding: 'utf8' });
   if (res.error) throw res.error;
-  if (res.stderr) process.stderr.write(res.stderr);
-  return { stdout: res.stdout ?? '', status: res.status ?? 1 };
+  const stderr = res.stderr ?? '';
+  if (stderr) process.stderr.write(stderr);
+  return { stdout: res.stdout ?? '', stderr, status: res.status ?? 1 };
 }
 
 /** Resolve the login of the authenticated `gh` user. */
@@ -132,6 +139,7 @@ const { exitCode } = runAutoMergeCommand({
   knownLocales: discoverLocales(),
   dryRun,
   verbose: values.verbose,
+  runUrl: workflowRunUrl(process.env),
   runGh,
   log: (message) => console.log(message),
 });
