@@ -389,7 +389,7 @@ curto período em ambientes altamente elásticos.
 
 Aqui está um exemplo de configuração usando um registro DNS do tipo A (serviço
 Kubernetes otelcol no namespace observability) como entrada para as informações
-de backend:
+de _backend_:
 
 ```yaml
 receivers:
