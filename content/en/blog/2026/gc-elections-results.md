@@ -3,6 +3,7 @@ title: Announcing the 2026 Governance Committee Election Results
 linkTitle: 2026 GC Election Results
 date: 2026-10-29
 author: OpenTelemetry Governance Committee
+cSpell:ignore: Baeyens Suereth
 ---
 
 We are delighted to announce the results of the
