@@ -3,7 +3,7 @@ title:
   Building an Agent Harness for OTel Instrumentation with GenAI Semantic
   Conventions and Weaver
 linkTitle: An agent harness for GenAI instrumentation
-date: 2026-08-20
+date: 2026-10-29
 author: >-
   [Huxing Zhang](https://github.com/ralf0131) (Alibaba Cloud), [Ziming
   Liu](https://github.com/123liuziming) (Alibaba Cloud)
