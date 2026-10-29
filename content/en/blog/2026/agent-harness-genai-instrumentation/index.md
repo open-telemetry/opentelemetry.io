@@ -286,7 +286,7 @@ not a build break.
 
 The matrix shows coverage for 29 attributes across 14 LoongSuite Python
 instrumentations. The community
-[live conformance matrix](https://open-telemetry.github.io/semantic-conventions-conformance/#/signals/span%3Agen_ai.invoke_agent.internal)
+[live conformance matrix](https://open-telemetry.github.io/semantic-conventions-conformance/?link-check=no&last-validated=2026-10-29#/signals/span%3Agen_ai.invoke_agent.internal)
 shows the same signal across public scenarios; it does not currently include the
 LoongSuite plugins shown above.
 
