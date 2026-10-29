@@ -2,8 +2,7 @@
 title: Escalando o Collector
 weight: 26
 default_lang_commit: a12d86209bb807217742cc14e0a29095beaf978f
-# prettier-ignore
-cSpell:ignore: exporters fluentd Linkerd loadbalancer loadbalancing observability receivers scraping sharded Sidecars statefulset
+cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing sharded statefulset
 ---
 
 Ao planejar o seu pipeline de observabilidade com o OpenTelemetry Collector,
