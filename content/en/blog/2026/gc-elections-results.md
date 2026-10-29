@@ -23,7 +23,7 @@ selection process. Without further ado, please join us in congratulating
 [Dan Gomez Blanco](https://github.com/danielgblanco),
 [Josh Suereth](https://github.com/jsuereth),
 [Pablo Baeyens Fernández](https://github.com/mx-psi), and
-[Trask Stalnaker](https://github.com/trask)! 
+[Trask Stalnaker](https://github.com/trask)!
 
 All will serve a two-year term.
 
