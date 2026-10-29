@@ -4,8 +4,7 @@ description:
   A instrumentação de código do OpenTelemetry é suportada para muitas linguagens
   populares de programação.
 weight: 250
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 A [instrumentação][instrumentation] de código do OpenTelemetry é suportada para
@@ -24,22 +23,19 @@ automática][zero-code] em suas aplicações.
 
 ## Estado e Lançamentos {#status-and-releases}
 
-O estado atual dos principais componentes funcionais do OpenTelemetry estão a
-seguir:
+O [estado](/docs/specs/otel/versioning-and-stability/) atual dos principais
+componentes funcionais do OpenTelemetry é o seguinte:
 
-{{% alert title="Importante" color="warning" %}}
-
-Independente do estado de um API/SDK, se a sua instrumentação depende de
-[convenções semânticas][semantic conventions] que são marcadas como
-[Experimental][] na [especificação de convenções
-semânticas][semantic conventions specification], seu fluxo de dados pode estar
-sujeito à **quebra de compatibilidade**
-
-[semantic conventions]: /docs/concepts/semantic-conventions/
-[Experimental]: /docs/specs/otel/document-status/
-[semantic conventions specification]: /docs/specs/semconv/
-
-{{% /alert %}}
+> [!WARNING]
+>
+> Independente do estado de uma API/SDK, se a sua instrumentação depende de
+> [convenções semânticas][semconv] que são marcadas como [Experimental][] na
+> [especificação de convenções semânticas][semconv-spec], seu fluxo de dados
+> pode estar sujeito a **quebras de compatibilidade**.
+>
+> [semconv]: /docs/concepts/semantic-conventions/
+> [Experimental]: /docs/specs/otel/document-status/
+> [semconv-spec]: /docs/specs/semconv/
 
 {{% telemetry-support-table " " %}}
 
@@ -51,11 +47,9 @@ API para desenvolvedores. As referências a seguir estão disponíveis:
 
 {{% apidocs %}}
 
-{{% alert title="Nota" %}}
-
-A lista acima é um alias para [`/api`](/api).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> A lista acima é um alias para [`/api`](/api).
 
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/

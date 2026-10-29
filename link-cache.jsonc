@@ -2664,6 +2664,11 @@
     "when": "2026-10-24T05:43:33Z",
     "via": "lychee",
   },
+  "https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview": {
     "result": 200,
     "when": "2026-10-20T05:44:52Z",
@@ -2672,6 +2677,11 @@
   "https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported": {
     "result": 200,
     "when": "2026-10-15T05:44:47Z",
+    "via": "lychee",
+  },
+  "https://docs.microsoft.com/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger": {
@@ -2687,6 +2697,11 @@
   "https://docs.microsoft.com/dotnet/api/system.appcontext.basedirectory": {
     "result": 200,
     "when": "2026-10-22T05:45:15Z",
+    "via": "lychee",
+  },
+  "https://docs.microsoft.com/dotnet/api/system.appdomain.unhandledexception": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://docs.microsoft.com/dotnet/api/system.diagnostics": {
@@ -2727,6 +2742,11 @@
   "https://docs.microsoft.com/dotnet/api/system.net.httpwebrequest": {
     "result": 200,
     "when": "2026-10-16T05:44:13Z",
+    "via": "lychee",
+  },
+  "https://docs.microsoft.com/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace": {
@@ -2794,6 +2814,16 @@
     "when": "2026-10-19T05:46:27Z",
     "via": "lychee",
   },
+  "https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
+  "https://docs.microsoft.com/java/api/overview/azure/core-readme": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "result": 200,
     "when": "2026-10-16T05:45:15Z",
@@ -2802,6 +2832,11 @@
   "https://docs.microsoft.com/sysinternals/downloads/process-explorer": {
     "result": 200,
     "when": "2026-10-22T05:45:15Z",
+    "via": "lychee",
+  },
+  "https://docs.microsoft.com/windows/dev-environment/javascript/nodejs-on-windows": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://docs.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifentry2": {
@@ -10519,6 +10554,11 @@
     "when": "2026-10-16T05:44:23Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/43266": {
+    "result": 200,
+    "when": "2026-10-16T10:35:30Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130": {
     "result": 200,
     "when": "2026-10-20T05:44:51Z",
@@ -10589,6 +10629,11 @@
     "when": "2026-10-16T05:44:22Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/45097": {
+    "result": 200,
+    "when": "2026-10-16T10:35:31Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/49152": {
     "result": 200,
     "when": "2026-10-23T05:44:47Z",
@@ -10597,6 +10642,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/51236": {
     "result": 200,
     "when": "2026-10-16T22:42:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/52037": {
+    "result": 200,
+    "when": "2026-10-16T10:35:30Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0": {
@@ -10637,6 +10687,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6aff35ab5351482a4664f29a7d5428cedcf61a92/connector/routingconnector?from_branch=main": {
     "result": 200,
     "when": "2026-10-19T05:46:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/701867a218d0590a3e95c920388b7fb65aa3dd1d/receiver/filelogreceiver": {
+    "result": 200,
+    "when": "2026-10-16T10:35:29Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/ab56dd45ea2240f7014470bcc31c1b3fafc1ef19/receiver/sqlserverreceiver?from_branch=main": {
@@ -13369,6 +13424,1311 @@
     "when": "2026-10-16T12:05:18Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/countconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/datadogconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/exceptionsconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/failoverconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/grafanacloudconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/metricsaslogsconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/otlpjsonconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/roundrobinconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/routingconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/servicegraphconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/signaltometricsconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/slowsqlconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/spanmetricsconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/connector/sumconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/alertmanagerexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/alibabacloudlogserviceexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/awscloudwatchlogsexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/awsemfexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/awskinesisexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/awss3exporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/awsxrayexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/azureblobexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/azuredataexplorerexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/azuremonitorexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/bmchelixexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/cassandraexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/clickhouseexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/coralogixexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/datadogexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/datasetexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/dorisexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/elasticsearchexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/faroexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/fileexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/googlecloudexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/googlecloudpubsubexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/googlecloudstorageexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/googlemanagedprometheusexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/honeycombmarkerexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/influxdbexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/kafkaexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/loadbalancingexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/logicmonitorexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/logzioexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/natsexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/opensearchexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/otelarrowexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/prometheusexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/prometheusremotewriteexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/pulsarexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/rabbitmqexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/sematextexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/sentryexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/signalfxexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/splunkhecexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/stefexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/sumologicexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/syslogexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/tencentcloudlogserviceexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/tinybirdexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/exporter/zipkinexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/ackextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/asapauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/awsproxy": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/azureauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/basicauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/bearertokenauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/cgroupruntimeextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/datadogextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/avrologencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/awscloudwatchmetricstreamsencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/awslogsencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/azureencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/googlecloudlogentryencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/jaegerencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/jsonlogencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/otlpencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/skywalkingencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/textencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/encoding/zipkinencodingextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/filetelemetrypolicyextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/googleclientauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/headerssetterextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/healthcheckextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/healthcheckv2extension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/httpforwarderextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/jaegerremotesampling": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/k8sleaderelector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/mcp": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/oauth2clientauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/observer/cfgardenobserver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/observer/dockerobserver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/observer/ecsobserver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/observer/hostobserver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/observer/k8sobserver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/oidcauthextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/opampextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/pprofextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/remotetapextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/sdnotifyextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/sigv4authextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/solarwindsapmsettingsextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/storage/dbstorage": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/storage/filestorage": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/storage/redisstorageextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:19Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/extension/sumologicextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/adaptivetailsamplingprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/attributesprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/awsecsattributesprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/cardinalityguardianprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/coralogixprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/cumulativetodeltaprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/deltatocumulativeprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/deltatorateprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/drainprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/filterprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/genainormalizerprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/geoipprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/groupbyattrsprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/groupbytraceprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/intervalprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/isolationforestprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/k8sattributesprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/logdedupprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/logstransformprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/lookupprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/metricsgenerationprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/metricstarttimeprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/metricstransformprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/partitioningprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/probabilisticsamplerprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/redactionprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/remotetapprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/resourcedetectionprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/resourceprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/rollingspanlatencyprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/schemaprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/signingprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/spanprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/spanpruningprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/sumologicprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/tailsamplingprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/telemetrypolicyprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/transformprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/unrollprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/processor/verifyprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/activedirectorydsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/activedirectoryinvreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/aerospikereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/apachereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/apachesparkreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awscloudwatchreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awscontainerinsightreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awsecscontainermetricsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awsfirehosereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awslambdareceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awss3receiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/awsxrayreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/azureblobreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/azureeventhubreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/azurefunctionsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/azuremonitorreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/carbonreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/chronyreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/ciscoosreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/cloudflarereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/cloudfoundryreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/collectdreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/couchdbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/datadogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/dnscheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/dockerstatsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/elasticsearchreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/envoyalsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/expvarreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/faroreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/filelogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/filestatsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/flinkmetricsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/fluentforwardreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/githubreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/gitlabreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/gnmireceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/googlecloudmonitoringreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/googlecloudpubsubpushreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/googlecloudpubsubreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/googlecloudspannerreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/haproxyreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/hostmetricsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/httpcheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/huaweicloudcesreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/icmpcheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/iisreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/influxdbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/jaegerreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/journaldreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/k8sclusterreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/k8seventsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/k8sobjectsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/kafkametricsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/kafkareceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/kubeletstatsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/libhoneyreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/lokireceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/macosunifiedloggingreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/memcachedreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/mongodbatlasreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/mongodbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/mysqlreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/namedpipereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/natsreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/netflowreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/nginxreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/nsxtreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/ntpreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/oracledbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/osqueryreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/otelarrowreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/otlpjsonfilereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/podmanreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/postgresqlreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/pprofreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/prometheusreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/prometheusremotewritereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/pulsarreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/purefareceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/purefbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/rabbitmqreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/receivercreator": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/redfishreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/redisreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/riakreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/saphanareceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/signalfxreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/simpleprometheusreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/skywalkingreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/snmpreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/snowflakereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/solacereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/splunkenterprisereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/splunkhecreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/sqlqueryreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/sqlserverreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/sshcheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/statsdreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/stefreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/syslogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/systemdreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/tcpcheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/tcplogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/tlscheckreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/udplogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/vcenterreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/vcrreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/webhookeventreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/windowseventlogreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/windowsperfcountersreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/windowsservicereceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/yanggrpcreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/zipkinreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.164.1/receiver/zookeeperreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:34Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.97.0/exporter/prometheusexporter": {
     "result": 200,
     "when": "2026-10-19T05:46:19Z",
@@ -14004,6 +15364,66 @@
     "when": "2026-10-16T12:05:16Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/connector/forwardconnector": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/exporter/debugexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/exporter/nopexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/exporter/otlpexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/exporter/otlphttpexporter": {
+    "result": 200,
+    "when": "2026-10-28T12:01:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/extension/memorylimiterextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/extension/zpagesextension": {
+    "result": 200,
+    "when": "2026-10-28T12:01:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/processor/batchprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/processor/memorylimiterprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/processor/queuebatchprocessor": {
+    "result": 200,
+    "when": "2026-10-28T12:01:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/receiver/nopreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.164.0/receiver/otlpreceiver": {
+    "result": 200,
+    "when": "2026-10-28T12:01:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/otlpreceiver": {
     "result": 200,
     "when": "2026-10-19T05:46:19Z",
@@ -14479,9 +15899,19 @@
     "when": "2026-10-23T05:44:39Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNet-1.20.1/src/OpenTelemetry.Instrumentation.AspNet/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.19.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.20.1/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.19.0/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
@@ -14489,9 +15919,19 @@
     "when": "2026-10-23T05:44:39Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.20.1/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Process-1.19.0-rc.1/src/OpenTelemetry.Instrumentation.Process/README.md#metrics": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Process-1.20.1-rc.1/src/OpenTelemetry.Instrumentation.Process/README.md#metrics": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Runtime-1.19.0/src/OpenTelemetry.Instrumentation.Runtime/README.md#metrics": {
@@ -14499,9 +15939,19 @@
     "when": "2026-10-23T05:44:39Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Runtime-1.20.1/src/OpenTelemetry.Instrumentation.Runtime/README.md#metrics": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.19.1-beta.1/src/OpenTelemetry.Resources.Azure/README.md": {
     "result": 200,
     "when": "2026-10-23T05:44:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.1-beta.1/src/OpenTelemetry.Resources.Azure/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.19.1-beta.1/src/OpenTelemetry.Resources.Container/README.md": {
@@ -14509,9 +15959,19 @@
     "when": "2026-10-23T05:44:39Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.20.1-beta.1/src/OpenTelemetry.Resources.Container/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.19.1-beta.1/src/OpenTelemetry.Resources.Host/README.md": {
     "result": 200,
     "when": "2026-10-23T05:44:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.20.1-beta.1/src/OpenTelemetry.Resources.Host/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.19.1-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md": {
@@ -14519,9 +15979,19 @@
     "when": "2026-10-23T05:44:40Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.20.1-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.19.1-rc.1/src/OpenTelemetry.Resources.Process/README.md": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.20.1-rc.1/src/OpenTelemetry.Resources.Process/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.19.1-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md": {
@@ -14529,9 +15999,19 @@
     "when": "2026-10-23T05:44:40Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.20.1-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.19.0": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.20.1": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/4a4fab74f466cdbae23876e88e17b797b7674319/src?from_branch=main": {
@@ -14784,6 +16264,56 @@
     "when": "2026-10-23T05:44:40Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/netfx-appdomain-strategy.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/plugins.md": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
+    "result": 200,
+    "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744": {
     "result": 200,
     "when": "2026-10-16T05:44:13Z",
@@ -14869,9 +16399,24 @@
     "when": "2026-10-23T05:44:40Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.19.1-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener": {
     "result": 200,
     "when": "2026-10-23T05:44:40Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.20.1-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener": {
+    "result": 200,
+    "when": "2026-10-27T08:57:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/correlation": {
