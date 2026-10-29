@@ -5,8 +5,8 @@ default_lang_commit: a12d86209bb807217742cc14e0a29095beaf978f
 cSpell:ignore: fluentd Linkerd loadbalancer loadbalancing sharded statefulset
 ---
 
-Ao planejar o seu pipeline de observabilidade com o OpenTelemetry Collector,
-considere formas de escalar o pipeline à medida que a sua coleta de telemetria
+Ao planejar o seu _pipeline_ de observabilidade com o OpenTelemetry Collector,
+considere formas de escalar o _pipeline_ à medida que a sua coleta de telemetria
 aumenta.
 
 As seções a seguir guiarão você pela fase de planejamento, discutindo quais
