@@ -2976,7 +2976,7 @@
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html": {
     "result": "error",
-    "when": "2026-10-28T10:29:52Z",
+    "when": "2026-10-29T10:29:49Z",
     "via": "lychee",
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/jajdb/oracle/jdbc/OracleConnection.html#Tracing": {
@@ -22929,6 +22929,16 @@
     "when": "2026-10-15T05:44:48Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/grpc.md": {
+    "result": 200,
+    "when": "2026-10-29T10:29:58Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/json-rpc.md": {
+    "result": 200,
+    "when": "2026-10-29T10:29:58Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
@@ -23214,6 +23224,11 @@
     "when": "2026-10-16T05:45:20Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3257": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3267": {
     "result": 200,
     "when": "2026-10-16T05:45:21Z",
@@ -23229,9 +23244,19 @@
     "when": "2026-10-16T05:45:21Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3308": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3317": {
     "result": 200,
     "when": "2026-10-16T05:45:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3328": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/3350": {
@@ -23279,9 +23304,19 @@
     "when": "2026-10-16T05:45:25Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3919": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3921": {
     "result": 200,
     "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/4120": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/4185": {
