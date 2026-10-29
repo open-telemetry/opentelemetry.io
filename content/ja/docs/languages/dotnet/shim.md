@@ -3,6 +3,7 @@ title: OpenTelemetry トレーシング Shim
 linkTitle: トレーシング Shim
 weight: 110
 default_lang_commit: bec33ed09231b738f244797c4346163128d9c98a
+drifted_from_default: true
 ---
 
 .NET は OpenTelemetry をサポートする他の言語やランタイムとは異なります。
