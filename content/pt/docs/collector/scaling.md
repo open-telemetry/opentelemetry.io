@@ -256,12 +256,12 @@ spec:
 
 ### Escalando os extratores {#scaling-the-scrapers}
 
-Alguns receivers obtêm ativamente dados de telemetria para colocar no pipeline,
-como os receivers host_metrics e prometheus. Embora obter métricas do host não
-seja algo que normalmente escalaríamos, podemos precisar dividir o trabalho de
-extrair milhares de rotas para o receiver do Prometheus. E não podemos
-simplesmente adicionar mais instâncias com a mesma configuração, pois cada
-Collector tentaria extrair as mesmas rotas de todos os outros Collectors do
+Alguns receivers obtêm ativamente dados de telemetria para colocar no
+_pipeline_, como os receivers host_metrics e prometheus. Embora obter métricas
+do host não seja algo que normalmente escalaríamos, podemos precisar dividir o
+trabalho de extrair milhares de rotas para o receiver do Prometheus. E não
+podemos simplesmente adicionar mais instâncias com a mesma configuração, pois
+cada Collector tentaria extrair as mesmas rotas de todos os outros Collectors do
 cluster, causando ainda mais problemas, como amostras fora de ordem.
 
 A solução é fragmentar as rotas entre as instâncias do Collector, de modo que,
