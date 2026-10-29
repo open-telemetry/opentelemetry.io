@@ -10,116 +10,130 @@ sig: SIG Demo
 cSpell:ignore: Aditya
 ---
 
-The OpenTelemetry Demo's recommendation service now has a Java implementation
-built on Spring Boot 4. The rewrite replaced Python, though the frontend still
-calls the same gRPC API and the service still asks the product catalog for
-products. A customer looking at a product should get the same recommendations
-that they would before the change.
+A recommendation request in the OpenTelemetry Demo crosses a few boundaries. The
+recommendation service receives a gRPC call, selects products inside a
+`get_product_list` span, and calls the product catalog. That trace was already
+useful before I replaced the Python service with Spring Boot 4. The new service
+needed to preserve the relationships and application signals people use to
+understand a request.
 
-Preserving those recommendations exposed a detail the protobuf contract alone
-would not tell you. The frontend was sending product IDs as one repeated element
-per character. The old service joined those characters and split the result on
-commas. A rewrite that accepted only complete IDs could serve a valid gRPC
-response and still recommend the product already on the screen, which the old
-service never did.
-
-I kept that behavior in the
-[merged rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966).
-The same question applied to telemetry: what does the surrounding demo already
-depend on, and how do we check that it survives a new implementation?
-
-## Choosing the instrumentation path
+The Demo already had Python services, plus the Java Ad service and the Kotlin
+fraud-detection service. Both of those JVM services use the OpenTelemetry Java
+agent. Adding a Spring service gives developers an example using a widely used
+Java framework. The recommendation service also demonstrates the OpenTelemetry
+Spring Boot starter, so the Demo can show a second instrumentation path. The
+[Java agent remains the default recommendation for Spring Boot applications](/docs/zero-code/java/spring-boot-starter/).
 
 The
-[recommendation service README](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/README.md)
-says the Java agent remains the default choice for Spring Boot applications. The
-recommendation service uses the Spring Boot starter so the demo can show another
-way to instrument Java. It does not need a Java agent attached to its process.
+[merged rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966)
+keeps the gRPC contract. To check the telemetry, I started with the old trace.
 
-That choice leaves some wiring in the application. In this implementation, the
-starter supplies the OpenTelemetry instance and the gRPC instrumentation library
-supplies client and server interceptors. Spring gRPC's global interceptor
-annotations register them with the client and server. Adding the starter
-dependency alone would leave out this explicit gRPC setup.
+## Start with the Python trace
+
+![Python recommendation trace showing the incoming RPC, get_product_list, and the catalog client and server spans](python-trace.png)
+
+This is a local capture from the
+[Python implementation before the rewrite](https://github.com/open-telemetry/opentelemetry-demo/blob/e5552ee25bcede2900d89188f076c464cd73c074/src/recommendation/recommendation_server.py).
+The screenshots in this post show the recommendation part of the request and its
+catalog call. I ran both implementations against the same product catalog and
+feature-flag configuration, with the cache failure disabled.
+
+Read the trace from the incoming recommendation RPC down. The `get_product_list`
+span is its child. The catalog client span sits inside that work, and the
+catalog's server span continues the same trace. The final database span belongs
+to the catalog, which stays unchanged for this comparison.
+
+Those relationships tell you whether the time was spent selecting products or
+waiting for another service. Preserving a span name without preserving its
+parent would lose part of that explanation.
+
+The application attributes also give the trace meaning. For this request, the
+catalog contains ten products, the viewed product is excluded, and five
+recommendations are returned:
+
+| Attribute                                | Python  | Spring  |
+| ---------------------------------------- | ------- | ------- |
+| `demo.product.count`                     | 10      | 10      |
+| `demo.product.filtered.count`            | 9       | 9       |
+| `demo.product.recommended.count`         | 5       | 5       |
+| `demo.feature_flag.recommendation_cache` | `false` | `false` |
+
+The filtered product list is random, so matching its exact contents is not the
+migration goal. Its size and exclusion behavior must still make sense.
+
+## Rebuild the RPC boundaries in Spring
+
+The starter configures the OpenTelemetry instance and export pipeline. Its
+version 2.31.1
+[autoconfiguration list](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/spring/spring-boot-autoconfigure/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports)
+does not include gRPC instrumentation. Having an SDK and exporter available does
+not attach an interceptor to a Spring gRPC server or channel.
 
 The
+[OpenTelemetry gRPC library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/src/main/java/io/opentelemetry/instrumentation/grpc/v1_6/GrpcTelemetry.java)
+provides those interceptors. The service's
 [configuration](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/main/java/oteldemo/recommendation/GrpcTelemetryConfiguration.java)
-creates one `GrpcTelemetry` from the injected `OpenTelemetry`, then exposes the
-server and client interceptors as beans. Keeping the configuration together
-makes it possible to inspect both sides of the RPC boundary without searching
-through the recommendation logic.
+creates `GrpcTelemetry` from the starter's `OpenTelemetry` instance and
+registers its server and client interceptors as Spring beans, using
+`@GlobalServerInterceptor` and `@GlobalClientInterceptor`.
 
-This distinction matters when moving between instrumentation approaches. A
-working SDK and exporter do not establish that every protocol used by the
-application has instrumentation attached.
+The server interceptor creates the incoming RPC span and extracts the caller's
+trace context. The client interceptor creates the catalog RPC span and injects
+context for the catalog service to continue. This wiring preserves the RPC
+boundaries visible in the old trace, rather than leaving only the manually
+created application span. This is the setup for the starter and Spring gRPC
+versions used by the rewrite, not a claim that every Spring instrumentation
+option needs the same configuration.
 
-## Keeping the application telemetry
+Inside those boundaries, the
+[Java implementation](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/main/java/oteldemo/recommendation/RecommendationService.java)
+starts `get_product_list` and makes it current while fetching and selecting
+products. That scope makes the catalog call a child of the application span. The
+service retains the `demo.*` attributes, records runtime exceptions, and ends
+the span in a `finally` block.
 
-The service creates a `get_product_list` span around the work of fetching and
-selecting products. It makes that span current while the work runs, records
-runtime exceptions and ends the span in a `finally` block. The catalog call
-happens inside that scope.
+## Read the Spring trace against the original
 
-The
-[implementation](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/main/java/oteldemo/recommendation/RecommendationService.java)
-also retains the demo attributes for product counts, the filtered list and the
-cache flag. These describe the work inside the request, beyond the RPC duration.
+![Spring recommendation trace showing the same incoming RPC, get_product_list, and catalog parent-child relationships](java-trace.png)
 
-I kept the metric name `demo.recommendation.requests` and the Python service's
-counting logic. The counter still adds the number of products recommended, with
-`recommendation.type` set to `catalog`. A request returning five recommendations
-still adds five. Changing the increment to one during the rewrite would have
-changed what the metric means.
+The Spring trace keeps the same chain: recommendation server, product-list work,
+catalog client, then catalog server. The product counts in the table also match.
+The Python instrumentation prefixes the RPC span names with `/`, while the Java
+library does not. The request still crosses the same instrumented boundaries.
 
-A migration review needs to look at those operations as well as the emitted
-names. Otherwise a dashboard can continue receiving data while its
-interpretation changes.
-
-## Preserving client behavior and the cache failure
-
-The product-ID conversion accepts both the character elements sent by the
-frontend and complete IDs sent by other clients. The
-[service tests](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/test/java/oteldemo/recommendation/RecommendationServiceTests.java)
-exercise the frontend representation. That keeps a compatibility detail from
-becoming an assumption buried in a comment.
-
-The cache preserves a deliberate failure scenario. The
-`recommendationCacheFailure` flag enables a growing cache. On a miss, it appends
-catalog IDs and then copies a quarter of the accumulated cache back into itself.
-The service deduplicates the IDs when selecting recommendations, so the response
-can still look reasonable while the stored list grows.
-
-Cleaning up that cache during the rewrite would remove a failure scenario the
-demo is meant to expose. The implementation keeps the cache attributes on the
-application span, including whether the cache was hit and the product count. The
-tests turn the flag on and inspect the corresponding telemetry.
-
-This is one place where a demo migration differs from ordinary cleanup. The
-broken behavior is part of the example people are trying to observe.
-
-## Checking the service boundary
-
-For the Java service, I added tests with a fake product catalog, an in-memory
-span exporter and a metric reader. They check the recommendation response and
-the server, product-list and catalog-client spans together, and verify that five
-returned recommendations add five to the counter.
-
-These are service-level checks. The Demo's end-to-end tests and inspection of
-the running stack are separate, cause a local exporter cannot establish that
-deployment configuration is correct.
-
-## Reviewing the migration as a whole
+These captures compare structure and application attributes. Their individual
+request durations do not establish a performance difference between the
+implementations.
 
 The
-[documentation change](https://github.com/open-telemetry/opentelemetry.io/pull/11667)
-accompanies the implementation. That is where a reader learns which
-instrumentation path the service uses. Leaving the documentation on the previous
-language or implying that every Java service uses the agent would make the
-example harder to follow.
+[service-level checks](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/test/java/oteldemo/recommendation/RecommendationServiceTests.java)
+use an in-memory exporter to assert the incoming span, the product-list parent,
+and the catalog-client trace ID. They also exercise errors. The running captures
+check that both services actually export connected spans through the Collector
+to Jaeger. The Demo's end-to-end checks remain a separate layer.
 
-For another service rewrite, I would start by listing the existing client
-behavior and the meaning of each application signal. Those surprising parts
-belong in compatibility and telemetry assertions: the representation the real
-client sends, the counter's actual increment, and any failure behavior people
-rely on the system to demonstrate. Those details are easy to lose while
-translating the main request handler.
+## Keep the behavior behind the signals
+
+Some details are easy to miss while translating the handler. The frontend sends
+product IDs as one repeated element per character. The Python service joins
+those characters and splits on commas. The Spring service keeps that behavior
+and also accepts complete IDs. Otherwise, a valid gRPC response could recommend
+the product already on the screen.
+
+The metric still means the same thing. I kept `demo.recommendation.requests`,
+the `recommendation.type=catalog` attribute, and the counting logic: five
+returned recommendations add five to the counter. Incrementing once per request
+would change what a dashboard measures despite keeping its metric name.
+
+The `recommendationCacheFailure` flag is a deliberate failure scenario. On a
+cache miss, the service appends catalog IDs and copies a quarter of the
+accumulated cache back into itself. The response uses distinct IDs, so it can
+look reasonable while the stored list grows. Keeping the cache-hit and product
+count attributes lets a reader investigate that behavior. Removing the leak
+would remove the scenario the Demo is meant to expose.
+
+For another rewrite, start with a request you can follow in the old trace. Check
+which boundaries, application attributes and metric meanings need to survive,
+then compare the running implementation against that baseline. The
+[recommendation service README](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/README.md)
+explains how this example's starter and gRPC library fit together.
