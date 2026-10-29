@@ -282,7 +282,13 @@ attributes a plugin emits and which it misses. Coverage is measurement rather
 than gating, so those runs use `--report-only`: a missing attribute is recorded,
 not a build break.
 
-![Coverage matrix for invoke-agent internal spans across fourteen generated instrumentations, with the GenAI attributes grouped by requirement level: required, conditionally required, recommended, and opt-in](invoke-agent-internal-spans.png)
+![Coverage matrix for invoke-agent internal spans across 14 LoongSuite Python instrumentations and 29 attributes](invoke-agent-internal-spans-loongsuite.svg)
+
+The matrix shows coverage for 29 attributes across 14 LoongSuite Python
+instrumentations. The community
+[live conformance matrix](https://open-telemetry.github.io/semantic-conventions-conformance/#/signals/span%3Agen_ai.invoke_agent.internal)
+shows the same signal across public scenarios; it does not currently include the
+LoongSuite plugins shown above.
 
 Separately, Weaver live-check reports attributes an agent emitted that the
 registry does not define as `missing_attribute` violations. When we temporarily
