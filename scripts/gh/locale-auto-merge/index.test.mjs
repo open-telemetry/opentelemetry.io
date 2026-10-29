@@ -12,6 +12,7 @@ import {
   authorizeForLocales,
   resolveVerdict,
   runAutoMergeCommand,
+  workflowRunUrl,
   NO_OWNER_PATHS,
 } from './index.mjs';
 
@@ -104,7 +105,7 @@ describe('locale-auto-merge: localeForPath', () => {
 
   test('returns null for paths outside the locale-owned set', () => {
     assert.equal(localeForPath('layouts/partials/head.html', LOCALES), null);
-    assert.equal(localeForPath('.lycheecache', LOCALES), null);
+    assert.equal(localeForPath('link-cache.jsonc', LOCALES), null);
     assert.equal(localeForPath('content/ja', LOCALES), null);
   });
 });
@@ -169,13 +170,16 @@ describe('locale-auto-merge: evaluateEligibility', () => {
     });
   });
 
-  test('no-owner .lycheecache does not block, but is not a locale', () => {
-    const r = evaluateEligibility(['content/ja/a.md', '.lycheecache'], known);
+  test('no-owner link-cache.jsonc does not block, but is not a locale', () => {
+    const r = evaluateEligibility(
+      ['content/ja/a.md', 'link-cache.jsonc'],
+      known,
+    );
     assert.deepEqual(r, { eligible: true, locales: ['ja'], offending: [] });
   });
 
-  test('.lycheecache alone is ineligible (no locale touched)', () => {
-    const r = evaluateEligibility(['.lycheecache'], known);
+  test('link-cache.jsonc alone is ineligible (no locale touched)', () => {
+    const r = evaluateEligibility(['link-cache.jsonc'], known);
     assert.equal(r.eligible, false);
     assert.deepEqual(r.locales, []);
     assert.deepEqual(r.offending, []);
@@ -203,13 +207,13 @@ describe('locale-auto-merge: evaluateEligibility', () => {
   test('onFile callback classifies each path', () => {
     const seen = [];
     evaluateEligibility(
-      ['content/ja/a.md', '.lycheecache', 'layouts/x.html'],
+      ['content/ja/a.md', 'link-cache.jsonc', 'layouts/x.html'],
       known,
       (f) => seen.push(f),
     );
     assert.deepEqual(seen, [
       { path: 'content/ja/a.md', kind: 'locale', locale: 'ja' },
-      { path: '.lycheecache', kind: 'shared', locale: null },
+      { path: 'link-cache.jsonc', kind: 'shared', locale: null },
       { path: 'layouts/x.html', kind: 'offending', locale: null },
     ]);
   });
@@ -447,6 +451,160 @@ function makeRunGh({ pr, teams = {}, calls }) {
 
 const KNOWN = new Set(['ja', 'pt']);
 
+/**
+ * Run an eligible, authorized enable or disable whose `gh pr merge` mutation
+ * fails with `stderr`; return the result, the posted comment body, the log
+ * lines, and the `gh` calls. `reread` answers the GraphQL state read that
+ * follows the failed mutation (default: the PR unchanged, still open).
+ */
+function runFailingMutation({ stderr, runUrl, action = 'enable', reread }) {
+  const calls = [];
+  const logs = [];
+  const enabledAt = action === 'disable' ? '2026-01-01T00:00:00Z' : null;
+  const base = makeRunGh({
+    pr: {
+      state: 'OPEN',
+      files: [{ path: 'content/ja/docs/a.md' }],
+      autoMergeRequest: enabledAt === null ? null : { enabledAt },
+    },
+    teams: { 'docs-ja-maintainers': ['alice'] },
+    calls,
+  });
+  const runGh = (args) => {
+    if (args[0] === 'pr' && args[1] === 'merge') {
+      calls.push(args);
+      return { stdout: '', stderr, status: 1 };
+    }
+    if (args[0] === 'api' && args[1] === 'graphql') {
+      calls.push(args);
+      return (reread ?? prState({ enabledAt }))(args);
+    }
+    return base(args);
+  };
+  const r = runAutoMergeCommand({
+    repo: 'open-telemetry/opentelemetry.io',
+    prNum: 42,
+    commentAuthor: 'alice',
+    commentBody: `/auto-merge:${action}`,
+    knownLocales: KNOWN,
+    runGh,
+    runUrl,
+    log: (m) => logs.push(m),
+  });
+  const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
+  const body = comment[comment.indexOf('--body') + 1];
+  return { r, body, logs, calls };
+}
+
+/** A successful GraphQL state read for the re-read seam. */
+function prState({ state = 'OPEN', queued = false, enabledAt = null }) {
+  return () => ({
+    stdout: JSON.stringify({
+      data: {
+        repository: {
+          pullRequest: {
+            state,
+            isInMergeQueue: queued,
+            autoMergeRequest: enabledAt === null ? null : { enabledAt },
+          },
+        },
+      },
+    }),
+    status: 0,
+  });
+}
+
+describe('locale-auto-merge: workflowRunUrl', () => {
+  test('builds the run URL from the Actions default environment', () => {
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'open-telemetry/opentelemetry.io',
+        GITHUB_RUN_ID: '38921928401',
+      }),
+      'https://github.com/open-telemetry/opentelemetry.io/actions/runs/38921928401',
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://ghe.example.com:8443/',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      'https://ghe.example.com:8443/o/r/actions/runs/1',
+    );
+  });
+
+  test('is undefined when any variable is missing or malformed', () => {
+    assert.equal(workflowRunUrl({}), undefined);
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'open-telemetry/opentelemetry.io',
+      }),
+      undefined,
+    );
+    // Link-injection attempts in the slug and run id.
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/r)[x](https://evil',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1)',
+      }),
+      undefined,
+    );
+    // Non-origin and non-https server URLs.
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com)',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'http://github.com',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com:99999',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://user@github.com/path',
+        GITHUB_REPOSITORY: 'o/r',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+    // Dot-only slug component.
+    assert.equal(
+      workflowRunUrl({
+        GITHUB_SERVER_URL: 'https://github.com',
+        GITHUB_REPOSITORY: 'o/..',
+        GITHUB_RUN_ID: '1',
+      }),
+      undefined,
+    );
+  });
+});
+
 describe('locale-auto-merge: runAutoMergeCommand', () => {
   test('no recognized command is a no-op', () => {
     const calls = [];
@@ -628,7 +786,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: '.lycheecache' },
+            { path: 'link-cache.jsonc' },
           ],
           autoMergeRequest: null,
         },
@@ -821,7 +979,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
           files: [
             { path: 'content/ja/a.md' },
             { path: 'content/pt/b.md' },
-            { path: '.lycheecache' },
+            { path: 'link-cache.jsonc' },
           ],
           autoMergeRequest: null,
         },
@@ -839,7 +997,7 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
       logs.some((m) => m === '[file] ✓ locale-owned (pt): content/pt/b.md'),
     );
     assert.ok(
-      logs.some((m) => m === '[file] ✓ shared (no owner): .lycheecache'),
+      logs.some((m) => m === '[file] ✓ shared (no owner): link-cache.jsonc'),
     );
     assert.ok(
       logs.some((m) =>
@@ -887,34 +1045,209 @@ describe('locale-auto-merge: runAutoMergeCommand', () => {
   });
 
   test('enable applies but gh pr merge failure yields mutation-failed', () => {
-    const calls = [];
-    const base = makeRunGh({
-      pr: {
-        state: 'OPEN',
-        files: [{ path: 'content/ja/docs/a.md' }],
-        autoMergeRequest: null,
-      },
-      teams: { 'docs-ja-maintainers': ['alice'] },
-      calls,
-    });
-    // Wrap the runner so the merge mutation fails, but reads still succeed.
-    const runGh = (args) =>
-      args[0] === 'pr' && args[1] === 'merge'
-        ? { stdout: '', status: 1 }
-        : base(args);
-    const r = runAutoMergeCommand({
-      repo: 'open-telemetry/opentelemetry.io',
-      prNum: 42,
-      commentAuthor: 'alice',
-      commentBody: '/auto-merge',
-      knownLocales: KNOWN,
-      runGh,
+    const { r, body, logs } = runFailingMutation({
+      stderr:
+        'GraphQL: Something went wrong while executing your query. ' +
+        'Please include `D40E:21FF18` when reporting this issue.\n' +
+        'second line is not quoted\n',
+      runUrl: 'https://github.com/o/r/actions/runs/38921928401',
     });
     assert.equal(r.outcome, 'mutation-failed');
     assert.equal(r.exitCode, 1);
-    const comment = calls.find((a) => a[0] === 'pr' && a[1] === 'comment');
-    const body = comment[comment.indexOf('--body') + 1];
-    assert.match(body, /Failed to enable auto-merge/);
+    // The run link rides the lead line, as the /fix replies do; the details
+    // block holds only gh's error.
+    assert.match(
+      body,
+      /^❌ Auto-merge could not be enabled: your command was valid, but GitHub did not accept the request\. See \[run 38921928401\]\(https:\/\/github\.com\/o\/r\/actions\/runs\/38921928401\)\.$/m,
+    );
+    const [lead, steps, details] = body.split(
+      /\n\nNext steps:\n\n|\n\n<details>/,
+    );
+    assert.ok(
+      lead && steps && details,
+      'reply splits into lead, steps, details',
+    );
+    assert.match(steps, /^- Post a new comment with `\/auto-merge` to retry/);
+    assert.doesNotMatch(steps, /:disable/);
+    assert.match(
+      steps,
+      /\n- If it fails the same way, check the error details below\. If that's not something you can fix, ping `@open-telemetry\/docs-maintainers`\.$/,
+    );
+    assert.equal(
+      details,
+      '\n<summary>Error details</summary>\n\n' +
+        "`gh pr merge` exited 1: `GraphQL: Something went wrong while executing your query. Please include 'D40E:21FF18' when reporting this issue.`\n\n" +
+        '</details>',
+    );
+    assert.doesNotMatch(body, /second line/);
+    assert.ok(
+      logs.some((m) => m.startsWith('[mutation-failed] ')),
+      'log line keeps the outcome token',
+    );
+  });
+
+  test('quoted line skips gh warnings and ends at a lone CR', () => {
+    // The stderr order observed on #12143: gh's merge-queue warning, then the
+    // error.
+    let { body } = runFailingMutation({
+      stderr:
+        '! The merge strategy for main is set by the merge queue\n' +
+        'GraphQL: Something went wrong while executing your query.\n',
+    });
+    assert.match(
+      body,
+      /exited 1: `GraphQL: Something went wrong while executing your query\.`/,
+    );
+    assert.doesNotMatch(body, /merge queue/);
+    ({ body } = runFailingMutation({ stderr: '! only a warning\n' }));
+    assert.match(body, /exited 1: `! only a warning`/);
+    ({ body } = runFailingMutation({
+      stderr: 'GraphQL: example\r\r@open-telemetry/docs-maintainers\r\n',
+    }));
+    assert.match(body, /exited 1: `GraphQL: example`\n/);
+    const outsideCode = body.replace(/`[^`]*`/g, '');
+    assert.doesNotMatch(outsideCode, /@/);
+  });
+
+  test('quoted line spaces control characters and cuts by code point', () => {
+    let { body } = runFailingMutation({ stderr: 'a\tb\u0000c\u001bd\n' });
+    assert.match(body, /exited 1: `a b c d`\n/);
+    ({ body } = runFailingMutation({ stderr: 'x'.repeat(199) + '😀😀\n' }));
+    const quoted = body.match(/exited 1: `([^`]*)`/)[1];
+    assert.equal(quoted, 'x'.repeat(199) + '😀…');
+  });
+
+  test('mutation failure with empty stderr reports the exit code alone', () => {
+    const { body } = runFailingMutation({
+      stderr: '  \n\n',
+      runUrl: undefined,
+    });
+    assert.match(body, /\n\n`gh pr merge` exited 1 \(no error output\)\.\n/);
+    assert.doesNotMatch(body, /``/, 'every code span has content');
+    assert.match(body, /post a new comment with `\/auto-merge`/i);
+    // No run link outside GitHub Actions: the lead ends at the request.
+    assert.match(body, /did not accept the request\.\n\nNext steps:/);
+    assert.doesNotMatch(body, /See \[run/);
+  });
+
+  test('mutation failure quotes stderr as data: bounded, mention-safe', () => {
+    const { body } = runFailingMutation({
+      stderr: '@open-telemetry/docs-maintainers ' + 'x'.repeat(300),
+    });
+    const quoted = body.match(/exited 1: `([^`]*)`/)[1];
+    assert.ok(
+      quoted.length <= 201,
+      `quoted line is bounded (${quoted.length})`,
+    );
+    assert.ok(quoted.endsWith('…'), 'truncation is marked');
+    const outsideCode = body.replace(/`[^`]*`/g, '');
+    assert.doesNotMatch(outsideCode, /@/);
+  });
+
+  test('disable failure names the disable action and its retry directive', () => {
+    const { r, body } = runFailingMutation({
+      stderr: 'boom',
+      action: 'disable',
+    });
+    assert.equal(r.outcome, 'mutation-failed');
+    assert.match(body, /^❌ Auto-merge could not be disabled: /);
+    assert.match(
+      body,
+      /Post a new comment with `\/auto-merge:disable` to retry/,
+    );
+    assert.match(body, /exited 1: `boom`/);
+  });
+
+  test('a failed enable that did land is reported as success', () => {
+    for (const landed of [
+      prState({ enabledAt: '2026-10-16T15:12:07Z' }),
+      prState({ queued: true }), // queued, no auto-merge request
+    ]) {
+      const { r, body, logs } = runFailingMutation({
+        stderr: 'GraphQL: Something went wrong while executing your query.',
+        reread: landed,
+      });
+      assert.equal(r.outcome, 'apply');
+      assert.equal(r.exitCode, 0);
+      assert.match(body, /^✅ Auto-merge enabled/);
+      assert.doesNotMatch(body, /could not be enabled/);
+      assert.ok(
+        logs.some((m) => /exited 1.*auto-merge is enabled/.test(m)),
+        'log records the discrepancy',
+      );
+    }
+  });
+
+  test('a failed disable that did land is reported as success', () => {
+    const { r, body } = runFailingMutation({
+      stderr: 'boom',
+      action: 'disable',
+      reread: prState({}),
+    });
+    assert.equal(r.outcome, 'apply');
+    assert.equal(r.exitCode, 0);
+    assert.match(body, /^✅ Auto-merge disabled/);
+  });
+
+  test('a PR no longer open after a failed mutation stays a failure', () => {
+    let { r } = runFailingMutation({
+      stderr: 'boom',
+      action: 'disable',
+      reread: prState({ state: 'MERGED' }),
+    });
+    assert.equal(r.outcome, 'mutation-failed');
+    ({ r } = runFailingMutation({
+      stderr: 'boom',
+      reread: prState({ state: 'CLOSED', queued: true }),
+    }));
+    assert.equal(r.outcome, 'mutation-failed');
+  });
+
+  test('an unreadable state re-read stays a failure', () => {
+    const open = prState({})().stdout;
+    const without = (field) =>
+      JSON.parse(open, (key, value) => (key === field ? undefined : value));
+    for (const reread of [
+      () => ({ stdout: '', status: 1 }),
+      () => ({ stdout: 'not json', status: 0 }),
+      () => ({ stdout: '{}', status: 0 }),
+      () => ({
+        stdout: open.replace(
+          '"autoMergeRequest":null',
+          '"autoMergeRequest":[]',
+        ),
+        status: 0,
+      }),
+      () => ({
+        stdout: JSON.stringify(without('autoMergeRequest')),
+        status: 0,
+      }),
+      () => ({ stdout: JSON.stringify(without('isInMergeQueue')), status: 0 }),
+      () => ({ stdout: JSON.stringify(without('state')), status: 0 }),
+      () => ({ stdout: prState({ queued: true })().stdout, status: 1 }),
+      () => {
+        throw new Error('runner blew up');
+      },
+    ]) {
+      for (const action of ['enable', 'disable']) {
+        const { r, body, calls } = runFailingMutation({
+          stderr: 'boom',
+          action,
+          reread,
+        });
+        assert.equal(r.outcome, 'mutation-failed');
+        assert.equal(r.exitCode, 1);
+        assert.match(body, /^❌ Auto-merge could not be /);
+        const rereads = calls.filter(
+          (a) => a[0] === 'api' && a[1] === 'graphql',
+        );
+        assert.equal(
+          rereads.length,
+          1,
+          'state is re-read once after the failure',
+        );
+      }
+    }
   });
 
   test('disable on an enabled PR issues gh pr merge --disable-auto', () => {

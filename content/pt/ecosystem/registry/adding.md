@@ -2,12 +2,13 @@
 title: Adicionar ao registro
 linkTitle: Adicionar
 description: Como adicionar entradas ao registro.
-default_lang_commit: 420ac1ce889c2da720dc8fe273617c5c5441a2b4 # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: zpages
 ---
 
-Você mantém ou contribui para uma integração do OpenTelemetry? Adoraríamos
+{{% include freeze-notice.md %}}
+
+<!-- Você mantém ou contribui para uma integração do OpenTelemetry? Adoraríamos
 destacar o seu projeto no [registro](../)!
 
 Para adicionar o seu projeto, envie um [pull request][]. Será necessário criar
@@ -16,7 +17,7 @@ seguinte modelo: [registry-entry.yml][].
 
 Certifique-se de que os nomes e descrições do seu projeto sigam as nossas
 [marketing guidelines][] e estejam alinhados com as diretrizes de marca e
-[trademark usage guidelines][] da Linux Foundation.
+[trademark usage guidelines][] da Linux Foundation. -->
 
 ## Tipos de registro {#registry-types}
 
@@ -33,8 +34,27 @@ bibliotecas de instrumentação.
 **Exemplos**: Veja a lista de integrações nativas de aplicações na página
 [Integrações](/ecosystem/integrations/).
 
-{{% alert title="Nota" %}} Este é o único tipo de registro que permite licenças
-comerciais/proprietárias. {{% /alert %}}
+> [!NOTE]
+>
+> Este é o único tipo de registro que permite licenças comerciais/proprietárias.
+
+### `api`
+
+**Use para**: Pacotes que implementam a API do OpenTelemetry para uma linguagem:
+as interfaces e implementações _no-op_ das quais o código instrumentado e as
+bibliotecas dependem, independentemente de qualquer SDK.
+
+**Exemplos**: As _gems_ Ruby `opentelemetry-api`, `opentelemetry-metrics-api` e
+`opentelemetry-logs-api`.
+
+### `connector`
+
+**Use para**: Componentes conectores do OpenTelemetry Collector, que unem dois
+_pipelines_ atuando como o exportador de um e o recebedor do outro, podendo
+converter entre tipos de sinais.
+
+**Exemplos**: Conectores de contagem, conectores de trechos para métricas ou
+conectores de _failover_.
 
 ### `core`
 
@@ -62,6 +82,13 @@ OpenTelemetry.
 serviços, _health checks_/pprof/zpages, ou outros componentes que ampliam o
 comportamento do Collector/SDK.
 
+### `id-generator`
+
+**Use para**: Componentes do SDK que personalizam como os IDs de rastros e
+trechos são gerados.
+
+**Exemplos**: Geradores de IDs compatíveis com o AWS X-Ray.
+
 ### `instrumentation`
 
 **Use para**: Bibliotecas de instrumentação ou instrumentações nativas para
@@ -82,6 +109,11 @@ familiares.
 SLF4J/Log4j/Logback, Python _logging_, JavaScript Winston/Pino, e Go
 log/slog/zap.
 
+### `metric-producer`
+
+**Use para**: Componentes do SDK que fazem a ponte entre métricas de fontes de
+terceiros e um leitor de métricas do SDK.
+
 ### `processor`
 
 **Use para**: Componentes processadores do OpenTelemetry Collector.
@@ -89,6 +121,13 @@ log/slog/zap.
 **Exemplos**: Processadores em lote, processadores de atributos, processadores
 de amostragem, ou qualquer componente que processe dados de telemetria dentro do
 _pipeline_ do Collector.
+
+### `propagator`
+
+**Use para**: Propagadores de contexto, que transportam o contexto de rastros e
+a bagagem entre limites de processos em um formato de transmissão específico.
+
+**Exemplos**: Propagadores B3, Jaeger ou AWS X-Ray.
 
 ### `provider`
 
@@ -104,8 +143,10 @@ componente que forneça recursos ou configuração para o Collector.
 **Exemplos**: Recebedores OTLP, recebedores Prometheus, ou qualquer componente
 que receba dados de telemetria de fontes externas.
 
-{{% alert title="Nota" %}} Não aplicável para componentes de terceiros que
-recebem telemetria do OpenTelemetry. {{% /alert %}}
+> [!NOTE]
+>
+> Não aplicável para componentes de terceiros que recebem telemetria do
+> OpenTelemetry.
 
 ### `resource-detector`
 
@@ -114,6 +155,28 @@ recebem telemetria do OpenTelemetry. {{% /alert %}}
 **Exemplos**: Detectores de recursos AWS, detectores de recursos GCP, ou
 qualquer componente que detecte automaticamente e adicione informações de
 recursos à telemetria.
+
+### `sampler`
+
+**Use para**: Amostradores do SDK, que decidem quais trechos são registrados e
+exportados.
+
+**Exemplos**: Amostradores remotos do AWS X-Ray ou amostradores baseados em
+regras.
+
+### `sdk`
+
+**Use para**: Pacotes que implementam o SDK do OpenTelemetry para uma linguagem.
+
+**Exemplos**: As _gems_ Ruby `opentelemetry-sdk`, `opentelemetry-metrics-sdk` e
+`opentelemetry-logs-sdk`.
+
+### `semantic-convention`
+
+**Use para**: Pacotes que fornecem constantes de convenções semânticas para uma
+linguagem.
+
+**Exemplos**: A _gem_ Ruby `opentelemetry-semantic_conventions`.
 
 ### `utilities`
 
@@ -124,6 +187,7 @@ trabalhar com OpenTelemetry.
 ferramentas de migração, ou qualquer biblioteca auxiliar que facilite o trabalho
 com OpenTelemetry.
 
+<!--
 [data/registry]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry
 [pull request]:
@@ -133,3 +197,4 @@ com OpenTelemetry.
 [marketing guidelines]: /community/marketing-guidelines/
 [trademark usage guidelines]:
   https://www.linuxfoundation.org/legal/trademark-usage
+  -->

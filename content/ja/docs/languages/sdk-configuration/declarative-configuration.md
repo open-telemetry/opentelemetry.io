@@ -2,11 +2,11 @@
 title: 宣言的設定
 linkTitle: 宣言的設定
 weight: 30
-default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
+default_lang_commit: a92bba88db05bd6684fabb0648c351f1c6d937ad
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/otel-config"?>
+<?code-excerpt path-base="content-modules/opentelemetry-configuration"?>
 
 宣言的設定は、環境変数のかわりに YAML ファイルを使用します。
 
@@ -48,10 +48,10 @@ default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
 # で定義されているすべての環境変数の無視が含まれます。
 #
 # 必須プロパティ、セマンティクス、デフォルトの動作などのスキーマドキュメントは、
-# https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
+# https://opentelemetry.io/docs/specs/otel-config/types/
 # を参照してください。
 
-file_format: "1.1"
+file_format: "1.2"
 
 resource:
   # OTEL_RESOURCE_ATTRIBUTES 環境変数からリソース属性を読み取ります。

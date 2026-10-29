@@ -73,9 +73,10 @@
   distributions:
     - contrib
   stability:
-    logs: beta
-    metrics: beta
-    traces: beta
+    logs: unmaintained
+    metrics: unmaintained
+    traces: unmaintained
+  unmaintained: true
 - name: azuremonitorexporter
   display_name: Azure Monitor Exporter
   repo: contrib
@@ -165,8 +166,8 @@
     - contrib
   stability:
     logs: beta
+    metrics: beta
     traces: beta
-    metrics: development
     profiles: development
 - name: faroexporter
   display_name: Faro Exporter
@@ -264,8 +265,9 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
-    traces: alpha
+    logs: unmaintained
+    traces: unmaintained
+  unmaintained: true
 - name: logzioexporter
   display_name: Logz.io Exporter
   repo: contrib
@@ -274,13 +276,15 @@
   stability:
     logs: beta
     traces: beta
-- name: mezmoexporter
-  display_name: Mezmo Exporter
+- name: natsexporter
+  display_name: NATS Exporter
   repo: contrib
   distributions:
     - contrib
   stability:
-    logs: deprecated
+    logs: development
+    metrics: development
+    traces: development
 - name: nopexporter
   display_name: No-op Exporter
   repo: core

@@ -116,8 +116,17 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [resourcedetection, memory_limiter, transform, tail_sampling]
-      exporters: [otlp, debug, spanmetrics]
+      processors:
+        [
+          resource_detection,
+          memory_limiter,
+          transform/sanitize_spans,
+          gen_ai_normalizer,
+          transform/redact_sensitive_data,
+          redaction,
+          tail_sampling,
+        ]
+      exporters: [otlp_grpc/jaeger, debug, span_metrics]
 ```
 
 ## How It Works

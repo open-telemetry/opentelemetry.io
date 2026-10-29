@@ -113,7 +113,7 @@ ebpf:
       multiline: first_line
 ```
 
-Plain-text enrichment is enabled by default for selected services in v0.11.0.
+Plain-text enrichment is enabled by default for selected services since v0.11.0.
 Set `plain_text.enabled: false` before upgrading if non-JSON writes must retain
 the earlier pass-through behavior. Field names apply to JSON and plain-text
 output and must be nonempty, distinct, and contain no whitespace, `=`, or
@@ -147,8 +147,8 @@ extensions:
 ```
 
 Config v2 capture selection determines which workloads are eligible for log
-annotation. The `log_trace_annotation.filter` field is reserved in v0.11.0 and
-must remain empty.
+annotation. The `log_trace_annotation.filter` field is reserved and must remain
+empty.
 
 ## Requirements
 
@@ -291,11 +291,11 @@ logs to your backend.
 When OBI suppresses the original line, container log files contain a line of NUL
 bytes in its place. For writes up to 8 KiB, filter these placeholder lines
 downstream with `^[\x00\s]*$`. For example, with the OpenTelemetry Collector
-`filelog` receiver:
+`file_log` receiver:
 
 ```yaml
 receivers:
-  filelog:
+  file_log:
     include:
       - /var/log/pods/*/*/*.log
     start_at: end

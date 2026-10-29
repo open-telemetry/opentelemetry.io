@@ -71,3 +71,14 @@
     open-telemetry/opamp-spec#393; maxVers is set past the current 0.17.0 pin
     since opamp-spec releases by minor version, not patch — widen it further if
     0.20.0 ships without the fix.
+
+- id: 2026-09-14-ibm-db2-product-page
+  module: semconv
+  minVers: 1.44.0
+  maxVers: 1.45.0
+  search: 'https://www\.ibm\.com/db2(?=\))'
+  replace: 'https://www.ibm.com/products/db2'
+  flags: g
+  notes: >-
+    ibm.com/db2 returns 404; the Db2 product page moved to ibm.com/products/db2.
+    Fixed upstream in semantic-conventions 1.45.0.

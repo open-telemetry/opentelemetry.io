@@ -3,7 +3,7 @@ title: トレースとログの相関
 linkTitle: トレースとログの相関
 weight: 35
 description: より迅速なデバッグとトラブルシューティングのために、OBI がアプリケーションログを分散トレースとどのように相関付けるかを学びます。
-default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
+default_lang_commit: ce13abdfc9fac8e92bf420b1f758451f63082c69
 cSpell:ignore: BPFFS NUL PYTHONUNBUFFERED
 ---
 
@@ -100,7 +100,7 @@ ebpf:
       multiline: first_line
 ```
 
-プレーンテキスト補強は、v0.11.0 で選択されたサービスに対してデフォルトで有効になっています。
+プレーンテキスト補強は、v0.11.0 以降、選択されたサービスに対してデフォルトで有効になっています。
 非 JSON の書き込みが以前のパススルー動作を維持する必要がある場合は、アップグレード前に `plain_text.enabled: false` を設定してください。
 フィールド名は JSON およびプレーンテキスト出力に適用され、空でないこと、重複しないこと、空白、`=`、または制御文字を含まないことが必要です。
 
@@ -131,7 +131,7 @@ extensions:
 ```
 
 Config v2 のキャプチャ選択は、ログアノテーションの対象となるワークロードを決定します。
-`log_trace_annotation.filter` フィールドは v0.11.0 では予約済みであり、空のままにする必要があります。
+`log_trace_annotation.filter` フィールドは予約済みであり、空のままにする必要があります。
 
 ## 要件 {#requirements}
 
@@ -267,11 +267,11 @@ OBI はログをその場で補強します。
 
 OBI が元の行を抑制すると、コンテナログファイルにはその行のかわりに NUL バイトの行が含まれます。
 8 KiB 以下の書き込みの場合、`^[\x00\s]*$` を使用してこれらのプレースホルダー行を下流でフィルタリングしてください。
-たとえば、OpenTelemetry Collector の `filelog` レシーバーの場合は次のようにします。
+たとえば、OpenTelemetry Collector の `file_log` レシーバーの場合は次のようにします。
 
 ```yaml
 receivers:
-  filelog:
+  file_log:
     include:
       - /var/log/pods/*/*/*.log
     start_at: end

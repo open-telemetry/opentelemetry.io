@@ -199,7 +199,7 @@ In the English source page, place a file excerpt directive immediately before
 the fenced code block that it updates:
 
 ````md
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 <?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
 
@@ -248,7 +248,7 @@ npm run check:code-excerpts
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+[nodejs-win]: https://docs.microsoft.com/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install

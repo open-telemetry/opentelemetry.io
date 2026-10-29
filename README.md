@@ -25,10 +25,12 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
+<!--
 ### Add a project to the OpenTelemetry [Registry][]
 
 For details on how to add a project to the OpenTelemetry Registry, see [Adding
 to the registry][].
+-->
 
 ## Contributing
 
@@ -68,7 +70,7 @@ These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 - [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
 
 ### Approvers
 
@@ -77,7 +79,7 @@ These are the members of [@open-telemetry/docs-approvers][] (members-only):
 - [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 
 For more information about the approver role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
 
 ### Triagers
 
@@ -89,7 +91,7 @@ These are the members of [@open-telemetry/docs-triagers][] (members-only):
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
 For more information about the triager role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#triager).
 
 ### Emeritus
 
@@ -118,7 +120,6 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
-[adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
@@ -128,13 +129,15 @@ already contributed][contributors]!
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:
-  https://github.com/open-telemetry/community/blob/main/community-membership.md
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 [contributing.md]: CONTRIBUTING.md
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors
 [opentelemetry]: https://opentelemetry.io
 [OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
-[registry]: https://opentelemetry.io/ecosystem/registry/
+
+<!--[registry]: https://opentelemetry.io/ecosystem/registry/-->
+
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/u/0/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977@group.calendar.google.com
 [google doc]:

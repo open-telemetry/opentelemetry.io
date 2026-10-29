@@ -4,7 +4,7 @@ linkTitle: Kubernetes
 description: Learn how to deploy OBI in Kubernetes.
 weight: 4
 # prettier-ignore
-cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
+cSpell:ignore: containerd goblog kubeadm microk8s replicaset statefulset tracefs
 ---
 
 > [!NOTE]
@@ -92,6 +92,16 @@ You can deploy OBI in Kubernetes in two different ways:
 - As a sidecar container
 - As a DaemonSet
 
+> [!NOTE]
+>
+> On kernel versions 6.6.128+, 6.12.75+, 6.18.14+, and 6.19+, OBI v0.12.0+
+> requires the host's `/sys/kernel/tracing` directory to be mounted into the OBI
+> container at the same path. Without this mount, OBI cannot run its FIONREAD
+> compensation check and automatically disables trace context propagation. All
+> deployment examples in this document include this mount. See
+> [Security, permissions, and capabilities](../../security/#required-host-mount-for-context-propagation)
+> for details.
+
 ### Deploy OBI as a sidecar container
 
 This is the way you can deploy OBI if you want to monitor a given service that
@@ -161,7 +171,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -173,6 +183,15 @@ spec:
             # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 Using the wildcard approach is less error prone than specifying individual
@@ -188,7 +207,7 @@ pod, you can specify the executable name or open port instead of using the
 wildcard.
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:main`). The
+container (image available at `otel/ebpf-instrument:v0.15.2`). The
 auto-instrumentation tool is configured to forward metrics and traces to
 OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
 same namespace:
@@ -224,7 +243,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -236,6 +255,15 @@ spec:
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 For more information about the different configuration options, check the
@@ -280,7 +308,7 @@ spec:
       serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext:
             privileged: true
           env:
@@ -292,16 +320,22 @@ spec:
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
+          volumeMounts:
+            # required for trace context propagation, see security docs
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
+      volumes:
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ### Deploy OBI unprivileged
 
-In all of the examples so far, `privileged:true` or the `SYS_ADMIN` Linux
-capability was used in the OBI deployment's `securityContext` section. While
-this works in all circumstances, there are ways to deploy OBI in Kubernetes with
-reduced privileges if your security configuration requires you to do so. Whether
-this is possible depends on the Kubernetes version you have and the underlying
-container runtime used (e.g. **Containerd**, **CRI-O** or **Docker**).
+The examples above run OBI with `privileged: true`. You can instead grant the
+capabilities required by the enabled features. Whether this works depends on
+your Kubernetes version, container runtime, and host security policy.
 
 The following guide is based on tests performed mainly by running `containerd`
 with `GKE`, `kubeadm`, `k3s`, `microk8s` and `kind`.
@@ -312,27 +346,11 @@ a set of Linux
 comprehensive list of capabilities required by OBI can be found in
 [Security, permissions and capabilities](../../security/).
 
-**Note** Loading BPF programs requires that OBI is able to read the Linux
-performance events, or at least be able to execute the Linux Kernel API
-`perf_event_open()`.
-
-This permission is granted by `CAP_PERFMON` or more liberally through
-`CAP_SYS_ADMIN`. Since both `CAP_PERFMON` and `CAP_SYS_ADMIN` grant OBI the
-permission to read performance events, you should use `CAP_PERFMON` because it
-grants lesser permissions. However, at system level, the access to the
-performance events is controlled through the setting
-`kernel.perf_event_paranoid`, which you can read or write by using `sysctl` or
-by modifying the file `/proc/sys/kernel/perf_event_paranoid`. The default
-setting for `kernel.perf_event_paranoid` is typically `2`, which is documented
-under the `perf_event_paranoid` section in the
-[kernel documentation](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt).
-Some Linux distributions define higher levels for `kernel.perf_event_paranoid`,
-for example Debian based distributions
-[also use](https://lwn.net/Articles/696216/) `kernel.perf_event_paranoid=3`,
-which disallows access to `perf_event_open()` without `CAP_SYS_ADMIN`. If you
-are running on a distribution with `kernel.perf_event_paranoid` setting higher
-than `2`, you can either modify your configuration to lower it to `2` or use
-`CAP_SYS_ADMIN` instead of `CAP_PERFMON`.
+Starting with v0.14.0, OBI falls back to tracefs for most probe attachment when
+host policy blocks PMU access through `perf_event_open()`. `CAP_SYS_ADMIN` is
+still needed for features that use `bpf_probe_write_user()`, including Go
+library-level context propagation. See [Security](../../security/) for
+feature-specific capabilities and host policy guidance.
 
 An example of a OBI unprivileged container configuration can be found below:
 
@@ -360,7 +378,7 @@ spec:
       containers:
         - name: obi
           terminationMessagePolicy: FallbackToLogsOnError
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           env:
             - name: OTEL_EBPF_TRACE_PRINTER
               value: "text"
@@ -383,7 +401,7 @@ spec:
                 - DAC_READ_SEARCH     # <-- Important. Allows OBI to open ELF files.
                 - PERFMON             # <-- Important. Allows OBI to load BPF programs.
                 #- SYS_RESOURCE       # <-- pre 5.11 only. Allows OBI to increase the amount of locked memory.
-                #- SYS_ADMIN          # <-- Required for Go application trace context propagation, or if kernel.perf_event_paranoid >= 3 on Debian distributions.
+                #- SYS_ADMIN          # <-- Required for Go library-level context propagation and other features that use bpf_probe_write_user().
               drop:
                 - ALL
           volumeMounts:
@@ -391,6 +409,8 @@ spec:
               mountPath: /var/run/obi
             - name: cgroup
               mountPath: /sys/fs/cgroup
+            - name: tracefs
+              mountPath: /sys/kernel/tracing
       tolerations:
         - effect: NoSchedule
           operator: Exists
@@ -402,6 +422,10 @@ spec:
         - name: cgroup
           hostPath:
             path: /sys/fs/cgroup
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -472,7 +496,7 @@ spec:
       serviceAccountName: obi # needs list/watch on pods, nodes, services
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.15.2
           ports:
             - containerPort: 50055
               name: grpc
@@ -502,7 +526,11 @@ env:
 
 A single replica is usually enough. For high availability, run multiple replicas
 behind the same `Service` — each OBI Pod connects to one and reconnects to
-another on failure.
+another on failure. For details on how to set up `k8s-cache` using Helm, see the
+[Helm chart guide](../kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache).
+
+For cache configuration options, see
+[Kubernetes decorator](../../configure/metrics-traces-attributes/#kubernetes-decorator).
 
 ## Providing an external configuration file
 
@@ -555,7 +583,7 @@ spec:
       hostPID: true #important!
       containers:
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -566,6 +594,8 @@ spec:
               name: obi-config
             - mountPath: /var/run/obi
               name: var-run-obi
+            - mountPath: /sys/kernel/tracing
+              name: tracefs
           env:
             # tell OBI where to find the configuration file
             - name: OTEL_EBPF_CONFIG_PATH
@@ -576,6 +606,10 @@ spec:
             name: obi-config
         - name: var-run-obi
           emptyDir: {}
+        - name: tracefs
+          hostPath:
+            path: /sys/kernel/tracing
+            type: Directory
 ```
 
 ## Providing secret configuration

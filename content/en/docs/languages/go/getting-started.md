@@ -1,12 +1,13 @@
 ---
-title: Getting Started
+title: Getting Started by Example
+description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/go/dice/instrumented"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/dice/instrumented"?>
 
 This page will show you how to get started with OpenTelemetry in Go.
 

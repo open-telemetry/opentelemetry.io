@@ -2,6 +2,10 @@
 
 // Java-SDK page content styles
 
+.java-configuration-exporter-table code {
+  overflow-wrap: anywhere;
+}
+
 .config-option {
   padding-inline-start: 1.5em;
 

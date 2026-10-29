@@ -53,7 +53,7 @@ jobs:
       command_exit_status: ${{ steps.patch.outputs.action_exit_status }}
 
     steps:
-      - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: audit
 
@@ -64,18 +64,51 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      # Refresh data/locale-teams.yaml from the live direct membership of the
+      # locale teams; the default command's fix:codeowners then regenerates
+      # CODEOWNERS from it, so drift lands in the patch as one reviewable PR.
+      # Read-only towards GitHub. The token is passed to the sync step only,
+      # never to the npm scripts that run afterwards. Failures here must not
+      # block the other fixes, so both steps continue on error and the gate
+      # step below fails the job once the patch has been captured.
+      - name: Set up Node.js
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+
+      - name: Create locale teams read token
+        id: teams-token
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        continue-on-error: true
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          permission-members: read
+
+      - name: Sync locale team registry
+        id: sync
+        if: ${{ (inputs.command || 'fix-and-test:all') == 'fix-and-test:all' }}
+        # A failed sync leaves the registry untouched.
+        continue-on-error: true
+        run: node scripts/gh/locale-codeowners/sync-teams.mjs
+        env:
+          GH_TOKEN: ${{ steps.teams-token.outputs.token }}
+
       # Needed by the check:collector-sync scripts that the default command
       # runs; uv resolves the Python toolchain and project deps on first use.
       - name: Install uv
-        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
           enable-cache: true
 
       - name: Run housekeeping command and generate patch
         id: patch
-        # Default-branch only (trusted; cf. pr-actions). Non-zero exit is OK—
-        # fixes still publish; residual failures fail in report-failure below.
-        uses: ./.github/actions/npm-script-patch
+        # Trusted (cf. pr-actions): scheduled runs execute main; dispatch runs
+        # the maintainer-selected ref. Non-zero exit is OK since fixes still
+        # publish; the gate step below then fails the job.
+        uses: $/.github/actions/npm-script-patch
         env:
           # Authenticated github.com link checks (rate limits) in fix:link-cache;
           # step-level env reaches the composite action's steps.
@@ -94,13 +127,22 @@ jobs:
             "Any fixes it produced are still published as a PR."
           exit 1
 
+      - name: Fail on locale team sync failure
+        if: >-
+          always() && (steps.teams-token.outcome == 'failure' ||
+          steps.sync.outcome == 'failure')
+        run: |
+          echo "The locale team registry sync failed (see the earlier steps)." \
+            "Other fixes are still published as a PR."
+          exit 1
+
   publish-patch:
     name: Publish patch as PR
     needs: generate-patch
     # Publish whatever fixes were captured, even when the command itself
     # failed (always() lets this run despite the failed gate step above).
     if: always() && needs.generate-patch.outputs.patch_skipped == 'false'
-    uses: ./.github/workflows/reusable-patch-pr.yml
+    uses: $/.github/workflows/reusable-patch-pr.yml
     permissions:
       contents: write # push the patch branch
       pull-requests: write # create the PR
@@ -128,7 +170,7 @@ jobs:
     name: Report failure
     needs: [generate-patch, publish-patch]
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read

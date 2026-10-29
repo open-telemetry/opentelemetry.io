@@ -2,12 +2,12 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 73ebe319188f1d3800b62c349d9f39cf9c21e657
+default_lang_commit: eab64e41b388032bae1475f226e5e9e437ab314d
 cSpell:ignore: data_point inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 
 SDKは、計装API呼び出しによって生成されたテレメトリーを処理およびエクスポートする[API](../api/)の組み込み参照実装です。
 このページは、説明、関連するJavadocへのリンク、アーティファクト座標、サンプルプログラム設定などを含むSDKの概念的な概要です。
@@ -276,7 +276,7 @@ SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによ�
 | ------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | サンプリングされたスパンをバッチ処理し、設定可能な`SpanExporter`を介してエクスポートします。 |
 | `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | 各サンプリングされたスパンを設定可能な`SpanExporter`を介してエクスポートします。             |
-| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | スパンをバゲージでエンリッチします。                                                         |
+| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | スパンをバゲッジでエンリッチします。                                                         |
 | `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | スパンからJFRイベントを作成します。                                                          |
 | `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | 選択されたスパンをスタックトレースデータでエンリッチします。                                 |
 | `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | 計装ではなく非同期プロファイラーからスパンを生成します。                                     |
@@ -1117,7 +1117,7 @@ SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによ�
 | クラス                      | アーティファクト                                                                              | 説明                                                                              |
 | --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cトレースコンテキスト伝搬プロトコルを使用してトレースコンテキストを伝搬します。 |
-| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cバゲージ伝搬プロトコルを使用してバゲージを伝搬します。                         |
+| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cバゲッジ伝搬プロトコルを使用してバゲッジを伝搬します。                         |
 | `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | 複数のプロパゲーターを構成します。                                                |
 | `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Jaeger伝搬プロトコルを使用してトレースコンテキストを伝搬します。                  |
 | `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | B3伝搬プロトコルを使用してトレースコンテキストを伝搬します。                      |

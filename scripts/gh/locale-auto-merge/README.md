@@ -19,8 +19,8 @@ The helper adds two guards of its own:
 
 1. **Eligibility** — every changed file must be locale-owned (`content/<loc>/`,
    `.cspell/<loc>-*.txt`, `prh/<loc>.yml`) or one of the no-owner paths declared
-   in `.github/CODEOWNERS` (e.g. `.lycheecache`). A PR may touch more than one
-   locale.
+   in `.github/CODEOWNERS` (e.g. `link-cache.jsonc`). A PR may touch more than
+   one locale.
 2. **Authorization** — the commenter must be a member of
    `@open-telemetry/docs-<loc>-maintainers` for **every** locale the PR touches.
 
@@ -74,4 +74,22 @@ infrastructure failure (`mutation-failed`, or a failed `gh` read) exits `1`.
 | `too-many-files`  | 0    | The PR changes more files than `gh` can return, so eligibility can't be verified (fails closed).                        |
 | `ineligible`      | 0    | A changed file is outside the locale-owned set.                                                                         |
 | `unauthorized`    | 0    | The commenter isn't on the maintainer team for every touched locale.                                                    |
-| `mutation-failed` | 1    | The `gh pr merge` call itself failed.                                                                                   |
+| `mutation-failed` | 1    | The `gh pr merge` call failed, and a re-read of the PR could not confirm that the change landed.                        |
+
+When `gh pr merge` exits non-zero, the helper re-reads the PR before declaring
+failure, since `gh` can report an error after the mutation has committed. On
+`main`, which has a merge queue, a ready PR is enqueued directly when auto-merge
+is enabled, so queue membership counts as enabled.
+
+- If the PR is still open and the requested change is in effect, the run is
+  reported as a normal `apply`, and the run log records the discrepancy.
+- Otherwise, the `mutation-failed` reply:
+  - says auto-merge could not be enabled (or disabled), the command being valid
+    but the request not accepted by GitHub, and links the workflow run (under
+    GitHub Actions)
+  - asks the commenter to retry by posting a new comment with the same directive
+    (editing a comment doesn't trigger a retry) and, if it fails the same way,
+    to read the error and ping `@open-telemetry/docs-maintainers` when it isn't
+    something they can fix
+  - folds `gh`'s exit code and error line into a details block; the full stderr
+    is in the run log

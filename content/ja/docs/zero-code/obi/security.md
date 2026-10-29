@@ -3,8 +3,8 @@ title: OBI のセキュリティ、権限、ケーパビリティ
 linkTitle: セキュリティ
 description: OBI が必要とする権限とケーパビリティ
 weight: 22
-default_lang_commit: 813498074d85258c7180d137ace9e272d0149353
-cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
+default_lang_commit: de36656f997593939e9f6a2b89aa1da72e1718d6
+cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl kprobes tracefs uprobes
 ---
 
 OBI は、アプリケーションを計装するためにさまざまな Linux インターフェイスへのアクセスを必要とします。
@@ -64,7 +64,29 @@ OBI は機能のために以下のケーパビリティのリストを必要と�
 | `CAP_CHECKPOINT_RESTORE` | `/proc` ファイルシステム内のシンボリックリンクへのアクセスを許可します。OBI がプロセスやシステムの各種情報を取得するために使用されます。                                                                                                           |
 | `CAP_SYS_PTRACE`         | `/proc/pid/exe` および実行可能モジュールへのアクセスを許可します。OBI が実行可能ファイルのシンボルをスキャンし、プログラムのさまざまな部分を計装するために使用されます。                                                                           |
 | `CAP_SYS_RESOURCE`       | ロックされたメモリの量を増やします。**カーネル 5.11 未満** でのみ必要です                                                                                                                                                                          |
-| `CAP_SYS_ADMIN`          | `bpf_probe_write_user()` を用いたライブラリレベルの Go トレースコンテキスト伝搬と、BPF メトリクスエクスポーターによる BTF データへのアクセスに使用されます                                                                                         |
+| `CAP_SYS_ADMIN`          | `bpf_probe_write_user()` を使用する機能（ライブラリレベルの Go トレースコンテキスト伝搬を含む）と、BPF メトリクスエクスポーターによる BTF データへのアクセスに使用されます。ほとんどのプローブアタッチメントではもはや不要です。                   |
+
+## コンテキスト伝搬に必要なホストマウント {#required-host-mount-for-context-propagation}
+
+OBI v0.12.0 以降、カーネルバージョン 6.6.128 以上、6.12.75 以上、6.18.14 以上、および 6.19 以上では、ホストの `/sys/kernel/tracing` ディレクトリを同じパスで OBI コンテナにマウントする必要があります。
+OBI はこのディレクトリを使用して FIONREAD 補正チェックを実行します。
+このマウントがない場合、OBI はチェックを実行できず、不正確なトレースデータの生成を避けるためにコンテキスト伝搬を自動的に無効化します。
+
+Kubernetes でこのマウントを提供するには、Pod スペックに以下を追加します。
+
+```yaml
+spec:
+  containers:
+    - name: obi
+      volumeMounts:
+        - name: tracefs
+          mountPath: /sys/kernel/tracing
+  volumes:
+    - name: tracefs
+      hostPath:
+        path: /sys/kernel/tracing
+        type: Directory
+```
 
 ### パフォーマンス監視タスク {#performance-monitoring-tasks}
 
@@ -73,14 +95,16 @@ OBI は機能のために以下のケーパビリティのリストを必要と�
 `kernel.perf_event_paranoid` のデフォルト設定は通常 `2` であり、[カーネルドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) の `perf_event_paranoid` セクション、およびより包括的には [perf-security ドキュメント](https://www.kernel.org/doc/Documentation/admin-guide/perf-security.rst) に記載されています。
 
 一部の Linux ディストリビューションでは、`kernel.perf_event_paranoid` により高いレベルを設定しています。
-たとえば、Debian ベースのディストリビューションは [`kernel.perf_event_paranoid=3` も使用](https://lwn.net/Articles/696216/) しており、これにより `CAP_SYS_ADMIN` なしでは `perf_event_open()` へのアクセスが禁止されます。
-`kernel.perf_event_paranoid` の設定が `2` より高いディストリビューションで実行している場合は、構成を変更して `2` に下げるか、`CAP_PERFMON` のかわりに `CAP_SYS_ADMIN` を使用できます。
+たとえば、Debian ベースのディストリビューションは [`kernel.perf_event_paranoid=3` も使用](https://lwn.net/Articles/696216/) しており、`CAP_SYS_ADMIN` なしでは `perf_event_open()` がブロックされる可能性があります。
+v0.14.0 以降、OBI は PMU アクセスがブロックされた場合に tracefs にフォールバックするため、ほとんどの uprobes と kprobes は `CAP_SYS_ADMIN` なしでもアタッチできます。
+`bpf_probe_write_user()` を使用してアプリケーションメモリに書き込む機能には、引き続き `CAP_SYS_ADMIN` が必要です。
+tracefs が利用できない場合は、ホストのセキュリティポリシーを調整するか、使用する機能に必要なケーパビリティを付与してください。
 
 ### AKS/EKS へのデプロイ {#deploy-on-akseks}
 
-AKS と EKS の環境は、いずれもデフォルトで `sys.perf_event_paranoid > 1` を設定したカーネルが付属しています。
-これは OBI の動作に `CAP_SYS_ADMIN` が必要になることを意味します。
-詳細については [パフォーマンス監視タスク](#performance-monitoring-tasks) のセクションを参照してください。
+AKS と EKS のカーネルは `kernel.perf_event_paranoid > 1` が設定されている場合があります。
+v0.14.0 以降、OBI はほとんどのプローブアタッチメントで tracefs にフォールバックできます。
+PMU アクセスや `bpf_probe_write_user()` が必要な機能については、[パフォーマンス監視タスク](#performance-monitoring-tasks) を参照してください。
 
 `CAP_PERFMON` のみを使用したい場合は、ノードに `kernel.perf_event_paranoid = 1` を設定できます。
 これを行う方法の例をいくつか紹介しますが、結果は具体的なセットアップによって異なる可能性があることに注意してください。
@@ -163,7 +187,7 @@ AWS マネジメントコンソール、AWS CLI、または `eksctl` を使用�
 
 ```shell
 sudo setcap cap_bpf,cap_net_raw+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
 ```
 
 ### トラフィック制御経由のネットワークメトリクス {#network-metrics-via-traffic-control}
@@ -178,7 +202,7 @@ OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 bin/obi
 
 ```shell
 sudo setcap cap_bpf,cap_net_admin,cap_perfmon+ep ./bin/obi
-OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
+OTEL_EBPF_METRICS_FEATURES=network OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SOURCE=tc bin/obi
 ```
 
 ### アプリケーションオブザーバビリティ {#application-observability}
@@ -195,7 +219,7 @@ OTEL_EBPF_NETWORK_METRICS=1 OTEL_EBPF_NETWORK_PRINT_FLOWS=1 OTEL_EBPF_NETWORK_SO
 必要なケーパビリティを設定して OBI を起動します。
 
 ```shell
-sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+ep ./bin/obi
+sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+ep ./bin/obi
 OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 
@@ -210,12 +234,13 @@ OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 - `CAP_NET_RAW`
 - `CAP_SYS_PTRACE`
 - `CAP_NET_ADMIN`
+- カーネル 5.10 以降での Go ライブラリレベルのトレースコンテキスト伝搬には `CAP_SYS_ADMIN`
 
 必要なケーパビリティを設定して OBI を起動します。
 
 ```shell
-sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi
-OTEL_EBPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
+sudo setcap cap_bpf,cap_checkpoint_restore,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin,cap_sys_admin+ep ./bin/obi
+OTEL_EBPF_BPF_CONTEXT_PROPAGATION=all OTEL_EBPF_OPEN_PORT=8080 OTEL_EBPF_TRACE_PRINTER=text bin/obi
 ```
 
 ## 内部 eBPF トレーサーのケーパビリティ要件リファレンス {#internal-ebpf-tracer-capability-requirement-reference}

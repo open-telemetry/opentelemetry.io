@@ -2,7 +2,7 @@
 title: 計装の設定
 linkTitle: 計装の設定
 weight: 100
-default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+default_lang_commit: ed268894012ca95058dedd3214ef9ce3c213cb2e
 cSpell:ignore: enduser hset serverlessapis
 ---
 
@@ -52,6 +52,11 @@ Java エージェントバージョン `1.31.0` 以降では、`peer.service` �
 - Redis コマンド `HSET map password "secret"` は、エクスポートされたスパンでは `HSET map password ?` として表示されます。
 
 この動作はすべてのデータベース計装でデフォルトで有効になっています。
+
+> [!WARNING] :warning: この機能を無効にすることは推奨されません。
+>
+> 無効にすると、個人を特定できる情報（PII）やセキュリティ資格情報などの機密情報がアプリケーションの境界外に漏洩する可能性があります。
+
 無効にするには、以下のプロパティを使用してください：
 
 {{% config_option

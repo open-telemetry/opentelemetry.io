@@ -5,6 +5,7 @@ description:
 linkTitle: Localizare
 weight: 25
 default_lang_commit: cd6a7aa0e28ff8eb622e9fa0c9e9a40f78c9c777
+drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
 

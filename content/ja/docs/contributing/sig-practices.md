@@ -3,7 +3,7 @@ title: 承認者およびメンテナーのための SIG のプラクティス
 linkTitle: SIG のプラクティス
 description: 承認者およびメンテナーがどのようにイシューやコントリビューションを管理するかを学びます。
 weight: 999
-default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
+default_lang_commit: 1a618723d0d64c5c05a4c6af5ebdfdea16ab2c5a
 cSpell:ignore: Comms contribfest
 ---
 
@@ -86,12 +86,31 @@ cSpell:ignore: Comms contribfest
     - `help wanted`
     - `contribfest`
     - `maintainers only`
+    - `blocked`
     - `forever`
     - `stale`
+    - `parked`（以下を参照）
 - イシュー上で 14 日間活動がない場合、自動化により `triage:deciding` 状態のイシューに
   `triage:followup` ラベルが付与され、再トリアージの対象となります。
   `triage:followup` ラベルは 7 日以内に削除する必要があります。
   参加者へのメンションとラベルの削除で、十分な活動とみなされます。
+- イシューのクローズは、リクエストが達成された場合にのみ _completed_ とし、別のイシューと重複する場合は _duplicate_ とします。
+  それ以外の場合は、以下のいずれかのラベルを付けて _not planned_ としてクローズします。
+  - `parked`: 現時点でイシューを進めるキャパシティがない場合。
+    ラベルを追加し、他のラベルはそのままにしてコメントします。
+    たとえば `CI/infra` ラベルが付いていないイシューの場合は以下のようにします。
+    <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
+    <!-- markdownlint-disable no-otel-io-external-urls -->
+    > This issue isn't declined; we're parking it for lack of capacity. To pick
+    > it up, comment here. For details, see
+    > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
+    <!-- markdownlint-enable no-otel-io-external-urls -->
+  - `triage:rejected*`: リクエストが却下された場合。
+    [declined issues][] を確認するトリアージ担当者のために、簡潔な理由を残してください。
+- [parked issues][] を定期的にレビューしてください。
+
+[declined issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 
 ### PR {#prs}
 
@@ -145,7 +164,7 @@ cSpell:ignore: Comms contribfest
 
 SIG が共同所有するドキュメント（コレクター、デモ、言語固有など）を変更する PR は、ドキュメント承認者による承認と SIG 承認者による承認の 2 つの承認を目指す必要があります。
 
-- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグ付与します
+- ドキュメント承認者は PR に `sig:<name>` ラベルを付与し、SIG `-approvers` グループのタグを付与します
 - ドキュメント承認者が PR を承認した後、[`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing) ラベルを追加します。
   これにより SIG に対応を促します
 - SIG の承認が一定期間（通常 2 週間、緊急の場合は短縮可能）内に得られない場合、ドキュメントメンテナーの判断でマージできます

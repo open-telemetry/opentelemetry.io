@@ -42,7 +42,7 @@ node app.js
 ```
 
 デフォルトでは、すべてのSDK[リソース検出器](/docs/languages/js/resources/)が使用されます。
-環境変数 `OTEL_NODE_RESOURCE_DETECTORS` を使用して、特定の検出器のみを有効にしたり、完全に無効にしたりできます
+環境変数 `OTEL_NODE_RESOURCE_DETECTORS` を使用して、特定の検出器のみを有効にしたり、完全に無効にしたりできます。
 
 構成オプションのすべての範囲を確認するには、[モジュール構成](configuration)を参照してください。
 

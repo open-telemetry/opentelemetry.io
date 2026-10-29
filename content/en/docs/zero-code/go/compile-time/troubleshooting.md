@@ -2,7 +2,6 @@
 title: Troubleshooting
 description: Diagnose issues with Go compile-time instrumentation.
 weight: 50
-cSpell:ignore: otelc
 ---
 
 ## Enable debug logging
