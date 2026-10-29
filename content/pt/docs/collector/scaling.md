@@ -1,7 +1,7 @@
 ---
 title: Escalando o Collector
 weight: 26
-default_lang_commit: 30b7dbbdd94cec0b2a0c99317272b103315518bf
+default_lang_commit: a12d86209bb807217742cc14e0a29095beaf978f
 # prettier-ignore
 cSpell:ignore: exporters fluentd Linkerd loadbalancer loadbalancing observability receivers scraping sharded Sidecars statefulset
 ---
