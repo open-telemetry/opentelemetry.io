@@ -34,7 +34,7 @@ exige coordenação entre os extratores (_scrapers_) para decidir qual extrator
 vai para qual rota. Em contraste, podemos escalar horizontalmente os receivers
 de logs sem estado (_stateless_) sob demanda. Ter o receiver OTLP para métricas
 e rastros em um terceiro cluster de Collectors nos permitiria isolar falhas e
-iterar mais rápido, sem medo de reiniciar um pipeline ocupado. Como o receiver
+iterar mais rápido, sem medo de reiniciar um _pipeline_ ocupado. Como o receiver
 OTLP permite a ingestão de todos os tipos de telemetria, podemos manter as
 métricas e os rastros da aplicação na mesma instância, escalando-os
 horizontalmente quando necessário.
@@ -46,22 +46,22 @@ hora de escalar para mais ou para menos, mas algumas métricas emitidas pelo
 Collector podem dar boas pistas de quando agir.
 
 Uma pista útil que o Collector pode dar quando o processor `memory_limiter` faz
-parte do pipeline é a métrica `otelcol_processor_refused_spans`. Esse processor
-permite restringir a quantidade de memória que o Collector pode usar. Embora o
-Collector possa consumir um pouco mais do que o valor máximo configurado nesse
-processor, novos dados serão eventualmente impedidos de passar pelo pipeline
-pelo `memory_limiter`, que registrará o fato nessa métrica. A mesma métrica
-existe para todos os outros tipos de dados de telemetria. Se os dados estiverem
-sendo recusados na entrada do pipeline com muita frequência, você provavelmente
-vai querer escalar o seu cluster de Collectors para mais. Você pode escalar para
-menos quando o consumo de memória entre os nós estiver significativamente abaixo
-do limite definido nesse processor.
+parte do _pipeline_ é a métrica `otelcol_processor_refused_spans`. Esse
+processor permite restringir a quantidade de memória que o Collector pode usar.
+Embora o Collector possa consumir um pouco mais do que o valor máximo
+configurado nesse processor, novos dados serão eventualmente impedidos de passar
+pelo _pipeline_ pelo `memory_limiter`, que registrará o fato nessa métrica. A
+mesma métrica existe para todos os outros tipos de dados de telemetria. Se os
+dados estiverem sendo recusados na entrada do _pipeline_ com muita frequência,
+você provavelmente vai querer escalar o seu cluster de Collectors para mais.
+Você pode escalar para menos quando o consumo de memória entre os nós estiver
+significativamente abaixo do limite definido nesse processor.
 
 Outro conjunto de métricas para ficar de olho são as relacionadas aos tamanhos
 das filas dos exporters: `otelcol_exporter_queue_capacity` e
 `otelcol_exporter_queue_size`. O Collector enfileira os dados em memória
 enquanto aguarda um _worker_ ficar disponível para enviá-los. Se não houver
-workers suficientes ou se o backend estiver muito lento, os dados começam a se
+workers suficientes ou se o _backend_ estiver muito lento, os dados começam a se
 acumular na fila. Quando a fila atinge a sua capacidade
 (`otelcol_exporter_queue_size` > `otelcol_exporter_queue_capacity`), ela rejeita
 dados (`otelcol_exporter_enqueue_failed_spans`). Adicionar mais workers
@@ -76,8 +76,8 @@ Também vale a pena se familiarizar com os componentes que você pretende usar,
 pois componentes diferentes podem produzir outras métricas. Por exemplo, o
 [exporter de balanceamento de carga registra informações de tempo sobre as operações de exportação](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics),
 expondo-as como parte do histograma `otelcol_loadbalancer_backend_latency`. Você
-pode extrair essas informações para determinar se todos os backends levam um
-tempo semelhante para processar as requisições: um único backend lento pode
+pode extrair essas informações para determinar se todos os _backends_ levam um
+tempo semelhante para processar as requisições: um único _backend_ lento pode
 indicar problemas externos ao Collector.
 
 Para receivers que fazem extração, como o receiver do Prometheus, a extração
@@ -92,29 +92,29 @@ Talvez tão importante quanto saber quando escalar seja entender quais sinais
 indicam que uma operação de escala não trará benefícios. Um exemplo é quando um
 banco de dados de telemetria não consegue acompanhar a carga: adicionar
 Collectors ao cluster não ajudará sem escalar o banco de dados. Da mesma forma,
-quando a conexão de rede entre o Collector e o backend está saturada, adicionar
-mais Collectors pode causar um efeito colateral prejudicial.
+quando a conexão de rede entre o Collector e o _backend_ está saturada,
+adicionar mais Collectors pode causar um efeito colateral prejudicial.
 
 Novamente, uma forma de identificar essa situação é observando as métricas
 `otelcol_exporter_queue_size` e `otelcol_exporter_queue_capacity`. Se o tamanho
 da fila estiver constantemente próximo da capacidade da fila, é um sinal de que
 a exportação de dados está mais lenta do que o recebimento. Você pode tentar
 aumentar a capacidade da fila, o que fará o Collector consumir mais memória, mas
-também dará algum fôlego para o backend sem descartar dados de telemetria
+também dará algum fôlego para o _backend_ sem descartar dados de telemetria
 permanentemente. Mas se você continuar aumentando a capacidade da fila e o
 tamanho dela continuar crescendo na mesma proporção, é um indício de que você
 deve olhar para fora do Collector. Também é importante notar que adicionar mais
 workers aqui não seria útil: você estaria apenas colocando mais pressão em um
 sistema que já sofre com carga alta.
 
-Outro sinal de que o backend pode estar com problemas é um aumento na métrica
+Outro sinal de que o _backend_ pode estar com problemas é um aumento na métrica
 `otelcol_exporter_send_failed_spans`: isso indica que o envio de dados ao
-backend falhou permanentemente. Escalar o Collector para mais provavelmente só
+_backend_ falhou permanentemente. Escalar o Collector para mais provavelmente só
 piorará a situação quando isso estiver acontecendo de forma consistente.
 
 ## Como escalar {#how-to-scale}
 
-Neste ponto, sabemos quais partes do nosso pipeline precisam de escala. Em
+Neste ponto, sabemos quais partes do nosso _pipeline_ precisam de escala. Em
 relação à escala, temos três tipos de componentes: stateless, extratores e
 stateful.
 
@@ -123,7 +123,7 @@ estado em memória, ele não é relevante para fins de escala.
 
 Os extratores, como o receiver do Prometheus, são configurados para obter dados
 de telemetria de fontes externas. O receiver então extrai alvo por alvo,
-colocando os dados no pipeline.
+colocando os dados no _pipeline_.
 
 Componentes como o processor de amostragem por cauda (_tail sampling_) não podem
 ser escalados facilmente, pois mantêm em memória um estado relevante para o seu
@@ -140,9 +140,9 @@ Um load balancer é essencial quando você precisa:
 
 - Distribuir o tráfego de telemetria de entrada entre várias instâncias de
   Collectors stateless para evitar que uma única instância fique sobrecarregada.
-- Melhorar a disponibilidade e a tolerância a falhas do seu pipeline de coleta.
-  Se uma instância do Collector falhar, o load balancer pode redirecionar o
-  tráfego para instâncias saudáveis.
+- Melhorar a disponibilidade e a tolerância a falhas do seu _pipeline_ de
+  coleta. Se uma instância do Collector falhar, o load balancer pode
+  redirecionar o tráfego para instâncias saudáveis.
 - Escalar horizontalmente a sua camada de Collectors com base na demanda.
 
 Ao operar em ambientes Kubernetes, aproveite as soluções robustas e prontas de
@@ -155,8 +155,8 @@ de carga.
 Quando gRPC é usado para receber os dados, um cenário comum com OTLP, use um
 load balancer que entenda gRPC (load balancer L7). Load balancers L4 padrão
 podem estabelecer uma conexão persistente com uma única instância de Collector
-de backend, anulando os benefícios da escala, já que os clientes sempre
-atingirão o mesmo Collector. Você ainda deve considerar dividir o seu pipeline
+de _backend_, anulando os benefícios da escala, já que os clientes sempre
+atingirão o mesmo Collector. Você ainda deve considerar dividir o seu _pipeline_
 de coleta pensando em confiabilidade. Por exemplo, quando as suas cargas de
 trabalho rodam no Kubernetes, você pode querer usar DaemonSets para ter um
 Collector no mesmo nó físico das suas cargas de trabalho e um Collector central
