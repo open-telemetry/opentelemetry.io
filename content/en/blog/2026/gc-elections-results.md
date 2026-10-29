@@ -6,7 +6,7 @@ author: OpenTelemetry Governance Committee
 ---
 
 We are delighted to announce the results of the
-[2025 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-election.md?from_branch=main)!
+[2026 OpenTelemetry Governance Committee Election](https://github.com/open-telemetry/community/blob/65ca9aa67c4790e2c39984f9356b349c87861ab8/elections/2026/governance-committee-election.md?from_branch=main)!
 
 The OpenTelemetry project continues to bring together an exceptionally vibrant
 community, who are shaping the future of observability with their contributions.
