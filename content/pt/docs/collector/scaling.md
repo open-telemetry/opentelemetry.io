@@ -402,7 +402,7 @@ receivers:
 processors:
 
 exporters:
-  loadbalancing:
+  load_balancing:
     protocol:
       otlp:
     resolver:
