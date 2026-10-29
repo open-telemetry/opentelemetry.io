@@ -59,6 +59,35 @@ implementations should record these values:
 The filtered product list is random, so matching its exact contents is not the
 migration goal. Its size and exclusion behavior must still make sense.
 
+## How I ended up with the starter
+
+My first version used Spring Boot's own OpenTelemetry starter, with Micrometer
+Tracing for spans and a `MeterRegistry` for the counter. During the
+[September 23 discussion](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5797579640),
+the question became which instrumentation approach belonged in the OpenTelemetry
+Demo. I switched to the OpenTelemetry starter, moved the application span and
+counter to the OpenTelemetry API, and removed my custom Logback setup because
+the starter installs its own appender. The gRPC spans needed separate wiring, so
+I added the library interceptors described below.
+
+Then a reviewer pointed out that the linked OpenTelemetry guidance recommends
+the Java agent by default. By
+[October 7](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6042864944),
+I had switched to the agent, loaded through `JAVA_TOOL_OPTIONS` like the Ad
+service. That removed the starter and the application's gRPC interceptor
+configuration. The `get_product_list` span and counter stayed on the
+OpenTelemetry API.
+
+On
+[October 8](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6058694428),
+the discussion came back to why we were adding this service: Ad already showed
+the agent, and the Spring example was meant to show another instrumentation
+approach. I went back to the OpenTelemetry starter and restored the gRPC
+interceptors. This time I added an explicit note to the README and changelog
+that the Java agent remains the default recommendation. The final setup below is
+the Demo's second example, not a reason to switch an existing application away
+from the agent.
+
 ## Rebuild the RPC boundaries in Spring
 
 The starter configures the OpenTelemetry instance and export pipeline. Its
