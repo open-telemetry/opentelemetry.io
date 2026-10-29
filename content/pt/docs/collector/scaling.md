@@ -416,5 +416,5 @@ service:
         - otlp
       processors: []
       exporters:
-        - loadbalancing
+        - load_balancing
 ```
