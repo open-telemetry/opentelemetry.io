@@ -2,8 +2,7 @@
 title: Introdução à Observabilidade
 description: Conceitos essenciais de Observabilidade
 weight: 9
-default_lang_commit: 6e3124135e38e749cdda15271d891813d6bc43db # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 ## O que é Observabilidade? {#what-is-observability}
@@ -92,9 +91,9 @@ consulte [Logs](/docs/concepts/signals/logs/).
 
 ### Trechos {#spans}
 
-Um **trecho** representa uma unidade de trabalho ou operação. Trechos rastreiam
-operações específicas que uma requisição realiza, mostrando o que aconteceu
-durante o tempo em que essa operação foi executada.
+Um **trecho** representa uma única unidade de trabalho ou operação. Trechos
+rastreiam operações específicas que uma requisição realiza, mostrando o que
+aconteceu durante o tempo em que essa operação foi executada.
 
 Um trecho contém nome, dados relacionados ao tempo,
 [mensagens de log estruturadas](/docs/concepts/signals/traces/#span-events) e
@@ -128,14 +127,19 @@ OpenTelemetry, consulte [Trecho](/docs/concepts/signals/traces/#spans).
 ### Rastros distribuídos {#distributed-traces}
 
 Um **rastro distribuído**, mais comumente conhecido como um **rastro**, registra
-os caminhos percorridos por requisições (feitas por uma aplicação ou usuário
-final) enquanto se propagam por arquiteturas com múltiplos serviços, como
-aplicações de microsserviços e _serverless_.
+o caminho percorrido por uma única requisição (feita por uma aplicação ou
+usuário final) enquanto ela se propaga por múltiplos serviços de uma
+arquitetura, como aplicações de microsserviços ou _serverless_.
 
 Um rastro é composto de um ou mais trechos. O primeiro trecho representa o
 trecho raiz. Cada trecho raiz representa uma requisição do início ao fim. Os
 trechos abaixo do trecho raiz fornecem um contexto mais aprofundado do que
 ocorre durante uma requisição (ou quais etapas compõem uma requisição).
+
+Por exemplo, quando um usuário carrega uma página web, a requisição HTTP inicial
+pode passar por um _gateway_ de API, um serviço de _backend_ e um banco de
+dados. Cada uma dessas etapas é representada por um trecho, e juntos eles formam
+um único rastro que mostra o percurso de ponta a ponta da requisição.
 
 Sem rastreamento, encontrar a causa raiz de problemas de desempenho em um
 sistema distribuído pode ser desafiador. O rastreamento torna a depuração e o

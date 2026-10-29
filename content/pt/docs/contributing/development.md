@@ -1,29 +1,25 @@
 ---
 title: Configuração de desenvolvimento e comandos para compilar, servir e mais
 linkTitle: Config. desenvolvimento
-description:
-  Aprenda como configurar um ambiente de desenvolvimento para este site.
+description: >-
+  Configurações de ambiente em IDE de nuvem e local, e os comandos de
+  compilação, execução e verificação do site
 what-next: >
   Agora você está pronto para [compilar](#build), [servir](#serve) e fazer
   atualizações nos arquivos do site. Para mais detalhes sobre como submeter
-  alterações, veja [Enviando conteúdo][].
+  alterações, veja [Enviando conteúdo](../pull-requests).
 weight: 60
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
-drifted_from_default: true
+default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
+cSpell:ignore: TOCSS
 ---
 
-{{% alert title="Ambientes de construção suportados" color=warning %}}
-
-As compilações são oficialmente suportadas em ambientes baseados em Linux e
-macOS. Outros ambientes, como os [DevContainers](#devcontainers), são suportados
-com base na melhor forma que seja possível. Para compilação no Windows, você
-pode seguir passos similares aos do Linux usando a linha de comando do Windows
-Subsystem para Linux [WSL][windows-wsl].
-
-{{% /alert %}}
-
-As instruções a seguir explicam como configurar um ambiente de desenvolvimento
-para este site.
+> [!WARNING] Ambientes de compilação suportados
+>
+> As compilações são oficialmente suportadas em ambientes baseados em Linux e
+> macOS. Outros ambientes, como os [DevContainers](#devcontainers), são
+> suportados com base na melhor forma que seja possível. Para compilação no
+> Windows, é possível seguir passos similares aos do Linux usando a linha de
+> comando do Windows Subsystem for Linux [WSL][].
 
 ## Configuração de IDE de nuvem {#cloud-ide-setup}
 
@@ -49,7 +45,7 @@ você. {{% param what-next %}}
 
 Para trabalhar via GitHub [Codespaces][]:
 
-1. Faça um [_Fork_][] do repositório do site.
+1. Faça um [_fork_][fork] do repositório do site.
 2. Abra um _Codespace_ a partir do seu _fork_.
 
 Seu ambiente de desenvolvimento será inicializado via a configuração
@@ -57,7 +53,7 @@ Seu ambiente de desenvolvimento será inicializado via a configuração
 
 ## Configuração local {#local-setup}
 
-1.  Faça um [_Fork_][] e então [clone][] o repositório do site em
+1.  Faça um [_fork_][fork] e então [clone][] o repositório do site em
     <{{% param github_repo %}}>.
 2.  Vá para o diretório do repositório:
 
@@ -65,27 +61,40 @@ Seu ambiente de desenvolvimento será inicializado via a configuração
     cd opentelemetry.io
     ```
 
-3.  Instale ou atualize para a [versão **LTS ativa**][nodejs-rel] do Node.js.
-    Recomendamos usar [nvm][] para gerenciar sua instalação do Node. No Linux,
-    execute o seguinte comando, que instalará e atualizará para a versão
-    especificada no arquivo .nvmrc:
+3.  Instale a versão do Node.js fixada no arquivo `.nvmrc` (uma versão [LTS
+    ativa][nodejs-rel]). Recomendamos o [nvm][] para gerenciar a instalação do
+    Node; no Linux, execute:
 
     ```sh
     nvm install
     ```
 
-    Para [instalar no Windows][nodejs-win], use [nvm-windows][]. Recomendamos
-    usar `cmd` e não o Windows PowerShell para o comando abaixo:
+    Para [instalar no Windows][nodejs-win], use o [nvm-windows][], que não lê o
+    arquivo `.nvmrc` por conta própria; o comando a seguir fornece a versão
+    fixada. Recomendamos usar `cmd` e não o Windows PowerShell:
 
     ```cmd
-    nvm install lts && nvm use lts
+    for /f %v in (.nvmrc) do nvm install %v && nvm use %v
     ```
 
-4.  Obtenha os pacotes npm e outros pré-requisitos:
+4.  Obtenha os pacotes npm e outros pré-requisitos, usando a [configuração com
+    versões exatas do _lockfile_ e sem execução de _scripts_][ci-install] que o
+    devcontainer utiliza:
+
+    ```sh
+    npm run install:safe
+    ```
+
+    Ou, use uma instalação padrão:
 
     ```sh
     npm install
     ```
+
+    Ambas as instalações usam as versões de dependências fixadas no
+    `package-lock.json` versionado, e qualquer _script_ de ciclo de vida de
+    dependência que for executado está sujeito à lista de permissões revisada.
+    Relacionado: [atualização de dependências][dep-updates].
 
 Abra sua IDE favorita. {{% param what-next %}}
 
@@ -99,6 +108,29 @@ npm run build
 
 Os arquivos gerados do site estão em `public`.
 
+> [!IMPORTANT]
+>
+> Caso ocorram **erros** nos comandos de compilação ou de execução semelhantes
+> ao seguinte:
+>
+> ```log
+> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ```
+>
+> Ou:
+>
+> ```log
+> ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
+> ```
+>
+> Isso geralmente acontece porque nem todas as etapas da
+> [configuração local](#local-setup) foram concluídas. Em particular, execute
+> (novamente) este comando:
+>
+> ```sh
+> npm install
+> ```
+
 ### Servir {#serve}
 
 Para servir o site execute:
@@ -109,17 +141,13 @@ npm run serve
 
 O site é servido em [localhost:1313][].
 
-Se você precisar testar redirecionamentos do [Netlify][], use o seguinte comando
-e visite o site em [localhost:8888][]:
-
-```sh
-npm run serve:netlify
-```
-
 O comando `serve` disponibiliza arquivos da memória, não do disco.
 
-Se você ver um erro como `too many open files` ou `pipe failed` no macOS, você
-precisar aumentar o limite de descritores de arquivo. Veja
+Para testar redirecionamentos do Netlify, use a [prévia de
+_deploy_][deploy preview] do seu PR.
+
+Caso ocorra um erro como `too many open files` ou `pipe failed` no macOS, pode
+ser necessário aumentar o limite de descritores de arquivo. Veja
 [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
 
 ### Conteúdo e submódulos {#content-and-submodules}
@@ -166,27 +194,71 @@ como (em ordem alfabética):
 - [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
-[clone]:
-  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+## Ferramentas {#tools}
+
+### Code-excerpter {#code-excerpter}
+
+Use o [code-excerpter][] para trechos de código que devem permanecer
+sincronizados com arquivos-fonte deste repositório. Páginas do site em qualquer
+idioma podem conter trechos de código, mas o conteúdo original que os utiliza é
+escrito em inglês em `content/en` e depois atualizado pelas equipes de
+localização para seus próprios idiomas.
+
+Na página de origem em inglês, coloque uma diretiva de trecho de arquivo
+imediatamente antes do bloco de código delimitado que ela atualiza:
+
+````md
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
+
+<?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
+
+```java
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+````
+
+Use uma diretiva opcional `path-base` uma única vez, próximo ao topo da página,
+quando vários trechos vierem do mesmo diretório. Para detalhes sobre a sintaxe
+da diretiva `code-excerpt`, consulte o README do [code-excerpter][].
+
+Edite o arquivo-fonte ou a diretiva, **não o bloco de código**. Em seguida,
+execute o seguinte [_script_ npm](/site/build/npm-scripts/):
+
+```sh
+npm run fix:code-excerpts
+```
+
+Para verificar se os trechos de código estão atualizados, execute:
+
+```sh
+npm run check:code-excerpts
+```
+
+[code-excerpter]: https://github.com/chalin/code-excerpter
+
+<!-- prettier-ignore-start -->
+[ci-install]: /site/build/dependencies/#install-contracts
+[dep-updates]: /site/build/dependencies/#updating
+[clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [codespaces]: https://docs.github.com/en/codespaces
-[cs-devc]:
-  https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[cs-devc]: https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers
+[deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
-[localhost:8888]: http://localhost:8888
-[netlify]: https://netlify.com
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]:
-  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-[nvm]:
-  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
-
-<!-- markdownlint-disable link-image-reference-definitions -->
-
-[Enviando conteúdo]: ../pull-requests/
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+<!-- prettier-ignore-end -->
