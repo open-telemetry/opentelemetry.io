@@ -5,10 +5,11 @@
 // Usage:
 //   node scripts/validate/filenames/index.mjs [--fix]
 //
-// With --fix, obsolete paths are DELETED and non-kebab-case names are
-// renamed. Without --fix, the command exits non-zero when violations are
-// found.
+// With --fix, obsolete paths are DELETED (a `tracked` entry is untracked
+// instead) and non-kebab-case names are renamed. Without --fix, the command
+// exits non-zero when violations are found.
 
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -29,7 +30,9 @@ export const KEBAB_CASE_MESSAGE =
 // Paths deleted from `main` that PRs occasionally reintroduce, usually the
 // sign of a stale branch. This table is canonical; the "Obsolete files and
 // folders" list of content/en/docs/contributing/pr-checks.md mirrors it for
-// contributors (drift-guarded by index.test.mjs).
+// contributors (drift-guarded by index.test.mjs). A `tracked` entry is
+// obsolete as a committed file only: it may exist locally as a derived
+// artifact, so the check asks git rather than the filesystem.
 export const OBSOLETE_PATHS = [
   {
     path: 'tools',
@@ -43,6 +46,14 @@ export const OBSOLETE_PATHS = [
       'Obsolete file: deleted when link checking switched to Lychee (PR #10911). ' +
       'Your branch is probably stale: update it by merging in the latest `main`. ' +
       'For details, see https://github.com/open-telemetry/opentelemetry.io/issues/10990',
+  },
+  {
+    path: '.lycheecache',
+    tracked: true,
+    message:
+      'Obsolete tracked file: the committed link cache is now `link-cache.jsonc` (PR #11649). ' +
+      'Untrack it with `npm run fix:filenames`. For the full update procedure, see ' +
+      'https://github.com/open-telemetry/opentelemetry.io/issues/11928',
   },
 ];
 
@@ -84,7 +95,9 @@ export function findBadFilenames(dirs = SCAN_DIRS, { cwd = '.' } = {}) {
 }
 
 /**
- * Returns the entries of `obsolete` whose path exists under cwd.
+ * Returns the entries of `obsolete` that are present under cwd: on the
+ * filesystem, or in git's index for a `tracked` entry (throws when git cannot
+ * answer).
  *
  * @param {typeof OBSOLETE_PATHS} [obsolete]
  * @param {{ cwd?: string }} [options]
@@ -93,7 +106,11 @@ export function findObsoletePaths(
   obsolete = OBSOLETE_PATHS,
   { cwd = '.' } = {},
 ) {
-  return obsolete.filter((entry) => pathExists(path.join(cwd, entry.path)));
+  return obsolete.filter((entry) =>
+    entry.tracked
+      ? isTracked(entry.path, cwd)
+      : pathExists(path.join(cwd, entry.path)),
+  );
 }
 
 // True when the path exists, even as a dangling symlink (which fs.existsSync
@@ -102,13 +119,28 @@ function pathExists(p) {
   return !!fs.lstatSync(p, { throwIfNoEntry: false });
 }
 
+// True when git tracks the path. Exit 1 is git's "not tracked"; anything
+// else (no repository, unreadable index) is an error, since reading it as
+// "not tracked" would silently disable the check.
+function isTracked(p, cwd) {
+  const r = spawnSync('git', ['ls-files', '--error-unmatch', '--', p], {
+    cwd,
+    stdio: ['ignore', 'ignore', 'pipe'],
+    encoding: 'utf8',
+  });
+  if (r.status === 0) return true;
+  if (r.status === 1) return false;
+  throw new Error(
+    `git ls-files failed for ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+  );
+}
+
 /**
- * Deletes obsolete paths and renames kebab-case violations (underscores to
- * dashes). The full rename plan is validated before anything is deleted or
- * renamed, so a collision — with an existing path or between two planned
- * renames — throws while the tree is still untouched. Renames are applied
- * deepest-first so that renaming a directory doesn't invalidate the paths of
- * violations nested inside it.
+ * Deletes obsolete paths (a `tracked` entry is untracked instead, its file
+ * kept) and renames kebab-case violations (underscores to dashes). The full
+ * rename plan is validated before anything is deleted or renamed, so a
+ * collision, with an existing path or between two planned renames, throws
+ * while the tree is still untouched; so does a refused untrack.
  *
  * @param {{
  *   badNames?: string[],
@@ -147,7 +179,22 @@ export function fixViolations({
     plannedDestinations.add(to);
   }
 
-  for (const { path: p } of obsolete) {
+  // Untracking can be refused (a partially staged file), so it goes first,
+  // while nothing has been deleted or renamed yet.
+  for (const { path: p } of obsolete.filter((entry) => entry.tracked)) {
+    log(`Untracking obsolete path: ${p}`);
+    const r = spawnSync('git', ['rm', '-q', '--cached', '--', p], {
+      cwd,
+      stdio: ['ignore', 'ignore', 'pipe'],
+      encoding: 'utf8',
+    });
+    if (r.status !== 0) {
+      throw new Error(
+        `could not untrack ${p}: ${r.stderr?.trim() || r.error?.message || `exit ${r.status}`}`,
+      );
+    }
+  }
+  for (const { path: p } of obsolete.filter((entry) => !entry.tracked)) {
     log(`Removing obsolete path: ${p}`);
     fs.rmSync(path.join(cwd, p), { recursive: true, force: true });
   }

@@ -3,7 +3,8 @@ title: OBI のメトリクスとトレースの属性を設定する
 linkTitle: メトリクス属性
 description: 計装された Kubernetes Pod のインスタンス ID デコレーションとメタデータを含む、報告される属性を制御するメトリクスとトレースの属性コンポーネントを設定します。
 weight: 30
-default_lang_commit: d6988a2bfec7521e701d8a15d36696cbb35a129b
+default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
+drifted_from_default: true
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
@@ -412,6 +413,8 @@ OBI はリソースのメタデータに対する更新を即座に受信しま�
 
 設定すると、OBI は Kubernetes API サーバーに対して独自の Informer を実行するかわりに、外部の `k8s-cache` サービスから gRPC 経由で Kubernetes メタデータを取得します。
 これは Kubernetes API への過負荷を避けるため、大規模クラスターおよび DaemonSet デプロイメントで推奨されます。
+
+`k8s-cache` サービスのセットアップ方法の詳細は、[Kubernetes セットアップガイド](../../setup/kubernetes/#centralizing-kubernetes-metadata-with-k8s-cache) または [Helm チャートガイド](../../setup/kubernetes-helm/#centralizing-kubernetes-metadata-with-k8s-cache) を参照してください。
 
 ### サービス名テンプレート {#service-name-template}
 

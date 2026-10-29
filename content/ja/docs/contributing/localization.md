@@ -3,7 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 3c1e6e89077b2afbb9a3ffd5ff61a132b53152aa
+default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
 cSpell:ignore: Dowair shortcodes
 ---
 
@@ -50,6 +50,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
   - [リンク](#links)。これには [見出し ID](#headings) [^*] が含まれます
   - `notranslate`（通常は CSS クラスとして）でマークされた Markdown の要素、特に[見出し](#headings)に対して
 - [アセット内のテキストをローカライズする](#images) 場合以外で **画像やその他のアセットのコピー** をすること。
+- ローカリゼーションページを**[ドラフト](#drafts)**にすること
 - 新規に追加したり変更すること
   - 原文で意図した意味と異なる **内容**
   - 表示の **スタイル**。たとえば _フォーマット_、_レイアウト_、_デザイン_ スタイル（タイポグラフィ、文字の大文字小文字、空白など）。
@@ -137,6 +138,20 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 [l10n-check]: ../pr-checks/#localization
 [Mermaid]: https://mermaid.js.org
 [Page bundles]: https://gohugo.io/content-management/multilingual/#page-bundles
+
+### ドラフトページ {#drafts}
+
+英語のページがドラフトであっても、ローカリゼーションページをドラフト（`draft: true`）にしては**いけません**。
+ドキュメントページにおいて、あなたのロケールに翻訳がない場合、サイトは同じパスで英語のページを提供します（英語の**フォールバック**）。
+ローカリゼーションのドラフトはそのパスを占有しますが、本番ビルドからは除外されるため、英語のページが公開されると、あなたのロケールの読者は英語のページではなく404を受け取ります。
+このルールは英語のページがドラフトであるかどうかにかかわらず適用されるため、英語のページを公開してもローカリゼーションのドラフトが残ることはありません。
+ページの翻訳は、英語版が公開されてから行ってください。
+
+これは [`WARNINGS in build log?`][warnings-check] チェックによって強制されます。
+フラグが立てられたページを修正するには、英語のページが公開済みであれば `draft: true` を削除し、同じ変更内で同期しない限り[パッチ済み](#patched)としてマークしてください。
+そうでない場合は、英語のページが公開されるまでローカリゼーションページを削除してください。
+
+[warnings-check]: ../pr-checks/#localized-drafts
 
 ### インクルードファイル {#includes}
 
@@ -259,8 +274,8 @@ npm run check:i18n -- commit HEAD <PATH-TO-YOUR-UPDATED-FILES>
 
 ### ローカリゼーションページへのパッチ適用 {#patched}
 
-[ビルドの修正](#keep-checks-green)では、ローカリゼーションページを英語の対応ページと同期せずに編集する必要がある場合があります。
-たとえば、共有のショートコードが変更された後にショートコードの呼び出しを修正する場合です。
+一部の修正では、ローカリゼーションページを英語の対応ページと同期せずに編集する必要があります。
+共有のショートコードが変更された後にショートコードの呼び出しを修正するなどの[ビルドの修正](#keep-checks-green)や、[ドラフト](#drafts)フラグの削除などチェックが要求する修正がこれに該当します。
 修正がロケールをまたぐかどうかにかかわらず、この方法で修正されたローカリゼーションページは**パッチ済み**としてマークしてください。
 
 - 修正に必要な編集のみを行い、ページに他の変更を加えないでください。
@@ -339,22 +354,27 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
    - [ ] Locale team info:
      - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
      - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-   - [ ] Read through
-         [Localization](https://opentelemetry.io/docs/contributing/localization/)
-         and all other pages in the Contributing section
+   - [ ] Read through [Localization][] and all other pages in the Contributing
+         section
    - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
-         For details, see
-         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
-   - [ ] OTel maintainers:
+         For details, see [Localize the homepage][].
+   - [ ] OTel maintainers, per the [new-locale setup guide][]:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
      - [ ] Add the locale to `data/locale-teams.yaml` and run
            `npm run fix:codeowners`
+     - [ ] Create the org-level teams for `LANG_ID` approvers and maintainers,
+           grant the approvers team write access, and verify ([GitHub org-level
+           setup][])
    - [ ] Create an issue to track the localization of the **glossary**. Add the
-         issue number here. For details, see
-         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
+         issue number here. For details, see [Localize the glossary][].
+
+   [GitHub org-level setup]: https://opentelemetry.io/site/build/localization/#gh-org
+   [Localization]: https://opentelemetry.io/docs/contributing/localization/
+   [Localize the glossary]: https://opentelemetry.io/docs/contributing/localization/#glossary
+   [Localize the homepage]: https://opentelemetry.io/docs/contributing/localization/#homepage
+   [new-locale setup guide]: https://opentelemetry.io/site/build/localization/
    ```
 
 ### 3. ホームページをローカライズする {#homepage}

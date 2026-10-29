@@ -7,7 +7,7 @@ author: '[Kemal Akkoyun](https://github.com/kakkoyun) (Datadog)'
 issue: 10670
 sig: Go Compile-Time Instrumentation
 # prettier-ignore
-cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin otelc toolexec Xabier
+cSpell:ignore: Akkoyun Azhar Cabify Castañé Dario Haibin Martinez Momin Xabier
 ---
 
 If you write Java, Python, Node.js, or .NET, you have been able to add

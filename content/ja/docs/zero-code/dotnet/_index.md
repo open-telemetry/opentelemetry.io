@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
+default_lang_commit: b7958404d74ea78a5e786cb7d4e837876d0890ea
 cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
@@ -48,28 +48,35 @@ CI テストは以下のオペレーティングシステムに対して実行�
 
 ### Linux と macOS {#linux-and-macos}
 
-`.sh` スクリプトをダウンロードして実行します。
+`.sh` スクリプトをダウンロード、検証して実行します。
 
 > [!NOTE]
 >
-> エアギャップ環境では、`LOCAL_PATH` 変数を使用してインストールファイルを直接指定します。
+> macOS では [`coreutils`](https://formulae.brew.sh/formula/coreutils) が必要です。
 >
-> ```shell
-> LOCAL_PATH=<PATH_TO_INSTALLER> sh ./otel-dotnet-auto-install.sh
-> ```
->
-> または、`DOWNLOAD_DIR` を使用してファイルが格納されたフォルダーを指定すると、インストールスクリプトが使用する正しいファイルを判別します。
->
-> ```shell
-> DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
-> ```
+> ダウンロードしたインストーラーは、スクリプト自身が自分のコードの信頼性を確立できないため、実行前に検証する必要があります。
+> デフォルトでは、インストーラーは [GitHub CLI](https://cli.github.com/) も必要とし、ダウンロードした ZIP アーカイブのイミュータブルリリースとアーティファクト証明の両方を検証します。
+> アーカイブの検証を明示的にオプトアウトするには、`SKIP_RELEASE_VERIFICATION=true` を設定してください。
+> 検証のスキップは推奨されません。
 
 ```shell
-# bash スクリプトをダウンロード
-curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh -O
+# インストーラーをプライベートディレクトリにダウンロード
+version="v1.17.0"
+repository="open-telemetry/opentelemetry-dotnet-instrumentation"
+release_workflow="$repository/.github/workflows/release.yml"
+download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
+installer="$download_dir/otel-dotnet-auto-install.sh"
+trap 'rm -rf "$download_dir"' 0
 
-# コアファイルをインストール
-sh ./otel-dotnet-auto-install.sh
+# ダウンロード、検証、実行を単一の条件付きチェーンで行い、
+# ダウンロードや検証に失敗した場合はインストーラーの実行を防止する
+curl -sSfL "https://github.com/$repository/releases/download/$version/otel-dotnet-auto-install.sh" -o "$installer" &&
+  gh release verify-asset "$version" "$installer" --repo "$repository" &&
+  gh attestation verify "$installer" \
+    --repo "$repository" \
+    --signer-workflow "$release_workflow" \
+    --source-ref "refs/tags/$version" &&
+  VERSION="$version" sh "$installer"
 
 # 計装スクリプトの実行を有効化
 chmod +x $HOME/.otel-dotnet-auto/instrument.sh
@@ -81,10 +88,22 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=staging,service.version=1.0.0 ./MyNetApp
 ```
 
+エアギャップ環境では、アーカイブを転送する前に検証し、インストーラーのオンライン検証を明示的にスキップしてください。
+アーカイブを直接指定するには以下を実行します。
+
+```shell
+SKIP_RELEASE_VERIFICATION=true LOCAL_PATH=<PATH_TO_ARCHIVE> sh ./otel-dotnet-auto-install.sh
+```
+
+または、ファイルが格納されたフォルダーを指定すると、インストールスクリプトが使用する正しいファイルを判別します。
+
+```shell
+SKIP_RELEASE_VERIFICATION=true DOWNLOAD_DIR=<PATH_TO_FOLDER_WITH_FILES> sh ./otel-dotnet-auto-install.sh
+```
+
 > [!IMPORTANT]
 >
-> macOS では [`coreutils`](https://formulae.brew.sh/formula/coreutils) が必要です。
-> [homebrew](https://brew.sh/) がインストールされている場合は、以下を実行して入手できます。
+> macOS に [Homebrew](https://brew.sh/) がインストールされている場合は、以下を実行して `coreutils` をインストールできます。
 >
 > ```shell
 > brew install coreutils
@@ -94,28 +113,76 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=sta
 
 Windows では、管理者として PowerShell モジュールを使用します。
 
-> [!NOTE] Version note
+> [!NOTE] 要件
 >
 > Windows
 > [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
 > (v5.1) が必要です。
 > PowerShell Core (v6.0+) を含む他の[バージョン](https://learn.microsoft.com/previous-versions/powershell/scripting/overview)は、現時点ではサポートされていません。
+>
+> ダウンロードしたモジュールは、モジュール自身が自分のコードの信頼性を確立できないため、インポート前に検証する必要があります。
+> デフォルトでは、インストールに [GitHub CLI](https://cli.github.com/) が必要で、イミュータブルリリースとアーティファクト証明の両方を検証します。
+> 明示的にオプトアウトするには、`$skip_release_verification` を `$true` に設定してください。これにより、Windows アーカイブの `Install-OpenTelemetryCore` にも `-SkipReleaseVerification` が渡されます。
+> 検証のスキップは推奨されません。
 
 ```powershell
 # PowerShell 5.1 が必要です
 #Requires -PSEdition Desktop
 
-# モジュールをダウンロード
-$module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
-$download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+$version = "v1.17.0"
+$repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
+$release_workflow = "$repository/.github/workflows/release.yml"
+$skip_release_verification = $false
 
-# モジュールをインポートしてその関数を使用
-Import-Module $download_path
+# Program Files のアクセス制御で保護された一意のディレクトリを使用する
+$program_files = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::ProgramFiles)
+$download_dir = Join-Path $program_files "OpenTelemetry .NET AutoInstrumentation Download $([System.Guid]::NewGuid().ToString("N"))"
+$download_path = Join-Path $download_dir "OpenTelemetry.DotNet.Auto.psm1"
+$module_url = "https://github.com/$repository/releases/download/$version/OpenTelemetry.DotNet.Auto.psm1"
 
-# コアファイルをインストール（オンライン方式 vs オフライン方式）
-Install-OpenTelemetryCore
-Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
+New-Item -ItemType Directory -Path $download_dir -ErrorAction Stop | Out-Null
+
+try {
+    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+
+    if ($skip_release_verification) {
+        Write-Warning "Release verification is skipped. Downloaded PowerShell code and binaries will not be verified."
+    }
+    else {
+        $github_cli = Get-Command gh.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+        if (-not $github_cli) {
+            throw "The GitHub CLI ('gh') is required. Install it from https://cli.github.com/ or explicitly set `$skip_release_verification to `$true."
+        }
+
+        & $github_cli.Source release verify-asset $version $download_path --repo $repository
+        if ($LASTEXITCODE -ne 0) {
+            throw "GitHub release verification failed for the PowerShell module."
+        }
+
+        & $github_cli.Source attestation verify $download_path `
+            --repo $repository `
+            --signer-workflow $release_workflow `
+            --source-ref "refs/tags/$version"
+        if ($LASTEXITCODE -ne 0) {
+            throw "GitHub artifact attestation verification failed for the PowerShell module."
+        }
+    }
+
+    # 検証成功後にモジュールをインポートする
+    Import-Module $download_path
+
+    # 以前にダウンロードした Windows アーカイブからインストールするには、以下を追加:
+    # -LocalPath "C:\Path\To\OpenTelemetry.zip"
+    Install-OpenTelemetryCore -SkipReleaseVerification:$skip_release_verification -ErrorAction Stop
+
+    # 検証済みモジュールを更新とアンインストール用にキャッシュする
+    Copy-Item -LiteralPath $download_path -Destination (Get-OpenTelemetryInstallDirectory) -Force
+}
+finally {
+    if (Test-Path -LiteralPath $download_dir) {
+        Remove-Item -LiteralPath $download_dir -Force -Recurse
+    }
+}
 
 # 現在の PowerShell セッション用に計装をセットアップ
 Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"

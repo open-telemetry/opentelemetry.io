@@ -3,7 +3,7 @@ title: OBI のエクスポートモードを構成する
 linkTitle: エクスポートモード
 description: OTLP エンドポイントへ直接データをエクスポートするように OBI を構成する
 weight: 1
-default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
+default_lang_commit: bae0689d264b08de4272ae5cd76a3ed6121273d0
 ---
 
 > [!NOTE]
@@ -16,13 +16,10 @@ Direct モードでは、OBI は OpenTelemetry protocol（OTLP）を使用して
 
 OBI は、たとえば **プル** モードでスクレイプできるように、Prometheus HTTP エンドポイントを公開することもできます。
 
-Direct モードを使用するには、認証情報を含む構成が必要です。
-OTLP エンドポイントの認証情報は、次の環境変数で設定します。
+Direct モードでは、`OTEL_EXPORTER_OTLP_ENDPOINT` で OTLP エンドポイントを設定します。
+エンドポイントで認証が必要な場合は、`OTEL_EXPORTER_OTLP_HEADERS` に認証情報を設定してください。
 
-- `OTEL_EXPORTER_OTLP_ENDPOINT`
-- `OTEL_EXPORTER_OTLP_HEADERS`
-
-Prometheus のスクレイプエンドポイントを使用して Direct モードで実行する方法については、[構成ドキュメント](../options/)を参照してください。
+Prometheus のスクレイプエンドポイントについては、[データエクスポートのドキュメント](/docs/zero-code/obi/configure/export-data/)を参照してください。
 
 ## OBI の構成と実行 {#configure-and-run-obi}
 
