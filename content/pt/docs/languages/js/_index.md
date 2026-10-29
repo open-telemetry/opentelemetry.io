@@ -8,9 +8,8 @@ aliases: [/js/metrics, /js/tracing, nodejs]
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
-weight: 20
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
-drifted_from_default: true
+weight: 160
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 {{% docs/languages/index-intro js /%}}

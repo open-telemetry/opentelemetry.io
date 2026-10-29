@@ -3,8 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 1b7f33e30a91ebf48b6c9d00f7808b4021fb74dd
-drifted_from_default: true
+default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
 cSpell:ignore: Dowair shortcodes
 ---
 
@@ -355,22 +354,27 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
    - [ ] Locale team info:
      - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
      - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-   - [ ] Read through
-         [Localization](https://opentelemetry.io/docs/contributing/localization/)
-         and all other pages in the Contributing section
+   - [ ] Read through [Localization][] and all other pages in the Contributing
+         section
    - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
-         For details, see
-         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
-   - [ ] OTel maintainers:
+         For details, see [Localize the homepage][].
+   - [ ] OTel maintainers, per the [new-locale setup guide][]:
      - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
-     - [ ] Create org-level teams for `LANG_ID` approvers and maintainers
      - [ ] Add the locale to `data/locale-teams.yaml` and run
            `npm run fix:codeowners`
+     - [ ] Create the org-level teams for `LANG_ID` approvers and maintainers,
+           grant the approvers team write access, and verify ([GitHub org-level
+           setup][])
    - [ ] Create an issue to track the localization of the **glossary**. Add the
-         issue number here. For details, see
-         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
+         issue number here. For details, see [Localize the glossary][].
+
+   [GitHub org-level setup]: https://opentelemetry.io/site/build/localization/#gh-org
+   [Localization]: https://opentelemetry.io/docs/contributing/localization/
+   [Localize the glossary]: https://opentelemetry.io/docs/contributing/localization/#glossary
+   [Localize the homepage]: https://opentelemetry.io/docs/contributing/localization/#homepage
+   [new-locale setup guide]: https://opentelemetry.io/site/build/localization/
    ```
 
 ### 3. ホームページをローカライズする {#homepage}
