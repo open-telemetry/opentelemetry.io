@@ -21,10 +21,9 @@ The Demo already had Python services, plus the Java Ad service and the Kotlin
 fraud-detection service. Both of those JVM services use the OpenTelemetry Java
 agent. Adding a Spring service gives developers an example using a widely used
 Java framework. The recommendation service also demonstrates the OpenTelemetry
-[Spring Boot starter](/docs/zero-code/java/spring-boot-starter/), so the Demo
-can show a second instrumentation path. The
-[Java agent](/docs/zero-code/java/agent/) remains the default recommendation for
-Spring Boot applications.
+[Spring Boot starter][spring-boot-starter], so the Demo can show a second
+instrumentation path. The [Java agent](/docs/zero-code/java/agent/) remains the
+default recommendation for Spring Boot applications.
 
 The
 [merged rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966)
@@ -34,11 +33,8 @@ keeps the gRPC contract. To check the telemetry, I started with the old trace.
 
 ![Python recommendation trace showing the incoming RPC, get_product_list, and the catalog client and server spans](python-trace.png)
 
-This is a local capture from the
-[Python source at the revision used for the capture](https://github.com/open-telemetry/opentelemetry-demo/blob/e5552ee25bcede2900d89188f076c464cd73c074/src/recommendation/recommendation_server.py).
 The screenshots in this post show the recommendation part of the request and its
-catalog call. I ran both implementations against the same product catalog and
-feature-flag configuration, with the cache failure disabled.
+catalog call.
 
 Read the trace from the incoming recommendation RPC down. The `get_product_list`
 span is its child. The catalog client span sits inside that work, and the
@@ -108,9 +104,7 @@ These screenshots compare span structure. Check the application attributes
 separately. The individual request durations do not establish a performance
 difference between the implementations.
 
-The
-[service-level checks](https://github.com/open-telemetry/opentelemetry-demo/blob/c7b195f4f0a866bd89ceeff3d662df43e2fe69b9/src/recommendation/src/test/java/oteldemo/recommendation/RecommendationServiceTests.java)
-use an in-memory exporter, as described in the
+The service-level checks use an in-memory exporter, as described in the
 [Java SDK testing guide](/docs/languages/java/sdk/#testing), to assert the
 incoming span, the product-list parent, and the catalog-client trace ID. They
 also exercise errors. The running captures check that both services actually
@@ -142,3 +136,10 @@ which boundaries, application attributes and metric meanings need to survive,
 then compare the running implementation against that baseline. The
 [recommendation service documentation](/docs/demo/services/recommendation/)
 explains how this example's starter and gRPC library fit together.
+
+<!-- markdownlint-disable no-otel-io-external-urls -->
+
+[spring-boot-starter]:
+  https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/
+
+<!-- markdownlint-enable no-otel-io-external-urls -->
