@@ -14194,6 +14194,11 @@
     "when": "2026-10-23T05:44:37Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/issues/1368": {
+    "result": 200,
+    "when": "2026-10-29T21:13:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/issues/1601": {
     "result": 200,
     "when": "2026-10-20T05:44:49Z",
@@ -15827,6 +15832,11 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.29.0/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/EmbeddedConfigFile.java#L66-L82": {
     "result": 200,
     "when": "2026-10-23T05:44:44Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/README.md": {
+    "result": 200,
+    "when": "2026-10-29T21:13:28Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/src/main/java/io/opentelemetry/instrumentation/grpc/v1_6/GrpcTelemetry.java": {

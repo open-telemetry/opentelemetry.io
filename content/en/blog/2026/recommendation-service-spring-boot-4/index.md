@@ -10,44 +10,37 @@ sig: SIG Demo
 cSpell:ignore: Aditya
 ---
 
-A recommendation request in the OpenTelemetry Demo crosses a few boundaries. The
-recommendation service receives a gRPC call, selects products inside a
-`get_product_list` span, and calls the product catalog. That trace was already
-useful before I replaced the Python service with Spring Boot 4. The new service
-needed to preserve the relationships and application signals people use to
-understand a request.
+The recommendation service in the OpenTelemetry Demo used to be Python. I
+rewrote it in Spring Boot 4 and the
+[rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966) merged
+on October 13. The first version was up a week after I picked up the issue. Over
+the next month its instrumentation changed three times, from Spring's own setup
+to the OpenTelemetry Spring Boot starter, then to the Java agent, then back to
+the starter. The trace from the old service stayed fixed through all of it, so
+that's where this starts.
 
-The Demo already had Python services, plus the Java Ad service and the Kotlin
-fraud-detection service. Both of those JVM services use the OpenTelemetry Java
-agent. Adding a Spring service gives developers an example using a widely used
-Java framework. The recommendation service also demonstrates the OpenTelemetry
-[Spring Boot starter][spring-boot-starter], so the Demo can show a second
-instrumentation path. The [Java agent](/docs/zero-code/java/agent/) remains the
-default recommendation for Spring Boot applications.
-
-The
-[merged rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966)
-keeps the gRPC contract. To check the telemetry, I started with the old trace.
+Why Spring at all? The Demo had four Python services and no Spring one, though
+Spring is widely used. Its JVM services, Ad in Java and fraud detection in
+Kotlin, both run the OpenTelemetry Java agent. The Demo maintainer preferred
+rewriting an existing service over adding one, and recommendation got picked.
+The [Java agent](/docs/zero-code/java/agent/) is still the default for Spring
+Boot. This service shows the
+[Spring Boot starter](/docs/zero-code/java/spring-boot-starter/) as a second
+way.
 
 ## Start with the Python trace
 
 ![Python recommendation trace showing the incoming RPC, get_product_list, and the catalog client and server spans](python-trace.png)
 
-The screenshots in this post show the recommendation part of the request and its
-catalog call.
+Read it from the incoming recommendation RPC down. `get_product_list` is its
+child, the catalog client span sits inside that work and the catalog's server
+span continues the same trace. The database span belongs to the catalog, which
+didn't change. Those parent-child links tell you whether the time went into
+picking products or waiting on another service, so keeping a span name without
+its parent isn't enough.
 
-Read the trace from the incoming recommendation RPC down. The `get_product_list`
-span is its child. The catalog client span sits inside that work, and the
-catalog's server span continues the same trace. The final database span belongs
-to the catalog, which stays unchanged for this comparison.
-
-Those relationships tell you whether the time was spent selecting products or
-waiting for another service. Preserving a span name without preserving its
-parent would lose part of that explanation.
-
-The application attributes also give the trace meaning. With ten catalog
-products, one viewed product excluded, and the cache failure disabled, both
-implementations should record these values:
+With ten catalog products, one viewed product excluded and the cache failure
+off, both versions should record these attributes:
 
 | Attribute                                | Python (expected) | Spring (expected) |
 | ---------------------------------------- | ----------------- | ----------------- |
@@ -56,119 +49,128 @@ implementations should record these values:
 | `demo.product.recommended.count`         | 5                 | 5                 |
 | `demo.feature_flag.recommendation_cache` | `false`           | `false`           |
 
-The filtered product list is random, so matching its exact contents is not the
-migration goal. Its size and exclusion behavior must still make sense.
+The recommended products are picked at random, so the exact list was never going
+to match. The counts and the exclusion have to.
 
-## How I ended up with the starter
+## Spring, the starter, the agent and the starter again
 
-My first version used Spring Boot's own OpenTelemetry starter, with Micrometer
-Tracing for spans and a `MeterRegistry` for the counter. During the
-[September 23 discussion](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5797579640),
-the question became which instrumentation approach belonged in the OpenTelemetry
-Demo. I switched to the OpenTelemetry starter, moved the application span and
-counter to the OpenTelemetry API, and removed my custom Logback setup because
-the starter installs its own appender. The gRPC spans needed separate wiring, so
-I added the library interceptors described below.
+The
+[issue I picked up](https://github.com/open-telemetry/opentelemetry-demo/issues/1368)
+asked for Micrometer tracing on Spring Boot. I picked up Spring Boot cause I
+felt it was a good entry point. I was comfortable in Java and Spring from my day
+job and previous workplaces, and the issue was tagged good first issue. I
+honestly thought it would probably be one place where responses would be quick
+for a newbie. Turns out Juliano was amazing and guided me through, I just got
+lucky I guess. The first version used Spring Boot's
+`spring-boot-starter-opentelemetry`, with Micrometer Tracing for the
+`get_product_list` span and a `MeterRegistry` for the counter. The gRPC server
+and client spans came from interceptors Spring Boot configures by itself. Logs
+were the only part I wired by hand.
 
-Then a reviewer pointed out that the linked OpenTelemetry guidance recommends
-the Java agent by default. By
-[October 7](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6042864944),
-I had switched to the agent, loaded through `JAVA_TOOL_OPTIONS` like the Ad
-service. That removed the starter and the application's gRPC interceptor
-configuration. The `get_product_list` span and counter stayed on the
-OpenTelemetry API.
+On September 23 the Demo maintainer
+[asked the Java instrumentation approvers](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5797579640)
+whether Micrometer made sense in the OpenTelemetry Demo. The answer was one
+line, "I think the OpenTelemetry Demo should use OpenTelemetry's recommended
+approach", with a link to the starter page. I switched that day.
 
-On
-[October 8](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6058694428),
-the discussion came back to why we were adding this service: Ad already showed
-the agent, and the Spring example was meant to show another instrumentation
-approach. I went back to the OpenTelemetry starter and restored the gRPC
-interceptors. This time I added an explicit note to the README and changelog
-that the Java agent remains the default recommendation. The final setup below is
-the Demo's second example, not a reason to switch an existing application away
-from the agent.
-
-## Rebuild the RPC boundaries in Spring
-
-The starter configures the OpenTelemetry instance and export pipeline. Its
+That's where the gRPC spans went missing. The starter's
 [out-of-the-box instrumentation](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/)
-does not include gRPC in version 2.31.1, used by the rewrite. Having an SDK and
-exporter available does not attach an interceptor to a Spring gRPC server or
-channel.
+doesn't include gRPC in 2.31.1, the version the rewrite uses, and Spring gRPC's
+own setup needs a Micrometer `ObservationRegistry` the service no longer had.
+That's cause gRPC isn't part of core Spring Boot, it comes from the separate
+Spring gRPC project. So I added the
+[OpenTelemetry gRPC library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/README.md)
+and registered its interceptors myself. The span and counter moved to the
+OpenTelemetry API, and my Logback setup went cause the starter installs its own
+appender.
 
-The OpenTelemetry gRPC library provides those interceptors. The
-[recommendation service's gRPC instrumentation guide](/docs/demo/services/recommendation/#grpc-spans)
-shows how to create `GrpcTelemetry` from the starter's `OpenTelemetry` instance
-and register its server and client interceptors as Spring beans, using
-`@GlobalServerInterceptor` and `@GlobalClientInterceptor`.
+In review came the question,
+["Isn't that done automatically with the spring-boot-starter?"](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#discussion_r4164040740)
+I took the interceptors out to check. The main test then failed waiting for the
+`ListRecommendations` server span. On October 6 a Demo approver ran the stack,
+checked the spans in Jaeger and approved it.
 
-The server interceptor creates the incoming RPC span and extracts the caller's
-trace context. The client interceptor creates the catalog RPC span and injects
-context for the catalog service to continue. This wiring preserves the RPC
-boundaries visible in the old trace, rather than leaving only the manually
-created application span. This is the setup for the starter and Spring gRPC
-versions used by the rewrite, not a claim that every Spring instrumentation
-option needs the same configuration.
+The same day another reviewer
+[pointed out what the linked page says](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6017929704):
+"The default choice for instrumenting Spring Boot applications is the
+OpenTelemetry Java agent". The starter is for when the agent can't be used, and
+the reviewer didn't see that in the Demo. So I moved to the agent, loaded
+through `JAVA_TOOL_OPTIONS` like Ad. The starter and the gRPC library came out
+cause the agent instruments gRPC itself.
 
-Inside those boundaries, the service
-[creates an application span](/docs/demo/services/recommendation/#create-new-spans):
-it starts `get_product_list` and makes it current while fetching and selecting
-products. That scope makes the catalog call a child of the application span. The
-service retains the `demo.*` attributes, records runtime exceptions, and ends
-the span in a `finally` block. The
-[Java tracing API guide](/docs/languages/java/api/#span) explains span creation,
-context, attributes, and exception recording.
+The tests don't run with the agent though, so they had to build an in-memory SDK
+and register the same gRPC interceptors I had just deleted from the app. Jaeger
+showed the same spans and `demo.*` attributes, plus flagd's own gRPC calls.
+Memory under load went to about 380 MiB of the 500 MiB limit, where the starter
+had sat around 305. And the approval I'd just got now covered code that was
+gone.
+
+On October 8 the Demo maintainer
+[asked me to hold](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6058694428):
+"On the Demo, we already have the `Ad` service using the OTel Java agent. The
+idea to add an extra Java service in Spring is to showcase a different
+instrumentation approach." The Java approver was
+[fine with that](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6066087816)
+as long as the example is "super clear about it not being the default
+recommendation". People copy from this repository as is, so that part matters.
+
+I reverted the agent commit. The code went back to exactly what had been
+approved, plus a note at the top of the service README and a changelog line
+saying the Java agent is the default. Looking back, that reason was in the
+thread on day two, when a maintainer said a Spring service could
+["introduce some other ways to instrument Java code"](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5631284857).
+It took two switches to get back to it. The Java agent is the default for a good
+reason, it instruments everything out of the box. Pick the starter only when the
+agent doesn't fit, like a native image, another agent already attached, or a
+tight container where every bit of headroom matters. Memory came up early in the
+review, and the starter ran about 75 MiB lighter under load than the agent, so
+going back to it made sense for the Demo too.
+
+## Wire the gRPC spans back in
+
+The starter hands out the `OpenTelemetry` instance as a bean but doesn't attach
+anything to a Spring gRPC server or channel. As the
+[recommendation service docs](/docs/demo/services/recommendation/#grpc-spans)
+show, the service creates `GrpcTelemetry` from that bean and registers its
+interceptors with `@GlobalServerInterceptor` and `@GlobalClientInterceptor`. The
+server one creates the incoming RPC span from the caller's context, the client
+one creates the catalog span and passes the context on.
+
+Inside those boundaries the service
+[creates `get_product_list`](/docs/demo/services/recommendation/#create-new-spans)
+and makes it current while it fetches products, which makes the catalog call its
+child. The [Java API docs](/docs/languages/java/api/#span) cover spans and
+context in general.
 
 ## Compare the Spring trace against the original
 
 ![Spring recommendation trace showing the same incoming RPC, get_product_list, and catalog parent-child relationships](java-trace.png)
 
-The Spring trace keeps the same chain: recommendation server, product-list work,
-catalog client, then catalog server. Check the product-count attributes against
-the expected values above as well. The Python instrumentation prefixes the RPC
-span names with `/`, while the Java library does not. The request still crosses
-the same instrumented boundaries.
-
-These screenshots compare span structure. Check the application attributes
-separately. The individual request durations do not establish a performance
-difference between the implementations.
-
-The service-level checks use an in-memory exporter, as described in the
-[Java SDK testing guide](/docs/languages/java/sdk/#testing), to assert the
-incoming span, the product-list parent, and the catalog-client trace ID. They
-also exercise errors. The running captures check that both services actually
-export connected spans through the Collector to Jaeger. The Demo's end-to-end
-checks remain a separate layer.
+Same chain: recommendation server, product-list work, catalog client, catalog
+server, with the attributes from the table. The Python instrumentation prefixes
+RPC span names with `/` and the Java library doesn't. The Java library also
+still writes the older `rpc.system` attribute while the catalog uses
+`rpc.system.name`, so a query across services has to handle both. Two single
+requests say nothing about performance.
 
 ## Keep the behavior behind the signals
 
-Some details are easy to miss while translating the handler. The frontend sends
-product IDs as one repeated element per character. The Python service joins
-those characters and splits on commas. The Spring service keeps that behavior
-and also accepts complete IDs. Otherwise, a valid gRPC response could recommend
-the product already on the screen.
+The frontend sends product IDs as one repeated element per character. The Python
+service joined them and split on commas. The Spring service does the same and
+also accepts whole IDs, otherwise it could recommend the product already on the
+screen.
 
-The metric still means the same thing. I kept `demo.recommendation.requests`,
-the `recommendation.type=catalog` attribute, and the counting logic: five
-returned recommendations add five to the counter. Incrementing once per request
-would change what a dashboard measures despite keeping its metric name.
+I kept `demo.recommendation.requests`, its `recommendation.type=catalog`
+attribute and the counting, so five returned recommendations add five. Counting
+once per request would keep the name and change what every dashboard on it
+measures.
 
-The `recommendationCacheFailure` flag is a deliberate failure scenario. On a
-cache miss, the service appends catalog IDs and copies a quarter of the
-accumulated cache back into itself. The response uses distinct IDs, so it can
-look reasonable while the stored list grows. Keeping the cache-hit and product
-count attributes lets a reader investigate that behavior. Removing the leak
-would remove the scenario the Demo is meant to expose.
+The `recommendationCacheFailure` flag is a failure scenario on purpose. On a
+cache miss the service appends the catalog IDs, then copies a quarter of the
+cache back into itself. Responses use distinct IDs, so they look fine while the
+list grows until the container restarts. Fixing it would remove the scenario, so
+the cache-hit and product-count attributes stay for whoever goes looking.
 
-For another rewrite, start with a request you can follow in the old trace. Check
-which boundaries, application attributes and metric meanings need to survive,
-then compare the running implementation against that baseline. The
-[recommendation service documentation](/docs/demo/services/recommendation/)
-explains how this example's starter and gRPC library fit together.
-
-<!-- markdownlint-disable no-otel-io-external-urls -->
-
-[spring-boot-starter]:
-  https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/
-
-<!-- markdownlint-enable no-otel-io-external-urls -->
+The setup changed three times and the check didn't: open Jaeger and compare the
+chain and the `demo.*` attributes with the Python trace. The final setup is in
+the [recommendation service docs](/docs/demo/services/recommendation/).
