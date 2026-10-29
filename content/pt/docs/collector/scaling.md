@@ -373,19 +373,19 @@ Para contornar isso, você pode implantar uma camada de Collectors contendo o
 exporter de balanceamento de carga na frente dos seus Collectors que fazem a
 amostragem por cauda ou o processamento span-to-metrics. O exporter de
 balanceamento de carga calculará consistentemente um hash do ID do rastro ou do
-nome do serviço e determinará qual Collector de backend deve receber os trechos
-daquele rastro. Você pode configurar o exporter de balanceamento de carga para
-usar a lista de hosts por trás de uma entrada DNS do tipo A, como um serviço
-headless do Kubernetes. Quando a implantação por trás desse serviço for escalada
-para mais ou para menos, o exporter de balanceamento de carga eventualmente verá
-a lista de hosts atualizada. Como alternativa, você pode especificar uma lista
-de hosts estáticos a serem usados pelo exporter de balanceamento de carga. Você
-pode escalar a camada de Collectors configurados com o exporter de balanceamento
-de carga aumentando o número de réplicas. Note que cada Collector pode executar
-a consulta DNS em momentos diferentes, causando uma divergência na visão do
-cluster por alguns instantes. Recomendamos reduzir o valor do intervalo para que
-a visão do cluster seja divergente apenas por um curto período em ambientes
-altamente elásticos.
+nome do serviço e determinará qual Collector de _backend_ deve receber os
+trechos daquele rastro. Você pode configurar o exporter de balanceamento de
+carga para usar a lista de hosts por trás de uma entrada DNS do tipo A, como um
+serviço headless do Kubernetes. Quando a implantação por trás desse serviço for
+escalada para mais ou para menos, o exporter de balanceamento de carga
+eventualmente verá a lista de hosts atualizada. Como alternativa, você pode
+especificar uma lista de hosts estáticos a serem usados pelo exporter de
+balanceamento de carga. Você pode escalar a camada de Collectors configurados
+com o exporter de balanceamento de carga aumentando o número de réplicas. Note
+que cada Collector pode executar a consulta DNS em momentos diferentes, causando
+uma divergência na visão do cluster por alguns instantes. Recomendamos reduzir o
+valor do intervalo para que a visão do cluster seja divergente apenas por um
+curto período em ambientes altamente elásticos.
 
 Aqui está um exemplo de configuração usando um registro DNS do tipo A (serviço
 Kubernetes otelcol no namespace observability) como entrada para as informações
