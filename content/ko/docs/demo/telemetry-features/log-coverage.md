@@ -3,6 +3,7 @@ title: 서비스별 로그 지원 현황
 linkTitle: 로그 지원 현황
 aliases: [log_service_features, logging-features, ../logging-features]
 default_lang_commit: 10fe33751d6b62406aa77cf2c21fbb6b08a4cc12
+drifted_from_default: true
 ---
 
 | 서비스            | 언어       | OTLP 로그 |
