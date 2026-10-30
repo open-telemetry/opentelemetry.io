@@ -10,6 +10,7 @@ what-next: >
   alterações, veja [Enviando conteúdo](../pull-requests).
 weight: 60
 default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
+drifted_from_default: true
 cSpell:ignore: TOCSS
 ---
 

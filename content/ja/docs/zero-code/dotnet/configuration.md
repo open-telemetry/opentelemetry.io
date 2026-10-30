@@ -5,6 +5,7 @@ description: .NET の自動計装の構成と設定
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 default_lang_commit: a6d209663d7f45dde5497371fc5d5f7d6f441acf
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE AZURECONTAINERAPPS CLSID CORECLR dylib ILREWRITE LOGRECORD NETFX OPERATINGSYSTEM PROCESSRUNTIME SQLCLIENT UNHANDLEDEXCEPTION
 ---

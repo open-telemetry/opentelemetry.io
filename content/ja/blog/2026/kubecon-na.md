@@ -8,6 +8,7 @@ eventUrl: &eventUrl >-
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
 default_lang_commit: cde423b3ca7efa8a2fed4ce97369a8fedff8932b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos OTTL Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
 ---
