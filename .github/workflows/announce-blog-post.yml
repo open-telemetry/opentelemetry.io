@@ -47,6 +47,9 @@ jobs:
           permission-contents: write
           permission-pull-requests: write
 
+      - name: Install ImageMagick
+        run: sudo apt-get install -y --no-install-recommends imagemagick
+
       - name: Create announcement PRs
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
@@ -56,6 +59,11 @@ jobs:
         run: |
           import datetime, os, re, shutil, subprocess, sys, tempfile
           import yaml
+
+          yaml.add_representer(
+              str, lambda d, v: d.represent_scalar(
+                  'tag:yaml.org,2002:str', v, style='|' if '\n' in v else None),
+              Dumper=yaml.SafeDumper)
 
           ANN = 'open-telemetry/opentelemetry-announcements'
           POST_RE = re.compile(
@@ -107,57 +115,46 @@ jobs:
                   print(f'Already announced: {existing}')
                   continue
 
-              ann = fm.get('announcement')
-              if ann is None:
-                  ann = {}
-              if not isinstance(ann, dict):
-                  print(f'::error file={path}::announcement must be a map or false')
+              short = fm.get('announcement')
+              if short is None:
+                  short = title
+              if not isinstance(short, str) or not short.strip():
+                  print(f'::error file={path}::announcement must be a non-empty '
+                        'string or false')
                   failed = True
                   continue
-              ann = dict(ann)
-
-              def fill(v):
-                  if isinstance(v, str):
-                      return v.replace('{url}', url).replace('{title}', title)
-                  if isinstance(v, list):
-                      return [fill(i) for i in v]
-                  if isinstance(v, dict):
-                      return {k: fill(i) for k, i in v.items()}
-                  return v
-
-              ann = fill(ann)
-              ann.setdefault(
-                  'text', f'New on the OpenTelemetry blog: {title}\n\n{url}\n')
-              ann.setdefault('subject', f'New blog post: {title}')
-
-              # Images live in the post's page bundle; copy them next to the
-              # announcement file.
-              post_dir = os.path.dirname(os.path.abspath(path))
-              copies = []
-
-              def stage_image(entry, where):
-                  img = entry.get('image')
-                  if not img:
-                      return True
-                  src = os.path.abspath(os.path.join(post_dir, img))
-                  if (not src.startswith(post_dir + os.sep)
-                          or src == os.path.abspath(path)
-                          or not os.path.isfile(src)):
-                      print(f'::error file={path}::{where}: image {img!r} must be '
-                            'a file inside the post bundle')
-                      return False
-                  new = f'blog-{slug}-{os.path.basename(src)}'
-                  copies.append((src, new))
-                  entry['image'] = new
-                  return True
-
-              ok = stage_image(ann, 'announcement')
-              for i, fu in enumerate(ann.get('follow_ups') or []):
-                  ok &= isinstance(fu, dict) and stage_image(
-                      fu, f'follow_ups[{i}]')
-              if not ok:
+              short = ' '.join(short.split())
+              # Bluesky is the tightest channel: 300 characters, and Buffer
+              # counts the link as its host plus up to 16 characters.
+              link_cost = len('opentelemetry.io') + 16
+              if len(short) + 2 + link_cost > 300:
+                  print(f'::error file={path}::announcement is {len(short)} '
+                        f'characters; at most {300 - 2 - link_cost} fit on Bluesky '
+                        'together with the link')
                   failed = True
                   continue
+
+              heading = f'New on the OpenTelemetry blog: {title}'
+              ann = {
+                  'subject': heading,
+                  'text': f'{short}\n\n{url}\n',
+              }
+
+              # Use the post's own feature/cover/thumbnail image from its page
+              # bundle if there is one, otherwise render a card with the title.
+              # Images are only posted to Bluesky, Mastodon and LinkedIn.
+              image_name = f'blog-{slug}.jpg'
+              image_src = None
+              bundle = os.path.dirname(path) if path.endswith('/index.md') else None
+              if bundle:
+                  for cand in sorted(os.listdir(bundle)):
+                      if (re.search(r'feature|cover|thumbnail', cand)
+                              and re.fullmatch(r'[A-Za-z0-9_-][A-Za-z0-9._-]*\.(png|jpe?g|gif|webp)', cand)):
+                          image_src = os.path.join(bundle, cand)
+                          image_name = f'blog-{slug}{os.path.splitext(cand)[1].lower()}'
+                          break
+              ann['image'] = image_name
+              ann['alt'] = heading
 
               body = (
                   '# yaml-language-server: '
@@ -172,11 +169,13 @@ jobs:
                               exist_ok=True)
                   with open(os.path.join(tmp, dest), 'w', encoding='utf-8') as out:
                       out.write(body)
-                  files_to_add = [dest]
-                  for src, new in copies:
-                      target = f'announcements/{today:%Y}/{new}'
-                      shutil.copyfile(src, os.path.join(tmp, target))
-                      files_to_add.append(target)
+                  image_dest = f'announcements/{today:%Y}/{image_name}'
+                  if image_src:
+                      shutil.copyfile(image_src, os.path.join(tmp, image_dest))
+                  else:
+                      run('scripts/blog-card/render.sh', title,
+                          os.path.join(tmp, image_dest))
+                  files_to_add = [dest, image_dest]
                   run('git', 'add', *files_to_add, cwd=tmp)
                   run('git', '-c', 'user.name=otelbot',
                       '-c', 'user.email=197425009+otelbot@users.noreply.github.com',
@@ -191,9 +190,10 @@ jobs:
                   f'Announces the new blog post [{title}]({url}), added in '
                   f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}'
                   f'/commit/{os.environ["SOURCE_SHA"]}.\n\n'
-                  'Edit the text and channels as needed, set the file date to '
+                  'Edit the text or image as needed, set the file date to '
                   'the day the post should go out, then merge and approve the '
-                  '`announcements` environment to publish.\n\n'
+                  '`announcements` environment to publish. The image is sent to '
+                  'Bluesky, Mastodon and LinkedIn only.\n\n'
                   'Created automatically by the "Announce blog post" workflow.')
               r = run('gh', 'pr', 'create', '--repo', ANN, '--head', branch,
                       '--base', 'main', '--title', f'Announce blog post: {title}',
