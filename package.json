@@ -172,7 +172,7 @@
     "link-cache": "0.6.0",
     "markdown-it": "15.0.3",
     "markdownlint": "0.42.0",
-    "markdownlint-cli2": "0.23.3",
+    "markdownlint-cli2": "0.24.0",
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-no-shortcut-ref-link": "0.4.0",
     "prettier": "3.9.10",
