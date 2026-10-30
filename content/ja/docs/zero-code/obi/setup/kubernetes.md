@@ -13,7 +13,7 @@ cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefu
 >
 > このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
 >
-> <!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
+> <!-- [Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
 
 ## Kubernetesメタデータデコレーションを構成する {#configuring-kubernetes-metadata-decoration}
 
@@ -366,7 +366,7 @@ spec:
                 - DAC_READ_SEARCH     # <-- 重要。OBIがELFファイルを開くことを許可。
                 - PERFMON             # <-- 重要。OBIがBPFプログラムをロードすることを許可。
                 #- SYS_RESOURCE       # <-- 5.11より前のバージョンのみ。OBIがロックされたメモリの量を増やすことを許可。
-                #- SYS_ADMIN          # <-- Goアプリケーションのトレースコンテキスト伝搬、またはDebianディストリビューションで
+                #- SYS_ADMIN          # <-- Goアプリケーションのトレースコンテキスト伝搬、またはDebianディストリビューションでkernel.perf_event_paranoid >= 3の場合に必要。
               drop:
                 - ALL
           volumeMounts:
