@@ -7549,6 +7549,11 @@
     "when": "2026-10-23T05:45:07Z",
     "via": "lychee",
   },
+  "https://github.com/gouslu": {
+    "result": 200,
+    "when": "2026-10-30T03:43:46Z",
+    "via": "lychee",
+  },
   "https://github.com/gouthamve": {
     "result": 200,
     "when": "2026-10-23T05:45:22Z",
@@ -10452,6 +10457,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/45740": {
     "result": 200,
     "when": "2026-10-23T05:45:05Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47218": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/47305": {
@@ -14614,6 +14624,11 @@
     "when": "2026-10-19T05:46:19Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/e3bd087aedd311e3b1a5cdbb4c4f82043f02f1f2/distributions/otelcol-k8s/manifest.yaml": {
+    "result": 200,
+    "when": "2026-10-16T22:24:20Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/README.md": {
     "result": 200,
     "when": "2026-10-19T05:46:27Z",
@@ -14662,6 +14677,16 @@
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases": {
     "result": 200,
     "when": "2026-10-16T05:44:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-cmd/builder/v0.163.1": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest": {
@@ -14724,6 +14749,11 @@
     "when": "2026-10-20T05:45:17Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/5177a6a85ca3783068077e25aec6cebbe1d50d1f/CHANGELOG.md?from_branch=main#v1340v01280": {
+    "result": "error",
+    "when": "2026-10-16T22:25:05Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28": {
     "result": 200,
     "when": "2026-10-22T05:45:08Z",
@@ -14747,6 +14777,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/ebfdf90d82abe991c69554b31f2efc4a96622803/docs/component-stability.md#stable": {
     "result": 200,
     "when": "2026-10-16T22:42:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/CHANGELOG.md#v1340v01280": {
+    "result": 200,
+    "when": "2026-10-16T22:24:20Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility": {
@@ -15002,6 +15037,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10808": {
     "result": 200,
     "when": "2026-10-20T05:45:03Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/16075": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/9375": {
@@ -15307,6 +15347,11 @@
   "https://github.com/open-telemetry/opentelemetry-configuration": {
     "result": 200,
     "when": "2026-10-20T05:44:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/0a18b0c19ba656c22aa2a8dab65d03380fcc2802/VERSIONING.md?from_branch=main#experimental-features": {
@@ -16912,6 +16957,11 @@
   "https://github.com/open-telemetry/opentelemetry-go-contrib/labels/area%3A%20config": {
     "result": 200,
     "when": "2026-10-16T05:44:21Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/pull/9818": {
+    "result": 200,
+    "when": "2026-10-16T22:24:21Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-contrib/tree/848eb220bc83bb81d77383bbf39ebd86b5034407/otelconf?from_branch=main": {
@@ -30042,6 +30092,11 @@
   "https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf": {
     "result": 200,
     "when": "2026-10-19T05:46:25Z",
+    "via": "lychee",
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf/v0.3.0": {
+    "result": 200,
+    "when": "2026-10-16T22:24:20Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/processors/minsev": {

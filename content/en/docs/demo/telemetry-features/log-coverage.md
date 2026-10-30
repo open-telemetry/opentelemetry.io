@@ -17,7 +17,7 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Flagd           | Go         | 🚧        |
 | Flagd-ui        | Elixir     | 🚧        |
 | Fraud Detection | Kotlin     | ✅        |
-| Frontend        | TypeScript | 🚧        |
+| Frontend        | TypeScript | ✅        |
 | Frontend Proxy  | Envoy      | ✅        |
 | Image Provider  | NGINX      | 🚧        |
 | Load Generator  | Python     | ✅        |
@@ -27,6 +27,9 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
+
+Frontend log coverage applies to the server (`frontend`). The browser
+instrumentation (`frontend-web`) does not export OTLP logs.
 
 Emoji Legend:
 
