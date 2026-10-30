@@ -521,29 +521,30 @@ The repository includes several other workflows:
 ## Blog post announcements {#announce-blog-post}
 
 [`announce-blog-post.yml`][announce] runs on every push to `main` that touches
-`content/en/blog/`. For each English blog post the push adds (drafts and posts
-with `announcement: false` are skipped), it opens a pull request in
-[`open-telemetry/opentelemetry-announcements`][announcements] that adds an
-announcement file and an image. A maintainer there edits the text, merges the
-PR, and approves the `announcements` environment to publish.
+`content/en/blog/`. It runs [`announce-blog-post.sh`][announce-script], which
+finds English blog posts published by the push: posts that aren't drafts now,
+and that didn't exist or were drafts before the push. For those posts it opens
+one pull request in
+[`open-telemetry/opentelemetry-announcements`][announcements] with an
+announcement file per post. A maintainer there edits the text, merges the PR,
+and approves the `announcements` environment to publish.
 
 - Uses the `OTELBOT_DOCS_*` app token, scoped to the announcements repository
   (the app must be installed there with `contents` and `pull requests` write
   access).
 - The text comes from the post's `announcement` front matter string (default:
   the title) followed by the post URL. The subject is "New on the OpenTelemetry
-  blog: _title_". The workflow fails if the text won't fit on Bluesky.
-- The image is the post's own `feature*`, `cover*` or `thumbnail*` image from
-  its page bundle, or else a card rendered by [`scripts/blog-card/`][card] with
-  ImageMagick. The announcements repository sends images to Bluesky, Mastodon
-  and LinkedIn only, and Buffer fetches them from the repository, so the image
-  is committed there.
-- Idempotent: it skips posts whose `announce/blog-<year>-<slug>` branch already
-  has a PR.
+  blog: _title_". Posts with `announcement: false` are skipped. The
+  announcements repository's own pull request check validates the length per
+  channel and warns about links that don't work yet.
+- For posts with a future `date`, the PR description says when the post goes
+  live, so the PR isn't merged before that.
+- Uses the `create-pull-request` action with the branch
+  `otelbot/announce-blog-<slug>`, so re-runs update the same PR.
 - Run it manually with the `post` input to announce an existing post.
 
 [announce]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml
+[announce-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/announce-blog-post.sh
 [announcements]: https://github.com/open-telemetry/opentelemetry-announcements
-[card]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/blog-card

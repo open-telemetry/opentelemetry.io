@@ -29,7 +29,7 @@ blog, [submit a social media request][].
 
 ## Announcing your blog post {#announcing}
 
-When a blog post is merged, a pull request is opened automatically in
+When a blog post is published, a pull request is opened automatically in
 [opentelemetry-announcements][] so maintainers can announce it on
 OpenTelemetry's social media channels and mailing list. The announcement is "New
 on the OpenTelemetry blog: _title_" with a short text and the link to the post.
@@ -43,14 +43,9 @@ announcement:
   up.
 ```
 
-The text can be up to about 260 characters, because Bluesky allows 300 and the
-link counts as roughly 34 of them. Use `announcement: false` to skip the
-announcement.
-
-The social media posts get an image. If the post's page bundle
-(`<post>/index.md`) has an image with `feature`, `cover` or `thumbnail` in its
-name, that image is used. Otherwise a card with the post title is generated. The
-pull request can still be edited before it's merged.
+Keep it to about 260 characters, because Bluesky allows 300 and the link counts
+as roughly 34 of them. Use `announcement: false` to skip the announcement. The
+text can still be edited in the announcements pull request before it's merged.
 
 [opentelemetry-announcements]:
   https://github.com/open-telemetry/opentelemetry-announcements
