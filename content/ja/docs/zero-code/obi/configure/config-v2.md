@@ -3,7 +3,7 @@ title: OBI Config v2 リファレンス
 linkTitle: Config v2 リファレンス
 description: スタンドアロン OBI または OBI Collector レシーバーを Config v2 で設定する方法を学びます。
 weight: 3
-default_lang_commit: df7ca870f2ec59453948ced42ca0d76bfd5e53d5
+default_lang_commit: 3c71900b2014474adce4a86da454d68b854af254
 # prettier-ignore
 cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sqlpp
 ---
@@ -82,7 +82,7 @@ extensions:
 
 ### サポートされるトップレベルフィールド {#supported-top-level-fields}
 
-OBI v0.12.1 は、以下の OpenTelemetry 宣言的構成フィールドをサポートしています。
+OBI v0.12.1 以降は、以下の OpenTelemetry 宣言的構成フィールドをサポートしています。
 
 | フィールド                   | サポート内容                                                                                                                                              |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -105,7 +105,7 @@ resource:
 ```
 
 スタンドアロン構成を検証する際、OBI はサポートされていないパイプラインフィールドを無視せず、エラーを報告します。
-v0.12.1 では、`attribute_limits`、`instrumentation/development`、`logger_provider` は使用しないでください。
+`attribute_limits`、`instrumentation/development`、`logger_provider` は使用しないでください。
 また、`disabled: true`、空でない `distribution`、空でない `propagator` も拒否されます。
 
 Config v2 の OTLP/gRPC および OTLP/HTTP エクスポーターの例については、[エクスポーターの設定](../migrate-to-config-v2/#configure-exporters)を参照してください。
@@ -211,7 +211,7 @@ extensions:
                   unmatched: path
 ```
 
-v0.12.1 では、`refine` は `exports` と `http.routes` をサポートします。
+`refine` は `exports` と `http.routes` をサポートします。
 空でない `http.filters` フィールドやワークロードごとのサンプリングはサポートされていません。
 すべてのワークロードに対するサンプリングは `tracer_provider.sampler` で設定してください。
 
@@ -228,6 +228,7 @@ v0.12.1 では、`refine` は `exports` と `http.routes` をサポートしま�
 | `policy`, `rules` | ワークロードを選択し、ワークロードごとの調整を適用します。                                                   |
 | `instrumentation` | アプリケーションプロトコルの有効化とチューニングを行います。                                                 |
 | `runtimes`        | Go、Node.js、Java のランタイム計装を制御します。                                                             |
+| `metrics`         | `features` でメトリクスファミリを選択します。                                                                |
 | `network`         | ネットワークフローと TCP 統計のキャプチャを設定します。                                                      |
 | `limits`          | カーディナリティとメモリのガードレールを設定します。                                                         |
 | `engine`          | バッチ処理、PID フィルタリング、コンテキスト伝搬、トラフィック制御、その他の eBPF 動作をチューニングします。 |
@@ -264,7 +265,7 @@ Config v2 は、プロトコルとシグナルごとにアプリケーション�
 たとえば、HTTP メトリクスや SQL テレメトリーに同じフィルターを適用せずに、HTTP トレースだけをフィルタリングできます。
 これらのフィルターは `capture.instrumentation.<protocol>.filters.traces` と `.metrics` 配下に定義します。
 
-ネットワークフローフィルターと TCP 統計フィルターは v0.12.1 ではシグナル固有ではありません。
+ネットワークフローフィルターと TCP 統計フィルターはシグナル固有ではありません。
 これらのグループごとに、トレースとメトリクスで同じフィルターマップを使用してください。
 2 つのマップが異なる場合、検証でエラーが報告されます。
 
@@ -277,8 +278,35 @@ HTTP ペイロード抽出を有効にするには、`payload_extraction.enabled
 
 `capture.runtimes` を使用して、Go プローブ、Node.js の `SIGUSR1` インジェクション、Java エージェントのアタッチメントを有効化または無効化します。
 Java のデバッグ設定やアタッチメントタイムアウトも設定できます。
-OBI v0.12.1 では、空でないランタイム `filter` フィールドはサポートされていません。
+OBI は空でないランタイム `filter` フィールドをサポートしていません。
 かわりにキャプチャルールを使用してワークロードを選択してください。
+
+### メトリクス機能の選択 {#metric-feature-selection}
+
+v0.15.2 以降、Config v1 と同じ名前を使用して `capture.metrics.features` でメトリクスファミリを選択できます。
+
+```yaml
+extensions:
+  obi:
+    version: '2.0'
+    capture:
+      metrics:
+        features:
+          - application_red
+          - application_runtime
+          - application_service_graph
+          - application_span_otel
+```
+
+これらのメトリクスをエクスポートするには `meter_provider` を設定します。
+Collector レシーバー本体では、このリストを `metrics.features` に配置し、Collector メトリクスパイプラインを使用してエクスポートします。
+すべての名前と互換性の制約については、[メトリクスエクスポート機能](../export-data/#metrics-export-features)を参照してください。
+
+明示的なリストは、プロトコル、HTTP ボディサイズ、およびネットワーク設定から推論された選択を置き換えます。
+空のリストはすべてのメトリクス機能を無効にします。
+省略すると推論が維持されます。
+プロトコルの `enabled.metrics` スイッチは、`enabled.traces` とは独立して、どのプロトコルがアプリケーションメトリクス、スパンメトリクス、サービスグラフに寄与するかを引き続き制御します。
+`network.capture.enabled: true` を設定すると、この機能リストとは独立してフローキャプチャを強制できます。
 
 ### ネットワークオブザーバビリティ {#network-observability}
 

@@ -42,7 +42,7 @@ jobs:
 
       # Minted only after dependency preparation so that no write credential is
       # present while `npm` lifecycle scripts run.
-      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         id: otelbot-token
         with:
           # The base otelbot App lacks contents permission; use the
@@ -68,7 +68,7 @@ jobs:
   report-failure:
     needs: auto-update
     if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
-    uses: ./.github/workflows/reusable-report-failure.yml
+    uses: $/.github/workflows/reusable-report-failure.yml
     permissions:
       issues: write # Pass through for failure tracking issues
       contents: read

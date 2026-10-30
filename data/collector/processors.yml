@@ -225,10 +225,10 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
+    logs: alpha
+    metrics: alpha
+    traces: alpha
     profiles: development
-    traces: development
 - name: probabilisticsamplerprocessor
   display_name: Probabilistic Sampling Processor
   repo: contrib
@@ -374,3 +374,10 @@
     - contrib
   stability:
     logs: alpha
+- name: verifyprocessor
+  display_name: verifyprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development

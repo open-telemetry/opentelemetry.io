@@ -4,7 +4,7 @@ linkTitle: ローカリゼーションのセットアップ
 description: >-
   OpenTelemetry ウェブサイトに新しい言語のローカリゼーションをオンボーディングするための、メンテナー向けステップバイステップガイド。
 weight: 50
-default_lang_commit: 3c1e6e89077b2afbb9a3ffd5ff61a132b53152aa
+default_lang_commit: 67a2f014da28cd56bcadc56c94d7037398547329
 drifted_from_default: true
 ---
 

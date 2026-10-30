@@ -4,6 +4,7 @@ linkTitle: メトリクスのカーディナリティ
 description: 計装される環境のサイズと複雑さを考慮した、デフォルトの OBI インストールで生成されるメトリクスのカーディナリティの算出方法の概要。
 weight: 24
 default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
+drifted_from_default: true
 cSpell:ignore: kube-system spanmetrics
 ---
 

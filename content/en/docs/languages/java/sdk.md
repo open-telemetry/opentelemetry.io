@@ -6,7 +6,7 @@ cSpell:ignore: autoconfigured data_point FQCNs inflight Interceptable okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 
 The SDK is the built-in reference implementation of the [API](../api/),
 processing and exporting telemetry produced by instrumentation API calls. This

@@ -7,7 +7,8 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+default_lang_commit: 67a2f014da28cd56bcadc56c94d7037398547329
+drifted_from_default: true
 cSpell:ignore: TOCSS
 ---
 
@@ -177,7 +178,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 英語のソースページでは、更新対象となるフェンス付きコードブロックの直前に、ファイル抜粋ディレクティブを記載してください。
 
 ````md
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 <?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
 
