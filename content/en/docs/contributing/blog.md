@@ -27,6 +27,36 @@ blog, [submit a social media request][].
 [submit a social media request]:
   https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
 
+## Announcing your blog post {#announcing}
+
+When a blog post is merged, a pull request is opened automatically in
+[opentelemetry-announcements][] so maintainers can announce it on
+OpenTelemetry's social media channels. By default the announcement says "New on
+the OpenTelemetry blog: _title_" followed by the post URL.
+
+To customize it, add an `announcement` key to the front matter. It accepts the
+keys described in the [announcements README][], and `{url}` and `{title}` are
+replaced with the post URL and title:
+
+```yaml
+announcement:
+  text: |
+    Cardinality limits keep your metrics pipeline healthy. Learn how to set them:
+    {url}
+  subject: 'Cardinality limits in OpenTelemetry'
+  channels: [bluesky, mastodon, linkedin]
+  image: social.png # a file in the post's page bundle (`<post>/index.md`)
+  alt: Diagram of cardinality limits
+```
+
+Use `announcement: false` to skip the announcement. The pull request can still
+be edited before it's merged.
+
+[opentelemetry-announcements]:
+  https://github.com/open-telemetry/opentelemetry-announcements
+[announcements README]:
+  https://github.com/open-telemetry/opentelemetry-announcements#requesting-an-announcement
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original

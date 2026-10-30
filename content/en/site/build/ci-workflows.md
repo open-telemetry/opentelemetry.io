@@ -517,3 +517,28 @@ The repository includes several other workflows:
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 [self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->
+
+## Blog post announcements {#announce-blog-post}
+
+[`announce-blog-post.yml`][announce] runs on every push to `main` that touches
+`content/en/blog/`. For each English blog post the push adds (drafts are
+skipped), it opens a pull request in
+[`open-telemetry/opentelemetry-announcements`][announcements] that adds an
+announcement file with the post title and URL. A maintainer there edits the
+text, merges the PR, and approves the `announcements` environment to publish.
+
+- Uses the `OTELBOT_DOCS_*` app token, scoped to the announcements repository
+  (the app must be installed there with `contents` and `pull requests` write
+  access).
+- The announcement content comes from the post's optional `announcement` front
+  matter key (same keys as the announcements schema; `{url}` and `{title}` are
+  substituted; images must be in the post's page bundle and are copied next to
+  the announcement file). `announcement: false` opts out. See
+  [Announcing your blog post](/docs/contributing/blog/#announcing).
+- Idempotent: it skips posts whose `announce/blog-<year>-<slug>` branch already
+  has a PR.
+- Run it manually with the `post` input to announce an existing post.
+
+[announce]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml
+[announcements]: https://github.com/open-telemetry/opentelemetry-announcements

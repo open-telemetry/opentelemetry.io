@@ -1,0 +1,204 @@
+name: Announce blog post
+
+# Opens a draft announcement PR in open-telemetry/opentelemetry-announcements
+# for every English blog post added to main. A maintainer there reviews, merges
+# and approves publishing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/en/blog/**
+  workflow_dispatch:
+    inputs:
+      post:
+        description:
+          'Blog post to announce, e.g. content/en/blog/2026/my-post.md (default:
+          posts added by the latest commit)'
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    name: Open announcement PR
+    runs-on: ubuntu-latest
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          ref: ${{ github.sha }}
+
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        id: otelbot-token
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          owner: open-telemetry
+          repositories: opentelemetry-announcements
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Create announcement PRs
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          POST_INPUT: ${{ inputs.post }}
+          SOURCE_SHA: ${{ github.sha }}
+        shell: python
+        run: |
+          import datetime, os, re, shutil, subprocess, sys, tempfile
+          import yaml
+
+          ANN = 'open-telemetry/opentelemetry-announcements'
+          POST_RE = re.compile(
+              r'^content/en/blog/(\d{4})/([a-z0-9][a-z0-9._-]*?)(?:/index)?\.md$')
+
+          def run(*cmd, cwd=None, check=True):
+              return subprocess.run(
+                  cmd, cwd=cwd, check=check, text=True, capture_output=True)
+
+          if os.environ['POST_INPUT']:
+              files = [os.environ['POST_INPUT']]
+          else:
+              files = run('git', 'diff', '--name-only', '--diff-filter=A',
+                          'HEAD^', 'HEAD', '--', 'content/en/blog').stdout.split()
+
+          posts = []
+          for f in files:
+              m = POST_RE.match(f)
+              if m and os.path.isfile(f):
+                  posts.append((f, m.group(1), m.group(2)))
+          if not posts:
+              print('No new blog posts.')
+              sys.exit(0)
+
+          run('gh', 'auth', 'setup-git')
+          today = datetime.datetime.now(datetime.timezone.utc)
+          failed = False
+          for path, year, slug in posts:
+              with open(path, encoding='utf-8') as fh:
+                  parts = fh.read().split('---', 2)
+              fm = yaml.safe_load(parts[1]) if len(parts) == 3 else {}
+              if fm.get('draft') or fm.get('announcement') is False:
+                  print(f'Skipping {path}: draft or announcement: false')
+                  continue
+              title = ' '.join(str(fm.get('title', '')).split())
+              if not title:
+                  print(f'::warning file={path}::No title, skipping')
+                  continue
+
+              branch = f'announce/blog-{year}-{slug}'
+              url = f'https://opentelemetry.io/blog/{year}/{slug}/'
+              name = f'{today:%m-%d}-blog-{slug}.yaml'
+              dest = f'announcements/{today:%Y}/{name}'
+
+              existing = run('gh', 'pr', 'list', '--repo', ANN, '--head', branch,
+                             '--state', 'all', '--json', 'url',
+                             '--jq', '.[].url').stdout.strip()
+              if existing:
+                  print(f'Already announced: {existing}')
+                  continue
+
+              ann = fm.get('announcement')
+              if ann is None:
+                  ann = {}
+              if not isinstance(ann, dict):
+                  print(f'::error file={path}::announcement must be a map or false')
+                  failed = True
+                  continue
+              ann = dict(ann)
+
+              def fill(v):
+                  if isinstance(v, str):
+                      return v.replace('{url}', url).replace('{title}', title)
+                  if isinstance(v, list):
+                      return [fill(i) for i in v]
+                  if isinstance(v, dict):
+                      return {k: fill(i) for k, i in v.items()}
+                  return v
+
+              ann = fill(ann)
+              ann.setdefault(
+                  'text', f'New on the OpenTelemetry blog: {title}\n\n{url}\n')
+              ann.setdefault('subject', f'New blog post: {title}')
+
+              # Images live in the post's page bundle; copy them next to the
+              # announcement file.
+              post_dir = os.path.dirname(os.path.abspath(path))
+              copies = []
+
+              def stage_image(entry, where):
+                  img = entry.get('image')
+                  if not img:
+                      return True
+                  src = os.path.abspath(os.path.join(post_dir, img))
+                  if (not src.startswith(post_dir + os.sep)
+                          or src == os.path.abspath(path)
+                          or not os.path.isfile(src)):
+                      print(f'::error file={path}::{where}: image {img!r} must be '
+                            'a file inside the post bundle')
+                      return False
+                  new = f'blog-{slug}-{os.path.basename(src)}'
+                  copies.append((src, new))
+                  entry['image'] = new
+                  return True
+
+              ok = stage_image(ann, 'announcement')
+              for i, fu in enumerate(ann.get('follow_ups') or []):
+                  ok &= isinstance(fu, dict) and stage_image(
+                      fu, f'follow_ups[{i}]')
+              if not ok:
+                  failed = True
+                  continue
+
+              body = (
+                  '# yaml-language-server: '
+                  '$schema=../../schema/announcement.schema.json\n'
+                  + yaml.safe_dump(ann, allow_unicode=True, sort_keys=False,
+                                   width=1000))
+
+              with tempfile.TemporaryDirectory() as tmp:
+                  run('gh', 'repo', 'clone', ANN, tmp, '--', '--depth=1')
+                  run('git', 'checkout', '-b', branch, cwd=tmp)
+                  os.makedirs(os.path.join(tmp, os.path.dirname(dest)),
+                              exist_ok=True)
+                  with open(os.path.join(tmp, dest), 'w', encoding='utf-8') as out:
+                      out.write(body)
+                  files_to_add = [dest]
+                  for src, new in copies:
+                      target = f'announcements/{today:%Y}/{new}'
+                      shutil.copyfile(src, os.path.join(tmp, target))
+                      files_to_add.append(target)
+                  run('git', 'add', *files_to_add, cwd=tmp)
+                  run('git', '-c', 'user.name=otelbot',
+                      '-c', 'user.email=197425009+otelbot@users.noreply.github.com',
+                      'commit', '-m', f'Announce blog post: {slug}', cwd=tmp)
+                  r = run('git', 'push', 'origin', branch, cwd=tmp, check=False)
+                  if r.returncode:
+                      print(r.stderr)
+                      failed = True
+                      continue
+
+              pr_body = (
+                  f'Announces the new blog post [{title}]({url}), added in '
+                  f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}'
+                  f'/commit/{os.environ["SOURCE_SHA"]}.\n\n'
+                  'Edit the text and channels as needed, set the file date to '
+                  'the day the post should go out, then merge and approve the '
+                  '`announcements` environment to publish.\n\n'
+                  'Created automatically by the "Announce blog post" workflow.')
+              r = run('gh', 'pr', 'create', '--repo', ANN, '--head', branch,
+                      '--base', 'main', '--title', f'Announce blog post: {title}',
+                      '--body', pr_body, check=False)
+              print(r.stdout, r.stderr)
+              failed |= bool(r.returncode)
+
+          sys.exit(1 if failed else 0)
