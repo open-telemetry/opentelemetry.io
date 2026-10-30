@@ -2,14 +2,13 @@
 title: OpenTelemetry トレーシング Shim
 linkTitle: トレーシング Shim
 weight: 110
-default_lang_commit: bec33ed09231b738f244797c4346163128d9c98a
-drifted_from_default: true
+default_lang_commit: 6cc9e7715937274a7195b9275aab44e6e602ee34
 ---
 
 .NET は OpenTelemetry をサポートする他の言語やランタイムとは異なります。
 トレースは [System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics) API によって実装されており、`ActivitySource` や `Activity` といった既存のコンストラクトを再利用して、内部的に OpenTelemetry に準拠するようになっています。
 
-OpenTelemetry for .NET は、[System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics) ベースの実装の上に API Shim も提供しています。
+OpenTelemetry for .NET は、[System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics) ベースの実装の上に API Shim も提供しています。
 この Shim は、同じコードベースで他の言語と OpenTelemetry を併用している場合や、OpenTelemetry の仕様と一貫した用語を使いたい場合に役立ちます。
 
 ## トレースの初期化 {#initializing-tracing}
