@@ -3,6 +3,7 @@ title: サポートされているライブラリ
 linkTitle: サポートされているライブラリ
 weight: 11
 default_lang_commit: 123db37a9707afc95344ffcbb0081eb118cda85d
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu SOFARPC spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
