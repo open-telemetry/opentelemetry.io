@@ -218,7 +218,7 @@
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore elemetry GHSA jqrq katex loglevel minisearch mypy nowrap pmpm precheck pytest startswith -",
+  "spelling": "cSpell:ignore elemetry GHSA katex loglevel minisearch mypy nowrap pmpm precheck pytest startswith -",
   "allowScripts": {
     "@parcel/watcher": false,
     "hugo-extended@0.166.0": true,
