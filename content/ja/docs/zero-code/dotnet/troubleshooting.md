@@ -2,8 +2,7 @@
 title: .NET 自動計装の問題のトラブルシューティング
 linkTitle: トラブルシューティング
 weight: 50
-default_lang_commit: 2728c8fbf4f09cf3b8257a1b628a7631fc77d639
-drifted_from_default: true
+default_lang_commit: e731dee7b599846a61563ccf026e939ef7993342
 cSpell:ignore: corehost netfx pjanotti's TRACEFILE
 ---
 
@@ -101,24 +100,27 @@ OpenTelemetry .NET の NuGet パッケージとその依存関係は、OpenTelem
 このような競合が発生しないようにする簡単な方法は、`OpenTelemetry.AutoInstrumentation` パッケージをアプリケーションに追加することです。
 アプリケーションへの追加方法については、[Using the OpenTelemetry.AutoInstrumentation NuGet packages](../nuget-packages) を参照してください。
 
+フレームワーク依存のスタンドアロン .NET デプロイメントで、自動アセンブリリダイレクトが競合を解決できない場合やリダイレクトを無効にする必要がある場合は、[AdditionalDeps と共有ストアの回避策](#additionaldeps-and-shared-store-workaround)を使用してください。
+
 または、競合するパッケージのみをプロジェクトに追加してください。
 以下の依存関係が OpenTelemetry .NET 自動計装で使用されています。
 
-- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
-- [OpenTelemetry.AutoInstrumentation.AdditionalDeps](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/c27acd9bd0f82de47217fba660d9f979e0a0cc2d/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props)
+- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
 
 バージョンは以下の場所で確認できます。
 
-- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/Directory.Packages.props)
-- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/Directory.Packages.props)
-- [src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/f2d70bd0f095852bf0270aad61b60dfe1ea7834f/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props)
+- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/Directory.Packages.props)
+- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/Directory.Packages.props)
+- [src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props)
 
-デフォルトでは、.NET Framework アプリケーションのアセンブリ参照は、実行時に自動計装で使用されるバージョンにリダイレクトされます。
-この動作は [`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](../configuration) 設定で制御できます。
+アセンブリリダイレクトはスタンドアロンデプロイメントではデフォルトで有効、NuGet パッケージデプロイメントでは無効です。
+この動作は [`OTEL_DOTNET_AUTO_REDIRECT_ENABLED`](../configuration#additional-settings) 設定で制御できます。
+NuGet パッケージでアセンブリの読み込みエラーが発生する場合は、この設定が明示的に有効になっていないことを確認してください。
 
 アプリケーションが自動計装で使用されるアセンブリのバインディングリダイレクトをすでに含んでいる場合、この自動リダイレクトが失敗する可能性があります。
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833) を参照してください。
-既存のバインディングリダイレクトが [netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h) に記載されたバージョンへのリダイレクトを妨げていないか確認してください。
+既存のバインディングリダイレクトが .NET アプリケーション用の [assembly_redirection_net.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h) および .NET Framework アプリケーション用の [assembly_redirection_netfx.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h) に記載されたバージョンへのリダイレクトを妨げていないか確認してください。
+.NET 10 以降の `UnsafeAccessorTypeAttribute` メタデータリダイレクトを含む解決方法の詳細については、[Assembly Conflict Resolution](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md) を参照してください。
 
 上記の自動リダイレクトが機能するためには、.NET Framework アプリケーションの計装に使用されるアセンブリ（インストールディレクトリの `netfx` フォルダー配下のもの）をグローバルアセンブリキャッシュ（GAC）にもインストールする必要がある、2つの特定のシナリオがあります。
 
@@ -130,6 +132,50 @@ OpenTelemetry .NET の NuGet パッケージとその依存関係は、OpenTelem
 自動計装による GAC の使用方法の詳細については、[pjanotti's comment](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814) を参照してください。
 
 詳細については、[#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269) と [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296) を参照してください。
+
+#### AdditionalDeps と共有ストアの回避策 {#additionaldeps-and-shared-store-workaround}
+
+スタンドアロンディストリビューションには、ディストリビューションに含まれる依存関係から依存関係マニフェストと共有ストアディレクトリを生成するスクリプトが含まれています。
+この回避策は、フレームワーク依存のスタンドアロン .NET アプリケーションで、自動アセンブリリダイレクトが競合を解決できない場合やリダイレクトを無効にする必要がある場合に使用してください。
+
+アプリケーションを起動する前に、専用の書き込み可能な出力ディレクトリを選択し、使用しているオペレーティングシステム用のスクリプトを実行してください。
+
+Linux と macOS の場合：
+
+```sh
+"$OTEL_DOTNET_AUTO_HOME/generate-additional-deps.sh" \
+  --output /var/lib/otel-dotnet-auto/additional-deps
+```
+
+Windows の場合：
+
+```powershell
+& "$env:OTEL_DOTNET_AUTO_HOME\generate-additional-deps.ps1" `
+    -OutputPath "C:\ProgramData\OpenTelemetry\additional-deps"
+```
+
+スクリプトが出力したパスを使用して、アプリケーションに以下の環境変数を設定してください。
+
+```text
+DOTNET_ADDITIONAL_DEPS=<output>/AdditionalDeps
+DOTNET_SHARED_STORE=<output>/store
+```
+
+アプリケーションでアセンブリリダイレクトも無効にする必要がある場合は、`OTEL_DOTNET_AUTO_REDIRECT_ENABLED=false` を設定してください。
+
+この回避策には以下の制限事項があります。
+
+- フレームワーク依存のスタンドアロン .NET アプリケーションにのみ適用されます。
+  .NET Framework および自己完結型アプリケーションでは使用できません。
+  NuGet パッケージデプロイメントはアプリケーションの NuGet グラフを通じて依存関係を解決します。
+- 明示的なアセンブリ読み込みやカスタム `AssemblyLoadContext` の実装は、生成された依存関係グラフをバイパスする可能性があります。
+- 生成されたファイルはディストリビューションのアーキテクチャ、ターゲットフレームワーク、依存関係のバージョンに依存します。
+  計装のアップグレードごとにクリーンな出力ディレクトリに再生成してください。
+  異なるバージョンのファイルを混在させないでください。
+- 依存関係グラフはアプリケーション全体に適用されます。
+  有効化後、特に同じ依存関係の異なるバージョンを参照している場合は、アプリケーションを検証してください。
+
+詳細については、上流の [AdditionalDeps and shared-store workaround](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround) を参照してください。
 
 ### AdditionalDeps 内のアセンブリが見つからない {#assembly-in-additionaldeps-was-not-found}
 
