@@ -2014,6 +2014,11 @@
     "when": "2026-10-27T05:47:29Z",
     "via": "lychee",
   },
+  "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v4-response.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
+    "via": "lychee",
+  },
   "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html": {
     "result": 200,
     "when": "2026-10-27T05:47:29Z",
@@ -2122,6 +2127,11 @@
   "https://docs.aws.amazon.com/cli/latest/reference/s3api/upload-part.html": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
+    "via": "lychee",
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
     "via": "lychee",
   },
   "https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html": {
@@ -2976,7 +2986,7 @@
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html": {
     "result": "error",
-    "when": "2026-10-30T10:29:36Z",
+    "when": "2026-10-31T10:29:17Z",
     "via": "lychee",
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/jajdb/oracle/jdbc/OracleConnection.html#Tracing": {
@@ -27544,6 +27554,11 @@
     "when": "2026-10-16T05:45:17Z",
     "via": "lychee",
   },
+  "https://man7.org/linux/man-pages/man1/mountpoint.1.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
+    "via": "lychee",
+  },
   "https://man7.org/linux/man-pages/man1/ps.1.html#PROCESS_STATE_CODES": {
     "result": 200,
     "when": "2026-10-27T05:47:29Z",
@@ -27572,6 +27587,11 @@
   "https://man7.org/linux/man-pages/man3/getaddrinfo.3.html": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://man7.org/linux/man-pages/man5/filesystems.5.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
     "via": "lychee",
   },
   "https://man7.org/linux/man-pages/man5/proc.5.html": {
@@ -33384,6 +33404,11 @@
     "when": "2026-10-20T05:44:52Z",
     "via": "lychee",
   },
+  "https://www.iana.org/assignments/as-numbers/as-numbers.xhtml": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
+    "via": "lychee",
+  },
   "https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids": {
     "result": 200,
     "when": "2026-10-15T05:44:46Z",
@@ -34787,6 +34812,16 @@
   "https://www.rfc-editor.org/rfc/rfc3986#section-4.2": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
+    "via": "lychee",
+  },
+  "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
+    "via": "lychee",
+  },
+  "https://www.rfc-editor.org/rfc/rfc4632.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
     "via": "lychee",
   },
   "https://www.rfc-editor.org/rfc/rfc5789.html": {
