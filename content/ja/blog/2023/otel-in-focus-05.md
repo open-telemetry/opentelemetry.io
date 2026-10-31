@@ -20,7 +20,7 @@ cSpell:ignore: Dyrmishi Farfetch vertx
 
 ##### [仕様](/docs/specs/otel/) {#specification}
 
-[バージョン1.21](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.21.0) がリリースされ、以下を含むさまざまな重要な変更が含まれています。
+[バージョン1.21](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.21.0) がリリースされ、以下を含むさまざまな重要な変更が加えられました。
 
 - Log Bridge API と SDK が安定版としてマークされました。
 - ファイルベースの OpenTelemetry 設定の基盤が追加されました。
@@ -29,10 +29,10 @@ cSpell:ignore: Dyrmishi Farfetch vertx
 ##### [Collector](/docs/collector/) {#collector}
 
 [バージョン0.78.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.78.0) が 0.77 と合わせてリリースされました。
-これらのリリースでは、以下を含むいくつかの重要なコアの問題が対処されています。
+これらのリリースでは、以下を含むコアに関するいくつかの重要な問題に対処しています。
 
 - バッチプロセッサーが属性キーによるバッチ処理に対応しました。
-- 内部 OpenTelemetry SDK 使用の初期サポートが追加されました。
+- 内部での OpenTelemetry SDK 使用に対する初期サポートが追加されました。
 - エクスポーターのデフォルトキューサイズが5000から1000に削減されました。
 - 高カーディナリティの内部メトリクスを無効にするフィーチャーゲートが追加されました。
 
