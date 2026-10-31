@@ -9234,6 +9234,11 @@
     "when": "2026-10-19T05:46:51Z",
     "via": "lychee",
   },
+  "https://github.com/nodejs/release#release-schedule": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
   "https://github.com/npgsql/npgsql/blob/d3768398c17877b3a916c3c4d87e8e11698991fc/src/Npgsql/Internal/NpgsqlConnector.cs#L2687-L2724": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
@@ -9502,6 +9507,11 @@
   "https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/guides/contributor/membership.md": {
     "result": 200,
     "when": "2026-10-23T18:16:43Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/2c7afdc7fef121bcded259c1234489b834a770e8/sigs.md#javascript-sdk": {
+    "result": 200,
+    "when": "2026-10-27T15:13:27Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md": {
@@ -18454,6 +18464,11 @@
     "when": "2026-10-17T05:41:01Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/3c07d44fc3d9d890fc659e653acde418ee081c51/packages": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/87876b5451052f336bad2f5b9df65d77c75dbd76/packages?from_branch=main": {
     "result": 200,
     "when": "2026-10-23T05:44:50Z",
@@ -18784,9 +18799,34 @@
     "when": "2026-10-16T05:44:23Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/CONTRIBUTING.md": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-dual-cjsesm-exports": {
+    "result": 200,
+    "when": "2026-10-27T15:13:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-base-package-removed": {
+    "result": 200,
+    "when": "2026-10-27T15:13:27Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-web-package-removed": {
     "result": 200,
     "when": "2026-10-27T08:05:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-support-for-complex-attribute-values": {
+    "result": 200,
+    "when": "2026-10-27T15:13:27Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main": {
@@ -18884,14 +18924,29 @@
     "when": "2026-10-22T05:45:26Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/api%2Fv1.10.0": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0": {
     "result": 200,
     "when": "2026-10-20T05:44:57Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.300.0": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0": {
     "result": 200,
     "when": "2026-10-16T05:44:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v3.0.0": {
+    "result": 200,
+    "when": "2026-10-27T15:13:28Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-js/tree/13a035bc695996cf4aec885fef7b9866f48bc555/experimental/packages/shim-opencensus": {
