@@ -1319,6 +1319,16 @@
     "when": "2026-10-15T05:44:48Z",
     "via": "lychee",
   },
+  "https://connectrpc.com/docs/go/headers-and-trailers/": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://connectrpc.com/docs/protocol/": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://connectrpc.com/docs/protocol/#error-codes": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
@@ -1562,6 +1572,11 @@
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1": {
     "result": 200,
     "when": "2026-10-16T05:45:13Z",
+    "via": "lychee",
+  },
+  "https://datatracker.ietf.org/doc/html/rfc3986#section-4.3": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
   "https://datatracker.ietf.org/doc/html/rfc4122#section-3": {
@@ -1959,6 +1974,11 @@
     "when": "2026-10-15T05:44:47Z",
     "via": "lychee",
   },
+  "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-canned-policy.html": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/iam-access-control-overview-cwl.html#CWL_ARN_Format": {
     "result": 200,
     "when": "2026-10-20T05:45:14Z",
@@ -1994,9 +2014,19 @@
     "when": "2026-10-27T05:47:29Z",
     "via": "lychee",
   },
+  "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v4-response.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
+    "via": "lychee",
+  },
   "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html": {
     "result": 200,
     "when": "2026-10-27T05:47:29Z",
+    "via": "lychee",
+  },
+  "https://docs.aws.amazon.com/AmazonS3/latest/developerguide/RESTAuthentication.html#RESTAuthenticationQueryStringAuth": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv-authentication-methods.html": {
@@ -2097,6 +2127,11 @@
   "https://docs.aws.amazon.com/cli/latest/reference/s3api/upload-part.html": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
+    "via": "lychee",
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/secretsmanager/": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
     "via": "lychee",
   },
   "https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html": {
@@ -2944,6 +2979,36 @@
     "when": "2026-10-16T05:45:16Z",
     "via": "lychee",
   },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/adfns/performance-and-scalability.html#GUID-015CA8C1-2386-4626-855D-CC546DDC1086": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html": {
+    "result": "error",
+    "when": "2026-10-31T10:29:17Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/jajdb/oracle/jdbc/OracleConnection.html#Tracing": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/odpnt/featOpenTelemetry.html#GUID-498BB919-43C4-494F-A73B-74980C40CFF3": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/sqlrf/SYS_CONTEXT.html": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/tgsql/observabilitly-open-telemetry.html": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://docs.oracle.com/en/error-help/db/": {
     "result": 200,
     "when": "2026-10-16T05:45:15Z",
@@ -3567,6 +3632,16 @@
   "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#311-request": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
+    "via": "lychee",
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#322-requests": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#323-responses": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://ebpf.io/": {
@@ -7644,6 +7719,11 @@
     "when": "2026-10-19T05:46:29Z",
     "via": "lychee",
   },
+  "https://github.com/grpc/grpc/blob/v1.75.0/doc/PROTOCOL-HTTP2.md#requests": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://github.com/grpc/grpc/blob/v1.75.0/doc/statuscodes.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
@@ -7657,6 +7737,11 @@
   "https://github.com/grpc/proposal/blob/master/A66-otel-stats.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
+    "via": "lychee",
+  },
+  "https://github.com/grpc/proposal/blob/master/A66-otel-stats.md#units": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://github.com/grpc/proposal/blob/master/A72-open-telemetry-tracing.md": {
@@ -8554,10 +8639,20 @@
     "when": "2026-10-27T05:47:30Z",
     "via": "lychee",
   },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L122": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
   "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L157C6-L157C20": {
     "result": 206,
     "when": "2026-10-18T05:54:20Z",
     "via": "double-check",
+  },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L161": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
   },
   "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L236": {
     "result": 200,
@@ -8579,6 +8674,11 @@
     "when": "2026-10-16T05:45:18Z",
     "via": "lychee",
   },
+  "https://github.com/kubernetes/kubelet/blob/v0.35.2/pkg/apis/stats/v1alpha1/types.go#L42": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
   "https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
     "result": 200,
     "when": "2026-10-20T05:44:55Z",
@@ -8587,6 +8687,21 @@
   "https://github.com/kubernetes/kubernetes/blob/dbc7fe1b7fec4a76562d5e1565072a447fec5439/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
     "result": 200,
     "when": "2026-10-16T05:45:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/server/stats/summary.go#L113": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L299": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/kubernetes/kubernetes/blob/v1.36.3/pkg/kubelet/stats/cri_stats_provider.go#L776": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
     "via": "lychee",
   },
   "https://github.com/kubernetes/website": {
@@ -10224,6 +10339,11 @@
     "when": "2026-10-16T22:42:31Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/e3399f435a64b0a5aea33cc8d98edfef5bf07449/receiver/oracledbreceiver/documentation.md#dbserverquery_sample": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200": {
     "result": 200,
     "when": "2026-10-20T05:44:59Z",
@@ -10302,6 +10422,11 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md": {
     "result": 200,
     "when": "2026-10-20T05:44:59Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/oracledbreceiver": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md": {
@@ -10429,9 +10554,19 @@
     "when": "2026-10-20T05:44:56Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/40444": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791": {
     "result": 200,
     "when": "2026-10-16T05:44:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42485": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491": {
@@ -16519,6 +16654,11 @@
     "when": "2026-10-20T05:44:52Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1659": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2284": {
     "result": 200,
     "when": "2026-10-20T05:44:54Z",
@@ -21149,6 +21289,16 @@
     "when": "2026-10-27T05:47:27Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.62.0/oteps/0232-maturity-of-otel.md": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.62.0/spec-compliance-matrix.md#logs": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "result": 200,
     "when": "2026-10-23T05:44:52Z",
@@ -22659,6 +22809,11 @@
     "when": "2026-10-22T05:45:20Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions-client-side": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions-conformance": {
     "result": 200,
     "when": "2026-10-24T05:43:07Z",
@@ -22677,6 +22832,11 @@
   "https://github.com/open-telemetry/semantic-conventions-java": {
     "result": 200,
     "when": "2026-10-22T05:45:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions-mainframe": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md": {
@@ -22894,6 +23054,16 @@
     "when": "2026-10-15T05:44:48Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/grpc.md": {
+    "result": 200,
+    "when": "2026-10-29T10:29:58Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/json-rpc.md": {
+    "result": 200,
+    "when": "2026-10-29T10:29:58Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
@@ -23054,6 +23224,26 @@
     "when": "2026-10-16T05:45:23Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/3924": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4064": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4121": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4133": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
@@ -23159,6 +23349,11 @@
     "when": "2026-10-16T05:45:20Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3257": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3267": {
     "result": 200,
     "when": "2026-10-16T05:45:21Z",
@@ -23174,9 +23369,19 @@
     "when": "2026-10-16T05:45:21Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3308": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3317": {
     "result": 200,
     "when": "2026-10-16T05:45:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3328": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/3350": {
@@ -23214,9 +23419,34 @@
     "when": "2026-10-20T05:44:53Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3828": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3889": {
     "result": 200,
     "when": "2026-10-16T05:45:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3919": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3921": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/4120": {
+    "result": 200,
+    "when": "2026-10-29T10:29:59Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/4185": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/625": {
@@ -25674,9 +25904,19 @@
     "when": "2026-10-16T05:44:14Z",
     "via": "lychee",
   },
+  "https://grpc.io/docs/guides/metadata/": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://grpc.io/docs/guides/opentelemetry-metrics/": {
     "result": 200,
     "when": "2026-10-19T05:46:14Z",
+    "via": "lychee",
+  },
+  "https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html": {
@@ -25962,6 +26202,11 @@
   "https://jakarta.ee/specifications/xml-web-services/2.3/apidocs/javax/xml/ws/package-summary.html": {
     "result": 200,
     "when": "2026-10-27T05:46:38Z",
+    "via": "lychee",
+  },
+  "https://javadoc.io/doc/com.azure/azure-cosmos/latest/com/azure/cosmos/CosmosAsyncContainer.html": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://javadoc.io/doc/io.opentelemetry": {
@@ -26414,6 +26659,21 @@
     "when": "2026-10-27T05:47:28Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#podspec-v1-core": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#podstatus-v1-core": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.35/#resourcerequirements-v1-core": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "result": 200,
     "when": "2026-10-22T05:45:18Z",
@@ -26454,6 +26714,11 @@
     "when": "2026-10-16T05:45:16Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#ContainerStateRunning": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/reference/labels-annotations-taints/": {
     "result": 200,
     "when": "2026-10-16T05:45:17Z",
@@ -26482,6 +26747,11 @@
   "https://kubernetes.io/docs/reference/node/node-status/#condition": {
     "result": 200,
     "when": "2026-10-15T05:44:47Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://kubernetes.io/docs/tasks/configure-pod-container/resize-container-resources/": {
@@ -27284,6 +27554,11 @@
     "when": "2026-10-16T05:45:17Z",
     "via": "lychee",
   },
+  "https://man7.org/linux/man-pages/man1/mountpoint.1.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
+    "via": "lychee",
+  },
   "https://man7.org/linux/man-pages/man1/ps.1.html#PROCESS_STATE_CODES": {
     "result": 200,
     "when": "2026-10-27T05:47:29Z",
@@ -27312,6 +27587,11 @@
   "https://man7.org/linux/man-pages/man3/getaddrinfo.3.html": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://man7.org/linux/man-pages/man5/filesystems.5.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
     "via": "lychee",
   },
   "https://man7.org/linux/man-pages/man5/proc.5.html": {
@@ -27587,6 +27867,16 @@
   "https://nginx.org/": {
     "result": 200,
     "when": "2026-10-19T05:46:39Z",
+    "via": "lychee",
+  },
+  "https://node-oracledb.readthedocs.io/en/latest/api_manual/connection.html#connection.action": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://node-oracledb.readthedocs.io/en/latest/user_guide/connection_handling.html#setting-application-contexts-on-a-connection-object": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
   "https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage": {
@@ -30379,6 +30669,11 @@
     "when": "2026-10-16T05:45:16Z",
     "via": "lychee",
   },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#RlimitStats": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats": {
     "result": 200,
     "when": "2026-10-16T05:45:16Z",
@@ -30387,6 +30682,11 @@
   "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#ContainerStats": {
     "result": 200,
     "when": "2026-10-16T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#FsStats": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#MemoryStats": {
@@ -30402,6 +30702,11 @@
   "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#PodStats": {
     "result": 200,
     "when": "2026-10-16T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#VolumeStats": {
+    "result": 200,
+    "when": "2026-10-28T10:30:02Z",
     "via": "lychee",
   },
   "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
@@ -32439,6 +32744,11 @@
     "when": "2026-10-16T05:45:11Z",
     "via": "lychee",
   },
+  "https://wikipedia.org/wiki/CUDA": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://wikipedia.org/wiki/C_%28programming_language%29": {
     "result": 200,
     "when": "2026-10-27T05:47:30Z",
@@ -33092,6 +33402,11 @@
   "https://www.hyperdx.io/docs/install/opentelemetry": {
     "result": 200,
     "when": "2026-10-20T05:44:52Z",
+    "via": "lychee",
+  },
+  "https://www.iana.org/assignments/as-numbers/as-numbers.xhtml": {
+    "result": 200,
+    "when": "2026-10-31T10:29:24Z",
     "via": "lychee",
   },
   "https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids": {
@@ -33809,6 +34124,11 @@
     "when": "2026-10-20T05:45:16Z",
     "via": "lychee",
   },
+  "https://www.mongodb.com/docs/manual/reference/command/find/": {
+    "result": 200,
+    "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
   "https://www.mongodb.com/docs/manual/reference/error-codes/": {
     "result": 200,
     "when": "2026-10-16T05:45:15Z",
@@ -34494,6 +34814,16 @@
     "when": "2026-10-27T05:47:27Z",
     "via": "lychee",
   },
+  "https://www.rfc-editor.org/rfc/rfc4291.html#section-2.3": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
+    "via": "lychee",
+  },
+  "https://www.rfc-editor.org/rfc/rfc4632.html": {
+    "result": 200,
+    "when": "2026-10-31T10:29:23Z",
+    "via": "lychee",
+  },
   "https://www.rfc-editor.org/rfc/rfc5789.html": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
@@ -34514,9 +34844,19 @@
     "when": "2026-10-22T05:45:21Z",
     "via": "lychee",
   },
+  "https://www.rfc-editor.org/rfc/rfc9110.html#field.content-encoding": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
+    "via": "lychee",
+  },
   "https://www.rfc-editor.org/rfc/rfc9110.html#field.content-length": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
+    "via": "lychee",
+  },
+  "https://www.rfc-editor.org/rfc/rfc9110.html#field.content-type": {
+    "result": 200,
+    "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
   "https://www.rfc-editor.org/rfc/rfc9110.html#field.user-agent": {
