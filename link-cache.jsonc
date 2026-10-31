@@ -10104,6 +10104,26 @@
     "when": "2026-10-24T05:43:11Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/docs/roadmap.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/docs/session-management.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/packages/instrumentation/README.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/packages/sdk/README.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-browser/tree/main/packages/instrumentation": {
     "result": 200,
     "when": "2026-10-27T05:47:01Z",
