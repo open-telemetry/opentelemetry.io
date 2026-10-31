@@ -27,6 +27,29 @@ blog, [submit a social media request][].
 [submit a social media request]:
   https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
 
+## Announcing your blog post {#announcing}
+
+When a blog post is published, a pull request is opened automatically in
+[opentelemetry-announcements][] so maintainers can announce it on
+OpenTelemetry's social media channels and mailing list. The announcement is "New
+on the OpenTelemetry blog: _title_" with a short text and the link to the post.
+
+By default the short text is the post title. To write a better one, add an
+`announcement` key to the front matter:
+
+```yaml
+announcement:
+  Cardinality limits keep your metrics pipeline healthy. Learn how to set them
+  up.
+```
+
+Keep it to about 260 characters, because Bluesky allows 300 and the link counts
+as roughly 34 of them. Use `announcement: false` to skip the announcement. The
+text can still be edited in the announcements pull request before it's merged.
+
+[opentelemetry-announcements]:
+  https://github.com/open-telemetry/opentelemetry-announcements
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
