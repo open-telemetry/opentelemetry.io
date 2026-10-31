@@ -70,7 +70,7 @@ These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 - [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#maintainer).
 
 ### Approvers
 
@@ -79,7 +79,7 @@ These are the members of [@open-telemetry/docs-approvers][] (members-only):
 - [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 
 For more information about the approver role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#approver).
 
 ### Triagers
 
@@ -91,7 +91,7 @@ These are the members of [@open-telemetry/docs-triagers][] (members-only):
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
 For more information about the triager role, see the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#triager).
 
 ### Emeritus
 
@@ -129,7 +129,7 @@ already contributed][contributors]!
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:
-  https://github.com/open-telemetry/community/blob/main/community-membership.md
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 [contributing.md]: CONTRIBUTING.md
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors

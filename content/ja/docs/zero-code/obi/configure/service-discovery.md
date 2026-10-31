@@ -3,7 +3,7 @@ title: OBI サービスディスカバリーの設定
 linkTitle: サービスディスカバリー
 description: OBI のサービスディスカバリーコンポーネントが計装対象のプロセスを検索する方法を設定します。
 weight: 20
-default_lang_commit: 0fee5e1c7ff48dc9fb39c919c9882a9a8d8da4aa
+default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
 # prettier-ignore
 cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---
@@ -26,6 +26,7 @@ cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset stateful
 | `instrument`                                                                                                     | サービスごとに異なる選択条件を指定し、報告される名前や名前空間を上書きします。詳細は [ディスカバリーサービス](#discovery-services) セクションを参照してください。                                                                                                                                                                                  | オブジェクトのリスト | 未設定                                                                                                   |
 | `exclude_instrument`                                                                                             | 計装対象からサービスを除外するための選択条件を指定します。オブザーバビリティ環境で一般的に見られるサービスの計装を避けるのに便利です。詳細は [計装からのサービスの除外](#exclude-services-from-instrumentation) セクションを参照してください。                                                                                                     | オブジェクトのリスト | 未設定                                                                                                   |
 | `default_exclude_instrument`                                                                                     | OBI 自身、OpenTelemetry Collector、および特定の Kubernetes システム名前空間で実行されるサービスの計装を無効にします。空に設定すると、OBI が自身、Collector、およびこれらの名前空間のサービスを計装できるようになります。詳細は [計装からのデフォルトのサービス除外](#default-exclude-services-from-instrumentation) セクションを参照してください。 | オブジェクトのリスト | パス: `{*/obi,obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` と特定の Kubernetes システム名前空間 |
+| `disabled_route_harvesters`                                                                                      | 選択した言語のフレームワークルートハーベスティングを無効にします。指定可能な値: `dotnet`、`go`、`java`、`nodejs`、`php`、`python`、`ruby`。                                                                                                                                                                                                        | 文字列のリスト       | （空）                                                                                                   |
 | `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | **eBPF** トレーサーが計装対象の実行可能ファイルを検査する際に、Go 固有の検出を無効にします。トレーサーは汎用的な計装の使用にフォールバックしますが、これは一般的に効率が劣ります。詳細は [Go 固有トレーサーのスキップ](#skip-go-specific-tracers) セクションを参照してください。                                                                   | boolean              | false                                                                                                    |
 | `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | すでに OpenTelemetry で計装されているサービスに対する OBI の計装を無効にします。詳細は [OTel で計装済みのサービスの除外](#exclude-otel-instrumented-services) セクションを参照してください。                                                                                                                                                       | boolean              | true                                                                                                     |
 | `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | すでに OpenTelemetry で計装されているサービスについて、OBI のスパンメトリクス／サービスグラフメトリクスの生成を無効にします。詳細は [OTel で計装済みのサービスの除外](#exclude-otel-instrumented-services) セクションを参照してください。                                                                                                          | boolean              | false                                                                                                    |
@@ -362,7 +363,7 @@ OBI はプロセスを最初に検出したときにチェックし、その後 
 
 Config v1 では、`discovery.process_context_poll_interval` または `OTEL_EBPF_PROCESS_CONTEXT_POLL_INTERVAL` を使用してポーリング間隔を変更します。
 間隔を `0` に設定すると、初回チェックのみを行い、以降のポーリングを無効にします。
-Config v2 では v0.12.1 のデフォルト間隔が使用され、この設定は公開されていません。
+Config v2 ではデフォルト間隔が使用され、この設定は公開されていません。
 
 ## サービス名と名前空間の上書き {#override-service-name-and-namespace}
 
@@ -454,7 +455,7 @@ export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns
 # または eBPF でキャプチャした DNS ルックアップを有効にする（DNS イベントキャプチャが必要）
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,rdns
 
-# すべてのリゾルバーソースを有効にする
+# Kubernetes と両方の DNS リゾルバーソースを有効にする
 export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns,rdns
 
 # オプション: キャッシュサイズを調整する（デフォルト: 1024）
@@ -491,3 +492,31 @@ peer.service: "10.0.2.15"
 service.name: "frontend"
 peer.service: "backend-api"
 ```
+
+### AWS Route53 エンドポイント名 {#aws-route53-endpoint-names}
+
+v0.15.2 以降、オプトインの `route53` リゾルバーは、検出された EC2 ホスト上で、選択したホストゾーンのエンドポイント IP アドレスを名前にマッピングします。
+Config v1 の場合:
+
+```yaml
+name_resolver:
+  sources: [k8s, ecs, route53]
+cloud_metadata:
+  route53:
+    hosted_zone_ids: [Z0123456789EXAMPLE]
+    refresh_interval: 5m
+```
+
+環境変数 `OTEL_EBPF_NAME_RESOLVER_SOURCES`、`OTEL_EBPF_NAME_RESOLVER_ROUTE53_HOSTED_ZONE_IDS`、および `OTEL_EBPF_NAME_RESOLVER_ROUTE53_REFRESH_INTERVAL` でこれらのフィールドを上書きできます。
+ソースが有効な場合、ホストゾーン ID は必須です。
+AWS SDK の標準的な認証情報設定を使用し、対象ゾーンに対して `route53:ListResourceRecordSets` を付与してください。
+
+Config v2 では、ソースリストを `extensions.obi.enrich.service_name.sources` に、Route53 設定を `extensions.obi.enrich.enrichers.cloud.route53` に配置します。
+移行コマンドは Config v1 ファイル内の Route53 設定を保持します。
+
+Kubernetes および ECS の名前は Route53 よりも優先されます。
+Route53 はキャプチャされた DNS および逆引き DNS よりも優先されます。
+マッピングに使用されるのはリテラルの A および AAAA レコードのみで、エイリアス、CNAME、ワイルドカードレコードは除外されます。
+リフレッシュが失敗した場合、最後に成功したマッピングが保持されます。
+各 OBI インスタンスは設定されたゾーンを独立してポーリングするため、インスタンス数とゾーン数に応じてリフレッシュ間隔を調整してください。
+ポーリングの動作と名前の選択については、[Route53 リファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/route53-name-resolution.md)を参照してください。

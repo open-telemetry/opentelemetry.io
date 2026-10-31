@@ -2,10 +2,10 @@
 title: リンクチェック
 weight: 12
 description: ローカルおよび CI でのサイトのリンクチェック方法。
-default_lang_commit: bf53e16042a4ec7ae37779f944c49d1cde3719d3
+default_lang_commit: 2cc7b050cecdab1a7daadb6b78ce51b15a18bec8
 ---
 
-サイトのリンクチェックには **[Lychee][]** を使用しており、外部リンクの結果はコミットされたキャッシュ（[リンクキャッシュ][link cache]を参照）によって裏付けられています。
+サイトのリンクチェックには **[Lychee][]** を使用しており、コミット済みの[外部リンクのチェック結果のキャッシュ](#link-cache)によって裏付けられています。
 
 > [!NOTE] Lychee のローカルインストールは任意です
 >
@@ -23,44 +23,64 @@ npm run check:links
 
 ## よく使うコマンド {#common-commands}
 
-| コマンド               | チェック範囲                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------ |
-| `check:links`          | サイト全体                                                                     |
-| `check:links:internal` | サイト全体、オフライン（外部リンクなし）                                       |
-| `fix:link-cache`       | `check:links` のエイリアス。[リンクキャッシュ][link cache]を更新するために使用 |
+| コマンド                          | チェック範囲                                                                   |
+| --------------------------------- | ------------------------------------------------------------------------------ |
+| `check:links`                     | サイト全体とリポジトリのルートにある Markdown ファイル                         |
+| `check:links:internal`            | 同じ範囲、オフライン（外部リンクなし）                                         |
+| `check:links:production-internal` | 同じ範囲を[本番ビルド](#production-internal)に対して実行、オフライン           |
+| `fix:link-cache`                  | `check:links` のエイリアス。[リンクキャッシュ][link cache]を更新するために使用 |
 
 `check:links` と `check:links:internal` スクリプトは `BUILD_KIND` のビルドに対して実行されます。
-詳細は[フルビルドとリーンビルド][Build kinds: full and lean]を参照してください。
+詳細は[フルビルドとリーンビルド][build-kinds]を参照してください。
+
+## 未公開ページへのリンク {#production-internal}
+
+非本番の[サイトビルド][build-kinds]には**ドラフト**や**将来の日付**のページが含まれますが、本番ビルドではそれらが省かれます。
+そのため、そのようなページへのリンクはデプロイプレビューでは機能し `check:links` も通過しますが、本番サイトでは 404 を返します。
+`check:links:production-internal` スクリプトはこれを検出します。
+[リーン][build-kinds]な本番ビルドに対してオフラインチェックを実行し、ビルドが生成しなかったターゲットにリンクしているページを報告します。
+失敗時のコントリビューター向けの説明は [`CHECK LINKS (production, internal)`][pr-check-production-internal] を参照してください。
+
+本番チェックは `check:links` を補完します。
+[設定](#configuration)が除外するページ（特に乖離したローカリゼーションページ）からのリンクは、どちらでもチェックされません。
+外部リンクとその結果を記録する[リンクキャッシュ](#link-cache)は `check:links` に属します。
+オフライン実行では何もフェッチしないため、記録する結果がありません。
 
 ## 設定 {#configuration}
 
-Lychee はビルドされたサイト（`public/`）に対して、生成された git 管理外の `lychee.toml` を使用して実行されます。
-`generate:config:links` スクリプトは [`lychee.base.toml`][] にページのフロントマターから算出された `exclude_path` ブロックを加えて設定を導出します。
-フロントマターには 2 つのソースがあります。
+リンクチェックは生成された git 管理外の `lychee.toml` を読み込みます。
+`generate:config:links` スクリプトは [`lychee.base.toml`][] と 2 つのフロントマターフィールドから算出された除外設定を組み合わせて設定を導出します。
 
-- **`link_check_exclude_path`** — リンクチェッカーがスキップすべきページのサイト相対パス正規表現のリスト。
+- **`link_check_exclude_path`**：リンクチェッカーがスキップすべきページのサイト相対パス正規表現のリスト。
   ブログのページネーションや古いブログ記事などが該当します。
-  [`content/en/blog/_index.md`][blog-index] を参照してください。
-  パターンを `^(../)?` で始めることで、すべてのロケールをカバーできます。
-  オプションの `../` は `ja/` のような 2 文字のロケールパスセグメントにマッチします。
-- **`drifted_from_default`** — [乖離したローカリゼーションページ][drifted]。
+  例については [`content/en/blog/_index.md`][blog-index] を参照してください。
+  - すべてのロケールをカバーするには、パターンを `^(../)?` で始めてください。
+    オプションの `../` は `ja/` のような 2 文字のロケールパスセグメントにマッチします。
+- **`drifted_from_default`**：[乖離したローカリゼーションページ][drifted]をマークします。
   ステータスは `true`（英語の対応ページが変更された）または `file not found`（英語の対応ページが削除された）です。
-  そのようなページ*からの*リンクはチェックされません。
-  古くなっている可能性があるためですが、そのページは有効なリンクターゲットのままです。
-  同期済みのページからのインバウンドリンク（フラグメントを含む）は引き続き検証されます。
+  - 乖離したページ*からの*リンクはチェックされません。
+    古くなっている可能性があるためです。
+  - 乖離したページ*への*フラグメントリンクは、そのページがビルドに含まれておりその URL の唯一のコンテンツファイルである場合にスキップされます。
+    それ以外の場合は完全にチェックされます。
+    実質的な効果として、ページの存在は確認されフラグメントのみがチェックされません。
+    これは乖離の趣旨に沿っています。
+    ページには英語の対応ページがその後追加したセクションが欠けている可能性があり、[ロケールフォールバック][locale fallbacks]として表示される英語ページはそれらのセクションにリンクしています。
+    実装：`scripts/lychee/config/index.mjs` の `toExcludePaths()`。
 
-保存された乖離ステータスは、最後に夜間の[ハウスキーピング][Housekeeping]ステータス同期がマージされた時点のものに過ぎないため（そのため、ウィンドウが 1 日を超えることもあります）、ジェネレーターは**乖離保留中**のページもスキップします。
-これは、**乖離ステータスのベースライン**（`data/l10n-drift.yaml` にツリー全体のステータス同期 `npm run fix:i18n` によって記録された main ブランチのコミット）以降に変更（または削除）された英語ページのロケールコピーです。
-ベースライン以降にそのコピー自体が変更されている場合は、チェック対象のままになります。
-誰かがそのページの作業を行っているためです。
+保存された乖離ステータスは次の[ハウスキーピング][Housekeeping]ステータス同期がマージされるまで英語の変更に遅れるため、ジェネレーターは**乖離保留中**のページも乖離として扱います。
+
+- **乖離保留中のページ**：乖離ステータスのベースライン以降に英語のページが変更または削除されたロケールコピー。
+  ただし、そのコピー自体がベースライン以降に変更されている場合はチェック対象のままです（誰かがそのページの作業を行っているため）。
+- **乖離ステータスのベースライン**：ツリー全体のステータス同期（`npm run fix:i18n`）によって `data/l10n-drift.yaml` に記録された `main` ブランチのコミット。
+  ローカルでのステータス同期はこのファイルを書き換えることがあります。
+  記録されたコミットは upstream に存在しない可能性があるため、その書き換えはコミットしないでください。
+
 ベースラインが存在しないか解決できない場合、設定の生成は失敗します。
-CI では、`CHECK LINKS` ジョブが最初にシャロークローンをベースラインコミットまで深くします。
-ローカルでは、不足している履歴をフェッチ（`git fetch upstream main`）するか、ベースラインをオーバーライドしてください。
-`DRIFT_BASELINE=HEAD npm run check:links` はオーバーレイを空にします（保存済みステータスのスキップは引き続き適用されます）。
+CI ジョブは最初にベースラインコミットをフェッチします。
+ローカルでは以下のいずれかを行ってください。
 
-ローカルでのツリー全体のステータス同期（`npm run fix:i18n`）は `data/l10n-drift.yaml` を書き換えることがあります。
-その書き換えはコミットしないでください。
-ローカルで記録されたコミットは upstream に存在しない可能性があります。
+- 不足している履歴をフェッチする：`git fetch upstream main`。
+- ベースラインをオーバーライドする：`DRIFT_BASELINE=HEAD npm run check:links` は現在のコミットに対して比較するため、コミットされていない英語の変更のみが乖離保留として扱われます（保存済みステータスのスキップは引き続き適用されます）。
 
 ## リンクキャッシュ {#link-cache}
 
@@ -114,14 +134,17 @@ npm run fix:link-cache:double-check
 
 ## CI での動作 {#in-ci}
 
-[`check-links.yml` ワークフロー][ci]はサイトを一度（リーン）ビルドし、そのアーティファクトを `CHECK LINKS` ジョブと共有するため、ローカルでの実行と CI は同じビルドをチェックします。
+[`check-links.yml` ワークフロー][ci]はサイトを `BUILD` ジョブで（リーン）ビルドし、そのアーティファクトを `CHECK LINKS` ジョブと共有するため、ローカルでの実行と CI は同じビルドをチェックします。
 リンクチェックが失敗するとそのジョブは失敗し、更新されたキャッシュを `CACHE updates committed?` ジョブに渡します。
 このジョブは、実行によってコミット済みの `link-cache.jsonc` が古くなった場合に失敗します。
+
+`CHECK LINKS (production, internal)` ジョブは `BUILD` と並行して独自のビルドで実行されます。
+[`check:links:production-internal`](#production-internal) を実行します。
 
 <!-- prettier-ignore-start -->
 [Auto-update registry versions]: ../scripts/#update-registry-versionssh
 [blog-index]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/blog/_index.md
-[Build kinds: full and lean]: ../#build-kinds
+[build-kinds]: ../#build-kinds
 [cache-format]: https://github.com/chalin/link-cache/blob/main/docs/cache-format.md
 [ci]: ../ci-workflows/
 [double-check README]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/lychee/double-check/README.md
@@ -129,10 +152,12 @@ npm run fix:link-cache:double-check
 [Handling valid external links]: /docs/contributing/pr-checks/#handling-valid-external-links
 [Housekeeping]: ../ci-workflows/#housekeeping
 [link cache]: #link-cache
+[locale fallbacks]: ../localization/#hugo-mounts
 [link-cache]: https://github.com/chalin/link-cache#readme
 [Lychee]: https://lychee.cli.rs/
 [lychee-install]: https://lychee.cli.rs/guides/getting-started/
 [Operating model]: https://github.com/chalin/link-cache/blob/main/docs/operating-model.md
 [`lychee.base.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/lychee.base.toml
+[pr-check-production-internal]: /docs/contributing/pr-checks/#check-links-production-internal
 [pr-checks]: /docs/contributing/pr-checks/#cache-updates-committed
 <!-- prettier-ignore-end -->

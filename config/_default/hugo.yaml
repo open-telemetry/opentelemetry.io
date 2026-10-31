@@ -127,6 +127,12 @@ cascade:
       path: '/blog'
 
 params:
+  # Site plugins: https://opentelemetry.io/site/implementation/plugins-and-scripts/#plugins
+  docsy:
+    plugins:
+      otel-benchmarks:
+        enable: true
+        version: 4.5.1 # Chart.js
   copyright:
     authors: >-
       OpenTelemetry Authors | Docs [CC BY
@@ -188,7 +194,7 @@ params:
         icon: fas fa-image
         desc: Official OpenTelemetry logos
       - name: Meeting Recordings
-        url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
+        url: https://zoom-lfx.platform.linuxfoundation.org/meetings/opentelemetry?view=week
         icon: fas fa-video
         desc: Watch our meeting recordings on Zoom Cloud
       - name: Site analytics
@@ -286,7 +292,7 @@ security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
       # Netlify build env var
-      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID|SITE_NAME)$
 #
 # mounts: are defined in module-template.yaml. See that file for processing
 # details. For information about Hugo config directories and files, see:

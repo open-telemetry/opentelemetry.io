@@ -5,7 +5,7 @@ cSpell:ignore: autoconfigurations
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
 Zipkin starter.

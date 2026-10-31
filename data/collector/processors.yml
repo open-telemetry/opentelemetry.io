@@ -8,7 +8,7 @@
   distributions:
     - contrib
   stability:
-    traces: development
+    traces: alpha
 - name: attributesprocessor
   display_name: Attributes Processor
   repo: contrib
@@ -219,6 +219,16 @@
     - k8s
   stability:
     metrics: beta
+- name: partitioningprocessor
+  display_name: Partitioning Processor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+    profiles: development
 - name: probabilisticsamplerprocessor
   display_name: Probabilistic Sampling Processor
   repo: contrib
@@ -288,7 +298,7 @@
   distributions:
     - contrib
   stability:
-    traces: development
+    traces: alpha
 - name: schemaprocessor
   display_name: Schema Processor
   repo: contrib
@@ -364,3 +374,10 @@
     - contrib
   stability:
     logs: alpha
+- name: verifyprocessor
+  display_name: verifyprocessor
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development

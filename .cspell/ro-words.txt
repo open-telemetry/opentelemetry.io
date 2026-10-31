@@ -1,3 +1,4 @@
+acceseazǎ
 actualizeaz
 actualizeazǎ
 actualizezi
@@ -15,6 +16,8 @@ bifând
 calificatori
 colaboreze
 colectezi
+colectoarele
+colectorii
 colectorului
 commiturile
 comunitǎții
@@ -43,6 +46,8 @@ emojiilor
 enumerează
 explorezi
 exportatorilor
+exportatorului
+foloseşti
 formatorul
 forțezi
 franceză
@@ -89,6 +94,7 @@ prepopulată
 propagatoarele
 propagatorul
 propagi
+provii
 randată
 randează
 receptoarelor
@@ -102,6 +108,7 @@ revizuii
 revizuitori
 revizuitorii
 sanitizezi
+selecteazǎ
 semantică
 semnalizate
 semneazǎ
@@ -123,9 +130,12 @@ telemetrie
 traducă
 traduci
 tranzacţie
+trasabilitate
+trasabilitatea
 tuplu
 urci
 urmǎrirea
+urmărești
 valideze
 verificatoarele
 verificatorul

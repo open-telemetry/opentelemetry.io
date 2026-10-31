@@ -8,6 +8,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
 default_lang_commit: df7ca870f2ec59453948ced42ca0d76bfd5e53d5
+drifted_from_default: true
 cSpell:ignore: Aerospike HotSpot Ollama Qwen SunRPC uprobe
 ---
 

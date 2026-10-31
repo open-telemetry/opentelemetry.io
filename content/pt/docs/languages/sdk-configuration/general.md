@@ -3,18 +3,11 @@ title: Configurações gerais de SDK
 linkTitle: Geral
 weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Nota" %}}
-
-O suporte a variáveis de ambiente é opcional. Para informações detalhadas sobre
-quais variáveis de ambiente cada implementação de linguagem suporta, consulte a
-[Matriz de Conformidade de Implementação](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables).
-
-{{% /alert %}}
+{{% include "env-var-note.md" %}}
 
 ## `OTEL_SERVICE_NAME`
 

@@ -4,7 +4,7 @@ description: >-
   OpenTelemetry ウェブサイトのビルド、配信、検証、メンテナンスのための NPM スクリプト。
 weight: 20
 todo: Keep table entries sorted
-default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
+default_lang_commit: 8af8812b66ddfac83800951b4aa73da2a56e2c53
 ---
 
 スクリプトの定義はリポジトリルートの [`package.json`][] にあります。
@@ -45,27 +45,37 @@ default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
 | `serve:hugo`       | インメモリレンダリングで Hugo サーバーを起動します。                   |
 | `serve`            | Hugo 開発サーバーを起動します（デフォルト、フルレンダリング）。        |
 
+[ウェブサイトテレメトリー][website telemetry]を有効にしてサイトをビルドまたは配信するには、環境変数 `SITE_NAME` を `opentelemetry` に設定します。
+これにより、ローカルでのブラウジングがプロダクションと同様にプロジェクトの Collector にスパンをエクスポートします。
+
+```sh
+SITE_NAME=opentelemetry npm run serve
+```
+
+テレメトリーをプロダクションと比較する場合は、[リーン][build kinds]ビルドよりもフルビルドを推奨します。
+共有クロームがページの取得内容を変えるため、リーンビルドのテレメトリーは異なります。
+
 ## チェック {#checking}
 
-| スクリプト             | 説明                                                                          |
-| ---------------------- | ----------------------------------------------------------------------------- |
-| `check:all`            | すべてのチェックスクリプトを順番に実行します。                                |
-| `check:code-excerpts`  | コード抜粋をチェックし、更新が必要な場合は失敗します。                        |
-| `check:codeowners`     | CODEOWNERS のロケールセクションがレジストリと一致することを検証します。       |
-| `check:collector-sync` | collector-sync チェックを実行します。                                         |
-| `check:expired`        | 期限切れのコンテンツ（フロントマターに基づく）をリストします。                |
-| `check:filenames`      | [ファイル名の検証と廃止されたファイル/フォルダの検出][fn]。                   |
-| `check:format`         | Prettier と prose-wrap のチェック。                                           |
-| `check:i18n`           | ローカリゼーションフロントマター（`default_lang_commit`）を検証します。       |
-| `check:l10n`           | ローカリゼーションチェックを実行します。                                      |
-| `check:links:internal` | オフラインリンクチェック（内部リンクのみ）。最初にリーンビルドを実行。        |
-| `check:links`          | Lychee でサイト全体を[リンクチェック][link check]。最初にリーンビルドを実行。 |
-| `check:markdown:specs` | `tmp/` 内の仕様フラグメントの Markdown lint。                                 |
-| `check:markdown`       | Markdown lint（コンテンツおよびプロジェクト）。                               |
-| `check:registry`       | `data/registry/` 配下のレジストリ YAML を検証します。                         |
-| `check:spelling`       | コンテンツ、データ、レイアウト Markdown に対する cspell。                     |
-| `check:text`           | コンテンツとデータに対する textlint。                                         |
-| `check`                | もっとも一般的に必要なチェックスクリプトを順番に実行します。                  |
+| スクリプト                        | 説明                                                                                     |
+| --------------------------------- | ---------------------------------------------------------------------------------------- |
+| `check:all`                       | すべてのチェックスクリプトを順番に実行します。                                           |
+| `check:code-excerpts`             | コード抜粋をチェックし、更新が必要な場合は失敗します。                                   |
+| `check:codeowners`                | CODEOWNERS のロケールセクションがレジストリと一致することを検証します。                  |
+| `check:collector-sync`            | collector-sync チェックを実行します。                                                    |
+| `check:expired`                   | 期限切れのコンテンツ（フロントマターに基づく）をリストします。                           |
+| `check:filenames`                 | [ファイル名の検証と廃止されたファイル/フォルダの検出][fn]。                              |
+| `check:format`                    | Prettier と prose-wrap のチェック。                                                      |
+| `check:i18n`                      | ローカリゼーションフロントマター（`default_lang_commit`）を検証します。                  |
+| `check:l10n`                      | ローカリゼーションチェックを実行します。                                                 |
+| `check:links:internal`            | オフラインリンクチェック（内部リンクのみ）。最初にリーンビルドを実行。                   |
+| `check:links:production-internal` | [リーン構成で本番ビルドしたサイトの内部リンクをオフラインでチェックします][prod-check]。 |
+| `check:links`                     | Lychee で[リンクチェック][link check]。最初にリーンビルドを実行。                        |
+| `check:markdown:specs`            | `tmp/` 内の仕様フラグメントの Markdown lint。                                            |
+| `check:markdown`                  | Markdown lint（コンテンツおよびプロジェクト）。                                          |
+| `check:spelling`                  | コンテンツ、データ、レイアウト Markdown に対する cspell。                                |
+| `check:text`                      | コンテンツとデータに対する textlint。                                                    |
+| `check`                           | もっとも一般的に必要なチェックスクリプトを順番に実行します。                             |
 
 ## 修正 {#fixing}
 
@@ -159,5 +169,7 @@ default_lang_commit: 1338cb2423fbaba7da27b8e94d00293aac6922cc
 [lock-exact inert install]: /site/build/dependencies/#install-contracts
 [lock-exact local setup]: /site/build/dependencies/#install-contracts
 [lock-exact theme dependency install]: /site/build/dependencies/#install-contracts
+[prod-check]: ../link-checking/#production-internal
 [release cooldown]: /site/build/dependencies/#release-cooldown
+[website telemetry]: ../../features/#website-telemetry
 <!-- prettier-ignore-end -->
