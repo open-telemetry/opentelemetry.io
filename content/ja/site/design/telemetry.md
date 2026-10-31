@@ -4,8 +4,7 @@ description: >-
   プロジェクトの Netlify サイトのすべてのデプロイでトレーサーを読み込み、ほかのデプロイでは読み込まない理由、コンテキスト伝搬に Zone
   を使わない理由、Collector がエクスポーターに追いついていないときにエクスポートの失敗がどう現れるかについて
 weight: 30
-default_lang_commit: cb07a7f2f522075ab85baaca6b23625cad38b30f
-drifted_from_default: true
+default_lang_commit: 6cc9e7715937274a7195b9275aab44e6e602ee34
 ---
 
 [ウェブサイトのテレメトリー](/site/features/#website-telemetry)機能の設計メモです。
@@ -51,5 +50,5 @@ SDK は失敗を報告しない（診断ロガーを設定していない）の�
 コンソールエクスポーターが出力するスパンを見ても、Collector がそれを受け付けたかどうかはわかりません。
 
 <!-- prettier-ignore-start -->
-[3.x migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/3.x/migration-guide.md#opentelemetrysdk-trace-web-package-removed
+[3.x migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-web-package-removed
 <!-- prettier-ignore-end -->
