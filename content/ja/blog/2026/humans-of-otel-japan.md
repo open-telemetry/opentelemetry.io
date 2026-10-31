@@ -6,6 +6,7 @@ author: >-
   [Yoshi Yamaguchi](https://github.com/ymotongpoo) (Grafana Labs)
 sig: End User SIG
 default_lang_commit: 5c42532e37db75bdd0ffbf158ff088fb774f4492
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chikahisa fujikane kohei loglass mikata mixi ohira okamoto sugimoto yoshi yoshiki yuzuru
 ---
