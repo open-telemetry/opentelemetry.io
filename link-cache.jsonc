@@ -9499,6 +9499,11 @@
     "when": "2026-10-20T05:44:48Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community#sig-ebpf-instrumentation": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community#sig-packaging": {
     "result": 200,
     "when": "2026-10-27T05:47:22Z",
@@ -16559,6 +16564,31 @@
     "when": "2026-10-19T14:43:56Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/SUPPORT_MATRIX.md": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/SUPPORT_MATRIX.md#runtime-metrics": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/VERSIONING.md": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/VERSIONING.md#release-scope": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/devdocs/config/version-2.0/migration.md": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
     "result": 200,
     "when": "2026-10-20T05:44:49Z",
@@ -16669,6 +16699,31 @@
     "when": "2026-10-16T05:44:13Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.10.0": {
+    "result": 200,
+    "when": "2026-10-26T20:34:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.11.0": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1": {
+    "result": 200,
+    "when": "2026-10-26T20:34:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.13.0": {
+    "result": 200,
+    "when": "2026-10-26T20:34:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2": {
     "result": 200,
     "when": "2026-10-19T14:43:56Z",
@@ -16677,6 +16732,11 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0": {
     "result": 200,
     "when": "2026-10-20T05:44:50Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0-rc.2": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main": {
@@ -16707,6 +16767,11 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/nginx": {
     "result": 200,
     "when": "2026-10-19T14:43:55Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0-rc.2/schemas/obi": {
+    "result": 200,
+    "when": "2026-10-26T20:34:25Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {

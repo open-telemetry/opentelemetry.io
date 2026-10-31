@@ -3,8 +3,7 @@ title: 計装
 weight: 36
 aliases: [manual]
 description: OpenTelemetry .NET の計装
-default_lang_commit: 5ccd63611a43a8c3b4a243dc995fb3755d46eafa
-drifted_from_default: true
+default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
 cSpell:ignore: dicelib rolldice
 ---
 
@@ -21,7 +20,7 @@ cSpell:ignore: dicelib rolldice
 ## 用語に関する注意 {#a-note-on-terminology}
 
 .NET は OpenTelemetry をサポートする他の言語やランタイムとは異なります。
-[トレース API](/docs/concepts/signals/traces/) は [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics) API によって実装されており、`ActivitySource` や `Activity` といった既存のコンストラクトを再利用して、内部的に OpenTelemetry に準拠するようになっています。
+[トレース API](/docs/concepts/signals/traces/) は [System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics) API によって実装されており、`ActivitySource` や `Activity` といった既存のコンストラクトを再利用して、内部的に OpenTelemetry に準拠するようになっています。
 
 しかし、.NET 開発者がアプリケーションを計装するために知っておく必要がある OpenTelemetry API と用語の部分があり、ここでは `System.Diagnostics` API とともにそれらを取り上げます。
 
