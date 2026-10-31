@@ -282,9 +282,9 @@ be nested or act as a code owner). For an example of the team declarations, see
 
 ### 6b. Grant the approvers team write access {#gh-org-grant}
 
-In the same PR, add `github_team.docs-LANG_ID-approvers.id` to the `approvers`
-list of `repo-opentelemetry-io.tf`: a [code owner][] team must itself hold write
-access, whatever its members hold through other teams.
+In the same PR, grant the approvers team write access as described in [Team
+access and code ownership][team-access-grant]: a [code owner][] team must itself
+hold write access, whatever its members hold through other teams.
 
 ### 6c. Add team members {#gh-org-members}
 
@@ -309,19 +309,8 @@ doesn't manage memberships.
 Confirm the team's grant once the admin PR is applied, and each member's access
 as members are added:
 
-- The `docs-LANG_ID-approvers` team is listed under the repository's
-  collaborators and teams with the **Write** role. For example, using the GitHub
-  CLI:
-
-  ```sh
-  gh api --paginate repos/open-telemetry/opentelemetry.io/teams \
-    --jq '.[] | select(.slug == "docs-LANG_ID-approvers") | .permission'
-  ```
-
-  Expect `push`, the API's name for the Write role. Nothing printed means the
-  team isn't in the repository's access list (the grant in Step 6b is missing or
-  not yet applied, or the team doesn't exist yet); `pull` or `triage` means a
-  grant below write.
+- The `docs-LANG_ID-approvers` team holds the **Write** role on the repository:
+  run the check in [Team access and code ownership][team-access-verify].
 
 - Every team member appears in the live team, and each has at least write access
   to the repository. For example:
@@ -456,6 +445,8 @@ correct:
 [OpenTelemetry Admin]: https://cloud-native.slack.com/team/U07DR07KAEQ
 [Site localization]: /docs/contributing/localization/
 [team maintainer]: https://docs.github.com/en/organizations/organizing-members-into-teams/assigning-the-team-maintainer-role-to-a-team-member
+[team-access-grant]: /site/admin/team-access/#grant
+[team-access-verify]: /site/admin/team-access/#verify
 [unstaffed]: /docs/contributing/localization/#locale-teams
 [Updating SIG information]: https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md#updating-sig-information
 <!-- prettier-ignore-end -->

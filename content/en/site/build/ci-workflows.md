@@ -24,7 +24,8 @@ script-free, with build jobs re-enabling only the reviewed Hugo rebuild.
 ## PR approval labels {#pr-approval-labels}
 
 The following workflows work together to automatically manage approval-related
-labels on pull requests:
+labels on pull requests. For which approvals are required, as opposed to tracked
+by label, see [Docs ownership][].
 
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
@@ -405,15 +406,16 @@ must be a member of the `docs-<loc>-maintainers` team for every locale the PR
 touches. The helper's eligibility and authorization rules (and how to dry-run
 them locally) are documented in its [README][locale-auto-merge-script]; its unit
 and integration tests run with `npm run test:local-tools`. Contributor-facing
-usage lives in the [localization guide][localization-auto-merge].
+usage and the ownership model it implements: [Docs ownership][auto-merge].
 
+[Docs ownership]: /docs/contributing/docs-ownership/
 [GitHub auto-merge]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
 [locale-auto-merge.yml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/locale-auto-merge.yml
 [locale-auto-merge-script]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
-[localization-auto-merge]: /docs/contributing/localization/#auto-merge
+[auto-merge]: /docs/contributing/docs-ownership/#auto-merge
 
 ## Spec integration branches {#spec-integration-branches}
 

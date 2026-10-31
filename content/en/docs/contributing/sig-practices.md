@@ -222,6 +222,16 @@ one by a SIG approver:
   general, but may be less in urgent cases), docs maintainer may use their own
   judgement to merge that PR.
 
+### Own your SIG's docs {#sig-docs-ownership}
+
+A SIG can take ownership of its docs tree: its approvers team becomes the tree's
+required reviewer, with write access, and PRs confined to the tree no longer
+need a docs-approvers review, so the two-approval practice and grace period
+above stop applying to it. To ask, and for what the SIG agrees to, see [Take
+ownership of your SIG's docs][].
+
+[Take ownership of your SIG's docs]: ../docs-ownership/#sig-ownership
+
 ### PRs from bots
 
 PRs created by bots can be merged by the following practice:
@@ -239,9 +249,12 @@ PRs created by bots can be merged by the following practice:
 
 ### Translation PRs
 
-PRs with changes to translations should aim for two approvals: one by a docs
-approver and one by a translation approver. Similar practices apply as suggested
-for the co-owned PRs.
+A staffed locale's approvers team is the required reviewer of its locale-only
+PRs; a docs-approver review is required only for [unstaffed locales][]. For the
+model, see [Docs ownership][].
+
+[Docs ownership]: ../docs-ownership/
+[unstaffed locales]: ../localization/#locale-teams
 
 ## Merging PRs
 
