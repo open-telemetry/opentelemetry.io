@@ -10,7 +10,7 @@ draft: true
 issue: 12069
 sig: Collector SIG
 # prettier-ignore
-cSpell:ignore: Adii Aditya Anitha Anoshin Baeyens Blancas block_on_overflow Chethan Drutu flush_timeout Gergely Gizas Gnanaprakasam groupbyattrs Guiton Helmuth Karakaya Kuchekar Madarasz Makwana max_size metadata_keys min_size Morel mdatagen num_consumers queue_size QueueBatch queuebatch Ravishankar Semih Serhat simpleqt Sindy Terhar Toulme Vadla Vengal Vibhanshu Vihas Vinicius Vishal wait_for_result Wilkins Yiquan
+cSpell:ignore: Adii Aditya Anitha Anoshin Baeyens Blancas block_on_overflow Chethan Drutu flush_timeout Gergely Gizas Gnanaprakasam groupbyattrs Guiton Helmuth Karakaya Kuchekar Madarasz Makwana max_size metadata_keys min_size Morel mdatagen num_consumers queue_size queue_batch Ravishankar Semih Serhat simpleqt Sindy Terhar Toulme Vadla Vengal Vibhanshu Vihas Vinicius Vishal wait_for_result Wilkins Yiquan
 ---
 
 **Batching** in the OpenTelemetry Collector is a process that ensures
@@ -29,7 +29,7 @@ pipeline is full.
 
 We are deprecating the `batch` processor. Batching is now supported
 directly in exporters, called _exporter-level batching_, and a new
-`queuebatch` processor replaces the original processor
+`queue_batch` processor replaces the original processor
 component. Integrated queue and batch behavior brings numerous
 improvements described below.
 
@@ -97,7 +97,7 @@ removed from the core repository and distributions in `v0.177.0` (May
 
 Use exporter-level batching in most cases. If you need batching before
 another processor or shared batching for multiple exporters, use the
-`queuebatch` processor instead.
+`queue_batch` processor instead.
 
 ## Batchprocessor: now deprecated!
 
@@ -148,9 +148,9 @@ processors:
 
 ## Exporter-level queue and batch behavior
 
-Exporter-level batching is generally available for the exporters that
-have elected it, commonly through the exporter's `sending_queue`
-configuration. Queuing and batching are integrated as follows.
+Exporter-level batching is generally available for the exporters 
+that elect to use common `sending_queue` behavior which covers
+queuing and batching are integrated as follows.
 
 First, a request from the pipeline tries to enter the queue. Queue
 admission is determined by a limit over the total size of queued
@@ -184,7 +184,7 @@ configuration. Here is the default configuration:
 ```yaml
 exporters:
   <many>:
-    sending_queue:                   # exporter queuebatch behavior
+    sending_queue:                   # exporter queue_batch behavior
       num_consumers:     10          # concurrency limit
       sizer:             requests    # measure in arriving requests
       queue_size:        1000        # sized limit in memory or storage
@@ -228,7 +228,7 @@ After migrating, you can configure byte-based limits instead of item counts.
 ```yaml
 exporters:
   <many>:
-    sending_queue:                   # exporter queuebatch behavior
+    sending_queue:                   # exporter queue_batch behavior
       <...>
       batch:
         enabled:         true        # exporter-level batching
@@ -238,8 +238,8 @@ exporters:
         flush_timeout:   200ms       # maximum delay
 ```
 
-Like the `batch` processor, the queuebatch mechanism supports partitioning
-by metadata; see [queuebatch documentation][QUEUEBATCH] for more
+Like the `batch` processor, the queue_batch mechanism supports partitioning
+by metadata; see [`sending_queue` documentation][SENDING_QUEUE] for more
 details. Without explicit batch-size settings, `min_size` is 8192 items,
 `max_size` is unset, and `flush_timeout` is 200ms.
 
@@ -250,7 +250,7 @@ queues][PERSISTENT], for example:
 ```yaml
 exporters:
   <many>:
-    sending_queue:         # exporter queuebatch behavior
+    sending_queue:         # exporter queue_batch behavior
       <...>
       storage: persistent  # use persistent storage
 
@@ -261,11 +261,11 @@ extensions:
       <...>
 ```
 
-[QUEUEBATCH]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md#sending-queue-batch-settings
+[SENDING_QUEUE]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md#sending-queue-batch-settings
 
 [PERSISTENT]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md#persistent-queue
 
-## Queuebatch processor
+## Queue/Batch processor
 
 In most cases, configuring `sending_queue` in the exporter is the best
 option for users, but there are still a few cases where batching in a
@@ -274,14 +274,14 @@ processor makes sense, for example:
 - prior to an aggregation processor that improves with large batches
 - multiple exporters sharing a processor in scenarios where the processor can save memory.
 
-For such cases, we've introduced a new [`queuebatch`
+For such cases, we've introduced a new [`queue_batch`
 processor][QUEUEBATCHPROCESSOR] as a `batch` processor replacement. It
 uses the same configuration structure as `sending_queue`, and its
 default item threshold and flush timeout match the original `batch` processor:
 
 ```yaml
 processors:
-  queuebatch:                        # processor queuebatch behavior
+  queue_batch:                       # processor queue and batch
     num_consumers:     1             # single concurrent export
     sizer:             requests      # limit in requests
     queue_size:        10            # limit 10 in queue
@@ -323,7 +323,7 @@ Until then, several immediate steps are available to users:
 1. Configure exporter `sending_queue` instead of the `batch` processor. Most
    exporters already support this feature. By configuring your own
    settings, the change of default has no effect.
-2. Use the `queuebatch` processor instead of the `batch` processor.
+2. Use the `queue_batch` processor instead of the `batch` processor.
 
 Before we reach the point of batching being enabled by default, several
 mitigation steps are ready to use today.
@@ -349,7 +349,7 @@ specific overrides, or is entirely omitted.
 There have been many contributors to the queueing and batching
 codebase, from the earliest issues to the finishing touches.
 
-The queuebatch lead authors are [Bogdan
+The `queue_batch` lead authors are [Bogdan
 Drutu](https://github.com/bogdandrutu) and [Dmitry
 Anoshin](https://github.com/dmitryax), with partitioning support by
 [Sindy Li](https://github.com/sfc-gh-sili).
