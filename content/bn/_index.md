@@ -84,13 +84,13 @@ OpenTelemetry অনেক জনপ্রিয় লাইব্রেরি ও
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry একটি [CNCF][] [ইনকিউবেটিং][incubating] প্রজেক্ট**।<br> এটি
+**OpenTelemetry একটি [CNCF][] [গ্র্যাজুয়েটেড][graduated] প্রজেক্ট**।<br> এটি
 OpenTracing এবং OpenCensus প্রকল্পের একীভূতকরণের মাধ্যমে গঠিত।
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[graduated]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}
