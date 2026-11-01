@@ -28,7 +28,7 @@ v1.0.0 であることは、このコンポーネントがテスト、ベンチ�
 これらの基準を満たすことは容易ではありません。
 コンポーネントの安定化には、そのコンポーネントが依存するセマンティック規約や仕様の一部の安定化も伴うため、Collector SIG は K8s Semantic Conventions SIG、System Semantic Conventions SIG、Prometheus Interoperability SIG などの他の SIG と緊密に協力しています。
 
-K8s Semantic Conventions SIG は[この依存関係を早期に発見し](/blog/2026/k8s-semconv-rc/)、2025年11月に K8s は対応する K8s セマンティック規約を[安定化するための集中的な作業を開始しました](https://github.com/open-telemetry/semantic-conventions/issues/3120)。
+K8s Semantic Conventions SIG は[この依存関係を早期に発見し](/blog/2026/k8s-semconv-rc/)、2025年11月に対応する K8s セマンティック規約を[安定化するための集中的な作業を開始しました](https://github.com/open-telemetry/semantic-conventions/issues/3120)。
 2026年3月にこれらのセマンティック規約はリリース候補の状態に達し、2026年6月に [Semantic Conventions v1.42.0 で安定版として出荷されました](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.42.0)。
 
 これにより、Kubernetes attributes processor は安定した K8s 属性でテレメトリーを拡充できるようになり、コンポーネントのテレメトリーが今後も安定し続けることが保証されました。
