@@ -2986,7 +2986,7 @@
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html": {
     "result": "error",
-    "when": "2026-10-31T10:29:17Z",
+    "when": "2026-11-01T10:29:05Z",
     "via": "lychee",
   },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/jajdb/oracle/jdbc/OracleConnection.html#Tracing": {
