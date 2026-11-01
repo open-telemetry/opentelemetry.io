@@ -1,19 +1,19 @@
 governance-committee:
-  - name: alolita
-    html_url: https://github.com/alolita
-    avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
   - name: austinlparker
     html_url: https://github.com/austinlparker
     avatar_url: https://avatars.githubusercontent.com/u/4140740?v=4
+  - name: danielgblanco
+    html_url: https://github.com/danielgblanco
+    avatar_url: https://avatars.githubusercontent.com/u/4158734?v=4
   - name: jpkrohling
     html_url: https://github.com/jpkrohling
     avatar_url: https://avatars.githubusercontent.com/u/13387?v=4
+  - name: jsuereth
+    html_url: https://github.com/jsuereth
+    avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
   - name: maryliag
     html_url: https://github.com/maryliag
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
-  - name: mtwo
-    html_url: https://github.com/mtwo
-    avatar_url: https://avatars.githubusercontent.com/u/1144235?v=4
   - name: mx-psi
     html_url: https://github.com/mx-psi
     avatar_url: https://avatars.githubusercontent.com/u/5502710?v=4
@@ -1920,6 +1920,12 @@ approvers:
       - semconv-oracle-cloud-approvers
     html_url: https://github.com/geekdave
     avatar_url: https://avatars.githubusercontent.com/u/1438478?v=4
+  - name: gouslu
+    teams:
+      - arrow-approvers
+      - arrow-triagers
+    html_url: https://github.com/gouslu
+    avatar_url: https://avatars.githubusercontent.com/u/7251174?v=4
   - name: GregMefford
     teams:
       - erlang-approvers
@@ -2645,6 +2651,9 @@ members:
   - name: Adii-45
     html_url: https://github.com/Adii-45
     avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
+  - name: adityareddy-dev
+    html_url: https://github.com/adityareddy-dev
+    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
@@ -2705,6 +2714,9 @@ members:
   - name: billmeyer
     html_url: https://github.com/billmeyer
     avatar_url: https://avatars.githubusercontent.com/u/5712808?v=4
+  - name: blakerouse
+    html_url: https://github.com/blakerouse
+    avatar_url: https://avatars.githubusercontent.com/u/3869671?v=4
   - name: boostchicken
     html_url: https://github.com/boostchicken
     avatar_url: https://avatars.githubusercontent.com/u/427295?v=4

@@ -3,7 +3,7 @@ title: OBI のメトリクスとトレースの属性を設定する
 linkTitle: メトリクス属性
 description: 計装された Kubernetes Pod のインスタンス ID デコレーションとメタデータを含む、報告される属性を制御するメトリクスとトレースの属性コンポーネントを設定します。
 weight: 30
-default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
+default_lang_commit: 3c71900b2014474adce4a86da454d68b854af254
 cSpell:ignore: kube kubecache kubeconfig OpenShift replicaset statefulset
 ---
 
@@ -36,10 +36,10 @@ attributes:
         - obi.ip
         - src.name
         - dst.port
-    sql_client_duration:
-      # db_statement を除くすべての可能な属性を報告します
+    db_client_operation_duration:
+      # db.query.text を除くすべての可能な属性を報告します
       include: ['*']
-      exclude: ['db_statement']
+      exclude: ['db.query.text']
     http_client_request_duration:
       # デフォルトの属性セットを報告しますが、Kubernetes Pod 情報は除外します
       exclude: ['k8s.pod.*']
@@ -83,6 +83,10 @@ Kubernetes や `OTEL_RESOURCE_ATTRIBUTES` の値を含む、実行時に検出�
 エクスポートされる OpenTelemetry トレースについては、`attributes.select` 配下で（メトリクス名ではなく）`traces` キーを使用します。
 これは、`db.query.text`、`graphql.document`、`url.query`、GenAI ペイロード属性、`db.response.error` などのトレース装飾を制御します。
 
+v0.14.0 以降、`service.peer.name`、`http.request.body.size`、`http.response.body.size`、`obi.http.response.observed` もオプトインのスパン属性になりました。
+トレースプロセッサーが必要とするもののみを追加してください。
+たとえば、`service.peer.name` を使用するサービスグラフプロセッサーでは、明示的に選択できます。
+
 ```yaml
 attributes:
   select:
@@ -90,6 +94,7 @@ attributes:
       include:
         - db.query.text
         - db.response.error
+        - service.peer.name
 ```
 
 `url.query` は、HTTP リクエストにクエリ文字列が含まれている場合にデフォルトで有効です。
@@ -112,6 +117,10 @@ MCP ツールコール引数と結果は、オプションのトレース属性 
 これらの値にはセンシティブなペイロードが含まれる可能性があるため、`attributes.select.traces.include` に正確なエントリが必要です。
 `gen_ai.*` などのワイルドカードエントリでは有効になりません。
 
+OBI がピア名を解決できない場合、空の値を出力するのではなく `service.peer.name` を省略します。
+値が不明なパース済みスパン属性も同様に省略されます。
+これはリソース属性やメトリクスラベルには影響しません。
+
 ### `db.response.error` {#db-response-error}
 
 `db.response.error` は OpenTelemetry セマンティック規約の一部ではありません。
@@ -128,16 +137,37 @@ OBI はこの文字列を `attributes.select.traces` 配下の設定フラグと
 
 このオプトインは、エラー文字列に機密情報や高カーディナリティの詳細（スキーマ名、クエリの断片、データ値）が含まれる可能性があるために存在します。
 
+オプトインの `url.template` 属性は、v0.15.2 で HTTP クライアントスパンに利用可能です。
+利用可能な場合、ルート由来の URL テンプレートが含まれます。
+エクスポートするには、選択したトレース属性に含めてください。
+GraphQL、MCP、JSON-RPC のサーバースパンでは HTTP 固有の属性は省略されます。
+キャプチャされた HTTP ヘッダーはプレーン HTTP および GraphQL スパンにのみ適用されます。
+
 ## 分散トレースとコンテキスト伝搬 {#distributed-traces-and-context-propagation}
 
 YAML セクション: `ebpf`
 
 このコンポーネントは、YAML 設定ファイルの `ebpf` セクション、または環境変数を使用して設定できます。
 
-| YAML<br>環境変数                                                 | 説明                                                                                                                                                                                       | 型      | デフォルト |
-| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ---------- |
-| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`     | トレースコンテキスト伝搬方式を制御します。受け付ける値: `all`、`headers`、`tcp`、`headers,tcp`、`disabled`。詳細は [コンテキスト伝搬セクション](#context-propagation) を参照してください。 | string  | disabled   |
-| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS` | トレーススパンの受信 `Traceparent` ヘッダーを追跡します。詳細は [リクエストヘッダーの追跡セクション](#track-request-headers) を参照してください。                                          | boolean | false      |
+| YAML<br>環境変数                                                   | 説明                                                                                                                                                                                                                       | 型      | デフォルト |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------- |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`       | トレースコンテキスト伝搬方式を制御します。受け付ける値: `all`、`headers`、`tcp`、`headers,tcp`、`disabled`。詳細は [コンテキスト伝搬セクション](#context-propagation) を参照してください。                                 | string  | disabled   |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`   | トレーススパンの受信 `Traceparent` ヘッダーを追跡します。詳細は [リクエストヘッダーの追跡セクション](#track-request-headers) を参照してください。                                                                          | boolean | false      |
+| `populate_trace_context`<br>`OTEL_EBPF_BPF_POPULATE_TRACE_CONTEXT` | 外部のトレース・プロファイル相関および Go チャネルハンドオフのフォールバック用に、ピン留めされた `traces_ctx_v1` マップを書き込みます。OBI のログエンリッチャーと Node.js の手動スパンブリッジでは自動的に有効化されます。 | boolean | false      |
+
+### ピン留めされたトレースコンテキストマップ {#pinned-trace-context-map}
+
+v0.14.0 以降、OBI はデフォルトでは `traces_ctx_v1` を書き込みません。
+外部のプロファイラーがこのマップを読み取ってプロファイルとトレースを関連付ける場合は、有効にしてください。
+
+```yaml
+ebpf:
+  populate_trace_context: true
+```
+
+これにより、Go チャネルスパンリンクのマップベースのフォールバックも復元されます。
+OBI のログエンリッチャーまたは Node.js の手動スパンブリッジを使用している場合、このマップの有効化は不要です。
+これらのツールでは自動的に有効化されます。
 
 ### コンテキスト伝搬 {#context-propagation}
 
@@ -171,10 +201,10 @@ TC も使用する eBPF プログラムは、OBI と正しくチェーンする�
 - ホストの `/sys/fs/cgroup` パスをローカルの `/sys/fs/cgroup` パスとしてボリュームマウントする
 - OBI コンテナに `CAP_NET_ADMIN` 機能を付与する
 
-ネットワークレベルの伝搬は、ストリームごとの `traceparent` HPACK ヘッダーを注入・解析することで gRPC をサポートします。
-HTTP/2 は 1 つの接続で複数のトレースコンテキストを多重化するため、gRPC では TCP オプション伝搬は使用されません。
-gRPC 以外の汎用 HTTP/2 コンテキスト伝搬は、Go ライブラリの計装に限定されます。
-Go 以外の gRPC サービスでは、OBI 起動前に確立された永続的な接続が伝搬対象として認識されない場合があります。
+ネットワークレベルの伝搬は、ストリームごとの `traceparent` HPACK ヘッダーを注入・解析することで、gRPC を含むプレーンテキスト HTTP/2 をサポートします。
+HTTP/2 は 1 つの接続で複数のトレースコンテキストを多重化するため、HTTP/2 では TCP オプション伝搬は使用されません。
+暗号化された汎用 HTTP/2 ではネットワークレイヤーでの注入ができません。
+Go のライブラリレベルの計装では暗号化前に注入できます。
 
 Kubernetes での分散トレースの設定例については、[OBI による分散トレース](../../distributed-traces/) ガイドを参照してください。
 
@@ -516,7 +546,7 @@ attributes:
 | `k8s_app_meta` | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            |
 | `k8s_app_meta` | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            |
 | `k8s_app_meta` | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        |
-| `k8s_app_meta` | `gpu.kernel.launch.calls`             | `gpu_kernel_launch_calls_total`               |
-| `k8s_app_meta` | `gpu.kernel.grid.size`                | `gpu_kernel_grid_size_total`                  |
-| `k8s_app_meta` | `gpu.kernel.block.size`               | `gpu_kernel_block_size_total`                 |
-| `k8s_app_meta` | `gpu.memory.allocations`              | `gpu_memory_allocations_bytes_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.launch.calls`        | `gpu_cuda_kernel_launch_calls_total`          |
+| `k8s_app_meta` | `gpu.cuda.kernel.grid.size`           | `gpu_cuda_kernel_grid_size`                   |
+| `k8s_app_meta` | `gpu.cuda.kernel.block.size`          | `gpu_cuda_kernel_block_size`                  |
+| `k8s_app_meta` | `gpu.cuda.memory.allocations`         | `gpu_cuda_memory_allocations_bytes_total`     |

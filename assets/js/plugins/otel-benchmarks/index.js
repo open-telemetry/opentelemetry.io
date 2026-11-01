@@ -1,4 +1,6 @@
-// Chart renderer of the `benchmarks` shortcode, docs:
+// This module is the `benchmarks` shortcode's renderer, the plugin's entry: on
+// load it draws a chart set into every container the shortcode emitted on the
+// page. Docs:
 // https://opentelemetry.io/site/implementation/plugins-and-scripts/#benchmarks
 //
 // Assumes these globals, loaded by the plugin's companion before this runs:
@@ -8,7 +10,10 @@
 //
 // Class names are the stock renderer's; ours carry the `otel-` prefix.
 
-import { popoverContent, tooltipOptions } from './commit.js';
+import {
+  popoverContent,
+  tooltipOptions,
+} from './point-content-for-tooltip-and-popover.js';
 import { aspectRatioFor, legendOptions } from './legend.js';
 import { pointPopover } from './point-popover.js';
 
@@ -26,10 +31,10 @@ const COLORS = [
   '#410472',
 ];
 
-// The call's options (its container's `data-otel-benchmarks` JSON): which
-// benches to chart, and how `extra` names a chart's group and its series.
-// Without `group_separator`, each bench name is its own chart with one series,
-// on the shared commit axis.
+// The shortcode's options, from the chart container's `data-otel-benchmarks`
+// JSON: which benches to chart, and how `extra` names a chart's group and its
+// series; without `group_separator`, each bench is its own chart with one
+// series.
 function init(options) {
   const {
     filter,
@@ -85,13 +90,21 @@ function init(options) {
   const data = window.BENCHMARK_DATA;
 
   return Object.keys(data.entries).map((name) => ({
-    name,
     dataSet: collectBenchesPerTestCase(data.entries[name]),
+    hasGroups: Boolean(groupSep),
   }));
 }
 
+function chartedCommitIds(commitIds, byName) {
+  const charted = new Set();
+  for (const byCommitId of byName.values()) {
+    for (const commitId of byCommitId.keys()) charted.add(commitId);
+  }
+  return commitIds.filter((commitId) => charted.has(commitId));
+}
+
 function renderAllCharts(dataSets, main) {
-  function renderGraph(parent, name, commitIds, byName) {
+  function renderGraph(parent, name, commitIds, byName, hasGroups) {
     const chartTitle = document.createElement('h3');
     chartTitle.textContent = name;
     parent.append(chartTitle);
@@ -134,15 +147,12 @@ function renderAllCharts(dataSets, main) {
     const minWidth =
       parseFloat(getComputedStyle(wrapper).minWidth) || wrapper.clientWidth;
     wrapper.style.aspectRatio = String(
-      aspectRatioFor(
-        datasets.map((d) => d.label),
-        minWidth,
-      ),
+      aspectRatioFor(hasGroups ? datasets.map((d) => d.label) : [], minWidth),
     );
 
     const options = {
       maintainAspectRatio: false,
-      ...pointPopover(wrapper, scroller, popoverContent),
+      ...pointPopover(wrapper, scroller, popoverContent(hasGroups)),
       scales: {
         x: {
           title: {
@@ -160,10 +170,11 @@ function renderAllCharts(dataSets, main) {
         },
       },
       plugins: {
-        // A copy per chart: the popover toggles `enabled` on the chart's own
+        // Options per chart: the popover toggles `enabled` on the chart's own
         // tooltip options, and Chart.js writes that through to this object.
-        tooltip: { ...tooltipOptions },
-        legend: legendOptions,
+        tooltip: tooltipOptions(hasGroups),
+        // A lone bench's chart is titled by its name; a legend would only repeat it.
+        legend: { ...legendOptions, display: hasGroups },
       },
     };
 
@@ -174,7 +185,7 @@ function renderAllCharts(dataSets, main) {
     });
   }
 
-  function renderBenchSet(benchSet, main) {
+  function renderBenchSet(benchSet, hasGroups, main) {
     const setElem = document.createElement('div');
     setElem.className = 'benchmark-set';
     main.appendChild(setElem);
@@ -190,13 +201,21 @@ function renderAllCharts(dataSets, main) {
     }
     groups.sort((a, b) => a.name.localeCompare(b.name));
 
+    // A bench that joined the history late would draw mostly empty on the data
+    // set's axis; grouped charts keep that axis so their series line up.
     for (const { name, byName } of groups) {
-      renderGraph(graphsElem, name, commitIds, byName);
+      renderGraph(
+        graphsElem,
+        name,
+        hasGroups ? commitIds : chartedCommitIds(commitIds, byName),
+        byName,
+        hasGroups,
+      );
     }
   }
 
-  for (const { name, dataSet } of dataSets) {
-    renderBenchSet(dataSet, main);
+  for (const { dataSet, hasGroups } of dataSets) {
+    renderBenchSet(dataSet, hasGroups, main);
   }
 }
 

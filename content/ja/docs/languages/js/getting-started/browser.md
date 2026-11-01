@@ -3,8 +3,7 @@ title: ブラウザ
 aliases: [/docs/js/getting_started/browser]
 description: ブラウザアプリにOpenTelemetryを追加する方法を学ぶ
 weight: 20
-default_lang_commit: f7dab5cfc4d44a8c788b7e02d07ec1e1d84e3845
-drifted_from_default: true
+default_lang_commit: 8ed9f745d6252000e153fae8c1913dc15a03b5cd
 ---
 
 {{% include browser-instrumentation-warning.md %}}
@@ -56,14 +55,16 @@ drifted_from_default: true
 
 ### インストール {#installation}
 
-ブラウザでトレースを作成するには、`@opentelemetry/sdk-trace-web`と計装 `@opentelemetry/instrumentation-document-load`が必要です。
+ブラウザでトレースを作成するには、`@opentelemetry/sdk-trace`と計装 `@opentelemetry/instrumentation-document-load`が必要です。
 
 ```shell
 npm init -y
 npm install @opentelemetry/api \
-  @opentelemetry/sdk-trace-web \
-  @opentelemetry/instrumentation-document-load \
-  @opentelemetry/context-zone
+  @opentelemetry/core \
+  @opentelemetry/sdk-trace \
+  @opentelemetry/context-zone \
+  @opentelemetry/instrumentation \
+  @opentelemetry/instrumentation-document-load
 ```
 
 ### 初期化と構成 {#initialization-and-configuration}
@@ -106,19 +107,28 @@ HTMLの`</body>`閉じタグの直前に次のコードを追加します。
 
 ```js
 /* document-load.ts|jsファイル - 両方の言語で同じコードスニペット */
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
+import { context, propagation, trace } from '@opentelemetry/api';
+import { TracerProvider } from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
-const provider = new WebTracerProvider();
+const tracerProvider = new TracerProvider();
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register({
-  // デフォルトのcontextManagerをZoneContextManagerに変更 - 非同期操作をサポート - オプション
-  contextManager: new ZoneContextManager(),
+const contextManager = new ZoneContextManager().enable();
+context.setGlobalContextManager(contextManager);
+
+const propagator = new CompositePropagator({
+  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
 });
+propagation.setGlobalPropagator(propagator);
 
-// 計装の登録
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
@@ -147,25 +157,36 @@ npx parcel index.html
 
 ```js
 /* document-load.ts|jsファイル - 両方の言語で同じコード */
+import { context, propagation, trace } from '@opentelemetry/api';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-base';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 
-const provider = new WebTracerProvider({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+const tracerProvider = new TracerProvider({
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register({
-  // デフォルトのcontextManagerをZoneContextManagerに変更 - 非同期操作をサポート - オプション
-  contextManager: new ZoneContextManager(),
+const contextManager = new ZoneContextManager().enable();
+context.setGlobalContextManager(contextManager);
+
+const propagator = new CompositePropagator({
+  propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
 });
+propagation.setGlobalPropagator(propagator);
 
-// 計装の登録
 registerInstrumentations({
   instrumentations: [new DocumentLoadInstrumentation()],
 });
