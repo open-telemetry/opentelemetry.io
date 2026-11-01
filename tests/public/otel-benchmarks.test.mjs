@@ -47,7 +47,7 @@ const PAGES = [
     path: 'docs/languages/js/benchmarks',
     dataUrl: `${GH_PAGES}/opentelemetry-js/benchmarks/data.js`,
     options: {},
-    inline: ['pt', 'zh'],
+    inline: ['ja', 'pt', 'zh'],
   },
   {
     path: 'docs/languages/python/benchmarks',
