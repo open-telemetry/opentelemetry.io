@@ -148,48 +148,35 @@ processors:
 
 ## Exporter-level queue and batch behavior
 
-Exporter-level batching is generally available for the exporters 
-that elect to use common `sending_queue` behavior which covers
-queuing and batching are integrated as follows.
+Exporter-level batching is generally available for the exporters that
+elect to use common `sending_queue` behavior. Queuing and batching
+behavior are integrated
 
-First, a request from the pipeline tries to enter the queue. Queue
-admission is determined by a limit over the total size of queued
-requests, as determined by the `sending_queue.sizer` configuration,
-measuring in `requests`, `items`, or `bytes`. If the queue is
-configured for back-pressure using `block_on_overflow: true`, the
-caller will wait until there is space in the queue. 
-
-Storage extensions provide hooks to support a persistent queue;
-however, without a storage extension, the queue is stored in
-memory. For the in-memory queue only, a `wait_for_result` option
-controls whether the caller will wait for the export. If
-`wait_for_result` is false, the caller returns success
-immediately. The queue spawns `num_consumers` concurrent workers for
-executing export requests.
-
-If batching is enabled, requests from the queue are combined into
-batches next, as measured by the `sending_queue.batch.sizer`
-configuration, which can be `items` or `bytes`, in terms of `min_size`
-and optional `max_size`. If the request is right-sized on arrival to
-the queue, it will pass through batching without additional cost. If a
-pending batch reaches the `flush_timeout` before reaching `min_size`,
-it exports immediately. If partitioning is configured, each partition
-keeps a pending batch independently. 
-
-Complete batches are handed to one of the queue's `num_consumers`
-concurrent workers. Requests exiting the combined queue and batch
-logic then pass to the exporter's configured timeout and retry
-configuration. Here is the default configuration:
+1. Requests try to enter the queue. The queue has limited
+   capacity. When the queue is full, it can fail immediately or it can
+   block the caller. Usually, the queue returns success to the caller
+   no admission, however there is also an option to wait for a
+   response.
+2. A number of consumers concurrently pull requests from the queue. If
+   batching, undersize and oversize requests are combined and split,
+   before being handled by consumers, whereas right-sized requests
+   pass straight through the batcher. When batch-partitioning, a
+   limited number of independent batches are maintained, subject to an
+   idle timeout.
+  
+Requests exiting the combined queue and batch logic then pass to the
+exporter's configured timeout and retry configuration. Here is the
+default configuration:
 
 ```yaml
 exporters:
-  <many>:
+  <exporter>:
     sending_queue:                   # exporter queue_batch behavior
-      num_consumers:     10          # concurrency limit
-      sizer:             requests    # measure in arriving requests
-      queue_size:        1000        # sized limit in memory or storage
-      block_on_overflow: false       # no back-pressure
+      queue_size:        1000        # size limit
+      sizer:             requests    # size is number of requests
+      block_on_overflow: false       # no backpressure
       wait_for_result:   false       # no error propagation
+      num_consumers:     10          # concurrency limit
       batch:
         enabled:         false       # batching disabled by default
         sizer:           items       # measure in items of telemetry
@@ -199,10 +186,14 @@ exporters:
 
 In detail:
 
-- `num_consumers` determines concurrent exports, by default 10
-- `queue_size` and `sizer` determine a limit on pending data, by default 1000 requests
-- `block_on_overflow` false means fail fast; true means wait until the deadline
-- `wait_for_result` false means do not wait for acknowledgement; true means wait for success or failure.
+- `num_consumers`: determines concurrent exports
+- `queue_size` and `sizer`: determine a limit on pending data
+- `block_on_overflow`: false means fail fast; true means wait until the deadline
+- `wait_for_result`: false means do not wait for acknowledgement; true means wait for success or failure
+- `storage`: optional storage extension for a durable queue.
+
+By default, the queue does not block and does not wait for a result,
+meaning it will return success or failure to the caller immediately.
 
 Because exporter-level batching was introduced after queueing behavior
 stabilized, batching remains disabled by default. After enabling
@@ -211,37 +202,112 @@ exporter-level batching, the default for `sizer`, `min_size`, and
 
 For most exporters today, you can migrate from the default `batch`
 processor settings by removing it from the pipeline and enabling
-exporter-level batching:
+exporter-level batching. This enables batching with the default
+settings shown above:
 
 ```yaml
 exporters:
-  otlp:
+  <exporter>:
     sending_queue:
       batch:
         enabled: true
 ```
 
-### Optional tuning
+In detail:
 
-After migrating, you can configure byte-based limits instead of item counts.
+- `enabled`: Enable exporter-level batching
+- `sizer`: How to measure batch size: items, bytes
+- `min_size`: Minimum size of batch before sending
+- `max_size`: Maximum size of batch (optional)
+- `flush_timeout`: Maximum delay before sending.
+- `partition`: Details below.
+
+### Queue capacity after migration
+
+Moving batching into `sending_queue` also moves it to the other side
+of the queue. In a typical `batch` processor pipeline, the exporter
+`sending_queue` appears after the `batch` processor. With an existing
+`batch` processor in the pipeline, the default-size queue holds up to
+1000 already-batched requests, so be careful translating existing
+configuration.
+
+With exporter-level batching, batching happens after the queue. Now,
+the queue holds individual requests arriving from the pipeline,
+typically much smaller requests. The same `queue_size: 1000`, measured
+in requests may be a lot less data. Removing `batch` from the pipeline
+may cause the queue to hold less data, which can lead to overflow.
+
+When moving to `sending_queue` batching, consider raising `queue_size`
+to hold an appropriate number of unbatched requests. For an in-memory
+queue, meaming without a `storage` extension, ideally we want the
+queue to hold at least as much data as will keep `num_consumers` busy.
+Depending on whether callers will block, additional queue space should
+be allocated to survive intermittent export failures.
+
+When `queue_size` is measured in `items` or `bytes`, request size
+matters less. For example, the following queue stores up to 100,000
+items. With a minimum size of 5,000 items per batch, 10 consumers can
+send 50,000 or more items concurrently. The queue allows an additional
+50,000 items to enter and await ending before blocking or failing
+requests.
 
 ```yaml
 exporters:
-  <many>:
-    sending_queue:                   # exporter queue_batch behavior
-      <...>
+  <exporter>:
+    sending_queue:
+      sizer:         items    # size the queue in items, not requests
+      queue_size:    100_000  # fits around 50-100 of SDK-size batches
+      num_consumers: 10       # 10 workers will export batches
       batch:
-        enabled:         true        # exporter-level batching
-        sizer:           bytes       # measure in bytes
-        min_size:        1_000_000   # minimum bytes
-        max_size:        10_000_000  # maximum bytes
-        flush_timeout:   200ms       # maximum delay
+        enabled:  true
+        sizer:    items       # export size in items
+        min_size: 5_000       # minimum size export
 ```
 
-Like the `batch` processor, the queue_batch mechanism supports partitioning
-by metadata; see [`sending_queue` documentation][SENDING_QUEUE] for more
-details. Without explicit batch-size settings, `min_size` is 8192 items,
-`max_size` is unset, and `flush_timeout` is 200ms.
+An items- or bytes-sized queue makes `sending_queue` memory costs
+explicit, where a request-sized queue can hold large or small
+requests, varying in memory.
+
+Using bytes helps when the backend limit is also in bytes. Use
+`max_size` to every request under the limit:
+
+```yaml
+exporters:
+  <exporter>:
+    sending_queue:
+      sizer:      bytes        # size the queue in bytes
+      queue_size: 100_000_000  # 100 MB buffered
+      batch:
+        enabled:  true
+        min_size: 1_000_000    # 1 MB batches
+        max_size: 10_000_000   # stay under the backend's message limit
+```
+
+Both `items` and `bytes` sizers cost more CPU than requests, and
+`bytes` is the most expensive because it computes the encoded
+size. Watch `otelcol_exporter_queue_size` and compare it against
+`otelcol_exporter_queue_capacity` after the switch.
+
+### More features
+
+Like the `batch` processor, the queue_batch mechanism supports
+[partitioning by metadata][SENDING_QUEUE]:
+
+```yaml
+exporters:
+  <exporter>:
+    sending_queue:         # exporter queue_batch behavior
+      <...>
+      batch:
+        enabled: true
+        <...>
+        partition:
+          enabled: true
+          metadata_keys:      # list of request headers
+            - x-auth-token
+          cache_size: 100     # up to 100 simultaneous batches
+          idle_timeout: 100s  # removed from memory afer 100s
+```
 
 The Collector's storage extension is available for all `sending_queue`
 configurations, supporting configuration of [persistent
@@ -249,7 +315,7 @@ queues][PERSISTENT], for example:
 
 ```yaml
 exporters:
-  <many>:
+  <exporter>:
     sending_queue:         # exporter queue_batch behavior
       <...>
       storage: persistent  # use persistent storage
