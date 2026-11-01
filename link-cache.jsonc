@@ -9629,6 +9629,11 @@
     "when": "2026-10-23T17:34:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/community/blob/main/README.md#localization-teams-part-of-sig-communications": {
+    "result": 200,
+    "when": "2026-10-27T17:31:27Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/community/blob/main/code-of-conduct.md": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
@@ -22387,6 +22392,11 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues/12266": {
     "result": 200,
     "when": "2026-10-21T19:11:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/12285": {
+    "result": 200,
+    "when": "2026-10-27T15:06:00Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/6592": {
