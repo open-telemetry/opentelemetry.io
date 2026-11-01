@@ -3,17 +3,16 @@ title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
 weight: 4
-default_lang_commit: eab64e41b388032bae1475f226e5e9e437ab314d
-drifted_from_default: true
+default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
 # prettier-ignore
-cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
+cSpell:ignore: containerd goblog kubeadm microk8s replicaset statefulset tracefs
 ---
 
 > [!NOTE]
 >
 > このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
 >
-> <!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
+> <!-- [Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
 
 ## Kubernetesメタデータデコレーションを構成する {#configuring-kubernetes-metadata-decoration}
 
@@ -148,7 +147,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -179,7 +178,7 @@ OBIは(共有されたPID名前空間のため)同じPod内のプロセスにし
 
 Pod内で計装するプロセスをより細かく制御する必要がある場合は、ワイルドカードのかわりに実行可能ファイル名やオープンポートを指定できます。
 
-以下の例では、OBIをコンテナ(`otel/ebpf-instrument:main` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
+以下の例では、OBIをコンテナ(`otel/ebpf-instrument:v0.15.2` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
 自動計装ツールは、同じ名前空間の `otelcol` サービスの背後にあるアクセス可能なOpenTelemetryコレクターにメトリクスとトレースを転送するように構成されています。
 
 ```yaml
@@ -213,7 +212,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -273,7 +272,7 @@ spec:
       serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext:
             privileged: true
           env:
@@ -298,24 +297,18 @@ spec:
 
 ### OBIを非特権でデプロイする {#deploying-obi-unprivileged}
 
-ここまでのすべての例では、OBIデプロイメントの `securityContext` セクションで `privileged:true` またはLinuxの `SYS_ADMIN` ケーパビリティが使用されていました。
-これはあらゆる状況で機能しますが、セキュリティ構成で必要な場合は、権限を制限してKubernetesにOBIをデプロイする方法もあります。
-これが可能かどうかは、使用しているKubernetesバージョンと基盤となるコンテナランタイム(例、**Containerd**、**CRI-O**、**Docker**)によります。
+上記の例では `privileged: true` でOBIを実行しています。
+かわりに、有効化された機能に必要なケーパビリティのみを付与することもできます。
+これが機能するかどうかは、Kubernetesバージョン、コンテナランタイム、およびホストのセキュリティポリシーによります。
 
 次のガイドは、主に `GKE`、`kubeadm`、`k3s`、`microk8s`、および `kind` で `containerd` を実行して行ったテストに基づいています。
 
 OBIを非特権で実行するには、`privileged:true` 設定をLinuxの[ケーパビリティ](https://www.man7.org/linux/man-pages/man7/capabilities.7.html)に置き換える必要があります。
 OBIに必要なケーパビリティの包括的なリストは、[セキュリティ、権限、およびケーパビリティ](../../security/)で確認できます。
 
-**Note** BPFプログラムのロードには、OBIがLinuxのパフォーマンスイベントを読み取るか、少なくともLinuxカーネルAPI `perf_event_open()` を実行できる必要があります。
-
-この権限は、`CAP_PERFMON` またはより広範囲に `CAP_SYS_ADMIN` によって付与されます。
-`CAP_PERFMON` および `CAP_SYS_ADMIN` はいずれもOBIにパフォーマンスイベントを読み取る権限を付与するため、より少ない権限で済む`CAP_PERFMON` を使用することを推奨します。
-ただし、システムレベルでは、パフォーマンスイベントへのアクセスは `kernel.perf_event_paranoid` 設定によって制限され、`sysctl` を使用するか `/proc/sys/kernel/perf_event_paranoid` ファイルを変更することで読み書きできます。
-`kernel.perf_event_paranoid` のデフォルト設定は通常 `2` であり、これは[カーネルのドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)の `perf_event_paranoid` セクションで説明されています。
-一部のLinuxディストリビューションでは、`kernel.perf_event_paranoid` に対してより高いレベルを定義しています。
-たとえばDebianベースのディストリビューションでは、`kernel.perf_event_paranoid=3` を[使用しており](https://lwn.net/Articles/696216/)、これにより `CAP_SYS_ADMIN` なしでの `perf_event_open()` へのアクセスは拒否されます。
-`kernel.perf_event_paranoid` 設定が `2` より高いディストリビューションで実行している場合は、構成を変更して `2` に下げるか、`CAP_PERFMON` のかわりに `CAP_SYS_ADMIN` を使用できます。
+v0.14.0以降、ホストポリシーが `perf_event_open()` によるPMUアクセスをブロックしている場合、OBIはほとんどのプローブアタッチメントにおいて tracefs にフォールバックします。
+`CAP_SYS_ADMIN` は `bpf_probe_write_user()` を使用する機能(Goのライブラリレベルのコンテキスト伝搬を含む)に引き続き必要です。
+機能ごとのケーパビリティとホストポリシーのガイダンスについては、[セキュリティ](../../security/)を参照してください。
 
 OBIの非特権コンテナ構成の例を以下に示します。
 
@@ -343,7 +336,7 @@ spec:
       containers:
         - name: obi
           terminationMessagePolicy: FallbackToLogsOnError
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           env:
             - name: OTEL_EBPF_TRACE_PRINTER
               value: "text"
@@ -366,7 +359,7 @@ spec:
                 - DAC_READ_SEARCH     # <-- 重要。OBIがELFファイルを開くことを許可。
                 - PERFMON             # <-- 重要。OBIがBPFプログラムをロードすることを許可。
                 #- SYS_RESOURCE       # <-- 5.11より前のバージョンのみ。OBIがロックされたメモリの量を増やすことを許可。
-                #- SYS_ADMIN          # <-- Goアプリケーションのトレースコンテキスト伝搬、またはDebianディストリビューションで
+                #- SYS_ADMIN          # <-- Goのライブラリレベルのコンテキスト伝搬、およびbpf_probe_write_user()を使用するその他の機能に必要。
               drop:
                 - ALL
           volumeMounts:
@@ -450,7 +443,7 @@ spec:
       serviceAccountName: obi # Pod、Node、Serviceに対するlist/watch権限が必要
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:latest
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.15.2
           ports:
             - containerPort: 50055
               name: grpc
@@ -532,7 +525,7 @@ spec:
       hostPID: true # 重要！
       containers:
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

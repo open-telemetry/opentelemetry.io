@@ -1,6 +1,5 @@
 ---
-default_lang_commit: 2f2dbb706175132f9fca17d778ab69e8aba8f632 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
 
 ## Mantendo as informações de {{ $1 }} atualizadas {#keeping-up-to-date}

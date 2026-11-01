@@ -2,13 +2,12 @@
 title: Instrumentação
 description: Como o OpenTelemetry facilita a instrumentação
 weight: 15
-default_lang_commit: efeda2d8ded2471211697c3993f6d475a3a8b06e # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Para que um sistema seja [observável][], ele deve ser **instrumentado**: ou
-seja, o código dos componentes do sistema deve emitir [rastros][], [métricas][]
-e [logs][].
+seja, o código dos componentes do sistema deve emitir [sinais][], como
+[rastros][], [métricas][] e [logs][].
 
 Com o OpenTelemetry, você pode instrumentar seu código de duas maneiras:
 

@@ -11,7 +11,7 @@ API, repurposing older constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
 
 OpenTelemetry for .NET also provides an API shim on top of the
-[System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)-
+[System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics)-
 based implementation. This shim is helpful if you're working with other
 languages and OpenTelemetry in the same codebase, or if you prefer to use
 terminology consistent with the OpenTelemetry spec.

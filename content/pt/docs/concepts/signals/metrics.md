@@ -2,8 +2,7 @@
 title: Métricas
 weight: 2
 description: Uma medição capturada em tempo de execução.
-default_lang_commit: 34f672f4afbc083423d5c03a03f97c308591d255
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
@@ -116,6 +115,89 @@ Uma _view_ oferece aos usuários a flexibilidade de personalizar a emissão das
 métricas fornecidas pelo SDK. Você pode personalizar quais instrumentos de
 métrica devem ser processados ou ignorados. Você também pode customizar a
 agregação e quais atributos deseja reportar em suas métricas.
+
+## Limites de cardinalidade {#cardinality-limits}
+
+A **cardinalidade** de uma métrica é o número de combinações únicas de atributos
+reportadas para ela. Como o SDK mantém em memória um estado de agregação
+separado (um ponto de dados) para cada combinação única, a cardinalidade
+determina o custo de memória das métricas. Diferente dos logs, esse custo escala
+com o número de combinações distintas de atributos, e não com o volume de
+requisições, então atributos de alta cardinalidade, como IDs de usuário ou
+caminhos de URL brutos, podem causar um crescimento ilimitado de memória.
+
+Para proteger as aplicações disso, o SDK de métricas do OpenTelemetry aplica um
+**limite de cardinalidade**: um número máximo de combinações únicas de atributos
+rastreadas por fluxo de métrica. O padrão é 2000 e pode ser sobrescrito com uma
+[View](#views).
+
+Quando o limite é atingido, as combinações de atributos adicionais não são
+simplesmente descartadas. Em vez disso, suas medições são agregadas em um único
+**ponto de dados de overflow**, identificado pelo atributo
+`otel.metric.overflow=true`. Esse design tem três propriedades importantes:
+
+- **Nenhuma medição é perdida.** Apenas os atributos são descartados; os valores
+  registrados são incorporados ao ponto de dados de overflow, então o total
+  geral da métrica permanece correto.
+- **A memória é limitada.** O SDK nunca rastreia mais do que o número
+  configurado de combinações.
+- **O overflow é observável.** Todos os SDKs usam o mesmo marcador
+  `otel.metric.overflow=true`, então uma única consulta pode detectar overflow
+  entre serviços, linguagens e backends.
+
+A desvantagem é que qualquer consulta que **filtre ou agrupe por um atributo**
+em uma métrica com overflow apresenta contagens menores do que as reais, porque
+as medições incorporadas ao overflow não carregam mais esse atributo.
+
+Isso é fácil de subestimar, porque o overflow substitui a combinação de
+atributos **inteira**, e não apenas sua parte de alta cardinalidade. Suponha que
+um contador de requisições registre `url.path` (alta cardinalidade) junto com
+`success` (um booleano). Quando o fluxo entra em overflow, uma medição para
+`{url.path=/checkout, success=false}` é incorporada ao único ponto de dados de
+overflow `{otel.metric.overflow=true}`, descartando `success` junto com
+`url.path`. Uma consulta por `success=false` então deixa de contabilizar essa
+medição, mesmo que `success`, por si só, tenha a menor cardinalidade possível
+para um atributo. Um alerta de taxa de erros construído sobre `success=false`
+pode, portanto, parar de disparar, enquanto o total geral da métrica permanece
+correto.
+
+### Onde o limite não se aplica {#what-the-limit-does-not-apply-to}
+
+O limite de cardinalidade se aplica apenas aos atributos fornecidos ao registrar
+medições por meio da API de métricas. Ele **não** se aplica a:
+
+- Atributos de [recurso](/docs/concepts/resources/), como `service.name` ou
+  `service.instance.id`.
+- Atributos do escopo de instrumentação definidos quando um [medidor](#meter) é
+  criado.
+
+Os valores dos atributos de recurso e do escopo de instrumentação são
+registrados em todos os pontos de dados, incluindo o de overflow, então eles
+continuam confiáveis para consultas mesmo durante o overflow. Isso não é um
+motivo para realocar atributos de medição como forma de contornar o limite. Os
+atributos devem ser posicionados de acordo com o que descrevem: um recurso
+descreve a entidade que produz a telemetria, o escopo de instrumentação descreve
+a biblioteca de instrumentação, e os atributos de medição descrevem uma medição
+individual. Quando os atributos são modelados dessa forma, o contexto que é
+constante durante todo o ciclo de vida do processo, como nome do serviço,
+ambiente ou região, naturalmente pertence ao recurso, onde também continua
+disponível para consultas durante o overflow.
+
+### Temporalidade e limites de cardinalidade {#temporality-and-cardinality-limits}
+
+Para instrumentos síncronos, a
+[temporalidade de agregação](/docs/specs/otel/metrics/data-model/#temporality)
+determina a rapidez com que o SDK consegue liberar o estado de agregação e,
+portanto, a rapidez com que o limite é atingido:
+
+- Com temporalidade **delta**, o SDK reinicia o estado após cada ciclo, então o
+  limite restringe apenas as combinações ativas dentro de um único ciclo.
+- Com temporalidade **cumulativa**, o SDK mantém o estado entre os ciclos, então
+  uma vez que o limite é atingido, novas combinações continuam entrando em
+  overflow até que o processo seja reiniciado.
+
+Instrumentos assíncronos seguem regras diferentes que estão além do escopo desta
+visão geral.
 
 ## Suporte de linguagens de programação {#language-support}
 
