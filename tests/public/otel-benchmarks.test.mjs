@@ -53,7 +53,7 @@ const PAGES = [
     path: 'docs/languages/python/benchmarks',
     dataUrl: `${GH_PAGES}/opentelemetry-python/benchmarks/data.js`,
     options: {},
-    inline: ['pt'],
+    inline: ['ja', 'pt'],
   },
 ];
 // Languages without their own copy serve the en content as fallback
