@@ -99,11 +99,13 @@ Use exporter-level batching in most cases. If you need batching before
 another processor or shared batching for multiple exporters, use the
 `queue_batch` processor instead.
 
-## Batchprocessor: now deprecated!
+## Why replace the `batch` processor?
 
 Collector processors consume and produce an in-memory representation
-of OpenTelemetry data. Consequently, the `batch` processor is configured in
-terms of _item counts_. Its default settings are:
+of OpenTelemetry data. Consequently, the `batch` processor is
+configured in terms of _item counts_, which are the number of
+individual log records, metric data points, and trace spans. Its
+default settings are:
 
 ```yaml
 processors:
@@ -146,7 +148,7 @@ processors:
     metadata_cardinality_limit: 100  # maximum partitions
 ```
 
-## Exporter-level queue and batch behavior
+## Integrated exporter-level queue and batch behavior
 
 Exporter-level batching is generally available for the exporters that
 elect to use common `sending_queue` behavior. Queuing and batching
@@ -296,7 +298,7 @@ Like the `batch` processor, the queue_batch mechanism supports
 ```yaml
 exporters:
   <exporter>:
-    sending_queue:         # exporter queue_batch behavior
+    sending_queue:
       <...>
       batch:
         enabled: true
@@ -316,15 +318,14 @@ queues][PERSISTENT], for example:
 ```yaml
 exporters:
   <exporter>:
-    sending_queue:         # exporter queue_batch behavior
+    sending_queue:
       <...>
-      storage: persistent  # use persistent storage
+      storage: file_storage/persistent
 
 extensions:
-  persistent:              # extension name
-    file_storage:          # file-based storage
-      directory: <...>     # directory path
-      <...>
+  file_storage/persistent: # file-based storage
+    directory: <...>       # directory path
+    <...>
 ```
 
 [SENDING_QUEUE]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/exporterhelper/README.md#sending-queue-batch-settings
