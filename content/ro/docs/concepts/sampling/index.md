@@ -37,16 +37,16 @@ considerate "eșantionate". Acestea sunt afirmații incorecte.
 
 Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile
 de monitorizare fără a pierde vizibilitate. Deși sunt alte metode de a scădea
-costuri, precum filtrare și agregarea datelor, aceste alternative nu aderă la
+costuri, precum filtrarea și agregarea datelor, aceste alternative nu aderă la
 conceptul de reprezentativitate, care este crucial când faci o analiză în
-profunzime a comportamentului unei aplicații sau sistem.
+profunzime a comportamentului unui sistem.
 
 Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu
 acuratețe un grup mai mare. În plus, reprezentativitatea poate fi verificată
-matematic, ceea ce înseamnă că poți avea o încredere ridicată în faptul că un
+matematic, ceea ce înseamnă că poți avea o mai mare încredere în faptul că un
 eșantion mai mic de date reprezintă cu acuratețe grupul mai mare.
 
-De asemenea, cu cât generezi mai multe date, cu atât mai puține ai nevoie pentru
+De asemenea, cu cât generezi mai multe date, cu atât ai nevoie de mai puține pentru
 a avea un eșantion reprezentativ. În cazul sistemelor cu volum mare de date,
 este destul de comun ca o rată de eșantionare de 1% sau mai puțin pentru a
 reprezenta cu mare acuratețe restul de 99% din date.
@@ -60,19 +60,19 @@ criterii:
 - Majoritatea datelor de urme reprezintă trafic funcțional cu o variație mică în
   date.
 - Ai niște criterii comune, precum erori și latență mare, ceea ce înseamnă de
-  obicei că ceva este în neregulă
+  obicei că ceva nu este în regulă.
 - Ai criterii specifice domeniului pe care le poți folosi pentru a determina ce
-  date sunt relevante, mai departe de erori și latență.
+  date sunt relevante, în afară de erori și latență.
 - Poți descrie niște reguli comune care determină dacă datele ar trebui
   eșantionate sau eliminate.
-- Ai o metodă de a-ți distinge serviciile, astfel că eșantionarea se face
+- Ai o metodă de a-ți distinge serviciile, astfel încât eșantionarea se face
   diferit pentru serviciile cu volum mare sau mic de date.
 - Ai abilitatea de a ruta date neeșantionate (pentru scenarii de tip "pentru
   orice eventualitate") către sisteme de stocare cu costuri reduse.
 
-În final, ia în considerare bugetul per total. Dacă ai un buget limita pentru
+În final, ia în considerare bugetul per total. Dacă ai un buget limitat pentru
 monitorizare, dar îți permiți să petreci timp pentru a eșantiona eficient,
-atunci eșantionarea poate în general fie utilă.
+atunci eșantionarea poate să fie în general utilă.
 
 ### Când să nu eșantionezi {#when-not-to-sample}
 
@@ -122,7 +122,7 @@ Avantajele eșantionării de cap sunt:
 - Poate fi făcută în orice punct al procesului de colectare a urmelor
 
 Principalul dezavantaj la eșantionarea de cap este că nu este posibilă să iei o
-decizie de eșantionare bazată pe date din întregul urmelor. De exemplu, nu poți
+decizie de eșantionare bazată pe date din totalul urmelor. De exemplu, nu poți
 garanta că toate urmele care conțin o eroare sunt eșantionate folosind doar
 eșantionarea de cap.
 
@@ -134,13 +134,13 @@ urmă. Eșantionarea de coadă îți oferă opțiunea de a eșantiona urmele tal
 pe criterii specifice derivate din părți diferite ale unei urme, opțiune
 indisponibilă în eșantionarea de cap.
 
-![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesator de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
+![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesatorul de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
 
 Niște exemple despre cum poți folosi eșantionarea de coadă sunt:
 
-- Mereu să eșantionezi urme ce conțin o eroare
-- Eșantionarea urmelor în funcție de latența generală
-- Eșantionarea urmelor în funcție de prezența sau valoare unor atribute
+- Mereu să eșantionezi urme ce conțin o eroare.
+- Eșantionarea urmelor în funcție de latența generală.
+- Eșantionarea urmelor în funcție de prezența sau valoarea unor atribute
   specifice de pe unul sau mai multe intervale într-o urmă; de exemplu,
   eșantionarea mai multor urme ce provin din servicii noi.
 - Aplicând rate de eșantionare diferite pe urme în funcție de anumite criterii,
@@ -156,7 +156,7 @@ date.
 În momentul de față, sunt trei mari dezavantaje la eșantionarea de coadă:
 
 1. Eșantionarea de coadă poate fi greu de implementat. Depinzând de tipul de
-   metodă de eșantionare disponibilă, nu este mereu un caz de "setează și uită".
+   metodă de eșantionare disponibilă, nu există mereu un caz de "setează și uită".
    Cum sistemele tale se schimbă, la fel se vor schimba și tehnicile de
    eșantionare. Pentru un sistem distribuit mare și sofisticat, regulile care
    implementează strategiile de eșantionare pot de asemenea să fie mari și
@@ -171,19 +171,18 @@ date.
    de date pe care îl primește. Datorită acestor factori, este critic să
    monitorizezi componentele de eșantionare de coadă pentru a asigura că au
    resursele necesare pentru a lua deciziile corecte pentru eșantionare.
-3. Eșantionatoarele de coadă ajung adesea astăzi să fie o tehnologie specifică
-   unui furnizor. Dacă plătești un furnizor pentru Monitorizare, cele mai
+3. Eșantionatoarele de coadă ajung adesea astăzi să fie o tehnologie specifică a
+   unui furnizor. Dacă plătești un furnizor pentru monitorizare, cele mai
    eficiente opțiuni de eșantionare disponibile ție ar putea fi limitate la ce
-   oferă furnizorul
+   oferă furnizorul.
 
 În final, pentru unele sisteme, eșantionarea de coadă ar putea fi folosită
 împreună cu eșantionarea de cap. De exemplu, un set de servicii care produce un
 volume extrem de mare de date cu urme ar putea folosi inițial eșantionarea de
-cap pentru a eșantiona un procentaj mic de urme, iar ulterior in lanțul de
+cap pentru a eșantiona un procentaj mic de urme, iar ulterior în lanțul de
 telemetrie să folosească eșantionarea de coadă pentru a lua decizii mai
-sofisticate de eșantionare înainte să le exporte la un backend. Acest lucru se
-întâmplă des cu scopul de a proteja lanțul de telemetrie de la a fi
-supraîncărcat.
+sofisticate de eșantionare înainte să le exporte către un backend. Acest lucru se
+întâmplă des cu scopul de a proteja lanțul de telemetrie pentru a nu deveni supraîncărcat.
 
 ## Suport {#support}
 
@@ -194,7 +193,7 @@ Colectorul OpenTelemetry include următorii procesatori de eșantioane:
 - [Procesatorul de eșantioane probabilistic](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
 - [Procesatorul de eșantioane de coadă](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### SDK-uri pentru limbaj
+### SDK-uri pentru limbaj {#language-sdks}
 
 Pentru implementarea specifică unui limbaj a API-ului și SDK-ului OpenTelemetry,
 vei găsi suport pentru eșantionare în paginile de documentație corespondente:
@@ -204,8 +203,8 @@ vei găsi suport pentru eșantionare în paginile de documentație corespondente
 ### Furnizori {#vendors}
 
 Mulți [furnizori](/ecosystem/vendors) oferă soluții de eșantionare complete care
-incorporează eșantionare de cap, eșantionare de coadă cât și alte
-funcționalități care pot deservi nevoi sofisticate de eșantionare. Aceste
+încorporează eșantionare de cap, eșantionare de coadă cât și alte
+funcționalități care pot gestiona nevoi sofisticate de eșantionare. Aceste
 soluții ar putea fi optimizate specific pentru backend-ul furnizorului. Dacă
 trimiți telemetrie către un furnizor, ia în considerare utilizarea soluțiilor
 lor eșantionare.
