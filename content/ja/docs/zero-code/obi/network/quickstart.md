@@ -3,8 +3,7 @@ title: OBI ネットワークメトリクスのクイックスタート
 linkTitle: クイックスタート
 description: OpenTelemetry eBPF 計装からネットワークメトリクスを生成するためのクイックスタートガイド
 weight: 1
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
 ---
 
 OBI は、あらゆる環境（物理ホスト、仮想ホスト、コンテナ）でネットワークメトリクスを生成できます。
@@ -21,11 +20,11 @@ Helm を使用する場合は、[Helm を使用した Kubernetes への OBI の�
 環境変数:
 
 ```bash
-export OTEL_EBPF_NETWORK_METRICS=true
+export OTEL_EBPF_METRICS_FEATURES=network
 ```
 
-ネットワークメトリクスでは、メトリクスを Kubernetes メタデータで装飾する必要があります。
-この機能を有効化するには、OBI の設定で次のオプションを指定します。
+Kubernetes メタデータはオプションですが、ネットワークメトリクスにワークロードラベルを付与できます。
+有効化するには次のように設定します。
 
 環境変数:
 
@@ -45,10 +44,40 @@ OBI の設定の詳細については、[OBI 設定ドキュメント](../../con
 
 ```yaml
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: obi
+---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
   namespace: obi
   name: obi
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: obi-network
+rules:
+  - apiGroups: ['apps']
+    resources: ['replicasets']
+    verbs: ['list', 'watch']
+  - apiGroups: ['']
+    resources: ['pods', 'services', 'nodes']
+    verbs: ['list', 'watch']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: obi-network
+subjects:
+  - kind: ServiceAccount
+    name: obi
+    namespace: obi
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: obi-network
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -57,11 +86,15 @@ metadata:
   name: obi-config
 data:
   obi-config.yml: |
+    metrics:
+      features: [network]
     network:
-      enable: true
+      print_flows: true
     attributes:
       kubernetes:
-        enable: true
+        enable: 'true'
+    prometheus_export:
+      port: 9090
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -81,11 +114,8 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-        - name: obi-config
-          configMap:
-            name: obi-config
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:v0.15.2
           securityContext:
             privileged: true
           volumeMounts:
@@ -94,13 +124,25 @@ spec:
           env:
             - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/obi-config.yml'
+      volumes:
+        - name: obi-config
+          configMap:
+            name: obi-config
 ```
 
-この設定についての注意点は次のとおりです。
+マニフェストを `obi-network.yml` として保存し、適用します。
 
-- コンテナイメージは、開発中の最新版 `otel/ebpf-instrument:main` イメージを使用しています。
-- OBI はノードごとに 1 つの OBI インスタンスしか必要としないため、DaemonSet として実行する必要があります。
-- ホスト上のネットワークパケットをリッスンするには、OBI には `hostNetwork: true` 権限が必要です。
+```sh
+kubectl apply -f obi-network.yml
+```
+
+この設定の要点は次のとおりです。
+
+- v0.15.2 リリースイメージを使用し、ノードごとに1つの OBI Pod を配置します。
+- ワークロードラベル用に Kubernetes メタデータへの読み取りアクセスを許可します。
+- `hostNetwork: true` を使用してホストネットワークインターフェイスを監視します。
+- Prometheus メトリクスをポート9090で公開し、以下の検証ステップ用にフローを出力します。
+  検証後にログ出力が不要な場合は `network.print_flows` を無効化してください。
 
 ### ネットワークメトリクスの生成を検証する {#verify-network-metrics-generation}
 
@@ -127,36 +169,42 @@ OpenTelemetry エクスポーターを設定するには、[データエクス�
 
 デフォルトでは、OBI は `obi.network.flow.bytes` メトリクスに次の [属性](./) を含めます。
 
+- `direction`
 - `k8s.src.owner.name`
+- `k8s.src.owner.type`
 - `k8s.src.namespace`
 - `k8s.dst.owner.name`
+- `k8s.dst.owner.type`
 - `k8s.dst.namespace`
 - `k8s.cluster.name`
 
+Kubernetes 属性には Kubernetes メタデータが必要です。
 OBI は、カーディナリティ爆発を引き起こさないように、利用可能な属性のサブセットのみを含めます。
 
-たとえば次のとおりです。
+たとえば、デフォルトの `direction`、名前空間、クラスターラベルを除外し、オーナー名とタイプのみを報告するには次のように設定します。
 
 ```yaml
-network:
-  allowed_attributes:
-    - k8s.src.owner.name
-    - k8s.src.owner.type
-    - k8s.dst.owner.name
-    - k8s.dst.owner.type
+attributes:
+  select:
+    obi_network_flow_bytes:
+      include:
+        - k8s.src.owner.name
+        - k8s.src.owner.type
+        - k8s.dst.owner.name
+        - k8s.dst.owner.type
 ```
 
 これに対応する Prometheus メトリクスは次のようになります。
 
 ```text
-obi.network.flow.bytes:
+obi_network_flow_bytes_total:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
   k8s_dst_owner_name="backend"
   k8s_dst_owner_type="deployment"
 ```
 
-上記の例では、`obi.network.flow.bytes` の値を個別の Pod 名ではなく、送信元と送信先の Kubernetes オーナー名およびタイプで集計します。
+上記の例では、`obi.network.flow.bytes` の値を送信元と送信先の Kubernetes オーナー名およびタイプで集計します。
 
 ## CIDR の設定 {#cidr-configuration}
 
@@ -181,7 +229,7 @@ network:
 これに対応する Prometheus メトリクスは次のようになります。
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   src_cidr="cluster-internal"
   dst_cidr="private"
 ```
