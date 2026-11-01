@@ -1,10 +1,10 @@
 ---
 title: OpenTelemetry Operator para Kubernetes
-linkTitle: Operador do Kubernetes
+linkTitle: Operador Kubernetes
 description:
-  Uma implementação de um operador do Kubernetes que gerencia Collectors e
-  auto-instrumentação de cargas de trabalho usando bibliotecas de
-  instrumentação do OpenTelemetry.
+  Uma implementação de um operador Kubernetes que gerencia Collectors e
+  auto-instrumentação de cargas de trabalho usando bibliotecas de instrumentação
+  do OpenTelemetry.
 aliases:
   - /docs/operator
   - /docs/k8s-operator
@@ -18,9 +18,10 @@ default_lang_commit: 48d3ff356dc39a3b1323637f3163d435dc751228
 
 ## Introdução {#introduction}
 
-O [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
+O
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
 é uma implementação de um
-[operador do Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
+[operador Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
 
 O operador gerencia:
 
@@ -82,10 +83,9 @@ EOF
 > [Helm charts](/docs/platforms/kubernetes/helm/), é usada a imagem
 > [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
 > Se precisar de um componente que não esteja disponível nessas versões, talvez
-> seja necessário
-> [compilar seu próprio Collector](/docs/collector/extend/ocb/).
+> seja necessário [compilar seu próprio Collector](/docs/collector/extend/ocb/).
 
 Para ver mais opções de configuração e saber como configurar a injeção da
-auto-instrumentação de cargas de trabalho usando as bibliotecas de 
+auto-instrumentação de cargas de trabalho usando as bibliotecas de
 instrumentação do OpenTelemetry, consulte o
 [OpenTelemetry Operator para Kubernetes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
