@@ -96,8 +96,6 @@ being aligned. See [telemetry stability](metrics/#stability).
 
 ## Upgrade to v1.0.0
 
-Pin deployments to `v1.0.0`.
-
 - Use [Config v2](configure/config-v2/). Config v1 remains supported, but
   receives no bug fixes or new features. Follow the
   [migration guide](configure/migrate-to-config-v2/) and test the migrated
