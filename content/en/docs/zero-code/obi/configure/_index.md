@@ -21,11 +21,8 @@ OBI Collector receiver, uses the OpenTelemetry declarative configuration
 structure for common settings, and places OBI-specific settings under
 `extensions.obi`.
 
-Config v2 is the stable configuration contract in OBI v1.0.0. Config v1 remains
-supported for backward compatibility, but is frozen and receives no bug fixes or
-new features. The stable contract covers only the supported declarative
-configuration fields; full per-process declarative configuration parity is not
-yet available.
+Config v2 and its generated schema are stable. Config v1 remains supported, but
+receives no bug fixes or new features.
 
 - To write a new configuration, start with the
   [Config v2 reference](config-v2/).

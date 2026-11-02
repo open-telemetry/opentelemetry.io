@@ -206,11 +206,8 @@ If you need more granular control over which processes to instrument within a
 pod, you can specify the executable name or open port instead of using the
 wildcard.
 
-The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:v1.0.0`). The
-auto-instrumentation tool is configured to forward metrics and traces to
-OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
-same namespace:
+The following example adds an OBI sidecar to the `goblog` Pod and sends metrics
+and traces to the Collector at `otelcol` in the same namespace:
 
 ```yaml
 apiVersion: apps/v1

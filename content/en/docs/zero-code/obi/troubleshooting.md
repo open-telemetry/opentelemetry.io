@@ -126,16 +126,16 @@ This section covers how to resolve common OBI issues.
 
 ### Missing application metrics after a Pod restart
 
-In OBI v1.0.0, application metrics can intermittently remain absent after a
-Kubernetes Pod starts or restarts. Restarting OBI is the documented recovery for
-this symptom; the root cause has not been confirmed. Check that application
-metrics appear after workload restarts during a canary rollout.
+Application metrics can sometimes remain missing after a Kubernetes Pod starts
+or restarts. If this happens, try restarting OBI. The cause has not been
+confirmed. When testing a deployment, check that metrics appear after workload
+restarts.
 
 ### Child spans start before their parents
 
-OBI v1.0.0 can intermittently report child spans with start timestamps earlier
-than their parents, including in same-node traces. The cause is unknown and no
-workaround is documented. See the
+OBI can report child spans that start before their parents, even when both
+services run on the same node. The cause is unknown and no workaround is
+documented. See the
 [known emission limitations](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/TELEMETRY.md#known-v1-emission-limitations).
 
 ### ClickHouse instances crash when OBI is running

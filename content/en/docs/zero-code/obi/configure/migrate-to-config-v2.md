@@ -9,8 +9,8 @@ OBI v0.11.0 and later include commands to migrate and validate configuration.
 Migrate one deployment at a time, validate the generated Config v2 file, and
 test it before continuing the rollout.
 
-Config v2 is the stable configuration contract in OBI v1.0.0. Config v1 remains
-supported but is frozen, with no bug fixes or new features.
+Use Config v2 for new configurations. Config v1 remains supported, but receives
+no bug fixes or new features.
 
 This guide explains how to migrate standalone OBI and OBI Collector receiver
 configurations. For the Config v2 structure and supported fields, see the
@@ -25,7 +25,7 @@ Prepare a rollback plan before you migrate:
 2. List any settings supplied through environment variables, command-line flags,
    Helm values, Kubernetes manifests, or secret injection. The migration command
    reads only the file you provide.
-3. Install the target OBI v1.0.0 binary.
+3. Install the OBI version you plan to deploy.
 4. Select one representative instance or workload for a canary deployment.
 
 The migration command resolves substitution expressions in the source file.

@@ -171,14 +171,7 @@ don't have OCB installed, see the
    Replace `/path/to/obi` with the actual path to your OBI source directory. The
    `replaces:` section builds both modules from the v1.0.0 checkout, including
    generated BPF code. Replacing only the root module does not replace the
-   receiver. The published receiver remains the separate
-   `go.opentelemetry.io/obi/collector` module at `v0.15.2`; core v1.0.0 does not
-   create a receiver v1 release. For Go module consumers, select both versions
-   explicitly:
-
-   ```shell
-   go get go.opentelemetry.io/obi/collector@v0.15.2 go.opentelemetry.io/obi@v1.0.0
-   ```
+   receiver.
 
    **Version selection**: You must specify versions for each component. The
    example above matches the v1.0.0 upstream Builder example: Collector
@@ -193,6 +186,13 @@ don't have OCB installed, see the
    ```
 
    The compiled binary will be in `./dist/otelcol-obi`.
+
+The receiver is versioned separately from the core. For a Go project that uses
+the published modules, select both versions:
+
+```shell
+go get go.opentelemetry.io/obi/collector@v0.15.2 go.opentelemetry.io/obi@v1.0.0
+```
 
 ### Collector configuration with OBI receiver
 

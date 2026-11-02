@@ -233,9 +233,9 @@ partial synthetic spans that contain the span name, parent relationship, status,
 and some primitive attributes. These spans do not include the instrumentation
 scope, events, or requested span kind.
 
-In OBI v1.0.0, the encoded payload for each span exported through the Auto SDK
-must not exceed 16 KiB. OBI does not emit a metric or log message when it
-activates the integration or drops an oversized payload.
+Each span exported through the Auto SDK must fit within a 16 KiB encoded
+payload. OBI drops larger spans without reporting a metric or log message. It
+also does not report when it enables the integration.
 
 Known limitations and follow-up work include
 [head sampling](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793),

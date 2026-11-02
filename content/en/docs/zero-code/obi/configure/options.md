@@ -12,8 +12,8 @@ cSpell:ignore: healthz
 > Config v2, see the [Config v2 reference](../config-v2/). To convert an
 > existing file, use the [migration guide](../migrate-to-config-v2/).
 
-Config v1 remains supported in OBI v1.0.0, but is frozen and receives no bug
-fixes or new features. Use Config v2 for new configurations.
+Config v1 remains supported, but receives no bug fixes or new features. Use
+Config v2 for new configurations.
 
 OBI can be configured via environment variables or via a YAML configuration file
 passed either with the `-config` command-line argument or the

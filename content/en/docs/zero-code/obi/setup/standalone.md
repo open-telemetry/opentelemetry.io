@@ -11,9 +11,10 @@ inspect other running processes.
 
 ## Download and verify
 
-OBI provides pre-built binaries for Linux (amd64 and arm64). Download
-[v1.0.0](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)
-from the releases page. Each release includes:
+OBI provides pre-built binaries for Linux (amd64 and arm64). Download the
+archive for your architecture from the
+[releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0).
+Each release includes:
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
 - `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
@@ -72,8 +73,7 @@ If verification fails, `sha256sum` reports `FAILED`. When that happens:
 - remove any partially downloaded files and fetch them again
 - verify only the files you actually downloaded from that release
 
-To verify authenticity as well as checksums, download the archive's signature
-bundle and verify it with
+Download the archive's signature bundle and verify its signature with
 [Cosign](https://docs.sigstore.dev/cosign/verifying/verify/):
 
 ```sh
@@ -116,11 +116,9 @@ components in [CycloneDX JSON format](https://cyclonedx.org/). They can be used
 with standard SBOM tooling to inspect dependencies, licenses, and components
 without executing the binaries.
 
-In v1.0.0, the archive SBOMs report the embedded Java agent version as `UNKNOWN`
-and omit its Byte Buddy dependencies. For Java dependency analysis, also use
-`obi-java-agent-v1.0.0.cyclonedx.json` and its signature bundle. This companion
-SBOM identifies the agent as `v1.0.0` and lists `byte-buddy` and
-`byte-buddy-agent` at `1.18.14-jdk5`.
+The v1.0.0 archive SBOMs omit the embedded Java agent's Byte Buddy dependencies
+and report the agent version as `UNKNOWN`. To inspect Java dependencies, use the
+companion `obi-java-agent-v1.0.0.cyclonedx.json` SBOM and its signature bundle.
 
 Download the SBOMs you want to inspect:
 

@@ -7,31 +7,29 @@ weight: 21
 cSpell:ignore: eventloop gogc replicaset ringbuf statefulset stddev
 ---
 
-The following table shows selected exported metrics in OpenTelemetry and
-Prometheus format. For v1.0.0 metric definitions, including MCP, GPU, and
-runtime metrics, see the
+OBI exports application, runtime, and network metrics in OpenTelemetry and
+Prometheus formats. For metric definitions, including MCP, GPU, and runtime
+metrics, see the
 [OBI telemetry catalog](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/site/docs/metrics.md).
 
 ## Stability
 
-OBI v1.0.0 protects telemetry entries classified as `stable` in the resolved
-registry, including their OTLP and built-in Prometheus representations. Signal
-and attribute stability apply independently: a stable metric can have attributes
-with lower stability. Entries classified as development, alpha, beta, or release
-candidate remain outside the stable contract. Network flow attribute names are
-also excluded pending semantic-convention alignment.
+OBI preserves the names, types, units, and meaning of telemetry marked `stable`
+in its registry. These guarantees cover both OTLP and built-in Prometheus
+output. A stable metric can have attributes that are still in development; those
+attributes may change. Telemetry marked development, alpha, beta, or release
+candidate can also change. Network flow attribute names may change while their
+semantic conventions are being aligned.
 
-Stability protects telemetry names, types, units, and meaning when emitted.
-Enabled features, protocol support, attribute selection, and available runtime
-metadata determine which telemetry appears. See the
+The metrics and attributes you receive depend on enabled features, protocol
+support, attribute selection, and available runtime metadata. See the
 [telemetry compatibility contract](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/TELEMETRY.md)
-for the full scope and exclusions.
+for the compatibility guarantees and exclusions.
 
-OBI v1.0.0 emits schema URL
+OBI attaches the following schema URL to its telemetry:
 `https://open-telemetry.github.io/opentelemetry-ebpf-instrumentation/schemas/obi/1.0.0`.
-The schema retains earlier transformations and adds no renames relative to
-`0.15.2`. Schema transformations do not cover every conditional rename, removal,
-or Prometheus-specific change.
+Schema transformations cannot express every conditional rename, removal, or
+Prometheus-specific change.
 
 ## Exported metrics
 
@@ -130,15 +128,16 @@ available through OTLP as `obi.bpf.ringbuf.writes` and
 
 ## Service graph limitations
 
-OBI's built-in Prometheus service graph metrics do not include a unique OBI
-instance label. Preserve the scrape target's `instance` label, or an equivalent
-external label, when combining series from multiple OBI instances.
+When combining Prometheus service graph metrics from multiple OBI instances,
+keep the scrape target's `instance` label or an equivalent external label. The
+metrics do not include a label that uniquely identifies the OBI instance.
 
 Destinations can appear as `outgoing` when Pod metadata is missing from the
 Kubernetes informer cache, or when non-HTTP destinations lack Kubernetes
-metadata. Resolving a Kubernetes Service does not map its selector to a Pod's
-OpenTelemetry service-name or namespace overrides, so a graph can contain
-separate nodes for the Kubernetes and OpenTelemetry identities.
+metadata. When OBI resolves a destination to a Kubernetes Service, it cannot
+match that Service to a Pod's overridden OpenTelemetry service name or
+namespace. The graph can then show separate nodes for the Kubernetes and
+OpenTelemetry names of the same service.
 
 ## Attributes of OBI metrics
 

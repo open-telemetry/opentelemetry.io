@@ -24,8 +24,8 @@ The development tag is also published on Docker Hub as:
 otel/ebpf-instrument:main
 ```
 
-Pin deployments to a release tag such as `v1.0.0`. Moving tags such as `main`
-and `latest` are outside the stable compatibility contract.
+Pin deployments to a release tag such as `v1.0.0`. The `main` and `latest` tags
+change over time and have no compatibility guarantees.
 
 The OBI container must be configured in following way:
 

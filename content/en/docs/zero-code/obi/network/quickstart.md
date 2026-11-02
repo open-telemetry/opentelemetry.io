@@ -146,7 +146,7 @@ kubectl apply -f obi-network.yml
 
 This configuration:
 
-- Uses the v1.0.0 release image and one OBI Pod per node.
+- Runs one OBI Pod per node.
 - Grants read access to Kubernetes metadata for workload labels.
 - Uses `hostNetwork: true` to observe host network interfaces.
 - Exposes Prometheus metrics on port 9090 and prints flows for the verification
