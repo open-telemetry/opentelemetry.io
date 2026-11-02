@@ -3,5 +3,5 @@
 
 spec: 1.62.0
 otlp: 1.11.1
-semconv: 1.44.0
+semconv: 1.45.0
 opamp: 0.17.0
