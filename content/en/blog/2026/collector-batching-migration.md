@@ -31,8 +31,11 @@ exporters, called _exporter-level batching_, and a new `queue_batch` processor
 replaces the original processor component. Integrated queue and batch behavior
 brings numerous improvements described below.
 
-Most users can migrate immediately to exporter-level batching. Common before and
-after configurations are shown below.
+In many cases, users can simply wait for the change to happen by
+default, when exporter-level batching becomes enabled by default in
+most exporters. Thie change is planned for release `v0.171.0` in
+February 2027. Users can opt-in to exporter-level batching today by
+modifying their configuration, as shown next.
 
 **Before:**
 
@@ -89,14 +92,11 @@ service:
       exporters: [otlp]
 ```
 
-Exporter-level batching will be enabled by default for most components in
-release `v0.171.0` (February 2027), and users can set a feature flag to
-experiment with this mode today. The `batch` processor will be removed from the
-core repository and distributions in `v0.177.0` (May 2027).
-
-Use exporter-level batching in most cases. If you need batching before another
-processor or shared batching for multiple exporters, use the `queue_batch`
-processor instead.
+Removal of the `batch` processor from the core repository and
+distributions is planned for release `v0.177.0` (May 2027). In most
+cases, users will prefer exporter-level batching, with batching after
+the queue. Don't worry, batching in a processor is still possible
+using the replacement `queue_batch` processor.
 
 ## Why replace the `batch` processor?
 
@@ -388,7 +388,7 @@ In the upcoming Collector release, the `batch` processor will begin to issue a
 deprecation warning. Users who do nothing will experience a planned change of
 default. Batching will be enabled by default in release `v0.171.0` (February
 2027); the `batch` processor will be removed from the core repository and
-distributions in `v0.177.0` (May 2027).
+distributions, planned for release `v0.177.0` (May 2027).
 
 Until then, several immediate steps are available to users:
 
