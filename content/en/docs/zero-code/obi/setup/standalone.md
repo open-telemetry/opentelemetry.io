@@ -56,9 +56,6 @@ wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releas
 
 # Verify the archive
 sha256sum -c SHA256SUMS --ignore-missing
-
-# Extract the archive
-tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
 Successful verification prints an `OK` result for each downloaded file:
@@ -83,6 +80,12 @@ cosign verify-blob obi-v${VERSION}-linux-${ARCH}.tar.gz \
   --bundle obi-v${VERSION}-linux-${ARCH}.tar.gz.bundle.json \
   --certificate-identity "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/.github/workflows/release.yml@refs/tags/v${VERSION}" \
   --certificate-oidc-issuer 'https://token.actions.githubusercontent.com'
+```
+
+After signature verification succeeds, extract the archive:
+
+```sh
+tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
 The archive contains:
