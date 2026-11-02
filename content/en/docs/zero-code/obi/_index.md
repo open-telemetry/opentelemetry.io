@@ -95,8 +95,7 @@ attribute names while their semantic conventions are being aligned. See
 
 ## Upgrade to v1.0.0
 
-Pin deployments to `v1.0.0`. This release includes the instrumentation and fixes
-from v0.15.2 and v1.0.0-rc.2.
+Pin deployments to `v1.0.0`.
 
 - Use [Config v2](configure/config-v2/). Config v1 remains supported, but
   receives no bug fixes or new features. Follow the
@@ -108,85 +107,17 @@ from v0.15.2 and v1.0.0-rc.2.
   earlier transformations and adds no new renames. See
   [telemetry stability](metrics/#stability) for schema limitations.
 
-When upgrading from RC1 or a version before v0.15.2, review the
-[v0.15.2 upgrade notes](#upgrade-notes-for-v0152) for changes to span names,
-metric attributes, and downstream queries. Check the
-[known operational limitations](#limitations) during rollout.
+When upgrading from v1.0.0-rc.1 or a release before v0.15.2, review the
+[v0.15.2 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)
+for changes to span names, default metric attributes, Prometheus labels, and Go
+configuration APIs. If upgrading from a release before v0.14.0, also review the
+[v0.14.0 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0).
+Check the [known operational limitations](#limitations) during rollout.
 
 If you want to explore the upstream examples, see the
 [NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/nginx)
 and the
 [Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/apache).
-
-## Upgrade notes for v0.15.2
-
-- Build Collector distributions with the `go.opentelemetry.io/obi/collector`
-  module at `v0.15.2`. The root module no longer contains the receiver package.
-  See [Collector receiver setup](configure/collector-receiver/) for the updated
-  module replacements and component versions. Go embedders must also replace the
-  removed `PrometheusConfig.Registry` field with a Prometheus HTTP port
-  configuration.
-- Config v2 protocol `enabled.metrics: false` now also suppresses that
-  protocol's span metrics and service graphs. Traces remain independently
-  configurable. Review the migration report when Config v1 instrumentation lists
-  and derived metric coverage differ. See
-  [metric feature selection](configure/config-v2/#metric-feature-selection).
-- HTTP client `server.address` values omit the Host header's port; `server.port`
-  and `url.full` retain it. Kubernetes Service hosts with ports now resolve to
-  the service and namespace, which can change service graph names.
-- gRPC span names and `rpc.method` values omit the leading slash. Invalid or
-  unread paths use span name `grpc` and method `_OTHER`; `rpc.method_original`
-  preserves a captured raw path. ONC RPC uses `{program}/{procedure}` methods
-  only when a CALL was captured and reports response status only with a REPLY.
-- GenAI, database, GraphQL, AWS S3/SQS, and ONC RPC span names change to follow
-  semantic conventions. For example, Anthropic `message` becomes `chat`, GraphQL
-  server names omit `GraphQL`, and S3/SQS names use `S3.`/`SQS.` prefixes.
-  Update span-name filters and span-metric queries.
-- Database duration metrics include `db.collection.name` by default. RPC client
-  duration adds `server.port`, and failed RPC server duration adds `error.type`.
-  Messaging client duration adds `messaging.operation.type`; client and process
-  durations include subscription names when present. These defaults can split
-  metric series. See [metric attributes](metrics/#attributes-of-obi-metrics).
-- MQTT SUBSCRIBE telemetry uses `messaging.destination.subscription.name`
-  instead of destination name and omits the filter from span names. Shared
-  subscriptions also report `messaging.consumer.group.name`. AWS SNS spans no
-  longer include `rpc.system.name` or `rpc.method`.
-- GraphQL, MCP, and JSON-RPC server spans no longer carry HTTP method, status,
-  route, URL, body-size, user-agent, or OBI response-observation attributes.
-  Captured HTTP headers are limited to plain HTTP and GraphQL spans. OTLP GenAI
-  metrics omit missing request models, and AMQP metrics omit empty destinations.
-- The telemetry schema advances to `0.15.2`, retaining earlier transformations.
-  The telemetry registry uses Weaver `definition/2`; span reference IDs no
-  longer have a `span.` prefix, so update links to old catalog anchors.
-
-When upgrading from a release older than v0.14.0, also review the earlier
-changes below. The release notes describe additional protocol-specific naming
-and attribute changes.
-
-## Upgrade notes for v0.14.0
-
-- HTTP duration and body-size metrics now include `error.type` by default on
-  failed requests. Their Prometheus series gain an `error_type` label, with an
-  empty value on successful requests. Review dashboards and alert queries that
-  depend on the old series.
-- The OTLP span metrics no longer copy `host.id` to each data point. The value
-  remains a resource attribute and in `target_info`; OBI's Prometheus exporter
-  is unchanged. Consumers that flatten OTLP resources into Prometheus labels
-  should check their `host_id` queries.
-- `service.peer.name`, `http.request.body.size`, `http.response.body.size`, and
-  `obi.http.response.observed` are now opt-in span attributes. Select them with
-  [`attributes.select.traces.include`](configure/metrics-traces-attributes/)
-  when needed; service graph processors may need `service.peer.name`.
-- The pinned `traces_ctx_v1` map is no longer populated by default. External
-  trace-profile correlation and the Go channel handoff fallback can be restored
-  with
-  [`ebpf.populate_trace_context: true`](configure/metrics-traces-attributes/).
-- Target declarations still take precedence over resource metadata. Resolved
-  target metadata now takes precedence over the agent's own
-  `OTEL_RESOURCE_ATTRIBUTES`, with values merged per key.
-- Elastic Cloud client spans and database-operation metrics now include
-  `db.namespace` from `X-Found-Handling-Cluster`. Existing metric series may
-  split by cluster. AWS SQS spans no longer include `aws.extended_request_id`.
 
 ## How OBI works
 
