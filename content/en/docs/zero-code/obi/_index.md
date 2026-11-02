@@ -71,7 +71,7 @@ OBI offers the following features:
 
 ## Stability
 
-OBI v1.0.0 is the first stable core release. It guarantees compatibility for:
+OBI v1.0.0 is the first stable release. It guarantees compatibility for:
 
 - Config v2, its generated schema, and the supported subset of OpenTelemetry
   declarative configuration.
