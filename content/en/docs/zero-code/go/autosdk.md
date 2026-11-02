@@ -5,9 +5,8 @@ description: Integrate manual spans with zero-code eBPF spans with the Auto SDK.
 weight: 16
 ---
 
-The OpenTelemetry Go eBPF Instrumentation framework, used by tools like
-[OBI](/docs/zero-code/obi), provides support for integrating with manually
-instrumented OpenTelemetry spans through the Auto SDK.
+OpenTelemetry Go provides an Auto SDK for use with eBPF instrumentation agents,
+including [Go auto-instrumentation](../) and [OBI](/docs/zero-code/obi/).
 
 ## What is the Auto SDK?
 
@@ -18,22 +17,21 @@ context propagation with manual spans.
 
 ## When should I use it?
 
-OpenTelemetry Go eBPF instrumentation currently only supports a limited number
-of packages. You may still want to extend this instrumentation and create custom
-spans within your code. The Auto SDK enables this by instrumenting your custom
-spans with a shared trace context that will also be used by automatic spans.
+Use the Auto SDK to add spans for operations your eBPF agent does not capture
+automatically, such as application-specific business logic. These manual spans
+share trace context with automatically captured spans.
 
 ## How do I use it?
 
-OBI supports the Auto SDK embedded in `go.opentelemetry.io/otel/trace` and the
-separate `go.opentelemetry.io/auto/sdk` module. When using the embedded SDK, you
-don't need the separate module.
+Starting with
+[OpenTelemetry Go v1.36.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0),
+the standard Go API includes `go.opentelemetry.io/auto/sdk` as a dependency.
+Your application may already include it. To check, run the following command
+from your application's module directory:
 
-Check that OBI supports the versions of `go.opentelemetry.io/otel` and
-`go.opentelemetry.io/otel/trace` used by your application. If you use the
-separate Auto SDK module, its version must also be supported. See the
-[OBI activation requirements](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api)
-for supported versions and runtime requirements.
+```sh
+go list -m go.opentelemetry.io/auto/sdk
+```
 
 Create manual spans with `tracer.Start()`, as you would with
 [Go manual instrumentation](/docs/languages/go/instrumentation/):
@@ -65,27 +63,24 @@ func main() {
 }
 ```
 
-OBI links the manual span in this example to the automatically captured HTTP
-request span. Leave the global `TracerProvider` unset so OBI can enable the Auto
-SDK.
-
-> [!WARNING]
->
-> Registering a global `TracerProvider`, including through
-> `otel.SetTracerProvider(auto.TracerProvider())`, prevents OBI from activating
-> the Auto SDK. If an SDK provider is already registered, that provider handles
-> the application's manual spans.
-
 ## How does the Auto SDK work?
 
-OBI locates the OpenTelemetry API and Auto SDK in the application executable,
-enables the Auto SDK, and captures manual spans in the same traces as
-automatically captured spans.
+An eBPF agent enables the Auto SDK in the application and collects manual spans
+alongside automatically captured spans. Without an agent instrumenting it, the
+Auto SDK does not generate telemetry.
 
-Each span's encoded payload must fit within 16 KiB. OBI drops larger spans
-without reporting a metric or warning.
+## Using the Auto SDK with OBI
 
-If OBI cannot enable the Auto SDK, it may still capture partial spans from calls
-to the Trace API. These spans omit the instrumentation scope, events, and
-requested span kind. See the
-[OBI manual span limitations](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api).
+OBI supports the separate `go.opentelemetry.io/auto/sdk` module and the Auto SDK
+embedded in `go.opentelemetry.io/otel/trace`. When using the embedded SDK, you
+don't need the separate module.
+
+Leave the global `TracerProvider` unset so OBI can enable the Auto SDK.
+Registering one, including through
+`otel.SetTracerProvider(auto.TracerProvider())`, prevents OBI from activating
+the Auto SDK. If an SDK provider is already registered, that provider handles
+the application's manual spans.
+
+For supported dependency versions, runtime requirements, and span capture
+limits, see
+[OBI's Go Trace API integration](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api).
