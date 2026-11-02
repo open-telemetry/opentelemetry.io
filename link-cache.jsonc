@@ -15804,6 +15804,11 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/tree/9d130c120ed1fc1673e1c2ca5d34d39361dc1844/src/business-metrics": {
+    "result": 200,
+    "when": "2026-11-02T22:37:24Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/agent#readme": {
     "result": 200,
     "when": "2026-10-22T05:45:09Z",
