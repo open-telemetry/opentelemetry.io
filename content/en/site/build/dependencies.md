@@ -196,7 +196,11 @@ The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
 setting stays on. When neither opens a PR, a maintainer refreshes the package
-[by name](#transitive-refresh): the manual route. The two paths meet the
+[by name](#transitive-refresh): the manual route. When a parent's declared range
+excludes the fixed version, no refresh can reach it: bump the parent if a
+release admits the fix, else add a root `overrides` entry and register it in the
+audit's `REVIEWED_OVERRIDES` table (advisories, parent, range); the audit turns
+red when the parent moves, which is the cue to drop both. The two paths meet the
 [release cooldown](#release-cooldown) differently:
 
 - Dependabot security updates deliberately override every release-age gate
@@ -222,6 +226,11 @@ condition; the common cases:
 - **You bumped a dependency that has an `allowScripts` entry**: follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
+- **A security override's parent "declares the range" assertion failed**: the
+  parent of a root `overrides` entry changed its declared range, usually by
+  admitting the fixed version. Drop the override and its `REVIEWED_OVERRIDES`
+  row together ([security updates](#security-updates)); if the new range still
+  excludes the fix, update the row's range instead.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
