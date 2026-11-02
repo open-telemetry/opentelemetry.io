@@ -310,8 +310,8 @@ the custom collector binary into a container image:
 2. Build and push the image:
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v1.0.0 .
-   docker push my-registry/otelcol-obi:v1.0.0
+   docker build -t my-registry/otelcol-obi:custom .
+   docker push my-registry/otelcol-obi:custom
    ```
 
 3. Deploy the DaemonSet:
@@ -336,7 +336,7 @@ the custom collector binary into a container image:
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v1.0.0
+             image: my-registry/otelcol-obi:custom
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
