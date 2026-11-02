@@ -289,8 +289,8 @@ test('manifest: the engines floor keeps its binding shape', () => {
 });
 
 // Security-override register. Why:
-// https://opentelemetry.io/site/design/supply-chain-security/#overrides;
-// maintenance: https://opentelemetry.io/site/build/dependencies/#security-updates
+// https://opentelemetry.io/site/design/supply-chain-security/#overrides.
+// Maintenance: https://opentelemetry.io/site/build/dependencies/#security-updates
 const REVIEWED_OVERRIDES = {
   // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; retire with
   // jakejarvis/hugo-extended#256.
