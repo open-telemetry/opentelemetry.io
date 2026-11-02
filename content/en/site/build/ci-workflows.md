@@ -517,3 +517,34 @@ The repository includes several other workflows:
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 [self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->
+
+## Blog post announcements {#announce-blog-post}
+
+[`announce-blog-post.yml`][announce] runs on every push to `main` that touches
+`content/en/blog/`. It runs [`announce-blog-post.sh`][announce-script], which
+finds English blog posts published by the push: posts that aren't drafts now,
+and that didn't exist or were drafts before the push. For those posts it opens
+one pull request in
+[`open-telemetry/opentelemetry-announcements`][announcements] with an
+announcement file per post. A maintainer there edits the text, merges the PR,
+and approves the `announcements` environment to publish.
+
+- Uses the `OTELBOT_DOCS_*` app token, scoped to the announcements repository
+  (the app must be installed there with `contents` and `pull requests` write
+  access).
+- The text comes from the post's `announcement` front matter string (default:
+  the title) followed by the post URL. The subject is "New on the OpenTelemetry
+  blog: _title_". Posts with `announcement: false` are skipped. The
+  announcements repository's own pull request check validates the length per
+  channel and warns about links that don't work yet.
+- For posts with a future `date`, the PR description says when the post goes
+  live, so the PR isn't merged before that.
+- Uses the `create-pull-request` action with the branch
+  `otelbot/announce-blog-<slug>`, so re-runs update the same PR.
+- Run it manually with the `post` input to announce an existing post.
+
+[announce]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml
+[announce-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/announce-blog-post.sh
+[announcements]: https://github.com/open-telemetry/opentelemetry-announcements
