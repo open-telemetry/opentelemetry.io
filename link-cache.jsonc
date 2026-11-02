@@ -2984,6 +2984,11 @@
     "when": "2026-10-28T10:30:00Z",
     "via": "lychee",
   },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/DBMS_OBSERVABILITY.html": {
+    "result": 200,
+    "when": "2026-11-02T10:29:29Z",
+    "via": "lychee",
+  },
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/arpls/dbms_observability.html": {
     "result": "error",
     "when": "2026-11-01T10:29:05Z",
