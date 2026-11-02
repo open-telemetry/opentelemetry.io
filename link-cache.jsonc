@@ -23149,6 +23149,21 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.44.0/docs/faas/aws-lambda.md": {
+    "result": 200,
+    "when": "2026-11-02T20:16:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.44.0/docs/faas/faas-metrics.md": {
+    "result": 200,
+    "when": "2026-11-02T20:16:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.44.0/docs/faas/faas-spans.md": {
+    "result": 200,
+    "when": "2026-11-02T20:16:22Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "result": 200,
     "when": "2026-10-19T05:46:24Z",
@@ -23507,6 +23522,11 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.44.0//model/README.md": {
     "result": 200,
     "when": "2026-10-15T05:44:48Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.45.0//model/README.md": {
+    "result": 200,
+    "when": "2026-11-02T20:16:22Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
@@ -32372,6 +32392,11 @@
   "https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str": {
     "result": 200,
     "when": "2026-10-19T05:46:35Z",
+    "via": "lychee",
+  },
+  "https://superuser.com/a/980821": {
+    "result": "error",
+    "when": "2026-11-02T20:16:13Z",
     "via": "lychee",
   },
   "https://support.google.com/webmasters/answer/10347851": {
