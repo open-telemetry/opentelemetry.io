@@ -326,8 +326,7 @@ test('lock and manifest: security overrides are applied and still needed', () =>
     'root overrides carries exactly the reviewed entries',
   );
   for (const [name, o] of Object.entries(REVIEWED_OVERRIDES)) {
-    // Every copy, hoisted or nested: npm may leave a vulnerable one under
-    // the parent's own node_modules.
+    // Every copy, hoisted or nested.
     const nodes = Object.keys(lock.packages).filter((k) =>
       k.endsWith(`node_modules/${name}`),
     );

@@ -199,9 +199,10 @@ setting stays on. When neither opens a PR, a maintainer refreshes the package
 [by name](#transitive-refresh): the manual route. When a parent's declared range
 excludes the fixed version, no refresh can reach it: bump the parent if a
 release admits the fix, else add a root `overrides` entry and register it in the
-audit's `REVIEWED_OVERRIDES` table (advisories, parent, range); the audit turns
-red when the parent moves, which is the cue to drop both. The two paths meet the
-[release cooldown](#release-cooldown) differently:
+audit's `REVIEWED_OVERRIDES` table (advisories, parent, range). The audit fails
+when the parent's declared range changes: [reassess the override](#audit) before
+removing it. The two paths meet the [release cooldown](#release-cooldown)
+differently:
 
 - Dependabot security updates deliberately override every release-age gate
   (`.npmrc` included): a fix version younger than the cooldown can land, and

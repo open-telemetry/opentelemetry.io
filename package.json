@@ -205,7 +205,7 @@
     "adm-zip": "0.6.1",
     "katex": "^0.19.0"
   },
-  "overridesComment": "Security fixes blocked by parent constraints; each entry is registered with its advisories, parent and range in REVIEWED_OVERRIDES (scripts/supply-chain-audit.test.mjs), whose test goes red when the parent moves: drop the override and its row together once the parent admits the fix.",
+  "overridesComment": "Security override register: REVIEWED_OVERRIDES in scripts/supply-chain-audit.test.mjs; maintenance: https://opentelemetry.io/site/build/dependencies/#security-updates",
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor (11.18 closes the allowScripts enforcement gaps of npm/cli#9652; min-release-age-exclude arrived in 11.17; Node LTS bundles 11.19+ since 24.20.0)",
   "engines": {

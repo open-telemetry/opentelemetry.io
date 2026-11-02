@@ -87,8 +87,8 @@ closing table maps decisions to their enforcement.
   parents' fixes for weeks in October, caught only in review)._
   - **Register security overrides**: <a id="overrides"></a> every root override
     is [registered][security updates] with the advisories it answers and the
-    parent range it works around; the audit fails when the parent moves, so
-    retirement is forced rather than remembered.
+    parent range it works around; the audit fails when the parent's declared
+    range changes, so reassessment is forced rather than remembered.
 - _Netlify's [own npm install][netlify-deps] runs unattended, outside the
   scripts this repository controls, and can't be disabled._
   - **Neutralize the auto-install**: <a id="auto-install"></a> the configuration
