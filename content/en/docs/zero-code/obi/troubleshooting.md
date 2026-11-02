@@ -131,12 +131,19 @@ or restarts. If this happens, try restarting OBI. The cause has not been
 confirmed. When testing a deployment, check that metrics appear after workload
 restarts.
 
-### Child spans start before their parents
+### Reported span timestamp anomalies
 
-OBI can report child spans that start before their parents, even when both
-services run on the same node. The cause is unknown and no workaround is
-documented. See the
-[known emission limitations](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/TELEMETRY.md#known-v1-emission-limitations).
+[Issue #2568](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)
+reports child span start timestamps earlier than their parents with OBI
+v0.9.0/v0.10.0 on OpenShift 4.16, in both same-node and cross-node traces. The
+reporter later said the symptoms
+[appeared limited to roughly the first 18 hours after OBI was created](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568#issuecomment-4885235257).
+
+The
+[v1.0.0 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)
+retain this as an unresolved limitation. The issue does not identify the
+application language or protocol, provide reproduction steps, or confirm a
+reproduction on v1.0.0.
 
 ### ClickHouse instances crash when OBI is running
 

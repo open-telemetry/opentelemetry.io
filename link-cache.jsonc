@@ -16589,6 +16589,11 @@
     "when": "2026-10-20T05:44:54Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568": {
+    "result": 200,
+    "when": "2026-11-02T17:41:25Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793": {
     "result": 200,
     "when": "2026-10-24T05:43:01Z",

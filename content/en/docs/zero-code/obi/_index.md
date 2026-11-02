@@ -182,13 +182,15 @@ platform requirements. For details, refer to the feature-specific documentation
 for [distributed traces](distributed-traces/) and
 [exported instrumentation](configure/export-data/).
 
-Known limitations include:
+Known limitations and unresolved reports include:
 
 - Application metrics can remain missing after a Kubernetes Pod starts or
   restarts. Restarting OBI can restore them. See
   [missing application metrics](troubleshooting/#missing-application-metrics-after-a-pod-restart).
-- Child spans can start before their parents, including in same-node traces. The
-  cause is unknown and no workaround is documented.
+- A user
+  [reported child span timestamps earlier than parent timestamps](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)
+  with OBI v0.9.0/v0.10.0 on OpenShift 4.16. See the
+  [reported conditions](troubleshooting/#reported-span-timestamp-anomalies).
 - Service graphs can show `outgoing` destinations or separate Kubernetes and
   OpenTelemetry names for the same service when OBI cannot resolve its metadata.
   See [service graph limitations](metrics/#service-graph-limitations).
