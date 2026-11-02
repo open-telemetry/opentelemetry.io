@@ -189,11 +189,11 @@
   "dependencies": {
     "@opentelemetry/api": "1.9.1",
     "@opentelemetry/auto-instrumentations-web": "0.68.0",
-    "@opentelemetry/core": "2.12.0",
+    "@opentelemetry/core": "3.0.0",
     "@opentelemetry/exporter-trace-otlp-http": "0.223.0",
     "@opentelemetry/instrumentation": "0.223.0",
-    "@opentelemetry/resources": "2.12.0",
-    "@opentelemetry/sdk-trace": "2.12.0",
+    "@opentelemetry/resources": "3.0.0",
+    "@opentelemetry/sdk-trace": "3.0.0",
     "@opentelemetry/semantic-conventions": "1.43.0",
     "minisearch": "7.2.0",
     "path": "0.12.7"
