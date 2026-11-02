@@ -27,11 +27,12 @@ spans with a shared trace context that will also be used by automatic spans.
 
 OBI v1.0.0 supports both the separate `go.opentelemetry.io/auto/sdk` module and
 the Auto SDK embedded in supported versions of `go.opentelemetry.io/otel/trace`.
-The embedded path does not require the separate Auto SDK module. Activation
-depends on the module versions and checksums, executable symbols, architecture,
-and permission to use `bpf_probe_write_user`. Check the
+The embedded path does not require the separate Auto SDK module. OBI can
+activate the Auto SDK only for supported versions of the application's
+`go.opentelemetry.io/otel`, `go.opentelemetry.io/otel/trace`, and optional
+`go.opentelemetry.io/auto/sdk` dependencies. See the
 [OBI activation requirements](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api)
-before choosing module versions.
+for supported versions and runtime requirements.
 
 Creating manual spans using the Auto SDK is essentially the same as creating
 spans using standard [Go instrumentation](/docs/languages/go/instrumentation/).
