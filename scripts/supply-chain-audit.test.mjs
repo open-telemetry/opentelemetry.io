@@ -288,19 +288,74 @@ test('manifest: the engines floor keeps its binding shape', () => {
   );
 });
 
-// GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; drop with
-// the override once hugo-extended's range includes 0.6.1
-// (jakejarvis/hugo-extended#256).
-test('lock and manifest: the adm-zip override is applied and still needed', () => {
-  assert.match(
-    lock.packages['node_modules/adm-zip'].version,
-    /^0\.6\.[1-9]\d*$/,
-    'locked adm-zip carries the 0.6.1 fixes',
+// Register of the root overrides that force a security fix past a parent's
+// declared range. npm ci validates the lock only where its ideal tree lands,
+// so a nested copy still on the vulnerable version, a dropped override, or an
+// override that no longer changes resolution all pass it, and npm never says
+// an override became unnecessary (the smol-toml and prh overrides outlived
+// their parents' fixes by weeks, caught only in review). Keep each row's
+// parentRange at what the parent declares today: when the parent moves it,
+// the row goes red; drop the override and the row together if the parent now
+// admits the fixed versions.
+const REVIEWED_OVERRIDES = {
+  // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; retire with
+  // jakejarvis/hugo-extended#256.
+  'adm-zip': {
+    spec: '0.6.1',
+    firstFixed: '0.6.1',
+    parent: 'hugo-extended',
+    parentRange: '^0.5.17',
+  },
+  // GHSA-238p-pmpm-9mq7; markdownlint loads katex through
+  // micromark-extension-math but never renders with it.
+  katex: {
+    spec: '^0.19.0',
+    firstFixed: '0.18.2',
+    parent: 'micromark-extension-math',
+    parentRange: '^0.16.0',
+  },
+};
+
+// Release versions only: a lock pins the overrides above to plain x.y.z.
+const versionAtLeast = (version, floor) => {
+  const [a, b] = [version, floor].map((v) => v.split('.').map(Number));
+  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
+  return true;
+};
+
+test('lock and manifest: security overrides are applied and still needed', () => {
+  assert.deepEqual(
+    manifest.overrides ?? {},
+    Object.fromEntries(
+      Object.entries(REVIEWED_OVERRIDES).map(([name, o]) => [name, o.spec]),
+    ),
+    'root overrides carries exactly the reviewed entries',
   );
-  assert.equal(
-    lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
-    '^0.5.17',
-    'hugo-extended declares the adm-zip range that justifies the override',
+  for (const [name, o] of Object.entries(REVIEWED_OVERRIDES)) {
+    // Every copy, hoisted or nested: npm may leave a vulnerable one under
+    // the parent's own node_modules.
+    const nodes = Object.keys(lock.packages).filter((k) =>
+      k.endsWith(`node_modules/${name}`),
+    );
+    assert.ok(nodes.length > 0, `${name} is in the lock`);
+    for (const node of nodes) {
+      assert.ok(
+        versionAtLeast(lock.packages[node].version, o.firstFixed),
+        `${node} carries the ${o.firstFixed} fix`,
+      );
+    }
+    const parent = lock.packages[`node_modules/${o.parent}`];
+    assert.ok(parent, `${o.parent} is hoisted in the lock`);
+    assert.equal(
+      parent.dependencies[name],
+      o.parentRange,
+      `${o.parent} declares the ${name} range that justifies the override`,
+    );
+  }
+  assert.match(
+    manifest.overridesComment ?? '',
+    /REVIEWED_OVERRIDES/,
+    'overridesComment names REVIEWED_OVERRIDES',
   );
 });
 
