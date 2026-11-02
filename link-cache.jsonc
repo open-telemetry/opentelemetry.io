@@ -5694,6 +5694,11 @@
     "when": "2026-10-23T05:45:15Z",
     "via": "lychee",
   },
+  "https://github.com/ahus1": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
+    "via": "lychee",
+  },
   "https://github.com/ajimenez1503": {
     "result": 200,
     "when": "2026-10-23T05:45:15Z",
@@ -5999,6 +6004,11 @@
     "when": "2026-10-24T05:43:38Z",
     "via": "lychee",
   },
+  "https://github.com/avadla": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
   "https://github.com/avillela": {
     "result": 200,
     "when": "2026-10-22T05:45:19Z",
@@ -6037,6 +6047,11 @@
   "https://github.com/aws-observability/aws-otel-ruby": {
     "result": 200,
     "when": "2026-10-17T05:41:08Z",
+    "via": "lychee",
+  },
+  "https://github.com/axw": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/backstage/backstage": {
@@ -6402,6 +6417,11 @@
   "https://github.com/chalin/link-cache/blob/main/docs/operating-model.md": {
     "result": 200,
     "when": "2026-10-19T05:46:30Z",
+    "via": "lychee",
+  },
+  "https://github.com/chethanm99": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
     "via": "lychee",
   },
   "https://github.com/chluknight1224": {
@@ -6867,6 +6887,11 @@
   "https://github.com/denoland/deno": {
     "result": 200,
     "when": "2026-10-19T05:46:37Z",
+    "via": "lychee",
+  },
+  "https://github.com/dev-aditya-hub": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/dhruv-ahuja": {
@@ -7399,6 +7424,11 @@
     "when": "2026-10-24T05:43:24Z",
     "via": "lychee",
   },
+  "https://github.com/frossano-grafana": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
+    "via": "lychee",
+  },
   "https://github.com/frzifus": {
     "result": 200,
     "when": "2026-10-19T05:46:46Z",
@@ -7442,6 +7472,11 @@
   "https://github.com/git-ecosystem/trace2receiver": {
     "result": 200,
     "when": "2026-10-19T05:46:41Z",
+    "via": "lychee",
+  },
+  "https://github.com/gizas": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/gnurizen": {
@@ -8334,6 +8369,11 @@
     "when": "2026-10-22T05:45:39Z",
     "via": "lychee",
   },
+  "https://github.com/karakayasemi": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
+    "via": "lychee",
+  },
   "https://github.com/kartikgola": {
     "result": 200,
     "when": "2026-10-17T05:41:10Z",
@@ -8754,9 +8794,19 @@
     "when": "2026-10-19T05:46:48Z",
     "via": "lychee",
   },
+  "https://github.com/mabartos": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
+    "via": "lychee",
+  },
   "https://github.com/mackjmr": {
     "result": 200,
     "when": "2026-10-19T05:46:50Z",
+    "via": "lychee",
+  },
+  "https://github.com/madaraszg-tulip": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/mahboubii/": {
@@ -8772,6 +8822,11 @@
   "https://github.com/mahendrabishnoi2": {
     "result": 200,
     "when": "2026-10-19T05:46:50Z",
+    "via": "lychee",
+  },
+  "https://github.com/malus2077": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/marandaneto": {
@@ -9032,6 +9087,11 @@
   "https://github.com/mmat11": {
     "result": 200,
     "when": "2026-10-19T05:46:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/mmorel-35": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/mnadeem/opentelemetry-instrumentation-mssql": {
@@ -14749,6 +14809,31 @@
     "when": "2026-10-16T05:45:13Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/cmd/mdatagen/README.md#exporter-queuebatch-sender-defaults": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/docs/rfcs/batching-migration.md": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/exporter/exporterhelper/README.md#persistent-queue": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/exporter/exporterhelper/README.md#sending-queue-batch-settings": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/processor/queuebatchprocessor/README.md": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/4998703dadd19fa91a88eabf7ccc68d728bee3fd/model/pdata/common.go#L84": {
     "result": 200,
     "when": "2026-10-20T05:45:17Z",
@@ -17592,6 +17677,11 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
     "result": 200,
     "when": "2026-10-22T05:45:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/8629": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases": {
@@ -24154,6 +24244,11 @@
     "when": "2026-10-24T05:43:30Z",
     "via": "lychee",
   },
+  "https://github.com/ravishankar-sumo": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
   "https://github.com/rdforte/gomaxecs": {
     "result": 200,
     "when": "2026-10-23T05:44:59Z",
@@ -24364,6 +24459,11 @@
     "when": "2026-10-22T05:45:25Z",
     "via": "lychee",
   },
+  "https://github.com/sfc-gh-sili": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
+    "via": "lychee",
+  },
   "https://github.com/sh0rez/promconv/tree/4ef6f697497dec4dc87a0d670cd90ee12335bcdf?from_branch=main": {
     "result": 200,
     "when": "2026-10-23T05:44:49Z",
@@ -24472,6 +24572,11 @@
   "https://github.com/simi": {
     "result": 200,
     "when": "2026-10-23T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://github.com/simpleqt": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
     "via": "lychee",
   },
   "https://github.com/singankit": {
@@ -25114,6 +25219,11 @@
     "when": "2026-10-22T05:45:22Z",
     "via": "lychee",
   },
+  "https://github.com/vengalraoguttha": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
+    "via": "lychee",
+  },
   "https://github.com/vercel": {
     "result": 200,
     "when": "2026-10-24T05:43:41Z",
@@ -25167,6 +25277,11 @@
   "https://github.com/vyagh": {
     "result": 200,
     "when": "2026-10-20T05:45:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/vynazevedo": {
+    "result": 200,
+    "when": "2026-11-02T20:57:06Z",
     "via": "lychee",
   },
   "https://github.com/w3c/baggage/blob/main/baggage/HTTP_HEADER_FORMAT_RATIONALE.md#case-sensitivity-of-keys": {
@@ -25277,6 +25392,11 @@
   "https://github.com/yangxikun/opentelemetry-lua": {
     "result": 200,
     "when": "2026-10-27T05:47:07Z",
+    "via": "lychee",
+  },
+  "https://github.com/yiquanzhou": {
+    "result": 200,
+    "when": "2026-11-02T20:57:05Z",
     "via": "lychee",
   },
   "https://github.com/yiyuan-he": {
@@ -33667,6 +33787,11 @@
   "https://www.keycloak.org/observability/telemetry": {
     "result": 200,
     "when": "2026-10-19T05:46:24Z",
+    "via": "lychee",
+  },
+  "https://www.keycloak.org/observability/tracing": {
+    "result": 200,
+    "when": "2026-10-23T11:54:17Z",
     "via": "lychee",
   },
   "https://www.konghq.com/": {
