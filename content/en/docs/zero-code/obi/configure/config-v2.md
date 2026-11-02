@@ -14,6 +14,11 @@ declarative configuration structure. Common settings such as resources,
 sampling, and exporters remain at the root of the document, while OBI-specific
 settings are grouped under `extensions.obi`.
 
+Starting with OBI v1.0.0, Config v2 and its generated schema are stable. This
+guarantee covers the [supported top-level fields](#supported-top-level-fields)
+and OBI settings documented here. Full per-process declarative configuration
+parity remains deferred.
+
 If you already have a Config v1 file, use the
 [Config v1 to v2 migration guide](../migrate-to-config-v2/) instead of rewriting
 it by hand.

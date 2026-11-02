@@ -24,6 +24,9 @@ The development tag is also published on Docker Hub as:
 otel/ebpf-instrument:main
 ```
 
+Pin deployments to a release tag such as `v1.0.0`. Moving tags such as `main`
+and `latest` are outside the stable compatibility contract.
+
 The OBI container must be configured in following way:
 
 - Run as a **privileged** container for the example below, or grant the
@@ -45,7 +48,7 @@ You can verify the signature of the container image using the following
 commands:
 
 ```sh
-export VERSION=v0.15.2
+export VERSION=v1.0.0
 
 # Verify a release image from Docker Hub
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
@@ -69,7 +72,7 @@ don't have one, you can use this
 [simple blog engine service written in Go](https://macias.info):
 
 ```sh
-export VERSION=v0.15.2
+export VERSION=v1.0.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -138,7 +141,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: otel/ebpf-instrument:v0.15.2
+    image: otel/ebpf-instrument:v1.0.0
     pid: 'host'
     privileged: true
     environment:
@@ -170,7 +173,7 @@ the OBI container:
 ```yaml
 services:
   autoinstrumenter:
-    image: otel/ebpf-instrument:main
+    image: otel/ebpf-instrument:v1.0.0
     pid: 'host'
     privileged: true
     volumes:

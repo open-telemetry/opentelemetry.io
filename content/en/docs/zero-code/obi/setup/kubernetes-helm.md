@@ -39,7 +39,8 @@ The following command deploys a OBI DaemonSet with a default configuration in
 the `obi` namespace:
 
 ```sh
-helm install obi -n obi --create-namespace open-telemetry/opentelemetry-ebpf-instrumentation
+helm install obi -n obi --create-namespace open-telemetry/opentelemetry-ebpf-instrumentation \
+  --set image.tag=v1.0.0
 ```
 
 The default OBI configuration:
@@ -64,6 +65,9 @@ your own values.
 For example, create a `helm-obi.yml` file with a custom configuration:
 
 ```yaml
+image:
+  tag: v1.0.0
+
 config:
   data:
     # Contents of the actual OBI configuration file
@@ -134,6 +138,8 @@ To enable it, set `k8sCache.replicas` to a non-zero value in your
 ```yaml
 k8sCache:
   replicas: 1
+  image:
+    tag: v1.0.0
 ```
 
 A single replica is usually enough. For high availability or very large

@@ -137,7 +137,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:v0.15.2'
+      image: 'docker.io/otel/ebpf-instrument:v1.0.0'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -233,7 +233,7 @@ partial synthetic spans that contain the span name, parent relationship, status,
 and some primitive attributes. These spans do not include the instrumentation
 scope, events, or requested span kind.
 
-In OBI v0.15.2, the encoded payload for each span exported through the Auto SDK
+In OBI v1.0.0, the encoded payload for each span exported through the Auto SDK
 must not exceed 16 KiB. OBI does not emit a metric or log message when it
 activates the integration or drops an oversized payload.
 
@@ -247,9 +247,9 @@ and
 
 For the supported combinations of module version, checksum, and architecture,
 see the
-[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
+[activation eligibility matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation).
 You can also review the upstream
-[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/go-trace-api)
+[Go Trace API example](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/go-trace-api)
 and the [Auto SDK](/docs/zero-code/go/autosdk) documentation.
 
 #### Kernel integrity mode limitations
@@ -289,7 +289,7 @@ configuration, which ensures OBI has sufficient information to determine the
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:v0.15.2'
+    image: 'docker.io/otel/ebpf-instrument:v1.0.0'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:

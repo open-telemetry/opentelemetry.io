@@ -8,9 +8,32 @@ cSpell:ignore: eventloop gogc replicaset ringbuf statefulset stddev
 ---
 
 The following table shows selected exported metrics in OpenTelemetry and
-Prometheus format. For the complete v0.15.2 metric definitions, including MCP,
-GPU, and runtime metrics, see the
-[OBI telemetry catalog](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/site/docs/metrics.md).
+Prometheus format. For v1.0.0 metric definitions, including MCP, GPU, and
+runtime metrics, see the
+[OBI telemetry catalog](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/site/docs/metrics.md).
+
+## Stability
+
+OBI v1.0.0 protects telemetry entries classified as `stable` in the resolved
+registry, including their OTLP and built-in Prometheus representations. Signal
+and attribute stability apply independently: a stable metric can have attributes
+with lower stability. Entries classified as development, alpha, beta, or release
+candidate remain outside the stable contract. Network flow attribute names are
+also excluded pending semantic-convention alignment.
+
+Stability protects telemetry names, types, units, and meaning when emitted.
+Enabled features, protocol support, attribute selection, and available runtime
+metadata determine which telemetry appears. See the
+[telemetry compatibility contract](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/TELEMETRY.md)
+for the full scope and exclusions.
+
+OBI v1.0.0 emits schema URL
+`https://open-telemetry.github.io/opentelemetry-ebpf-instrumentation/schemas/obi/1.0.0`.
+The schema retains earlier transformations and adds no renames relative to
+`0.15.2`. Schema transformations do not cover every conditional rename, removal,
+or Prometheus-specific change.
+
+## Exported metrics
 
 | Family       | Name (OTel)                           | Name (Prometheus)                             | Type          | Unit        | Description                                                                                                           |
 | ------------ | ------------------------------------- | --------------------------------------------- | ------------- | ----------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -22,7 +45,7 @@ GPU, and runtime metrics, see the
 | Application  | `http.server.response.body.size`      | `http_server_response_body_size_bytes`        | Histogram     | bytes       | Size of the HTTP response body as received at the server side                                                         |
 | Application  | `rpc.client.call.duration`            | `rpc_client_call_duration_seconds`            | Histogram     | seconds     | Duration of RPC service calls from the client side                                                                    |
 | Application  | `rpc.server.call.duration`            | `rpc_server_call_duration_seconds`            | Histogram     | seconds     | Duration of RPC service calls from the server side                                                                    |
-| Application  | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        | Histogram     | seconds     | Duration of database client operations (Experimental)                                                                 |
+| Application  | `db.client.operation.duration`        | `db_client_operation_duration_seconds`        | Histogram     | seconds     | Duration of database client operations                                                                                |
 | Application  | `db.server.operation.duration`        | `db_server_operation_duration_seconds`        | Histogram     | seconds     | Duration of server-side Redis, Memcached, and SQL operations (Experimental)                                           |
 | Application  | `messaging.client.operation.duration` | `messaging_client_operation_duration_seconds` | Histogram     | seconds     | Duration of messaging client operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)   |
 | Application  | `messaging.process.duration`          | `messaging_process_duration_seconds`          | Histogram     | seconds     | Duration of messaging process operations across supported systems such as Kafka, MQTT, NATS, and AMQP (Experimental)  |
@@ -104,6 +127,18 @@ instead of a destination name. Review these dimensions when estimating
 The new ring-buffer counters in [Internal metrics](#internal-metrics) are also
 available through OTLP as `obi.bpf.ringbuf.writes` and
 `obi.bpf.ringbuf.write.failures`.
+
+## Service graph limitations
+
+OBI's built-in Prometheus service graph metrics do not include a unique OBI
+instance label. Preserve the scrape target's `instance` label, or an equivalent
+external label, when combining series from multiple OBI instances.
+
+Destinations can appear as `outgoing` when Pod metadata is missing from the
+Kubernetes informer cache, or when non-HTTP destinations lack Kubernetes
+metadata. Resolving a Kubernetes Service does not map its selector to a Pod's
+OpenTelemetry service-name or namespace overrides, so a graph can contain
+separate nodes for the Kubernetes and OpenTelemetry identities.
 
 ## Attributes of OBI metrics
 
