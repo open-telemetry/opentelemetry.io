@@ -7,7 +7,7 @@ This optional Java service consumes orders from Kafka and records business
 metrics. It uses its own consumer group, so it receives orders independently of
 accounting and fraud detection. Checkout does not depend on this service.
 
-[Business metrics service source](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/business-metrics)
+[Business metrics service source](https://github.com/open-telemetry/opentelemetry-demo/tree/9d130c120ed1fc1673e1c2ca5d34d39361dc1844/src/business-metrics)
 
 ## Instrumentation
 
