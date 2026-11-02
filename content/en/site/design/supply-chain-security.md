@@ -81,6 +81,14 @@ closing table maps decisions to their enforcement.
   environment overrides that can repoint or unpin that fetch._
   - **Refuse Hugo installer overrides**: <a id="hugo-env"></a> the [rebuild
     wrapper][install contracts] refuses to run while any of them is set.
+- _A security override outlives the parent fix it worked around, or never
+  reaches a nested copy: npm validates the lock only where its ideal tree lands
+  and never reports an override as unnecessary (two overrides outlived their
+  parents' fixes for weeks in October, caught only in review)._
+  - **Register security overrides**: <a id="overrides"></a> every root override
+    is [registered][security updates] with the advisories it answers and the
+    parent range it works around; the audit fails when the parent moves, so
+    retirement is forced rather than remembered.
 - _Netlify's [own npm install][netlify-deps] runs unattended, outside the
   scripts this repository controls, and can't be disabled._
   - **Neutralize the auto-install**: <a id="auto-install"></a> the configuration
@@ -108,6 +116,7 @@ Enforcement at a glance:
 | [Resolve only cooled-down releases][]   | [Cooldown][] in npm and [Renovate][`renovate.jsonc`]                                                             |
 | [Run only reviewed lifecycle scripts][] | The [allowlist][] in strict mode; unreviewed fails the install                                                   |
 | [Refuse Hugo installer overrides][]     | The [rebuild wrapper][install contracts]'s environment screen, before any rebuild attempt                        |
+| [Register security overrides][]         | The [supply-chain audit][]'s `REVIEWED_OVERRIDES` register                                                       |
 | [Neutralize the auto-install][]         | The [inert auto-install][] control                                                                               |
 | [Invoke bins, not names][]              | The [no bare npx][] rule; review discipline, no mechanical control                                               |
 | [Fail closed on old npm][]              | The [npm engines floor][] with strict engine checking                                                            |
@@ -153,6 +162,7 @@ Enforcement at a glance:
 [pnpm defers]: https://pnpm.io/settings/dependency-resolution
 [pnpm]: https://pnpm.io/settings/build
 [Refuse Hugo installer overrides]: #hugo-env
+[Register security overrides]: #overrides
 [renovate]: https://docs.renovatebot.com/presets-security/#securityminimumreleaseagenpm
 [Resolve deliberately]: #deliberate
 [Resolve only cooled-down releases]: #cooldown-releases

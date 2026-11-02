@@ -288,15 +288,9 @@ test('manifest: the engines floor keeps its binding shape', () => {
   );
 });
 
-// Register of the root overrides that force a security fix past a parent's
-// declared range. npm ci validates the lock only where its ideal tree lands,
-// so a nested copy still on the vulnerable version, a dropped override, or an
-// override that no longer changes resolution all pass it, and npm never says
-// an override became unnecessary (the smol-toml and prh overrides outlived
-// their parents' fixes by weeks, caught only in review). Keep each row's
-// parentRange at what the parent declares today: when the parent moves it,
-// the row goes red; drop the override and the row together if the parent now
-// admits the fixed versions.
+// Security-override register. Why:
+// https://opentelemetry.io/site/design/supply-chain-security/#overrides;
+// maintenance: https://opentelemetry.io/site/build/dependencies/#security-updates
 const REVIEWED_OVERRIDES = {
   // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; retire with
   // jakejarvis/hugo-extended#256.
