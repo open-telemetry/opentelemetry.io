@@ -73,6 +73,8 @@ OBI offers the following features:
 
 OBI v1.0.0 is the first stable release. It guarantees compatibility for:
 
+- The public Go API of
+  [`go.opentelemetry.io/obi`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#go-module-api).
 - Config v2, its generated schema, and the supported subset of OpenTelemetry
   declarative configuration.
 - Documented CLI flags, environment variables, release binaries, and container
@@ -87,7 +89,6 @@ the
 and
 [versioning policy](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#compatibility-and-release-rules-after-v1).
 
-The public Go API of `go.opentelemetry.io/obi` does not have these guarantees.
 The Collector receiver is versioned separately on a v0 release line. Telemetry
 and attributes not marked `stable` can still change, as can network flow
 attribute names while their semantic conventions are being aligned. See

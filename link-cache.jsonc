@@ -16509,6 +16509,11 @@
     "when": "2026-11-02T17:14:50Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#go-module-api": {
+    "result": 200,
+    "when": "2026-11-02T17:59:42Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/gpu-monitoring.md": {
     "result": 200,
     "when": "2026-11-02T17:14:50Z",
