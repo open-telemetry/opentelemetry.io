@@ -5,7 +5,7 @@ tags:
   - ruby
   - instrumentation
   - spree commerce
-  - ecommerce  
+  - ecommerce
 license: MIT
 description: Spree Commerce instrumentation for the OpenTelemetry framework
 authors:
