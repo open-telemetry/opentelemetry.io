@@ -5,7 +5,7 @@ date: 2026-11-02
 author: >-
   [Marcin "Perk" Stożek](https://github.com/perk) (Elastic), [Martin
   Bartoš](https://github.com/mabartos) (IBM), [Juliano
-  Costa](https://github.com/julianocosta89) (Datadog), [Johanna
+  Costa](https://github.com/julianocosta89) (Dash0), [Johanna
   Öjeling](https://github.com/johannaojeling) (community), [Fabrizia
   Rossano](https://github.com/frossano-grafana) (Grafana Labs), [Alexander
   Schwartz](https://github.com/ahus1) (IBM)
