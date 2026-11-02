@@ -12,7 +12,7 @@ cSpell:ignore: containerd goblog kubeadm microk8s replicaset statefulset tracefs
 >
 > このドキュメントでは、必要なエンティティをすべて自分で設定して、KubernetesにOBIを手動でデプロイする方法について説明します。
 >
-> <!-- Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
+> <!-- [Helmを使用してKubernetesにOBIをデプロイする](../kubernetes-helm/)ドキュメントを参照することをお勧めします。 -->
 
 ## Kubernetesメタデータデコレーションを構成する {#configuring-kubernetes-metadata-decoration}
 

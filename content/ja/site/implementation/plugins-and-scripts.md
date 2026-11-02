@@ -4,8 +4,7 @@ description: >-
   ベンチマークプラグインや body-end スクリプトを含む、サイト独自の JavaScript
   の読み込みとゲート処理の仕組み
 aliases: [scripts]
-default_lang_commit: 06bcb558c71da67124b77dfd7ddf1de659cb2da7
-drifted_from_default: true
+default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
 ---
 
 サイトは Docsy のスクリプトに加えて `assets/js/` 配下にいくつか独自のスクリプトを追加しており、3 つの方法で読み込まれます。
@@ -26,57 +25,52 @@ shim はそのマークを読み取ります。
 
 ### ベンチマークプラグイン {#benchmarks}
 
-`otel-benchmarks` プラグインは、[github-action-benchmark][] がリポジトリのベンチマーク履歴（GitHub Pages 上の `data.js`）とともに公開するレンダラーのフォークです。
-このアクションはデータの形状をその [source types][] で定義し、その [stock renderer][] で読み取ります。
-ショートコードの呼び出しではデータの名前とその読み取り方法を指定します。
+`benchmarks` ショートコードは、リポジトリのベンチマーク履歴、つまり [github-action-benchmark][] が GitHub Pages 上に公開する `data.js`（その形状はアクションの [source types][]）をチャートにします。
+ショートコードはデータを指定し、3 つのオプション引数でその読み取り方を指示します。
+`data_url` のみの場合、各ベンチマークはデータが存在するコミット上に描画される独立したチャートになります（コミット内でベンチマーク名が一意であることが前提）。
+
+```markdown
+{{</* benchmarks data_url="param:otel-benchmarks.data_url" */>}}
+```
+
+`group_separator` を指定すると、各チャートは複数のベンチマークをシリーズとして保持します。
+[Collector benchmarks][] ページがデータを読み取る方法がこれです。
 
 ```markdown
 {{</* benchmarks data_url="param:otel-benchmarks.data_url" filter="10kDPS,10kSPS" group_separator="/" series_separator=" - " */>}}
 ```
 
+`group_separator` がある場合、チャートはデータセットのコミット軸を共有するためシリーズが揃い、凡例とツールチップにシリーズ名が表示されます。
+ない場合、各チャートにはどちらも表示されず、タイトルがその 1 つのシリーズの名前になります。
+
 - `data_url`: アクションの `data.js`。`https://…` の形式か、`param:`_`NAME`_ の形式（それを保持するページパラメーター）で指定します。
-  Collector ページでは、そのプローズからも `_param` を通じてリンクしているため、URL を `params.otel-benchmarks.data_url` に保持しています。
-- `filter`: `extra` にカンマ区切りの文字列のいずれかを含むベンチマークを保持します。
-- `group_separator`: `extra` をグループ（ベンチマーク名と結合されてチャートのタイトルになる）とシリーズ名に分割します。
+  ページのプローズが `_param` を通じて同じ URL をリンクできるようにするためです。
+- `filter`（オプション）: `extra` にカンマ区切りの文字列のいずれかを含むベンチマークを保持します。
+- `group_separator`（オプション）: `extra` をグループ（ベンチマーク名と結合されてチャートのタイトルになる）とシリーズ名に分割します。
   セパレーターを含まない `extra` はグループとシリーズの両方になります。
-- `series_separator`: `group_separator` で分割されたシリーズ名を、最初の出現位置でトリミングします。
+  - `series_separator`（オプション）: シリーズ名を最初の出現位置でトリミングします。
+    `group_separator` がなければシリーズ名は存在せず、この引数は何もしません。
 
-`group_separator` がない場合、各ベンチマーク名は 1 つのシリーズを持つ独立したチャートとなり、コミット内でベンチマーク名が一意であることを前提とします。
-すべてのチャートはデータセットのコミット軸を共有します。
-JavaScript と Python のページがまだインラインで保持している stock レンダラーは、各ベンチマークにそのベンチマーク自体のコミットのみを付与します。
-プラグインの構成要素は以下のとおりです。
+引数の動作はバリデーションを含めてショートコードの doc コメントに記載されています。
+リンクやテキストはページのプローズに属し、各言語が独自に記述します。
+データリンクは、ショートコードの Markdown 出力が空であるため、エージェントが数値にアクセスするためのパスでもあります。
 
-- **ショートコード**、`layouts/_shortcodes/benchmarks.html`: チャートコンテナを出力します。
-  これは `data-otel-benchmarks` 属性に呼び出しのオプションを JSON としてレンダラー向けに保持する `div` であり、データ URL を `otelBenchmarks` としてページの [store][] に記録します。
-  不正な `data_url`、未知の引数や位置引数、または別のデータを指定する 2 回目の呼び出しはビルドを失敗させます。
-  リンクやテキストはページのプローズに属し、各言語が独自に記述します。
+ショートコードの背後にある `otel-benchmarks` プラグインは、アクションの [stock renderer][] のフォークです。
+その構成要素は以下のとおりです。
+
+- **ショートコード**、`layouts/_shortcodes/benchmarks.html`: チャートコンテナを出力し、shim とコンパニオン用にデータ URL を記録します。
   各呼び出しはその場所にチャートセットをレンダリングします。
-- **Markdown バリアント**、同じ場所にある `benchmarks.md`: 意図的に空です。
-  これにより、HTML テンプレートのマークアップがページの [Markdown output][] に含まれなくなります。
-  サイトは [Agent support](../../design/agent-support/) に基づいてこれを配信します。
-  プローズがリンクするデータファイルは、エージェントが数値にアクセスするためのパスです。
-- **Shim**、`layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`（[Adjust a plugin per page][]）: レコードを持たないページでプラグインを無効にし、リモートデータスクリプトをそれ以外のすべてのページから排除します（[Security][]）。
-- **コンパニオン**、`layouts/_partials/scripts/plugins/otel-benchmarks.html`（[Plugin files][]）: エントリの [`version`][Dependency versions] ピンで Chart.js をベンダリングし、レコードからデータファイルを読み込みます。
+- **Markdown バリアント**、同じ場所にある `benchmarks.md`: 空であるため、チャートのマークアップはページの [Markdown output][] に含まれません（[Agent support](../../design/agent-support/)）。
+- **Shim**、`layouts/_partials/scripts/plugins/otel-benchmarks_docsy-shim.html`（[Adjust a plugin per page][]）: ショートコードのないページでプラグインを無効にし、リモートデータスクリプトをそれ以外のすべてのページから排除します（[Security][]）。
+- **コンパニオン**、`layouts/_partials/scripts/plugins/otel-benchmarks.html`（[Plugin files][]）: エントリの [`version`][Dependency versions] ピンで Chart.js をベンダリングし、データファイルを読み込みます。
   データはライブのリモートスクリプトのまま残されるため、チャートはサイトビルド間でも更新されます。
   固定の整合性ハッシュではこれが禁止されます。
-- **スクリプト**、`assets/js/plugins/otel-benchmarks/`（[Plugin files][]）: `index.js` がレンダラーです。
-  その横に `legend.js`（凡例の形状とそれに合うチャートの高さ）、`commit.js`（ツールチップとポップオーバーに表示されるポイントの値行とコミット）、`point-popover.js`（クリックポップオーバー）があります。
-  Docsy は `js/plugins/otel-benchmarks.js` のみを解決するため、そのファイルがフォルダーのエントリをインポートします。
-- **スタイルシート**、`assets/scss/plugins/otel-benchmarks.scss`（[Plugin files][]）: チャートのレイアウトで、コンテナにスコープされています（狭いカラム向けのチャートごとの水平スクローラー、レンダラーが各チャートのサイズの基準とする最小幅、間隔）。
-  Docsy はプラグインとともにこれを出力します。
+- **スクリプト**、`assets/js/plugins/otel-benchmarks/`（[Plugin files][]）: レンダラー `index.js` と、凡例、ツールチップとポップオーバーにポイントが表示する内容、およびポップオーバー自体のヘルパーです。
+- **スタイルシート**、`assets/scss/plugins/otel-benchmarks.scss`（[Plugin files][]）: チャートのレイアウトで、コンテナにスコープされています。
   インラインコピーは stock ページの `static/css/benchmarks.css` を保持しており、そのむき出しの `main`、`button`、`footer` セレクターは Docsy のクロームにも到達します。
 - **登録**、`config/_default/hugo.yaml`（[Configuration reference][]）: shim がページごとに判断するため、サイトレベルのエントリが 1 つです。
-- **テスト**、`tests/public/otel-benchmarks.test.mjs`: 変換済み、未変換、フォールバック言語にわたるビルド済みページと、変換済みページの Markdown 出力。
-
-#### ローカライズ済みページの変換 {#convert-a-localized-page}
-
-まだスクリプトをインラインで保持しているローカライズ済みコピーを変換するには、以下の手順に従います。
-
-1. プローズの上にあるスタイルシートリンクを削除し、その下のブロック（`markdownlint` コメントから最後の `<script>` タグまで）を英語ページのショートコード行に置き換えます。
-2. 英語ページの `otel-benchmarks` パラメーターをコピーし、そのヒントを翻訳し、英語ページと同様にプローズからデータをリンクします。
-3. `tests/public/otel-benchmarks.test.mjs` の `CONVERTED` にその言語を追加します。
-
-独自のコピーを持たない言語は英語ページを配信し、英語ページとともに変換されます。
+- **テスト**、`tests/public/otel-benchmarks.test.mjs`: 各ページのビルド済みコピーの配信を検証します。
+  その `PAGES` テーブルはプラグインを使用するページと、まだインラインのローカライズ済みコピーの一覧であり、それらの変換は [#12266][] で追跡されています。
 
 ## Body-end スクリプト {#body-end-scripts}
 
@@ -113,7 +107,9 @@ Docsy の `chrome-nav.js` は `DOMContentLoaded` 時にこれをハイドレー�
 JavaScript が無効の場合、サイドバーは非表示のままです。
 
 <!-- prettier-ignore-start -->
+[#12266]: https://github.com/open-telemetry/opentelemetry.io/issues/12266
 [Adjust a plugin per page]: https://www.docsy.dev/docs/content/plugins/#adjust-a-plugin-per-page
+[Collector benchmarks]: /docs/collector/benchmarks/
 [Configuration reference]: https://www.docsy.dev/docs/content/plugins/#configuration-reference
 [Dependency versions]: https://www.docsy.dev/docs/content/plugins/#dependency-versions
 [Docsy plugins]: https://www.docsy.dev/docs/content/plugins/#add-a-custom-script
@@ -124,5 +120,4 @@ JavaScript が無効の場合、サイドバーは非表示のままです。
 [Security]: https://www.docsy.dev/docs/content/plugins/#security
 [source types]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/extract.ts
 [stock renderer]: https://github.com/benchmark-action/github-action-benchmark/blob/master/src/default_index_html.ts
-[store]: https://gohugo.io/methods/page/store/
 <!-- prettier-ignore-end -->

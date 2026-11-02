@@ -5,10 +5,9 @@ description:
   OBI コンポーネントが Prometheus 形式と OpenTelemetry 形式のメトリクスおよび
   OpenTelemetry 形式のトレースをエクスポートするよう設定する
 weight: 10
-default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
-drifted_from_default: true
+default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
 # prettier-ignore
-cSpell:ignore: Aerospike AsterixDB Chroma couchbase genai gonic jackc libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
+cSpell:ignore: aerospike AsterixDB Chroma couchbase genai gonic jackc libcuda libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
 
 <!-- markdownlint-disable no-emphasis-as-heading -->
@@ -25,31 +24,32 @@ OBI は OpenTelemetry 形式のメトリクスとトレースを OTLP エンド�
 
 OBI はトレースとメトリクスの計装において、以下のプロトコルと機能バージョンをサポートします。
 
-| 領域          | サポートバージョン                                                                                                              | 備考                                                                                                          |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------ |
-| HTTP          | `1.0/1.1`                                                                                                                       | コンテキスト伝搬をサポートします。                                                                            |
-| HTTP          | `2.0`                                                                                                                           | コンテキスト伝搬には Go ライブラリレベルの計装が必要です。                                                    |
-| gRPC          | `1.0+`                                                                                                                          | コンテキスト伝搬をサポートします。OBI 起動前から続く長期接続ではメソッド名に `*` が使用される場合があります。 |
-| MySQL         | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                  |
-| PostgreSQL    | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                  |
-| MSSQL         | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                  |
-| Redis         | すべて                                                                                                                          | 既存の接続にはデータベース番号または `db.namespace` が含まれない場合があります。                              |
-| MongoDB       | `5.0+`                                                                                                                          | 圧縮ペイロードはサポートされていません。                                                                      |
-| Couchbase     | すべて                                                                                                                          | OBI 起動前にネゴシエーションが完了した場合、バケット名またはコレクション名が利用できない場合があります。      |
-| Aerospike     | すべて                                                                                                                          | 圧縮ペイロードは解析されません。レコードおよび bin の値はキャプチャされません。                               |
-| Memcached     | すべて                                                                                                                          | `quit` とメタコマンドを除く ASCII テキストプロトコルのサブセットをサポートします。                            |
-| Kafka         | すべて                                                                                                                          | フェッチ API バージョン `13+` ではトピック名のルックアップが失敗する場合があります。                          |
-| MQTT          | `3.1.1/5.0`                                                                                                                     | ペイロードはキャプチャされません。                                                                            |
-| NATS          | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| AMQP          | `1.0`                                                                                                                           | スパンを作成するのは transfer パフォーマティブのみです。                                                      |
-| SunRPC        | すべて                                                                                                                          | TCP 上の ONC RPC をサポートします。UDP はサポートされていません。RPCSEC_GSS はプロシージャ引数を隠します。    |
-| GraphQL       | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| Elasticsearch | `7.14+`                                                                                                                         | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| OpenSearch    | `3.0.0+`                                                                                                                        | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| AWS S3        | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| AWS SQS       | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| SQL++         | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                        |
-| GenAI         | OpenAI、Anthropic、Gemini、AWS Bedrock、Qwen、Ollama、OpenAI 互換ゲートウェイ、MCP、embedding API、rerank API、ベクトル検索 API | プロバイダー固有のペイロード抽出には、対応する `ebpf.payload_extraction.http` フラグが必要です。              |
+| 領域          | サポートバージョン                                                                                                              | 備考                                                                                                                                              |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------ |
+| HTTP          | `1.0/1.1`                                                                                                                       | コンテキスト伝搬をサポートします。                                                                                                                |
+| HTTP          | `2.0`                                                                                                                           | 平文 HTTP/2 および gRPC はネットワークレベルの HPACK コンテキスト伝搬をサポートします。汎用の暗号化 HTTP/2 にはライブラリレベルの計装が必要です。 |
+| gRPC          | `1.0+`                                                                                                                          | コンテキスト伝搬をサポートします。OBI 起動前から続く長期接続ではメソッド名に `*` が使用される場合があります。                                     |
+| MySQL         | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                                                      |
+| PostgreSQL    | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                                                      |
+| MSSQL         | すべて                                                                                                                          | OBI 起動前に作成されたプリペアドステートメントにはクエリテキストが含まれない場合があります。                                                      |
+| Redis         | すべて                                                                                                                          | 既存の接続にはデータベース番号または `db.namespace` が含まれない場合があります。                                                                  |
+| MongoDB       | `5.0+`                                                                                                                          | 圧縮ペイロードはサポートされていません。                                                                                                          |
+| Couchbase     | すべて                                                                                                                          | OBI 起動前にネゴシエーションが完了した場合、バケット名またはコレクション名が利用できない場合があります。                                          |
+| Aerospike     | すべて                                                                                                                          | 圧縮ペイロードは解析されません。レコードおよび bin の値はキャプチャされません。                                                                   |
+| Memcached     | すべて                                                                                                                          | `quit` とメタコマンドを除く ASCII テキストプロトコルのサブセットをサポートします。                                                                |
+| Kafka         | すべて                                                                                                                          | フェッチ API バージョン `13+` ではトピック名のルックアップが失敗する場合があります。                                                              |
+| MQTT          | `3.1.1/5.0`                                                                                                                     | ペイロードはキャプチャされません。                                                                                                                |
+| NATS          | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| AMQP          | `1.0`                                                                                                                           | スパンを作成するのは transfer パフォーマティブのみです。                                                                                          |
+| SunRPC        | すべて                                                                                                                          | TCP 上の ONC RPC をサポートします。UDP はサポートされていません。RPCSEC_GSS はプロシージャ引数を隠します。                                        |
+| GraphQL       | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| Elasticsearch | `7.14+`                                                                                                                         | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| OpenSearch    | `3.0.0+`                                                                                                                        | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| AWS S3        | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| AWS SNS       | すべて                                                                                                                          | v0.14.0 でクライアント計装が追加されました。                                                                                                      |
+| AWS SQS       | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| SQL++         | すべて                                                                                                                          | バージョン制限に関する追加のドキュメントはありません。                                                                                            |
+| GenAI         | OpenAI、Anthropic、Gemini、AWS Bedrock、Qwen、Ollama、OpenAI 互換ゲートウェイ、MCP、embedding API、rerank API、ベクトル検索 API | プロバイダー固有のペイロード抽出には、対応する `ebpf.payload_extraction.http` フラグが必要です。                                                  |
 
 一部のアプリケーションレベルの計装は、特定のランタイム、ライブラリ、またはサーバーのバージョンにも依存します。
 
@@ -89,13 +89,15 @@ v0.10.0 では、リクエスト方向あたりの HTTP キャプチャサイズ
 
 ### GPU 計装の互換性 {#gpu-instrumentation-compatibility}
 
-OBI は、環境が [OBI 互換性要件](/docs/zero-code/obi/#compatibility) を満たし、アプリケーションがサポート対象の CUDA ランタイムライブラリを使用している場合に GPU 計装をサポートします。
+OBI は、環境が [OBI 互換性要件](/docs/zero-code/obi/#compatibility) を満たし、アプリケーションがサポート対象の CUDA ランタイムまたはドライバーライブラリを使用している場合に GPU 計装をサポートします。
+GPU モニタリングはアプリケーションの GPU ワークを報告するもので、GPU 使用率や温度などのデバイスヘルスメトリクスは対象外です。
 
 | 要件                      | サポート対象                    |
 | :------------------------ | :------------------------------ |
 | オペレーティングシステム  | Linux                           |
 | CPU アーキテクチャ        | `amd64`, `arm64`                |
 | CUDA ランタイムライブラリ | CUDA `7.0+` 向け `libcudart.so` |
+| CUDA ドライバーライブラリ | `libcuda.so`                    |
 
 OBI は以下の CUDA 操作を計装します。
 
@@ -106,9 +108,12 @@ OBI は以下の CUDA 操作を計装します。
 | `cudaMalloc`       |
 | `cudaMemcpy`       |
 | `cudaMemcpyAsync`  |
+| `cuLaunchKernel`   |
+| `cuLaunchKernelEx` |
+| `cuGraphLaunch`    |
 
-GPU 計装は、上記のサポート対象 CUDA ランタイムライブラリと操作を使用するアプリケーションにのみ適用されます。
-他の GPU API、フレームワーク、ライブラリは、特に記載がない限りサポート対象外です。
+OBI はメモリ、ストリーム、イベント、デバイスイントロスペクションの一部の呼び出しも監視します。
+API の完全なリストとメトリクスについては、[v0.15.2 GPU モニタリングリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/gpu-monitoring.md) を参照してください。
 
 ## メトリクスの共通設定 {#common-metrics-configuration}
 
@@ -125,22 +130,24 @@ metrics:
   features: ['network', 'network_inter_zone']
 ```
 
-| YAML<br>環境変数                           | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | 型              | デフォルト        |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
-| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | OBI がデータをエクスポートするメトリクスグループのリスト。[メトリクスのエクスポート機能](#metrics-export-features) を参照してください。有効な値: `all`、`*`、`application`、`application_span`、`application_span_otel`、`application_span_sizes`、`application_host`、`application_runtime`、`application_service_graph`、`network`、`network_flow_packets`、`network_inter_zone`、`stats`、`stats_tcp_rtt`、`stats_tcp_failed_connections`、`stats_tcp_retransmits`、`stats_tcp_io`、`ebpf`。 | string のリスト | `["application"]` |
+| YAML<br>環境変数                           | 説明                                                                                                             | 型              | デフォルト        |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | エクスポートするメトリクスグループ。有効な値は [メトリクスのエクスポート機能](#metrics-export-features) を参照。 | list of strings | `["application"]` |
 
 ### メトリクスのエクスポート機能 {#metrics-export-features}
 
 OBI メトリクスエクスポーターは、[メトリクスディスカバリー](./)の設定でエントリーと一致するプロセスに対して、以下のメトリクスデータグループをエクスポートできます。
 
 - `all` または `*`: すべてのメトリクスグループ（すべてのメトリクスを有効にする便利なオプション）
-- `application`: アプリケーションレベルのメトリクス。
-- `application_host`: ホストベースの価格設定向けのアプリケーションレベルのホストメトリクス。
-- `application_runtime`: 計装対象のサービスから収集される Go ランタイム、HotSpot JVM メモリ、および Node.js イベントループメトリクス。
+- `application`: アプリケーションレベルの RED メトリクスおよび HTTP ボディサイズヒストグラム。
+- `application_red`: HTTP ボディサイズヒストグラムを含まないアプリケーションレベルの RED メトリクス。
+- `application_sizes`: HTTP リクエストおよびレスポンスのボディサイズヒストグラム。
+  `application_red` と組み合わせて使用します。`application_sizes` 単独では無効です。
+- `application_runtime`: 計装対象のサービスから収集される Go、JVM、.NET、Node.js、Python のランタイムメトリクス。
   [ランタイムメトリクス](#runtime-metrics) を参照してください。
-- `application_span`: レガシー形式（`traces_spanmetrics_latency` など）のアプリケーションレベルのトレーススパンメトリクス。`spanmetrics` は独立していません。
+- `application_span`: 非推奨のレガシー形式（`traces_spanmetrics_latency` など）のアプリケーションレベルのトレーススパンメトリクス。`spanmetrics` は独立していません。
 - `application_span_otel`: OpenTelemetry 形式（`traces.span.metrics.calls` など）のアプリケーションレベルのトレーススパンメトリクス。`span_metrics` は独立しています。
-- `application_span_sizes`: リクエストとレスポンスのサイズ情報を報告するアプリケーションレベルのトレーススパンメトリクス。
+- `application_span_sizes`: 非推奨のリクエストとレスポンスのサイズを報告するアプリケーションレベルのトレーススパンメトリクス。
 - `application_service_graph`: アプリケーションレベルのサービスグラフメトリクス。
   サービスディスカバリーには DNS を使用し、DNS 名が OBI で使用される OpenTelemetry サービス名と一致するようにすることを推奨します。
   Kubernetes 環境では、サービス名ディスカバリーで設定された OpenTelemetry サービス名がサービスグラフメトリクスに最適です。
@@ -150,6 +157,7 @@ OBI メトリクスエクスポーターは、[メトリクスディスカバリ
 - `stats`: すべての TCP 統計メトリクス。
 - `stats_tcp_rtt`: TCP ラウンドトリップタイムヒストグラムメトリクス。
 - `stats_tcp_failed_connections`: TCP 接続失敗カウンターメトリクス。失敗理由でラベル付けされます。
+- `stats_tcp_successful_connections`: TCP 接続成功カウンターメトリクス。
 - `stats_tcp_retransmits`: TCP 再送カウンターメトリクス。
 - `stats_tcp_io`: ソケットレイヤーで転送された TCP バイト数。I/O 方向でラベル付けされます。
   この機能はすべての TCP 送受信呼び出しを監視するため、他の stats 機能よりもオーバーヘッドが高くなる可能性があります。
@@ -167,6 +175,10 @@ OBI メトリクスエクスポーターは、[メトリクスディスカバリ
 >
 > Prometheus のメトリクス名は変更されません。
 > v0.11.0 にアップグレードする際は、OTLP のクエリとダッシュボードを更新してください。
+
+`application` バンドルには HTTP ボディサイズヒストグラムが含まれます。
+ヒストグラムなしで RED メトリクスのみを使用するには、`metrics.features: [application_red]` を設定します。
+サービスが `discovery.instrument[].metrics.features` を設定する場合、両方が必要なときは `application_red` と `application_sizes` を合わせて指定してください。
 
 ### アプリケーション別のメトリクスエクスポート機能 {#per-application-metrics-export-features}
 
@@ -208,7 +220,7 @@ discovery:
 
 OBI は、対象プロセスに SDK の変更を必要とせずにランタイムメトリクスを収集できます。
 
-Go、HotSpot JVM、および Node.js のランタイムメトリクスを有効にするには、`application_runtime` メトリクス機能を使用します。
+Go、JVM、.NET、Node.js、Python のランタイムメトリクスを有効にするには、`application_runtime` メトリクス機能を使用します。
 Go のランタイム値は対象がガベージコレクションサイクルを完了した後に報告されるため、新しいプロセスではこれらのメトリクスがすぐには発行されない場合があります。
 `GOGC`、`GOMEMLIMIT`、`GOMAXPROCS` の変更は、次のサイクル完了後に反映されます。
 
@@ -216,6 +228,13 @@ Node.js では、OBI はイベントループの時間、使用率、および�
 イベントループの時間と使用率には Node.js 14.10 以降が必要です。
 遅延メトリクスには Node.js 16.14 以降が必要です。
 OBI はメインスレッドのイベントループのみを報告し、OBI がランタイムメトリクスエージェントを注入するにはインスペクターが到達可能である必要があります。
+
+Linux 上の .NET 8 以降では、OBI はプロセスの診断ソケットを通じてランタイムメトリクスを収集します。
+診断を有効にし、OBI が対象プロセスのファイルシステムを通じてソケットにアクセスできるようにしてください。
+v0.15.2 でプロセッサー数、プロセス CPU 時間、最後のコレクションのヒープサイズが追加されました。
+デフォルトのポーリング間隔は 1 秒で、`dotnet_runtime_metrics.sampling_interval` で設定します。
+診断 IPC のセットアップとシャットダウンには `dotnet_runtime_metrics.timeout`（デフォルト `10s`）を使用します。
+収集のセマンティクスとメトリクスの可用性については、[.NET ランタイムリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/runtimes/dotnet.md) を参照してください。
 
 HotSpot JVM メモリメトリクスの OBI サンプリング間隔を制御するには、`jvm_runtime_metrics.sampling_interval` を使用します。
 
@@ -268,6 +287,10 @@ otel_metrics_export:
 
 ### メトリクスのエクスポートプロトコル {#metrics-export-protocol}
 
+メトリクスエクスポーターは HTTP 経由で protobuf を送信します。
+Config v1 は `http/json` を受け付けますが、メトリクスは protobuf として送信され警告がログに記録されます。
+JSON エンコーディングはトレースのみでサポートされています。
+
 プロトコルを設定しない場合、OBI は以下のようにプロトコルを設定します。
 
 - `grpc`: ポートが `4317` で終わる場合（例: `4317`、`14317`、`24317`）。
@@ -315,12 +338,13 @@ otel_traces_export:
   instrumentations: ['http', 'sql']
 ```
 
-| YAML<br>環境変数                                                                    | 説明                                                                                                                                                                                                                                                                                            | 型              | デフォルト                                                                                                   |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------ |
-| `endpoint`<br>`OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`<br>`OTEL_EXPORTER_OTLP_ENDPOINT` | OBI がトレースを送信するエンドポイント。`unix:///var/run/otel.sock` や `unix://@otel` などの Unix ドメインソケットをサポートします。`OTEL_EXPORTER_OTLP_ENDPOINT` を使用する場合、OBI は OpenTelemetry 標準に従い、HTTP エクスポート時に `/v1/traces` を自動的に追加します。                    | URL             |                                                                                                              |
-| `protocol`<br>`OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`<br>`OTEL_EXPORTER_OTLP_PROTOCOL` | OpenTelemetry エンドポイントのプロトコルトランスポート/エンコーディング。[トレースのエクスポートプロトコル](#traces-export-protocol) を参照してください。[受け付ける値](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_protocol) は `http/json`、`http/protobuf`、`grpc`。 | string          | ポート使用から推定                                                                                           |
-| `insecure_skip_verify`<br>`OTEL_EBPF_INSECURE_SKIP_VERIFY`                          | `true` の場合、OBI は検証をスキップしてサーバー証明書を受け入れます。本番環境以外でのみこの設定を変更してください。                                                                                                                                                                             | boolean         | `false`                                                                                                      |
-| `instrumentations`<br>`OTEL_EBPF_TRACES_INSTRUMENTATIONS`                           | OBI がデータを収集する計装のリスト。[トレースの計装](#traces-instrumentation) セクションを参照してください。                                                                                                                                                                                    | list of strings | `http`, `grpc`, `sql`, `redis`, `kafka`, `mqtt`, `nats`, `amqp`, `mongo`, `couchbase`, `memcached`, `sunrpc` |
+| YAML<br>環境変数                                                                    | 説明                                                                                                                                                                                                                                                                                            | 型              | デフォルト                                                                                                                |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `endpoint`<br>`OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`<br>`OTEL_EXPORTER_OTLP_ENDPOINT` | OBI がトレースを送信するエンドポイント。`unix:///var/run/otel.sock` や `unix://@otel` などの Unix ドメインソケットをサポートします。`OTEL_EXPORTER_OTLP_ENDPOINT` を使用する場合、OBI は OpenTelemetry 標準に従い、HTTP エクスポート時に `/v1/traces` を自動的に追加します。                    | URL             |                                                                                                                           |
+| `protocol`<br>`OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`<br>`OTEL_EXPORTER_OTLP_PROTOCOL` | OpenTelemetry エンドポイントのプロトコルトランスポート/エンコーディング。[トレースのエクスポートプロトコル](#traces-export-protocol) を参照してください。[受け付ける値](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_protocol) は `http/json`、`http/protobuf`、`grpc`。 | string          | ポート使用から推定                                                                                                        |
+| `insecure_skip_verify`<br>`OTEL_EBPF_INSECURE_SKIP_VERIFY`                          | `true` の場合、OBI は検証をスキップしてサーバー証明書を受け入れます。本番環境以外でのみこの設定を変更してください。                                                                                                                                                                             | boolean         | `false`                                                                                                                   |
+| `compression`<br>`OTEL_EXPORTER_OTLP_TRACES_COMPRESSION`                            | エクスポートされる OTLP トレースペイロードを圧縮します。有効な値: `gzip`、`none`。                                                                                                                                                                                                              | string          | unset                                                                                                                     |
+| `instrumentations`<br>`OTEL_EBPF_TRACES_INSTRUMENTATIONS`                           | OBI がデータを収集する計装のリスト。[トレースの計装](#traces-instrumentation) を参照してください。                                                                                                                                                                                              | list of strings | `http`, `grpc`, `sql`, `redis`, `kafka`, `mqtt`, `nats`, `amqp`, `mongo`, `couchbase`, `memcached`, `sunrpc`, `aerospike` |
 
 ### トレースのエクスポートプロトコル {#traces-export-protocol}
 

@@ -2,8 +2,7 @@
 title: サービス別ログカバレッジ
 linkTitle: ログカバレッジ
 aliases: [log_service_features, logging-features, ../logging-features]
-default_lang_commit: 5f6c57b59b2c0d705b50c089eeed8c2ef2eaff55
-drifted_from_default: true
+default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
 ---
 
 | サービス               | 言語       | OTLP ログ |
@@ -19,7 +18,7 @@ drifted_from_default: true
 | Flagd                  | Go         | 🚧        |
 | Flagd-ui               | Elixir     | 🚧        |
 | 不正検知               | Kotlin     | ✅        |
-| フロントエンド         | TypeScript | 🚧        |
+| フロントエンド         | TypeScript | ✅        |
 | フロントエンドプロキシ | Envoy      | ✅        |
 | 画像プロバイダー       | NGINX      | 🚧        |
 | 負荷生成ツール         | Python     | ✅        |
@@ -29,6 +28,9 @@ drifted_from_default: true
 | 見積サービス           | PHP        | ✅        |
 | レコメンデーション     | Python     | ✅        |
 | 配送                   | Rust       | ✅        |
+
+フロントエンドのログカバレッジはサーバー（`frontend`）に適用されます。
+ブラウザの計装（`frontend-web`）は OTLP ログをエクスポートしません。
 
 絵文字の凡例：
 
