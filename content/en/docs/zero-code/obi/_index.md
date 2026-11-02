@@ -89,10 +89,10 @@ the
 and
 [versioning policy](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#compatibility-and-release-rules-after-v1).
 
-The Collector receiver is versioned separately on a v0 release line. Telemetry
-and attributes not marked `stable` can still change, as can network flow
-attribute names while their semantic conventions are being aligned. See
-[telemetry stability](metrics/#stability).
+The [Collector receiver](configure/collector-receiver/) is versioned separately
+on a v0 release line. Telemetry and attributes not marked `stable` can still
+change, as can network flow attribute names while their semantic conventions are
+being aligned. See [telemetry stability](metrics/#stability).
 
 ## Upgrade to v1.0.0
 
