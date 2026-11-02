@@ -1196,6 +1196,8 @@ maintainers:
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-triagers
+      - social-media-approvers
+      - social-media-maintainers
     html_url: https://github.com/maryliag
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
   - name: michaelbushe
@@ -2003,7 +2005,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/22205748?v=4
   - name: JonasKunz
     teams:
-      - java-instrumentation-triagers
       - semconv-sdk-health-approvers
     html_url: https://github.com/JonasKunz
     avatar_url: https://avatars.githubusercontent.com/u/6066661?v=4
