@@ -68,3 +68,21 @@ config_types_copied: Copied!
 config_types_source: Source
 config_types_view_schema: View JSON schema
 config_types_schema_version: Schema version
+
+# Community meetings
+meetings_loading: Loading meetings…
+meetings_error: >-
+  The meeting calendar couldn't be loaded. Subscribe to the calendar feed below
+  to see the schedule in your calendar app.
+meetings_no_script: >-
+  Turn on JavaScript to see upcoming meetings here, or subscribe to the calendar
+  feed below.
+meetings_time_zone: 'Times are in your time zone: {timeZone}.'
+meetings_event_time: "In the meeting's time zone: {time}"
+meetings_filter_label: Meeting series
+meetings_all: All meetings
+meetings_live: Live now
+meetings_none: No meetings are scheduled in this period.
+meetings_show_more: Show more
+meetings_feed: iCalendar feed
+meetings_subscribe: Subscribe in your calendar app
