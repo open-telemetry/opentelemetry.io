@@ -229,11 +229,10 @@ condition; the common cases:
 - **You bumped a dependency that has an `allowScripts` entry**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
-- **Your change moved a security override's dependents** (the audit names the
-  register row's dependents and ranges). If every dependent's range now admits
-  the fixed version, drop the override and its `REVIEWED_OVERRIDES` row together
-  and [reconcile the lock](#manifest-changes); otherwise update the row's
-  dependents.
+- **Your change moved a security override's dependents**. If every dependent's
+  range now admits the fixed version, drop the override and its
+  `REVIEWED_OVERRIDES` row together and [reconcile the lock](#manifest-changes);
+  otherwise update the row's dependents.
 - **A bot bumped a security override**. Update the row's `spec`, and its
   `firstFixed` when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That

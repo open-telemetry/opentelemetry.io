@@ -308,10 +308,8 @@ const REVIEWED_OVERRIDES = {
   },
 };
 
-// Declared ranges for NAME by dependent lock path, the root manifest as '.'.
-// Where one entry declares NAME in several fields, the range npm resolves
-// wins; npm loads peer, regular, optional, then dev, the last declaration
-// winning.
+// Declared ranges for NAME by dependent lock path ('.' for the root), the
+// fields in arborist's precedence order.
 const declaredRanges = (name) =>
   Object.fromEntries(
     Object.entries(lock.packages).flatMap(([key, pkg]) => {
