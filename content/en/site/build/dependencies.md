@@ -225,17 +225,17 @@ verification principles behind the audit itself, see its
 When the audit fails on your PR, the assertion message states the expected
 condition; the common cases:
 
-- **You bumped a dependency that has an `allowScripts` entry**: follow
+- **You bumped a dependency that has an `allowScripts` entry**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
 - **Your change moved a security override's dependents** (the audit names the
-  register row's dependents and ranges): if every dependent's range now admits
+  register row's dependents and ranges). If every dependent's range now admits
   the fixed version, drop the override and its `REVIEWED_OVERRIDES` row together
   and [reconcile the lock](#manifest-changes); otherwise update the row's
   dependents.
-- **Renovate bumped a security override**: update the row's `spec`, and its
+- **Renovate bumped a security override**. Update the row's `spec`, and its
   `firstFixed` when the bump answers a new advisory.
-- **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
+- **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
   with your change, and say why in the PR.
@@ -364,7 +364,7 @@ with this rule through [drift tracking][].
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
-[`overrides`]: https://docs.npmjs.com/cli/configuring-npm/package-json#overrides
+[`overrides`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#overrides
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/

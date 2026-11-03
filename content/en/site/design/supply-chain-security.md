@@ -98,10 +98,9 @@ closing table maps decisions to their enforcement.
   - **Verify, don't trust**: <a id="verify"></a> inert, lock-exact, and each
     [security override][security updates] are verified claims, not assumptions.
     - npm validates the lock only where its ideal tree lands and never reports
-      an override as unnecessary, so the audit registers each override with the
-      dependents and ranges it works around, checks every locked copy for the
-      fix, and fails when those dependents change. A fix backported inside a
-      dependent's range is outside its sight.
+      an override as unnecessary, so the audit verifies each override against
+      every locked copy and the dependents it works around; a fix backported
+      inside a dependent's range stays outside its sight.
 
 Enforcement at a glance:
 
