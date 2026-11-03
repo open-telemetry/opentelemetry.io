@@ -31,11 +31,10 @@ exporters, called _exporter-level batching_, and a new `queue_batch` processor
 replaces the original processor component. Integrated queue and batch behavior
 brings numerous improvements described below.
 
-In many cases, users can simply wait for the change to happen by
-default, when exporter-level batching becomes enabled by default in
-most exporters. The change is planned for release `v0.171.0` in
-February 2027. Users can opt-in to exporter-level batching today by
-modifying their configuration, as shown next.
+In many cases, users can simply wait for the change to happen by default, when
+exporter-level batching becomes enabled by default in most exporters. The change
+is planned for release `v0.171.0` in February 2027. Users can opt-in to
+exporter-level batching today by modifying their configuration, as shown next.
 
 **Before:**
 
@@ -92,11 +91,10 @@ service:
       exporters: [otlp]
 ```
 
-Removal of the `batch` processor from the core repository and
-distributions is planned for release `v0.177.0` (May 2027). In most
-cases, users will prefer exporter-level batching, with batching after
-the queue. Don't worry, batching in a processor is still possible
-using the replacement `queue_batch` processor.
+Removal of the `batch` processor from the core repository and distributions is
+planned for release `v0.177.0` (May 2027). In most cases, users will prefer
+exporter-level batching, with batching after the queue. Don't worry, batching in
+a processor is still possible using the replacement `queue_batch` processor.
 
 ## Why replace the `batch` processor?
 
