@@ -310,7 +310,8 @@ const REVIEWED_OVERRIDES = {
 
 // Declared ranges for NAME by dependent lock path ('.' for the root), the
 // fields in arborist's precedence order; devDependencies count at the root
-// only, the one node npm installs them for.
+// only, the one node npm installs them for. An acceptDependencies range widens
+// what the dependent admits, so it joins the declared range as an alternative.
 const declaredRanges = (name) =>
   Object.fromEntries(
     Object.entries(lock.packages).flatMap(([key, pkg]) => {
@@ -320,7 +321,9 @@ const declaredRanges = (name) =>
         ...pkg.optionalDependencies,
         ...(key === '' ? pkg.devDependencies : {}),
       }[name];
-      return range === undefined ? [] : [[key || '.', range]];
+      if (range === undefined) return [];
+      const accept = pkg.acceptDependencies?.[name];
+      return [[key || '.', accept ? `${range} || ${accept}` : range]];
     }),
   );
 
