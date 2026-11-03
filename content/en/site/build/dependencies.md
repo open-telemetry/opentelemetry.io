@@ -235,7 +235,7 @@ condition; the common cases:
   `firstFixed` remains, then drop the row; otherwise update the row's
   `parentRange`.
 - **A bot bumped a security override**. Update the row's `spec`, and its
-  `firstFixed` and advisory ids when the bump answers a new advisory.
+  `firstFixed` and advisory IDs when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
