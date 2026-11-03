@@ -14,6 +14,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import semver from 'semver';
 import { parse as parseToml } from 'smol-toml';
 
 import { UNSAFE_HUGO_ENV } from './rebuild-hugo-extended.mjs';
@@ -288,34 +289,41 @@ test('manifest: the engines floor keeps its binding shape', () => {
   );
 });
 
-// Security-override register. Why:
-// https://opentelemetry.io/site/design/supply-chain-security/#overrides.
-// Maintenance: https://opentelemetry.io/site/build/dependencies/#security-updates
+// Security-override register. Rationale and maintenance:
+// https://opentelemetry.io/site/design/supply-chain-security/#verify
+// https://opentelemetry.io/site/build/dependencies/#security-updates
 const REVIEWED_OVERRIDES = {
   // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; retire with
   // jakejarvis/hugo-extended#256.
   'adm-zip': {
     spec: '0.6.1',
     firstFixed: '0.6.1',
-    parent: 'hugo-extended',
-    parentRange: '^0.5.17',
+    dependents: { 'hugo-extended': '^0.5.17' },
   },
-  // GHSA-238p-pmpm-9mq7; markdownlint loads katex through
-  // micromark-extension-math but never renders with it.
+  // GHSA-238p-pmpm-9mq7; markdownlint loads katex but never renders with it.
   katex: {
     spec: '^0.19.0',
     firstFixed: '0.18.2',
-    parent: 'micromark-extension-math',
-    parentRange: '^0.16.0',
+    dependents: { 'micromark-extension-math': '^0.16.0' },
   },
 };
 
-// Release versions only: a lock pins the overrides above to plain x.y.z.
-const versionAtLeast = (version, floor) => {
-  const [a, b] = [version, floor].map((v) => v.split('.').map(Number));
-  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
-  return true;
-};
+// Every lock entry that declares NAME, with the range it declares; the root
+// manifest counts as '.'.
+const declaredRanges = (name) =>
+  Object.fromEntries(
+    Object.entries(lock.packages).flatMap(([key, pkg]) => {
+      const range = {
+        ...pkg.peerDependencies,
+        ...pkg.optionalDependencies,
+        ...pkg.dependencies,
+      }[name];
+      if (range === undefined) return [];
+      const dependent =
+        key === '' ? '.' : key.slice(key.lastIndexOf('node_modules/') + 13);
+      return [[dependent, range]];
+    }),
+  );
 
 test('lock and manifest: security overrides are applied and still needed', () => {
   assert.deepEqual(
@@ -326,30 +334,28 @@ test('lock and manifest: security overrides are applied and still needed', () =>
     'root overrides carries exactly the reviewed entries',
   );
   for (const [name, o] of Object.entries(REVIEWED_OVERRIDES)) {
-    // Every copy, hoisted or nested.
     const nodes = Object.keys(lock.packages).filter((k) =>
       k.endsWith(`node_modules/${name}`),
     );
     assert.ok(nodes.length > 0, `${name} is in the lock`);
     for (const node of nodes) {
       assert.ok(
-        versionAtLeast(lock.packages[node].version, o.firstFixed),
+        semver.gte(lock.packages[node].version, o.firstFixed),
         `${node} carries the ${o.firstFixed} fix`,
       );
     }
-    const parent = lock.packages[`node_modules/${o.parent}`];
-    assert.ok(parent, `${o.parent} is hoisted in the lock`);
-    assert.equal(
-      parent.dependencies[name],
-      o.parentRange,
-      `${o.parent} declares the ${name} range that justifies the override`,
+    assert.deepEqual(
+      declaredRanges(name),
+      o.dependents,
+      `${name}'s dependents and their ranges are the ones this row was reviewed against`,
+    );
+    assert.ok(
+      Object.values(o.dependents).some(
+        (range) => !semver.intersects(range, `>=${o.firstFixed}`),
+      ),
+      `a dependent's ${name} range still excludes the ${o.firstFixed} fix, so the override is needed`,
     );
   }
-  assert.match(
-    manifest.overridesComment ?? '',
-    /REVIEWED_OVERRIDES/,
-    'overridesComment names REVIEWED_OVERRIDES',
-  );
 });
 
 test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
