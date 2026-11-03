@@ -209,8 +209,8 @@ setting stays on. When neither opens a PR, a maintainer refreshes the package
 When a dependent's declared range excludes the fixed version, no refresh can
 reach it. Bump the dependent if a release admits the fix; otherwise add a root
 [`overrides`][] entry with its row in the audit's `REVIEWED_OVERRIDES` register,
-and [reconcile the lock](#manifest-changes). The audit fails when the row's
-dependents move, prompting a [reassessment](#audit).
+and [reconcile the lock](#manifest-changes). The audit fails when the parent's
+declared range moves, prompting a [reassessment](#audit).
 
 ## Supply-chain controls {#controls}
 
@@ -229,10 +229,10 @@ condition; the common cases:
 - **You bumped a dependency that has an `allowScripts` entry**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
-- **Your change moved a security override's dependents**. If every dependent's
-  range now admits the fixed version, drop the override and its
-  `REVIEWED_OVERRIDES` row together and [reconcile the lock](#manifest-changes);
-  otherwise update the row's dependents.
+- **Your change moved a security override's parent range**. If the new range
+  admits the fixed version, drop the override and its `REVIEWED_OVERRIDES` row
+  together and [reconcile the lock](#manifest-changes); otherwise update the
+  row's range.
 - **A bot bumped a security override**. Update the row's `spec`, and its
   `firstFixed` when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That

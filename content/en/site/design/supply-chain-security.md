@@ -99,8 +99,8 @@ closing table maps decisions to their enforcement.
     [security override][security updates] are verified claims, not assumptions.
     - npm checks the lock only for agreement with its own resolution: it knows
       no fixed version and never reports an override as unnecessary, so the
-      audit verifies each override against every locked copy and the dependents
-      it works around; a fix backported inside a dependent's range stays outside
+      audit verifies each override against every locked copy and the parent
+      range it works around; a fix backported inside that range stays outside
       its sight.
 
 Enforcement at a glance:
