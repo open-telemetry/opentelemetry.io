@@ -293,8 +293,9 @@ test('manifest: the engines floor keeps its binding shape', () => {
 // https://opentelemetry.io/site/build/dependencies/#security-updates
 // A row pins the one declared range that justifies the override, as a literal:
 // a tripwire that makes a human reassess when that fact moves, not a model of
-// npm's resolution (a second dependent or an acceptDependencies range isn't
-// tripped; the per-copy check below still catches an unpatched install).
+// npm's resolution. Not tripped: a second dependent, an acceptDependencies
+// range, a fix backported inside the parent's range. While the row stands, the
+// per-copy check below catches an unpatched install.
 const REVIEWED_OVERRIDES = {
   // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc. Retire with
   // jakejarvis/hugo-extended#256.
@@ -313,7 +314,8 @@ const REVIEWED_OVERRIDES = {
   },
 };
 
-// Release versions only (x.y.z): a prerelease or build suffix fails closed.
+// Numeric x.y.z compared part by part; a suffix the comparison reaches fails
+// closed.
 const versionAtLeast = (version, floor) => {
   const [a, b] = [version, floor].map((v) => v.split('.').map(Number));
   for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
@@ -338,7 +340,7 @@ test('lock and manifest: security overrides are applied and still needed', () =>
     for (const node of nodes) {
       assert.ok(
         versionAtLeast(lock.packages[node].version, o.firstFixed),
-        `${node} carries the ${o.firstFixed} fix`,
+        `${node} at ${lock.packages[node].version} carries the ${o.firstFixed} fix`,
       );
     }
     const parent = lock.packages[`node_modules/${o.parent}`];

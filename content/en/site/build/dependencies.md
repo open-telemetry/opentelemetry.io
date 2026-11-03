@@ -206,8 +206,8 @@ setting stays on. When neither opens a PR, a maintainer refreshes the package
   a younger-than-cooldown fix arrives as a failed artifact update; adopting it
   early takes the [scoped exemption](#transitive-refresh) run by a maintainer.
 
-When a dependent's declared range excludes the fixed version, no refresh can
-reach it. Bump the dependent if a release admits the fix; otherwise add a root
+When a parent's declared range excludes the fixed version, no refresh can reach
+it. Bump the parent if a release admits the fix; otherwise add a root
 [`overrides`][] entry with its row in the audit's `REVIEWED_OVERRIDES` register,
 and [reconcile the lock](#manifest-changes). The audit fails when the parent's
 declared range moves, prompting a [reassessment](#audit).
@@ -230,11 +230,12 @@ condition; the common cases:
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
 - **Your change moved a security override's parent range**. If the new range
-  admits the fixed version, drop the override and its `REVIEWED_OVERRIDES` row
-  together and [reconcile the lock](#manifest-changes); otherwise update the
-  row's range.
+  admits the fixed version, drop the override,
+  [reconcile the lock](#manifest-changes), confirm no copy below the row's
+  `firstFixed` remains, then drop the row; otherwise update the row's
+  `parentRange`.
 - **A bot bumped a security override**. Update the row's `spec`, and its
-  `firstFixed` when the bump answers a new advisory.
+  `firstFixed` and advisory ids when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
