@@ -208,18 +208,19 @@ setting stays on. When neither opens a PR, a maintainer refreshes the package
 
 When a dependent's declared range excludes the fixed version, no refresh can
 reach it. Bump the dependent if a release admits the fix; otherwise add a root
-[`overrides`][] entry, add its row to the audit's `REVIEWED_OVERRIDES` register,
-and [reconcile the lock](#manifest-changes). The audit fails when a dependent's
-range changes or a new dependent appears, prompting a [reassessment](#audit).
+[`overrides`][] entry with its row in the audit's `REVIEWED_OVERRIDES` register,
+and [reconcile the lock](#manifest-changes). The audit fails when the row's
+dependents move, prompting a [reassessment](#audit).
 
 ## Supply-chain controls {#controls}
 
 ### Supply-chain audit {#audit}
 
 The supply-chain audit test, [`scripts/supply-chain-audit.test.mjs`][], verifies
-the controls below from committed files alone on every `test:local-tools` run,
-so a regressed control fails a test rather than waiting for an incident. For the
-verification principles behind the audit itself, see its
+the controls below, and each [security override](#security-updates), from
+committed files alone on every `test:local-tools` run, so a regressed control
+fails a test rather than waiting for an incident. For the verification
+principles behind the audit itself, see its
 [design page](../../design/supply-chain-audit/).
 
 When the audit fails on your PR, the assertion message states the expected
@@ -233,7 +234,7 @@ condition; the common cases:
   the fixed version, drop the override and its `REVIEWED_OVERRIDES` row together
   and [reconcile the lock](#manifest-changes); otherwise update the row's
   dependents.
-- **Renovate bumped a security override**. Update the row's `spec`, and its
+- **A bot bumped a security override**. Update the row's `spec`, and its
   `firstFixed` when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That
   failure is the point. The audit pins the install surface so that every change

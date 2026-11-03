@@ -92,15 +92,16 @@ closing table maps decisions to their enforcement.
   - **Invoke bins, not names**: <a id="no-bare-npx"></a> repository wiring
     [never uses bare `npx`][no bare npx]; bins come from the installed
     dependency tree or fail loudly.
-- _A control that silently stops being enforced is worse than none._
+- _A control or fix that silently stops being enforced is worse than none._
   - **Fail closed on old npm**: <a id="old-npm"></a> installs fail rather than
     proceed when the active npm is too old to enforce the `.npmrc` settings.
   - **Verify, don't trust**: <a id="verify"></a> inert, lock-exact, and each
     [security override][security updates] are verified claims, not assumptions.
-    - npm validates the lock only where its ideal tree lands and never reports
-      an override as unnecessary, so the audit verifies each override against
-      every locked copy and the dependents it works around; a fix backported
-      inside a dependent's range stays outside its sight.
+    - npm checks the lock only for agreement with its own resolution: it knows
+      no fixed version and never reports an override as unnecessary, so the
+      audit verifies each override against every locked copy and the dependents
+      it works around; a fix backported inside a dependent's range stays outside
+      its sight.
 
 Enforcement at a glance:
 
