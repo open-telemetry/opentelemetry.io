@@ -32,8 +32,8 @@ replaces the original processor component. Integrated queue and batch behavior
 brings numerous improvements described below.
 
 In many cases, users can simply wait for the change to happen by default, when
-exporter-level batching becomes enabled by default in most exporters. This
-change is planned for release `v0.171.0` in February 2027. Users can opt-in to
+exporter-level batching becomes enabled by default in most exporters. The change
+is planned for release `v0.171.0` in February 2027. Users can opt-in to
 exporter-level batching today by modifying their configuration, as shown next.
 
 **Before:**
