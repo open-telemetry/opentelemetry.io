@@ -293,14 +293,14 @@ test('manifest: the engines floor keeps its binding shape', () => {
 // https://opentelemetry.io/site/design/supply-chain-security/#verify
 // https://opentelemetry.io/site/build/dependencies/#security-updates
 const REVIEWED_OVERRIDES = {
-  // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; retire with
+  // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc. Retire with
   // jakejarvis/hugo-extended#256.
   'adm-zip': {
     spec: '0.6.1',
     firstFixed: '0.6.1',
     dependents: { 'node_modules/hugo-extended': '^0.5.17' },
   },
-  // GHSA-238p-pmpm-9mq7; markdownlint loads katex but never renders with it.
+  // GHSA-238p-pmpm-9mq7. markdownlint loads katex but never renders with it.
   katex: {
     spec: '^0.19.0',
     firstFixed: '0.18.2',
@@ -310,15 +310,16 @@ const REVIEWED_OVERRIDES = {
 
 // Declared ranges for NAME by dependent lock path, the root manifest as '.'.
 // Where one entry declares NAME in several fields, the range npm resolves
-// wins: optional over regular, and either over peer.
+// wins; npm loads peer, regular, optional, then dev, the last declaration
+// winning.
 const declaredRanges = (name) =>
   Object.fromEntries(
     Object.entries(lock.packages).flatMap(([key, pkg]) => {
       const range = {
         ...pkg.peerDependencies,
         ...pkg.dependencies,
-        ...pkg.devDependencies,
         ...pkg.optionalDependencies,
+        ...pkg.devDependencies,
       }[name];
       return range === undefined ? [] : [[key || '.', range]];
     }),
@@ -330,7 +331,7 @@ test('lock and manifest: security overrides are applied and still needed', () =>
     Object.fromEntries(
       Object.entries(REVIEWED_OVERRIDES).map(([name, o]) => [name, o.spec]),
     ),
-    'root overrides carries exactly the reviewed entries',
+    'root overrides carries exactly the REVIEWED_OVERRIDES specs',
   );
   for (const [name, o] of Object.entries(REVIEWED_OVERRIDES)) {
     const nodes = Object.keys(lock.packages).filter((k) =>
