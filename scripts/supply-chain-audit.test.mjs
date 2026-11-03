@@ -309,7 +309,8 @@ const REVIEWED_OVERRIDES = {
 };
 
 // Declared ranges for NAME by dependent lock path ('.' for the root), the
-// fields in arborist's precedence order.
+// fields in arborist's precedence order; devDependencies count at the root
+// only, the one node npm installs them for.
 const declaredRanges = (name) =>
   Object.fromEntries(
     Object.entries(lock.packages).flatMap(([key, pkg]) => {
@@ -317,7 +318,7 @@ const declaredRanges = (name) =>
         ...pkg.peerDependencies,
         ...pkg.dependencies,
         ...pkg.optionalDependencies,
-        ...pkg.devDependencies,
+        ...(key === '' ? pkg.devDependencies : {}),
       }[name];
       return range === undefined ? [] : [[key || '.', range]];
     }),
