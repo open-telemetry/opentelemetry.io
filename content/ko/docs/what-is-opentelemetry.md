@@ -5,6 +5,7 @@ description:
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
 default_lang_commit: ee9a3aeb6501bb788a03571f08be856dfdedc4d5
+drifted_from_default: true
 cSpell:ignore: youtube
 ---
 

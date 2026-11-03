@@ -4,8 +4,7 @@ linkTitle: Como Contribuir para o OpenTelemetry
 date: 2025-09-15
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 cSpell:ignore: marylia
 ---
 
@@ -120,7 +119,7 @@ Boa contribuição!
 [calendar]:
   https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
 [membership]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+  https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main
 [contrib]: /docs/contributing
 [localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories

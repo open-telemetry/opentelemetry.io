@@ -3,10 +3,15 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: 93c5503563a88540106cdf7925ad259fa78171de
+default_lang_commit: c03c6396c60a28c9fd83931cf1c310b5cad360fb
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
+
+## 同一リポジトリ参照 {#same-repository-references}
+
+ワークフローおよびコンポジットアクションは、このリポジトリ自身のアクションと再利用可能なワークフローを GitHub の[自己リポジトリ `$/` 構文][self-repo]で参照します。
+実行中のコミットからロードされるため、チェックアウトは不要です。
 
 ## 依存関係のインストール {#dependency-installation}
 
@@ -230,10 +235,11 @@ sequenceDiagram
 4 段階のパイプラインとして実行されます。
 
 1. **`ack`**（信頼済み）: ディレクティブを受信するとすぐに、ディレクティブコメントとランへのリンクを含む 🔄 進行中コメントを返信します。
-2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、fix コマンドを実行し、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
-   チェックアウトの前に、信頼済みのステップが `link-cache.jsonc` より前の PR ヘッドや、CSV のみの `link-cache` をまだピン留めしている PR ヘッドを拒否します（そのリンクチェックが廃止された `.lycheecache` を再作成してしまうため）。
-   結果のコメントで、作成者にブランチの更新を案内します。
-   このステップはインラインシェルでテストされておらず、切り替え以前のオープン PR がなくなった時点で削除されます。
+2. **`generate-patch`**（非信頼）: PR ブランチをチェックアウトし、[npm-script-patch][] アクションを介して fix コマンドを実行し、パッチアーティファクト（`site.patch`）をアップロードします（最大 1024 KB）。
+   - このアクションは[自己リポジトリ `$/` 構文](#same-repository-references)で参照されるため、インストールする lychee バージョンを含むアクションの定義はデフォルトブランチから取得されます。npm 依存関係のインストールと fix コマンドは引き続き PR のコードで実行されます。
+   - チェックアウトの前に、信頼済みのステップが `link-cache.jsonc` より前の PR ヘッドや、CSV のみの `link-cache` をまだピン留めしている PR ヘッドを拒否します（そのリンクチェックが廃止された `.lycheecache` を再作成してしまうため）。
+     結果のコメントで、作成者にブランチの更新を案内します。
+     このステップはインラインシェルでテストされておらず、切り替え以前のオープン PR がなくなった時点で削除されます。
 3. **`apply-patch`**（信頼済み）: [`reusable-apply-patch.yml`][] ワークフローを呼び出します。
    これはデフォルトブランチから解決され、PR からは解決されません。
    GitHub App トークンでパッチを適用し、PR ブランチにコミットをプッシュします。
@@ -271,13 +277,12 @@ PR での新しい `/fix` コメントは、その PR の実行中のランを�
 3 段階のパイプラインとして実行されます。
 
 1. **`generate-patch`**: [npm-script-patch][] アクションを介してハウスキーピングコマンドを実行し、変更をパッチアーティファクトとしてアップロードします。
-   `/fix` パイプラインとは異なり、ラン全体が信頼済みです。
-   スケジュールおよびディスパッチトリガーはデフォルトブランチのコードのみを実行します。
-   コマンドの失敗はジョブを失敗させますが、生成されたすべての fix は、PR 本文に部分的な結果の警告付きで公開されます。
-   デフォルトのコマンドでは、まずロケールチームレジストリ（`data/locale-teams.yaml`）をライブチームの直接メンバーシップからリフレッシュします。
-   この処理には読み取り専用のメンバースコープ付き App トークンが使用され、後続のステップからは参照できません。
-   差分は再生成された CODEOWNERS と同じ PR に含まれます。
-   リフレッシュが失敗した場合、レジストリは変更されずジョブが失敗します。
+   - `/fix` パイプラインとは異なり、ラン全体が信頼済みです。スケジュール実行は `main` を実行し、ディスパッチ実行はメンテナーが選択した ref を実行します。
+   - コマンドの失敗はジョブを失敗させますが、生成されたすべての fix は、PR 本文に部分的な結果の警告付きで公開されます。
+   - デフォルトのコマンドでは、まずロケールチームレジストリ（`data/locale-teams.yaml`）をライブチームの直接メンバーシップからリフレッシュします。
+     この処理には読み取り専用のメンバースコープ付き App トークンが使用され、後続のステップからは参照できません。
+     差分は再生成された CODEOWNERS と同じ PR に含まれます。
+     リフレッシュが失敗した場合、レジストリは変更されずジョブが失敗します。
 2. **`publish-patch`**: [`reusable-patch-pr.yml`][] ワークフロー（PR コンテキストを持たない呼び出し元のための [`reusable-apply-patch.yml`][] の姉妹）を呼び出します。
    毎回の実行時に `main` から再作成される安定した `otelbot/housekeeping` ブランチにパッチを強制プッシュし、まだオープンな PR がない場合は PR をオープンします。
    そのため、ハウスキーピング PR は一度に最大 1 つで、常に最新の結果を持ちます。
@@ -400,4 +405,5 @@ scripts/gh/specs/create-or-finalize-pr.mjs --help
 <!-- prettier-ignore-start -->
 [link checking]: /site/build/link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+[self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->

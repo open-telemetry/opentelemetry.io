@@ -4,6 +4,7 @@ linkTitle: Arquitetura
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 default_lang_commit: 351066a333bfd9be577f44971ee41aa0397cf8ea
+drifted_from_default: true
 ---
 
 O **OpenTelemetry Demo** é composto por microsserviços escritos em diferentes

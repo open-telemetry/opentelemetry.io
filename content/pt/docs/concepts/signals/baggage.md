@@ -2,8 +2,7 @@
 title: Bagagem
 weight: 4
 description: Informações contextuais que são propagadas entre sinais
-default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 No OpenTelemetry, Bagagem é uma informação contextual que acompanha o contexto.
@@ -79,7 +78,7 @@ Como um dos casos de uso comum da Bagagem é adicionar dados aos
 linguagens possuem Processadores de Trecho de Bagagem que adicionam dados da
 Bagagem como atributos na criação de trechos.
 
-Para mais informações, consulte a [especificação da
-Bagagem][baggage specification].
+> Para mais informações, consulte a [especificação da
+> Bagagem][baggage specification].
 
 [baggage specification]: /docs/specs/otel/overview/#baggage-signal

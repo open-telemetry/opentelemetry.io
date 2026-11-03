@@ -9,6 +9,12 @@ weight: 10
 For workflows and (most of) their helper scripts, see the `workflow` and
 `scripts` folder under [.github][]
 
+## Same-repository references {#same-repository-references}
+
+Workflows and composite actions reference this repository's own actions and
+reusable workflows with GitHub's [self-repository `$/` syntax][self-repo], which
+loads them from the running commit, no checkout needed.
+
 ## Dependency installation {#dependency-installation}
 
 CI jobs install npm dependencies following the site-wide
@@ -271,12 +277,18 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, and uploads a patch artifact (`site.patch`), up to 1024 KB. Before
-   the checkout, a trusted step refuses a PR head that predates
-   `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
-   check would recreate the obsolete `.lycheecache`); the outcome comment then
-   tells the author to update the branch. The step is inline shell, untested,
-   and goes once no open PR predates the switch.
+   command via the [npm-script-patch][] action, and uploads a patch artifact
+   (`site.patch`), up to 1024 KB.
+   - The action is referenced with the
+     [self-repository `$/` syntax](#same-repository-references), so its
+     definition, including the lychee version it installs, comes from the
+     default branch; npm dependency installation and the fix command still run
+     the PR's code.
+   - Before the checkout, a trusted step refuses a PR head that predates
+     `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
+     check would recreate the obsolete `.lycheecache`); the outcome comment then
+     tells the author to update the branch. The step is inline shell, untested,
+     and goes once no open PR predates the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -331,14 +343,15 @@ It runs as a three-stage pipeline:
 
 1. **`generate-patch`**: runs the housekeeping command via the
    [npm-script-patch][] action and uploads the changes as a patch artifact.
-   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
-   dispatch triggers only ever execute default-branch code. A failing command
-   fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body. With the default command, it first
-   refreshes the locale team registry (`data/locale-teams.yaml`) from the live
-   teams' direct membership, using a read-only, members-scoped app token that
-   later steps never see; drift then lands in the same PR as the regenerated
-   CODEOWNERS. A failed refresh leaves the registry untouched and fails the job.
+   - Unlike the `/fix` pipeline, the whole run is trusted: scheduled runs
+     execute `main`, and a dispatch runs the maintainer-selected ref.
+   - A failing command fails the job, but any fixes it produced are still
+     published, with a partial-results warning in the PR body.
+   - With the default command, it first refreshes the locale team registry
+     (`data/locale-teams.yaml`) from the live teams' direct membership, using a
+     read-only, members-scoped app token that later steps never see; drift then
+     lands in the same PR as the regenerated CODEOWNERS. A failed refresh leaves
+     the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,
@@ -502,4 +515,5 @@ The repository includes several other workflows:
 <!-- prettier-ignore-start -->
 [link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+[self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->

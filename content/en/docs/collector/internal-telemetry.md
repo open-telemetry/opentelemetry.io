@@ -164,10 +164,11 @@ name `process_uptime` and description:
 
 > [!NOTE]
 >
-> When configuring the Prometheus exporter for internal metrics manually (using
-> `readers`), `otelcol_process_uptime` may be exported as
-> `otelcol_process_uptime_seconds_total` unless `without_type_suffix` and
-> `without_units` are set to `true`. Use the `instrument_name` value
+> The Collector exports `otelcol_process_uptime` without Prometheus suffixes by
+> default (for example, not as `otelcol_process_uptime_seconds_total`), because
+> `without_type_suffix` and `without_units` default to `true`. This is true
+> whether or not you configure the Prometheus exporter for internal metrics
+> manually (using `readers`). Use the `instrument_name` value
 > `otelcol_process_uptime` (the OTLP name) in views regardless. To control
 > Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
 
@@ -366,17 +367,20 @@ libraries.
 
 #### `_total` suffix {#total-suffix}
 
-By default and unique to Prometheus, the Prometheus exporter adds a `_total`
-suffix to summation metrics to follow Prometheus naming conventions, such as
-`otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
-setting `without_type_suffix: true` in the Prometheus exporter's configuration.
+Unique to Prometheus, the Prometheus exporter can add a `_total` suffix to
+counter (summation) metrics to follow Prometheus naming conventions, such as
+`otelcol_exporter_send_failed_spans_total`. This behavior is controlled by the
+`without_type_suffix` option.
 
-If you leave out `service::telemetry::metrics::readers` in the Collector
-configuration, the default Prometheus exporter set up by the Collector already
-has `without_type_suffix` set to `false`. However, if you customize the readers
-and add a Prometheus exporter manually, you must set that option to return to
-the "raw" metric name. For more information, see the
-[Collector v1.25.0/v0.119.0 release notes](https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190).
+By default, the Collector disables this suffix by setting
+`without_type_suffix: true`, so counters keep their "raw" names, such as
+`otelcol_exporter_send_failed_spans`. This default applies whether or not you
+configure `service::telemetry::metrics::readers`: if you leave the section out,
+the default Prometheus exporter set up by the Collector uses
+`without_type_suffix: true`, and if you configure a Prometheus reader manually
+without setting the option, the Collector still applies `true` as of
+[Collector v1.58.0/v0.152.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0).
+To re-enable the suffix, set `without_type_suffix: false` explicitly.
 
 Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
@@ -384,18 +388,23 @@ format, such as `otelcol_exporter_send_failed_spans`.
 
 #### `_seconds` and other unit suffixes {#unit-suffixes}
 
-The Prometheus exporter appends a unit suffix to metrics that carry a unit. For
-example, `otelcol_process_uptime` (unit: seconds) can be exported as
+The Prometheus exporter can append a unit suffix to metrics that carry a unit.
+For example, `otelcol_process_uptime` (unit: seconds) can be exported as
 `otelcol_process_uptime_seconds_total` — the `_seconds` unit suffix is added
-first, then the `_total` counter suffix.
+first, then the `_total` counter suffix. This behavior is controlled by the
+`without_units` option.
 
-The default Prometheus exporter configured by the Collector (when no `readers`
-are specified) already sets `without_type_suffix` and `without_units` to `true`
-for backwards compatibility, so `otelcol_process_uptime` is used as-is.
+By default, the Collector disables unit suffixes by setting
+`without_units: true` for backwards compatibility, so `otelcol_process_uptime`
+is used as-is. As with the [`_total` suffix](#total-suffix), this default
+applies whether or not you specify `service::telemetry::metrics::readers`: as of
+[Collector v1.58.0/v0.152.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.152.0),
+a manually configured Prometheus reader that does not set the option still
+defaults to `true`.
 
-However, when you manually configure the Prometheus exporter under
-`service::telemetry::metrics::readers`, those options are not set by default. To
-keep the original, shorter metric names, explicitly set both options to `true`:
+The `without_units` (unit suffix) and `without_type_suffix` (counter suffix)
+options are companions, so they are typically configured together. To opt back
+in to the full Prometheus-style names, set both to `false`:
 
 ```yaml
 service:
@@ -407,12 +416,12 @@ service:
               prometheus:
                 host: '0.0.0.0'
                 port: 8888
-                without_type_suffix: true
-                without_units: true
+                without_type_suffix: false
+                without_units: false
 ```
 
-With this configuration, `otelcol_process_uptime_seconds_total` is exported as
-`otelcol_process_uptime`.
+With this configuration, `otelcol_process_uptime` is exported as
+`otelcol_process_uptime_seconds_total`.
 
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 

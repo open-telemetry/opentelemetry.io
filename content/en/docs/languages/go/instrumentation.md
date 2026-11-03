@@ -1118,7 +1118,7 @@ Each log bridge package documentation should have a usage example.
 
 ### Via file or stdout
 
-In the file or stdout workflow, logs are written to files or standout output.
+In the file or stdout workflow, logs are written to files or standard output.
 Another component (e.g. FluentBit) is responsible for reading / tailing the
 logs, parsing them to more structured format, and forwarding them a target, such
 as the collector. This workflow may be preferable in situations where

@@ -2,6 +2,7 @@
 title: 基准测试
 weight: 99
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
+drifted_from_default: true
 ---
 
 <link rel="stylesheet" href="/css/benchmarks.css">

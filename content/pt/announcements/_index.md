@@ -1,7 +1,6 @@
 ---
 title: Anúncios
-# cascade is omitted because it is for the en locale only.
-redirects: [{ from: '*', to: '?' }]
-default_lang_commit: 44f65fba75140343c67a182b2904efa9b632da9f # patched
-drifted_from_default: true
+# cascade is omitted because the en cascade applies to all locales via target.sites.
+redirects: [{ from: '*', to: '? 302' }]
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---

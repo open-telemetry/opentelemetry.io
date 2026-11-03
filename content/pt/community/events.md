@@ -1,7 +1,6 @@
 ---
 title: Eventos
-default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 weight: 30
 ---
 

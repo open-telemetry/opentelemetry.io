@@ -128,29 +128,39 @@ A simple way to ensure that no such conflicts happen is to add the
 instructions about how to add it to your application, see
 [Using the OpenTelemetry.AutoInstrumentation NuGet packages](../nuget-packages).
 
+For framework-dependent standalone .NET deployments where automatic assembly
+redirection cannot resolve a conflict or must be disabled, use the
+[AdditionalDeps and shared-store workaround](#additionaldeps-and-shared-store-workaround).
+
 Alternatively add only the conflicting packages to your project. The following
 dependencies are used by OpenTelemetry .NET Automatic Instrumentation:
 
-- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
-- [OpenTelemetry.AutoInstrumentation.AdditionalDeps](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/c27acd9bd0f82de47217fba660d9f979e0a0cc2d/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Build.props)
+- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
 
 Find their versions in the following locations:
 
-- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/Directory.Packages.props)
-- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/Directory.Packages.props)
-- [src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/f2d70bd0f095852bf0270aad61b60dfe1ea7834f/src/OpenTelemetry.AutoInstrumentation.AdditionalDeps/Directory.Packages.props)
+- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/Directory.Packages.props)
+- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/Directory.Packages.props)
+- [src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props)
 
-By default, assembly references for .NET Framework applications are redirected
-during runtime to the versions used by the automatic instrumentation. This
-behavior can be controlled through the
-[`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](../configuration) setting.
+Assembly redirection is enabled by default for standalone deployments and
+disabled for NuGet package deployments. This behavior can be controlled through
+the [`OTEL_DOTNET_AUTO_REDIRECT_ENABLED`](../configuration#additional-settings)
+setting. If you experience assembly loading failures with NuGet packages, check
+that this setting has not been explicitly enabled.
 
 If the application already ships binding redirection for assemblies used by
 automatic instrumentation this automatic redirection may fail, see
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
 Check if any existing binding redirect prevent redirection to the versions
 listed at
-[netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/62b4a6a855608a925caeea95752167df5a0960a0/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
+[assembly_redirection_net.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h)
+for .NET applications and
+[assembly_redirection_netfx.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h)
+for .NET Framework applications. For details about the resolution strategies,
+including `UnsafeAccessorTypeAttribute` metadata redirection on .NET 10 and
+later, see
+[Assembly Conflict Resolution](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md).
 
 For the automatic redirection above to work there are two specific scenarios
 that require the assemblies used to instrument .NET Framework applications, the
@@ -174,6 +184,59 @@ See
 and
 [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
 for more information.
+
+#### AdditionalDeps and shared-store workaround
+
+Standalone distributions include scripts that generate the dependency manifest
+and shared-store directories from the dependencies already in the distribution.
+Use this workaround for framework-dependent standalone .NET applications when
+automatic assembly redirection cannot resolve a conflict or must be disabled.
+
+Before starting the application, choose a dedicated, writable output directory
+and run the script for your operating system.
+
+On Linux and macOS:
+
+```sh
+"$OTEL_DOTNET_AUTO_HOME/generate-additional-deps.sh" \
+  --output /var/lib/otel-dotnet-auto/additional-deps
+```
+
+On Windows:
+
+```powershell
+& "$env:OTEL_DOTNET_AUTO_HOME\generate-additional-deps.ps1" `
+    -OutputPath "C:\ProgramData\OpenTelemetry\additional-deps"
+```
+
+Set the following environment variables for the application using the paths
+printed by the script:
+
+```text
+DOTNET_ADDITIONAL_DEPS=<output>/AdditionalDeps
+DOTNET_SHARED_STORE=<output>/store
+```
+
+If assembly redirection must also be disabled for the application, set
+`OTEL_DOTNET_AUTO_REDIRECT_ENABLED=false`.
+
+This workaround has the following limitations:
+
+- It applies only to framework-dependent standalone .NET applications. .NET
+  Framework and self-contained applications cannot use it, and NuGet package
+  deployments resolve dependencies through the application's NuGet graph.
+- Explicit assembly loading and custom `AssemblyLoadContext` implementations can
+  bypass the generated dependency graph.
+- The generated files depend on the distribution's architectures, target
+  frameworks, and dependency versions. Regenerate them into a clean output
+  directory after every instrumentation upgrade. Do not combine files from
+  different versions.
+- The dependency graph applies to the entire application. Validate the
+  application after enabling it, especially if it references different versions
+  of the same dependencies.
+
+For details, see the upstream
+[AdditionalDeps and shared-store workaround](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround).
 
 ### Assembly in AdditionalDeps was not found
 

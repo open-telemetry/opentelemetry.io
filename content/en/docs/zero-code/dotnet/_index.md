@@ -71,7 +71,7 @@ Download, verify, and run the `.sh` script:
 
 ```shell
 # Download the installer into a private directory
-version="v1.17.0"
+version="v1.18.0"
 repository="open-telemetry/opentelemetry-dotnet-instrumentation"
 release_workflow="$repository/.github/workflows/release.yml"
 download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
@@ -146,7 +146,7 @@ On Windows, use the PowerShell module as an Administrator.
 # PowerShell 5.1 is required
 #Requires -PSEdition Desktop
 
-$version = "v1.17.0"
+$version = "v1.18.0"
 $repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
 $release_workflow = "$repository/.github/workflows/release.yml"
 $skip_release_verification = $false
@@ -304,7 +304,7 @@ If the application is hosted on IIS in .NET Framework this will use
 `SiteName\VirtualDirectoryPath` ex: `MySite\MyApp`
 
 For ASP.NET Core application you can use the
-[`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
+[`<environmentVariable>`](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
 elements inside the `<aspNetCore>` block of your `Web.config` file to set
 configuration via environment variables.
 
@@ -316,7 +316,7 @@ configuration via environment variables.
 ### Advanced configuration
 
 You can add the
-[`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
+[`<environmentVariables>`](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
 in `applicationHost.config` to set environment variables for given application
 pools.
 

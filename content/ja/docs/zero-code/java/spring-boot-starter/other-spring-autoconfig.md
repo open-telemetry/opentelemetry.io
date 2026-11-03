@@ -1,13 +1,12 @@
 ---
 title: その他のSpring自動設定
 weight: 70
-default_lang_commit: 21add8ce39004043e871566b88ce97ad0eba3435
-drifted_from_default: true
+default_lang_commit: cde423b3ca7efa8a2fed4ce97369a8fedff8932b
 cSpell:ignore: autoconfigurations
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 OpenTelemetry Spring スターターを使用するかわりに、OpenTelemetry Zipkin スターターを使用することもできます。
 

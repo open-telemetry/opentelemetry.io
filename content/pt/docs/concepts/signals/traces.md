@@ -2,8 +2,7 @@
 title: Rastros
 weight: 1
 description: O caminho de uma solicitação através do seu aplicativo.
-default_lang_commit: 1ce35dff869e9a5f3317b23a1f986e4749a2e529
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Os **rastros** nos fornecem uma visão geral do que acontece quando uma
@@ -15,12 +14,10 @@ na sua aplicação.
 Vamos explorar isso com três unidades de trabalho, representadas como
 [Trechos](#spans):
 
-{{% alert title="Note" %}}
-
-Os exemplos JSON a seguir não apresentam um formato específico, especialmente o
-[OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), que é mais verboso.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Os exemplos JSON a seguir não apresentam um formato específico, especialmente
+> o [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), que é mais verboso.
 
 trecho `olá`:
 

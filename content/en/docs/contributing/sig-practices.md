@@ -114,17 +114,39 @@ Additional valuable resources to review are
     - `p1-high`
     - `p2-medium`
     - `p3-low`
-  - Optional: One of the following special tags:
+  - Optional: Any of the following special tags:
     - `good first issue`
     - `help wanted`
     - `contribfest`
     - `maintainers only`
+    - `blocked`
     - `forever`
     - `stale`
+    - `parked` (see below)
 - Automation will mark an issue in `triage:deciding` with `triage:followup` for
   re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
   should be removed within 7 days. Pinging the participants and removing the
   label is sufficient activity.
+- Close an issue as _completed_ only when its request has been fulfilled, and as
+  a _duplicate_ when it duplicates another issue. Otherwise, close it as _not
+  planned_ with one of these labels:
+  - `parked`: nobody has the capacity to take the issue further for now. Add the
+    label, leave the other labels as they are, and comment. For an issue not
+    labeled `CI/infra`, for example:
+    <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
+    <!-- markdownlint-disable no-otel-io-external-urls -->
+    > This issue isn't declined; we're parking it for lack of capacity. To pick
+    > it up, comment here. For details, see
+    > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
+    <!-- markdownlint-enable no-otel-io-external-urls -->
+  - `triage:rejected*`: the request is declined. Leave a short rationale for the
+    triagers who check the [declined issues][].
+- Review the [parked issues][] periodically.
+
+[declined issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
+[parked issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 
 ### PRs
 

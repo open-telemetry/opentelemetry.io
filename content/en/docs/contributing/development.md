@@ -248,7 +248,7 @@ npm run check:code-excerpts
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+[nodejs-win]: https://docs.microsoft.com/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
