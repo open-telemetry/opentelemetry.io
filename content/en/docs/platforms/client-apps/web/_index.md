@@ -71,19 +71,24 @@ private credentials in the application bundle.
 
 `quickStartBrowserSdk` configures both logs and traces. Its options include:
 
-| Option             | Purpose                                      |
-| ------------------ | -------------------------------------------- |
-| `serviceName`      | Name of the application producing telemetry. |
-| `serviceVersion`   | Version of the application.                  |
-| `exportUrl`        | Base OTLP/HTTP endpoint for logs and traces. |
-| `exportHeaders`    | Headers to include with export requests.     |
-| `instrumentations` | Instrumentation instances to register.       |
-| `disabled`         | Disable SDK initialization.                  |
-| `logLevel`         | Diagnostic logging level.                    |
+| Option             | Purpose                                           |
+| ------------------ | ------------------------------------------------- |
+| `serviceName`      | Name of the application producing telemetry.      |
+| `serviceVersion`   | Version of the application.                       |
+| `exportUrl`        | Base OTLP/HTTP endpoint for logs and traces.      |
+| `exportHeaders`    | Headers to include with export requests.          |
+| `instrumentations` | Instrumentation instances to register.            |
+| `enabled`          | Set to `false` to start without instrumentations. |
+| `logLevel`         | Diagnostic logging level.                         |
 
 Setting `logLevel` to `DEBUG` or a more verbose level also prints log records
 and spans to the browser console, while the SDK keeps exporting to your
 receiver. The default level is `INFO`.
+
+To wait for user consent, set `enabled` to `false`. The SDK starts without
+enabling its instrumentations, and you call `sdk.enable()` or `sdk.disable()`
+when the user changes their choice. Spans and log records that you create
+manually are still exported.
 
 For custom resources, processors, exporters, or configuration per signal, use
 `startBrowserSdk`. The package also provides separate entry points for logs and
