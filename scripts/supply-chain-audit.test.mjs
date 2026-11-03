@@ -314,9 +314,9 @@ const REVIEWED_OVERRIDES = {
   },
 };
 
-// Numeric x.y.z compared part by part; a suffix the comparison reaches fails
-// closed.
+// Release versions only: anything but numeric x.y.z fails closed.
 const versionAtLeast = (version, floor) => {
+  if (!/^\d+\.\d+\.\d+$/.test(version)) return false;
   const [a, b] = [version, floor].map((v) => v.split('.').map(Number));
   for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
   return true;
