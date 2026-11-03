@@ -196,13 +196,8 @@ The overlap is deliberate; an occasional duplicate PR is accepted. With
 scheduled lock re-resolves [disabled by design][deliberate], these alert-driven
 paths are the only automated route for transitive fixes, so the repository-side
 setting stays on. When neither opens a PR, a maintainer refreshes the package
-[by name](#transitive-refresh): the manual route. When a parent's declared range
-excludes the fixed version, no refresh can reach it: bump the parent if a
-release admits the fix, else add a root `overrides` entry and register it in the
-audit's `REVIEWED_OVERRIDES` table (advisories, parent, range). The audit fails
-when the parent's declared range changes: [reassess the override](#audit) before
-removing it. The two paths meet the [release cooldown](#release-cooldown)
-differently:
+[by name](#transitive-refresh): the manual route. The two paths meet the
+[release cooldown](#release-cooldown) differently:
 
 - Dependabot security updates deliberately override every release-age gate
   (`.npmrc` included): a fix version younger than the cooldown can land, and
@@ -210,6 +205,12 @@ differently:
 - Renovate's PR is subject to the `.npmrc` gate when it regenerates the lock, so
   a younger-than-cooldown fix arrives as a failed artifact update; adopting it
   early takes the [scoped exemption](#transitive-refresh) run by a maintainer.
+
+When a dependent's declared range excludes the fixed version, no refresh can
+reach it. Bump the dependent if a release admits the fix; otherwise add a root
+[`overrides`][] entry, add its row to the audit's `REVIEWED_OVERRIDES` register,
+and [reconcile the lock](#manifest-changes). The audit fails when a dependent's
+range changes or a new dependent appears, prompting a [reassessment](#audit).
 
 ## Supply-chain controls {#controls}
 
@@ -227,11 +228,13 @@ condition; the common cases:
 - **You bumped a dependency that has an `allowScripts` entry**: follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
-- **A security override's parent "declares the range" assertion failed**: the
-  parent of a root `overrides` entry changed its declared range, usually by
-  admitting the fixed version. Drop the override and its `REVIEWED_OVERRIDES`
-  row together ([security updates](#security-updates)); if the new range still
-  excludes the fix, update the row's range instead.
+- **Your change moved a security override's dependents** (the audit names the
+  register row's dependents and ranges): if every dependent's range now admits
+  the fixed version, drop the override and its `REVIEWED_OVERRIDES` row together
+  and [reconcile the lock](#manifest-changes); otherwise update the row's
+  dependents.
+- **Renovate bumped a security override**: update the row's `spec`, and its
+  `firstFixed` when the bump answers a new advisory.
 - **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
@@ -361,6 +364,7 @@ with this rule through [drift tracking][].
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
+[`overrides`]: https://docs.npmjs.com/cli/configuring-npm/package-json#overrides
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
