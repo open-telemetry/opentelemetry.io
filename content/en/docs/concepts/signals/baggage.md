@@ -58,6 +58,36 @@ propagate Baggage outside your network.
 Also, there are no built-in integrity checks to ensure that Baggage items are
 yours, so exercise caution when reading them.
 
+### Reading incoming Baggage
+
+Treat Baggage that arrives with a request like any other request input. Any
+service along the way can add, change, or remove entries, so a Baggage value
+doesn't prove anything about where it came from. When a request comes from
+outside your network:
+
+- Read only the keys you expect, and drop the rest.
+- Validate values before you use them. For example, check the format and length
+  of a `clientId` before you add it as an attribute.
+- Don't use Baggage values for authentication, authorization, or other security
+  decisions.
+- If you copy Baggage entries to attributes, for example with a Baggage Span
+  Processor, limit it to the keys you expect. Otherwise a caller can add
+  arbitrary attributes to your telemetry.
+
+### Sending Baggage
+
+Before a request leaves your network, decide what Baggage it should carry:
+
+- Don't put credentials or personal data in Baggage unless every service that
+  can receive it is allowed to see it.
+- Remove Baggage, or the entries that shouldn't leave, from requests to
+  third-party APIs and other external services. You can do this in the code that
+  makes the request, or in a proxy or gateway at the edge of your network.
+
+For more on trust boundaries, see the
+[privacy considerations](https://www.w3.org/TR/baggage/#privacy-considerations)
+in the W3C Baggage specification.
+
 ## Baggage is not the same as attributes
 
 An important thing to note about baggage is that it is a separate key-value
