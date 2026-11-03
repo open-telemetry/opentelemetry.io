@@ -28116,7 +28116,7 @@
   },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html": {
     "result": "error",
-    "when": "2026-11-02T05:38:44Z",
+    "when": "2026-11-03T05:38:42Z",
     "via": "lychee",
   },
   "https://open-telemetry.github.io/opentelemetry-python/benchmarks/": {
