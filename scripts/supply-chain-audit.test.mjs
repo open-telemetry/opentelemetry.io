@@ -298,30 +298,29 @@ const REVIEWED_OVERRIDES = {
   'adm-zip': {
     spec: '0.6.1',
     firstFixed: '0.6.1',
-    dependents: { 'hugo-extended': '^0.5.17' },
+    dependents: { 'node_modules/hugo-extended': '^0.5.17' },
   },
   // GHSA-238p-pmpm-9mq7; markdownlint loads katex but never renders with it.
   katex: {
     spec: '^0.19.0',
     firstFixed: '0.18.2',
-    dependents: { 'micromark-extension-math': '^0.16.0' },
+    dependents: { 'node_modules/micromark-extension-math': '^0.16.0' },
   },
 };
 
-// Every lock entry that declares NAME, with the range it declares; the root
-// manifest counts as '.'.
+// Declared ranges for NAME by dependent lock path, the root manifest as '.'.
+// Where one entry declares NAME in several fields, the range npm resolves
+// wins: optional over regular, and either over peer.
 const declaredRanges = (name) =>
   Object.fromEntries(
     Object.entries(lock.packages).flatMap(([key, pkg]) => {
       const range = {
         ...pkg.peerDependencies,
-        ...pkg.optionalDependencies,
         ...pkg.dependencies,
+        ...pkg.devDependencies,
+        ...pkg.optionalDependencies,
       }[name];
-      if (range === undefined) return [];
-      const dependent =
-        key === '' ? '.' : key.slice(key.lastIndexOf('node_modules/') + 13);
-      return [[dependent, range]];
+      return range === undefined ? [] : [[key || '.', range]];
     }),
   );
 
@@ -353,7 +352,7 @@ test('lock and manifest: security overrides are applied and still needed', () =>
       Object.values(o.dependents).some(
         (range) => !semver.intersects(range, `>=${o.firstFixed}`),
       ),
-      `a dependent's ${name} range still excludes the ${o.firstFixed} fix, so the override is needed`,
+      `${name} is still blocked by a dependent's range short of ${o.firstFixed}`,
     );
   }
 });
