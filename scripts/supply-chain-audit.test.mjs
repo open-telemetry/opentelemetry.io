@@ -291,11 +291,6 @@ test('manifest: the engines floor keeps its binding shape', () => {
 // Security-override register. Rationale and maintenance:
 // https://opentelemetry.io/site/design/supply-chain-security/#verify
 // https://opentelemetry.io/site/build/dependencies/#security-updates
-// A row pins the one declared range that justifies the override, as a literal:
-// a tripwire that makes a human reassess when that fact moves, not a model of
-// npm's resolution. Not tripped: a second dependent, an acceptDependencies
-// range, a fix backported inside the parent's range. While the row stands, the
-// per-copy check below catches an unpatched install.
 const REVIEWED_OVERRIDES = {
   // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc. Retire with
   // jakejarvis/hugo-extended#256.

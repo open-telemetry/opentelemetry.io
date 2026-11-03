@@ -100,8 +100,8 @@ closing table maps decisions to their enforcement.
     - npm checks the lock only for agreement with its own resolution: it knows
       no fixed version and never reports an override as unnecessary, so the
       audit verifies each override against every locked copy and the parent
-      range it works around; a fix backported inside that range stays outside
-      its sight.
+      range it works around; a fix backported inside that range, a second
+      dependent, or an `acceptDependencies` range stays outside its sight.
 
 Enforcement at a glance:
 
