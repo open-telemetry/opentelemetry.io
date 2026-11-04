@@ -221,6 +221,6 @@
   "allowScripts": {
     "@parcel/watcher": false,
     "hugo-extended@0.166.0": true,
-    "puppeteer@25.13.0": true
+    "puppeteer@25.16.0": true
   }
 }
