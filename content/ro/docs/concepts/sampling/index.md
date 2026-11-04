@@ -46,9 +46,9 @@ acuratețe un grup mai mare. În plus, reprezentativitatea poate fi verificată
 matematic, ceea ce înseamnă că poți avea o mai mare încredere în faptul că un
 eșantion mai mic de date reprezintă cu acuratețe grupul mai mare.
 
-De asemenea, cu cât generezi mai multe date, cu atât ai nevoie de mai puține pentru
-a avea un eșantion reprezentativ. În cazul sistemelor cu volum mare de date,
-este destul de comun ca o rată de eșantionare de 1% sau mai puțin pentru a
+De asemenea, cu cât generezi mai multe date, cu atât ai nevoie de mai puține
+pentru a avea un eșantion reprezentativ. În cazul sistemelor cu volum mare de
+date, este destul de comun ca o rată de eșantionare de 1% sau mai puțin pentru a
 reprezenta cu mare acuratețe restul de 99% din date.
 
 ### Când să eșantionezi {#when-to-sample}
@@ -156,8 +156,8 @@ date.
 În momentul de față, sunt trei mari dezavantaje la eșantionarea de coadă:
 
 1. Eșantionarea de coadă poate fi greu de implementat. Depinzând de tipul de
-   metodă de eșantionare disponibilă, nu există mereu un caz de "setează și uită".
-   Cum sistemele tale se schimbă, la fel se vor schimba și tehnicile de
+   metodă de eșantionare disponibilă, nu există mereu un caz de "setează și
+   uită". Cum sistemele tale se schimbă, la fel se vor schimba și tehnicile de
    eșantionare. Pentru un sistem distribuit mare și sofisticat, regulile care
    implementează strategiile de eșantionare pot de asemenea să fie mari și
    sofisticate.
@@ -181,8 +181,9 @@ date.
 volume extrem de mare de date cu urme ar putea folosi inițial eșantionarea de
 cap pentru a eșantiona un procentaj mic de urme, iar ulterior în lanțul de
 telemetrie să folosească eșantionarea de coadă pentru a lua decizii mai
-sofisticate de eșantionare înainte să le exporte către un backend. Acest lucru se
-întâmplă des cu scopul de a proteja lanțul de telemetrie pentru a nu deveni supraîncărcat.
+sofisticate de eșantionare înainte să le exporte către un backend. Acest lucru
+se întâmplă des cu scopul de a proteja lanțul de telemetrie pentru a nu deveni
+supraîncărcat.
 
 ## Suport {#support}
 
