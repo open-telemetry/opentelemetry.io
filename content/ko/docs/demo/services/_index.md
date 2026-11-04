@@ -21,7 +21,7 @@ default_lang_commit: 02a20a6d2d0d94867d910d1753daf8b644baa6b1
 | [사기 탐지](fraud-detection/)           | Kotlin          | 들어오는 주문을 분석하고 사기 시도를 탐지한다(mock/).                                                                                             |
 | [프론트엔드](frontend/)                 | TypeScript      | 웹사이트를 제공하는 HTTP 서버를 노출한다. 회원 가입이나 로그인이 필요하지 않으며, 모든 사용자의 세션 ID를 자동으로 생성한다.                      |
 | [프론트엔드 프록시](frontend-proxy/)    | 엔보이(Envoy)   | 단일 포트에서 웹 스토어와 옵저버빌리티(Observability) UI의 진입점 역할을 하는 리버스 프록시이다.                                                  |
-| [이미지 프로바이더](image-provider/)    | 엔진엑스(NGINX) | 프론트엔드에서 사용하는 상품 이미지를 정적으로 호스팅한다.                                                                                        |
+| [이미지 제공 서비스](image-provider/)   | 엔진엑스(NGINX) | 프론트엔드에서 사용하는 상품 이미지를 정적으로 호스팅한다.                                                                                        |
 | [카프카(Kafka)](kafka/)                 | Java            | 주문 처리 서비스를 회계 및 사기 탐지 서비스와 연결하는 메시지 큐이다.                                                                             |
 | [부하 생성기](load-generator/)          | Python          | 실제 사용자 쇼핑 흐름을 모방하는 요청을 프론트엔드에 지속적으로 보낸다.                                                                           |
 | [MCP](mcp/)                             | Python          | 에이전트와 다른 MCP 호환 클라이언트를 위해 모델 컨텍스트 프로토콜(MCP)을 통해 쇼핑 도구를 노출한다.                                               |
