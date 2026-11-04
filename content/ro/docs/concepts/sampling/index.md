@@ -39,7 +39,7 @@ Eșantionarea este una dintre cele mai folositoare metode de a reduce costurile
 de monitorizare fără a pierde vizibilitate. Deși sunt alte metode de a scădea
 costuri, precum filtrarea și agregarea datelor, aceste alternative nu aderă la
 conceptul de reprezentativitate, care este crucial când faci o analiză în
-profunzime a comportamentului unui sistem.
+profunzime a comportamentului unei aplicații sau unui sistem.
 
 Reprezentativitatea este principiul că un grup mai mic poate reprezenta cu
 acuratețe un grup mai mare. În plus, reprezentativitatea poate fi verificată
