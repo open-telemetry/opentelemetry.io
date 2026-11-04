@@ -15,7 +15,7 @@ latență acceptabilă și fără erori, nu ai nevoie de 100% din urme pentru a
 monitoriza eficient aplicațiile și sistemele tale. Ai nevoie doar de o
 eșantionare adecvată.
 
-![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](ro-traces-venn-diagram.svg)
+![Ilustrația arată că nu toate datele au nevoie să fie urmărite și că un eșantion din date este suficient.](traces-venn-diagram.svg)
 
 ## Terminologie {#terminology}
 
@@ -134,7 +134,7 @@ urmă. Eșantionarea de coadă îți oferă opțiunea de a eșantiona urmele tal
 pe criterii specifice derivate din părți diferite ale unei urme, opțiune
 indisponibilă în eșantionarea de cap.
 
-![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesatorul de coadă a eșantionarelor ia o decizie simplă.](ro-tail-sampling-process.svg)
+![Ilustrația arată cum intervalele provin dintr-un interval prim. După ce intervalele sunt complete, procesatorul de coadă a eșantionarelor ia o decizie simplă.](tail-sampling-process.svg)
 
 Niște exemple despre cum poți folosi eșantionarea de coadă sunt:
 
