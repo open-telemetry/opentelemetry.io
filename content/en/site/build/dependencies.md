@@ -117,19 +117,20 @@ the contributor making the change:
 
 ### Peer-coupled package sets {#peer-coupled-packages}
 
-The OpenTelemetry JS packages are peer-coupled: the SDK packages cap the
-`@opentelemetry/api` versions they accept (since 3.0, a single minor, shared by
-`@opentelemetry/instrumentation`), and the exporter depends on an exact SDK
-version. A coordinated release therefore installs only as a complete set, and a
-PR carrying part of it fails lock regeneration with `ERESOLVE`. Without a
-dedicated rule, Renovate splits a release that spans update types, such as an
-SDK major and its API minor, between the shared minor group and a separate major
-PR. Both fail, and the shared group's unrelated bumps wait inside the failing
-one. The `OpenTelemetry` rule in [`.github/renovate.jsonc`][] groups the
-`@opentelemetry/*` updates, across update types, into one PR. The group inherits
-the shared merge policy: a patch-only set still merges automatically; a set with
-a minor or major update waits for review. Closing the group PR defers nothing: a
-PR whose updates have different target versions is recreated on the next run.
+The OpenTelemetry npm packages (`@opentelemetry/*`) are peer-coupled: the SDK
+packages cap the `@opentelemetry/api` versions they accept (since 3.0, a single
+minor, shared by `@opentelemetry/instrumentation`), and the exporter depends on
+an exact SDK version. A coordinated release therefore installs only as a
+complete set, and a PR carrying part of it fails lock regeneration with
+`ERESOLVE`. Without a dedicated rule, Renovate splits a release that spans
+update types, such as an SDK major and its API minor, between the shared minor
+group and a separate major PR. Both fail, and the shared group's unrelated bumps
+wait inside the failing one. The `OpenTelemetry npm packages` rule in
+[`.github/renovate.jsonc`][] groups the `@opentelemetry/*` updates, across
+update types, into one PR. The group inherits the shared merge policy: a
+patch-only set still merges automatically; a set with a minor or major update
+waits for review. Closing the group PR defers nothing: a PR whose updates have
+different target versions is recreated on the next run.
 
 A set whose packages clear the [cooldown](#release-cooldown) on different runs
 can still arrive split: Renovate holds back the younger releases, then adds them
