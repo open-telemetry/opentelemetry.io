@@ -1,24 +1,22 @@
 ---
-title: Traces
+title: Urme
 weight: 1
-description: The path of a request through your application.
+description: Drumul unei cereri prin aplicația ta.
 cSpell:ignore: Guten
 ---
 
-**Traces** give us the big picture of what happens when a request is made to an
-application. Whether your application is a monolith with a single database or a
-sophisticated mesh of services, traces are essential to understanding the full
-"path" a request takes in your application.
+**Urmele** ne oferă imaginea de ansamblu a ce se întâmplă când o cerere este înaintată către o aplicație.
+Fie că aplicația ta este un monolit cu o singură bază de date sau o rețea sofisticată de servicii, urmele sunt
+esențiale în înțelegerea întregului "drum" pe care o cerere o urmărește în aplicația ta.
 
-Let's explore this with three units of work, represented as [Spans](#spans):
+Haide să explorăm acest lucru cu trei unități de lucru, ilustrate ca [Intervale](#spans):
 
 > [!NOTE]
 >
-> The following JSON examples do not represent a specific format, and especially
-> not [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), which is more
-> verbose.
+> Următoarele exemple JSON nu reprezintă un format specific, și în mod special
+> nu este [OTLP/JSON](/docs/specs/otlp/#json-protobuf-encoding), care este mult mai explicit.
 
-`hello` span:
+Intervalul `hello`:
 
 ```json
 {
@@ -45,11 +43,11 @@ Let's explore this with three units of work, represented as [Spans](#spans):
 }
 ```
 
-This is the root span, denoting the beginning and end of the entire operation.
-Note that it has a `trace_id` field indicating the trace, but has no
-`parent_id`. That's how you know it's the root span.
+Acesta este intervalul rădăcină, care denotă începutul și sfârșitul întregii operație.
+Ține cont că are un câmp `trace_id` care indică urma, dar nu are un câmp `parent_id`.
+Așa știi că este intervalul rădăcină.
 
-`hello-greetings` span:
+Intervalul `hello-greetings`:
 
 ```json
 {
@@ -83,12 +81,12 @@ Note that it has a `trace_id` field indicating the trace, but has no
 }
 ```
 
-This span encapsulates specific tasks, like saying greetings, and its parent is
-the `hello` span. Note that it shares the same `trace_id` as the root span,
-indicating it's a part of the same trace. Additionally, it has a `parent_id`
-that matches the `span_id` of the `hello` span.
+Acest interval încapsulează sarcini specifice, precum a transmite salutări, iar părintele său
+este intervalul `hello`. Observă că împarte același `trace_id` ca și intervalul rădăcină,
+indicând că este part din aceeași urmă. În plus, are un câmp `parent_id` cu aceeași valoare ca și
+câmpul `span_id` al intervalului `hello`.
 
-`hello-salutations` span:
+Intervalul `hello-salutations`:
 
 ```json
 {
@@ -115,22 +113,20 @@ that matches the `span_id` of the `hello` span.
 }
 ```
 
-This span represents the third operation in this trace and, like the previous
-one, it's a child of the `hello` span. That also makes it a sibling of the
-`hello-greetings` span.
+Acest interval reprezintă a treia operație din această urmă și precum cea precedentă, este un copil
+al intervalului `hello`. Asta îl face de asemenea să fie frate cu intervalul `hello-greetings`.
 
-These three blocks of JSON all share the same `trace_id`, and the `parent_id`
-field represents a hierarchy. That makes it a Trace!
+Toate aceste trei blocuri JSON împart același `trace_id`, iar câmpul `parent_id` reprezintă o
+ierarhie. Asta le face să fie o urmă!
 
-Another thing you'll note is that each Span looks like a structured log. That's
-because it kind of is! One way to think of Traces is that they're a collection
-of structured logs with context, correlation, hierarchy, and more baked in.
-However, these "structured logs" can come from different processes, services,
-VMs, data centers, and so on. This is what allows tracing to represent an
-end-to-end view of any system.
+Un alt lucru pe care-l vei observa este că fiecare interval are ca un log structurat.
+Acest lucru se întâmplă pentru că în esență asta este! Un fel de a gândi la urme este că sunt o colecție
+the log-uri structurate, cu un context, o corelare, o ierarhie și multe alte atribute inerente.
+În schimb, aceste "log-uri structurate" pot proveni din diverse procese, servicii, mașini virtuale,
+centre de date, și așa mai departe. Asta permite urmelor să ilustreze o imagine completă a oricărui sistem.
 
-To understand how tracing in OpenTelemetry works, let's look at a list of
-components that will play a part in instrumenting our code.
+Pentru a înțelege cum funcționează urmele în OpenTelemetry, haide să ne uităm la o listă de componente
+care vor juca un rol în instrumentarea codului nostru.
 
 ## Tracer Provider
 
