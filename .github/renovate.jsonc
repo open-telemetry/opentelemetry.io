@@ -39,5 +39,15 @@
       "groupName": "Puppeteer",
       "automerge": false,
     },
+    {
+      // The @opentelemetry/* packages peer-pin @opentelemetry/api to a single
+      // minor, so a coordinated SDK release installs only as a complete set:
+      // one group across update types, kept below the shared group rules above.
+      // Rationale:
+      // https://opentelemetry.io/site/build/dependencies/#peer-coupled-packages
+      "matchPackageNames": ["@opentelemetry/**"],
+      "groupName": "OpenTelemetry",
+      "separateMajorMinor": false,
+    },
   ],
 }
