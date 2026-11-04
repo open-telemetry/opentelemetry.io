@@ -4,7 +4,7 @@ description: >-
   Install contracts, update recipes, and the supply-chain controls on the site's
   npm dependencies
 weight: 5
-cSpell:ignore: EBADENGINE
+cSpell:ignore: EBADENGINE ERESOLVE
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -113,6 +113,23 @@ the contributor making the change:
    included). Every bump of an approved package needs the steps above, so its
    update PRs must wait for a contributor without holding up the shared patch
    and minor groups.
+
+### Peer-coupled package sets {#peer-coupled-packages}
+
+The `@opentelemetry/*` packages pin their `@opentelemetry/api` peer dependency
+to a single minor, so a coordinated SDK release installs only as a complete set:
+a PR carrying part of it fails lock regeneration with `ERESOLVE`. Left to its
+defaults, Renovate splits such a release between the shared minor group and a
+separate major PR, leaving both red and the shared group's unrelated bumps stuck
+behind them. The `OpenTelemetry` rule in [`.github/renovate.jsonc`][] therefore
+groups every `@opentelemetry/*` update, across update types, into one PR. The
+group inherits the shared merge policy: a patch-only set still merges
+automatically, a set with a minor or major update waits for review.
+
+A set published across the [cooldown](#release-cooldown) cut can still arrive
+split, Renovate dropping the younger packages from the group until they age in:
+wait for a later run, or land the complete set by hand per
+[Manifest changes](#manifest-changes).
 
 ### Hugo {#hugo}
 
