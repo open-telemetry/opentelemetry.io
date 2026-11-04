@@ -73,7 +73,8 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 ## Updating dependencies {#updating}
 
-Routine version bumps arrive as [Renovate][] PRs, gated by the
+Routine version bumps arrive as [Renovate][] PRs (a
+[peer-coupled set](#peer-coupled-packages) as one PR), gated by the
 [release cooldown](#release-cooldown), and known-vulnerability fixes arrive
 alert-driven ([Security updates](#security-updates)). The remaining cases are
 manual; in each, commit the regenerated lock together with any `package.json`
@@ -116,20 +117,23 @@ the contributor making the change:
 
 ### Peer-coupled package sets {#peer-coupled-packages}
 
-The `@opentelemetry/*` packages pin their `@opentelemetry/api` peer dependency
-to a single minor, so a coordinated SDK release installs only as a complete set:
-a PR carrying part of it fails lock regeneration with `ERESOLVE`. Left to its
-defaults, Renovate splits such a release between the shared minor group and a
-separate major PR, leaving both red and the shared group's unrelated bumps stuck
-behind them. The `OpenTelemetry` rule in [`.github/renovate.jsonc`][] therefore
-groups every `@opentelemetry/*` update, across update types, into one PR. The
-group inherits the shared merge policy: a patch-only set still merges
-automatically, a set with a minor or major update waits for review.
+The OpenTelemetry JS packages are peer-coupled: the SDK packages cap the
+`@opentelemetry/api` versions they accept (since 3.0, a single minor, shared by
+`@opentelemetry/instrumentation`), and the exporter depends on an exact SDK
+version. A coordinated release therefore installs only as a complete set, and a
+PR carrying part of it fails lock regeneration with `ERESOLVE`. Without a
+dedicated rule, Renovate splits a release that spans update types, such as an
+SDK major and its API minor, between the shared minor group and a separate major
+PR. Both fail, and the shared group's unrelated bumps wait inside the failing
+one. The `OpenTelemetry` rule in [`.github/renovate.jsonc`][] groups the
+`@opentelemetry/*` updates, across update types, into one PR. The group inherits
+the shared merge policy: a patch-only set still merges automatically; a set with
+a minor or major update waits for review. Closing the group PR defers nothing: a
+PR whose updates have different target versions is recreated on the next run.
 
-A set published across the [cooldown](#release-cooldown) cut can still arrive
-split, Renovate dropping the younger packages from the group until they age in:
-wait for a later run, or land the complete set by hand per
-[Manifest changes](#manifest-changes).
+A set whose packages clear the [cooldown](#release-cooldown) on different runs
+can still arrive split: Renovate holds back the younger releases, then adds them
+to the open group PR once they age in. Wait for that run.
 
 ### Hugo {#hugo}
 
