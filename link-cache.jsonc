@@ -2884,11 +2884,6 @@
     "when": "2026-10-20T05:45:00Z",
     "via": "lychee",
   },
-  "https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#overrides": {
-    "result": 200,
-    "when": "2026-11-03T11:50:57Z",
-    "via": "lychee",
-  },
   "https://docs.nxlog.co/agent/current/im/otel.html": {
     "result": 200,
     "when": "2026-10-20T05:44:53Z",
