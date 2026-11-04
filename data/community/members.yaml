@@ -829,6 +829,7 @@ maintainers:
       - docs-triagers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
+      - ecosystem-explorer-triagers
       - java-approvers
       - java-contrib-approvers
       - java-contrib-maintainers
@@ -1112,6 +1113,7 @@ maintainers:
     teams:
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
+      - ecosystem-explorer-triagers
     html_url: https://github.com/lucacavenaghi97
     avatar_url: https://avatars.githubusercontent.com/u/247595880?v=4
   - name: lzchen
@@ -1185,6 +1187,7 @@ maintainers:
       - docs-ro-approvers
       - docs-triagers
       - ecosystem-explorer-approvers
+      - ecosystem-explorer-triagers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-maintainers
@@ -1196,6 +1199,8 @@ maintainers:
       - sig-contributor-experience-approvers
       - sig-contributor-experience-maintainers
       - sig-contributor-experience-triagers
+      - social-media-approvers
+      - social-media-maintainers
     html_url: https://github.com/maryliag
     avatar_url: https://avatars.githubusercontent.com/u/1017486?v=4
   - name: michaelbushe
@@ -1215,7 +1220,6 @@ maintainers:
       - proto-go-maintainers
       - python-approvers
       - python-genai-approvers
-      - semconv-genai-approvers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
   - name: mmanciop
@@ -1678,6 +1682,7 @@ maintainers:
       - docs-triagers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
+      - ecosystem-explorer-triagers
     html_url: https://github.com/vitorvasc
     avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: wolfgangcodes
@@ -1897,6 +1902,7 @@ approvers:
       - opentelemetry-python-contrib-approvers
       - python-approvers
       - python-genai-approvers
+      - semconv-genai-approvers
     html_url: https://github.com/DylanRussell
     avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
   - name: elifsamedin
@@ -2003,7 +2009,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/22205748?v=4
   - name: JonasKunz
     teams:
-      - java-instrumentation-triagers
       - semconv-sdk-health-approvers
     html_url: https://github.com/JonasKunz
     avatar_url: https://avatars.githubusercontent.com/u/6066661?v=4
@@ -2066,8 +2071,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/52648621?v=4
   - name: marandaneto
     teams:
-      - android-approvers
-      - android-triagers
       - semconv-android-approvers
       - semconv-client-approvers
     html_url: https://github.com/marandaneto
@@ -2460,11 +2463,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/facostaembrace
     avatar_url: https://avatars.githubusercontent.com/u/108752213?v=4
-  - name: flc1125
-    teams:
-      - go-triagers
-    html_url: https://github.com/flc1125
-    avatar_url: https://avatars.githubusercontent.com/u/14297703?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -2581,6 +2579,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/punya
     avatar_url: https://avatars.githubusercontent.com/u/277514?v=4
+  - name: SatoshiKamiyama
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/SatoshiKamiyama
+    avatar_url: https://avatars.githubusercontent.com/u/55924931?v=4
   - name: seemk
     teams:
       - javascript-contrib-triagers
@@ -2822,6 +2825,9 @@ members:
   - name: Flarna
     html_url: https://github.com/Flarna
     avatar_url: https://avatars.githubusercontent.com/u/18708370?v=4
+  - name: flc1125
+    html_url: https://github.com/flc1125
+    avatar_url: https://avatars.githubusercontent.com/u/14297703?v=4
   - name: Frefreak
     html_url: https://github.com/Frefreak
     avatar_url: https://avatars.githubusercontent.com/u/7122156?v=4
@@ -3188,9 +3194,6 @@ members:
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
-  - name: SatoshiKamiyama
-    html_url: https://github.com/SatoshiKamiyama
-    avatar_url: https://avatars.githubusercontent.com/u/55924931?v=4
   - name: scbjans
     html_url: https://github.com/scbjans
     avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4
