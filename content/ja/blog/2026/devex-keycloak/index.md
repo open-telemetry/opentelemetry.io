@@ -30,7 +30,7 @@ Keycloak チームの [Martin Bartoš](https://github.com/mabartos) と [Alexand
 最初の明らかな一手は [OpenTelemetry Java エージェント](/docs/zero-code/java/agent/)でした。
 これは起動時にアタッチしてバイトコードをオンザフライで書き換えることで、あらゆる JVM アプリにトレーシングを導入するゼロコードの方法です。
 これにより、チームは OpenTelemetry の機能をすばやく試すことができましたが、コストはすぐに現れました。
-Keycloak の場合、エージェントはほぼ瞬時の起動に数十秒を追加しました。
+Keycloak の場合、それまで瞬時に起動していたものがエージェントによって起動時間が数十秒遅くなりました。
 これは Keycloak に限った問題ではありません。
 エージェントはアプリケーションがロードするすべてのクラスをスキャンし、場合によっては変換する必要があり、エージェントのメンテナーも[この起動オーバーヘッドがこのアプローチに固有のものであることを確認しています](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/8629)。
 ユーザーからは起動時間がおよそ3分の1増加したとの報告があります。
