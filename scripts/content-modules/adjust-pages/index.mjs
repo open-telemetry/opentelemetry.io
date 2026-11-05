@@ -511,7 +511,7 @@ export function transform({ path, text, versions, applyPatches, log }) {
       out.push(`title: ${titleMaybeQuoted}\n`);
     const m = title.match(/^OpenTelemetry (Protocol )?(.*)/);
     if (m) linkTitle = m[2];
-    // TODO: add to front matter of OTel spec file and drop next line:
+    // TODO: add linkTitle to OTLP's docs/design-goals.md front matter, then drop the next line:
     if (title === 'Design Goals for OpenTelemetry Wire Protocol')
       linkTitle = 'Design Goals';
 

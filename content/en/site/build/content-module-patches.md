@@ -112,7 +112,7 @@ The fields for each patch entry are:
   reference: `$108` is ambiguous.
 - **`flags`**: Optional `RegExp` flags, typically `g` to replace all
   occurrences.
-- **`notes`**: Optional free text, such as what the patch does and upstream
+- **`notes`**: Optional free text describing what the patch does, plus upstream
   issue/PR links.
 
 No separate registration step is needed — the script applies every entry in
