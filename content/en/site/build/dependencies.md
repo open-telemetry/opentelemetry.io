@@ -115,29 +115,29 @@ the contributor making the change:
    update PRs must wait for a contributor without holding up the shared patch
    and minor groups.
 
-### Peer-coupled package sets {#peer-coupled-packages}
+### Peer-coupled packages
 
-The OpenTelemetry npm packages (`@opentelemetry/*`) are peer-coupled: the SDK
-packages cap the `@opentelemetry/api` versions they accept (since 3.0, a single
-minor, shared by `@opentelemetry/instrumentation`), and the exporter and the web
-auto-instrumentations depend on the SDK packages of their own release. A
-coordinated release therefore installs cleanly only as a complete set. Split
-across the API boundary, it fails lock regeneration with `ERESOLVE`; any other
-partial set resolves, but nests a second copy of the SDK in the lock. Without a
-dedicated rule, Renovate splits a release that spans update types, such as an
-SDK major and its API minor, between a separate major PR and the shared minor
-group, holding up the minor group's unrelated bumps. The
-`OpenTelemetry npm packages` rule in [`.github/renovate.jsonc`][] groups the
-`@opentelemetry/*` updates, across update types, into one PR. The group inherits
-the shared merge policy: a patch-only set still merges automatically; a set with
-a minor or major update waits for review. Closing the group PR defers nothing: a
-PR whose updates have different target versions is recreated on the next run.
+Among the OpenTelemetry npm packages (`@opentelemetry/*`), the SDK packages cap
+the `@opentelemetry/api` versions they accept (since 3.0, a single minor, shared
+by `@opentelemetry/instrumentation`), and the exporter and web
+auto-instrumentations depend on the SDK packages of their own release. A partial
+set of a coordinated release fails lock regeneration with `ERESOLVE` when it
+crosses the API boundary, and can otherwise resolve with duplicate OpenTelemetry
+packages nested in the lock.
 
-A set whose updates clear the [cooldown](#release-cooldown) on different runs
-can still arrive split: Renovate holds back the updates still in cooldown, then
-adds them to the open group PR once they age in. A partial PR can be green (with
-the nested SDK copy above), so check its package list against the release, and
-wait for that run.
+Left to the shared groups, a release that spans update types (an SDK major with
+its API minor) splits between a major PR and the shared minor group, holding up
+the minor group's unrelated bumps. The `OpenTelemetry npm packages` rule in
+[`.github/renovate.jsonc`][] groups every `@opentelemetry/*` update, across
+update types, into one PR. That PR:
+
+- **Merges under the shared policy**: a patch-only set automatically, any other
+  set after review.
+- **Is recreated if closed**, like any PR whose updates have different target
+  versions: closing it defers nothing.
+- **Can arrive partial, and green**, when its updates clear the
+  [cooldown](#release-cooldown) on different runs: check its package list
+  against the release; Renovate adds the rest once they age in.
 
 ### Hugo {#hugo}
 
