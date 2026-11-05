@@ -22694,6 +22694,11 @@
     "when": "2026-10-17T05:41:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/security/advisories": {
+    "result": 200,
+    "when": "2026-11-05T19:10:08Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/security/policy": {
     "result": 200,
     "when": "2026-10-20T05:45:02Z",
