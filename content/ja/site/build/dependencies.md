@@ -4,6 +4,7 @@ description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
 default_lang_commit: 9303f8245fc0b7e9f51d9b42696b7144bfef2ae1
+drifted_from_default: true
 cSpell:ignore: EBADENGINE
 ---
 

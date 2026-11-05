@@ -4,6 +4,7 @@ linkTitle: 構成
 description: OBI の構成方法を学びます。
 weight: 4
 default_lang_commit: 0fee5e1c7ff48dc9fb39c919c9882a9a8d8da4aa
+drifted_from_default: true
 ---
 
 OBI は、[エクスポートモード](export-modes/)、グローバルプロパティ、コンポーネントオプションを設定することで構成できます。
