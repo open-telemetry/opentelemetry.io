@@ -5,6 +5,7 @@ actualizezi
 adaugǎ
 agnostice
 agregi
+aloci
 aprobatorii
 aprobatorilor
 aprobatorul
@@ -20,6 +21,7 @@ colectoarele
 colectorii
 colectorului
 commiturile
+comune
 comunitǎții
 configurezi
 consultǎ
@@ -44,6 +46,16 @@ elimini
 emiți
 emojiilor
 enumerează
+eșantioane
+eșantionare
+eșantionarelor
+eșantionat
+eșantionată
+eșantionatoarele
+eșantionator
+eșantionează
+eșantioneze
+eșantionezi
 explorezi
 exportatorilor
 exportatorului
@@ -51,8 +63,10 @@ foloseşti
 formatorul
 forțezi
 franceză
+găzduiești
 gestionezi
 identificatorii
+identificatorului
 implementezi
 incluzi
 informatica
@@ -78,8 +92,12 @@ mărești
 microservicii
 migrare
 migrezi
+monitorizezi
 multilingvist
 nedeterministe
+neeșantionat
+neeșantionată
+neeșantionate
 nelansate
 nespecificate
 nestandard
@@ -91,6 +109,9 @@ partajezi
 postând
 poți
 prepopulată
+procesator
+procesatori
+procesatorul
 propagatoarele
 propagatorul
 propagi
@@ -113,6 +134,7 @@ semantică
 semnalizate
 semneazǎ
 servii
+seteaz
 setează
 sincronizate
 sincronizezi

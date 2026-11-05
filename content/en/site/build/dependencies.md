@@ -206,23 +206,37 @@ setting stays on. When neither opens a PR, a maintainer refreshes the package
   a younger-than-cooldown fix arrives as a failed artifact update; adopting it
   early takes the [scoped exemption](#transitive-refresh) run by a maintainer.
 
+When a parent's declared range excludes the fixed version, no refresh can reach
+it. Bump the parent if a release admits the fix; otherwise add a root
+[`overrides`][] entry with its row in the audit's `REVIEWED_OVERRIDES` register,
+and [reconcile the lock](#manifest-changes). The audit fails when the parent's
+declared range moves, prompting a [reassessment](#audit).
+
 ## Supply-chain controls {#controls}
 
 ### Supply-chain audit {#audit}
 
 The supply-chain audit test, [`scripts/supply-chain-audit.test.mjs`][], verifies
-the controls below from committed files alone on every `test:local-tools` run,
-so a regressed control fails a test rather than waiting for an incident. For the
-verification principles behind the audit itself, see its
+the controls below, and each [security override](#security-updates), from
+committed files alone on every `test:local-tools` run, so a regressed control
+fails a test rather than waiting for an incident. For the verification
+principles behind the audit itself, see its
 [design page](../../design/supply-chain-audit/).
 
 When the audit fails on your PR, the assertion message states the expected
 condition; the common cases:
 
-- **You bumped a dependency that has an `allowScripts` entry**: follow
+- **You bumped a dependency that has an `allowScripts` entry**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the version the entry must move to.
-- **You changed an install-path script, `.npmrc`, or `netlify.toml`**: that
+- **Your change moved a security override's parent range**. If the new range
+  admits the fixed version, drop the override,
+  [reconcile the lock](#manifest-changes), confirm no copy below the row's
+  `firstFixed` remains, then drop the row; otherwise update the row's
+  `parentRange`.
+- **A bot bumped a security override**. Update the row's `spec`, and its
+  `firstFixed` and advisory IDs when the bump answers a new advisory.
+- **You changed an install-path script, `.npmrc`, or `netlify.toml`**. That
   failure is the point. The audit pins the install surface so that every change
   to it gets a deliberate review. Update the corresponding assertion together
   with your change, and say why in the PR.
@@ -351,6 +365,7 @@ with this rule through [drift tracking][].
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
+[`overrides`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#overrides
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/
