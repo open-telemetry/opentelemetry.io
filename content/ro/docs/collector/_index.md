@@ -12,7 +12,7 @@ default_lang_commit: 39032051a023d91c111bbd2c56d93040870eb9e7
 drifted_from_default: true
 ---
 
-![Diagrama Colectorului OpenTelemetry cu integrări Jaeger, OTLP și Prometheus](img/ro-otel-collector.svg)
+![Diagrama Colectorului OpenTelemetry cu integrări Jaeger, OTLP și Prometheus](img/otel-collector.svg)
 
 ## Introducere {#introduction}
 
