@@ -1,7 +1,8 @@
 ---
 title: Content module patches
 description: >-
-  Creating and managing temporary patches for content modules between releases.
+  Patch an imported spec page until its upstream fix ships, with an entry in
+  `patches.yml`.
 weight: 15
 ---
 

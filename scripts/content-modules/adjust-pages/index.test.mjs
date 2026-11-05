@@ -294,7 +294,7 @@ Text.
     assert.equal(nested, '---\ntitle: General attributes\n---\n');
   });
 
-  it("overrides linkTitle for the OpAMP wire protocol's Design Goals page", () => {
+  it('overrides linkTitle for the OTLP Design Goals page', () => {
     const out = adjust(
       'tmp/otlp/docs/design-goals.md',
       '# Design Goals for OpenTelemetry Wire Protocol\n',
