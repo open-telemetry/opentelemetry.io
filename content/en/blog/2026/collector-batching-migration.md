@@ -1,7 +1,7 @@
 ---
 title: 'Deprecating the Collector Batch Processor'
 linkTitle: 'Deprecating the Collector Batch Processor'
-date: 2026-11-04
+date: 2026-11-11
 author: >-
   [Bogdan Drutu](https://github.com/bogdandrutu), [Dmitry
   Anoshin](https://github.com/dmitryax), and [Joshua
@@ -31,10 +31,12 @@ exporters, called _exporter-level batching_, and a new `queue_batch` processor
 replaces the original processor component. Integrated queue and batch behavior
 brings numerous improvements described below.
 
-In many cases, users can simply wait for the change to happen by default, when
-exporter-level batching becomes enabled by default in most exporters. The change
-is planned for release `v0.171.0` in February 2027. Users can opt-in to
-exporter-level batching today by modifying their configuration, as shown next.
+Exporter-level batching becomes enabled by default in most exporters in release
+`v0.171.0`, planned for February 2027. However, waiting for the new default is
+not enough: if your configuration includes the `batch` processor, you need to
+remove it from your pipelines before the processor itself is removed. You can
+opt in to exporter-level batching today by modifying your configuration, as
+shown next.
 
 **Before:**
 
@@ -55,7 +57,6 @@ exporters:
       enabled: true
       # batch not enabled
 
-
 service:
   pipelines:
     metrics:
@@ -72,9 +73,6 @@ receivers:
   host_metrics:
     scrapers:
       cpu: {}
-
-
-
 
 exporters:
   otlp:
@@ -131,37 +129,23 @@ design, wanting:
 
 1. Control over size limits, to set limits in terms of _bytes_
 2. Control over concurrency, to set limits on concurrent request count limit.
-3. Control over back-pressure and error propagation.
-
-Independently from these matters, the `batch` processor added partitioning, the
-ability to isolate batches with common metadata values:
-
-<!-- prettier-ignore -->
-```yaml
-processors:
-  batch:                             # deprecated processor
-    <...>
-    metadata_keys:                   # partitioning
-    - environment
-    - customer
-    metadata_cardinality_limit: 100  # maximum partitions
-```
+3. Control over back-pressure and error propagation, which can lead to silent data loss.
 
 ## Integrated exporter-level queue and batch behavior
 
 Exporter-level batching is generally available for the exporters that elect to
 use common `sending_queue` behavior. Queuing and batching behavior are
-integrated
+integrated:
 
-1. Requests try to enter the queue. The queue has limited capacity. When the
-   queue is full, it can fail immediately or it can block the caller. Usually,
-   the queue returns success to the caller no admission, however there is also
-   an option to wait for a response.
-2. A number of consumers concurrently pull requests from the queue. If batching,
-   undersize and oversize requests are combined and split, before being handled
-   by consumers, whereas right-sized requests pass straight through the batcher.
-   When batch-partitioning, a limited number of independent batches are
-   maintained, subject to an idle timeout.
+- Requests try to enter the queue. The queue has limited capacity. When the
+  queue is full, it can fail immediately or it can block the caller. Usually,
+  the queue returns success to the caller on admission. However, there is also
+  an option to wait for a response.
+- A number of consumers concurrently pull requests from the queue. If batching,
+  undersize and oversize requests are combined and split before being handled by
+  consumers, whereas right-sized requests pass straight through the batcher.
+  When batch-partitioning, a limited number of independent batches are
+  maintained, subject to an idle timeout.
 
 Requests exiting the combined queue and batch logic then pass to the exporter's
 configured timeout and retry configuration. Here is the default configuration:
@@ -238,7 +222,7 @@ which can lead to overflow.
 
 When moving to `sending_queue` batching, consider raising `queue_size` to hold
 an appropriate number of unbatched requests. For an in-memory queue, meaning
-without a `storage` extension, ideally we want the queue to hold at least as
+without a `storage` extension, ideally you want the queue to hold at least as
 much data as will keep `num_consumers` busy. Depending on whether callers will
 block, additional queue space should be allocated to survive intermittent export
 failures.
@@ -338,8 +322,8 @@ In most cases, configuring `sending_queue` in the exporter is the best option
 for users, but there are still a few cases where batching in a processor makes
 sense, for example:
 
-- prior to an aggregation processor that improves with large batches
-- multiple exporters sharing a processor in scenarios where the processor can
+- Prior to an aggregation processor that improves with large batches
+- Multiple exporters sharing a processor in scenarios where the processor can
   save memory.
 
 For such cases, we've introduced a new [`queue_batch`
@@ -390,10 +374,10 @@ distributions, planned for release `v0.177.0` (May 2027).
 
 Until then, several immediate steps are available to users:
 
-1. Configure exporter `sending_queue` instead of the `batch` processor. Most
-   exporters already support this feature. By configuring your own settings, the
-   change of default has no effect.
-2. Use the `queue_batch` processor instead of the `batch` processor.
+- Configure exporter `sending_queue` instead of the `batch` processor. Most
+  exporters already support this feature. By configuring your own settings, the
+  change of default has no effect.
+- Use the `queue_batch` processor instead of the `batch` processor.
 
 Before we reach the point of batching being enabled by default, several
 mitigation steps are ready to use today.
