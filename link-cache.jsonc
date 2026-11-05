@@ -1519,6 +1519,11 @@
     "when": "2026-10-16T05:44:10Z",
     "via": "lychee",
   },
+  "https://cwe.mitre.org/data/definitions/400.html": {
+    "result": 200,
+    "when": "2026-11-05T19:02:00Z",
+    "via": "lychee",
+  },
   "https://cxf.apache.org/": {
     "result": 200,
     "when": "2026-10-19T05:46:26Z",
@@ -22769,6 +22774,11 @@
     "when": "2026-10-17T05:41:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/security/advisories": {
+    "result": 200,
+    "when": "2026-11-05T19:10:08Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/security/policy": {
     "result": 200,
     "when": "2026-10-20T05:45:02Z",
@@ -33527,6 +33537,16 @@
   "https://www.firebirdsql.org/": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://www.first.org/cvss/calculator/4.0": {
+    "result": 200,
+    "when": "2026-11-05T19:02:00Z",
+    "via": "lychee",
+  },
+  "https://www.first.org/cvss/v4.0/specification-document": {
+    "result": 200,
+    "when": "2026-11-05T19:02:00Z",
     "via": "lychee",
   },
   "https://www.flipt.io/docs/configuration/observability#tracing": {
