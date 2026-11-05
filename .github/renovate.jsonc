@@ -34,10 +34,17 @@
       // Restores Renovate's own group:puppeteer, which the shared group rules
       // above override; keep this rule below them. Rationale:
       // https://opentelemetry.io/site/build/dependencies/#script-bearing-packages
-      // puppeteer-core moves in lockstep with puppeteer.
       "matchPackageNames": ["puppeteer", "puppeteer-core"],
       "groupName": "Puppeteer",
       "automerge": false,
+    },
+    {
+      // Overrides the shared group rules above; keep this rule below them.
+      // Rationale:
+      // https://opentelemetry.io/site/build/dependencies/#peer-coupled-packages
+      "matchPackageNames": ["@opentelemetry/**"],
+      "groupName": "OpenTelemetry npm packages",
+      "separateMajorMinor": false,
     },
   ],
 }
