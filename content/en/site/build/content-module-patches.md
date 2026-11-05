@@ -87,33 +87,33 @@ Append a new entry (replacing the `[]` marker if the list is empty):
 
 The fields for each patch entry are:
 
-- **`id`** — A unique ID (date + short description) printed in log messages.
-- **`module`** — One of `spec`, `otlp`, `semconv`, or `opamp`.
-- **`minVers`** — Inclusive lower bound. The patch applies while the submodule
+- **`id`**: A unique ID (date + short description) printed in log messages.
+- **`module`**: One of `spec`, `otlp`, `semconv`, or `opamp`.
+- **`minVers`**: Inclusive lower bound. The patch applies while the submodule
   version is at or above this version, and becomes obsolete once the spec
   advances past the patch's version range.
-- **`maxVers`** — Optional exclusive upper bound. If omitted, it defaults to
+- **`maxVers`**: Optional exclusive upper bound. If omitted, it defaults to
   `minVers` with its patch number incremented (for example, `1.55.0` implies
   `maxVers = 1.55.1`), which matches the original prefix-match behavior. When
   set explicitly, the patch is skipped once the submodule version reaches
   `maxVers` (that is, it applies only while the version is `< maxVers`).
-- **`file`** — Optional regular expression matching the file paths the patch
+- **`file`**: Optional regular expression matching the file paths the patch
   should apply to, for example `^tmp/semconv/docs/`. If omitted, defaults to the
   module's spec/docs tree: `^tmp/otel/specification/` for `spec`,
   `^tmp/otlp/docs/` for `otlp`, `^tmp/semconv/docs/` for `semconv`, and
   `^tmp/opamp/` for `opamp`.
-- **`context`** — Optional: `body|front-matter` (default: `body`). Body patches
-  are applied line by line; `front-matter` patches are applied to the whole
+- **`context`**: Optional, `body` (default) or `front-matter`. Body patches are
+  applied line by line; `front-matter` patches are applied to the whole
   front-matter block.
-- **`search`** — The JavaScript `RegExp` source for the text to replace. Prefer
+- **`search`**: The JavaScript `RegExp` source for the text to replace. Prefer
   single-quoted YAML so that backslashes stay literal.
-- **`replace`** — The replacement, using JavaScript replacement syntax (`$1`,
+- **`replace`**: The replacement, using JavaScript replacement syntax (`$1`,
   `$<name>`, `$&`). Use named capture groups when a digit follows a group
   reference: `$108` is ambiguous.
-- **`flags`** — Optional `RegExp` flags, typically `g` to replace all
+- **`flags`**: Optional `RegExp` flags, typically `g` to replace all
   occurrences.
-- **`notes`** — Optional free text: what the patch does, plus upstream issue/PR
-  links.
+- **`notes`**: Optional free text, such as what the patch does and upstream
+  issue/PR links.
 
 No separate registration step is needed — the script applies every entry in
 [`patches.yml`][patches] during the build.
