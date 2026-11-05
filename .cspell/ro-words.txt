@@ -57,6 +57,8 @@ eșantionează
 eșantioneze
 eșantionezi
 explorezi
+exportatoarele
+exportatoarelor
 exportatorilor
 exportatorului
 foloseşti
@@ -113,6 +115,7 @@ procesator
 procesatori
 procesatorul
 propagatoarele
+propagatoarelor
 propagatorul
 propagi
 provii
