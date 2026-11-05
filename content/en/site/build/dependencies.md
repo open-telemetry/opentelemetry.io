@@ -77,7 +77,7 @@ Routine version bumps arrive as [Renovate][] PRs, gated by the
 [release cooldown](#release-cooldown) and grouped by update type: patch groups
 merge automatically after the longer cooldown; minor and major updates merge
 after review. The [OpenTelemetry npm packages](#peer-coupled-packages) arrive as
-one PR instead. Known-vulnerability fixes arrive alert-driven
+one PR instead. Known-vulnerability fixes arrive as alert-driven
 ([Security updates](#security-updates)). The remaining cases are manual; in
 each, commit the regenerated lock together with any `package.json` change.
 
