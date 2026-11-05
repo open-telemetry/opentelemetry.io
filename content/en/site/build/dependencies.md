@@ -73,12 +73,13 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 
 ## Updating dependencies {#updating}
 
-Routine version bumps arrive as [Renovate][] PRs (a
-[peer-coupled set](#peer-coupled-packages) as one PR), gated by the
-[release cooldown](#release-cooldown), and known-vulnerability fixes arrive
-alert-driven ([Security updates](#security-updates)). The remaining cases are
-manual; in each, commit the regenerated lock together with any `package.json`
-change.
+Routine version bumps arrive as [Renovate][] PRs grouped by update type (patch
+groups merge automatically after the longer cooldown, minor and major updates
+after review), or as one PR per [peer-coupled set](#peer-coupled-packages),
+gated by the [release cooldown](#release-cooldown); known-vulnerability fixes
+arrive alert-driven ([Security updates](#security-updates)). The remaining cases
+are manual; in each, commit the regenerated lock together with any
+`package.json` change.
 
 ### Manifest changes {#manifest-changes}
 
@@ -117,27 +118,28 @@ the contributor making the change:
 
 ### Peer-coupled packages
 
-Among the OpenTelemetry npm packages (`@opentelemetry/*`), the SDK packages cap
-the `@opentelemetry/api` versions they accept (since 3.0, a single minor, shared
-by `@opentelemetry/instrumentation`), and the exporter and web
-auto-instrumentations depend on the SDK packages of their own release. A partial
-set of a coordinated release fails lock regeneration with `ERESOLVE` when it
-crosses the API boundary, and can otherwise resolve with duplicate OpenTelemetry
-packages nested in the lock.
+Among the OpenTelemetry npm packages (`@opentelemetry/*`), the SDK packages
+accept only a narrow range of `@opentelemetry/api` versions, a single minor
+since 3.0, and `@opentelemetry/instrumentation` shares that range. The exporter
+and web auto-instrumentations depend on the SDK packages of their own release. A
+partial set of a coordinated release fails lock regeneration with `ERESOLVE`
+when it crosses the API boundary, and can otherwise resolve with duplicate
+OpenTelemetry packages nested in the lock.
 
 Left to the shared groups, a release that spans update types (an SDK major with
-its API minor) splits between a major PR and the shared minor group, holding up
-the minor group's unrelated bumps. The `OpenTelemetry npm packages` rule in
-[`.github/renovate.jsonc`][] groups every `@opentelemetry/*` update, across
-update types, into one PR. That PR:
+its API minor) splits between a major PR and the shared minor group, and the
+failed lock holds up the minor group's unrelated bumps. The
+`OpenTelemetry npm packages` rule in [`.github/renovate.jsonc`][] groups every
+`@opentelemetry/*` update, across update types, into one PR. That PR:
 
-- **Merges under the shared policy**: a patch-only set automatically, any other
-  set after review.
-- **Is recreated if closed**, like any PR whose updates have different target
-  versions: closing it defers nothing.
-- **Can arrive partial, and green**, when its updates clear the
-  [cooldown](#release-cooldown) on different runs: check its package list
-  against the release; Renovate adds the rest once they age in.
+- **Merges under the [shared policy](#updating)**: a patch-only set
+  automatically, any other set after review.
+- **Can't be closed to defer a coordinated set**: a PR whose updates have
+  different target versions is recreated on the next run.
+- **Can arrive partial yet green**: its updates may clear the
+  [cooldown](#release-cooldown) on different runs (a staggered publish, or the
+  patch members' longer cooldown); check its package list against the release,
+  and let Renovate add the rest as they age in.
 
 ### Hugo {#hugo}
 
