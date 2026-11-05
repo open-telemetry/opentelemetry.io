@@ -3,6 +3,9 @@ title: Community incident response guidelines
 weight: 102
 ---
 
+This security policy applies to all projects under the [OpenTelemetry
+organization][gh-organization] on GitHub.
+
 Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
@@ -97,7 +100,7 @@ be released. Each repository is entitled to establish their own complementary
 processes. The Security SIG in conjunction with the TC can advise in case
 clarifications are required.
 
-## Reporting Process - For Vulnerability Reporters
+## Reporting a Vulnerability
 
 <!--
     This section is mirrored from the authoritative source at:
@@ -167,6 +170,9 @@ the preferred way is to use the `Report a vulnerability` button on the
 `Security` tab in the respective GitHub repository. It creates a private
 communication channel between the reporter and the maintainers.
 
+For reporting security issues against the website, please report them at
+<https://github.com/open-telemetry/opentelemetry.io/security/advisories>.
+
 If you are unable to or have strong reasons not to use the GitHub reporting
 workflow, please reach out to
 [security@opentelemetry.io](mailto:security@opentelemetry.io) and we will
@@ -209,3 +215,5 @@ this vulnerability, if known, to help with scoring and prioritization.
 For more information, please see the
 [Security SIG documentation](https://github.com/open-telemetry/sig-security/blob/main/security-response.md)
 on GitHub.
+
+[gh-organization]: https://github.com/open-telemetry
