@@ -551,6 +551,16 @@ describe('patches', () => {
     assert.equal(scoped('body', 'tmp/semconv/docs/http/a.md', 'old'), 'new');
   });
 
+  it('defaults an opamp patch to the OpAMP page tree', () => {
+    const { applyPatches, log } = compileOne({
+      module: 'opamp',
+      minVers: '0.17.0',
+    });
+    assert.equal(applyPatches('body', 'tmp/opamp/index.md', 'old'), 'new');
+    assert.equal(applyPatches('body', 'tmp/otlp/docs/a.md', 'old'), 'old');
+    assert.equal(log.warns.length, 0, 'opamp is a known module');
+  });
+
   it('only applies patches matching the given context', () => {
     const { applyPatches } = compileOne({ context: 'front-matter' });
     assert.equal(applyPatches('body', 'tmp/semconv/docs/a.md', 'old'), 'old');
