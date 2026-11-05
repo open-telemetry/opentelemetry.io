@@ -28434,10 +28434,13 @@
     "when": "2026-10-22T05:45:23Z",
     "via": "lychee",
   },
+  // Held pending open-telemetry/opentelemetry.io#12552: the API-docs page
+  // vanished with the otel-js v3.0.0 docs deploy.
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace.SpanExporter.html": {
-    "result": "error",
-    "when": "2026-11-05T05:38:25Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-11-05T23:36:54Z",
+    "via": "manual",
+    "expires": "2026-12-03",
   },
   "https://open-telemetry.github.io/opentelemetry-python/benchmarks/": {
     "result": 200,
