@@ -25,6 +25,7 @@ const moduleFileDefaults = {
   spec: /^tmp\/otel\/specification\//,
   otlp: /^tmp\/otlp\/docs\//,
   semconv: /^tmp\/semconv\/docs\//,
+  opamp: /^tmp\/opamp\//,
 };
 
 /**
@@ -138,7 +139,7 @@ export function versionErrors(versions, pins, modules) {
  * workflow, see content/en/site/build/content-module-patches.md.
  * @typedef {Object} Patch
  * @property {string} id - Unique patch identifier (date + short description).
- * @property {string} module - One of 'spec', 'otlp', 'semconv'.
+ * @property {string} module - One of 'spec', 'otlp', 'semconv', 'opamp'.
  * @property {string} minVers - Inclusive lower version bound.
  * @property {string} [maxVers] - Exclusive upper bound; defaults to minVers
  *   with its patch number incremented.
@@ -510,7 +511,7 @@ export function transform({ path, text, versions, applyPatches, log }) {
       out.push(`title: ${titleMaybeQuoted}\n`);
     const m = title.match(/^OpenTelemetry (Protocol )?(.*)/);
     if (m) linkTitle = m[2];
-    // TODO: add to front matter of OTel spec file and drop next line:
+    // TODO: add linkTitle to OTLP's docs/design-goals.md front matter, then drop the next line:
     if (title === 'Design Goals for OpenTelemetry Wire Protocol')
       linkTitle = 'Design Goals';
 
