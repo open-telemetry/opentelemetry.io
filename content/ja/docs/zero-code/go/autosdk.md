@@ -4,6 +4,7 @@ linkTitle: Auto SDK
 description: Auto SDK を使用して、手動スパンをゼロコード eBPF スパンと統合します。
 weight: 16
 default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
+drifted_from_default: true
 ---
 
 [OBI](/docs/zero-code/obi) などのツールで使用される OpenTelemetry Go の eBPF 計装フレームワークは、Auto SDK を通じて、手動で計装された OpenTelemetry スパンとの統合をサポートします。
