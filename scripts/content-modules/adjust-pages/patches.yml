@@ -56,8 +56,8 @@
     verified manually. The lookahead keeps the patch a no-op once the text
     already carries the query string, as the semconv integration branch will
     before the range closes. Upstreamed fix:
-    open-telemetry/semantic-conventions#4309; v1.45.0 shipped without it, so
-    the patch stays live through 1.45.x.
+    open-telemetry/semantic-conventions#4309; v1.45.0 shipped without it, so the
+    patch stays live through 1.45.x.
 
 - id: 2026-08-18-opamp-gnupg-manual-anchor
   module: opamp
