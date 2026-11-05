@@ -39,8 +39,7 @@
       "automerge": false,
     },
     {
-      // Groups the OpenTelemetry npm packages across update types,
-      // overriding the shared group rules above; keep this rule below them.
+      // Overrides the shared group rules above; keep this rule below them.
       // Rationale:
       // https://opentelemetry.io/site/build/dependencies/#peer-coupled-packages
       "matchPackageNames": ["@opentelemetry/**"],
