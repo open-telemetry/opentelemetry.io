@@ -23289,6 +23289,16 @@
     "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4291": {
+    "result": 200,
+    "when": "2026-11-05T10:29:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4292": {
+    "result": 200,
+    "when": "2026-11-05T10:29:34Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
@@ -23672,6 +23682,11 @@
   "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
     "result": 200,
     "when": "2026-10-15T05:44:47Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.v2.md#spans-definition": {
+    "result": 200,
+    "when": "2026-11-05T10:29:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/weaver/releases": {
