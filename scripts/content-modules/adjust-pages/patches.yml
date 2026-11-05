@@ -48,18 +48,21 @@
   minVers: 1.43.0
   maxVers: 1.46.0
   file: ^tmp/semconv/docs/system/system-metrics\.md$
-  search: 'https://superuser\.com/a/980821'
+  search: 'https://superuser\.com/a/980821(?![?&])'
   replace: 'https://superuser.com/a/980821?link-check=no&last-validated=2026-11-04'
   flags: g
   notes: >-
     superuser.com serves a bot wall (403) to link checkers; the answer was
-    verified manually. To be upstreamed to open-telemetry/semantic-conventions;
-    v1.45.0 shipped without the fix, so the patch stays live through 1.45.x.
+    verified manually. The lookahead keeps the patch a no-op once the text
+    already carries the query string, as the semconv integration branch will
+    before the range closes. Upstreamed fix:
+    open-telemetry/semantic-conventions#4309; v1.45.0 shipped without it, so
+    the patch stays live through 1.45.x.
 
 - id: 2026-08-18-opamp-gnupg-manual-anchor
   module: opamp
   minVers: 0.17.0
-  maxVers: 0.20.0
+  maxVers: 0.21.0
   file: ^tmp/opamp/index\.md$
   search: 'https://www\.gnupg\.org/gph/en/manual/x135\.html#AEN160'
   replace: 'https://www.gnupg.org/gph/en/manual.html#AEN161'
@@ -68,9 +71,9 @@
     gnupg.org merged its chunked manual into a single page and renumbered the
     "Detached signatures" anchor; the old x135.html#AEN160 page 404s. Surfaced
     by open-telemetry/opentelemetry.io#11364. Upstreamed fix:
-    open-telemetry/opamp-spec#393; maxVers is set past the current 0.17.0 pin
-    since opamp-spec releases by minor version, not patch — widen it further if
-    0.20.0 ships without the fix.
+    open-telemetry/opamp-spec#393, merged after v0.20.0 and awaiting a release,
+    so the patch stays live through 0.20.x (opamp-spec releases by minor
+    version).
 
 - id: 2026-09-14-ibm-db2-product-page
   module: semconv
