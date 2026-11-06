@@ -29,11 +29,11 @@ of truth — when this skill drifts from them, trust the source.
 - When a conversation reveals a bug, docs gap, or feature need.
 - When drafting a blog post proposal for OTel.
 
-## Issue types {#issue-types}
+## Issue templates {#issue-templates}
 
-The repo has five issue templates. Auto-detect type from context, or accept an
-explicit type from the user. Each template sets the issue's classification
-itself, through its `labels` and `type` ([issue type][]) keys; do **not** prefix
+The repo has five issue templates. Pick the template from context, or accept the
+user's explicit choice. Each template sets the issue's classification itself,
+through its `labels` and/or `type` ([issue type][]) keys; do **not** prefix
 titles with it.
 
 | Template file         | Use for                                              |
@@ -42,12 +42,11 @@ titles with it.
 | `ISSUE_REPORT.yml`    | Site bugs, broken functionality, CI/workflow issues  |
 | `FEATURE_REQUEST.yml` | New site features, tooling improvements              |
 | `BLOG_POST.yml`       | Blog post proposals                                  |
-| `PAGE_FEEDBACK.yml`   | Feedback from the "was this page helpful?" widget    |
+| `PAGE_FEEDBACK.yml`   | Feedback from the "Was this page helpful?" widget    |
 
 When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
 mirror its section labels verbatim so GitHub maps the body back to template form
-fields. Required fields are marked in the template; its `labels` and `type` keys
-give the classification to pass through when filing.
+fields. Required fields are marked in the template.
 
 For writing or reviewing the post itself after a blog proposal lands, see the
 `review-blog-post` skill.
@@ -84,18 +83,27 @@ Path-based auto-labeling (e.g. `blog`, `registry`, `i18n`, `lang:*`, several
 `sig:*`) is defined in `.github/component-label-map.yml` and applies on PRs
 only. You can still suggest these on issues manually.
 
-Governance for the `triage:*`, `type:*`, `priority:*`, and `sig:*` families
-lives in `content/en/docs/contributing/sig-practices.md`. Skip `type:discussion`
-— its own label description says "Do not use, convert discussion issues into
-real Discussions."
+Governance for the `triage:*`, `type:*`, `docs:*`, `lang:*`, and `sig:*`
+families and the `p0-critical` to `p3-low` priorities lives in
+`content/en/docs/contributing/sig-practices.md`. Skip `type:discussion` — its
+own label description says "Do not use, convert discussion issues into real
+Discussions."
 
 ## Output format
 
-Produce a fenced block with title, type, suggested labels, and body. Filing with
-`gh issue create` bypasses the form, so the template's own `type` and `labels`
-must be passed explicitly, alongside any suggested labels: `--type`
-_`ISSUE_TYPE`_ and `--label` _`LABELS`_, where _`ISSUE_TYPE`_ is the type name
-and _`LABELS`_ the comma-separated label names.
+Produce a fenced block with title, type (when the template sets one), labels
+(the template's own, then any suggestions), and body. Filing with
+`gh issue create` bypasses the form, so pass the classification yourself:
+
+```bash
+gh issue create --type ISSUE_TYPE --label LABELS --title TITLE --body-file BODY
+```
+
+Here _`ISSUE_TYPE`_ is the type name (omit `--type` when the template sets
+none), _`LABELS`_ the comma-separated label names, and _`TITLE`_ and _`BODY`_
+the drafted title and a file holding the drafted body. This needs push access
+(GitHub silently drops labels and type otherwise) and gh 2.94 or later; without
+them, open `issues/new?template=`_`TEMPLATE_FILE`_ and paste the draft.
 
 ```
 **Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
@@ -137,4 +145,4 @@ Related to #1234.
   label set.
 
 [issue type]:
-  https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization
+  https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-types-in-an-organization

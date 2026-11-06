@@ -86,7 +86,7 @@ Additional valuable resources to review are
       - `docs:accessibility`
       - `docs:analytics-and-seo`
       - `docs:IA`
-      - `docs:blog`
+      - `blog`
       - `docs:cleanup/refactoring`
       - `docs:upstream`, `docs:upstream/docsy`
       - `docs:javascript`
@@ -99,13 +99,16 @@ Additional valuable resources to review are
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
   - Mandatory: Set the "type" of the issue as follows:
-    - issue type `bug` for bugs
-    - issue type `feature` for feature requests
+    - issue type `Bug` for bugs
+    - issue type `Feature` for feature requests
+    - issue type `Task` for other actionable work
     - label `type:question` for questions
     - label `type:copyedit` for copy edits
     - label `type:feedback` for page feedback
     - move the issue to "discussions" if it seems to be a non workable
       open-ended conversation
+  - The issue forms pre-apply some of these labels and types (`docs`, `blog`,
+    `type:feedback`, `Bug`, `Feature`); triagers confirm or replace them.
   - Optional: An estimate label if applicable:
     - `e0-minutes`
     - ...

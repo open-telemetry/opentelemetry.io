@@ -1,7 +1,6 @@
-name: Page Feedback
+name: Page feedback
 description: >-
-  Page feedback from opentelemetry.io readers who answered "No" to "Was this
-  page helpful?"
+  For opentelemetry.io readers who answered "No" to "Was this page helpful?"
 labels: ['type:feedback']
 body:
   - type: input
