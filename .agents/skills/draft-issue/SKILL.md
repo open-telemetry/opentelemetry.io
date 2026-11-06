@@ -89,12 +89,15 @@ real Discussions."
 
 ## Output format
 
-Produce a fenced block with title, suggested labels, and body. Labels are
-comma-separated so they can be passed directly to
-`gh issue create --label "<comma,separated>"`.
+Produce a fenced block with title, type, suggested labels, and body. Filing with
+`gh issue create` bypasses the form, so the template's own type and labels (see
+[Issue types](#issue-types)) must be passed explicitly, alongside any suggested
+labels: `--type "<type>"` and `--label "<comma,separated>"`.
 
 ```
 **Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
+
+**Type**: `bug`
 
 **Labels**: `CI/infra`, `Github actions`, `p2-medium`
 
