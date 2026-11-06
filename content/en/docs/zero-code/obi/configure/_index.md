@@ -21,6 +21,9 @@ OBI Collector receiver, uses the OpenTelemetry declarative configuration
 structure for common settings, and places OBI-specific settings under
 `extensions.obi`.
 
+Config v2 and its generated schema are stable. Config v1 remains supported, but
+receives no bug fixes or new features.
+
 - To write a new configuration, start with the
   [Config v2 reference](config-v2/).
 - To convert an existing Config v1 file, follow the

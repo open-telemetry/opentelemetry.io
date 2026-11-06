@@ -4,7 +4,7 @@ description: >-
   Install contracts, update recipes, and the supply-chain controls on the site's
   npm dependencies
 weight: 5
-cSpell:ignore: EBADENGINE
+cSpell:ignore: EBADENGINE ERESOLVE
 ---
 
 npm dependencies are pinned by the committed `package-lock.json`, and installs
@@ -74,10 +74,12 @@ Clear the affected [build cache][] rather than adding the path to `.gitignore`:
 ## Updating dependencies {#updating}
 
 Routine version bumps arrive as [Renovate][] PRs, gated by the
-[release cooldown](#release-cooldown), and known-vulnerability fixes arrive
-alert-driven ([Security updates](#security-updates)). The remaining cases are
-manual; in each, commit the regenerated lock together with any `package.json`
-change.
+[release cooldown](#release-cooldown) and grouped by update type: patch groups
+merge automatically after the longer cooldown; minor and major updates merge
+after review. The [OpenTelemetry npm packages](#peer-coupled-packages) arrive as
+one PR instead. Known-vulnerability fixes arrive as alert-driven
+([Security updates](#security-updates)). The remaining cases are manual; in
+each, commit the regenerated lock together with any `package.json` change.
 
 ### Manifest changes {#manifest-changes}
 
@@ -113,6 +115,31 @@ the contributor making the change:
    included). Every bump of an approved package needs the steps above, so its
    update PRs must wait for a contributor without holding up the shared patch
    and minor groups.
+
+### Peer-coupled packages
+
+Among the OpenTelemetry npm packages (`@opentelemetry/*`), the SDK packages
+accept only a narrow range of `@opentelemetry/api` versions, a single minor
+since the SDK's 3.0, and `@opentelemetry/instrumentation` shares that range. The
+exporter and web auto-instrumentations depend on the SDK packages of their own
+release. A partial set of a coordinated release fails lock regeneration with
+`ERESOLVE` when it crosses the API boundary, and can otherwise resolve with
+duplicate OpenTelemetry packages nested in the lock.
+
+Left to the shared groups, a release that spans update types (an SDK major with
+its API minor) splits between a major PR and the shared minor group, and the
+failed lock holds up the minor group's unrelated bumps. The
+`OpenTelemetry npm packages` rule in [`.github/renovate.jsonc`][] groups every
+`@opentelemetry/*` update, across update types, into one PR. That PR:
+
+- **Merges under the [shared policy](#updating)**: a patch-only set
+  automatically, any other set after review.
+- **Can't be closed to defer a release**: a PR whose updates have different
+  target versions is recreated on the next run.
+- **Can arrive partial yet green**: its updates may clear the
+  [cooldown](#release-cooldown) on different runs (a staggered publish, or the
+  patch members' longer cooldown); check its package list against the release,
+  and let Renovate add the rest as they age in.
 
 ### Hugo {#hugo}
 
@@ -270,13 +297,13 @@ Version resolution ignores releases younger than the configured minimum age.
     variable, which outranks both.
 - **[Renovate][]**: applies its own cooldown to the update PRs it opens, set by
   `minimumReleaseAge` in [`.github/renovate.jsonc`][]; longer for the updates
-  that merge without human review. The preset-supplied 3-day npm cooldown
-  (`security:minimumReleaseAgeNpm`) is excluded so that it can't override these
-  ages, its age exemptions included; caution: an upstream rename of that preset
-  would silently re-admit it. Update types Renovate can't date (such as `pin`,
-  `replacement`, `rollback`) fall outside its cooldown: their PRs open normally,
-  at most showing a permanently pending stability status (not a required check),
-  so normal review is the gate.
+  that [merge without human review](#updating). The preset-supplied 3-day npm
+  cooldown (`security:minimumReleaseAgeNpm`) is excluded so that it can't
+  override these ages, its age exemptions included; caution: an upstream rename
+  of that preset would silently re-admit it. Update types Renovate can't date
+  (such as `pin`, `replacement`, `rollback`) fall outside its cooldown: their
+  PRs open normally, at most showing a permanently pending stability status (not
+  a required check), so normal review is the gate.
 
 ### Lifecycle-script allowlist
 

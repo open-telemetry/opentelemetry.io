@@ -4,6 +4,7 @@ linkTitle: Cilium 互換性
 description: OBI を Cilium と並行して実行する際の互換性に関する注意事項
 weight: 23
 default_lang_commit: 123db37a9707afc95344ffcbb0081eb118cda85d
+drifted_from_default: true
 ---
 
 Cilium は、Kubernetes クラスター向けのネットワーキングとセキュリティを提供するために eBPF を使用する、オープンソースのセキュリティ・ネットワーキング・オブザーバビリティのプラットフォームです。

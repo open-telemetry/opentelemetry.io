@@ -4,6 +4,7 @@ linkTitle: クイックスタート
 description: OpenTelemetry eBPF 計装からネットワークメトリクスを生成するためのクイックスタートガイド
 weight: 1
 default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
+drifted_from_default: true
 ---
 
 OBI は、あらゆる環境（物理ホスト、仮想ホスト、コンテナ）でネットワークメトリクスを生成できます。
