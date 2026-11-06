@@ -409,7 +409,7 @@ Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
 
 Responsabil cu crearea [Intervalurilor](#span). Vezi [Tracer][].
 
-### Tranzacţie {#transaction}
+### Tranzacție {#transaction}
 
 Vezi [Urmărire distribuită](#distributed-tracing).
 
