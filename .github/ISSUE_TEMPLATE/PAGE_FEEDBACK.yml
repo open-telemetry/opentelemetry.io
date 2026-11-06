@@ -2,7 +2,8 @@ name: Page Feedback
 description: >-
   Used for page feedback from users visiting opentelemetry.io and clicking "no"
   if a page was helpful.
-title: 'page feedback: '
+labels: ['page-feedback']
+type: task
 body:
   - type: input
     id: url

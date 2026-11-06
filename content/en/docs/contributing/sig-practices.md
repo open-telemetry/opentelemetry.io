@@ -100,7 +100,7 @@ Additional valuable resources to review are
       `triage:rejected:wontfix`
   - Mandatory: Set the "type" of the issue as follows:
     - issue type `bug` for bugs
-    - issue type `enhancement` for feature requests
+    - issue type `feature` for feature requests
     - label `type:question` for questions
     - label `type:copyedit` for copy edits
     - move the issue to "discussions" if it seems to be a non workable

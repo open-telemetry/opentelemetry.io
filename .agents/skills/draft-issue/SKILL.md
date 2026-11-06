@@ -32,21 +32,22 @@ of truth — when this skill drifts from them, trust the source.
 ## Issue types {#issue-types}
 
 The repo has five issue templates. Auto-detect type from context, or accept an
-explicit type from the user.
+explicit type from the user. Templates set the issue's classification (label or
+[issue type]) themselves; do **not** prefix titles with it.
 
-| Template file         | Title prefix      | Use for                                              |
-| --------------------- | ----------------- | ---------------------------------------------------- |
-| `DOCS_UPDATE.yml`     | `[Docs]: `        | Documentation errors, missing content, outdated info |
-| `ISSUE_REPORT.yml`    | `bug: `           | Site bugs, broken functionality, CI/workflow issues  |
-| `FEATURE_REQUEST.yml` | `feat: `          | New site features, tooling improvements              |
-| `BLOG_POST.yml`       | `blog: `          | Blog post proposals (auto-applies `blog` label)      |
-| `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget    |
+| Template file         | Sets                               | Use for                                              |
+| --------------------- | ---------------------------------- | ---------------------------------------------------- |
+| `DOCS_UPDATE.yml`     | type `bug`                         | Documentation errors, missing content, outdated info |
+| `ISSUE_REPORT.yml`    | type `bug`                         | Site bugs, broken functionality, CI/workflow issues  |
+| `FEATURE_REQUEST.yml` | type `feature`                     | New site features, tooling improvements              |
+| `BLOG_POST.yml`       | label `docs:blog`                  | Blog post proposals                                  |
+| `PAGE_FEEDBACK.yml`   | type `task`, label `page-feedback` | Feedback from the "was this page helpful?" widget    |
 
 When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
 mirror its section labels verbatim so GitHub maps the body back to template form
 fields. Required fields are marked in the template.
 
-For writing or reviewing the post itself after a `blog:` proposal lands, see the
+For writing or reviewing the post itself after a blog proposal lands, see the
 `review-blog-post` skill.
 
 ## Drafting rules
@@ -93,7 +94,7 @@ comma-separated so they can be passed directly to
 `gh issue create --label "<comma,separated>"`.
 
 ```
-**Title**: `bug: pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
+**Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
 
 **Labels**: `CI/infra`, `Github actions`, `p2-medium`
 
@@ -129,3 +130,6 @@ Related to #1234.
 - `.github/component-label-map.yml` — path-based PR auto-labeling.
 - `gh label list --repo open-telemetry/opentelemetry.io --limit 200` — live
   label set.
+
+[issue type]:
+  https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization
