@@ -97,16 +97,16 @@ Produce a fenced block with title, type (when the template sets one), labels
 
 ```bash
 gh issue create --repo open-telemetry/opentelemetry.io \
-  --type ISSUE_TYPE --label LABELS --title TITLE --body-file BODY
+  --type ISSUE_TYPE --label "LABELS" --title "TITLE" --body-file BODY
 ```
 
 Here _`ISSUE_TYPE`_ is the type name, _`LABELS`_ the comma-separated label names
 (omit `--type` or `--label` when there are none), and _`TITLE`_ and _`BODY`_ the
 drafted title and a file holding the drafted body. This needs push access
 (GitHub silently drops labels and type otherwise) and gh 2.94 or later; without
-them, open the form instead
-(`gh issue create --repo open-telemetry/opentelemetry.io --web --template TEMPLATE_NAME`,
-_`TEMPLATE_NAME`_ being the template's `name`) and copy each section into its
+them, open the form at
+`https://github.com/open-telemetry/opentelemetry.io/issues/new?template=`_`TEMPLATE_FILE`_
+(the template's filename from the table above) and copy each section into its
 field.
 
 ```text
