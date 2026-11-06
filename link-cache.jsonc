@@ -30067,9 +30067,19 @@
     "when": "2026-10-23T05:44:50Z",
     "via": "lychee",
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.68.0-alpha/opentelemetry-bom-alpha-1.68.0-alpha.pom": {
+    "result": 200,
+    "when": "2026-11-06T17:42:20Z",
+    "via": "lychee",
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.67.0/opentelemetry-bom-1.67.0.pom": {
     "result": 200,
     "when": "2026-10-23T05:44:50Z",
+    "via": "lychee",
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.68.0/opentelemetry-bom-1.68.0.pom": {
+    "result": 200,
+    "when": "2026-11-06T17:42:20Z",
     "via": "lychee",
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
