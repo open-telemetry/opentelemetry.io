@@ -31,7 +31,6 @@ deserializează
 deții
 dezvoltatori
 dezvoltatorii
-doreşti
 editezi
 elimini
 emiți
@@ -50,7 +49,6 @@ eșantionezi
 explorezi
 exportatorilor
 exportatorului
-foloseşti
 formatorul
 forțezi
 franceză
@@ -109,7 +107,6 @@ randată
 randează
 receptoarelor
 reconstruiește
-referinţă
 remediează
 remediezi
 reobține
@@ -138,7 +135,6 @@ telemetrice
 telemetrie
 traducă
 traduci
-tranzacţie
 trasabilitate
 trasabilitatea
 tuplu
