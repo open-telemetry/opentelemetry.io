@@ -33,7 +33,7 @@ of truth — when this skill drifts from them, trust the source.
 
 The repo has five issue templates. Auto-detect type from context, or accept an
 explicit type from the user. Templates set the issue's classification (label or
-[issue type]) themselves; do **not** prefix titles with it.
+[issue type][]) themselves; do **not** prefix titles with it.
 
 | Template file         | Sets                     | Use for                                              |
 | --------------------- | ------------------------ | ---------------------------------------------------- |
