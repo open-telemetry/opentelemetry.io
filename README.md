@@ -86,6 +86,7 @@ For more information about the approver role, see the
 These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
 - [Emídio Neto](https://github.com/emdneto)
+- [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
 
 For more information about the triager role, see the
@@ -104,7 +105,6 @@ For more information about the triager role, see the
 - [Morgan McLean](https://github.com/mtwo), Maintainer
 - [Paul Bruce](https://github.com/paulsbruce), Approver
 - [Phillip Carter](https://github.com/cartermp), Maintainer
-- [Pratik Mahalle](https://github.com/pratik-mahalle), Triager
 - [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
 - [Steve Flanders](https://github.com/flands), Maintainer
 - [Ted Young](https://github.com/tedsuo), Approver
