@@ -37,7 +37,7 @@ explicit type from the user. Templates set the issue's classification (label or
 
 | Template file         | Sets                               | Use for                                              |
 | --------------------- | ---------------------------------- | ---------------------------------------------------- |
-| `DOCS_UPDATE.yml`     | type `bug`                         | Documentation errors, missing content, outdated info |
+| `DOCS_UPDATE.yml`     | type `bug`, label `docs`           | Documentation errors, missing content, outdated info |
 | `ISSUE_REPORT.yml`    | type `bug`                         | Site bugs, broken functionality, CI/workflow issues  |
 | `FEATURE_REQUEST.yml` | type `feature`                     | New site features, tooling improvements              |
 | `BLOG_POST.yml`       | label `docs:blog`                  | Blog post proposals                                  |

@@ -1,5 +1,6 @@
 name: Documentation issue
 description: You've found an issue with the documentation.
+labels: ['docs']
 type: bug
 body:
   - type: textarea
