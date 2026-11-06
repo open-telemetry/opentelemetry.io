@@ -2143,6 +2143,7 @@ approvers:
   - name: ocelotl
     teams:
       - opentelemetry-python-contrib-approvers
+      - packaging-approvers
       - python-approvers
     html_url: https://github.com/ocelotl
     avatar_url: https://avatars.githubusercontent.com/u/5069942?v=4
