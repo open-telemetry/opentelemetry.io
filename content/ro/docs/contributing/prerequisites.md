@@ -17,9 +17,9 @@ instrumente:
 - YAML
 
 Pentru detalii tehnice privind modul în care documentația este construită și
-testată local, consultǎ [Dezvoltare](../development).
+testată local, consultă [Dezvoltare](../development).
 
-## Semneazǎ CNCF CLA {#cla}
+## Semnează CNCF CLA {#cla}
 
 Toți contribuitorii OpenTelemetry trebuie să semneze [Acordul de licență pentru
 contribuitori (CLA)][CLA] ai Fundației Linux.
@@ -37,7 +37,7 @@ al comunității CNCF][CoC].
 ## Reguli comunitare {#community-guidelines}
 
 Pentru regulile generale ale comunității OpenTelemetry, inclusiv rolurile și
-așteptările, consultǎ [Ghidul pentru noii contribuitori OpenTelemetry][NCG].
+așteptările, consultă [Ghidul pentru noii contribuitori OpenTelemetry][NCG].
 
 [CLA]: https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
