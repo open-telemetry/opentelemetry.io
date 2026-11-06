@@ -3,8 +3,7 @@ title: OBI と Cilium の互換性
 linkTitle: Cilium 互換性
 description: OBI を Cilium と並行して実行する際の互換性に関する注意事項
 weight: 23
-default_lang_commit: 123db37a9707afc95344ffcbb0081eb118cda85d
-drifted_from_default: true
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 ---
 
 Cilium は、Kubernetes クラスター向けのネットワーキングとセキュリティを提供するために eBPF を使用する、オープンソースのセキュリティ・ネットワーキング・オブザーバビリティのプラットフォームです。
@@ -312,7 +311,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext:
             privileged: true
             readOnlyRootFilesystem: true
