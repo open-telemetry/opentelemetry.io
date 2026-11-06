@@ -85,8 +85,8 @@ only. You can still suggest these on issues manually.
 
 Governance for the `triage:*`, `type:*`, `docs:*`, `lang:*`, and `sig:*`
 families and the `p0-critical` to `p3-low` priorities lives in
-`content/en/docs/contributing/sig-practices.md`. Skip `type:discussion` — its
-own label description says "Do not use, convert discussion issues into real
+`content/en/docs/contributing/sig-practices.md`. Skip `type:discussion`: its own
+label description says "Do not use, convert discussion issues into real
 Discussions."
 
 ## Output format
@@ -96,16 +96,20 @@ Produce a fenced block with title, type (when the template sets one), labels
 `gh issue create` bypasses the form, so pass the classification yourself:
 
 ```bash
-gh issue create --type ISSUE_TYPE --label LABELS --title TITLE --body-file BODY
+gh issue create --repo open-telemetry/opentelemetry.io \
+  --type ISSUE_TYPE --label LABELS --title TITLE --body-file BODY
 ```
 
-Here _`ISSUE_TYPE`_ is the type name (omit `--type` when the template sets
-none), _`LABELS`_ the comma-separated label names, and _`TITLE`_ and _`BODY`_
-the drafted title and a file holding the drafted body. This needs push access
+Here _`ISSUE_TYPE`_ is the type name, _`LABELS`_ the comma-separated label names
+(omit `--type` or `--label` when there are none), and _`TITLE`_ and _`BODY`_ the
+drafted title and a file holding the drafted body. This needs push access
 (GitHub silently drops labels and type otherwise) and gh 2.94 or later; without
-them, open `issues/new?template=`_`TEMPLATE_FILE`_ and paste the draft.
+them, open the form instead
+(`gh issue create --repo open-telemetry/opentelemetry.io --web --template TEMPLATE_NAME`,
+_`TEMPLATE_NAME`_ being the template's `name`) and copy each section into its
+field.
 
-```
+```text
 **Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
 
 **Type**: `bug`
@@ -144,5 +148,6 @@ Related to #1234.
 - `gh label list --repo open-telemetry/opentelemetry.io --limit 200` — live
   label set.
 
-[issue type]:
-  https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-types-in-an-organization
+<!-- prettier-ignore-start -->
+[issue type]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-types-in-an-organization
+<!-- prettier-ignore-end -->
