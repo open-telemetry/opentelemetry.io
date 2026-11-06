@@ -35,13 +35,13 @@ The repo has five issue templates. Auto-detect type from context, or accept an
 explicit type from the user. Templates set the issue's classification (label or
 [issue type]) themselves; do **not** prefix titles with it.
 
-| Template file         | Sets                               | Use for                                              |
-| --------------------- | ---------------------------------- | ---------------------------------------------------- |
-| `DOCS_UPDATE.yml`     | type `bug`, label `docs`           | Documentation errors, missing content, outdated info |
-| `ISSUE_REPORT.yml`    | type `bug`                         | Site bugs, broken functionality, CI/workflow issues  |
-| `FEATURE_REQUEST.yml` | type `feature`                     | New site features, tooling improvements              |
-| `BLOG_POST.yml`       | label `docs:blog`                  | Blog post proposals                                  |
-| `PAGE_FEEDBACK.yml`   | type `task`, label `page-feedback` | Feedback from the "was this page helpful?" widget    |
+| Template file         | Sets                     | Use for                                              |
+| --------------------- | ------------------------ | ---------------------------------------------------- |
+| `DOCS_UPDATE.yml`     | type `bug`, label `docs` | Documentation errors, missing content, outdated info |
+| `ISSUE_REPORT.yml`    | type `bug`               | Site bugs, broken functionality, CI/workflow issues  |
+| `FEATURE_REQUEST.yml` | type `feature`           | New site features, tooling improvements              |
+| `BLOG_POST.yml`       | label `docs:blog`        | Blog post proposals                                  |
+| `PAGE_FEEDBACK.yml`   | label `type:feedback`    | Feedback from the "was this page helpful?" widget    |
 
 When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
 mirror its section labels verbatim so GitHub maps the body back to template form

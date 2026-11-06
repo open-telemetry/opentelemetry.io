@@ -103,6 +103,7 @@ Additional valuable resources to review are
     - issue type `feature` for feature requests
     - label `type:question` for questions
     - label `type:copyedit` for copy edits
+    - label `type:feedback` for page feedback
     - move the issue to "discussions" if it seems to be a non workable
       open-ended conversation
   - Optional: An estimate label if applicable:
