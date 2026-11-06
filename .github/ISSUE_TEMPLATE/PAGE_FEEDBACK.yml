@@ -1,7 +1,7 @@
 name: Page Feedback
 description: >-
-  Used for page feedback from users visiting opentelemetry.io and clicking "no"
-  if a page was helpful.
+  Page feedback from opentelemetry.io readers who answered "No" to "Was this
+  page helpful?"
 labels: ['type:feedback']
 body:
   - type: input
