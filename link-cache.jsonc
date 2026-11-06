@@ -13574,6 +13574,16 @@
     "when": "2026-10-22T05:45:24Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/cmd%2Fbuilder%2Fv0.163.1": {
+    "result": 200,
+    "when": "2026-11-06T14:32:31Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.163.1": {
+    "result": 200,
+    "when": "2026-11-06T14:32:31Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/tags": {
     "result": 200,
     "when": "2026-10-28T05:39:00Z",
