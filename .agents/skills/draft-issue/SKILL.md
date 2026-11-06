@@ -98,7 +98,6 @@ labels: `--type "<type>"` and `--label "<comma,separated>"`.
 **Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
 
 **Type**: `bug`
-
 **Labels**: `CI/infra`, `Github actions`, `p2-medium`
 
 ---
