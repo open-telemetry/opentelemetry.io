@@ -68,7 +68,7 @@ Cum poți rezolva probleme folosind OpenTelemetry? Aceste
 probleme preconfigurate și îți arată cum să interpretezi datele OpenTelemetry
 pentru a le rezolva.
 
-## Referinţă {#reference}
+## Referință {#reference}
 
 Documentație de referință a proiectului, precum cerințe și matrici de
 funcționalități.
