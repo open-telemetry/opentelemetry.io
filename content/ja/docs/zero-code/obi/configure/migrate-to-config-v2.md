@@ -4,6 +4,7 @@ linkTitle: Config v2 への移行
 description: OBI Config v1 ファイルを安全に Config v2 へ移行する方法を学びます。
 weight: 4
 default_lang_commit: de36656f997593939e9f6a2b89aa1da72e1718d6
+drifted_from_default: true
 ---
 
 OBI v0.11.0 以降には、構成を移行および検証するコマンドが含まれています。

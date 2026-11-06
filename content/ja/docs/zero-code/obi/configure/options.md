@@ -4,6 +4,7 @@ linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
 default_lang_commit: acd264e5dd162cf417e7992698cf7efc995c780d
+drifted_from_default: true
 cSpell:ignore: healthz
 ---
 
