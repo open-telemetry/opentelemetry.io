@@ -1,6 +1,7 @@
 ---
 title: 非 Kubernetes 環境におけるインフラストラクチャとプロセス
 default_lang_commit: 87b4cea0e74dccab17d61601c4bd80e15dc95d08
+drifted_from_default: true
 ---
 
 ## 概要 {#summary}
