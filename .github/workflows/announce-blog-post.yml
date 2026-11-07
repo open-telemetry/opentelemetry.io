@@ -1,0 +1,115 @@
+name: Announce blog post
+
+# Opens a pull request in open-telemetry/opentelemetry-announcements for every
+# English blog post published on main. A maintainer there reviews, merges and
+# approves publishing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/en/blog/**
+  workflow_dispatch:
+    inputs:
+      post:
+        description:
+          Blog post to announce, for example content/en/blog/2026/my-post.md
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+# Overlapping runs would race updates to the same announcement branch.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    name: Open announcement PR
+    runs-on: ubuntu-latest
+    # Remove the if statement below when testing against a fork
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+
+      # A push can contain several commits, so compare with the commit before
+      # the push. It's missing for new branches and might be gone after a force
+      # push, so fall back to the parent commit.
+      - name: Find the commit before the push
+        id: before
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [[ ! $BEFORE =~ ^0+$ ]] && git fetch --depth=1 origin "$BEFORE"; then
+            echo "sha=$BEFORE" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        id: otelbot-token
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          owner: open-telemetry
+          repositories: opentelemetry-announcements
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Checkout announcements
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: open-telemetry/opentelemetry-announcements
+          path: announcements-repo
+          token: ${{ steps.otelbot-token.outputs.token }}
+          persist-credentials: false
+
+      - name: Write announcement files
+        id: announce
+        env:
+          BEFORE: ${{ steps.before.outputs.sha }}
+          POST: ${{ inputs.post }}
+        run: |
+          .github/scripts/announce-blog-post.sh "${BEFORE:-HEAD}" \
+            announcements-repo ${POST:+"$POST"}
+
+      - name: Create pull request # zizmor: ignore[superfluous-actions] Manages the commit, update branch, and PR lifecycle.
+        if: steps.announce.outputs.branch != ''
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          path: announcements-repo
+          add-paths: announcements/**
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: ${{ steps.announce.outputs.branch }}
+          delete-branch: true
+          title: ${{ steps.announce.outputs.title }}
+          commit-message: ${{ steps.announce.outputs.title }}
+          body: |
+            Announces newly published posts on the OpenTelemetry blog:
+
+            ${{ steps.announce.outputs.body }}
+
+            Edit the text as needed, then merge and approve the `announcements`
+            environment to publish.
+
+            Created by the [Announce blog post][workflow] workflow in
+            open-telemetry/opentelemetry.io from ${{ github.sha }}.
+
+            [workflow]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  report-failure:
+    needs: announce
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: $/.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read
