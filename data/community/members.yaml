@@ -666,7 +666,6 @@ maintainers:
     teams:
       - docs-pt-approvers
       - docs-pt-maintainers
-      - docs-triagers
     html_url: https://github.com/EzzioMoreira
     avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
   - name: fabled
@@ -1773,6 +1772,11 @@ approvers:
       - docs-ko-approvers
     html_url: https://github.com/abel9851
     avatar_url: https://avatars.githubusercontent.com/u/66953834?v=4
+  - name: adityareddy-dev
+    teams:
+      - browser-approvers
+    html_url: https://github.com/adityareddy-dev
+    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: agagniere
     teams:
       - zig-approvers
@@ -2655,9 +2659,6 @@ members:
   - name: Adii-45
     html_url: https://github.com/Adii-45
     avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
-  - name: adityareddy-dev
-    html_url: https://github.com/adityareddy-dev
-    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
