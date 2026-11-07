@@ -135,13 +135,13 @@ redirection cannot resolve a conflict or must be disabled, use the
 Alternatively add only the conflicting packages to your project. The following
 dependencies are used by OpenTelemetry .NET Automatic Instrumentation:
 
-- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
+- [OpenTelemetry.AutoInstrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj)
 
 Find their versions in the following locations:
 
-- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/Directory.Packages.props)
-- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/Directory.Packages.props)
-- [src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props)
+- [Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/Directory.Packages.props)
+- [src/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/Directory.Packages.props)
+- [src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props)
 
 Assembly redirection is enabled by default for standalone deployments and
 disabled for NuGet package deployments. This behavior can be controlled through
@@ -154,13 +154,13 @@ automatic instrumentation this automatic redirection may fail, see
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
 Check if any existing binding redirect prevent redirection to the versions
 listed at
-[assembly_redirection_net.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h)
+[assembly_redirection_net.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h)
 for .NET applications and
-[assembly_redirection_netfx.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h)
+[assembly_redirection_netfx.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h)
 for .NET Framework applications. For details about the resolution strategies,
 including `UnsafeAccessorTypeAttribute` metadata redirection on .NET 10 and
 later, see
-[Assembly Conflict Resolution](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md).
+[Assembly Conflict Resolution](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/docs/assembly-conflict-resolution.md).
 
 For the automatic redirection above to work there are two specific scenarios
 that require the assemblies used to instrument .NET Framework applications, the
@@ -236,7 +236,7 @@ This workaround has the following limitations:
   of the same dependencies.
 
 For details, see the upstream
-[AdditionalDeps and shared-store workaround](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.18.0/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround).
+[AdditionalDeps and shared-store workaround](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround).
 
 ### Assembly in AdditionalDeps was not found
 

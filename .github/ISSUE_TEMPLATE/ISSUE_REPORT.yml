@@ -1,6 +1,5 @@
 name: Website issue/bug
 description: Report a problem with the opentelemetry.io site.
-title: 'bug: '
 type: bug
 body:
   - type: textarea

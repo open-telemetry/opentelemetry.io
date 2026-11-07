@@ -102,9 +102,9 @@ processors:
 ## New OCB configuration
 
 The
-[v0.163.1 release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1)
+[v0.163.1 release](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.163.1)
 of the Collector and
-[ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-cmd/builder/v0.163.1)
+[ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/cmd%2Fbuilder%2Fv0.163.1)
 now also support users wanting to filter out resource detectors with less
 configuration. It follows the configuration defined in the Configuration schema;
 the following removes all detectors except the ones configured in the `resource`
