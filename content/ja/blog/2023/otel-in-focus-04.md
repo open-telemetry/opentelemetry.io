@@ -17,7 +17,7 @@ KubeCon EU での OpenTelemetry のハイライトもいくつか共有します
 
 ## リリースとアップデート {#releases-and-updates}
 
-コアリポジトリの最新アップデートをお知らせします。
+一部のコアリポジトリからの最新アップデートをお知らせします。
 
 <!-- markdownlint-disable heading-increment -->
 
@@ -27,7 +27,7 @@ KubeCon EU での OpenTelemetry のハイライトもいくつか共有します
 これは大きなリリースです！
 
 まず、**OpenTelemetry Protocol** が安定版として宣言されました！
-次に、[Elastic Common Schema を OpenTelemetry セマンティック規約に統合する](/blog/2023/ecs-otel-semconv-convergence/)プロセスが開始されました。
+次に、[Elastic Common Schema と OpenTelemetry セマンティック規約を統合する](/blog/2023/ecs-otel-semconv-convergence/)プロセスが開始されました。
 これは何を意味するのでしょうか。
 大まかに言うと、標準の整合化を進めるにあたり、セマンティック規約が仕様から分離されることが予想されます。
 詳細は今後の情報をお待ちください。
@@ -71,12 +71,12 @@ Java SDK の[バージョン1.25.0](https://github.com/open-telemetry/openteleme
 ## プロジェクトアップデート {#project-updates}
 
 KubeCon EU では1万人を超えるクラウドネイティブ開発者がアムステルダムに集まり、多くの方が OpenTelemetry ブースに立ち寄ってくれました！
-限定版の KubeCon ステッカーを手に入れた方もいらっしゃるかもしれません。
+限定版の KubeCon ステッカーを手に入れられた方もいらっしゃるとよいのですが。
 もし手に入れられなかった方も、今後また限定版ステッカーを用意します。
 ただし KubeCon 用ではありません。
 KubeCon はもう終わりましたので。
 
-今後数か月のうちにプロジェクトとして取り組んでいくことが楽しみな、多くの素晴らしいフィードバックがありました。
+素晴らしいフィードバックが数多くあり、私たちは今後数か月にわたりプロジェクトとして取り組むことを楽しみにしています。
 たとえば以下のようなものです。
 
 - Collector のコンポーネントの見つけやすさの改善。
@@ -84,7 +84,7 @@ KubeCon はもう終わりましたので。
 - ログブリッジ API の完成とログの安定化。
 
 KubeCon では、オブザーバビリティコミュニティから多くの素晴らしい講演もありました。
-[Observability Day Europe](https://www.youtube.com/watch?v=2VuAIhL3xG4&list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3) もその1つです。
+[Observability Day Europe](https://www.youtube.com/watch?v=2VuAIhL3xG4&list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3) での講演もその中に含まれていました。
 時間があればぜひご覧ください。
 OpenTelemetry の実際の活用事例がとても興味深い内容です！
 
