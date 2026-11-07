@@ -3,8 +3,7 @@ title: OBI サービスディスカバリーの設定
 linkTitle: サービスディスカバリー
 description: OBI のサービスディスカバリーコンポーネントが計装対象のプロセスを検索する方法を設定します。
 weight: 20
-default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
-drifted_from_default: true
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 # prettier-ignore
 cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---
@@ -71,6 +70,10 @@ discovery:
 ```
 
 OBI は、ポート 80、443、または 8000 から 8999 までのいずれかのポートを開くすべての実行可能ファイルを選択します。
+
+ヘルパーやポートフォワーダーがワークロードと同じポートでリッスンしている場合、OBI がそれを選択し、そのテレメトリーをワークロードのサービスに割り当てることがあります。
+ポートを共有するプロセスを区別するには、実行可能ファイルのパス、コンテナ、または Kubernetes セレクターを使用してください。
+[ワークロードとは異なるサービスにクライアントメトリクスやスパンが帰属する問題](../../troubleshooting/#client-metrics-or-spans-attributed-to-the-wrong-service)を参照してください。
 
 同じ `instrument` エントリで他のセレクターを指定した場合、プロセスはすべてのセレクタープロパティに一致する必要があります。
 
@@ -520,4 +523,4 @@ Route53 はキャプチャされた DNS および逆引き DNS よりも優先�
 マッピングに使用されるのはリテラルの A および AAAA レコードのみで、エイリアス、CNAME、ワイルドカードレコードは除外されます。
 リフレッシュが失敗した場合、最後に成功したマッピングが保持されます。
 各 OBI インスタンスは設定されたゾーンを独立してポーリングするため、インスタンス数とゾーン数に応じてリフレッシュ間隔を調整してください。
-ポーリングの動作と名前の選択については、[Route53 リファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/route53-name-resolution.md)を参照してください。
+ポーリングの動作と名前の選択については、[Route53 リファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/route53-name-resolution.md)を参照してください。
