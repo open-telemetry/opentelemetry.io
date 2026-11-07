@@ -26,6 +26,8 @@ components:
     - open-telemetry/docs-maintainers
   content/en/docs/demo:
     - open-telemetry/demo-approvers
+  content/en/docs/guidance:
+    - open-telemetry/sig-end-user-blueprints-approvers
   content/en/docs/platforms/kubernetes/collector:
     - open-telemetry/collector-approvers
   content/en/docs/platforms/kubernetes/helm:
