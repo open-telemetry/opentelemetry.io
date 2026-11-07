@@ -7,6 +7,7 @@ author: >-
 issue: 12217
 sig: Collector SIG
 default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
+drifted_from_default: true
 cSpell:ignore: otelconf trimpath
 ---
 
