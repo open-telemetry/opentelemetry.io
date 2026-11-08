@@ -135,9 +135,9 @@ The `batch` processor includes a small in-memory queue. Its producer
 side makes a blocking write to a Golang channel, then it returns
 success to the caller like this:
 
-```
-    batch.pending <- request
-    return nil
+```shell
+batch.pending <- request
+return nil
 ```
 
 This is standard behavior. The problem is that `batch` processor's
