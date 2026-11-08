@@ -3,8 +3,7 @@ title: OBI による分散トレース
 linkTitle: 分散トレース
 description: OBI の分散トレースサポートについて学びます。
 weight: 22
-default_lang_commit: 5cf207da7aef590bebe8ea29a1873d65ad5c02a2
-drifted_from_default: true
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 cSpell:ignore: asyncio chanrecv chansend HPACK uvloop
 ---
 
@@ -106,7 +105,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:v0.15.2'
+      image: 'docker.io/otel/ebpf-instrument:v1.0.0'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -187,13 +186,14 @@ OBI の eBPF 計装は引き続き独立して動作します。
 OBI が Trace API の呼び出しを検出できる場合、スパン名、親子関係、ステータス、および一部のプリミティブ属性を含む部分的な合成スパンをエクスポートできます。
 これらのスパンには計装スコープ、イベント、リクエストされたスパンの種類は含まれません。
 
-OBI v0.15.2 では、Auto SDK を通じてエクスポートされる各スパンのエンコード済みペイロードは 16 KiB を超えてはなりません。
-OBI は統合を有効化した際やオーバーサイズのペイロードを破棄した際に、メトリクスやログメッセージを出力しません。
+Auto SDK を通じてエクスポートされる各スパンは、16 KiB のエンコード済みペイロードに収まる必要があります。
+OBI はサイズ超過のスパンをメトリクスやログメッセージなしで破棄します。
+また、統合を有効化した際にも報告を行いません。
 
 既知の制限と今後の作業には、[ヘッドサンプリング](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2793)、[コンテキストハンドオフ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2794)、[外部およびリモートの親と `TraceState`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2959)、[より大きなペイロードと破棄の可観測性](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2958)、および[ログエンリッチメント](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2932)が含まれます。
 
-サポートされるモジュールバージョン、チェックサム、アーキテクチャの組み合わせについては、[有効化の適格性マトリクス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)を参照してください。
-上流の [Go Trace API の例](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/go-trace-api)と [Auto SDK](/docs/zero-code/go/autosdk) のドキュメントも参照してください。
+サポートされるモジュールバージョン、チェックサム、アーキテクチャの組み合わせについては、[有効化の適格性マトリクス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/SUPPORT_MATRIX.md#go-global-trace-api-and-auto-sdk-activation)を参照してください。
+上流の [Go Trace API の例](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/go-trace-api)と [Auto SDK](/docs/zero-code/go/autosdk) のドキュメントも参照してください。
 
 #### カーネル integrity モードの制限 {#kernel-integrity-mode-limitations}
 
@@ -221,7 +221,7 @@ cat /sys/kernel/security/lockdown
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:v0.15.2'
+    image: 'docker.io/otel/ebpf-instrument:v1.0.0'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
