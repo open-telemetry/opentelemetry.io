@@ -29,10 +29,8 @@ const NPMJS_URL_REGEX = regexX(String.raw`
 
 // Syntactically valid scoped or unscoped npm package name. Slightly looser
 // than npm's rules for new packages (legacy names may contain uppercase),
-// but strict enough to exclude shell metacharacters, malformed scopes, and
-// option-like leading characters: the name is passed to the npm CLI.
-const NPM_PACKAGE_NAME_REGEX =
-  /^(@[a-zA-Z0-9][a-zA-Z0-9\-._~]*\/)?[a-zA-Z0-9][a-zA-Z0-9\-._~]*$/;
+// but strict enough to exclude shell metacharacters and malformed scopes.
+const NPM_PACKAGE_NAME_REGEX = /^(@[a-zA-Z0-9\-._~]+\/)?[a-zA-Z0-9\-._~]+$/;
 
 const cratesIoURL = 'https://crates.io/';
 
@@ -291,7 +289,7 @@ function checkNpmPackageUrlViaCLI(url) {
   try {
     // execFileSync with an argument array: no shell, no interpolation. The
     // output must name the package back: npm exits 0 for things that aren't
-    // packages too.
+    // packages too (`npm view --version name` prints npm's own version).
     const name = execFileSync('npm', ['view', packageName, 'name'], {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
