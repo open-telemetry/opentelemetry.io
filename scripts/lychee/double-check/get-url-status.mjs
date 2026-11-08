@@ -216,6 +216,12 @@ export function isHttp2XX(status) {
   return status && status >= 200 && status < 300;
 }
 
+// npmjs.com answers headless clients with 403, or 429 under Cloudflare's rate
+// limiting; on a package URL, neither is a verdict on the package.
+export function isNpmjsBotWall(status, url) {
+  return (status === 403 || status === 429) && NPMJS_URL_REGEX.test(url);
+}
+
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
 
@@ -228,9 +234,9 @@ export async function getUrlStatus(url, _verbose = false) {
     return status;
   }
 
-  // npmjs.com 403s are a bot wall; ask the npm CLI instead.
-  if (status === 403 && NPMJS_URL_REGEX.test(url)) {
-    let _status = checkNpmPackageUrlViaCLI(url);
+  // npmjs.com bot walls say nothing about the package; ask the npm CLI instead.
+  if (isNpmjsBotWall(status, url)) {
+    const _status = checkNpmPackageUrlViaCLI(url);
     if (isHttp2XX(_status)) return _status;
   }
 
@@ -281,11 +287,17 @@ function checkNpmPackageUrlViaCLI(url) {
   }
 
   try {
-    // execFileSync with an argument array: no shell, no interpolation.
-    execFileSync('npm', ['view', packageName, 'name'], {
+    // execFileSync with an argument array: no shell, no interpolation. The
+    // output must name the package back: npm exits 0 for things that aren't
+    // packages too (`npm view --version name` prints npm's own version).
+    const name = execFileSync('npm', ['view', packageName, 'name'], {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
-    });
+    }).trim();
+    if (name !== packageName) {
+      log(`> npm view '${packageName}' returned '${name}': not a package`);
+      return 404;
+    }
     log(`> npm view '${packageName}' successful: package exists`);
     return STATUS_OK_BY_ANALYSIS;
   } catch (error) {
@@ -301,8 +313,8 @@ function getChromePath() {
 
   try {
     // Install Chrome if not present, or just return the path if already
-    // installed. Uses the dependency-provided puppeteer bin (`npm exec --no`
-    // never falls back to the public registry).
+    // installed. `npm exec --no` refuses to fetch puppeteer from the registry
+    // if it isn't already installed.
     const output = execFileSync(
       'npm',
       ['exec', '--no', 'puppeteer', 'browsers', 'install', 'chrome'],
