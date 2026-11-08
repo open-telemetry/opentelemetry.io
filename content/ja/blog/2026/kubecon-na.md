@@ -7,7 +7,7 @@ eventUrl: &eventUrl >-
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
-default_lang_commit: cde423b3ca7efa8a2fed4ce97369a8fedff8932b
+default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
 # prettier-ignore
 cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos OTTL Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
 ---
@@ -125,7 +125,13 @@ OpenTelemetry 組織の[メンバー][membership]が集まり、コラボレー�
 
 ## Project Pavilion での OpenTelemetry {#opentelemetry-at-the-project-pavilion}
 
-11月12日（木）の 10:00 から 14:00 まで、Project Pavilion で OpenTelemetry コミュニティに会いに来てください！
+Project Pavilion で OpenTelemetry コミュニティに会いに来てください！
+キオスク **16A** にて、以下の日程で出展しています。
+
+- 11月10日（火）10:30 - 14:30
+- 11月11日（水）10:15 - 13:25
+- 11月12日（木）10:15 - 11:55
+
 気軽にお話ししたり、質問したり、経験を共有したり、プロジェクトへの参加方法を知ることができます。
 
 ## OpenTelemetry Community Awards {#opentelemetry-community-awards}

@@ -79,6 +79,12 @@ discovery:
 OBI selects any executable that opens port 80, 443, or any of the ports between
 8000 and 8999 included.
 
+If a helper or port-forwarder listens on the same port as the workload, OBI can
+select it and assign its telemetry to the workload's service. Use executable
+path, container, or Kubernetes selectors to distinguish processes that share a
+port. See
+[client metrics or spans attributed to the wrong service](../../troubleshooting/#client-metrics-or-spans-attributed-to-the-wrong-service).
+
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
 
@@ -621,5 +627,5 @@ mappings; aliases, CNAMEs, and wildcard records are excluded. Failed refreshes
 retain the last successful mappings. Each OBI instance polls the configured
 zones independently, so size the refresh interval for the number of instances
 and zones. See the
-[Route53 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/route53-name-resolution.md)
+[Route53 reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/route53-name-resolution.md)
 for polling behavior and name selection.

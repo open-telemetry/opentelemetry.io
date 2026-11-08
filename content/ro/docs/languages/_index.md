@@ -1,5 +1,5 @@
 ---
-title: Limbaje, API-uri şi SDK-uri
+title: Limbaje, API-uri și SDK-uri
 description:
   Instrumentarea codului cu OpenTelemetry este acceptată pentru multe limbaje de
   programare populare.
@@ -21,7 +21,7 @@ Pentru Go, .NET, PHP, Python, Java și JavaScript, poți folosi
 [soluții fără modificări de cod (zero-code)](/docs/zero-code) pentru a
 instrumenta aplicația, fără a fi necesară modificarea codului sursă.
 
-Dacă foloseşti Kubernetes, poți utiliza [OpenTelemetry Operator pentru
+Dacă folosești Kubernetes, poți utiliza [OpenTelemetry Operator pentru
 Kubernetes][otel-op] pentru a [integra aceste soluții fără modificări de
 cod][zero-code] în aplicația ta.
 

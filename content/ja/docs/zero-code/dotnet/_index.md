@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-default_lang_commit: b7958404d74ea78a5e786cb7d4e837876d0890ea
+default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
 cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
@@ -61,7 +61,7 @@ CI テストは以下のオペレーティングシステムに対して実行�
 
 ```shell
 # インストーラーをプライベートディレクトリにダウンロード
-version="v1.17.0"
+version="v1.18.0"
 repository="open-telemetry/opentelemetry-dotnet-instrumentation"
 release_workflow="$repository/.github/workflows/release.yml"
 download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
@@ -129,7 +129,7 @@ Windows では、管理者として PowerShell モジュールを使用します
 # PowerShell 5.1 が必要です
 #Requires -PSEdition Desktop
 
-$version = "v1.17.0"
+$version = "v1.18.0"
 $repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
 $release_workflow = "$repository/.github/workflows/release.yml"
 $skip_release_verification = $false
@@ -276,7 +276,7 @@ ASP.NET アプリケーションの場合、`Web.config` の `appSettings` で[�
 サービス名が明示的に構成されていない場合、自動的に生成されます。
 .NET Framework で IIS 上にホストされているアプリケーションの場合、`SiteName\VirtualDirectoryPath`（例: `MySite\MyApp`）が使用されます。
 
-ASP.NET Core アプリケーションの場合、`Web.config` ファイルの `<aspNetCore>` ブロック内の [`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables) 要素を使用して、環境変数で構成を設定できます。
+ASP.NET Core アプリケーションの場合、`Web.config` ファイルの `<aspNetCore>` ブロック内の [`<environmentVariable>`](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables) 要素を使用して、環境変数で構成を設定できます。
 
 > [!IMPORTANT]
 >
@@ -285,7 +285,7 @@ ASP.NET Core アプリケーションの場合、`Web.config` ファイルの `<
 
 ### 詳細な構成 {#advanced-configuration}
 
-`applicationHost.config` に [`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/) を追加して、特定のアプリケーションプールの環境変数を設定できます。
+`applicationHost.config` に [`<environmentVariables>`](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/) を追加して、特定のアプリケーションプールの環境変数を設定できます。
 
 IIS にデプロイされたすべてのアプリケーションに共通の環境変数を設定するには、`W3SVC` と `WAS` Windows サービスの環境変数を設定することを検討してください。
 

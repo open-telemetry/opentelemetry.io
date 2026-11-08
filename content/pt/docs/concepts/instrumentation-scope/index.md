@@ -1,47 +1,54 @@
 ---
 title: Escopo de instrumentação
 weight: 80
-default_lang_commit: e9a74ead9ff9ee7c1df04241e916bdb606ba5e24
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
-O [escopo de instrumentação](/docs/specs/otel/common/instrumentation-scope/)
-representa uma unidade lógica dentro do código da aplicação com a qual a
-telemetria emitida pode ser associada.
+O [escopo de instrumentação](/docs/specs/otel/common/instrumentation-scope/) é
+uma unidade lógica de _software_ à qual a telemetria emitida é associada. Ele
+pode representar um módulo, pacote, classe, biblioteca ou _framework_ — qualquer
+limite significativo escolhido por quem desenvolve para distinguir uma fonte de
+telemetria de outra.
 
-Os desenvolvedores podem decidir o que denota um escopo de instrumentação
-razoável. Por exemplo, é possível selecionar um módulo, um pacote ou uma classe
-como o escopo de instrumentação. No caso de uma biblioteca ou um _framework_,
-uma abordagem comum é utilizar como escopo um identificador que seja exclusivo
-para aquela biblioteca ou _framework_, como seu respectivo nome e versão. Caso a
-biblioteca em si não possua instrumentação OpenTelemetry incorporada, e uma
-biblioteca de instrumentação esteja sendo utilizada em seu lugar, utilize a
-combinação do nome e a versão da biblioteca de instrumentação como o escopo de
-instrumentação.
+## Como um escopo é definido {#how-a-scope-is-defined}
 
-O escopo de instrumentação é definido por uma combinação do par entre nome e
-versão quando uma instância do _tracer_, _meter_ ou _logger_ são obtidos de um
-_provider_. Cada registro de trecho, métrica ou log criados por esta instância
-serão então associados ao escopo de instrumentação fornecido.
+Um escopo é identificado por uma tupla
+`(name, version, schema_url, attributes)`, em que `version`, `schema_url` e
+`attributes` são opcionais. O `name` deve identificar de forma única a unidade
+lógica de _software_ — por exemplo, o nome totalmente qualificado de uma
+biblioteca, classe ou módulo.
 
-No seu backend de observabilidade, a utilização de escopos permite que os dados
-de telemetria sejam analisados de maneira agrupada, por exemplo, para ver quais
-de seus usuários estão utilizando quais versões de uma biblioteca e qual a
-performance destas versões, ou até mesmo para identificar um determinado
-problema em um módulo específico da sua aplicação.
+O escopo é especificado ao obter um _tracer_, _meter_ ou _logger_ a partir de um
+_provider_. Cada trecho, métrica e registro de log produzido por essa instância
+é então marcado com o escopo:
 
-O diagrama a seguir ilustra um rastro com múltiplos escopos de instrumentação.
-Os diferentes escopos são representados por diferentes cores:
+- **Para bibliotecas e _frameworks_**: utilize o nome totalmente qualificado e a
+  versão da biblioteca como escopo. Ao escrever uma biblioteca de instrumentação
+  para uma biblioteca que não possui suporte nativo ao OpenTelemetry, utilize o
+  nome e a versão da própria biblioteca de instrumentação.
+- **Para código da aplicação**: uma escolha comum é o nome da classe ou do
+  módulo, como `CheckoutService`.
 
-- No topo, o trecho `/api/placeOrder` é criado através do _framework_ do
-  servidor HTTP.
-- Os trechos em verde (`CheckoutService::placeOrder`, `prepareOrderItems` e
-  `checkout`) são códigos da aplicação, agrupados através da classe
-  `CheckoutService`.
-- Os trechos em `CartService::getCart` e `ProductService::getProduct` também são
-  códigos da aplicação, agrupados através das classes `CartService` e
-  `ProductService`.
-- Os trechos em laranja (`Cache::find`) e azul claro (`DB::query`) são códigos
-  de biblioteca, agrupados através dos respectivos nomes e versões de cada.
+## Por que escopos são importantes {#why-scopes-matter}
 
-![Esta imagem ilustra um rastro com múltiplos escopos de instrumentação](spans-with-instrumentation-scope.svg)
+No _backend_ de observabilidade, é possível filtrar, agrupar e comparar a
+telemetria por escopo. Isso permite identificar qual versão de uma biblioteca
+está causando latência, isolar sinais de um módulo específico ou comparar o
+comportamento entre versões de um mesmo componente.
+
+## Escopos em um rastro {#scopes-in-a-trace}
+
+O diagrama a seguir mostra um rastro com trechos de seis escopos de
+instrumentação diferentes, identificados por cores e pela legenda:
+
+- O escopo `http-framework` produz o trecho raiz `/api/placeOrder`.
+- O escopo `CheckoutService` produz `CheckoutService::placeOrder`,
+  `CheckoutService::prepareOrderItems` e `CheckoutService::checkout`. Os três
+  trechos compartilham o mesmo escopo de instrumentação porque são criados pela
+  mesma instância de _tracer_, obtida com o nome `CheckoutService`.
+- Os escopos `CartService` e `ProductService` produzem, cada um, um trecho a
+  partir de seus respectivos componentes da aplicação.
+- Os escopos `Cache library` e `DB library` produzem trechos a partir de código
+  de biblioteca, agrupados por nome e versão da biblioteca.
+
+![Cascata de rastro com trechos identificados por cores de acordo com o escopo de instrumentação. Uma legenda na parte inferior associa cada cor ao nome do seu escopo.](spans-with-instrumentation-scope.svg)

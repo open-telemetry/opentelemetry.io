@@ -59,5 +59,5 @@ Firefox's does not); the spans the console exporter prints say nothing about
 whether the collector accepted them.
 
 <!-- prettier-ignore-start -->
-[3.x migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/3.x/migration-guide.md#opentelemetrysdk-trace-web-package-removed
+[3.x migration guide]: https://github.com/open-telemetry/opentelemetry-js/blob/44be44c2ed8a1e0fb0fd06a2142fca49c0ebbec3/doc/3.x/migration-guide.md#-opentelemetrysdk-trace-web-package-removed
 <!-- prettier-ignore-end -->

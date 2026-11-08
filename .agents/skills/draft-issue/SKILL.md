@@ -29,24 +29,26 @@ of truth — when this skill drifts from them, trust the source.
 - When a conversation reveals a bug, docs gap, or feature need.
 - When drafting a blog post proposal for OTel.
 
-## Issue types {#issue-types}
+## Issue templates {#issue-templates}
 
-The repo has five issue templates. Auto-detect type from context, or accept an
-explicit type from the user.
+The repo has five issue templates. Pick the template from context, or accept the
+user's explicit choice. Each template sets the issue's classification itself,
+through its `labels` and/or `type` ([issue type][]) keys; do **not** prefix
+titles with it.
 
-| Template file         | Title prefix      | Use for                                              |
-| --------------------- | ----------------- | ---------------------------------------------------- |
-| `DOCS_UPDATE.yml`     | `[Docs]: `        | Documentation errors, missing content, outdated info |
-| `ISSUE_REPORT.yml`    | `bug: `           | Site bugs, broken functionality, CI/workflow issues  |
-| `FEATURE_REQUEST.yml` | `feat: `          | New site features, tooling improvements              |
-| `BLOG_POST.yml`       | `blog: `          | Blog post proposals (auto-applies `blog` label)      |
-| `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget    |
+| Template file         | Use for                                              |
+| --------------------- | ---------------------------------------------------- |
+| `DOCS_UPDATE.yml`     | Documentation errors, missing content, outdated info |
+| `ISSUE_REPORT.yml`    | Site bugs, broken functionality, CI/workflow issues  |
+| `FEATURE_REQUEST.yml` | New site features, tooling improvements              |
+| `BLOG_POST.yml`       | Blog post proposals                                  |
+| `PAGE_FEEDBACK.yml`   | Feedback from the "Was this page helpful?" widget    |
 
 When drafting, read the chosen template under `.github/ISSUE_TEMPLATE/` and
 mirror its section labels verbatim so GitHub maps the body back to template form
 fields. Required fields are marked in the template.
 
-For writing or reviewing the post itself after a `blog:` proposal lands, see the
+For writing or reviewing the post itself after a blog proposal lands, see the
 `review-blog-post` skill.
 
 ## Drafting rules
@@ -81,20 +83,36 @@ Path-based auto-labeling (e.g. `blog`, `registry`, `i18n`, `lang:*`, several
 `sig:*`) is defined in `.github/component-label-map.yml` and applies on PRs
 only. You can still suggest these on issues manually.
 
-Governance for the `triage:*`, `type:*`, `priority:*`, and `sig:*` families
-lives in `content/en/docs/contributing/sig-practices.md`. Skip `type:discussion`
-— its own label description says "Do not use, convert discussion issues into
-real Discussions."
+Governance for the `triage:*`, `type:*`, `docs:*`, `lang:*`, and `sig:*`
+families and the `p0-critical` to `p3-low` priorities lives in
+`content/en/docs/contributing/sig-practices.md`. Skip `type:discussion`: its own
+label description says "Do not use, convert discussion issues into real
+Discussions."
 
 ## Output format
 
-Produce a fenced block with title, suggested labels, and body. Labels are
-comma-separated so they can be passed directly to
-`gh issue create --label "<comma,separated>"`.
+Produce a fenced block with title, type (when the template sets one), labels
+(the template's own, then any suggestions), and body. Filing with
+`gh issue create` bypasses the form, so pass the classification yourself:
 
+```bash
+gh issue create --repo open-telemetry/opentelemetry.io \
+  --type ISSUE_TYPE --label "LABELS" --title "TITLE" --body-file BODY
 ```
-**Title**: `bug: pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
 
+Here _`ISSUE_TYPE`_ is the type name, _`LABELS`_ the comma-separated label names
+(omit `--type` or `--label` when there are none), and _`TITLE`_ and _`BODY`_ the
+drafted title and a file holding the drafted body. This needs push access
+(GitHub silently drops labels and type otherwise) and gh 2.94 or later; without
+them, open the form at
+`https://github.com/open-telemetry/opentelemetry.io/issues/new?template=`_`TEMPLATE_FILE`_
+(the template's filename from the table above) and copy each section into its
+field.
+
+```text
+**Title**: `pr-approval-labels workflow adds ready-to-be-merged despite requested changes`
+
+**Type**: `bug`
 **Labels**: `CI/infra`, `Github actions`, `p2-medium`
 
 ---
@@ -129,3 +147,7 @@ Related to #1234.
 - `.github/component-label-map.yml` — path-based PR auto-labeling.
 - `gh label list --repo open-telemetry/opentelemetry.io --limit 200` — live
   label set.
+
+<!-- prettier-ignore-start -->
+[issue type]: https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/managing-issue-types-in-an-organization
+<!-- prettier-ignore-end -->

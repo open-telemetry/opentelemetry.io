@@ -1,15 +1,11 @@
 ---
-default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496 # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
-{{% alert title=Aviso color=warning %}}
+> [!WARNING]
+>
+> A instrumentação do cliente para o navegador é **experimental** e, em grande
+> parte, **não está especificada**. Caso possua interesse em auxiliar, entre em
+> contato com o [SIG de Navegador][Browser SIG].
 
-A instrumentação do cliente para o navegador é **experimental** e, em grande
-parte, **não está especificada**. Caso possua interesse em auxiliar, entre em
-contato com o [SIG de Instrumentação do Cliente][sig].
-
-[sig]:
-  https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
-
-{{% /alert %}}
+[Browser SIG]: https://github.com/open-telemetry/opentelemetry-browser

@@ -3,38 +3,56 @@ title: Início rápido
 description: Configure e colete telemetria em minutos!
 aliases: [getting-started]
 weight: 1
-default_lang_commit: 58e684763e8dd50a07ef5fbf428303973025428a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
 
-O OpenTelemetry Collector recebe [rastros](/docs/concepts/signals/traces/),
+O OpenTelemetry Collector recebe telemetria como
+[rastros](/docs/concepts/signals/traces/),
 [métricas](/docs/concepts/signals/metrics/) e
-[logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para
-diversos _backends_ de observabilidade utilizando seus componentes. Para uma
-visão geral conceitual do Collector, veja [Collector](/docs/collector).
+[logs](/docs/concepts/signals/logs/), processa esses dados e os encaminha para
+um ou mais _backends_ de observabilidade por meio do seu _pipeline_ de
+componentes.
 
-Você aprenderá a fazer o seguinte em menos de cinco minutos:
+> [!NOTE]
+>
+> Esta demonstração de início rápido cria uma configuração local básica. O
+> objetivo é mostrar como o Collector funciona, não configurar um ambiente
+> pronto para produção.
 
-- Configurar e executar o OpenTelemetry Collector.
-- Enviar telemetria e vê-la sendo processada pelo Collector.
+Neste guia, você irá:
+
+- Iniciar uma instância local do OpenTelemetry Collector
+- Gerar dados de rastros e enviá-los ao Collector
+- Verificar se o Collector recebe e processa os dados
+
+Ao final, você terá um _pipeline_ simples em execução na sua máquina e uma ideia
+mais clara de como o Collector se encaixa em uma _stack_ de observabilidade. Se
+quiser mais contexto antes de começar, consulte a visão geral do
+[Collector](/docs/collector).
 
 ## Pré-requisitos {#prerequisites}
 
-Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta
-página pressupõe que você esteja usando `bash`. Adapte as configurações e
-comandos conforme necessário para o seu _shell_ de preferência.
+Antes de começar, certifique-se de que seu ambiente tenha as seguintes
+ferramentas instaladas:
 
-- [Docker](https://www.docker.com/) ou outro ambiente de execução compatível com
-  contêineres.
-- [Go](https://go.dev/) 1.20 ou superior
-- [A variável de ambiente `GOBIN`][gobin] está definida; se não estiver,
-  inicialize-a adequadamente, por exemplo[^1]:
-  ```sh
-  export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
-  ```
+- [Docker](https://www.docker.com/) ou qualquer ambiente de execução de
+  contêineres compatível — usado para executar o Collector
+- [Go](https://go.dev/), uma das duas versões menores mais recentes — usado para
+  instalar o gerador de telemetria
+- [Variável de ambiente `GOBIN`][gobin] definida — garante que os binários Go
+  instalados estejam disponíveis no seu PATH[^1]
+
+Se `GOBIN` não estiver definida, execute:
+
+```sh
+export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
+```
+
+Este guia utiliza comandos `bash`. Se você estiver usando um _shell_ diferente,
+talvez seja necessário ajustar a sintaxe dos comandos.
 
 [^1]:
     Para mais informações, consulte
@@ -42,110 +60,99 @@ comandos conforme necessário para o seu _shell_ de preferência.
 
 ## Configurar o ambiente {#set-up-the-environment}
 
-1. Baixe a imagem Docker do OpenTelemetry Collector:
+1. Baixe a imagem Docker da [distribuição](/docs/collector/distributions/) core
+   do OpenTelemetry Collector:
 
-```sh
-docker pull otel/opentelemetry-collector:{{% param vers %}}
-```
+   ```sh
+   docker pull otel/opentelemetry-collector:{{% param vers %}}
+   ```
 
-2. Instale o utilitário [telemetrygen][]:
+2. Instale o [telemetrygen][], que usaremos para simular um cliente que gera
+   telemetria:
 
-```sh
-go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
-```
-
-Esse utilitário pode simular um cliente gerando [rastros][traces],
-[métricas][metrics] e [logs][].
+   ```sh
+   go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
+   ```
 
 ## Gerar e coletar telemetria {#generate-and-collect-telemetry}
 
-3. Inicie o Collector, escutando nas portas 4317 (para OTLP gRPC), 4318 (para
-   OTLP HTTP) e 55679 (para ZPages):
+3. Inicie o Collector:
 
-```sh
-docker run \
-  -p 127.0.0.1:4317:4317 \
-  -p 127.0.0.1:4318:4318 \
-  -p 127.0.0.1:55679:55679 \
-  otel/opentelemetry-collector:{{% param vers %}} \
-  2>&1 | tee collector-output.txt # Opcionalmente use tee para facilitar buscas posteriores
-```
+   ```sh
+   docker run \
+     -p 127.0.0.1:4317:4317 \
+     -p 127.0.0.1:4318:4318 \
+     -p 127.0.0.1:55679:55679 \
+     otel/opentelemetry-collector:{{% param vers %}} \
+     2>&1 | tee collector-output.txt
+   ```
 
-4. Em uma janela de terminal separada, gere alguns rastros de exemplo:
+   O comando anterior executa o Collector localmente e abre três portas:
+   - `4317` — OTLP sobre gRPC, o padrão para a maioria dos SDKs
+   - `4318` — OTLP sobre HTTP, para clientes que não suportam gRPC
+   - `55679` — ZPages, uma interface de depuração integrada que você pode abrir
+     no navegador
 
-```sh
-$GOBIN/telemetrygen traces --otlp-insecure --traces 3
-```
+4. Em um terminal separado, gere alguns rastros:
 
-Entre as saídas geradas pelo utilitário, você deverá ver uma confirmação de que
-rastros foram gerados:
+   ```sh
+   $GOBIN/telemetrygen traces --otlp-insecure --traces 3
+   ```
 
-```text
-2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
-2024-01-16T14:33:15.692-0500  INFO  traces/traces.go:58  stop the batch span processor
-```
+   Você verá uma saída confirmando que os rastros foram enviados:
 
-Para facilitar a visualização da saída relevante, você pode filtrá-la:
+   ```text
+   2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
+   2024-01-16T14:33:15.692-0500  INFO  traces/traces.go:58  stop the batch span processor
+   ```
 
-```sh
-$GOBIN/telemetrygen traces --otlp-insecure \
-  --traces 3 2>&1 | grep -E 'start|traces|stop'
-```
+5. De volta ao terminal do Collector, você deverá ver atividade de ingestão de
+   rastros semelhante à seguinte:
 
-5. No terminal onde o contêiner do Collector está em execução, você deverá ver a
-   atividade de ingestão de rastros semelhante ao que é mostrado no exemplo a
-   seguir:
+   ```console
+   $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
+   Span #0
+       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+       Parent ID      : 6f1ff7f9cf4ec1c7
+       ID             : 8d1e820c1ac57337
+       Name           : okey-dokey
+       Kind           : Server
+       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+       End time       : 2024-01-16 14:13:54.586 +0000 UTC
+       Status code    : Unset
+       Status message :
+   Span #1
+       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+       Parent ID      :
+       ID             : 6f1ff7f9cf4ec1c7
+       Name           : lets-go
+       Kind           : Client
+       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+       End time       : 2024-01-16 14:13:54.586 +0000 UTC
+       Status code    : Unset
+       Status message :
+   ...
+   ```
 
-```console
-$ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
-Span #0
-   Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-   Parent ID      : 6f1ff7f9cf4ec1c7
-   ID             : 8d1e820c1ac57337
-   Name           : okey-dokey
-   Kind           : Server
-   Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-   End time       : 2024-01-16 14:13:54.586 +0000 UTC
-   Status code    : Unset
-   Status message :
-Span #1
-   Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-   Parent ID      :
-   ID             : 6f1ff7f9cf4ec1c7
-   Name           : lets-go
-   Kind           : Client
-   Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-   End time       : 2024-01-16 14:13:54.586 +0000 UTC
-   Status code    : Unset
-   Status message :
-...
-```
-
-6. Abra <http://localhost:55679/debug/tracez> e selecione uma das amostras na
-   tabela para ver os rastros que você acabou de gerar.
-
-7. Quando terminar, encerre o contêiner do Collector, por exemplo, usando
-   <kbd>Control-C</kbd>.
+6. Pressione <kbd>Control-C</kbd> para encerrar o Collector.
 
 ## Próximos passos {#next-steps}
 
-Neste tutorial, você iniciou o OpenTelemetry Collector e enviou telemetria para
-ele. Como próximos passos, considere:
+Neste ponto, você executou o Collector localmente e viu como ele processa
+telemetria de ponta a ponta. A partir daqui, você pode começar a aprender como
+ele é usado em configurações reais:
 
-- Explorar diferentes maneiras de
-  [instalar o Collector](/docs/collector/install/).
-- Aprender sobre os diferentes modos do Collector em
-  [Deployment Methods](/docs/collector/deploy/).
-- Familiarizar-se com os arquivos e a estrutura de
-  [configuração](/docs/collector/configuration) do Collector.
-- Explorar os componentes disponíveis no
-  [registro](/ecosystem/registry/?language=collector).
-- Aprender a
-  [construir um Collector personalizado com o OpenTelemetry Collector Builder (OCB)](/docs/collector/extend/ocb/).
+- [Configuração](/docs/collector/configuration): Aprenda como funciona o arquivo
+  de configuração do Collector e como conectá-lo a um _backend_ real, como
+  Jaeger ou Prometheus.
+- [Padrões de implantação](/docs/collector/deploy/): Entenda a diferença entre
+  executar o Collector como agente ou como _gateway_.
+- [Instalar o Collector](/docs/collector/install/): Explore opções de instalação
+  além do Docker, incluindo binários e Kubernetes.
+- [Registro de componentes](/ecosystem/registry/?language=collector): Navegue
+  pelos _receivers_, _processors_ e _exporters_ disponíveis para estender seu
+  _pipeline_.
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
-[logs]: /docs/concepts/signals/logs/
-[metrics]: /docs/concepts/signals/metrics/
 [telemetrygen]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
-[traces]: /docs/concepts/signals/traces/

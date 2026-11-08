@@ -75,6 +75,7 @@ sig:enduser:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/community/end-user/**
+          - content/en/docs/guidance/**
 sig:erlang:
   - changed-files:
       - any-glob-to-any-file:

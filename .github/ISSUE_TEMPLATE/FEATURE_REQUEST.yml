@@ -1,6 +1,5 @@
 name: Website feature request
 description: Something new you'd like to see on the site.
-title: 'feat: '
 type: feature
 body:
   - type: textarea

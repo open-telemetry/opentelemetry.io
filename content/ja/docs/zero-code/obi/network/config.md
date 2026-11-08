@@ -3,8 +3,7 @@ title: OBI ネットワークメトリクスの設定オプション
 linkTitle: 設定
 description: OBI ネットワークメトリクスで利用可能な設定オプションについて学びます
 weight: 3
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
-drifted_from_default: true
+default_lang_commit: 1a618723d0d64c5c05a4c6af5ebdfdea16ab2c5a
 cSpell:ignore: BEETPH UDPLITE
 ---
 
@@ -13,15 +12,16 @@ cSpell:ignore: BEETPH UDPLITE
 YAML の例:
 
 ```yaml
+metrics:
+  features: [network]
 network:
-  enable: true
   cidrs:
     - 10.10.0.0/24
     - 10.0.0.0/8
     - 10.30.0.0/16
 attributes:
   kubernetes:
-    enable: true
+    enable: 'true'
   select:
     obi_network_flow_bytes:
       include:
@@ -41,12 +41,12 @@ otel_metrics_export:
 
 ネットワークメトリクスを有効化するには、第一階層の [メトリクスセクション](../../configure/export-data/#metrics-export-features) の `features` に次のいずれかを追加します。
 
-- `network` は `obi_network_flow_bytes` メトリクスを有効化します。これは、クラスター内の 2 つのエンドポイント間のバイト数です
-- `network_inter_zone` は `obi_network_inter_zone_bytes` メトリクスを有効化します。これは、クラウドクラスター内の異なるアベイラビリティゾーン間のバイト数です
+- `network` は `obi.network.flow.bytes` メトリクスを有効化します。これは、クラスター内の 2 つのエンドポイント間のバイト数です
+- `network_inter_zone` は `obi.network.inter.zone.bytes` メトリクスを有効化します。これは、クラウドクラスター内の異なるアベイラビリティゾーン間のバイト数です
 
 > [!CAUTION]
 >
-> `obi_network_inter_zone_bytes` 仕様は現在実験的であり、Kubernetes クラスターでのみ利用可能です。
+> `obi.network.inter.zone.bytes` 仕様は現在実験的であり、Kubernetes クラスターでのみ利用可能です。
 > 仕様は最終的なものではなく、将来のバージョンの OBI で破壊的変更が導入される可能性があります。
 
 | YAML     | 環境変数                   | 型     | デフォルト      |
@@ -107,9 +107,9 @@ OTEL_EBPF_NETWORK_CIDRS=10.0.0.0/8,192.168.0.0/16
 
 `agent_ip` 設定プロパティが設定されている場合、このプロパティは効果がありません。
 
-| YAML            | 環境変数    | 型     | デフォルト |
-| --------------- | ----------- | ------ | ---------- |
-| `agent_ip_type` | `OTEL_EBPF` | string | `any`      |
+| YAML            | 環境変数                          | 型     | デフォルト |
+| --------------- | --------------------------------- | ------ | ---------- |
+| `agent_ip_type` | `OTEL_EBPF_NETWORK_AGENT_IP_TYPE` | string | `any`      |
 
 各フローの `obi.ip` フィールドに OBI が報告する IP アドレスの種類（IPv4、IPv6、またはその両方）を指定します。
 受け付ける値は `any`（デフォルト）、`ipv4`、`ipv6` です。
@@ -142,7 +142,7 @@ OTEL_EBPF_NETWORK_INTERFACES=eth0,eth1,/^veth/
 たとえば次のとおりです。
 
 ```sh
-OTEL_BPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
+OTEL_EBPF_NETWORK_EXCLUDE_INTERFACES=lo,/^veth/
 ```
 
 | YAML        | 環境変数                      | 型       | デフォルト |

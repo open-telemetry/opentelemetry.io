@@ -3,8 +3,7 @@ title: ネットワークメトリクス
 linkTitle: ネットワーク
 description: OBI をポイントツーポイントのネットワークメトリクスの観察用に設定する
 weight: 8
-default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
-drifted_from_default: true
+default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
 cSpell:ignore: OpenShift replicaset statefulset
 ---
 
@@ -41,8 +40,8 @@ OBI はバイトおよびパケットのフローメトリクスと、ゾーン�
 >
 > メトリクスはホストの視点からキャプチャされるため、ネットワークスタックのオーバーヘッド（プロトコルヘッダーなど）が含まれます。
 
-デフォルトでは、ネットワークフローバイトについて以下の属性のみが報告されます。
-`k8s.src.owner.name`、`k8s.src.namespace`、`k8s.dst.owner.name`、`k8s.dst.namespace`、`k8s.cluster.name` です。
+デフォルトでは、ネットワークフローバイトには `direction` が含まれます。
+Kubernetes メタデータが有効な場合は、`k8s.src.owner.name`、`k8s.src.owner.type`、`k8s.src.namespace`、`k8s.dst.owner.name`、`k8s.dst.owner.type`、`k8s.dst.namespace`、`k8s.cluster.name` も含まれます。
 
 ゾーン間バイトメトリクスのデフォルト属性は、`k8s.cluster.name`、`src.zone`、`dst.zone` です。
 
@@ -52,7 +51,8 @@ OBI はバイトおよびパケットのフローメトリクスと、ゾーン�
 
 | 属性                                              | 説明                                                                                                                                                                                                                       |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `direction`                                       | 受信トラフィックは `ingress`、送信トラフィックは `egress`                                                                                                                                                                  |
+| `direction`                                       | コネクションに対するフロー方向: `request`、`response`、または `unknown`                                                                                                                                                    |
+| `iface.direction`                                 | 監視対象のネットワークインターフェイスに対する `ingress` または `egress`                                                                                                                                                   |
 | `dst.address`                                     | 宛先 IP アドレス（エグレスはリモート、イングレスはローカル）                                                                                                                                                               |
 | `dst.cidr`                                        | 宛先 CIDR（設定済みの場合）                                                                                                                                                                                                |
 | `dst.name`                                        | 宛先サービス名（サービスディスカバリーで解決）                                                                                                                                                                             |
@@ -92,39 +92,37 @@ OBI はバイトおよびパケットのフローメトリクスと、ゾーン�
 
 高カーディナリティ削減のために、ネットワークメトリクスは、メトリクスバックエンドへ送信されるメトリクス数を減らすようにプロセスレベルで事前集約されます。
 
-デフォルトでは、すべてのメトリクスは以下の属性で集約されます。
+メトリクスの選択された属性が集約キーを決定します。
+OBI はエンドポイントアドレスやポートなど、多くの高カーディナリティ属性をデフォルトでは除外します。
+デフォルトの選択については、[エクスポートされるメトリクス](../metrics/)ページを参照してください。
+追加のキーは `attributes.select` で設定します。
 
-- `direction`
-- `transport`
-- `src.address`
-- `dst.address`
-- `src.port`
-- `dst.port`
-
-OBI の設定で許可する属性を指定することで、その属性によってメトリクスを集約できます。
-
-たとえば、ネットワークメトリクスをデフォルトの個別の Pod 名のかわりに、送信元と宛先の Kubernetes オーナーによって集約するには、以下の設定を使用します。
+たとえば、ネットワークメトリクスを送信元と宛先の Kubernetes オーナー名とタイプのみで集約するには、以下の設定を使用します。
+この設定は `direction` を含むデフォルトの属性選択を置き換えます。
 
 ```yaml
-network:
-  allowed_attributes:
-    - k8s.src.owner.name
-    - k8s.dst.owner.name
-    - k8s.src.owner.type
-    - k8s.dst.owner.type
+attributes:
+  select:
+    obi_network_flow_bytes:
+      include:
+        - k8s.src.owner.name
+        - k8s.dst.owner.name
+        - k8s.src.owner.type
+        - k8s.dst.owner.type
 ```
 
 次に、同等の Prometheus メトリクスは以下のようになります。
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
   k8s_dst_owner_name="backend"
   k8s_dst_owner_type="deployment"
 ```
 
-前述の例では、個別の Pod 名のかわりに、送信元と宛先の Kubernetes オーナー名とタイプによって `obi.network.flow.bytes` の値を集約します。
+この例では、送信元と宛先の Kubernetes オーナー名とタイプによって `obi.network.flow.bytes` を集約します。
+デフォルトの direction、namespace、cluster ラベルは省略されます。
 
 ## CIDR ベースのメトリクス {#cidr-based-metrics}
 
@@ -148,7 +146,7 @@ network:
 次に、同等の Prometheus メトリクスは以下のようになります。
 
 ```text
-obi_network_flow_bytes:
+obi_network_flow_bytes_total:
   src_cidr="cluster-internal"
   dst_cidr="private"
 ```
