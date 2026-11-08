@@ -5734,6 +5734,11 @@
     "when": "2026-10-22T05:45:12Z",
     "via": "lychee",
   },
+  "https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
   "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md": {
     "result": 200,
     "when": "2026-11-06T05:38:22Z",
@@ -14639,6 +14644,11 @@
     "when": "2026-11-04T06:47:13Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNet-1.20.3/src/OpenTelemetry.Instrumentation.AspNet/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.19.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
@@ -14649,6 +14659,11 @@
     "when": "2026-10-27T08:57:32Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.20.2/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.19.0/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
     "result": 200,
     "when": "2026-10-23T05:44:39Z",
@@ -14657,6 +14672,11 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.20.1/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
     "result": 200,
     "when": "2026-10-27T08:57:32Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.20.2/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Process-1.19.0-rc.1/src/OpenTelemetry.Instrumentation.Process/README.md#metrics": {
@@ -14687,6 +14707,11 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.1-beta.1/src/OpenTelemetry.Resources.Azure/README.md": {
     "result": 200,
     "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.2-beta.1/src/OpenTelemetry.Resources.Azure/README.md": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.19.1-beta.1/src/OpenTelemetry.Resources.Container/README.md": {
@@ -14747,6 +14772,11 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.20.1": {
     "result": 200,
     "when": "2026-10-27T08:57:33Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.20.2": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/4a4fab74f466cdbae23876e88e17b797b7674319/src?from_branch=main": {
@@ -15077,6 +15107,76 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.0/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
     "result": 200,
     "when": "2026-11-04T06:47:14Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/alpine.dockerfile": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/centos-stream9.dockerfile": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/debian-arm64.dockerfile": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/debian.dockerfile": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/assembly-conflict-resolution.md": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/assembly-conflict-resolution.md#additionaldeps-and-shared-store-workaround": {
+    "result": 200,
+    "when": "2026-11-06T15:59:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/netfx-appdomain-strategy.md": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/plugins.md": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/src/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/src/OpenTelemetry.AutoInstrumentation.Assemblies/Directory.Packages.props": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_net.h": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/src/OpenTelemetry.AutoInstrumentation.Native/assembly_redirection_netfx.h": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/src/OpenTelemetry.AutoInstrumentation/OpenTelemetry.AutoInstrumentation.csproj": {
+    "result": 200,
+    "when": "2026-11-06T15:59:12Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744": {
