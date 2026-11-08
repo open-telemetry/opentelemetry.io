@@ -37,6 +37,9 @@ Tentatively planned content organization:
 - **Deployment** — Deployment-specific behavior for the OpenTelemetry website.
 - [**Testing**](./testing/) — Link checking, accessibility standards, tests,
   review practices, and other quality-related processes.
+- [**Security**](./security/) — Security posture of the website and its
+  repository: handling advisories, vulnerability reporting, credential scoping,
+  and supply-chain safeguards.
 - **Roadmap** — Milestones, backlog, priorities, technical debt, and
   design/implementation decisions.
 
