@@ -1,7 +1,5 @@
-// Characterization tests for the recovered probe's pure parts: pin the
-// existing behavior as-is (no red-green cycle: the code predates the
-// tests). Browser-dependent paths are covered by the opt-in live smoke check
-// (./live-check.mjs), not here.
+// Unit tests for the probe's pure parts. Browser-dependent paths are covered
+// by the opt-in live smoke check (./live-check.mjs), not here.
 
 import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
@@ -34,6 +32,13 @@ suite('npmPackageNameFromUrl', () => {
     ['https://www.npmjs.com/package/foo|bar', null],
     ['https://www.npmjs.com/package/@scope', null],
     ['https://www.npmjs.com/package/@/pkg', null],
+    // Option-like and npm-forbidden leading characters: `--version` would be
+    // parsed by the npm CLI as a flag and exit 0 (a false "package exists").
+    ['https://www.npmjs.com/package/--version', null],
+    ['https://www.npmjs.com/package/-x', null],
+    ['https://www.npmjs.com/package/.hidden', null],
+    ['https://www.npmjs.com/package/_private', null],
+    ['https://www.npmjs.com/package/@-scope/pkg', null],
   ];
 
   for (const [url, expected] of cases) {

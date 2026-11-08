@@ -29,8 +29,10 @@ const NPMJS_URL_REGEX = regexX(String.raw`
 
 // Syntactically valid scoped or unscoped npm package name. Slightly looser
 // than npm's rules for new packages (legacy names may contain uppercase),
-// but strict enough to exclude shell metacharacters and malformed scopes.
-const NPM_PACKAGE_NAME_REGEX = /^(@[a-zA-Z0-9\-._~]+\/)?[a-zA-Z0-9\-._~]+$/;
+// but strict enough to exclude shell metacharacters, malformed scopes, and
+// option-like leading characters: the name is passed to the npm CLI.
+const NPM_PACKAGE_NAME_REGEX =
+  /^(@[a-zA-Z0-9][a-zA-Z0-9\-._~]*\/)?[a-zA-Z0-9][a-zA-Z0-9\-._~]*$/;
 
 const cratesIoURL = 'https://crates.io/';
 
@@ -216,9 +218,8 @@ export function isHttp2XX(status) {
   return status && status >= 200 && status < 300;
 }
 
-// npmjs.com turns away headless clients with 403, or with 429 when
-// Cloudflare's rate limiting kicks in (the "Just a moment..." challenge, seen
-// on every package page of a refresh run). Neither is a verdict on the package.
+// npmjs.com answers headless clients with 403, or 429 under Cloudflare's rate
+// limiting; on a package URL, neither is a verdict on the package.
 export function isNpmjsBotWall(status, url) {
   return (status === 403 || status === 429) && NPMJS_URL_REGEX.test(url);
 }
@@ -288,11 +289,17 @@ function checkNpmPackageUrlViaCLI(url) {
   }
 
   try {
-    // execFileSync with an argument array: no shell, no interpolation.
-    execFileSync('npm', ['view', packageName, 'name'], {
+    // execFileSync with an argument array: no shell, no interpolation. The
+    // output must name the package back: npm exits 0 for things that aren't
+    // packages too.
+    const name = execFileSync('npm', ['view', packageName, 'name'], {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'pipe'],
-    });
+    }).trim();
+    if (name !== packageName) {
+      log(`> npm view '${packageName}' returned '${name}': not a package`);
+      return 404;
+    }
     log(`> npm view '${packageName}' successful: package exists`);
     return STATUS_OK_BY_ANALYSIS;
   } catch (error) {
@@ -308,8 +315,8 @@ function getChromePath() {
 
   try {
     // Install Chrome if not present, or just return the path if already
-    // installed. Uses the dependency-provided puppeteer bin (`npm exec --no`
-    // never falls back to the public registry).
+    // installed. `npm exec --no` refuses to fetch puppeteer from the registry
+    // if it isn't already installed.
     const output = execFileSync(
       'npm',
       ['exec', '--no', 'puppeteer', 'browsers', 'install', 'chrome'],
