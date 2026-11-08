@@ -3,8 +3,7 @@ title: Go 計装用 Auto SDK
 linkTitle: Auto SDK
 description: Auto SDK を使用して、手動スパンをゼロコード eBPF スパンと統合します。
 weight: 16
-default_lang_commit: 4edfbfc2ff38123678ca63eca95de94ede457623
-drifted_from_default: true
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 ---
 
 [OBI](/docs/zero-code/obi) などのツールで使用される OpenTelemetry Go の eBPF 計装フレームワークは、Auto SDK を通じて、手動で計装された OpenTelemetry スパンとの統合をサポートします。
@@ -71,6 +70,12 @@ Auto SDK は、SDK を有効化するうえで重要な独自の TracerProvider 
 > eBPF による計装も適用されている Go アプリケーションで手動スパンを作成する場合は、独自のグローバル TracerProvider を初期化しないでください。
 
 ### Auto SDK TracerProvider {#auto-sdk-tracerprovider}
+
+> [!NOTE]
+>
+> OBI を使用する場合、グローバル `TracerProvider` は未設定のままにしてください。
+> Auto SDK プロバイダーを含め、`otel.SetTracerProvider` を呼び出すと、OBI が Auto SDK を有効化できなくなります。
+> [OBI の Go Trace API 統合](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api)を参照してください。
 
 ほとんどのユースケースでは、Auto SDK の組み込み TracerProvider を手動で操作する必要はありません。
 しかし、一部の高度なユースケースでは、Auto SDK の TracerProvider を手動で構成したい場合があります。
