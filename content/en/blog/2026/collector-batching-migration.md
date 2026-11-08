@@ -131,19 +131,18 @@ design, wanting:
 2. Control over concurrency, to set limits on concurrent request count limit
 3. Control over back-pressure and error propagation.
 
-The `batch` processor includes a small in-memory queue. Its producer
-side makes a blocking write to a Golang channel, then it returns
-success to the caller like this:
+The `batch` processor includes a small in-memory queue. Its producer side makes
+a blocking write to a Golang channel, then it returns success to the caller like
+this:
 
 ```shell
 batch.pending <- request
 return nil
 ```
 
-This is standard behavior. The problem is that `batch` processor's
-built-in queue has no configurable support for concurrency,
-back-pressure, or error propagation, not to mention a storage
-extension for making the queue persistent.
+This is standard behavior. The problem is that `batch` processor's built-in
+queue has no configurable support for concurrency, back-pressure, or error
+propagation, not to mention a storage extension for making the queue persistent.
 
 ## Integrated exporter-level queue and batch behavior
 
@@ -151,10 +150,10 @@ Exporter-level batching is generally available for the exporters that elect to
 use common `sending_queue` behavior. Queuing and batching behavior are
 integrated:
 
-- Requests first try to enter the queue. The queue has limited capacity. When the
-  queue is full, it can fail immediately or it can block the caller. Usually,
-  the queue returns success to the caller on admission. However, there is also
-  an option to wait for a response.
+- Requests first try to enter the queue. The queue has limited capacity. When
+  the queue is full, it can fail immediately or it can block the caller.
+  Usually, the queue returns success to the caller on admission. However, there
+  is also an option to wait for a response.
 - A number of consumers concurrently pull requests from the queue. If batching,
   undersize and oversize requests are combined and split before being handled by
   consumers, whereas right-sized requests pass straight through the batcher.
@@ -285,9 +284,9 @@ most expensive because it computes the encoded size. Watch
 
 ### More features
 
-Similar to the `batch` processor, the `sending_queue` mechanism
-supports [partitioning by metadata][SENDING_QUEUE], where distinct
-combinations of selected headers form independent batches.
+Similar to the `batch` processor, the `sending_queue` mechanism supports
+[partitioning by metadata][SENDING_QUEUE], where distinct combinations of
+selected headers form independent batches.
 
 <!-- prettier-ignore -->
 ```yaml
