@@ -216,6 +216,13 @@ export function isHttp2XX(status) {
   return status && status >= 200 && status < 300;
 }
 
+// npmjs.com turns away headless clients with 403, or with 429 when
+// Cloudflare's rate limiting kicks in (the "Just a moment..." challenge, seen
+// on every package page of a refresh run). Neither is a verdict on the package.
+export function isNpmjsBotWall(status, url) {
+  return (status === 403 || status === 429) && NPMJS_URL_REGEX.test(url);
+}
+
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
 
@@ -228,9 +235,9 @@ export async function getUrlStatus(url, _verbose = false) {
     return status;
   }
 
-  // npmjs.com 403s are a bot wall; ask the npm CLI instead.
-  if (status === 403 && NPMJS_URL_REGEX.test(url)) {
-    let _status = checkNpmPackageUrlViaCLI(url);
+  // npmjs.com bot walls say nothing about the package; ask the npm CLI instead.
+  if (isNpmjsBotWall(status, url)) {
+    const _status = checkNpmPackageUrlViaCLI(url);
     if (isHttp2XX(_status)) return _status;
   }
 

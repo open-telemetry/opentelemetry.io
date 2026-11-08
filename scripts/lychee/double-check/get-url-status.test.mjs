@@ -7,6 +7,7 @@ import { test, suite } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   isHttp2XX,
+  isNpmjsBotWall,
   isStatusNotFound,
   npmPackageNameFromUrl,
   parseGitHubLineRef,
@@ -80,6 +81,32 @@ suite('isHttp2XX', () => {
   test('rejects non-2xx statuses and null', () => {
     for (const status of [199, 300, 404, 422, null, undefined, 0]) {
       assert.ok(!isHttp2XX(status), `${status} is not 2xx`);
+    }
+  });
+});
+
+suite('isNpmjsBotWall', () => {
+  const pkg = 'https://www.npmjs.com/package/@opentelemetry/instrumentation-pg';
+
+  test('403 and 429 on an npmjs.com package page are a bot wall', () => {
+    for (const status of [403, 429]) {
+      assert.ok(isNpmjsBotWall(status, pkg), `${status} is a bot wall`);
+    }
+  });
+
+  test('other statuses on an npmjs.com package page are not', () => {
+    for (const status of [200, 404, 422, 500, null]) {
+      assert.ok(!isNpmjsBotWall(status, pkg), `${status} is not a bot wall`);
+    }
+  });
+
+  test('non-package npmjs.com URLs and other hosts are not', () => {
+    for (const url of [
+      'https://www.npmjs.com/search?q=%40cspell%2Fdict',
+      'https://openai.com/',
+    ]) {
+      assert.ok(!isNpmjsBotWall(403, url), `${url} is not a bot wall`);
+      assert.ok(!isNpmjsBotWall(429, url), `${url} is not a bot wall`);
     }
   });
 });
