@@ -227,11 +227,12 @@ aplicație.
 Contextul intervalului este un obiect imuabil, prezent în fiecare interval, care
 conține următoarele:
 
-- ID-ul urmei (trace ID), care reprezintă urma din care face parte intervalul
-- ID-ul intervalului (span ID)
-- Trace Flags, o codificare binară care conține informații despre urmă
-- Trace State, o listă de perechi cheie-valoare care pot transporta informații
-  despre urmă specifice furnizorului
+- ID-ul urmei, care reprezintă urma din care face parte intervalul
+- ID-ul intervalului
+- Indicatorii de urmărire, o codificare binară care conține informații despre
+  urmă
+- Starea de urmărire, o listă de perechi cheie-valoare care pot transporta
+  informații despre urmă specifice furnizorului
 
 Contextul intervalului este partea unui interval care este serializată și
 propagată împreună cu [contextul distribuit](#context-propagation) și
