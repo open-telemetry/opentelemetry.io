@@ -97,7 +97,7 @@ npm install --package-lock-only --ignore-scripts
 
 ### ピア結合パッケージ {#peer-coupled-packages}
 
-OpenTelemetry npm パッケージ（`@opentelemetry/*`）のうち、SDK パッケージは `@opentelemetry/api` の狭いバージョン範囲のみを受け入れます。SDK 3.0 以降は single minor であり、`@opentelemetry/instrumentation` も同じ範囲を共有しています。
+OpenTelemetry npm パッケージ（`@opentelemetry/*`）のうち、SDK パッケージは `@opentelemetry/api` の狭いバージョン範囲のみを受け入れます。SDK 3.0 以降はその範囲は 1 つのマイナーバージョンに限られ、`@opentelemetry/instrumentation` も同じ範囲を共有しています。
 エクスポーターおよび Web 自動計装は、自身のリリースの SDK パッケージに依存します。
 協調リリースの一部だけが揃った状態では、API の境界をまたぐとロック再生成が `ERESOLVE` で失敗し、そうでなくてもロック内に重複した OpenTelemetry パッケージがネストされた状態で解決される可能性があります。
 
