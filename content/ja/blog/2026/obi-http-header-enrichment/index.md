@@ -42,7 +42,7 @@ cSpell:ignore: Avni obfuscate x-tenant-id x-user-segment Yahn
 
 ```yaml
 ebpf:
-  # エンリッチメントのためにヘッダーがキャプチャされるように必要です。
+  # エンリッチメント用にヘッダーをキャプチャするために必要です。
   track_request_headers: true
   payload_extraction:
     http:
@@ -95,7 +95,7 @@ OBI v0.7.0 でエンリッチメントを有効にした後：スパンにリク
 
 OBI
 [v0.7.0](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0) のヘッダーエンリッチメントは、実用的なデバッグ機能です。
-インシデント対応のシグナルを改善し、ポリシーを明示的に保ち、OBI の設定変更のみでロールアウト（またはロールバック）できます。
+インシデント対応に役立つシグナルを改善し、ポリシーを明示的なものとして維持し、OBI の設定変更のみでロールアウト（またはロールバック）できます。
 
 すでに OBI を使っていますか？
 v0.7.0 にアップグレードして、[ヘッダーエンリッチメント](/docs/zero-code/obi/configure/metrics-traces-attributes/#http-header-enrichment-for-spans)を試してみてください。
@@ -106,4 +106,4 @@ OBI が初めてですか？
 
 すでにヘッダーエンリッチメントを試しましたか？
 どうだったか教えてください。
-[`#otel-ebpf-instrumentation` CNCF Slack チャンネル](https://cloud-native.slack.com/archives/C06DQ7S2YEP)で私たちを見つけるか、今後のリリースの改善に役立つフィードバックがあれば[ディスカッションを開いて](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions)ください。
+[`#otel-ebpf-instrumentation` CNCF Slack チャンネル](https://cloud-native.slack.com/archives/C06DQ7S2YEP)で私たちに連絡するか、今後のリリースの改善に役立つフィードバックがあれば[ディスカッションを開いて](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions)ください。
