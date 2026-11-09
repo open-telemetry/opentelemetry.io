@@ -1,6 +1,5 @@
 name: Blog post request
 description: Request to submit a blog post to the OpenTelemetry blog
-title: 'blog: '
 labels: ['blog']
 body:
   - type: markdown

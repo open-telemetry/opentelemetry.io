@@ -29,8 +29,9 @@ plain HTTP status, it:
   references (all `#L…` forms) and `-ov-file` tab anchors.
 - **Special-cases misleading hosts**: crates.io serves 404 for page requests
   even when the page exists, so the page body is analyzed instead; npmjs.com can
-  redirect to a signin page for nonexistent packages and bot-wall (403) valid
-  ones, so the page title is checked and 403s fall back to `npm view PACKAGE`.
+  redirect to a signin page for nonexistent packages and bot-wall (403, or 429
+  under Cloudflare rate limiting) valid ones, so the page title is checked and
+  bot-walled packages fall back to `npm view PACKAGE`.
 
 Synthetic statuses:
 
