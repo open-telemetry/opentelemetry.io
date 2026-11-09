@@ -8,7 +8,7 @@ default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 
 2022年は OpenTelemetry にとって素晴らしい1年でした。
 メトリクスがファーストクラスのシグナルタイプとなり、OpenTelemetry の既存の分散トレースサポートとともに本番サービスやインフラストラクチャで使用され、重要なパフォーマンスデータをあらゆるオブザーバビリティバックエンドに送信して処理できるようになりました。
-私たちが目を向けるあらゆるところで、OpenTelemetry が最大規模から最小規模まで、最先端の組織から歴史的に慎重な組織まで、あらゆる場所でテスト、展開、あるいはすでに使用されているのを目にしています。
+私たちが目を向けるあらゆるところで、OpenTelemetry が最大規模から最小規模まで、最先端の組織から歴史的に慎重な組織まで、あらゆる組織でテストされ、展開され、あるいはすでに使用されているのを目にしています。
 
 1月以降、私たちは以下を提供しました。
 
@@ -26,14 +26,14 @@ default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 - すべてのコンポーネントに対するさまざまな改善。
 
 コミュニティも引き続き大幅に成長しています。
-[現在、GitHub 上で150以上の異なる組織から800人超の月間アクティブ開発者がいます](https://opentelemetry.devstats.cncf.io/d/7/companies-contributing-in-repository-groups?orgId=1&from=now-4y&to=now)。
+[現在、GitHub 上で150の異なる組織から800人を超える月間アクティブ開発者がいます](https://opentelemetry.devstats.cncf.io/d/7/companies-contributing-in-repository-groups?orgId=1&from=now-4y&to=now)。
 これらのコントリビューターのうち、エンドユーザーの割合がますます増えています。
 [上位25の貢献組織のうち10がエンドユーザー組織です](https://opentelemetry.devstats.cncf.io/d/5/companies-table?orgId=1)。
 これはプロジェクトにとって非常に健全なシグナルです。
 人々や企業が OpenTelemetry から多大な有用性を得ており、コントリビューションを通じてさらに皆にとって有用なものにしています。
 
 この投稿は KubeCon の期間中に公開しています。
-多くのコミュニティメンバーやエンドユーザーが集まり、OpenTelemetry とその使われ方、改善の方法、そして今後の方向性について議論しています。
+多くのコミュニティメンバーやエンドユーザーが集まり、OpenTelemetry とその使われ方、改善の方法、そして今後の方向性について議論する予定です。
 今年5月の KubeCon EU では、[より正式な OpenTelemetry ロードマップを作成するプロセスを開始しました](https://docs.google.com/document/d/1jt47KPwgDG_-4kR4J5GtFSCEhQO3CHgUdAwpCKTQHO8/edit#)。
 デトロイトでもそのプロセスを継続する予定です。
 この投稿はカンファレンスに先立って書いているため、完全な結果をお伝えすることはできませんが、最も重要と思われる項目のいくつかを紹介します。

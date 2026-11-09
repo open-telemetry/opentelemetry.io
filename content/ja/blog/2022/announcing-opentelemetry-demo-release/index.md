@@ -24,7 +24,7 @@ Swift を除くすべての OpenTelemetry 言語 SDK がこのリリースに[�
 - サービス間で属性を渡すためのオブザーバビリティバゲージの処理。
 - 属性、イベント、その他のテレメトリーメタデータの作成。
 
-また、ランタイムおよびビジネスメトリクスのユースケースを取得するために、[複数のサービス](/docs/demo/telemetry-features/metric-coverage/)に OpenTelemetry メトリクスを統合しました。
+また、ランタイムおよびビジネスメトリクスのユースケースに対応するために、[複数のサービス](/docs/demo/telemetry-features/metric-coverage/)に OpenTelemetry メトリクスを統合しました。
 
 OpenTelemetry の優れたデモンストレーションを提供するだけでも十分ですが、1.0リリースで重視したのは、OpenTelemetry の「どのように」だけでなく「なぜ」を示すことでした。
 そのために、フィーチャーフラグで制御される[障害シナリオ](/docs/demo/#scenarios)を実装するフレームワークを構築しました。
