@@ -16,7 +16,7 @@ cSpell:ignore: Ashpole Markou resourcedetection sattributes
 
 ## 先行事例 {#prior-art}
 
-昨年10月、K8s（Kubernetes）Semantic Conventions SIG は、グループの目標の最初のターゲットを[達成しました](https://github.com/open-telemetry/semantic-conventions/issues/1032#issuecomment-3401648352)。
+昨年10月、K8s（Kubernetes）Semantic Conventions SIG は、グループが掲げた目標のうち最初のものを[達成しました](https://github.com/open-telemetry/semantic-conventions/issues/1032#issuecomment-3401648352)。
 それは、OpenTelemetry Collector がすでに備えていた K8s 関連のメトリクス（`k8s.pod.cpu.time` など）をセマンティック規約として定義することでした。
 
 ## KubeCon NA 2025 {#kubecon-na-2025}
@@ -41,7 +41,7 @@ cSpell:ignore: Ashpole Markou resourcedetection sattributes
 ## 次のステップ {#next-steps}
 
 次に、セマンティック規約の次回リリース後、`k8sattributes` プロセッサーは Collector の[ガイドライン](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism)に従い、該当するフィーチャーゲートの下で最新の `release_candidate` K8s セマンティック規約を使用するように更新されます。
-これにより、ユーザーはフィーチャーゲートを使用してオプションで新しいスキーマに切り替えることができ、K8s 属性セマンティック規約が `stable` に昇格する前にコミュニティがフィードバックを提供できるようになります。
+これにより、ユーザーはフィーチャーゲートを使用して任意に新しいスキーマに切り替えることができ、K8s 属性セマンティック規約が `stable` に昇格する前にコミュニティがフィードバックを提供できるようになります。
 その期間中、K8s SemConv SIG はフィードバックを受け付けながら、K8s メトリクスおよびエンティティの安定化にも取り組みます。
 [フィーチャーゲート](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/documentation.md#feature-gates) `processor.k8sattributes.DontEmitV0K8sConventions` と `processor.k8sattributes.EmitV1K8sConventions` は `k8sattributes` プロセッサーですでに利用可能であり、その使い方についてはコンポーネントの[ドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility)で詳しく知ることができます。
 
