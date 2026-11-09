@@ -63,68 +63,71 @@ honestly thought it would probably be one place where responses would be quick
 for a newbie. Turns out Juliano was amazing and guided me through, I just got
 lucky I guess. The first version used Spring Boot's
 `spring-boot-starter-opentelemetry`, with Micrometer Tracing for the
-`get_product_list` span and a `MeterRegistry` for the counter. The gRPC server
-and client spans came from interceptors Spring Boot configures by itself. Logs
-were the only part I wired by hand.
+`get_product_list` span and a `MeterRegistry` for the counter.
 
-On September 23 the Demo maintainer
-[asked the Java instrumentation approvers](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5797579640)
+Funny thing is, the first reply on the PR wasn't about the code at all. Someone
+asked if the Demo even needed another Java service. I'd just deleted most of the
+old service in that PR, so yeah, not the welcome I was hoping for. Juliano
+jumped in the same day and explained why a Spring service made sense, and
+honestly that's what kept me going that week.
+
+Then it wouldn't start for one of the reviewers. Fine on my machine (Windows
+with WSL2), stuck on his Linux box. I couldn't reproduce it, and I can't fix
+what I can't see, so I asked for logs and waited. Then asked again a few days
+later. That was the worst part of the whole PR, way worse than any code. He got
+it running later and checked the spans in Jaeger before approving, so it worked
+out.
+
+On September 23 the Java instrumentation approvers were
+[asked](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5797579640)
 whether Micrometer made sense in the OpenTelemetry Demo. The answer was one
 line, "I think the OpenTelemetry Demo should use OpenTelemetry's recommended
-approach", with a link to the starter page. I switched that day.
-
-That's where the gRPC spans went missing. The starter's
+approach", with a link to the starter page. I switched that day, and that's
+where the gRPC spans went missing. The starter's
 [out-of-the-box instrumentation](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/)
-doesn't include gRPC in 2.31.1, the version the rewrite uses, and Spring gRPC's
-own setup needs a Micrometer `ObservationRegistry` the service no longer had.
-That's cause gRPC isn't part of core Spring Boot, it comes from the separate
-Spring gRPC project. So I added the
+doesn't include gRPC in 2.31.1, cause gRPC comes from the separate Spring gRPC
+project, not core Spring Boot. So I added the
 [OpenTelemetry gRPC library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/README.md)
-and registered its interceptors myself. The span and counter moved to the
-OpenTelemetry API, and my Logback setup went cause the starter installs its own
-appender.
+and registered its interceptors myself.
 
-In review came the question,
-["Isn't that done automatically with the spring-boot-starter?"](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#discussion_r4164040740)
-I took the interceptors out to check. The main test then failed waiting for the
-`ListRecommendations` server span. On October 6 a Demo approver ran the stack,
-checked the spans in Jaeger and approved it.
+Two weeks later another reviewer
+[pointed out](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6017929704)
+that the same page says "The default choice for instrumenting Spring Boot
+applications is the OpenTelemetry Java agent". Fair, so I moved to the agent,
+loaded through `JAVA_TOOL_OPTIONS` like Ad. Two days after that the Demo
+maintainer
+[asked me to hold](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6058694428).
+Ad already runs the agent, and the whole point of a Spring service was to show a
+different way. So, back to the starter.
 
-The same day another reviewer
-[pointed out what the linked page says](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6017929704):
-"The default choice for instrumenting Spring Boot applications is the
-OpenTelemetry Java agent". The starter is for when the agent can't be used, and
-the reviewer didn't see that in the Demo. So I moved to the agent, loaded
-through `JAVA_TOOL_OPTIONS` like Ad. The starter and the gRPC library came out
-cause the agent instruments gRPC itself.
+Every time, I just did what was asked. Switched quickly, didn't argue. And then
+the plan changed again. Nobody was wrong here, they were reading the same docs
+page differently and working it out in my PR. But from where I was sitting it
+felt like going in circles. At one point the agent version's tests had to set up
+the exact gRPC interceptors I'd just deleted from the app, and the approval I
+had was for code that didn't exist anymore.
 
-The tests don't run with the agent though, so they had to build an in-memory SDK
-and register the same gRPC interceptors I had just deleted from the app. Jaeger
-showed the same spans and `demo.*` attributes, plus flagd's own gRPC calls.
-Memory under load went to about 380 MiB of the 500 MiB limit, where the starter
-had sat around 305. And the approval I'd just got now covered code that was
-gone.
-
-On October 8 the Demo maintainer
-[asked me to hold](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6058694428):
-"On the Demo, we already have the `Ad` service using the OTel Java agent. The
-idea to add an extra Java service in Spring is to showcase a different
-instrumentation approach." The Java approver was
-[fine with that](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6066087816)
+The comment that actually changed how I looked at it came from the Java
+approver. He was
+[fine with the starter](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6066087816)
 as long as the example is "super clear about it not being the default
-recommendation". People copy from this repository as is, so that part matters.
+recommendation", cause people (and AI tools) copy this repo as is. Before that I
+thought I was just porting a service. After that it was something people would
+copy without ever reading the thread, which is a different kind of pressure. So
+the README now says right at the top that the agent is the default and this
+service shows the starter as a second option. The changelog says it too.
 
-I reverted the agent commit. The code went back to exactly what had been
-approved, plus a note at the top of the service README and a changelog line
-saying the Java agent is the default. Looking back, that reason was in the
-thread on day two, when a maintainer said a Spring service could
-["introduce some other ways to instrument Java code"](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-5631284857).
-It took two switches to get back to it. The Java agent is the default for a good
-reason, it instruments everything out of the box. Pick the starter only when the
-agent doesn't fit, like a native image, another agent already attached, or a
-tight container where every bit of headroom matters. Memory came up early in the
-review, and the starter ran about 75 MiB lighter under load than the agent, so
-going back to it made sense for the Demo too.
+The agent is the default for a good reason, it instruments everything out of the
+box. Pick the starter only when the agent doesn't fit, like a native image,
+another agent already attached, or a tight container. Memory came up early in
+the review, and the starter ran about 75 MiB lighter under load than the agent
+(around 305 against 380 MiB of a 500 MiB limit), so it made sense for the Demo
+too.
+
+All in, it took 13 commits and five weeks, and a bunch of those commits were
+just me merging `main` back in while waiting for the next review. Looks like
+steady progress from outside. Inside, there's always this small voice going
+"what if this just sits here forever".
 
 ## Wire the gRPC spans back in
 
@@ -174,3 +177,16 @@ the cache-hit and product-count attributes stay for whoever goes looking.
 The setup changed three times and the check didn't: open Jaeger and compare the
 chain and the `demo.*` attributes with the Python trace. The final setup is in
 the [recommendation service docs](/docs/demo/services/recommendation/).
+
+## If it's your first contribution
+
+When it merged I thanked everyone, including the person who asked on day one if
+the service should even exist. Thinking about it now, that question is a big
+reason the README explains what this service is for.
+
+If this is your first contribution: the first reply might question whether your
+change should exist, and reviewers might not agree with each other on what "the
+recommended way" is. That doesn't mean you messed up. Pick the one thing that
+has to stay the same (for me it was the trace) and keep checking against it
+every time the plan changes. And when a decision gets made, put it somewhere
+people will actually see it, not buried in the PR thread.
