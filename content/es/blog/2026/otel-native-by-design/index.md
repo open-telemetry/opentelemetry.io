@@ -12,7 +12,7 @@ issue: 10300
 sig: SIG End User
 default_lang_commit: c6df13913b1b0133aa46fdf9183c3a3f9ba64092
 # prettier-ignore
-cSpell:ignore: Ahuja correlacionarlos Dhruv enrutadores Gohain Nityananda paginación
+cSpell:ignore: Ahuja correlacionarlos Dhruv enrutadores Gohain multitenant Nityananda paginación
 ---
 
 Con contribuciones de [Dan Gomez Blanco](https://github.com/danielgblanco) (New
@@ -23,10 +23,10 @@ temprano van a pedir enviar **logs, trazas y métricas** a su propio stack de
 observabilidad, ya sea para cumplir requisitos normativos, gestionar costos o
 centralizar todos sus datos de observabilidad en un solo lugar.
 
-Encerrar a los usuarios en tus dashboards integrados o limitar la exportación a
+Crear dependencia de tus dashboards integrados o limitar la exportación a
 ciertos proveedores crea fricción innecesaria. En cambio, permitir la
 exportación a cualquier backend compatible con OpenTelemetry (OTel) es una
-práctica independiente al proveedor y lista para el futuro, que les da la
+práctica independiente del proveedor y preparada para el futuro, que les da la
 libertad de escoger su stack de observabilidad.
 
 Esta publicación describe cómo puedes diseñar tu producto para que los usuarios
@@ -46,7 +46,7 @@ estándar [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/):
   correlacionarlos con logs.
 - **[Métricas](/docs/concepts/signals/metrics/):** Contadores, medidores e
   histogramas (por ejemplo, tasa de solicitudes, latencia y tasa de errores).
-- **[Perfiles](/docs/concepts/signals/profiles/):** Muestras que muestran dónde
+- **[Perfiles](/docs/concepts/signals/profiles/):** Muestras que indican dónde
   consumen recursos las aplicaciones durante su ejecución.
 
 > [!NOTE] Los perfiles están en fase alfa pública
@@ -61,7 +61,7 @@ estándar [OpenTelemetry Protocol (OTLP)](/docs/specs/otlp/):
 > métricas, nos entusiasma ver cómo evolucionan los perfiles y cómo los utiliza
 > la comunidad en sus sistemas de observabilidad.
 
-El mismo modelo de exportación aplica a las tres señales (logs, trazas y
+El mismo modelo de exportación se aplica a las tres señales (logs, trazas y
 métricas): permitir que los usuarios configuren un endpoint OTLP y **enviar**
 telemetría a él. Puedes añadir soporte para una, dos o las tres señales, según
 lo que genere tu producto.
@@ -70,7 +70,7 @@ Muchas plataformas que permiten exportar mediante OTel incluyen al menos trazas
 y logs, y cada vez más incorporan métricas. Diseñar para las tres señales desde
 el inicio evita tener que adaptar el sistema más adelante.
 
-## Cómo es un buen sistema de telemetría {#what-a-good-telemetry-system-looks-like}
+## Características de un buen sistema de telemetría {#what-a-good-telemetry-system-looks-like}
 
 Un modelo de exportación sólido tiene algunas propiedades claras para cada señal
 que soporta:
@@ -185,7 +185,7 @@ las políticas de la malla:
 - **MeshMetric:** Expone métricas de los planos de control y de datos. Se
   integra con OpenTelemetry y Prometheus.
 
-Por ejemplo, enviar trazas a un backend OTel se ve así:
+Por ejemplo, enviar trazas a un backend OTel quedaría así:
 
 ```yaml
 # MeshTrace policy
@@ -243,7 +243,7 @@ activar o desactivar cada señal:
   `--telemetry-logs-level` para filtrar por nivel).
 
 La configuración del endpoint, con soporte para cabeceras opcionales y elección
-del protocolo (gRPC o HTTP), se ve así:
+del protocolo (gRPC o HTTP), quedaría así:
 
 ```bash
 bin/kc.sh start --telemetry-endpoint=http://my-otel-endpoint:4317 --telemetry-protocol=grpc
@@ -322,7 +322,7 @@ arquitectura es la misma: ¿tu plataforma requerirá que el usuario **consulte u
 API periódicamente para obtener los datos**, o **entregará la telemetría
 directamente** al endpoint que el usuario defina?
 
-### El modelo clásico: consultar API personalizadas {#the-classic-approach-custom-polling-apis}
+### El modelo clásico: consultas periódicas a APIs personalizadas {#the-classic-approach-custom-polling-apis}
 
 Tradicionalmente, las plataformas han expuesto telemetría mediante API. El
 usuario debe consultarlas a intervalos regulares, gestionar la paginación e
@@ -332,10 +332,10 @@ Es un punto de partida razonable si ya cuentas con una API madura y probada para
 logs o métricas, ya que extenderla suele ser más fácil que construir un nuevo
 mecanismo de envío. Sin embargo, tiene costos reales:
 
-- Trasladas una parte importante de la responsabilidad operativa al usuario.
-  Este debe construir un sistema de consultas escalable que gestione los
-  intervalos de consulta, la paginación de respuestas de la API, los reintentos
-  ante fallos y la recuperación de datos faltantes.
+- Trasladas una parte importante de la carga operativa al usuario. Este debe
+  construir un sistema de consultas escalable que gestione los intervalos de
+  consulta, la paginación de respuestas de la API, los reintentos ante fallos y
+  la recuperación de datos faltantes.
 - Los usuarios pueden construir soluciones personalizadas que no escalen, no
   sigan tus estándares y requieran mantenimiento significativo a medida que el
   esquema de la API evolucione junto con tu plataforma.
@@ -375,8 +375,8 @@ predeterminado**.
 Para la telemetría en tiempo real orientada a desarrolladores, el envío mediante
 OTLP se ha convertido en el patrón dominante.
 
-En lugar de esperar una consulta, tu servicio o un Collector de OpenTelemetry
-que tú gestionas exporta activamente logs, trazas y métricas al endpoint que
+En lugar de esperar una consulta, tu servicio o un OpenTelemetry Collector que
+tú gestionas exporta activamente logs, trazas y métricas al endpoint que
 configure el usuario, mediante OTLP sobre HTTP o gRPC.
 
 Utiliza un único protocolo estándar e independiente del proveedor para toda la
@@ -387,7 +387,7 @@ Además, OTLP ofrece soporte nativo para datos estructurados y metadatos, lo que
 ayuda a preservar el contexto, por ejemplo, al vincular registros de logs
 específicos con los ID de sus trazas.
 
-Desde la perspectiva del usuario, es prácticamente conectar y usar. Cualquier
+Desde la perspectiva del usuario, es prácticamente plug and play. Cualquier
 backend compatible con OTel puede ingerir los datos casi en tiempo real sin
 requerir lógica de consultas personalizada.
 
@@ -401,7 +401,7 @@ flexibilidad con una configuración mínima.
 Empieza dejando que los usuarios proporcionen su propio endpoint OTLP y las
 cabeceras de autenticación necesarias, como una clave de ingesta.
 
-_¡Pero no te detengas aquí!_
+_¡Pero eso no es todo!_
 
 Para que los usuarios puedan controlar el volumen de exportación, simplificar la
 gestión de datos y reducir costos, permite que activen o desactiven
@@ -433,7 +433,7 @@ sincronizados con la evolución de tu código e infraestructura y gestionar
 registros federados de convenciones semánticas.
 
 Cuando un usuario ingiere tu telemetría en su backend de observabilidad, todo
-debería conectarse de extremo a extremo para mostrar la historia completa.
+debería conectarse de extremo a extremo para ofrecer una visión completa.
 
 Un beneficio de este enfoque es que evitas construir integraciones diferentes
 para cada proveedor. Al exportar la telemetría mediante OTLP, permites que los
@@ -470,19 +470,19 @@ puedes usar
 Exponer este control por señal en tu aplicación es técnicamente opcional, pero
 aporta valor para los usuarios avanzados.
 
-### Ejecutar Collectors para gestionar múltiples inquilinos {#running-collectors-to-manage-multi-tenancy}
+### Ejecutar Collectors para gestionar entornos multitenant {#running-collectors-to-manage-multi-tenancy}
 
 Una vez que envías telemetría mediante OTLP, con cualquier combinación de logs,
 métricas o trazas, debes decidir cómo ejecutar los Collectors para gestionar
-múltiples inquilinos.
+entornos multitenant.
 
 La arquitectura del Collector necesita [escalar](/docs/collector/scaling/) en
 dos dimensiones: la incorporación de más usuarios y el volumen de telemetría que
 se genera al añadir funcionalidades.
 
-#### Un Collector por inquilino {#one-collector-per-tenant}
+#### Un Collector por tenant {#one-collector-per-tenant}
 
-Si tu arquitectura ya aísla a los inquilinos en la infraestructura, puedes
+Si tu arquitectura ya aísla a los tenants en la infraestructura, puedes
 desplegar una instancia del Collector dedicada a cada cliente. En este caso,
 cada instancia tiene una configuración propia que apunta directamente al
 endpoint de exportación de ese cliente.
@@ -497,29 +497,29 @@ instancias consumirá muchos recursos.
 
 Por este compromiso entre aislamiento y consumo de recursos, la arquitectura
 suele ser más adecuada para productos SaaS empresariales donde el aislamiento
-entre inquilinos es un requisito estricto y los clientes pueden tener
+entre tenants es un requisito estricto y los clientes pueden tener
 configuraciones de endpoints complejas.
 
-![La arquitectura con un Collector por inquilino ofrece garantías sólidas de aislamiento a costa de un mayor uso de recursos.](collector-per-tenant.png)
+![La arquitectura con un Collector por tenant ofrece garantías sólidas de aislamiento a costa de un mayor uso de recursos.](collector-per-tenant.png)
 
-#### Un Collector compartido con pipelines estáticos por inquilino {#shared-collector-with-static-pipelines-per-tenant}
+#### Un Collector compartido con pipelines estáticos por tenant {#shared-collector-with-static-pipelines-per-tenant}
 
 Aquí, "estático" significa que el pipeline y las reglas de enrutamiento de cada
-inquilino se definen de antemano en el archivo de configuración del Collector,
-en lugar de crearse dinámicamente durante la ejecución.
+tenant se definen de antemano en el archivo de configuración del Collector, en
+lugar de crearse dinámicamente durante la ejecución.
 
 Este enfoque se parece al
-[patrón de despliegue como gateway](/docs/collector/deploy/gateway/): toda la
+[patrón de despliegue tipo gateway](/docs/collector/deploy/gateway/): toda la
 telemetría de tu plataforma pasa por un Collector centralizado. Dentro de él,
-defines pipelines separados por inquilino. El
+defines pipelines separados por tenant. El
 [conector de enrutamiento](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.158.0/connector/routingconnector#readme)
 encaja de forma natural aquí, dirigiendo los datos al pipeline correcto y, por
 lo tanto, al endpoint externo correspondiente, según atributos de recursos como
-el ID del inquilino.
+el ID del tenant.
 
 Este patrón funciona bien para equipos en etapas iniciales o de escala moderada,
 donde operar un único despliegue es más sencillo que gestionar instancias por
-inquilino. Solo tienes que supervisar y escalar un despliegue, y todo el
+tenant. Solo tienes que supervisar y escalar un despliegue, y todo el
 enrutamiento se configura en un solo lugar.
 
 Sin embargo, debes estar preparado para gestionar un archivo de configuración
@@ -527,7 +527,7 @@ dinámico que crecerá a medida que aumente tu base de clientes.
 
 ![El patrón de Collector compartido es más fácil de supervisar y mantener porque todas las exportaciones pasan por una única instancia.](shared-collector.png)
 
-### Consultas a API personalizadas frente a OTLP: el veredicto {#custom-polling-apis-vs-otlp-the-verdict}
+### Consultas periódicas a APIs personalizadas vs. OTLP: ¿cuál elegir? {#custom-polling-apis-vs-otlp-the-verdict}
 
 Cuando la elección es entre hacer que tus usuarios consulten API personalizadas
 o permitirles ingerir datos mediante un estándar compartido, la mayoría de las
@@ -542,16 +542,16 @@ independencia del proveedor permite a los usuarios cambiar de backend de
 observabilidad según las necesidades del negocio sin rehacer por completo sus
 pipelines de telemetría.
 
-La adopción de OpenTelemetry tampoco es gratuita: tu equipo debe invertir tiempo
-en aprender a implementarlo y construir la documentación necesaria para guiar a
-los usuarios y equipos internos en las mejores prácticas.
+La adopción de OpenTelemetry tampoco está exenta de esfuerzo: tu equipo debe
+invertir tiempo en aprender a implementarlo y construir la documentación
+necesaria para guiar a los usuarios y equipos internos en las mejores prácticas.
 
 Dada la creciente adopción de OTel en observabilidad, con su reciente
 [graduación en la CNCF](https://www.cncf.io/announcements/2026/05/21/cloud-native-computing-foundation-announces-opentelemetrys-graduation-solidifying-status-as-the-de-facto-observability-standard/),
 esta inversión inicial dará resultados al integrar en tu plataforma herramientas
 que dependan de OpenTelemetry para exportar su propia telemetría.
 
-## Ponerlo todo junto {#putting-it-all-together}
+## Uniendo todas las piezas {#putting-it-all-together}
 
 En conclusión, no necesitas construir integraciones a medida para que tus
 usuarios exporten telemetría a sus propios backends.
@@ -571,9 +571,9 @@ aplicación, estos son los puntos clave de arquitectura y diseño:
 - Documenta el formato del endpoint (gRPC/HTTP), las cabeceras requeridas y la
   semántica de los atributos y esquemas de cada señal, para que los usuarios
   puedan confiar en los datos que reciben en sus backends.
-- Escoge una topología para el Collector: uno por inquilino para ofrecer
-  aislamiento, o uno compartido con pipelines por inquilino para reducir la
-  carga operativa.
+- Escoge una topología para el Collector: uno por tenant para ofrecer
+  aislamiento, o uno compartido con pipelines por tenant para reducir la carga
+  operativa.
 - Proporciona ejemplos de configuración o variables de entorno para que los
   usuarios puedan empezar rápidamente.
 
@@ -583,7 +583,7 @@ independencia del proveedor y documentar el contrato**.
 
 Diseñar para las tres señales con estándares abiertos desde el inicio elimina
 fricción, reduce el trabajo de ingeniería y permite a los clientes aprovechar
-sus datos en sus propios términos.
+sus datos según sus necesidades.
 
 > [!NOTE]
 >
