@@ -218,9 +218,9 @@ Exemplu de interval:
 ```
 
 Intervalele pot fi imbricate, așa cum sugerează prezența unui ID de interval
-părinte: intervalele copil reprezintă operații efectuate în cadrul operației
-părinte. Acest lucru le permite intervalelor să captureze cu mai multă acuratețe
-munca efectuată într-o aplicație.
+părinte: intervalele copil reprezintă suboperații. Acest lucru le permite
+intervalelor să captureze cu mai multă acuratețe munca efectuată într-o
+aplicație.
 
 ### Contextul intervalului {#span-context}
 
