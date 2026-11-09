@@ -120,7 +120,7 @@ OBI instruments the following CUDA operations:
 
 OBI also observes selected memory, stream, event, and device-introspection
 calls. For the complete API list and metrics, see the
-[v0.15.2 GPU monitoring reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/gpu-monitoring.md).
+[GPU monitoring reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/gpu-monitoring.md).
 
 ## Common metrics configuration
 
@@ -269,7 +269,7 @@ process CPU time, and last-collection heap size. The default polling interval is
 1 second, configured by `dotnet_runtime_metrics.sampling_interval`; diagnostic
 IPC setup and shutdown use `dotnet_runtime_metrics.timeout` (default `10s`). See
 the
-[.NET runtime reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/runtimes/dotnet.md)
+[.NET runtime reference](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/runtimes/dotnet.md)
 for collection semantics and metric availability.
 
 Use `jvm_runtime_metrics.sampling_interval` to control how often OBI samples

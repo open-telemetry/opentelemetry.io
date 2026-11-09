@@ -3,7 +3,7 @@ title: DockerコンテナとしてOBIを実行する
 linkTitle: Docker
 description: OBIをDockerコンテナとしてセットアップして実行し、別のコンテナを計装する方法を学びます。
 weight: 3
-default_lang_commit: 1a618723d0d64c5c05a4c6af5ebdfdea16ab2c5a
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 cSpell:ignore: goblog
 ---
 
@@ -22,6 +22,9 @@ OBIのコンテナイメージは、以下の両方のレジストリに公開�
 otel/ebpf-instrument:main
 ```
 
+デプロイメントは `v1.0.0` などのリリースタグに固定してください。
+`main` タグと `latest` タグは時間の経過とともに変更され、互換性は保証されません。
+
 OBIコンテナは、次のように構成する必要があります。
 
 - 以下の例では**特権**コンテナとして実行するか、[有効な機能が必要とするケーパビリティ](../../security/)を付与します。
@@ -37,7 +40,7 @@ OBIコンテナイメージは、GitHub Actions の OIDC（OpenID Connect）プ�
 以下のコマンドを使用して、コンテナイメージの署名を検証できます。
 
 ```sh
-export VERSION=v0.15.2
+export VERSION=v1.0.0
 
 # Docker Hub のリリースイメージを検証する
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
@@ -59,7 +62,7 @@ cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/o
 コンテナがない場合は、[Goで書かれたシンプルなブログエンジンサービス](https://macias.info)を使用できます。
 
 ```sh
-export VERSION=v0.15.2
+export VERSION=v1.0.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -120,7 +123,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: otel/ebpf-instrument:v0.15.2
+    image: otel/ebpf-instrument:v1.0.0
     pid: 'host'
     privileged: true
     environment:
@@ -149,7 +152,7 @@ docker compose -f compose-example.yml up
 ```yaml
 services:
   autoinstrumenter:
-    image: otel/ebpf-instrument:main
+    image: otel/ebpf-instrument:v1.0.0
     pid: 'host'
     privileged: true
     volumes:

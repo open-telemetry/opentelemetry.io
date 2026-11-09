@@ -3,7 +3,8 @@ title: 依存関係の管理
 description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: a92bba88db05bd6684fabb0648c351f1c6d937ad
+default_lang_commit: 9303f8245fc0b7e9f51d9b42696b7144bfef2ae1
+drifted_from_default: true
 cSpell:ignore: EBADENGINE
 ---
 
@@ -169,20 +170,30 @@ npm_config_min_release_age_exclude=PACKAGE_NAME \
 - Renovate の PR は、ロックファイルを再生成する際に `.npmrc` のゲートの対象となるため、クールダウンより新しい修正は失敗したアーティファクト更新として届きます。
   早期に採用するには、メンテナーが[スコープ付き除外](#transitive-refresh)を実行する必要があります。
 
+親の宣言された範囲が修正バージョンを除外している場合、リフレッシュでは到達できません。
+修正を取り込めるリリースがあれば親をバンプしてください。そうでなければ、ルートに [`overrides`][] エントリを追加し、監査の `REVIEWED_OVERRIDES` レジスターに行を登録して、[ロックファイルを同期](#manifest-changes)してください。
+親の宣言された範囲が変わると監査が失敗し、[再評価](#audit)を促します。
+
 ## サプライチェーン制御 {#controls}
 
 ### サプライチェーン監査 {#audit}
 
-サプライチェーン監査テスト [`scripts/supply-chain-audit.test.mjs`][] は、`test:local-tools` の実行ごとにコミット済みファイルのみから以下の制御を検証します。
+サプライチェーン監査テスト [`scripts/supply-chain-audit.test.mjs`][] は、以下の制御と各[セキュリティオーバーライド](#security-updates)を、`test:local-tools` の実行ごとにコミット済みファイルのみから検証します。
 これにより、制御の退行はインシデントを待たずにテスト失敗として検出されます。
-監査自体の検証原則については、その[設計ページ](/site/design/supply-chain-audit/)を参照してください。
+監査自体の検証原則については、その[設計ページ](../../design/supply-chain-audit/)を参照してください。
 
 PR で監査が失敗した場合、アサーションメッセージに期待される条件が記載されています。
 よくあるケースは以下のとおりです。
 
-- **`allowScripts` エントリを持つ依存関係をバージョンアップした場合**: [スクリプトを持つパッケージ](#script-bearing-packages)に従ってください。
+- **`allowScripts` エントリを持つ依存関係をバージョンアップした場合**。
+  [スクリプトを持つパッケージ](#script-bearing-packages)に従ってください。
   失敗メッセージにエントリが移行すべきバージョンが示されます。
-- **インストールパスのスクリプト、`.npmrc`、または `netlify.toml` を変更した場合**: その失敗こそが目的です。
+- **セキュリティオーバーライドの親の範囲を変更した場合**。
+  新しい範囲が修正バージョンを取り込めるなら、オーバーライドを削除し、[ロックファイルを同期](#manifest-changes)して、その行の `firstFixed` より古いコピーが残っていないことを確認した上で行を削除してください。取り込めなければ、行の `parentRange` を更新してください。
+- **ボットがセキュリティオーバーライドをバンプした場合**。
+  行の `spec` を更新し、バンプが新しいアドバイザリーに対応する場合は `firstFixed` とアドバイザリー ID も更新してください。
+- **インストールパスのスクリプト、`.npmrc`、または `netlify.toml` を変更した場合**。
+  その失敗こそが目的です。
   監査はインストール面を固定し、変更のたびに意図的なレビューが行われるようにしています。
   変更に合わせて対応するアサーションを更新し、PR にその理由を記載してください。
 
@@ -286,6 +297,7 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
+[`overrides`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#overrides
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/

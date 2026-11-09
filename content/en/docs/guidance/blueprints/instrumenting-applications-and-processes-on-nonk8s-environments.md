@@ -259,7 +259,8 @@ ensure that telemetry can be correlated across the following resource domains,
 using automatically detected attributes where supported:
 
 - **[Host](/docs/specs/semconv/resource/host/)**
-- **[Device](/docs/specs/semconv/resource/device/)** (where applicable)
+- **[Device](/docs/specs/semconv/registry/attributes/device/)** (where
+  applicable)
 - **[Process](/docs/specs/semconv/resource/process/)**
 - **[Process runtime](/docs/specs/semconv/resource/process/#process-runtimes)**
 - **[Operating system](/docs/specs/semconv/resource/os/)**
