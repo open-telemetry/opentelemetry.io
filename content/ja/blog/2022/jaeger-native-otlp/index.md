@@ -61,7 +61,7 @@ Thrift over UDP は [Jaeger エージェント](https://www.jaegertracing.io/doc
 
 ## 非推奨化の意向 - フィードバックをお寄せください！ {#intent-to-deprecate---wed-like-your-feedback}
 
-OpenTelemetry と Jaeger の相互運用をより適切にサポートするため、OpenTelemetry における Jaeger クライアントエクスポーターのサポートを非推奨化し、最終的に削除する予定です。
+ユーザーと OpenTelemetry・Jaeger 間の相互運用性をより適切にサポートするため、OpenTelemetry における Jaeger クライアントエクスポーターのサポートを非推奨化し、最終的に削除する予定です。
 
 フィードバックをお寄せください！
 この変更の影響を受ける可能性のあるユーザーからの声をお待ちしています。
