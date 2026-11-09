@@ -3,9 +3,11 @@ title: Configurações do Exporter OTLP
 linkTitle: OTLP Exporter
 weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 99bddc40d1e15c5f33311b736b92fa227f04664a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
+cSpell:ignore: lowmemory
 ---
+
+{{% include "env-var-note.md" %}}
 
 ## Configurações de rota {#endpoint-configuration}
 
@@ -37,6 +39,11 @@ exemplo acima:
 - Rastros: `"http://my-api-endpoint/v1/traces"`
 - Métricas: `"http://my-api-endpoint/v1/metrics"`
 - Logs: `"http://my-api-endpoint/v1/logs"`
+
+Para OTLP/gRPC, os valores de rota são alvos gRPC. Não adicione caminhos de
+sinal do OTLP/HTTP, como `/v1/traces`, `/v1/metrics` ou `/v1/logs`, aos valores
+de rota gRPC; os Exporters gRPC utilizam o método de serviço protobuf do OTLP
+correspondente a cada sinal após se conectarem ao alvo configurado.
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
@@ -109,6 +116,13 @@ opcionalmente. Normalmente termina com `v1/profiles` ao utilizar OTLP/HTTP.
 
 As seguintes variáveis de ambiente permitem configurar cabeçalhos adicionais
 como uma lista de pares chave-valor para adicionar em solicitações gRPC ou HTTP.
+
+Os cabeçalhos são representados em um formato correspondente ao
+[W3C Baggage](https://www.w3.org/TR/baggage/#header-content), por exemplo
+`key1=value1,key2=value2`. [Metadados](https://www.w3.org/TR/baggage/#property)
+delimitados por ponto e vírgula não são suportados. Para mais detalhes, consulte
+[Especificando cabeçalhos via variáveis de ambiente](/docs/specs/otel/protocol/exporter/#specifying-headers-via-environment-variables)
+na especificação do protocolo.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 
@@ -194,11 +208,6 @@ O tempo limite para todos os logs de saída em milissegundos.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
 
-## Configurações de protocolo {#protocol-configuration}
-
-As seguintes variáveis de ambiente configuram o protocolo de transporte OTLP que
-um Exporter OTLP utiliza.
-
 ### `OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT`
 
 O tempo limite para todos os dados de perfis de saída em milissegundos.
@@ -207,10 +216,10 @@ O tempo limite para todos os dados de perfis de saída em milissegundos.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT=500`
 
-## Protocol configuration
+## Configurações de protocolo {#protocol-configuration}
 
-The following environment variables configure the OTLP transport protocol an
-OTLP exporter uses.
+As seguintes variáveis de ambiente configuram o protocolo de transporte OTLP que
+um Exporter OTLP utiliza.
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
@@ -283,3 +292,43 @@ Os valores válidos são:
 - `grpc` para utilizar OTLP/gRPC
 - `http/protobuf` para utilizar OTLP/HTTP + protobuf
 - `http/json` para utilizar OTLP/HTTP + JSON
+
+## Configurações específicas de métricas {#metrics-specific-configuration}
+
+As seguintes variáveis de ambiente configuram opções do Exporter que são
+exclusivas para métricas.
+
+### `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`
+
+Configura a preferência de temporalidade de agregação do Exporter com base no
+tipo de instrumento.
+
+**Valor padrão:** `cumulative`
+
+**Exemplo:** `export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta`
+
+Os valores válidos são:
+
+- `cumulative` para utilizar temporalidade de agregação cumulativa para todos os
+  tipos de instrumento.
+- `delta` para utilizar temporalidade de agregação delta para Counter,
+  Asynchronous Counter e Histogram, e cumulativa para UpDownCounter e
+  Asynchronous UpDownCounter.
+- `lowmemory` para utilizar temporalidade de agregação delta para Synchronous
+  Counter e Histogram, e cumulativa para os demais.
+
+### `OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION`
+
+Configura a agregação padrão do Exporter para o tipo de instrumento Histogram.
+
+**Valor padrão:** `explicit_bucket_histogram`
+
+**Exemplo:**
+`export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=base2_exponential_bucket_histogram`
+
+Os valores válidos são:
+
+- `explicit_bucket_histogram` para utilizar agregação de histograma com
+  _buckets_ explícitos.
+- `base2_exponential_bucket_histogram` para utilizar agregação de histograma
+  exponencial com _buckets_ de base 2.

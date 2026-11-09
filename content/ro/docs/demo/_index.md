@@ -23,7 +23,7 @@ Vrei să implementezi demo-ul și să îl vezi în acțiune? Începe de aici.
 Vrei să înțelegi cum funcționează instrumentarea pentru un anumit limbaj? Începe
 de aici.
 
-| Limbaj     | Instrumentare automaticǎ                                                                                                                                                  | Instrumentarea librǎriilor                                                                              | Instrumentare manualǎ                                                                                   |
+| Limbaj     | Instrumentare automatică                                                                                                                                                  | Instrumentarea librăriilor                                                                              | Instrumentare manuală                                                                                   |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | .NET       | [Serviciu de contabilitate](services/accounting/)                                                                                                                         | [Serviciu de coș](services/cart/)                                                                       | [Serviciu de coș](services/cart/)                                                                       |
 | C++        |                                                                                                                                                                           |                                                                                                         | [Serviciu de schimb valutar](services/currency/)                                                        |
@@ -68,7 +68,7 @@ Cum poți rezolva probleme folosind OpenTelemetry? Aceste
 probleme preconfigurate și îți arată cum să interpretezi datele OpenTelemetry
 pentru a le rezolva.
 
-## Referinţă {#reference}
+## Referință {#reference}
 
 Documentație de referință a proiectului, precum cerințe și matrici de
 funcționalități.

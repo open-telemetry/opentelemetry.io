@@ -73,9 +73,10 @@
   distributions:
     - contrib
   stability:
-    logs: beta
-    metrics: beta
-    traces: beta
+    logs: unmaintained
+    metrics: unmaintained
+    traces: unmaintained
+  unmaintained: true
 - name: azuremonitorexporter
   display_name: Azure Monitor Exporter
   repo: contrib
@@ -264,8 +265,9 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
-    traces: alpha
+    logs: unmaintained
+    traces: unmaintained
+  unmaintained: true
 - name: logzioexporter
   display_name: Logz.io Exporter
   repo: contrib

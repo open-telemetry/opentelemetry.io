@@ -3,8 +3,8 @@ title: 依存関係の管理
 description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: a92bba88db05bd6684fabb0648c351f1c6d937ad
-cSpell:ignore: EBADENGINE
+default_lang_commit: 9804fb55065c1cfa004c08f50e48c37e39bbe73c
+cSpell:ignore: EBADENGINE ERESOLVE
 ---
 
 npm 依存関係はコミット済みの `package-lock.json` によって固定され、インストール時にはレビュー済みのライフサイクルスクリプトのみが実行されます。
@@ -63,7 +63,9 @@ Netlify は[デプロイコンテキスト][deploy context]ごとにビルドキ
 
 ## 依存関係の更新 {#updating}
 
-通常のバージョンアップは [Renovate][] PR として届き、[リリースクールダウン](#release-cooldown)でゲートされます。
+通常のバージョンアップは [Renovate][] PR として届き、[リリースクールダウン](#release-cooldown)でゲートされ、更新タイプごとにグループ化されます。
+patch グループはより長いクールダウンの後に自動マージされ、minor および major の更新はレビュー後にマージされます。
+[OpenTelemetry npm パッケージ](#peer-coupled-packages)はかわりに1つの PR としてまとめて届きます。
 既知の脆弱性修正はアラート駆動で届きます（[セキュリティ更新](#security-updates)）。
 残りのケースは手動です。
 いずれの場合も、再生成したロックファイルを `package.json` の変更と一緒にコミットしてください。
@@ -92,6 +94,20 @@ npm install --package-lock-only --ignore-scripts
    必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
 3. 直接的依存関係の新しい承認の場合、[`.github/renovate.jsonc`][] で `Puppeteer` ルールを参考に（配置も含め）、そのパッケージに専用の Renovate グループを作成し、自動マージから除外する。
    承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR は共有の patch/minor グループを止めることなくコントリビューターを待つ必要がある。
+
+### ピア結合パッケージ {#peer-coupled-packages}
+
+OpenTelemetry npm パッケージ（`@opentelemetry/*`）のうち、SDK パッケージは `@opentelemetry/api` の狭いバージョン範囲のみを受け入れます。SDK 3.0 以降はその範囲は 1 つのマイナーバージョンに限られ、`@opentelemetry/instrumentation` も同じ範囲を共有しています。
+エクスポーターおよび Web 自動計装は、自身のリリースの SDK パッケージに依存します。
+協調リリースの一部だけが揃った状態では、API の境界をまたぐとロック再生成が `ERESOLVE` で失敗し、そうでなくてもロック内に重複した OpenTelemetry パッケージがネストされた状態で解決される可能性があります。
+
+共有グループに任せると、更新タイプをまたぐリリース（API の minor を伴う SDK の major）が major PR と共有の minor グループに分かれ、失敗したロックが minor グループの無関係なバンプを止めてしまいます。
+[`.github/renovate.jsonc`][] の `OpenTelemetry npm packages` ルールは、更新タイプをまたいで `@opentelemetry/*` のすべての更新を1つの PR にグループ化します。
+その PR は以下のとおりです。
+
+- **[共有ポリシー](#updating)に従ってマージされます**: patch のみのセットは自動マージ、それ以外のセットはレビュー後にマージされます。
+- **リリースを延期するためにクローズすることはできません**: 異なるターゲットバージョンを持つ更新を含む PR は、次回の実行で再作成されます。
+- **一部だけの状態でグリーンになる場合があります**: 更新が[クールダウン](#release-cooldown)を異なる実行でクリアする可能性があります（段階的なパブリッシュ、または patch メンバーのより長いクールダウン）。パッケージリストをリリースと照合し、残りは経過期間を超えた時点で Renovate が追加するのを待ってください。
 
 ### Hugo {#hugo}
 
@@ -169,20 +185,30 @@ npm_config_min_release_age_exclude=PACKAGE_NAME \
 - Renovate の PR は、ロックファイルを再生成する際に `.npmrc` のゲートの対象となるため、クールダウンより新しい修正は失敗したアーティファクト更新として届きます。
   早期に採用するには、メンテナーが[スコープ付き除外](#transitive-refresh)を実行する必要があります。
 
+親の宣言された範囲が修正バージョンを除外している場合、リフレッシュでは到達できません。
+修正を取り込めるリリースがあれば親をバンプしてください。そうでなければ、ルートに [`overrides`][] エントリを追加し、監査の `REVIEWED_OVERRIDES` レジスターに行を登録して、[ロックファイルを同期](#manifest-changes)してください。
+親の宣言された範囲が変わると監査が失敗し、[再評価](#audit)を促します。
+
 ## サプライチェーン制御 {#controls}
 
 ### サプライチェーン監査 {#audit}
 
-サプライチェーン監査テスト [`scripts/supply-chain-audit.test.mjs`][] は、`test:local-tools` の実行ごとにコミット済みファイルのみから以下の制御を検証します。
+サプライチェーン監査テスト [`scripts/supply-chain-audit.test.mjs`][] は、以下の制御と各[セキュリティオーバーライド](#security-updates)を、`test:local-tools` の実行ごとにコミット済みファイルのみから検証します。
 これにより、制御の退行はインシデントを待たずにテスト失敗として検出されます。
-監査自体の検証原則については、その[設計ページ](/site/design/supply-chain-audit/)を参照してください。
+監査自体の検証原則については、その[設計ページ](../../design/supply-chain-audit/)を参照してください。
 
 PR で監査が失敗した場合、アサーションメッセージに期待される条件が記載されています。
 よくあるケースは以下のとおりです。
 
-- **`allowScripts` エントリを持つ依存関係をバージョンアップした場合**: [スクリプトを持つパッケージ](#script-bearing-packages)に従ってください。
+- **`allowScripts` エントリを持つ依存関係をバージョンアップした場合**。
+  [スクリプトを持つパッケージ](#script-bearing-packages)に従ってください。
   失敗メッセージにエントリが移行すべきバージョンが示されます。
-- **インストールパスのスクリプト、`.npmrc`、または `netlify.toml` を変更した場合**: その失敗こそが目的です。
+- **セキュリティオーバーライドの親の範囲を変更した場合**。
+  新しい範囲が修正バージョンを取り込めるなら、オーバーライドを削除し、[ロックファイルを同期](#manifest-changes)して、その行の `firstFixed` より古いコピーが残っていないことを確認した上で行を削除してください。取り込めなければ、行の `parentRange` を更新してください。
+- **ボットがセキュリティオーバーライドをバンプした場合**。
+  行の `spec` を更新し、バンプが新しいアドバイザリーに対応する場合は `firstFixed` とアドバイザリー ID も更新してください。
+- **インストールパスのスクリプト、`.npmrc`、または `netlify.toml` を変更した場合**。
+  その失敗こそが目的です。
   監査はインストール面を固定し、変更のたびに意図的なレビューが行われるようにしています。
   変更に合わせて対応するアサーションを更新し、PR にその理由を記載してください。
 
@@ -210,7 +236,7 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
     この変数は両方の設定より優先されます。
 - **[Renovate][]**: 開く更新 PR に独自のクールダウンを適用します。
   [`.github/renovate.jsonc`][] の `minimumReleaseAge` で設定されます。
-  人間のレビューなしでマージされる更新にはより長い期間が設定されます。
+  [人間のレビューなしでマージされる](#updating)更新にはより長い期間が設定されます。
   プリセット提供の3日間の npm クールダウン（`security:minimumReleaseAgeNpm`）は、これらの期間をオーバーライドできないよう（その経過期間の免除を含め）除外されています。
   注意: そのプリセットの上流での名前変更は、暗黙的にクールダウンを再適用させます。
   Renovate が日付を判定できない更新タイプ（`pin`、`replacement`、`rollback` など）はクールダウンの対象外です。
@@ -286,6 +312,7 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 [`.npmrc`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.npmrc
 [`module-template.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [`netlify.toml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/netlify.toml
+[`overrides`]: https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#overrides
 [`package.json`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json
 [`scripts/supply-chain-audit.test.mjs`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/supply-chain-audit.test.mjs
 [build cache]: https://docs.netlify.com/build/configure-builds/troubleshooting-tips/

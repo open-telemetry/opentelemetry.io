@@ -1,56 +1,23 @@
 ---
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 ## Prometheus
 
 Para enviar dados de métricas para o [Prometheus](https://prometheus.io/), você
-pode
-[ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
-e utilizar o [exportador OTLP](#otlp) ou você pode utilizar o exportador do
-Prometheus, um `MetricReader` que inicia um servidor HTTP e coleta métricas,
-serializando para o formato de texto do Prometheus sob demanda.
+pode:
 
-### Configuração do Backend {#prometheus-setup}
+- [Ativar o OTLP Receiver do Prometheus](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
+  e utilizar o [exportador OTLP](#otlp) (boa prática), ou
+- Utilizar o exportador do Prometheus, um `MetricReader` que inicia um servidor
+  HTTP e coleta métricas, serializando para o formato de texto do Prometheus sob
+  demanda.
 
-{{% alert title=Nota %}}
+### Configuração do _backend_ {#prometheus-setup}
 
-Caso já possua o Prometheus ou um _backend_ compatível com Prometheus
-configurado, poderá pular esta seção e configurar as dependências do exportador
-[Prometheus](#prometheus-dependencies) ou [OTLP](#otlp-dependencies) para a sua
-aplicação.
+Para executar um servidor Prometheus como _backend_ e começar a coletar
+métricas, consulte o
+[guia de primeiros passos do Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/).
 
-{{% /alert %}}
-
-É possível executar o [Prometheus](https://prometheus.io) em um contêiner Docker
-acessível na porta `9090` através das seguintes instruções:
-
-Em uma pasta vazia, crie um arquivo chamado `prometheus.yml` e adicione o
-seguinte conteúdo:
-
-```yaml
-scrape_configs:
-  - job_name: dice-service
-    scrape_interval: 5s
-    static_configs:
-      - targets: [host.docker.internal:9464]
-```
-
-Em seguida, execute o Prometheus em um contêiner Docker que ficará acessível na
-porta `9090` através do seguinte comando:
-
-```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
-```
-
-{{% alert title=Nota %}}
-
-Ao utilizar o OTLP Receiver do Prometheus, certifique-se de definir o endpoint
-OTLP das métricas em sua aplicação para `http://localhost:9090/api/v1/otlp`.
-
-Nem todos os ambientes Docker suportam `host.docker.internal`. Em alguns casos,
-será necessário alterar o valor `host.docker.internal` para `localhost` ou o
-endereço de IP de sua máquina.
-
-{{% /alert %}}
+Para ativar o OTLP Receiver, consulte o
+[guia do Prometheus para ativar o OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver).

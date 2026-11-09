@@ -1,23 +1,29 @@
 ---
-title: Primeiros Passos
+title: Primeiros Passos por Exemplo
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
 
 Esta página mostrará como começar a usar o OpenTelemetry em Python.
 
-Você aprenderá como instrumentar automaticamente uma aplicação simples, de forma
-que [rastros][], [métricas][], e [logs][] sejam emitidos para o console.
+Você aprenderá como instrumentar automaticamente uma aplicação Python simples,
+de forma que [rastros][], [métricas][], e [logs][] sejam emitidos para o
+console.
 
 ## Pré-requisitos {#prerequisites}
 
 Certifique-se de ter o seguinte instalado localmente:
 
 - [Python 3](https://www.python.org/)
+
+> [!NOTE]
+>
+> No Windows, o Python normalmente é invocado usando `python` em vez de
+> `python3`. Os exemplos a seguir mostram os comandos corretos para o seu
+> sistema operacional.
 
 ## Aplicação de Exemplo {#example-application}
 
@@ -35,12 +41,25 @@ Para exemplos mais elaborados, consulte
 
 Para começar, configure um ambiente em um novo diretório:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
 mkdir otel-getting-started
 cd otel-getting-started
 python3 -m venv venv
 source ./venv/bin/activate
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+mkdir otel-getting-started
+cd otel-getting-started
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Agora instale Flask:
 
@@ -113,8 +132,9 @@ Isso instalará a instrumentação do Flask.
 Agora, você poderá executar a sua aplicação instrumentada com
 `opentelemetry-instrument` e fazer com que os dados sejam emitidos no console:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -122,6 +142,19 @@ opentelemetry-instrument \
     --service_name dice-server \
     flask run -p 8080
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+opentelemetry-instrument `
+    --traces_exporter console `
+    --metrics_exporter console `
+    --logs_exporter console `
+    --service_name dice-server `
+    flask run -p 8080
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Acesse <http://localhost:8080/rolldice> no seu navegador e recarregue a página
 algumas vezes. Depois de um tempo, você deverá ver os trechos exibidos no
@@ -330,8 +363,9 @@ def roll():
 
 Agora, execute a aplicação novamente:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -339,6 +373,19 @@ opentelemetry-instrument \
     --service_name dice-server \
     flask run -p 8080
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+opentelemetry-instrument `
+    --traces_exporter console `
+    --metrics_exporter console `
+    --logs_exporter console `
+    --service_name dice-server `
+    flask run -p 8080
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Quando você enviar uma requisição ao servidor, verá dois trechos no rastro
 emitido para o console, chamado `roll`, que registra o seu pai como o criado
@@ -466,9 +513,9 @@ def roll_dice():
         # Isso adiciona 1 ao contador para o valor de jogada dado
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("%s esta jogando os dados: %s", player, result)
+            logger.warning("%s esta jogando os dados: %s", player, result)
         else:
-            logger.warn("Jogador anonimo esta jogando os dados: %s", result)
+            logger.warning("Jogador anonimo esta jogando os dados: %s", result)
         return result
 
 def roll():
@@ -477,8 +524,9 @@ def roll():
 
 Agora, execute a aplicação novamente:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -486,6 +534,19 @@ opentelemetry-instrument \
     --service_name dice-server \
     flask run -p 8080
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+opentelemetry-instrument `
+    --traces_exporter console `
+    --metrics_exporter console `
+    --logs_exporter console `
+    --service_name dice-server `
+    flask run -p 8080
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Quando você enviar uma requisição para o servidor, verá a métrica do contador de
 jogadas emitida para o console, com contagens de valor separadas para cada
@@ -662,11 +723,12 @@ desejará usar um Collector em implantações de produção.
 
 ### Configure e execute um Collector local {#configure-and-run-a-local-collector}
 
-Primeiro, salve o seguinte código de configuração do Collector em um arquivo no
-diretório `/tmp/`:
+Primeiro, salve o seguinte código de configuração do Collector em um arquivo. No
+Linux/macOS, salve-o em `/tmp/otel-collector-config.yaml`. No Windows, salve-o
+em `$env:TEMP\otel-collector-config.yaml`:
 
 ```yaml
-# /tmp/otel-collector-config.yaml
+# otel-collector-config.yaml
 receivers:
   otlp:
     protocols:
@@ -694,12 +756,25 @@ service:
 Em seguida, execute o comando docker para adquirir e executar o Collector com
 base nesta configuração:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
 docker run -p 4317:4317 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+docker run -p 4317:4317 `
+    -v "${env:TEMP}\otel-collector-config.yaml:/etc/otel-collector-config.yaml" `
+    otel/opentelemetry-collector:latest `
+    --config=/etc/otel-collector-config.yaml
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Agora, você terá uma instância do Collector em execução localmente, ouvindo na
 porta 4317.
@@ -722,10 +797,19 @@ instalar e usará a exportação OTLP na próxima vez que for executado.
 
 Execute a aplicação como antes, mas não exporte para o console:
 
+{{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
+
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
+
+{{% /tab %}} {{% tab "Windows (PowerShell)" %}}
+
+```powershell
+opentelemetry-instrument --logs_exporter otlp flask run -p 8080
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Por padrão, `opentelemetry-instrument` exporta rastros e métricas via OTLP/gRPC
 e os enviará para `localhost:4317`, endereço onde o Collector está ouvindo.

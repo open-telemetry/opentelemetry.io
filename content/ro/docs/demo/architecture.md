@@ -139,7 +139,7 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-Acceseazǎ aceste linkuri pentru a vedea stadiul actual al instrumentării pentru
+Accesează aceste linkuri pentru a vedea stadiul actual al instrumentării pentru
 [jurnale](/docs/demo/telemetry-features/log-coverage/),
 [metrici](/docs/demo/telemetry-features/metric-coverage/) și
 [urme](/docs/demo/telemetry-features/trace-coverage/) în cadrul aplicațiilor
@@ -153,8 +153,8 @@ Atunci când rulează împreună cu stiva de observabilitate, colectorul se
 conectează și la serverul OpAMP al aplicației demonstrative prin intermediul
 [extensiei OpAMP](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)
 și raportează starea de funcționare, versiunea, atributele și configurația
-efectivă. Acceseazǎ interfața OpAMP la <http://localhost:8080/opamp/> și
-selecteazǎ instanța colectorului pentru a vizualiza starea raportată.
+efectivă. Accesează interfața OpAMP la <http://localhost:8080/opamp/> și
+selectează instanța colectorului pentru a vizualiza starea raportată.
 
 ```mermaid
 graph TB

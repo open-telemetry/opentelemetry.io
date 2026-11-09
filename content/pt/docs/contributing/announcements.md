@@ -2,8 +2,7 @@
 title: Anúncios
 description: Crie anúncios ou banners para eventos especiais.
 weight: 50
-default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Um anúncio é uma _regular page_ do Hugo, contida no diretório `announcements` de
@@ -30,12 +29,12 @@ texto do anúncio como o conteúdo da página.
 
 > Para banners, o conteúdo da página deve ser uma frase curta.
 
-{{% alert title="Para localizações" %}}
+<!-- markdownlint-disable no-blanks-blockquote -->
 
-Caso esteja criando uma **versão localizada de um anúncio existente**,
-certifique-se de usar o **mesmo nome de arquivo** do anúncio em inglês.
-
-{{% /alert %}}
+> [!NOTE] Para localizações
+>
+> Caso esteja criando uma **versão localizada de um anúncio existente**,
+> certifique-se de usar o **mesmo nome de arquivo** do anúncio em inglês.
 
 ## Lista de anúncios {#announcement-list}
 
