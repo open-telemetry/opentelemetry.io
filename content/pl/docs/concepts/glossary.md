@@ -4,6 +4,7 @@ description:
   Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
 default_lang_commit: dab7241a884c24f4fa1705e9737ea7aab2a40d86
+cSpell:ignore: OTTL
 ---
 
 Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne
