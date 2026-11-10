@@ -726,6 +726,39 @@ metrics and data egress with the `otelcol_exporter_sent_log_records`,
 `otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
 metrics.
 
+Before interpreting missing telemetry as data loss, establish when data is
+expected. Account for idle services, scheduled work, deployment changes, and the
+normal delay between data generation and observation.
+
+Compare counts for the same signal type over a defined time window along a known
+path through the configured receivers, processors, connectors, and exporters.
+Filtering, sampling, routing, replication, and generated telemetry can change
+the expected relationship between ingress and egress counts. Batching and queued
+work can delay egress beyond the observation window. A difference between counts
+alone does not establish data loss, and a single ratio of sent to accepted data
+does not apply to every pipeline.
+
+Investigate sustained changes alongside [queue length](#queue-length),
+[receive and export failures](#receive-failures), and Collector logs. Export
+failures can be retried, so a failed attempt does not necessarily mean data was
+lost. Use the existing [queue and retry guidance](#queue-length) to assess
+whether data is waiting to be sent or the Collector is dropping it.
+
+Where practical, collect and observe the Collector's internal telemetry through
+a path that can still report when the monitored pipeline fails. Check that these
+measurements themselves continue to arrive. Define missing data alerts in your
+monitoring system using evaluation windows and thresholds that reflect expected
+activity and observation delays. OpenTelemetry provides the telemetry but does
+not automatically infer quiet periods or configure these alerts.
+
+A running Collector does not prove that telemetry is being delivered. Successful
+export indicates success at the exporter's boundary. It does not by itself prove
+that a record is durably stored or available to a backend query. Verify arrival
+and query visibility at the destination when those are required.
+
+For a broader discussion of missing telemetry in application workflows, see
+[When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
+
 [SemConvGuidance]:
   /docs/specs/semconv/general/semantic-convention-groups#group-stability
 [OTEP-0232]:
