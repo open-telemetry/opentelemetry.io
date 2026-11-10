@@ -13,7 +13,7 @@ cSpell:ignore: cocoapods podspec
 
 OpenTelemetry Swift のメンテナーは、`opentelemetry-swift` および `opentelemetry-swift-core` で公開されているすべての pod について、CocoaPods サポートを非推奨化する予定です。
 
-Swift Package Manager（SPM）が、すべての新規インテグレーションで推奨される優先的なインストール方法となりました。
+Swift Package Manager（SPM）は、すべての新規インテグレーションで推奨かつ優先されるインストール方法となりました。
 
 既存の CocoaPods ユーザーには、SPM への移行計画を開始することをお勧めします。
 
