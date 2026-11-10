@@ -7,6 +7,7 @@ author: >-
 draft: true # TODO: remove this line once your post is ready to be published
 issue: 12633
 sig: Governance Committee
+cSpell:ignore: roadmapping
 ---
 
 <!-- prettier-ignore -->
@@ -46,14 +47,13 @@ Register from the
 ## Interested in sponsoring?
 
 The OpenTelemetry community needs sponsors in order to put on events! For
-sponsorship details, see the [sponsorship prospectus][].
+sponsorship details, please contact us at
+[unplugged@opentelemetry.io](mailto:unplugged@opentelemetry.io)
 
-This year's OTel Unplugged EU is hosted by Grafana Labs, with the agenda
-organized and run by the OpenTelemetry [Governance Committee][].
+This year's OTel Unplugged EU's agenda is organized and run by the OpenTelemetry
+[Governance Committee][].
 
 [Governance Committee]:
   https://github.com/open-telemetry/community/blob/2325c5bc19f91ae68a11878ad9c0bcf75daf4453/community-members.md
 [OTel Unplugged]: https://events.humanitix.com/otel-unplugged-2027
-[sponsorship prospectus]:
-  https://docs.google.com/document/d/1l8AsQnt8cfJEvTkRaFH-LjPMmb_hPFXrEiCtiNMM1Ao/view
 [unconference]: https://en.wikipedia.org/wiki/Unconference
