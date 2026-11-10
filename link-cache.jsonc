@@ -18684,6 +18684,11 @@
     "when": "2026-10-28T05:39:32Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto": {
+    "result": 200,
+    "when": "2026-11-10T10:29:09Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/blob/v0.9.0/opentelemetry/proto/metrics/v1/metrics.proto#L200": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
@@ -19969,6 +19974,16 @@
     "when": "2026-10-20T05:44:55Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0265-event-vision.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:07Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:07Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md": {
     "result": 200,
     "when": "2026-10-19T05:46:43Z",
@@ -20719,6 +20734,11 @@
     "when": "2026-10-28T05:39:30Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/data-model.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/exceptions.md": {
     "result": 200,
     "when": "2026-10-28T05:39:30Z",
@@ -20774,9 +20794,19 @@
     "when": "2026-10-23T10:34:36Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0066-separate-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:12Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0152-telemetry-schemas.md": {
     "result": 200,
     "when": "2026-10-23T10:34:36Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0182-otlp-remote-parent.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0232-maturity-of-otel.md": {
@@ -20897,6 +20927,21 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/profiles/0212-profiling-vision.md": {
     "result": 200,
     "when": "2026-10-23T10:34:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0059-otlp-trace-data-format.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0205-messaging-semantic-conventions-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:10Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0220-messaging-semantic-conventions-span-structure.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:10Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
@@ -30207,6 +30252,11 @@
     "when": "2026-10-28T05:39:32Z",
     "via": "lychee",
   },
+  "https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
+    "via": "lychee",
+  },
   "https://resteasy.dev/": {
     "result": 200,
     "when": "2026-10-27T05:46:38Z",
@@ -34040,6 +34090,16 @@
   "https://www.w3.org/TR/trace-context-2/#sampled-flag": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://www.w3.org/TR/trace-context-2/#security-considerations": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
+    "via": "lychee",
+  },
+  "https://www.w3.org/TR/trace-context-2/#trace-flags": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
     "via": "lychee",
   },
   "https://www.w3.org/TR/trace-context-2/#tracestate-header": {
