@@ -731,29 +731,29 @@ expected. Account for idle services, scheduled work, deployment changes, and the
 normal delay between data generation and observation.
 
 Compare counts for the same signal type over a defined time window along a known
-path through the configured receivers, processors, connectors, and exporters.
-Filtering, sampling, routing, replication, and generated telemetry can change
-the expected relationship between ingress and egress counts. Batching and queued
-work can delay egress beyond the observation window. A difference between counts
-alone does not establish data loss, and a single ratio of sent to accepted data
-does not apply to every pipeline.
+path through your pipeline. Filtering, sampling, routing, replication, and
+generated telemetry can change the expected relationship between ingress and
+egress counts, and batching or queued work can push egress past the end of the
+window. So a gap between accepted and sent counts is not proof of loss on its
+own.
 
-Investigate sustained changes using [queue length](#queue-length) and Collector
-logs to check whether data is waiting to be sent or being dropped. Check
-[receive and export failures](#receive-failures), including the caveat about
-retries.
+If the gap persists across several windows, check [queue length](#queue-length)
+and Collector logs to see whether data is waiting to be sent or being dropped.
+Then look at [receive and export failures](#receive-failures), keeping in mind
+that failed sends may still succeed on retry.
 
-Where practical, collect and observe the Collector's internal telemetry through
-a path that can still report when the monitored pipeline fails. Check that these
-measurements themselves continue to arrive. Define missing data alerts in your
-monitoring system using evaluation windows and thresholds that reflect expected
-activity and observation delays. OpenTelemetry provides the telemetry but does
-not automatically infer quiet periods or configure these alerts.
+Where practical, send the Collector's internal telemetry somewhere other than
+through the pipeline it monitors, so you still see it when that pipeline fails.
+For example, scrape the Collector's Prometheus endpoint directly. Make sure
+these measurements themselves keep arriving. OpenTelemetry provides the
+telemetry, but it has no way to know when your services are expected to be
+quiet, so you need to define missing-data alerts in your monitoring system
+yourself. Set their evaluation windows and thresholds to match expected activity
+and observation delays.
 
-A running Collector does not prove that telemetry is being delivered. A
-successful export does not by itself prove that a record is durably stored or
-available to a backend query. Verify arrival and query visibility at the
-destination when those are required.
+A running Collector may still be failing to deliver data, and a successful
+export means the backend accepted the data, not that it is durably stored or
+queryable yet. When you need those guarantees, verify at the destination.
 
 For a broader discussion of missing telemetry in application workflows, see
 [When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
