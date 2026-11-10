@@ -1,7 +1,6 @@
 ---
 title: 非 Kubernetes 環境におけるインフラストラクチャとプロセス
-default_lang_commit: 87b4cea0e74dccab17d61601c4bd80e15dc95d08
-drifted_from_default: true
+default_lang_commit: 17662c24ee2f9789a70287c4ad02707582e3de98
 ---
 
 ## 概要 {#summary}
@@ -178,7 +177,7 @@ OpenTelemetry では、リソースはテレメトリーを生成したエンテ
 実際には、組織は、サポートされている場合に自動検出された属性を使用して、次のリソースドメイン間でテレメトリーを相関させることができるようにする必要があります。
 
 - **[ホスト](/docs/specs/semconv/resource/host/)**
-- **[デバイス](/docs/specs/semconv/resource/device/)**（該当する場合）
+- **[デバイス](/docs/specs/semconv/registry/attributes/device/)**（該当する場合）
 - **[プロセス](/docs/specs/semconv/resource/process/)**
 - **[プロセスランタイム](/docs/specs/semconv/resource/process/#process-runtimes)**
 - **[オペレーティングシステム](/docs/specs/semconv/resource/os/)**
