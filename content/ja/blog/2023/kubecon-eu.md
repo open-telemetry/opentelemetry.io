@@ -44,11 +44,10 @@ _standard in-person pass_ でご参加いただけます。
 このイベントは2023年4月18日午前9時から午後5時まで開催されます。
 OpenTelemetry に関するセッションも多数予定されています。
 
-> <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
-> need an _in-person all-access_ pass for on-site access to **Observability
-> Day**. For details, see [KubeCon registration][]. If you have a virtual
-> ticket, you will be able to follow **Observability Day** through a live
-> stream.
+> <i class="far fa-exclamation-triangle"></i> **重要なアクセスに関する注意**:
+> **Observability Day** に現地参加するには、_in-person all-access_ パスが必要です。
+> 詳細は [KubeCon registration][] をご確認ください。
+> バーチャルチケットをお持ちの場合は、ライブストリームで **Observability Day** を視聴できます。
 
 ## OpenTelemetry プロジェクトブース {#opentelemetry-project-booth}
 
