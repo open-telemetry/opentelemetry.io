@@ -3,12 +3,19 @@ title: Product Catalog Service
 linkTitle: Product Catalog
 aliases: [productcatalogservice]
 # prettier-ignore
-cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
+cSpell:ignore: fatalf otelc otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 ---
 
 This service is responsible to return information about products. The service
 can be used to get all products, search for specific products, or return details
 about any single product.
+
+This service sets up the OpenTelemetry SDK manually, as described below. The
+[Checkout service](checkout.md) is the other Go service in the demo. It is
+instrumented at compile time with
+[`otelc`](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation)
+instead, so together the two services demo both instrumentation modes for Go:
+manual SDK instantiation and `otelc`.
 
 [Product Catalog service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-catalog/)
 
