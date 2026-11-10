@@ -3,6 +3,7 @@ title:
   'Plataformas de telemetría gestionadas para cargas de trabajo en Kubernetes'
 linkTitle: 'Plataformas de telemetría gestionadas para K8s'
 default_lang_commit: 48d3ff356dc39a3b1323637f3163d435dc751228
+drifted_from_default: true
 cSpell:ignore: Autoscaler kube rollouts SDLC Skyscanner statefulset
 ---
 

@@ -8,6 +8,7 @@ eventUrl: &eventUrl >-
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
 default_lang_commit: 06145168104b5054b4a2c0640a58c1fae022eb5b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin Cgroupv Chauhan codecentric Contribfest Cosmonic Geisendoerfer Guangya Hoeven Horovits Jiří Juraj Kalyanaraman Karemba Karthik Kasper Kathiresan kedify Keycloak Kimpel Kluwer Kokilavani Kovalenko Kowall Kremser Kruthika Liatrio Mancioppi Michálek MTTD Nilson Nissen Norimatsu Oberaigner observ Olly Paessler Pahlke Prasanna Płotka Querel Roubalik SCRM Simha Skyscanner Suereth Tanaka Vamerlatti Vespri Vijay Wolters Zbynek
 ---

@@ -5,6 +5,7 @@ description: >-
   OpenTelemetry.
 weight: 200
 default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
+drifted_from_default: true
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no

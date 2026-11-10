@@ -6,6 +6,7 @@ author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 aliases: [otel-end-user-discussions-january-2023]
 body_class: otel-with-contributions-from
 default_lang_commit: c0067e41464a36f4b29f59d1b0d3b3970d4bd5dc
+drifted_from_default: true
 cSpell:ignore: january
 ---
 
