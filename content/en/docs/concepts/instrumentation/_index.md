@@ -28,6 +28,9 @@ the edges_ of your application.
 
 You can use both solutions simultaneously.
 
+To check whether expected application work is being observed, see
+[Designing instrumentation to detect missing telemetry](telemetry-completeness/).
+
 ## Additional OpenTelemetry Benefits
 
 OpenTelemetry provides more than just zero-code and code-based telemetry
