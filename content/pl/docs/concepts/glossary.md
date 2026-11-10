@@ -3,8 +3,7 @@ title: Glosariusz
 description:
   Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
-default_lang_commit: 4f8b46449bcc2980fd81c8e726733e1df1defddd
-drifted_from_default: true
+default_lang_commit: dab7241a884c24f4fa1705e9737ea7aab2a40d86
 ---
 
 Ten glosariusz definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne
@@ -310,6 +309,11 @@ Skrót od [OpenTelemetry Enhancement Proposal][].
 ### OTLP {#otlp}
 
 Skrót od [OpenTelemetry Protocol](/docs/specs/otlp/).
+
+### OTTL
+
+Skrót od
+[OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
 
 ### Propagatory {#propagators}
 
