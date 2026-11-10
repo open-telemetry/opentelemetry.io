@@ -3,7 +3,7 @@ title: 转换遥测数据
 weight: 26
 default_lang_commit: 1f88cd39457dc0f62dd86b35ba4f1841aac0462c
 # prettier-ignore
-cSpell:ignore: accountid clustername k8sattributes metricstransform OTTL resourcedetection
+cSpell:ignore: accountid clustername k8sattributes metricstransform ottl resourcedetection
 ---
 
 OpenTelemetry Collector 是在将数据发送到厂商或其他系统之前转换数据的便捷位置。

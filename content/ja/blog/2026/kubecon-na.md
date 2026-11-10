@@ -9,7 +9,7 @@ queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
 default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
 # prettier-ignore
-cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos OTTL Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
+cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
 ---
 
 OpenTelemetry のプロジェクトメンテナー、ガバナンス委員会メンバー、および技術委員会メンバーは、2026年11月9日から12日にかけてソルトレイクシティで開催される [KubeCon NA][] に参加できることを楽しみにしています。

@@ -5,7 +5,7 @@ date: 2026-03-02
 author: '[Kaise Cheng](https://github.com/kaisecheng) (Elastic)'
 issue: 9190
 sig: Collector SIG
-cSpell:ignore: Kaise OTTL spanevent
+cSpell:ignore: Kaise spanevent
 ---
 
 Last year, the OpenTelemetry project introduced

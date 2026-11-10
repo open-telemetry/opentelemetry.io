@@ -6,7 +6,7 @@ author: '[Juraci Paixao Krohling](https://github.com/jpkrohling) (OllyGarden)'
 canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemetry-log-deduplication-processor?link-check=no
 default_lang_commit: 87bfbf12b9489ac9028d5519cf91caaaea5909e8
 # prettier-ignore
-cSpell:ignore: jpkrohling Krohling logdedup logdedupprocessor OllyGarden OTTL Paixao telemetrygen
+cSpell:ignore: jpkrohling Krohling logdedup logdedupprocessor OllyGarden Paixao telemetrygen
 ---
 
 ![ログ重複排除のコンセプトを示すカバー画像](cover.png)

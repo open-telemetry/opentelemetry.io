@@ -6,7 +6,7 @@ author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 10848
 sig: Collector SIG
 default_lang_commit: e234c145b84f7c5e029afd1c7458ae162c307432
-cSpell:ignore: OTTL Vamerlatti
+cSpell:ignore: ottl Vamerlatti
 ---
 
 テレメトリーパイプラインが高度化するにつれ、実行すべき変換も複雑になっています。

@@ -9,7 +9,7 @@ author: >
   Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Developer Experience
 default_lang_commit: afdc2889da4a7cb97a858914baa3776bf0b16121
-cSpell:ignore: OTTL Sloughter
+cSpell:ignore: Sloughter
 ---
 
 OpenTelemetry Developer Experience SIG は先日、SIG が開発者エクスペリエンスの改善に最もインパクトを与えられる領域を把握するため、コミュニティに対してサーベイを実施しました。

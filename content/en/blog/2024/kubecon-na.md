@@ -4,7 +4,7 @@ linkTitle: KubeCon NA '24
 date: 2024-11-05
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 # prettier-ignore
-cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec OTTL Prasanna Shivanshu Shrivastava simha Woerner
+cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec Prasanna Shivanshu Shrivastava simha Woerner
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
