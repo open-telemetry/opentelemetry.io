@@ -3,7 +3,7 @@ title: OBI ネットワークメトリクスのクイックスタート
 linkTitle: クイックスタート
 description: OpenTelemetry eBPF 計装からネットワークメトリクスを生成するためのクイックスタートガイド
 weight: 1
-default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 ---
 
 OBI は、あらゆる環境（物理ホスト、仮想ホスト、コンテナ）でネットワークメトリクスを生成できます。
@@ -115,7 +115,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext:
             privileged: true
           volumeMounts:
@@ -138,7 +138,7 @@ kubectl apply -f obi-network.yml
 
 この設定の要点は次のとおりです。
 
-- v0.15.2 リリースイメージを使用し、ノードごとに1つの OBI Pod を配置します。
+- ノードごとに1つの OBI Pod を配置します。
 - ワークロードラベル用に Kubernetes メタデータへの読み取りアクセスを許可します。
 - `hostNetwork: true` を使用してホストネットワークインターフェイスを監視します。
 - Prometheus メトリクスをポート9090で公開し、以下の検証ステップ用にフローを出力します。

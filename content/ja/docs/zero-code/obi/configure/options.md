@@ -3,7 +3,7 @@ title: OBI グローバル設定プロパティ
 linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
-default_lang_commit: acd264e5dd162cf417e7992698cf7efc995c780d
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 cSpell:ignore: healthz
 ---
 
@@ -12,6 +12,9 @@ cSpell:ignore: healthz
 > このページでは Config v1 のフィールド名、例、環境変数を使用しています。
 > Config v2 については、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
 > 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
+
+Config v1 は引き続きサポートされていますが、バグ修正や新機能は提供されません。
+新しい設定には Config v2 を使用してください。
 
 OBI は、環境変数またはコマンドライン引数 `-config` か環境変数 `OTEL_EBPF_CONFIG_PATH` を使用して渡す YAML 設定ファイルを通じて設定できます。
 環境変数は設定ファイルのプロパティよりも優先されます。

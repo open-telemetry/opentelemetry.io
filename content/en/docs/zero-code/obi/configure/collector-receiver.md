@@ -115,7 +115,7 @@ don't have OCB installed, see the
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-  repository at v0.15.2
+  repository at v1.0.0
 - [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF
   files) or a C compiler, clang, and eBPF headers
 
@@ -169,15 +169,12 @@ don't have OCB installed, see the
    ```
 
    Replace `/path/to/obi` with the actual path to your OBI source directory. The
-   `replaces:` section points both the core and receiver modules at the local
-   checkout, including the generated BPF code. Starting with v0.15.2, the
-   receiver is published separately as `go.opentelemetry.io/obi/collector`,
-   tagged `collector/v0.15.2`. Its Go module version is `v0.15.2`, and its
-   import path is unchanged. Replacing only the root module no longer replaces
-   the receiver.
+   `replaces:` section builds both modules from the v1.0.0 checkout, including
+   generated BPF code. Replacing only the root module does not replace the
+   receiver.
 
    **Version selection**: You must specify versions for each component. The
-   example above matches the v0.15.2 upstream Builder example: Collector
+   example above matches the v1.0.0 upstream Builder example: Collector
    components use `v0.163.0` and configuration providers use `v1.69.0`. Check
    `collector/go.mod` and `examples/otel-collector/builder-config.yaml` in your
    OBI checkout when selecting another version.
@@ -189,6 +186,13 @@ don't have OCB installed, see the
    ```
 
    The compiled binary will be in `./dist/otelcol-obi`.
+
+The receiver is versioned separately from the core. For a Go project that uses
+the published modules, select both versions:
+
+```shell
+go get go.opentelemetry.io/obi/collector@v0.15.2 go.opentelemetry.io/obi@v1.0.0
+```
 
 ### Collector configuration with OBI receiver
 
@@ -306,8 +310,8 @@ the custom collector binary into a container image:
 2. Build and push the image:
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.15.2 .
-   docker push my-registry/otelcol-obi:v0.15.2
+   docker build -t my-registry/otelcol-obi:custom .
+   docker push my-registry/otelcol-obi:custom
    ```
 
 3. Deploy the DaemonSet:
@@ -332,7 +336,7 @@ the custom collector binary into a container image:
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.15.2
+             image: my-registry/otelcol-obi:custom
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
@@ -565,13 +569,13 @@ configuration.
 If you encounter API incompatibility errors or "unknown revision" errors during
 build:
 
-1. Ensure your OBI source directory is checked out at the version used by the
-   builder configuration:
+1. Ensure your OBI source directory is checked out at the core version used by
+   the local replacements:
 
    ```shell
    cd /path/to/obi
    git fetch --tags
-   git checkout v0.15.2
+   git checkout v1.0.0
    ```
 
 2. Ensure the Collector component version pins in your builder config match the

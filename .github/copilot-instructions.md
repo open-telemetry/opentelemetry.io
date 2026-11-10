@@ -20,10 +20,11 @@ info here.
 
 **Initial Setup and Dependencies:**
 
-- `npm install` -- takes ~45 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
-  Installs the versions pinned in the committed `package-lock.json`
-- Initial setup automatically runs: `npm run prepare` which executes
-  `get:submodule` and `_prepare:docsy`
+- `npm run install:safe` -- takes ~1 minute. NEVER CANCEL. Set timeout to 3+
+  minutes. A lock-exact install with lifecycle scripts suppressed, followed by
+  `ci:prepare` (reviewed Hugo-binary fetch, then `npm run prepare`:
+  `get:submodule` and `_prepare:docsy`); the repo's
+  [install contract](https://opentelemetry.io/site/build/dependencies/#install-contracts)
 - Submodules are essential - they contain OpenTelemetry specifications,
   community docs, and theme components
 
@@ -121,7 +122,7 @@ info here.
 
 ```bash
 # Setup and dependencies
-npm install               # Install all dependencies (~45s)
+npm run install:safe     # Lock-exact install, then ci:prepare (~1min)
 npm run prepare          # Get submodules and prepare Docsy theme
 
 # Building
@@ -181,7 +182,7 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 **NEVER CANCEL these commands - use generous timeouts:**
 
-- `npm install`: 2+ minutes (network dependent)
+- `npm run install:safe`: 3+ minutes (network dependent)
 - `npm run build`: 3+ minutes (includes submodule processing)
 - `npm run serve`: 3+ minutes (initial build before serving)
 - `npm run check`: 4+ minutes (comprehensive validation)

@@ -324,7 +324,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext:
             privileged: true
             readOnlyRootFilesystem: true

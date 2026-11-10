@@ -3,7 +3,7 @@ title: OBI Config v2 リファレンス
 linkTitle: Config v2 リファレンス
 description: スタンドアロン OBI または OBI Collector レシーバーを Config v2 で設定する方法を学びます。
 weight: 3
-default_lang_commit: 3c71900b2014474adce4a86da454d68b854af254
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 # prettier-ignore
 cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sqlpp
 ---
@@ -11,6 +11,10 @@ cSpell:ignore: Aerospike jsonrpc ollama openai qwen rerank sattributes SIGUSR sq
 Config v2 は OBI v0.11.0 以降で利用可能です。
 OpenTelemetry の宣言的構成構造を使用します。
 リソース、サンプリング、エクスポーターなどの共通設定はドキュメントのルートに配置し、OBI 固有の設定は `extensions.obi` 配下にまとめます。
+
+Config v2 とその生成スキーマは安定版です。
+OBI は OpenTelemetry 宣言的構成のサブセットをサポートしています。[サポートされるトップレベルフィールド](#supported-top-level-fields)を参照してください。
+サンプリングはすべてのワークロードに適用されます。個々のワークロードにサンプラーを設定することはできません。
 
 すでに Config v1 ファイルがある場合は、手動で書き直すかわりに [Config v1 から v2 への移行ガイド](../migrate-to-config-v2/)を使用してください。
 

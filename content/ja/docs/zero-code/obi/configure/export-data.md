@@ -5,7 +5,7 @@ description:
   OBI コンポーネントが Prometheus 形式と OpenTelemetry 形式のメトリクスおよび
   OpenTelemetry 形式のトレースをエクスポートするよう設定する
 weight: 10
-default_lang_commit: 9d1c87cdbe98ce2dde3e417bd2f6d965d0f08ae3
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 # prettier-ignore
 cSpell:ignore: aerospike AsterixDB Chroma couchbase genai gonic jackc libcuda libcudart memcached Milvus nats Ollama pgxpool Pinecone pyserver Qdrant Qwen rerank segmentio spanmetrics sunrpc Weaviate Zilliz
 ---
@@ -113,7 +113,7 @@ OBI は以下の CUDA 操作を計装します。
 | `cuGraphLaunch`    |
 
 OBI はメモリ、ストリーム、イベント、デバイスイントロスペクションの一部の呼び出しも監視します。
-API の完全なリストとメトリクスについては、[v0.15.2 GPU モニタリングリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/gpu-monitoring.md) を参照してください。
+API の完全なリストとメトリクスについては、[GPU モニタリングリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/gpu-monitoring.md) を参照してください。
 
 ## メトリクスの共通設定 {#common-metrics-configuration}
 
@@ -234,7 +234,7 @@ Linux 上の .NET 8 以降では、OBI はプロセスの診断ソケットを�
 v0.15.2 でプロセッサー数、プロセス CPU 時間、最後のコレクションのヒープサイズが追加されました。
 デフォルトのポーリング間隔は 1 秒で、`dotnet_runtime_metrics.sampling_interval` で設定します。
 診断 IPC のセットアップとシャットダウンには `dotnet_runtime_metrics.timeout`（デフォルト `10s`）を使用します。
-収集のセマンティクスとメトリクスの可用性については、[.NET ランタイムリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v0.15.2/devdocs/runtimes/dotnet.md) を参照してください。
+収集のセマンティクスとメトリクスの可用性については、[.NET ランタイムリファレンス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/devdocs/runtimes/dotnet.md) を参照してください。
 
 HotSpot JVM メモリメトリクスの OBI サンプリング間隔を制御するには、`jvm_runtime_metrics.sampling_interval` を使用します。
 
