@@ -10,6 +10,13 @@ sig: SIG Demo
 cSpell:ignore: Aditya
 ---
 
+I picked up the recommendation service rewrite cause it was tagged good first
+issue, so I thought it was ready to be worked on. Then the first reply on my PR
+asked if the OpenTelemetry Demo even needed another Java service. I was mostly
+confused, cause it came off to me like it wasn't actually decided fully yet.
+That led me down looking into how the project works and how the maintainers
+decide things.
+
 The recommendation service in the OpenTelemetry Demo used to be Python. I
 rewrote it in Spring Boot 4 and the
 [rewrite](https://github.com/open-telemetry/opentelemetry-demo/pull/3966) merged
@@ -85,8 +92,7 @@ line, "I think the OpenTelemetry Demo should use OpenTelemetry's recommended
 approach", with a link to the starter page. I switched that day, and that's
 where the gRPC spans went missing. The starter's
 [out-of-the-box instrumentation](/docs/zero-code/java/spring-boot-starter/out-of-the-box-instrumentation/)
-doesn't include gRPC in 2.31.1, cause gRPC comes from the separate Spring gRPC
-project, not core Spring Boot. So I added the
+doesn't include gRPC in 2.31.1. So I added the
 [OpenTelemetry gRPC library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/v2.31.1/instrumentation/grpc-1.6/library/README.md)
 and registered its interceptors myself.
 
@@ -111,18 +117,19 @@ The comment that actually changed how I looked at it came from the Java
 approver. He was
 [fine with the starter](https://github.com/open-telemetry/opentelemetry-demo/pull/3966#issuecomment-6066087816)
 as long as the example is "super clear about it not being the default
-recommendation", cause people (and AI tools) copy this repo as is. Before that I
-thought I was just porting a service. After that it was something people would
-copy without ever reading the thread, which is a different kind of pressure. So
-the README now says right at the top that the agent is the default and this
-service shows the starter as a second option. The changelog says it too.
-
-The agent is the default for a good reason, it instruments everything out of the
-box. Pick the starter only when the agent doesn't fit, like a native image,
-another agent already attached, or a tight container. Memory came up early in
-the review, and the starter ran about 75 MiB lighter under load than the agent
-(around 305 against 380 MiB of a 500 MiB limit), so it made sense for the Demo
+recommendation", cause people (and AI tools) copy this repository as is. Before
+that I thought I was just porting a service. After that it was something people
+would copy without ever reading the thread, which is a different kind of
+pressure. So the README now says right at the top that the agent is the default
+and this service shows the starter as a second option. The changelog says it
 too.
+
+The agent is the default for a good reason, it instruments a lot more out of the
+box. Pick the starter only when the agent doesn't fit, like a native image,
+another agent already attached, or when its startup overhead is too much. Memory
+came up early in the review, and the starter ran about 75 MiB lighter under load
+than the agent (around 305 against 380 MiB of a 500 MiB limit), so it made sense
+for the Demo too.
 
 All in, it took 13 commits and five weeks, and a bunch of those commits were
 just me merging `main` back in while waiting for the next review. Looks like
