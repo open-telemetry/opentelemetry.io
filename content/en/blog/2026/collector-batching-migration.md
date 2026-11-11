@@ -6,7 +6,6 @@ author: >-
   [Bogdan Drutu](https://github.com/bogdandrutu), [Dmitry
   Anoshin](https://github.com/dmitryax), and [Joshua
   MacDonald](https://github.com/jmacd).
-draft: true
 issue: 12069
 sig: Collector SIG
 # prettier-ignore
