@@ -1,9 +1,6 @@
-// Pure logic for the "Announce blog post" workflow: find English blog posts
-// that were published by a push and render announcement files for
-// open-telemetry/opentelemetry-announcements. Side effects (git, filesystem)
-// are injected so everything here is unit-testable.
-
-import { createHash } from 'node:crypto';
+// Logic for the "Announce blog post" workflow: find the English blog post that
+// a push published, and render its announcement file for
+// open-telemetry/opentelemetry-announcements.
 
 import { dump, load } from 'js-yaml';
 
@@ -24,13 +21,25 @@ export function parseFrontMatter(text) {
   return (m && load(m[1])) || {};
 }
 
+const isPublished = (content) =>
+  content != null && parseFrontMatter(content).draft !== true;
+
 /**
- * True if the post is missing or a draft. `readAt(path)` returns the file
- * content at the baseline revision, or null if the file didn't exist.
+ * Returns the blog posts among `paths` that the push published: posts that
+ * aren't drafts now, and were missing or drafts before the push. Edits of
+ * published posts are ignored, so each post is announced once.
+ *
+ * @param {string[]} paths Files changed by the push.
+ * @param {(path: string) => string | null} readBefore Content before the push.
+ * @param {(path: string) => string | null} readAfter Content after the push.
  */
-function wasUnpublished(readAt, path) {
-  const content = readAt(path);
-  return content === null || parseFrontMatter(content).draft === true;
+export function findPublishedPosts(paths, readBefore, readAfter) {
+  return paths.filter(
+    (path) =>
+      parsePostPath(path) &&
+      isPublished(readAfter(path)) &&
+      !isPublished(readBefore(path)),
+  );
 }
 
 /** Normalizes a front matter `date` (Date or string) to `YYYY-MM-DD`. */
@@ -40,117 +49,48 @@ function dayOf(date) {
 }
 
 /**
- * Builds the announcement for one post.
+ * Builds the announcement file and pull request for a post, or returns null
+ * if the post has `announcement: false`.
  *
- * @returns {{ skip: string } | { slug, title, line, file, content }}
+ * @param {string} path Blog post path.
+ * @param {object} frontMatter Parsed front matter of the post.
+ * @param {string} today `YYYY-MM-DD` (UTC).
  */
-export function buildAnnouncement({ path, frontMatter, today }) {
+export function buildAnnouncement(path, frontMatter, today) {
   const { year, slug } = parsePostPath(path);
   const { title, announcement, date } = frontMatter;
 
-  if (announcement === false) return { skip: 'announcement: false' };
+  if (announcement === false) return null;
   if (announcement != null && typeof announcement !== 'string') {
     throw new Error(`${path}: announcement must be a string or false`);
   }
   if (typeof title !== 'string' || !title) {
     throw new Error(`${path}: missing title`);
   }
+  const day = dayOf(date);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) {
+    throw new Error(`${path}: missing or invalid date`);
+  }
 
   const url = `${SITE}/blog/${year}/${slug}/`;
-  const text = `${announcement || title}\n\n${url}`;
-  const body = dump(
-    { subject: `New on the OpenTelemetry blog: ${title}`, text },
-    { lineWidth: -1 },
-  );
-  const goLive = dayOf(date);
-  // Name the file after the post date, not the run date, so that re-runs on
-  // later days reuse the same path instead of announcing the post again.
-  const fileDay = /^\d{4}-\d{2}-\d{2}$/.test(goLive) ? goLive : today;
+  const link = `[${title}](${url})`;
   return {
-    slug,
-    title,
-    line:
-      goLive > today
-        ? `- [${title}](${url}): goes live on ${goLive}, merge on or after that day`
-        : `- [${title}](${url})`,
-    file: `announcements/${fileDay.slice(0, 4)}/${fileDay.slice(5)}-blog-${slug}.yaml`,
+    // Named after the post date, so re-runs produce the same file.
+    file: `announcements/${day.slice(0, 4)}/${day.slice(5)}-blog-${slug}.yaml`,
     content:
       '# yaml-language-server: $schema=../../schema/announcement.schema.json\n' +
-      body,
-  };
-}
-
-/**
- * Finds the announcements for a push.
- *
- * @param {object} o
- * @param {string[]} o.posts Candidate file paths (changed files or explicit).
- * @param {boolean} o.explicit Announce `posts` regardless of their history.
- * @param {string} o.today `YYYY-MM-DD` (UTC).
- * @param {(path: string) => string | null} o.readCurrent Current content.
- * @param {(path: string) => string | null} o.readBefore Content before the
- *   push, or null if the file didn't exist.
- * @param {(msg: string) => void} [o.log]
- */
-export function collectAnnouncements({
-  posts,
-  explicit,
-  today,
-  readCurrent,
-  readBefore,
-  log = () => {},
-}) {
-  const results = [];
-  for (const path of posts) {
-    const info = parsePostPath(path);
-    if (!info) continue;
-    const content = readCurrent(path);
-    if (content === null) continue;
-
-    const frontMatter = parseFrontMatter(content);
-    if (frontMatter.draft === true) {
-      log(`Skipping draft: ${path}`);
-      continue;
-    }
-    if (!explicit) {
-      // A page bundle and a single-file post are the same post.
-      const { year, slug } = info;
-      const siblings = [
-        `content/en/blog/${year}/${slug}.md`,
-        `content/en/blog/${year}/${slug}/index.md`,
-      ];
-      if (!siblings.every((p) => wasUnpublished(readBefore, p))) {
-        log(`Already published before this push: ${path}`);
-        continue;
-      }
-    }
-
-    const result = buildAnnouncement({ path, frontMatter, today });
-    if ('skip' in result) {
-      log(`Skipping, ${result.skip}: ${path}`);
-      continue;
-    }
-    results.push(result);
-  }
-  return results;
-}
-
-/** PR branch, title and body lines for a non-empty list of announcements. */
-export function describePullRequest(announcements) {
-  const [first] = announcements;
-  // A batch gets a branch of its own, so that announcing one of its posts
-  // separately (for example by a manual run) doesn't overwrite the batch PR.
-  const slugs = announcements.map((a) => a.slug).sort();
-  const branch =
-    slugs.length === 1
-      ? `otelbot/announce-blog-${first.slug}`
-      : `otelbot/announce-blog-posts-${createHash('sha256').update(slugs.join('\n')).digest('hex').slice(0, 10)}`;
-  return {
-    branch,
-    title:
-      announcements.length === 1
-        ? `Announce blog post: ${first.title}`
-        : `Announce ${announcements.length} blog posts`,
-    body: announcements.map((a) => a.line).join('\n'),
+      dump(
+        {
+          subject: `New on the OpenTelemetry blog: ${title}`,
+          text: `${announcement || title}\n\n${url}`,
+        },
+        { lineWidth: -1 },
+      ),
+    branch: `otelbot/announce-blog-${slug}`,
+    title: `Announce blog post: ${title}`,
+    body:
+      day > today
+        ? `${link} goes live on ${day}. Merge this PR on or after that day.`
+        : link,
   };
 }
