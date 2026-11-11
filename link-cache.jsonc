@@ -3761,12 +3761,12 @@
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
     "result": "error",
-    "when": "2026-11-10T05:38:05Z",
+    "when": "2026-11-11T05:38:31Z",
     "via": "lychee",
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
     "result": "error",
-    "when": "2026-11-10T05:38:05Z",
+    "when": "2026-11-11T05:38:31Z",
     "via": "lychee",
   },
   "https://en.wikipedia.org/": {
@@ -27911,18 +27911,18 @@
   },
   "https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda": {
     "result": "error",
-    "when": "2026-11-10T05:38:05Z",
+    "when": "2026-11-11T05:38:31Z",
     "via": "lychee",
   },
   "https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e": {
-    "result": "error",
-    "when": "2026-11-10T05:38:05Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-11-11T05:40:07Z",
+    "via": "double-check",
   },
   "https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0": {
-    "result": "error",
-    "when": "2026-11-10T05:38:05Z",
-    "via": "lychee",
+    "result": 206,
+    "when": "2026-11-11T05:40:07Z",
+    "via": "double-check",
   },
   "https://medium.com/p/42337e994b63": {
     "result": 206,
@@ -33169,7 +33169,7 @@
   },
   "https://www.britannica.com/dictionary/pipeline": {
     "result": "error",
-    "when": "2026-11-10T05:38:05Z",
+    "when": "2026-11-11T05:38:31Z",
     "via": "lychee",
   },
   "https://www.buoyant.io/mtls-guide": {
