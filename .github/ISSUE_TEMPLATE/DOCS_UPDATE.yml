@@ -1,8 +1,7 @@
 name: Documentation issue
 description: You've found an issue with the documentation.
-title: '[Docs]: '
+labels: ['docs']
 type: bug
-
 body:
   - type: textarea
     id: change_description

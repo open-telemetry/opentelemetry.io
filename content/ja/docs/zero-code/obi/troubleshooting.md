@@ -2,7 +2,7 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-default_lang_commit: de36656f997593939e9f6a2b89aa1da72e1718d6
+default_lang_commit: 6e13d934026c15dc982e28c1234838ccf005ecb0
 cSpell:ignore: Clickhouse tracefs uprobe userland
 ---
 
@@ -108,6 +108,21 @@ OBI は、パフォーマンスプロファイリング用に `pprof` ポート�
 ## OBI の一般的な問題 {#common-obi-issues}
 
 このセクションでは、OBI でよくある問題を解決する方法を説明します。
+
+### Pod の再起動後にアプリケーションメトリクスが欠落する {#missing-application-metrics-after-a-pod-restart}
+
+Kubernetes の Pod が起動または再起動した後に、アプリケーションメトリクスが欠落したままになることがあります。
+この現象が発生した場合、OBI を再起動してみてください。
+原因は確認されていません。
+デプロイメントをテストする際は、ワークロードの再起動後にメトリクスが表示されることを確認してください。
+
+### 報告されたスパンのタイムスタンプ異常 {#reported-span-timestamp-anomalies}
+
+[Issue #2568](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568) では、OpenShift 4.16 上の OBI v0.9.0/v0.10.0 で、同一ノードおよびクロスノードの両方のトレースにおいて、子スパンの開始タイムスタンプが親よりも早くなる事象が報告されています。
+報告者はその後、この症状は [OBI の作成後およそ最初の18時間に限定されるようだ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568#issuecomment-4885235257) と述べています。
+
+[v1.0.0 リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)では、この問題が未解決の制限事項として残されています。
+このイシューでは、アプリケーションの言語やプロトコルの特定、再現手順の提供、v1.0.0 での再現確認は行われていません。
 
 ### OBI 実行中に ClickHouse インスタンスがクラッシュする {#clickhouse-instances-crash-when-obi-is-running}
 

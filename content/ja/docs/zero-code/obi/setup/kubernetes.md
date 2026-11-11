@@ -3,7 +3,7 @@ title: KubernetesにOBIをデプロイする
 linkTitle: Kubernetes
 description: KubernetesにOBIをデプロイする方法を学びます。
 weight: 4
-default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 # prettier-ignore
 cSpell:ignore: containerd goblog kubeadm microk8s replicaset statefulset tracefs
 ---
@@ -147,7 +147,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -178,8 +178,7 @@ OBIは(共有されたPID名前空間のため)同じPod内のプロセスにし
 
 Pod内で計装するプロセスをより細かく制御する必要がある場合は、ワイルドカードのかわりに実行可能ファイル名やオープンポートを指定できます。
 
-以下の例では、OBIをコンテナ(`otel/ebpf-instrument:v0.15.2` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
-自動計装ツールは、同じ名前空間の `otelcol` サービスの背後にあるアクセス可能なOpenTelemetryコレクターにメトリクスとトレースを転送するように構成されています。
+以下の例では、`goblog` PodにOBIサイドカーを追加し、同じ名前空間の `otelcol` にある Collector にメトリクスとトレースを送信します。
 
 ```yaml
 apiVersion: apps/v1
@@ -212,7 +211,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -272,7 +271,7 @@ spec:
       serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           securityContext:
             privileged: true
           env:
@@ -336,7 +335,7 @@ spec:
       containers:
         - name: obi
           terminationMessagePolicy: FallbackToLogsOnError
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           env:
             - name: OTEL_EBPF_TRACE_PRINTER
               value: "text"
@@ -443,7 +442,7 @@ spec:
       serviceAccountName: obi # Pod、Node、Serviceに対するlist/watch権限が必要
       containers:
         - name: k8s-cache
-          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v0.15.2
+          image: ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/opentelemetry-ebpf-k8s-cache:v1.0.0
           ports:
             - containerPort: 50055
               name: grpc
@@ -525,7 +524,7 @@ spec:
       hostPID: true # 重要！
       containers:
         - name: obi
-          image: otel/ebpf-instrument:v0.15.2
+          image: otel/ebpf-instrument:v1.0.0
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

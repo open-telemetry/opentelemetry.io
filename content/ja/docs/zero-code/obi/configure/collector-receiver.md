@@ -3,7 +3,7 @@ title: OpenTelemetry Collector レシーバーとしての OBI
 linkTitle: Collector レシーバー
 weight: 75
 description: テレメトリーを一元的に処理するために、OBI を OpenTelemetry Collector のレシーバーコンポーネントとして使用する方法を学びます。
-default_lang_commit: 5cf207da7aef590bebe8ea29a1873d65ad5c02a2
+default_lang_commit: 6e13d934026c15dc982e28c1234838ccf005ecb0
 cSpell:ignore: bpftool PERFMON
 ---
 
@@ -100,7 +100,7 @@ OCB をインストールしていない場合は、[インストール手順](/
 
 - [Go](https://go.dev) 1.26 以降
 - [OCB](/docs/collector/extend/ocb/) がインストールされ、`PATH` から利用できること
-- [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation) リポジトリの v0.15.2 をローカルにチェックアウト
+- [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation) リポジトリの v1.0.0 をローカルにチェックアウト
 - [Docker](https://docs.docker.com/get-started/get-docker/)（eBPF ファイル生成用）、または C コンパイラ、clang、eBPF ヘッダー
 
 **ビルド手順:**
@@ -149,13 +149,11 @@ OCB をインストールしていない場合は、[インストール手順](/
    ```
 
    `/path/to/obi` は実際の OBI ソースディレクトリのパスに置き換えてください。
-   `replaces:` セクションは、コアモジュールとレシーバーモジュールの両方をローカルのチェックアウト（生成された BPF コードを含む）に向けます。
-   v0.15.2 以降、レシーバーは `go.opentelemetry.io/obi/collector` として個別に公開され、`collector/v0.15.2` としてタグ付けされています。
-   Go モジュールバージョンは `v0.15.2` であり、インポートパスは変わりません。
+   `replaces:` セクションは、v1.0.0 のチェックアウトから両方のモジュールをビルドします（生成された BPF コードを含む）。
    ルートモジュールだけを replace してもレシーバーは replace されません。
 
    **バージョン選定**: コンポーネントごとにバージョンを指定する必要があります。
-   上記の例は v0.15.2 のアップストリーム Builder サンプルに準拠しており、Collector コンポーネントは `v0.163.0`、構成プロバイダーは `v1.69.0` を使用しています。
+   上記の例は v1.0.0 のアップストリーム Builder サンプルに準拠しており、Collector コンポーネントは `v0.163.0`、構成プロバイダーは `v1.69.0` を使用しています。
    別のバージョンを選択する場合は、OBI チェックアウト内の `collector/go.mod` と `examples/otel-collector/builder-config.yaml` を確認してください。
 
 3. カスタム Collector をビルドします。
@@ -165,6 +163,13 @@ OCB をインストールしていない場合は、[インストール手順](/
    ```
 
    コンパイルされたバイナリは `./dist/otelcol-obi` に配置されます。
+
+レシーバーはコアとは独立してバージョン管理されています。
+公開モジュールを使用する Go プロジェクトでは、両方のバージョンを指定してください。
+
+```shell
+go get go.opentelemetry.io/obi/collector@v0.15.2 go.opentelemetry.io/obi@v1.0.0
+```
 
 ### OBI レシーバーを使用した Collector の設定 {#collector-configuration-with-obi-receiver}
 
@@ -278,8 +283,8 @@ Collector は `sudo` で実行するか、次のための適切な Linux ケー�
 2. イメージをビルドして push します。
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.15.2 .
-   docker push my-registry/otelcol-obi:v0.15.2
+   docker build -t my-registry/otelcol-obi:custom .
+   docker push my-registry/otelcol-obi:custom
    ```
 
 3. DaemonSet をデプロイします。
@@ -304,7 +309,7 @@ Collector は `sudo` で実行するか、次のための適切な Linux ケー�
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.15.2
+             image: my-registry/otelcol-obi:custom
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
@@ -527,12 +532,12 @@ Collector のパイプラインは設定に応じて追加のリソースを必�
 
 ビルド時に API 非互換エラーや "unknown revision" エラーが発生した場合は、次を試してください。
 
-1. OBI のソースディレクトリが builder の設定で使用しているバージョンでチェックアウトされていることを確認します。
+1. OBI のソースディレクトリがローカルの replace で使用しているコアバージョンでチェックアウトされていることを確認します。
 
    ```shell
    cd /path/to/obi
    git fetch --tags
-   git checkout v0.15.2
+   git checkout v1.0.0
    ```
 
 2. builder の設定における Collector コンポーネントのバージョン pin が、チェックアウトした OBI の `collector/go.mod` で定義されているバージョンと一致していることを確認します。

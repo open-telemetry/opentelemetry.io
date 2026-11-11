@@ -69,103 +69,54 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.15.2)
+## Stability
 
-OBI v0.15.2 supersedes the unpublished v0.15.0 and v0.15.1 releases. It includes
-the intended v0.15.0 changes, a BPF verifier correction, and a release artifact
-build correction. Install v0.15.2 when upgrading from v0.14.0.
+OBI v1.0.0 is the first stable release. It guarantees compatibility for:
 
-- **Go manual spans**: Captures spans through the Auto SDK embedded in the Go
-  Trace API, without requiring the separate Auto SDK module
-- **.NET instrumentation**: Expands route harvesting and adds CPU and
-  last-collection heap-size metrics
-- **Endpoint names**: Adds opt-in AWS Route53 hosted-zone name resolution
-- **Config v2**: Selects metric families explicitly and applies protocol metric
-  switches to span metrics and service graphs
-- **Collector integration**: Publishes the receiver as a separate Go module
-  while preserving its import path
-- **Correctness fixes**: Prevents HTTP/2 context injection into misclassified
-  sockets, separates colliding metric-label tuples, corrects duplicate
-  `target.info` counts, and fixes OTLP/HTTP JSON trace encoding
+- The public Go API of
+  [`go.opentelemetry.io/obi`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#go-module-api).
+- Config v2, its generated schema, and the supported subset of OpenTelemetry
+  declarative configuration.
+- Documented CLI flags, environment variables, release binaries, and container
+  image behavior.
+- Telemetry classified as `stable`, in both OTLP and built-in Prometheus output.
+- Supported environments and the documented upgrade and deprecation rules.
 
-Review the [v0.15.2 upgrade notes](#upgrade-notes-for-v0152) and
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)
-for changes that affect dashboards, metric cardinality, and trace processing.
+Changes that break these guarantees require a new major version. Minor releases
+can add compatible functionality, and patch releases preserve compatibility. See
+the
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)
+and
+[versioning policy](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#compatibility-and-release-rules-after-v1).
+
+The [Collector receiver](configure/collector-receiver/) is versioned separately
+on a v0 release line. Telemetry and attributes not marked `stable` can still
+change, as can network flow attribute names while their semantic conventions are
+being aligned. See [telemetry stability](metrics/#stability).
+
+## Upgrade to v1.0.0
+
+- Use [Config v2](configure/config-v2/). Config v1 remains supported, but
+  receives no bug fixes or new features. Follow the
+  [migration guide](configure/migrate-to-config-v2/) and test the migrated
+  configuration on one instance before rolling it out.
+- The Collector receiver remains at `v0.15.2`; select core `v1.0.0` separately.
+  See [Collector receiver setup](configure/collector-receiver/).
+- The telemetry schema URL changes from `0.15.2` to `1.0.0`. The schema keeps
+  earlier transformations and adds no new renames. See
+  [telemetry stability](metrics/#stability) for schema limitations.
+
+When upgrading from v1.0.0-rc.1 or a release before v0.15.2, review the
+[v0.15.2 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)
+for changes to span names, default metric attributes, Prometheus labels, and Go
+configuration APIs. If upgrading from a release before v0.14.0, also review the
+[v0.14.0 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0).
+Check the [known operational limitations](#limitations) during rollout.
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/apache).
-
-## Upgrade notes for v0.15.2
-
-- Build Collector distributions with the `go.opentelemetry.io/obi/collector`
-  module at `v0.15.2`. The root module no longer contains the receiver package.
-  See [Collector receiver setup](configure/collector-receiver/) for the updated
-  module replacements and component versions. Go embedders must also replace the
-  removed `PrometheusConfig.Registry` field with a Prometheus HTTP port
-  configuration.
-- Config v2 protocol `enabled.metrics: false` now also suppresses that
-  protocol's span metrics and service graphs. Traces remain independently
-  configurable. Review the migration report when Config v1 instrumentation lists
-  and derived metric coverage differ. See
-  [metric feature selection](configure/config-v2/#metric-feature-selection).
-- HTTP client `server.address` values omit the Host header's port; `server.port`
-  and `url.full` retain it. Kubernetes Service hosts with ports now resolve to
-  the service and namespace, which can change service graph names.
-- gRPC span names and `rpc.method` values omit the leading slash. Invalid or
-  unread paths use span name `grpc` and method `_OTHER`; `rpc.method_original`
-  preserves a captured raw path. ONC RPC uses `{program}/{procedure}` methods
-  only when a CALL was captured and reports response status only with a REPLY.
-- GenAI, database, GraphQL, AWS S3/SQS, and ONC RPC span names change to follow
-  semantic conventions. For example, Anthropic `message` becomes `chat`, GraphQL
-  server names omit `GraphQL`, and S3/SQS names use `S3.`/`SQS.` prefixes.
-  Update span-name filters and span-metric queries.
-- Database duration metrics include `db.collection.name` by default. RPC client
-  duration adds `server.port`, and failed RPC server duration adds `error.type`.
-  Messaging client duration adds `messaging.operation.type`; client and process
-  durations include subscription names when present. These defaults can split
-  metric series. See [metric attributes](metrics/#attributes-of-obi-metrics).
-- MQTT SUBSCRIBE telemetry uses `messaging.destination.subscription.name`
-  instead of destination name and omits the filter from span names. Shared
-  subscriptions also report `messaging.consumer.group.name`. AWS SNS spans no
-  longer include `rpc.system.name` or `rpc.method`.
-- GraphQL, MCP, and JSON-RPC server spans no longer carry HTTP method, status,
-  route, URL, body-size, user-agent, or OBI response-observation attributes.
-  Captured HTTP headers are limited to plain HTTP and GraphQL spans. OTLP GenAI
-  metrics omit missing request models, and AMQP metrics omit empty destinations.
-- The telemetry schema advances to `0.15.2`, retaining earlier transformations.
-  The telemetry registry uses Weaver `definition/2`; span reference IDs no
-  longer have a `span.` prefix, so update links to old catalog anchors.
-
-When upgrading from a release older than v0.14.0, also review the earlier
-changes below. The release notes describe additional protocol-specific naming
-and attribute changes.
-
-## Upgrade notes for v0.14.0
-
-- HTTP duration and body-size metrics now include `error.type` by default on
-  failed requests. Their Prometheus series gain an `error_type` label, with an
-  empty value on successful requests. Review dashboards and alert queries that
-  depend on the old series.
-- The OTLP span metrics no longer copy `host.id` to each data point. The value
-  remains a resource attribute and in `target_info`; OBI's Prometheus exporter
-  is unchanged. Consumers that flatten OTLP resources into Prometheus labels
-  should check their `host_id` queries.
-- `service.peer.name`, `http.request.body.size`, `http.response.body.size`, and
-  `obi.http.response.observed` are now opt-in span attributes. Select them with
-  [`attributes.select.traces.include`](configure/metrics-traces-attributes/)
-  when needed; service graph processors may need `service.peer.name`.
-- The pinned `traces_ctx_v1` map is no longer populated by default. External
-  trace-profile correlation and the Go channel handoff fallback can be restored
-  with
-  [`ebpf.populate_trace_context: true`](configure/metrics-traces-attributes/).
-- Target declarations still take precedence over resource metadata. Resolved
-  target metadata now takes precedence over the agent's own
-  `OTEL_RESOURCE_ATTRIBUTES`, with values merged per key.
-- Elastic Cloud client spans and database-operation metrics now include
-  `db.namespace` from `X-Found-Handling-Cluster`. Existing metric series may
-  split by cluster. AWS SQS spans no longer include `aws.extended_request_id`.
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/apache).
 
 ## How OBI works
 
@@ -196,6 +147,10 @@ OBI publishes the following supported release artifacts:
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
 when the environment meets the requirements above.
 
+The
+[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/SUPPORT_MATRIX.md)
+defines the supported environments and feature-specific requirements.
+
 OBI does not support non-Linux operating systems, Linux architectures other than
 `amd64` and `arm64`, Linux environments without BTF, or kernel versions earlier
 than Linux `5.8` outside the documented RHEL-family `4.18+` exception.
@@ -225,6 +180,19 @@ Some features also have additional caveats or narrower support than the core
 platform requirements. For details, refer to the feature-specific documentation
 for [distributed traces](distributed-traces/) and
 [exported instrumentation](configure/export-data/).
+
+Known limitations and unresolved reports include:
+
+- Application metrics can remain missing after a Kubernetes Pod starts or
+  restarts. Restarting OBI can restore them. See
+  [missing application metrics](troubleshooting/#missing-application-metrics-after-a-pod-restart).
+- A user
+  [reported child span timestamps earlier than parent timestamps](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)
+  with OBI v0.9.0/v0.10.0 on OpenShift 4.16. See the
+  [reported conditions](troubleshooting/#reported-span-timestamp-anomalies).
+- Service graphs can show `outgoing` destinations or separate Kubernetes and
+  OpenTelemetry names for the same service when OBI cannot resolve its metadata.
+  See [service graph limitations](metrics/#service-graph-limitations).
 
 For a comprehensive list of capabilities required by OBI, refer to
 [Security, permissions and capabilities](security/).
