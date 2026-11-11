@@ -41,6 +41,15 @@ jobs:
       # A push can contain several commits, so compare with the commit before
       # the push. It's missing for new branches and might be gone after a force
       # push, so fall back to the parent commit.
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm run ci:min
+
       - name: Find the commit before the push
         id: before
         if: github.event_name == 'push'
@@ -77,7 +86,7 @@ jobs:
           BEFORE: ${{ steps.before.outputs.sha }}
           POST: ${{ inputs.post }}
         run: |
-          .github/scripts/announce-blog-post.sh "${BEFORE:-HEAD}" \
+          node scripts/gh/announce-blog-post/cli.mjs "${BEFORE:-HEAD}" \
             announcements-repo ${POST:+"$POST"}
 
       - name: Create pull request # zizmor: ignore[superfluous-actions] Manages the commit, update branch, and PR lifecycle.

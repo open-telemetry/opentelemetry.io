@@ -521,10 +521,10 @@ The repository includes several other workflows:
 ## Blog post announcements {#announce-blog-post}
 
 [`announce-blog-post.yml`][announce] runs on every push to `main` that touches
-`content/en/blog/`. It runs [`announce-blog-post.sh`][announce-script], which
-finds English blog posts published by the push: posts that aren't drafts now,
-and that didn't exist or were drafts before the push. For those posts it opens
-one pull request in
+`content/en/blog/`. It runs [`announce-blog-post/cli.mjs`][announce-script],
+which finds English blog posts published by the push: posts that aren't drafts
+now, and that didn't exist or were drafts before the push. For those posts it
+opens one pull request in
 [`open-telemetry/opentelemetry-announcements`][announcements] with an
 announcement file per post. A maintainer there edits the text, merges the PR,
 and approves the `announcements` environment to publish.
@@ -546,5 +546,5 @@ and approves the `announcements` environment to publish.
 [announce]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml
 [announce-script]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/announce-blog-post.sh
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs
 [announcements]: https://github.com/open-telemetry/opentelemetry-announcements
