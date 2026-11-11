@@ -544,7 +544,7 @@ and approves the `announcements` environment to publish.
 - Run it manually with the `post` input to announce an existing post.
 
 [announce]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml?link-check=no
 [announce-script]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs?link-check=no
 [announcements]: https://github.com/open-telemetry/opentelemetry-announcements

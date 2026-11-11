@@ -61,6 +61,9 @@ export function buildAnnouncement({ path, frontMatter, today }) {
     { lineWidth: -1 },
   );
   const goLive = dayOf(date);
+  // Name the file after the post date, not the run date, so that re-runs on
+  // later days reuse the same path instead of announcing the post again.
+  const fileDay = /^\d{4}-\d{2}-\d{2}$/.test(goLive) ? goLive : today;
   return {
     slug,
     title,
@@ -68,7 +71,7 @@ export function buildAnnouncement({ path, frontMatter, today }) {
       goLive > today
         ? `- [${title}](${url}): goes live on ${goLive}, merge on or after that day`
         : `- [${title}](${url})`,
-    file: `announcements/${today.slice(0, 4)}/${today.slice(5)}-blog-${slug}.yaml`,
+    file: `announcements/${fileDay.slice(0, 4)}/${fileDay.slice(5)}-blog-${slug}.yaml`,
     content:
       '# yaml-language-server: $schema=../../schema/announcement.schema.json\n' +
       body,

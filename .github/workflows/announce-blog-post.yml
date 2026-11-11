@@ -20,10 +20,13 @@ on:
 permissions:
   contents: read
 
-# Overlapping runs would race updates to the same announcement branch.
+# Overlapping runs would race updates to the same announcement branch. Queue
+# pending runs instead of replacing them, since each push only covers its own
+# commits.
 concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: false
+  queue: max
 
 jobs:
   announce:

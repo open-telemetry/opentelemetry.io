@@ -83,6 +83,14 @@ describe('buildAnnouncement', () => {
     });
     assert.match(r.line, /goes live on 2026-05-10/);
   });
+
+  test('names the file after the post date, independent of the run date', () => {
+    const frontMatter = parseFrontMatter(post('title: T\ndate: 2026-04-20'));
+    for (const day of ['2026-05-01', '2026-06-15']) {
+      const r = buildAnnouncement({ path: PATH, frontMatter, today: day });
+      assert.equal(r.file, 'announcements/2026/04-20-blog-my-post.yaml');
+    }
+  });
 });
 
 describe('collectAnnouncements', () => {
