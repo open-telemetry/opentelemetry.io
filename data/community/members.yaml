@@ -126,6 +126,12 @@ maintainers:
       - sig-project-infra-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
+  - name: agagniere
+    teams:
+      - zig-approvers
+      - zig-maintainers
+    html_url: https://github.com/agagniere
+    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: alanwest
     teams:
       - dotnet-approvers
@@ -666,7 +672,6 @@ maintainers:
     teams:
       - docs-pt-approvers
       - docs-pt-maintainers
-      - docs-triagers
     html_url: https://github.com/EzzioMoreira
     avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
   - name: fabled
@@ -1773,11 +1778,11 @@ approvers:
       - docs-ko-approvers
     html_url: https://github.com/abel9851
     avatar_url: https://avatars.githubusercontent.com/u/66953834?v=4
-  - name: agagniere
+  - name: adityareddy-dev
     teams:
-      - zig-approvers
-    html_url: https://github.com/agagniere
-    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
+      - browser-approvers
+    html_url: https://github.com/adityareddy-dev
+    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: ajimenez1503
     teams:
       - semconv-network-approvers
@@ -2423,6 +2428,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/abhee11
     avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
+  - name: Adii-45
+    teams:
+      - ecosystem-explorer-triagers
+    html_url: https://github.com/Adii-45
+    avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
   - name: anarwal
     teams:
       - sig-contributor-experience-triagers
@@ -2652,12 +2662,6 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
-  - name: Adii-45
-    html_url: https://github.com/Adii-45
-    avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
-  - name: adityareddy-dev
-    html_url: https://github.com/adityareddy-dev
-    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
