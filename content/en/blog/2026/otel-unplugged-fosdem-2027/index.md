@@ -4,7 +4,6 @@ linkTitle: OTel Unplugged EU '27
 date: 2026-11-10
 author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace)
-draft: true # TODO: remove this line once your post is ready to be published
 issue: 12633
 sig: Governance Committee
 cSpell:ignore: roadmapping
