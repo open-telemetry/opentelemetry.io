@@ -540,7 +540,8 @@ and approves the `announcements` environment to publish.
 - For posts with a future `date`, the PR description says when the post goes
   live, so the PR isn't merged before that.
 - Uses the `create-pull-request` action with the branch
-  `otelbot/announce-blog-<slug>`, so re-runs update the same PR.
+  `otelbot/announce-blog-<slug>` (or `otelbot/announce-blog-posts-<hash>` when a
+  push publishes several posts), so re-runs update the same PR.
 - Run it manually with the `post` input to announce an existing post.
 
 [announce]:

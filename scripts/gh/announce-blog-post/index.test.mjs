@@ -148,4 +148,11 @@ describe('describePullRequest', () => {
     assert.equal(r.title, 'Announce 2 blog posts');
     assert.equal(r.body, '- x\n- y');
   });
+  test('a batch does not share a branch with any of its posts', () => {
+    const batch = describePullRequest([a('x'), a('y')]).branch;
+    assert.match(batch, /^otelbot\/announce-blog-posts-[0-9a-f]{10}$/);
+    assert.notEqual(batch, describePullRequest([a('x')]).branch);
+    assert.equal(batch, describePullRequest([a('y'), a('x')]).branch);
+    assert.notEqual(batch, describePullRequest([a('x'), a('z')]).branch);
+  });
 });

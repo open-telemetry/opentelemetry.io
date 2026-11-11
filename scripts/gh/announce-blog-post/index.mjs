@@ -3,6 +3,8 @@
 // open-telemetry/opentelemetry-announcements. Side effects (git, filesystem)
 // are injected so everything here is unit-testable.
 
+import { createHash } from 'node:crypto';
+
 import { dump, load } from 'js-yaml';
 
 export const SITE = 'https://opentelemetry.io';
@@ -136,8 +138,15 @@ export function collectAnnouncements({
 /** PR branch, title and body lines for a non-empty list of announcements. */
 export function describePullRequest(announcements) {
   const [first] = announcements;
+  // A batch gets a branch of its own, so that announcing one of its posts
+  // separately (for example by a manual run) doesn't overwrite the batch PR.
+  const slugs = announcements.map((a) => a.slug).sort();
+  const branch =
+    slugs.length === 1
+      ? `otelbot/announce-blog-${first.slug}`
+      : `otelbot/announce-blog-posts-${createHash('sha256').update(slugs.join('\n')).digest('hex').slice(0, 10)}`;
   return {
-    branch: `otelbot/announce-blog-${first.slug}`,
+    branch,
     title:
       announcements.length === 1
         ? `Announce blog post: ${first.title}`
