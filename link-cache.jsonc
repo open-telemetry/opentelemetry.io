@@ -10604,6 +10604,21 @@
     "when": "2026-11-06T05:38:57Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/processor/adaptivetailsamplingprocessor/README.md": {
+    "result": 200,
+    "when": "2026-11-11T17:38:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/processor/probabilisticsamplerprocessor/README.md": {
+    "result": 200,
+    "when": "2026-11-11T17:38:29Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/processor/tailsamplingprocessor/README.md": {
+    "result": 200,
+    "when": "2026-11-11T17:38:29Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues": {
     "result": 200,
     "when": "2026-10-19T21:14:10Z",
