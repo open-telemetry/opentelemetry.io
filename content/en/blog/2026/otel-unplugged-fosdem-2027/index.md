@@ -1,7 +1,7 @@
 ---
 title: 'OTel Unplugged EU at FOSDEM 2027'
 linkTitle: OTel Unplugged EU '27
-date: 2026-11-10
+date: 2026-11-11
 author: >-
   [Adriana Villela](https://github.com/avillela) (Dynatrace)
 issue: 12633
