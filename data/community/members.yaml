@@ -126,6 +126,12 @@ maintainers:
       - sig-project-infra-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
+  - name: agagniere
+    teams:
+      - zig-approvers
+      - zig-maintainers
+    html_url: https://github.com/agagniere
+    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: alanwest
     teams:
       - dotnet-approvers
@@ -1777,11 +1783,6 @@ approvers:
       - browser-approvers
     html_url: https://github.com/adityareddy-dev
     avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
-  - name: agagniere
-    teams:
-      - zig-approvers
-    html_url: https://github.com/agagniere
-    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: ajimenez1503
     teams:
       - semconv-network-approvers
