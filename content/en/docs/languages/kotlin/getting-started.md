@@ -211,7 +211,7 @@ where you initialized the SDK:
 
 ```kotlin
 dependencies {
-    val otelKotlinVersion = "<replace-with-latest-version>>"
+    val otelKotlinVersion = "<replace-with-latest-version>"
     implementation("io.opentelemetry.kotlin:exporters-otlp:$otelKotlinVersion")
 }
 ```
