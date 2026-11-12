@@ -3,8 +3,7 @@ title: OBIをスタンドアロンプロセスとして実行する
 linkTitle: スタンドアロン
 description: OBIをLinuxのスタンドアロンプロセスとしてセットアップして実行する方法を学びます。
 weight: 5
-default_lang_commit: ce13abdfc9fac8e92bf420b1f758451f63082c69
-drifted_from_default: true
+default_lang_commit: 9804fb55065c1cfa004c08f50e48c37e39bbe73c
 cSpell:ignore: cyclonedx
 ---
 
@@ -13,7 +12,7 @@ OBIは、他の実行中プロセスを検査できる昇格された権限を�
 ## ダウンロードと検証 {#download-and-verify}
 
 OBIは Linux（amd64 および arm64）向けのビルド済みバイナリを提供しています。
-最新リリースを[リリースページ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)からダウンロードしてください。
+お使いのアーキテクチャに合ったアーカイブを[リリースページ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)からダウンロードしてください。
 各リリースには以下が含まれます。
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 アーカイブ
@@ -24,6 +23,8 @@ OBIは Linux（amd64 および arm64）向けのビルド済みバイナリを�
 - `obi-java-agent-v<version>.cyclonedx.json` - 組み込み Java エージェントとその Java 依存関係の CycloneDX SBOM
 - `SHA256SUMS` - リリースアーカイブと SBOM アセットの検証用チェックサム
 
+各アーカイブ、SBOM、および `SHA256SUMS` ファイルには、`<asset>.bundle.json` という名前の Cosign 署名バンドルがあります。
+
 同じリリースのコンテナイメージも公開されています。
 イメージの取得と署名検証の手順については、[OBI を Docker コンテナとして実行する](../docker/)を参照してください。
 
@@ -32,7 +33,7 @@ OBIは Linux（amd64 および arm64）向けのビルド済みバイナリを�
 ```sh
 # 希望するバージョンを設定（最新版は
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases を参照）
-VERSION=0.15.2
+VERSION=1.0.0
 
 # アーキテクチャを指定
 # Intel/AMD 64ビットの場合: amd64
@@ -47,9 +48,6 @@ wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releas
 
 # アーカイブを検証
 sha256sum -c SHA256SUMS --ignore-missing
-
-# アーカイブを展開
-tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
 検証に成功すると、ダウンロードした各ファイルに対して `OK` の結果が表示されます。
@@ -64,6 +62,23 @@ obi-v${VERSION}-linux-${ARCH}.tar.gz: OK
 - `VERSION` がダウンロードしたアーカイブと `SHA256SUMS` に一致していることを確認する
 - 部分的にダウンロードされたファイルを削除して再度取得する
 - そのリリースから実際にダウンロードしたファイルのみを検証する
+
+アーカイブの署名バンドルをダウンロードし、[Cosign](https://docs.sigstore.dev/cosign/verifying/verify/) で署名を検証します。
+
+```sh
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/obi-v${VERSION}-linux-${ARCH}.tar.gz.bundle.json
+
+cosign verify-blob obi-v${VERSION}-linux-${ARCH}.tar.gz \
+  --bundle obi-v${VERSION}-linux-${ARCH}.tar.gz.bundle.json \
+  --certificate-identity "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/.github/workflows/release.yml@refs/tags/v${VERSION}" \
+  --certificate-oidc-issuer 'https://token.actions.githubusercontent.com'
+```
+
+署名の検証が成功したら、アーカイブを展開します。
+
+```sh
+tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
+```
 
 アーカイブには以下が含まれます。
 
@@ -89,6 +104,9 @@ OBI のインストールや実行には必要ありません。
 
 公開されている SBOM は、バイナリアーカイブと組み込みコンポーネントの内容を [CycloneDX JSON 形式](https://cyclonedx.org/)で記述しています。
 標準的な SBOM ツールを使用して、バイナリを実行せずに依存関係、ライセンス、コンポーネントを検査できます。
+
+v1.0.0 のアーカイブ SBOM では、組み込み Java エージェントの Byte Buddy 依存関係が省略されており、エージェントバージョンは `UNKNOWN` として報告されます。
+Java の依存関係を検査するには、付属の `obi-java-agent-v1.0.0.cyclonedx.json` SBOM とその署名バンドルを使用してください。
 
 検査したい SBOM をダウンロードします。
 
