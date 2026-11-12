@@ -19,6 +19,13 @@ on:
 permissions:
   contents: read
 
+# Overlapping runs could race updates to the same announcement branch. Queue
+# waiting runs instead of replacing them: each push announces only its own posts.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+  queue: max
+
 jobs:
   announce:
     name: Open announcement PR
