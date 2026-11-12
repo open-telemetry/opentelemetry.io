@@ -1,9 +1,9 @@
 ---
 title: プルリクエストのチェックとテスト
 linkTitle: PR チェック & テスト
-description: プルリクエストがすべてのチェックをパスする方法学ぶ
+description: プルリクエストがすべてのチェックをパスする方法を学ぶ
 weight: 40
-default_lang_commit: f1a074a1d8dc390c2abcac98ad671f38d0c73d88
+default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -120,7 +120,7 @@ PR のチェックは次のことを検証します。
 
 ### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
 
-これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
+これらの2つのチェックは、ウェブサイトをビルドしてそのリンクが有効であることを検証します。
 
 > [!NOTE]
 >
@@ -146,6 +146,14 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 たとえば以下のようになります。
 
 - `https:/some-example.org?link-check=no&last-validated=2026-08-02`
+
+### `CHECK LINKS (production, internal)` {#check-links-production-internal .notranslate lang=en}
+
+このチェックは、ページが**ドラフト**または**未来の日付**のページにリンクしている場合に失敗します。
+そのようなページはデプロイプレビューではレンダリングされますが、本番サイトでは省略されます。
+かわりに公開済みのページにリンクするか、リンク先のページを先に公開してください。
+`CHECK LINKS` が同じページを存在しないものとして報告する場合、そのページ自体が存在しません。リンクを修正してください。
+このチェックがビルドおよびカバーする内容については、[Links into unpublished pages](/site/build/link-checking/#production-internal)を参照してください。
 
 ### `CACHE updates committed?` {#cache-updates-committed .notranslate lang=en}
 
@@ -194,6 +202,11 @@ OpenTelemetry ウェブサイト内のページをリンクする場合、外部
   [`scripts/content-modules/adjust-pages/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/content-modules/adjust-pages)
 
 </details>
+
+#### ローカライズされたページをドラフトにしない {#localized-drafts}
+
+ビルドはドラフトとしてマークされたローカライズ済みページについて警告を出します。
+ルールと対処方法については、[Draft pages](../localization/#drafts)を参照してください。
 
 ### `LOCALIZATION` guidelines {#localization .notranslate lang=en}
 

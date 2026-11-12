@@ -86,6 +86,13 @@ automatically be enabled.
 
 ### Auto SDK TracerProvider
 
+> [!NOTE]
+>
+> When using OBI, leave the global `TracerProvider` unset. Calling
+> `otel.SetTracerProvider`, including with the Auto SDK provider, prevents OBI
+> from activating the Auto SDK. See
+> [OBI's Go Trace API integration](/docs/zero-code/obi/distributed-traces/#instrument-applications-that-use-the-go-trace-api).
+
 In most use cases, it is unnecessary to manually interact with the Auto SDK's
 built-in TracerProvider. However, for certain advanced use cases you may wish to
 manually configure the Auto SDK's TracerProvider. You can access it with the

@@ -7,8 +7,7 @@ type: default
 layout: registry
 body_class: registry td-content
 weight: 20
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
 
 {{% blocks/lead color="dark" %}}
@@ -21,16 +20,20 @@ drifted_from_default: true
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="white" type="container-lg" >}}
+{{% blocks/section color="white pb-0" type="container-lg" %}}
 
-{{% alert %}}
+{{% include freeze-notice.md %}}
 
-O Registro do OpenTelemetry permite a busca por bibliotecas de instrumentação,
-componentes do Collector, utilitários e outros projetos úteis dentro do
-ecossistema. Caso você seja mantenedor de um projeto, é possível
-[adicionar seu projeto ao Registro do OpenTelemetry](adding/).
+> [!NOTE]
+>
+> O Registro do OpenTelemetry permite a busca por bibliotecas de instrumentação,
+> componentes do Collector, utilitários e outros projetos úteis dentro do
+> ecossistema OpenTelemetry. <!-- Caso você seja mantenedor de um projeto, é -->
+> <!-- possível [adicionar seu projeto ao Registro do OpenTelemetry](adding/). -->
 
-{{% /alert %}}
+{{% /blocks/lead %}}
+
+{{< blocks/section color="white pt-0" type="container-lg" >}}
 
 {{< ecosystem/registry/search-form >}}
 

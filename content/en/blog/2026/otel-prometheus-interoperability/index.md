@@ -4,9 +4,8 @@ linkTitle: Prometheus and OTel Survey
 date: 2026-09-22
 author: >-
   [Dhruv Ahuja](https://github.com/dhruv-ahuja) (SigNoz), [Andrej
-  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), [Ana
-  Muenz](https://github.com/vampirarte) (Independent), [Arthur
-  Sens](https://github.com/ArthurSens) (Grafana Labs)
+  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs), Ana Muenz
+  (Independent), [Arthur Sens](https://github.com/ArthurSens) (Grafana Labs)
 issue: https://github.com/open-telemetry/sig-end-user/issues/280
 sig: End-User SIG
 # prettier-ignore

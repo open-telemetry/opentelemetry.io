@@ -18,7 +18,7 @@ HPAはKubernetesの `StatefulSet` と `Deployment` にのみ適用されるた�
 >
 > - [GKE (Google)](https://cloud.google.com/kubernetes-engine?hl=en)や[AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)などのマネージドKubernetesクラスターは、クラスターのプロビジョニングの一環としてMetrics Serverを自動的にインストールします。
 > - [EKS (AWS)にはデフォルトでMetrics Serverはインストールされていません](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)。
-> - マネージドでないKuberentesクラスターやローカルデスクトップのKubernetesクラスター(たとえば[MiniKube](https://minikube.sigs.k8s.io/docs/)、
+> - マネージドでないKubernetesクラスターやローカルデスクトップのKubernetesクラスター(たとえば[MiniKube](https://minikube.sigs.k8s.io/docs/)、
 >   [KinD](https://kind.sigs.k8s.io/)、[k0s](https://k0sproject.io))では、Metrics Serverを手動でインストールする必要があります。
 >
 > 管理するKubernetesクラスターにMetrics Serverが事前にインストールされているかどうかを確認するには、クラウドプロバイダーのドキュメントを参照してください。

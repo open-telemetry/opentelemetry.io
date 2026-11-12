@@ -6,7 +6,7 @@ vers:
 cSpell:ignore: customizer fileconfig
 ---
 
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 You can use the `AutoConfigurationCustomizerProvider` for programmatic
 configuration. Programmatic configuration is recommended for advanced use cases,

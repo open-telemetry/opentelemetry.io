@@ -3,9 +3,10 @@ title: Distribuições de terceiros
 description:
   Lista de distribuições de código aberto do OpenTelemetry mantidas por
   terceiros.
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
+
+{{% include freeze-notice.md %}}
 
 As [distribuições][distributions] do OpenTelemetry são uma forma de personalizar
 os [componentes][components] do OpenTelemetry para torná-los mais fáceis de
@@ -24,6 +25,7 @@ são do Collector e o componente que elas customizam. Para distribuições do
 
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
+<!--
 ## Adicionando sua distribuição {#how-to-add}
 
 Para que sua distribuição seja listada, [envie um PR][] com uma entrada
@@ -36,26 +38,29 @@ incluir:
 - Usuário do GitHub ou e-mail como ponto de contato, para que possamos entrar em
   contato caso tenhamos dúvidas
 
-{{% alert title="Notas" %}}
-
-- Se você fornece integração externa do OpenTelemetry para qualquer tipo de
-  biblioteca, serviço ou aplicativo, considere
-  [adicioná-la ao registro](/ecosystem/registry/adding).
-- Se você adota o OpenTelemetry para observabilidade como um usuário final e não
-  fornece nenhum tipo de serviço relacionado ao OpenTelemetry, consulte
-  [Adotantes](/ecosystem/adopters).
-- Se você oferece uma solução que consome o OpenTelemetry para fornecer
-  observabilidade aos usuários finais, consulte
-  [Fornecedores](/ecosystem/vendors).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> - Se você fornece integração externa do OpenTelemetry para qualquer tipo de
+>   biblioteca, serviço ou aplicativo, considere
+>   [adicioná-la ao registro](/ecosystem/registry/adding).
+> - Se você adota o OpenTelemetry para observabilidade como um usuário final e
+>   não fornece nenhum tipo de serviço relacionado ao OpenTelemetry, consulte
+>   [Adotantes](/ecosystem/adopters).
+> - Se você oferece uma solução que consome o OpenTelemetry para fornecer
+>   observabilidade aos usuários finais, consulte
+>   [Fornecedores](/ecosystem/vendors).
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distributions %}}
+# TODO: remove spaces to fix shortcode formatting before uncommenting
+{ { % include keep-up-to-date.md distributions % } }
+-->
 
 [components]: /docs/concepts/components/
 [distributions]: /docs/concepts/distributions/
+[vendor]: ../vendors/
+
+<!--
 [distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
-[vendor]: ../vendors/
+-->

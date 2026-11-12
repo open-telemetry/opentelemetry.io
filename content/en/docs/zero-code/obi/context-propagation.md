@@ -35,10 +35,10 @@ signals.
 
 The association step is separate from the step that writes the outgoing
 `traceparent` value. For example, language-agnostic network-level context
-propagation supports HTTP/1.x and gRPC over HTTP/2, but generic non-gRPC HTTP/2
-traffic isn't supported. Go library-level context propagation can write context
-for HTTP/2 and gRPC only on new, non-HTTPS connections; reused HTTP/2/gRPC
-connections are not supported yet. Other limitations are documented in
+propagation supports HTTP/1.x and plaintext HTTP/2, including gRPC. Generic
+encrypted HTTP/2 cannot inject context at the network layer; Go library-level
+instrumentation can inject before encryption. Other limitations are documented
+in
 [distributed traces](../distributed-traces/#go-context-propagation-by-instrumenting-at-library-level).
 
 ## Runtime-specific association
@@ -49,10 +49,10 @@ models:
 | Runtime or component | Association mechanism                                                                                                                          | Supported scope and limitations                                                                                                                                                            |
 | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Go                   | Tracks trace context across goroutines.                                                                                                        | Go `1.18+`. Supports up to 6 nested goroutine levels.                                                                                                                                      |
-| Node.js              | Uses Node.js async hooks to refresh the active request context before async callbacks and to associate outgoing sockets with incoming sockets. | Node.js `8.0+`. Custom handling of `SIGUSR1` can interfere with OBI's Node.js support.                                                                                                     |
+| Node.js              | Uses Node.js async hooks to refresh the active request context before async callbacks and to associate outgoing sockets with incoming sockets. | Node.js `12.17+`, excluding `13.0`–`13.9`. Custom handling of `SIGUSR1` can interfere with OBI's Node.js support.                                                                          |
 | Java                 | Tracks hand-offs through common JDK task APIs, including `Executor`, `Runnable`, `Callable`, and `ForkJoinTask`.                               | JDK `8+`. Supports task parent lookup up to 3 hand-off levels. Custom queues or scheduler implementations that do not use these task APIs can fall back to the language-agnostic behavior. |
 | Java virtual threads | Tracks virtual-thread mount and unmount operations so request context is keyed to the virtual thread rather than only the carrier OS thread.   | JDK `21+`. Log enrichment is skipped for requests handled on virtual threads.                                                                                                              |
-| Python asyncio       | Tracks the current `asyncio` task, child task creation, inherited context, and `asyncio.to_thread()` work.                                     | Supported for Python `3.9+` with the `uvloop` event loop.                                                                                                                                  |
+| Python asyncio       | Tracks the current `asyncio` task, child task creation, inherited context, and `asyncio.to_thread()` work.                                     | GIL-enabled, 64-bit CPython `3.9`–`3.14`, with the standard event loop or `uvloop`.                                                                                                        |
 | Ruby Puma            | Associates requests when Puma's reactor thread hands accepted work to a worker thread.                                                         | Requires Puma `5.0+`. Ruby services not served by Puma use the language-agnostic behavior.                                                                                                 |
 | NGINX                | Associates an incoming request with the upstream connection selected by NGINX.                                                                 | Applies to NGINX upstream proxying observed by OBI.                                                                                                                                        |
 
@@ -64,8 +64,9 @@ can usually associate parent and child spans for:
 - Java servlet-style applications, such as many Spring MVC services, when
   outgoing work stays on the request thread or is dispatched through the common
   JDK task APIs listed above.
-- Python `asyncio` services running on `uvloop`, including work created with
-  `asyncio.create_task()`, `asyncio.gather()`, and `asyncio.to_thread()`.
+- Python `asyncio` services using the standard event loop or `uvloop`, including
+  work created with `asyncio.create_task()`, `asyncio.gather()`, and
+  `asyncio.to_thread()`.
 - Ruby applications served by Puma.
 - NGINX reverse proxy requests to upstream services.
 
@@ -103,8 +104,8 @@ way OBI cannot observe. Common cases include:
 - Multiple logical requests are multiplexed on the same OS thread and there is
   no supported runtime-specific mechanism to identify the active logical task.
 - The active context propagation method cannot write trace context for the
-  outgoing protocol. In particular, language-agnostic network-level propagation
-  does not support generic non-gRPC HTTP/2 traffic.
+  outgoing protocol. In particular, generic encrypted HTTP/2 cannot inject
+  context at the network layer.
 
 When parent association fails, OBI can still report spans for the observed
 incoming and outgoing requests, but the outgoing request might start a new trace

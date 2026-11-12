@@ -3,8 +3,7 @@ title: ビルド
 description: >-
   CI/CD ワークフロー、このサイトのビルド方法、およびさまざまなサイトメンテナンス作業の実行方法
 weight: 40
-default_lang_commit: 74d8cb2aaefe493295c6c49e2e8ef39801847880
-drifted_from_default: true
+default_lang_commit: a1e10f7fb11588cd9a0a982c366a67ecdd5b8628
 ---
 
 このセクションでは、OpenTelemetry ウェブサイトのビルド、デプロイ、メンテナンスプロセスを支える CI/CD ワークフロー、NPM スクリプト、ヘルパースクリプトについて説明します。
@@ -33,5 +32,5 @@ drifted_from_default: true
 リンクチェックスクリプトの詳細は、[リンクチェック](/site/build/link-checking/)を参照してください。
 
 <!-- prettier-ignore-start -->
-[Chrome build modes]: https://github.com/google/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
+[Chrome build modes]: https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
 <!-- prettier-ignore-end -->

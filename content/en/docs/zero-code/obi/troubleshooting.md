@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Troubleshooting OBI common issues and errors
 weight: 22
-cSpell:ignore: Clickhouse uprobe uprobes userland
+cSpell:ignore: Clickhouse kprobes tracefs uprobe uprobes userland
 ---
 
 On this page, you can learn how to diagnose and resolve common OBI errors and
@@ -52,9 +52,9 @@ to monitor performance and internal state.
 To turn on internal metrics, configure `internal_metrics.exporter` with one of
 the following values:
 
-- `none` (default): disables internal metrics
+- `disabled` (default): disables internal metrics
 - `prometheus`: exports internal metrics in Prometheus format via an HTTP server
-- `otlp`: exports internal metrics via an OTLP exporter
+- `otel`: exports internal metrics via an OTLP exporter
 
 ### Debug traces exporter
 
@@ -124,6 +124,27 @@ This is an advanced use case and typically not required.
 
 This section covers how to resolve common OBI issues.
 
+### Missing application metrics after a Pod restart
+
+Application metrics can sometimes remain missing after a Kubernetes Pod starts
+or restarts. If this happens, try restarting OBI. The cause has not been
+confirmed. When testing a deployment, check that metrics appear after workload
+restarts.
+
+### Reported span timestamp anomalies
+
+[Issue #2568](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)
+reports child span start timestamps earlier than their parents with OBI
+v0.9.0/v0.10.0 on OpenShift 4.16, in both same-node and cross-node traces. The
+reporter later said the symptoms
+[appeared limited to roughly the first 18 hours after OBI was created](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568#issuecomment-4885235257).
+
+The
+[v1.0.0 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)
+retain this as an unresolved limitation. The issue does not identify the
+application language or protocol, provide reproduction steps, or confirm a
+reproduction on v1.0.0.
+
 ### ClickHouse instances crash when OBI is running
 
 If you're running [Clickhouse](https://github.com/ClickHouse/ClickHouse) on the
@@ -152,23 +173,23 @@ flag
 
 If you are missing telemetry coming from Go applications or TLS requests (like
 HTTPS communication), it might be due to insufficient privileges for attaching
-uprobes. Due to some recent kernel security changes which were backported to
-many older kernel versions, uprobes now require `CAP_SYS_ADMIN` capability. OBI
-uses uprobes to instrument Golang applications and TLS requests, along with
-other runtime/language specific instrumentations. If your OBI deployment
-security configuration isn't using privileged operation (for example,
-`privileged:true` or Docker and Kubernetes) or it doesn't provide
-`CAP_SYS_ADMIN` as a security capability, you might not see some or all of your
-telemetry.
+uprobes. Some kernels block `perf_event_open()` without `CAP_SYS_ADMIN`. In
+v0.14.0, OBI falls back to tracefs for most uprobes and kprobes, including
+probes used for Go applications and TLS requests. If these probes fail, check
+that tracefs is available and that OBI has the
+[required capabilities](../security/). Features that use
+`bpf_probe_write_user()`, including Go library-level context propagation, still
+require `CAP_SYS_ADMIN`.
 
 To troubleshoot this issue, enable detailed OBI logging with
-`OTEL_EBPF_LOG_LEVEL=debug`. If you see all the uprobe injections failing with
-the error "setting uprobe (offset)..." then you are likely experiencing this
-issue.
+`OTEL_EBPF_LOG_LEVEL=debug`. If you see uprobe attachments failing with "setting
+uprobe (offset)...", check both the perf event and tracefs errors in the debug
+logs.
 
 **Solutions:**
 
-You can either:
+If tracefs is unavailable or the feature needs `bpf_probe_write_user()`, you can
+either:
 
 - Run OBI as privileged.
 - Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security

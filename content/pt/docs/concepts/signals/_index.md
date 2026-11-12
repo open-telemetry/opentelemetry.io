@@ -4,8 +4,7 @@ description:
   Aprenda sobre as categorias de telemetria suportadas pelo OpenTelemetry
 weight: 11
 aliases: [data-sources, otel-concepts]
-default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 O propósito do OpenTelemetry é coletar, processar e exportar [sinais][signals].
@@ -27,12 +26,9 @@ O OpenTelemetry atualmente suporta:
 Também em desenvolvimento ou na fase de [proposta][proposal]:
 
 - [Eventos][Events], um tipo específico de [log](logs)
-- [Perfilamento][Profiles] está sendo trabalhado pelo Grupo de Trabalho de
-  Perfilamento _(Profiling Working Group)_.
+- [Perfis](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
-[Profiles]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
 [signals]: /docs/specs/otel/glossary/#signals

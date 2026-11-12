@@ -8,6 +8,7 @@ cascade:
   params:
     hide_feedback: true
 default_lang_commit: 53f798ca0e698ca5270ac7c63f02e2083ba9f257
+drifted_from_default: true
 ---
 
 이 섹션은 사이트 메인테이너와 기여자를 대상으로 한다.

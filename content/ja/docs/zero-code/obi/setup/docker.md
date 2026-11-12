@@ -3,8 +3,7 @@ title: DockerコンテナとしてOBIを実行する
 linkTitle: Docker
 description: OBIをDockerコンテナとしてセットアップして実行し、別のコンテナを計装する方法を学びます。
 weight: 3
-default_lang_commit: 7279d56948a75400445c97086d7b1e0da0dd0438
-drifted_from_default: true
+default_lang_commit: 56822f6fceee3f9a58cfbac337869438994f1437
 cSpell:ignore: goblog
 ---
 
@@ -23,9 +22,14 @@ OBIのコンテナイメージは、以下の両方のレジストリに公開�
 otel/ebpf-instrument:main
 ```
 
+デプロイメントは `v1.0.0` などのリリースタグに固定してください。
+`main` タグと `latest` タグは時間の経過とともに変更され、互換性は保証されません。
+
 OBIコンテナは、次のように構成する必要があります。
 
-- **特権**コンテナとして実行するか、`SYS_ADMIN` ケーパビリティを持つコンテナとして実行します(ただし、この最後のオプションは一部のコンテナ環境では機能しない場合があります)。
+- 以下の例では**特権**コンテナとして実行するか、[有効な機能が必要とするケーパビリティ](../../security/)を付与します。
+  v0.14.0 以降、ほとんどのプローブは `SYS_ADMIN` を必要としません。
+  Go ライブラリレベルのコンテキスト伝搬やその他のユーザーメモリ書き込み機能では依然として必要です。
 - `host` PID名前空間を使用して、他のコンテナ内のプロセスにアクセスできるようにします。
 
 ## イメージの署名と検証 {#image-signing-and-verification}
@@ -36,25 +40,13 @@ OBIコンテナイメージは、GitHub Actions の OIDC（OpenID Connect）プ�
 以下のコマンドを使用して、コンテナイメージの署名を検証できます。
 
 ```sh
-export VERSION=v0.12.1
+export VERSION=v1.0.0
 
 # Docker Hub のリリースイメージを検証する
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
 
 # GHCR の同じリリースを検証する
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:${VERSION}
-```
-
-出力例を以下に示します。
-
-```log
-Verification for index.docker.io/otel/ebpf-instrument:main --
-The following checks were performed on each of these signatures:
-  - The cosign claims were validated
-  - Existence of the claims in the transparency log was verified offline
-  - The code-signing certificate was verified using trusted certificate authority certificates
-
-[{"critical":{"identity":{"docker-reference":"index.docker.io/otel/ebpf-instrument:main"},"image":{"docker-manifest-digest":"sha256:55426a2bbb8003573a961697888aa770a1f5f67fcda2276dc2187d1faf7181fe"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
 ```
 
 検証が成功すると、Cosign のクレームが検証されたことと署名されたイメージダイジェストが表示されます。
@@ -70,7 +62,7 @@ The following checks were performed on each of these signatures:
 コンテナがない場合は、[Goで書かれたシンプルなブログエンジンサービス](https://macias.info)を使用できます。
 
 ```sh
-export VERSION=v0.12.1
+export VERSION=v1.0.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -86,7 +78,7 @@ export OTEL_EBPF_OPEN_PORT=8443
 
 OBIは次の設定で実行する必要があります。
 
-- `--privileged` モード、または `SYS_ADMIN` ケーパビリティ(ただし、一部のコンテナ環境では `SYS_ADMIN` だけでは特権が不十分な場合があります)
+- この例では `--privileged` モード、または有効な機能が必要とするケーパビリティを使用
 - `--pid=host` オプションを使用したホストのPID名前空間を使用
 
 ```sh
@@ -131,7 +123,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: otel/ebpf-instrument:main
+    image: otel/ebpf-instrument:v1.0.0
     pid: 'host'
     privileged: true
     environment:
@@ -143,4 +135,30 @@ services:
 
 ```sh
 docker compose -f compose-example.yml up
+```
+
+## コンテキスト伝搬 {#context-propagation}
+
+上記の例ではコンテキスト伝搬を有効にしていません。
+`OTEL_EBPF_BPF_CONTEXT_PROPAGATION` を設定する場合は、以下のホストパスもOBIコンテナにマウントしてください。
+
+- `/sys/kernel/tracing`: カーネル 6.6.128以降、6.12.75以降、6.18.14以降、および 6.19以降で、OBIはFIONREAD補正チェックを実行するためにこのマウントが必要です。
+  これがないと、OBIはコンテキスト伝搬を無効にします。
+  詳細は[コンテキスト伝搬に必要なホストマウント](../../security/#required-host-mount-for-context-propagation)を参照してください。
+- `/sys/fs/cgroup`: OBIはこのパスを使用して、新しく作成されたソケットをリッスンします。
+  これがないと、一部のリクエストでコンテキストが伝搬されない場合があります。
+  詳細は[分散トレース](../../distributed-traces/)を参照してください。
+
+```yaml
+services:
+  autoinstrumenter:
+    image: otel/ebpf-instrument:v1.0.0
+    pid: 'host'
+    privileged: true
+    volumes:
+      - /sys/kernel/tracing:/sys/kernel/tracing
+      - /sys/fs/cgroup:/sys/fs/cgroup
+    environment:
+      OTEL_EBPF_OPEN_PORT: 8443
+      OTEL_EBPF_BPF_CONTEXT_PROPAGATION: headers
 ```

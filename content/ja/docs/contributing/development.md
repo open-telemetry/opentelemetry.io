@@ -7,7 +7,7 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: d18938b8ff4dfb2ed696f976815225f7ad8ed2a3
+default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
 cSpell:ignore: TOCSS
 ---
 
@@ -177,7 +177,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 英語のソースページでは、更新対象となるフェンス付きコードブロックの直前に、ファイル抜粋ディレクティブを記載してください。
 
 ````md
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 <?code-excerpt "src/main/java/otel/DiceApplication.java" from="@SpringBootApplication"?>
 
@@ -225,7 +225,7 @@ npm run check:code-excerpts
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-[nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+[nodejs-win]: https://docs.microsoft.com/windows/dev-environment/javascript/nodejs-on-windows
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install

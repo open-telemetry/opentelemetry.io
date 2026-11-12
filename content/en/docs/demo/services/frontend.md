@@ -22,56 +22,34 @@ initialize the SDK and auto-instrumentation based on standard
 for OTLP export, resource attributes, and service name.
 
 ```javascript
-const FrontendTracer = async () => {
-  const { ZoneContextManager } = await import('@opentelemetry/context-zone');
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+// ... other require() calls elided for brevity.
 
-  let resource = resourceFromAttributes({
-    [ATTR_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
-  });
-  const detectedResources = detectResources({ detectors: [browserDetector] });
-  resource = resource.merge(detectedResources);
+const sdk = new NodeSDK({
+  instrumentations: getNodeAutoInstrumentations(),
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new OTLPTraceExporter() }),
+  ],
+  logRecordProcessors: [
+    new BatchLogRecordProcessor({ exporter: new OTLPLogExporter() }),
+  ],
+  metricReaders: [
+    new PeriodicExportingMetricReader({ exporter: new OTLPMetricExporter() }),
+  ],
+  resourceDetectors: [
+    containerDetector,
+    envDetector,
+    hostDetector,
+    osDetector,
+    processDetector,
+    alibabaCloudEcsDetector,
+    awsEksDetector,
+    awsEc2Detector,
+    gcpDetector,
+  ],
+});
 
-  const provider = new TracerProvider({
-    resource,
-    spanProcessors: [
-      new SessionIdProcessor(),
-      new BatchSpanProcessor({
-        exporter: new OTLPTraceExporter({
-          url:
-            NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
-            'http://localhost:4318/v1/traces',
-        }),
-        scheduledDelayMillis: 500,
-      }),
-    ],
-  });
-
-  context.setGlobalContextManager(new ZoneContextManager().enable());
-  propagation.setGlobalPropagator(
-    new CompositePropagator({
-      propagators: [
-        new W3CBaggagePropagator(),
-        new W3CTraceContextPropagator(),
-      ],
-    }),
-  );
-  trace.setGlobalTracerProvider(provider);
-
-  registerInstrumentations({
-    tracerProvider: trace.getTracerProvider(),
-    instrumentations: [
-      getWebAutoInstrumentations({
-        '@opentelemetry/instrumentation-fetch': {
-          propagateTraceHeaderCorsUrls: /.*/,
-          clearTimingResources: true,
-          applyCustomAttributesOnSpan(span) {
-            span.setAttribute('demo.synthetic_request', IS_SYNTHETIC_REQUEST);
-          },
-        },
-      }),
-    ],
-  });
-};
+sdk.start();
 ```
 
 Node required modules are loaded using the `--require` command line argument.
@@ -117,7 +95,7 @@ span = tracer.startSpan(`${method}`, {
   kind: SpanKind.SERVER,
   links: [{ context: syntheticSpan.spanContext() }],
   attributes: {
-    'app.synthetic_request': true,
+    'demo.synthetic_request': true,
     [ATTR_HTTP_RESPONSE_STATUS_CODE]: response.statusCode,
     [ATTR_HTTP_REQUEST_METHOD]: method,
     [ATTR_USER_AGENT_ORIGINAL]: headers['user-agent'] || '',
@@ -159,22 +137,48 @@ import {
   W3CBaggagePropagator,
   W3CTraceContextPropagator,
 } from '@opentelemetry/core';
-import { SimpleSpanProcessor, TracerProvider } from '@opentelemetry/sdk-trace';
+import { BatchSpanProcessor, TracerProvider } from '@opentelemetry/sdk-trace';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { resourceFromAttributes } from '@opentelemetry/resources';
+import {
+  defaultResource,
+  resourceFromAttributes,
+  detectResources,
+} from '@opentelemetry/resources';
+import { browserDetector } from '@opentelemetry/opentelemetry-browser-detector';
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { SessionIdProcessor } from './SessionIdProcessor';
+
+const {
+  NEXT_PUBLIC_OTEL_SERVICE_NAME = '',
+  NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT = '',
+  IS_SYNTHETIC_REQUEST = '',
+} = typeof window !== 'undefined' ? window.ENV : {};
 
 const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
-  const provider = new TracerProvider({
-    resource: resourceFromAttributes({
-      [ATTR_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
-    }),
+  let resource = defaultResource()
+    .merge(
+      resourceFromAttributes({
+        [ATTR_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
+      }),
+    )
+    .merge(detectResources({ detectors: [browserDetector] }));
+
+  const tracerProvider = new TracerProvider({
+    resource,
     spanProcessors: [
-      new SimpleSpanProcessor({ exporter: new OTLPTraceExporter() }),
+      new SessionIdProcessor(),
+      new BatchSpanProcessor({
+        exporter: new OTLPTraceExporter({
+          url:
+            NEXT_PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT ||
+            'http://localhost:4318/v1/traces',
+        }),
+        scheduledDelayMillis: 500,
+      }),
     ],
   });
 
@@ -187,17 +191,17 @@ const FrontendTracer = async () => {
       ],
     }),
   );
-  trace.setGlobalTracerProvider(provider);
+  trace.setGlobalTracerProvider(tracerProvider);
 
   registerInstrumentations({
-    tracerProvider: trace.getTracerProvider(),
+    tracerProvider,
     instrumentations: [
       getWebAutoInstrumentations({
         '@opentelemetry/instrumentation-fetch': {
           propagateTraceHeaderCorsUrls: /.*/,
           clearTimingResources: true,
           applyCustomAttributesOnSpan(span) {
-            span.setAttribute('demo.synthetic_request', 'false');
+            span.setAttribute('demo.synthetic_request', IS_SYNTHETIC_REQUEST);
           },
         },
       }),

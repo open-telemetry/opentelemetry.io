@@ -552,9 +552,9 @@ Designing for all three signals using open standards from the start removes
 friction, reduces your engineering overhead, and empowers customers to make the
 best use of their data on their own terms.
 
-If you've already implemented OTel-native export in your product, consider
+<!-- If you've already implemented OTel-native export in your product, consider
 [adding it to OpenTelemetry Integrations](/ecosystem/integrations/#how-to-add).
-It's a great way to surface your work to the broader community.
+It's a great way to surface your work to the broader community. -->
 
 > [!NOTE]
 >

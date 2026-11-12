@@ -26,6 +26,6 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [payment](payment/)                   | JavaScript | Charges the given credit card info (mock/) with the given amount and returns a transaction ID.                                       |
 | [product-catalog](product-catalog/)   | Go         | Provides the list of products from a JSON file and ability to search products and get individual products.                           |
 | [quote](quote/)                       | PHP        | Calculates the shipping costs, based on the number of items to be shipped.                                                           |
-| [recommendation](recommendation/)     | Python     | Recommends other products based on what's given in the cart.                                                                         |
+| [recommendation](recommendation/)     | Java       | Recommends other products based on what's given in the cart.                                                                         |
 | [shipping](shipping/)                 | Rust       | Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock/).                                  |
 | [react-native-app](react-native-app/) | TypeScript | React Native mobile application that provides a UI on top of the shopping services.                                                  |

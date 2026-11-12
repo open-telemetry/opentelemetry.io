@@ -2,8 +2,8 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-default_lang_commit: 4c8d57fea0147ce76633951315c40a27c55fad2e
-cSpell:ignore: Clickhouse uprobe userland
+default_lang_commit: 6e13d934026c15dc982e28c1234838ccf005ecb0
+cSpell:ignore: Clickhouse tracefs uprobe userland
 ---
 
 このページでは、OBI で発生する一般的なエラーや問題を診断し、解決する方法を学びます。
@@ -42,9 +42,9 @@ BPF プログラムからのログ出力を有効にするには、`ebpf.bpf_deb
 
 内部メトリクスを有効にするには、`internal_metrics.exporter` に次のいずれかの値を設定します。
 
-- `none`（デフォルト）: 内部メトリクスを無効化します
+- `disabled`（デフォルト）: 内部メトリクスを無効化します
 - `prometheus`: HTTP サーバー経由で Prometheus 形式で内部メトリクスをエクスポートします
-- `otlp`: OTLP エクスポーター経由で内部メトリクスをエクスポートします
+- `otel`: OTLP エクスポーター経由で内部メトリクスをエクスポートします
 
 ### デバッグ用トレースエクスポーター {#debug-traces-exporter}
 
@@ -109,6 +109,21 @@ OBI は、パフォーマンスプロファイリング用に `pprof` ポート�
 
 このセクションでは、OBI でよくある問題を解決する方法を説明します。
 
+### Pod の再起動後にアプリケーションメトリクスが欠落する {#missing-application-metrics-after-a-pod-restart}
+
+Kubernetes の Pod が起動または再起動した後に、アプリケーションメトリクスが欠落したままになることがあります。
+この現象が発生した場合、OBI を再起動してみてください。
+原因は確認されていません。
+デプロイメントをテストする際は、ワークロードの再起動後にメトリクスが表示されることを確認してください。
+
+### 報告されたスパンのタイムスタンプ異常 {#reported-span-timestamp-anomalies}
+
+[Issue #2568](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568) では、OpenShift 4.16 上の OBI v0.9.0/v0.10.0 で、同一ノードおよびクロスノードの両方のトレースにおいて、子スパンの開始タイムスタンプが親よりも早くなる事象が報告されています。
+報告者はその後、この症状は [OBI の作成後およそ最初の18時間に限定されるようだ](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568#issuecomment-4885235257) と述べています。
+
+[v1.0.0 リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)では、この問題が未解決の制限事項として残されています。
+このイシューでは、アプリケーションの言語やプロトコルの特定、再現手順の提供、v1.0.0 での再現確認は行われていません。
+
 ### OBI 実行中に ClickHouse インスタンスがクラッシュする {#clickhouse-instances-crash-when-obi-is-running}
 
 OBI と同じノードで [Clickhouse](https://github.com/ClickHouse/ClickHouse) を実行している場合、次のようなログとともに ClickHouse がクラッシュすることがあります。
@@ -130,16 +145,17 @@ ClickHouse を [skip_binary_checksum_checks](https://clickhouse.com/docs/operati
 ### Go アプリケーションや TLS リクエストのテレメトリーデータが欠落する {#missing-telemetry-data-for-go-applications-or-tls-requests}
 
 Go アプリケーションや TLS リクエスト（HTTPS 通信など）からのテレメトリーが欠落している場合、uprobe をアタッチするための権限が不足している可能性があります。
-最近のカーネルのセキュリティ変更が多くの古いカーネルバージョンにもバックポートされたため、uprobe には `CAP_SYS_ADMIN` ケーパビリティが必要になりました。
-OBI は Golang アプリケーションや TLS リクエストの計装、その他のランタイム / 言語固有の計装に uprobe を使用しています。
-OBI のデプロイ時のセキュリティ設定で特権操作（たとえば Docker や Kubernetes における `privileged:true`）が使われていない、または `CAP_SYS_ADMIN` がセキュリティケーパビリティとして付与されていない場合、テレメトリーの一部または全部が欠落することがあります。
+一部のカーネルでは `CAP_SYS_ADMIN` なしで `perf_event_open()` がブロックされます。
+v0.14.0 では、OBI は Go アプリケーションや TLS リクエストに使用するプローブを含む、大半の uprobe および kprobe に対して tracefs へのフォールバックを行います。
+これらのプローブが失敗する場合は、tracefs が利用可能であること、および OBI に[必要なケーパビリティ](../security/)が付与されていることを確認してください。
+Go ライブラリレベルのコンテキスト伝搬を含む、`bpf_probe_write_user()` を使用する機能には引き続き `CAP_SYS_ADMIN` が必要です。
 
 この問題をトラブルシューティングするには、`OTEL_EBPF_LOG_LEVEL=debug` で OBI の詳細ロギングを有効にしてください。
-すべての uprobe 挿入が "setting uprobe (offset)..." エラーで失敗している場合は、この問題に該当している可能性が高いです。
+uprobe のアタッチが "setting uprobe (offset)..." で失敗している場合は、デバッグログで perf イベントと tracefs 双方のエラーを確認してください。
 
 **解決策:**
 
-次のいずれかを行います。
+tracefs が利用できない場合、または対象の機能が `bpf_probe_write_user()` を必要とする場合は、次のいずれかを行います。
 
 - OBI を特権モードで実行する。
 - デプロイ時のセキュリティ設定のケーパビリティリストに `CAP_SYS_ADMIN` を追加する。

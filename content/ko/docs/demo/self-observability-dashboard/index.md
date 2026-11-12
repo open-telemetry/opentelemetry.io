@@ -1,6 +1,7 @@
 ---
 title: 자체 옵저버빌리티 대시보드
 default_lang_commit: 4f50451b8d03165e25df580d9147560ce2af7105
+drifted_from_default: true
 ---
 
 오픈텔레메트리(OpenTelemetry) SDK는 실험 단계의

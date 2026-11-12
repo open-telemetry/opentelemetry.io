@@ -7,7 +7,7 @@ cSpell:ignore: zpages
 
 {{% include freeze-notice.md %}}
 
-Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
+<!-- Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the [registry](../)!
 
 To add your project, submit a [pull request][]. You'll need to create a data
@@ -16,7 +16,7 @@ file in [data/registry][] for your project, by using the following template:
 
 Make sure that your project names and descriptions follow our [marketing
 guidelines][] and are in line with the Linux Foundation's branding and
-[trademark usage guidelines][].
+[trademark usage guidelines][]. -->
 
 ## Registry Types
 
@@ -175,6 +175,7 @@ that automatically detects and adds resource information to telemetry.
 **Examples**: Testing utilities, debugging tools, migration tools, or any helper
 library that facilitates working with OpenTelemetry.
 
+<!--
 [data/registry]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry
 [pull request]:
@@ -184,3 +185,4 @@ library that facilitates working with OpenTelemetry.
 [marketing guidelines]: /community/marketing-guidelines/
 [trademark usage guidelines]:
   https://www.linuxfoundation.org/legal/trademark-usage
+  -->

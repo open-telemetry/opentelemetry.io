@@ -5,7 +5,7 @@ weight: 30
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/otel-config"?>
+<?code-excerpt path-base="content-modules/opentelemetry-configuration"?>
 
 Declarative configuration uses a YAML file instead of environment variables.
 

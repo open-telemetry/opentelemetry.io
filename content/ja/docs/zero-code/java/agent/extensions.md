@@ -3,12 +3,12 @@ title: エクステンション
 aliases: [/docs/instrumentation/java/extensions]
 description: エクステンションは、個別のディストリビューションを作成することなくエージェントに機能を追加します。
 weight: 300
-default_lang_commit: 2d447daa701636c3246c116d4b8c4a2f2c35de60
+default_lang_commit: 06bcb558c71da67124b77dfd7ddf1de659cb2da7
 cSpell:ignore: Customizer Dotel myextension
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/extensions-minimal"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/extensions-minimal"?>
 
 ## はじめに {#introduction}
 
@@ -507,7 +507,7 @@ public class MyExtension implements AutoConfigurationCustomizerProvider {
 **例:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
@@ -551,7 +551,7 @@ public class DemoAutoConfigurationCustomizerProvider
 **例:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
 ```java
 /**
@@ -705,7 +705,7 @@ public class DemoInstrumenterCustomizerProvider implements InstrumenterCustomize
 **例:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
@@ -730,7 +730,7 @@ public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
 **例（`otel.traces.sampler=demo`）:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
@@ -756,7 +756,7 @@ public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvi
 **例:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java-instrumentation/extension"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-instrumentation/examples/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
 ```java
 @AutoService(ResourceProvider.class)

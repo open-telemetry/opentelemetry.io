@@ -3,11 +3,11 @@ title: プログラムによる設定
 weight: 35
 vers:
   contrib: 1.54.0
-default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+default_lang_commit: 8ed9f745d6252000e153fae8c1913dc15a03b5cd
 cSpell:ignore: customizer fileconfig
 ---
 
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 プログラムによる設定には `AutoConfigurationCustomizerProvider` を使用できます。
 プログラムによる設定は、プロパティでは設定できない高度なユースケースに推奨されます。

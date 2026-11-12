@@ -1,30 +1,25 @@
 ---
-default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 {{ if $noIntegrations }}
 
-{{% alert title="Colabore conosco!" color=secondary %}}
-
-Até o momento, não temos conhecimento de nenhuma biblioteca {{ $name }} que
-possua integração com o OpenTelemetry de forma nativa. Se você souber de alguma,
-[avise-nos][let us know].
-
-{{% /alert %}}
+> [!IMPORTANT] Colabore conosco
+>
+> Até o momento, não temos conhecimento de nenhuma biblioteca {{ $name }} que
+> possua integração nativa com o OpenTelemetry. Se você souber de alguma,
+> [avise-nos][new-issue].
 
 {{ end }}
 
 {{ if not $noIntegrations }}
 
-{{% alert color=info %}}
-
-Caso saiba de alguma biblioteca {{ $name }} que possua integração com o
-OpenTelemetry de forma nativa, [avise-nos][let us know].
-
-{{% /alert %}}
+> [!IMPORTANT] Colabore conosco
+>
+> Caso saiba de alguma biblioteca {{ $name }} que possua integração nativa com o
+> OpenTelemetry, [avise-nos][new-issue].
 
 {{ end }}
 
-[let us know]:
+[new-issue]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose

@@ -24,7 +24,7 @@ cSpell:ignore: dicelib rolldice
 
 .NET is different from other languages/runtimes that support OpenTelemetry. The
 [Tracing API](/docs/concepts/signals/traces/) is implemented by the
-[System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
+[System.Diagnostics](https://docs.microsoft.com/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
 

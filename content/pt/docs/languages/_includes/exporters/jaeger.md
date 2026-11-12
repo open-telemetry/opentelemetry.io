@@ -1,6 +1,5 @@
 ---
-default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 ## Jaeger
@@ -14,12 +13,11 @@ Docker com uma UI acessível através da porta 16686 e OTLP habilitados nas port
 
 ```shell
 docker run --rm \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
   -p 9411:9411 \
-  jaegertracing/all-in-one:latest
+  jaegertracing/jaeger:latest
 ```
 
 ### Uso {#jaeger-usage}

@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: Aerospike HotSpot Ollama Qwen rerank SunRPC uprobe
+cSpell:ignore: Aerospike Ollama Qwen rerank SunRPC
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming
@@ -49,14 +49,14 @@ OBI offers the following features:
 - **Database instrumentation (client only)**: MongoDB, Couchbase (N1QL/SQL++ and
   KV protocol), Aerospike, Elasticsearch, and OpenSearch
 - **HTTP payload instrumentation**: Server-side GraphQL and client-side
-  Elasticsearch, OpenSearch, AWS S3, and AWS SQS, plus MCP over JSON-RPC on both
-  clients and servers
+  Elasticsearch, OpenSearch, and AWS S3, SQS, and SNS, plus MCP over JSON-RPC on
+  both clients and servers
 - **GenAI instrumentation**: Trace and metrics for OpenAI, OpenAI-compatible
   gateways, Ollama, Anthropic Claude, Google AI Studio (Gemini), AWS Bedrock,
   Qwen (DashScope), MCP over JSON-RPC, embedding and rerank APIs, and vector
   retrieval systems
-- **Runtime metrics**: Collect Go, HotSpot JVM, and Node.js event-loop metrics
-  without SDK changes
+- **Runtime metrics**: Collect Go, JVM, .NET, Node.js, and Python runtime
+  metrics without SDK changes
 - **GPU instrumentation**: Capture supported CUDA runtime operations on Linux
 - **Span and service graph metrics**: Export application span metrics and
   service-to-service relationships
@@ -69,39 +69,54 @@ OBI offers the following features:
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
 
-## Recent highlights (v0.12.1)
+## Stability
 
-OBI v0.12.1 is the published release of the changes prepared for v0.12.0.
-Although v0.12.0 was tagged, it was not published after release validation
-failed. Install v0.12.1, which includes the intended v0.12.0 changes and the
-release correction.
+OBI v1.0.0 is the first stable release. It guarantees compatibility for:
 
-Notable changes include:
+- The public Go API of
+  [`go.opentelemetry.io/obi`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#go-module-api).
+- Config v2, its generated schema, and the supported subset of OpenTelemetry
+  declarative configuration.
+- Documented CLI flags, environment variables, release binaries, and container
+  image behavior.
+- Telemetry classified as `stable`, in both OTLP and built-in Prometheus output.
+- Supported environments and the documented upgrade and deprecation rules.
 
-- **Node.js manual spans**: Captures spans created with `@opentelemetry/api`
-  when the application has not registered an OpenTelemetry SDK
-- **Node.js runtime metrics**: Adds event-loop time, utilization, and delay
-  metrics
-- **More precise Config v2 filters**: Applies application filters independently
-  by protocol and signal
-- **Process-context enrichment**: Reads resource attributes and metadata that
-  instrumented processes publish through the experimental `OTEL_CTX` mapping
-- **Database server metrics**: Adds `db.server.operation.duration` for
-  server-side Redis, Memcached, and SQL operations
-- **Improved Java service names**: Uses the Spring Boot application name, JAR
-  manifest title, or JAR base name before falling back to `java`
-- **Reliability fixes**: Protects private-stack kernels from uprobe preemption,
-  avoids unsafe context propagation when a required probe cannot attach, and
-  corrects trace parenting, wrapped Go TLS connections, short-lived process log
-  enrichment, and OTLP attribute handling
+Changes that break these guarantees require a new major version. Minor releases
+can add compatible functionality, and patch releases preserve compatibility. See
+the
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)
+and
+[versioning policy](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#compatibility-and-release-rules-after-v1).
 
-For a complete list of changes and upgrade notes, see the
-[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.12.1).
+The [Collector receiver](configure/collector-receiver/) is versioned separately
+on a v0 release line. Telemetry and attributes not marked `stable` can still
+change, as can network flow attribute names while their semantic conventions are
+being aligned. See [telemetry stability](metrics/#stability).
+
+## Upgrade to v1.0.0
+
+- Use [Config v2](configure/config-v2/). Config v1 remains supported, but
+  receives no bug fixes or new features. Follow the
+  [migration guide](configure/migrate-to-config-v2/) and test the migrated
+  configuration on one instance before rolling it out.
+- The Collector receiver remains at `v0.15.2`; select core `v1.0.0` separately.
+  See [Collector receiver setup](configure/collector-receiver/).
+- The telemetry schema URL changes from `0.15.2` to `1.0.0`. The schema keeps
+  earlier transformations and adds no new renames. See
+  [telemetry stability](metrics/#stability) for schema limitations.
+
+When upgrading from v1.0.0-rc.1 or a release before v0.15.2, review the
+[v0.15.2 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)
+for changes to span names, default metric attributes, Prometheus labels, and Go
+configuration APIs. If upgrading from a release before v0.14.0, also review the
+[v0.14.0 release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0).
+Check the [known operational limitations](#limitations) during rollout.
 
 If you want to explore the upstream examples, see the
-[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/nginx)
+[NGINX walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/nginx)
 and the
-[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.12.1/examples/apache).
+[Apache walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/apache).
 
 ## How OBI works
 
@@ -132,6 +147,10 @@ OBI publishes the following supported release artifacts:
 OBI can be deployed on standalone Linux hosts, in containers, and on Kubernetes
 when the environment meets the requirements above.
 
+The
+[support matrix](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/SUPPORT_MATRIX.md)
+defines the supported environments and feature-specific requirements.
+
 OBI does not support non-Linux operating systems, Linux architectures other than
 `amd64` and `arm64`, Linux environments without BTF, or kernel versions earlier
 than Linux `5.8` outside the documented RHEL-family `4.18+` exception.
@@ -161,6 +180,19 @@ Some features also have additional caveats or narrower support than the core
 platform requirements. For details, refer to the feature-specific documentation
 for [distributed traces](distributed-traces/) and
 [exported instrumentation](configure/export-data/).
+
+Known limitations and unresolved reports include:
+
+- Application metrics can remain missing after a Kubernetes Pod starts or
+  restarts. Restarting OBI can restore them. See
+  [missing application metrics](troubleshooting/#missing-application-metrics-after-a-pod-restart).
+- A user
+  [reported child span timestamps earlier than parent timestamps](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)
+  with OBI v0.9.0/v0.10.0 on OpenShift 4.16. See the
+  [reported conditions](troubleshooting/#reported-span-timestamp-anomalies).
+- Service graphs can show `outgoing` destinations or separate Kubernetes and
+  OpenTelemetry names for the same service when OBI cannot resolve its metadata.
+  See [service graph limitations](metrics/#service-graph-limitations).
 
 For a comprehensive list of capabilities required by OBI, refer to
 [Security, permissions and capabilities](security/).

@@ -5,8 +5,7 @@ description:
   Use a API do OpenTelemetry em combinação com o Java agent para estender a
   telemetria gerada automaticamente com spans e métricas personalizadas.
 weight: 21
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
 
 ## Introdução {#introduction}
@@ -49,12 +48,10 @@ acessar a instância `OpenTelemetry`.
 
 ## Trecho {#span}
 
-{{% alert title="Note" %}}
-
-Para os casos de uso mais comuns, use a notação `@WithSpan` ao invés da
-instrumentação manual. Veja [Anotações](../annotations) para mais informações.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Para os casos de uso mais comuns, use a notação `@WithSpan` ao invés da
+> instrumentação manual. Veja [Anotações](../annotations) para mais informações.
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;

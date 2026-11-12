@@ -1,6 +1,6 @@
 ---
 title: セルフオブザーバビリティダッシュボード
-default_lang_commit: 98edce30d9f5ea1302ae983d86b178077586471e
+default_lang_commit: cb07a7f2f522075ab85baaca6b23625cad38b30f
 ---
 
 OpenTelemetry SDK は、SDK 自体の動作を表す内部メトリクス（実験的な [`otel.sdk.*` セマンティック規約](/docs/specs/semconv/otel/sdk-metrics/)を使用）を出力できます。
@@ -10,7 +10,7 @@ OpenTelemetry SDK は、SDK 自体の動作を表す内部メトリクス（実�
 ## SDK セルフオブザーバビリティの有効化 {#enabling-sdk-self-observability}
 
 SDK セルフオブザーバビリティはオプトインかつ実験的であり、サービスごとに SDK 設定を通じて有効化されます。
-デモでは、`ad`、`fraud-detection`、`kafka` サービスがオプトインしています。
+デモでは、`ad`、`fraud-detection`、`kafka`、`recommendation` サービスがオプトインしています。
 ダッシュボードは `Service` テンプレート変数で駆動されるため、オプトインした追加サービスは自動的に表示されます。
 
 ## ダッシュボードへのアクセス {#accessing-the-dashboard}
