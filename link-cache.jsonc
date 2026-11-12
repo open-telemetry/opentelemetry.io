@@ -1784,6 +1784,11 @@
     "when": "2026-10-27T05:47:30Z",
     "via": "lychee",
   },
+  "https://developer.android.com/privacy-and-security/security-config": {
+    "result": 200,
+    "when": "2026-11-12T15:16:20Z",
+    "via": "lychee",
+  },
   "https://developer.android.com/reference/android/os/Build#MANUFACTURER": {
     "result": 200,
     "when": "2026-10-20T05:45:14Z",
