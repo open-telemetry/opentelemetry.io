@@ -38,11 +38,33 @@ npm run check:codeowners  # verify it is up to date (used by CI)
 - Registry locale keys must match the locale directories under `content/`
   (excluding `en`); validation fails on either a missing or an extra locale.
 
+## Live-team sync
+
+`sync-teams.mjs` refreshes the registry's `locales:` map from the live teams;
+the scheduled Housekeeping run does this daily, then `fix:codeowners`
+regenerates CODEOWNERS, so drift becomes a normal reviewable PR. Merging that PR
+ratifies the live state. If the drift is unwanted, have an org admin revert the
+live team membership, then inspect the next Housekeeping result. If that run
+produces no changes, Housekeeping leaves the existing PR unchanged; close the
+stale PR manually. Otherwise, verify that the updated PR no longer contains the
+rejected roster changes before merging.
+
+- Reads each team's **direct** membership (GraphQL `membership: IMMEDIATE`); the
+  aggregated parent roster would fold child-team members in.
+- Normalizes `approvers` as the direct approver-team roster minus the direct
+  maintainer-team roster, keeping the registry's roles disjoint.
+- Fails without writing on a `gh` error, a missing or unreadable team, or an
+  incomplete roster, rather than producing a partial registry.
+- Never mutates teams. It needs organization team read access, so it is not part
+  of `npm run fix` or any PR check; maintainers can run
+  `npm run _fix:locale-teams` locally (needs `gh` authenticated).
+
 ## Files
 
-- `index.mjs` — pure logic (generation, marker replacement, registry
-  validation).
+- `index.mjs` — pure logic (generation, marker replacement, registry validation,
+  live-roster fetch and normalization).
 - `cli.mjs` — file-system wiring; run with `--help` for usage.
+- `sync-teams.mjs` — live-team registry sync (no dependencies).
 - `index.test.mjs` — run with `npm run test:local-tools`.
 
 [opentelemetry.io#10374]:

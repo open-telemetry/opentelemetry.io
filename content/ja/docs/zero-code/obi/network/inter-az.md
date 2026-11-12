@@ -3,7 +3,7 @@ title: クラウドアベイラビリティゾーン間のトラフィックを�
 linkTitle: クラウドアベイラビリティゾーン間のトラフィックを測定する
 description: 異なるクラウドアベイラビリティゾーン間のネットワークトラフィックを測定する方法
 weight: 1
-default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+default_lang_commit: acd264e5dd162cf417e7992698cf7efc995c780d
 ---
 
 > [!NOTE]
@@ -36,11 +36,11 @@ attributes:
 
 ゾーン間トラフィック測定でより高い粒度（たとえば、送信元/送信先の Pod やノード）が必要な場合、ゾーン属性の追加は、同じアベイラビリティゾーン内のトラフィックに対してもメトリクスのカーディナリティに影響します。
 
-## `obi.network.inter.zone` メトリクスを使用する {#use-the-obinetworkinterzone-metric}
+## `obi.network.inter.zone.bytes` メトリクスを使用する {#use-the-obinetworkinterzonebytes-metric}
 
 ゾーン間トラフィック用に別のメトリクスを使用すると、通常のネットワークメトリクスに `src.zone` および `dst.zone` 属性が追加されないため、データ収集によるメトリクスのカーディナリティへの影響を低減できます。
 
-`obi.network.inter.zone` メトリクスを有効化するには、`network_inter_zone` オプションを [OTEL_EBPF_METRICS_FEATURES](../../configure/export-data/) 設定オプション、またはそれに対応する YAML オプションに追加します。
+`obi.network.inter.zone.bytes` メトリクスを有効化するには、`network_inter_zone` オプションを [OTEL_EBPF_METRICS_FEATURES](../../configure/export-data/) 設定オプション、またはそれに対応する YAML オプションに追加します。
 たとえば、OBI が OpenTelemetry 経由でメトリクスをエクスポートするように設定されている場合は次のとおりです。
 
 ```yaml

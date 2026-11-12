@@ -6,19 +6,19 @@ weight: 20
 default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 ---
 
-오픈텔레메트리(OpenTelemetry)는 현재 다음과 같은 주요 컴포넌트로 구성된다.
+오픈텔레메트리(OpenTelemetry)는 현재 다음과 같은 주요 컴포넌트로 구성되어 있다.
 
-- [명세](#specification)
-- [컬렉터](#collector)
-- [언어별 API 및 SDK 구현체](#language-specific-api--sdk-implementations)
-  - [계측 라이브러리](#instrumentation-libraries)
-  - [익스포터](#exporters)
-  - [제로 코드 계측](#zero-code-instrumentation)
-  - [리소스 감지기](#resource-detectors)
-  - [서비스 간 전파자](#cross-service-propagators)
-  - [샘플러](#samplers)
-- [쿠버네티스 오퍼레이터](#kubernetes-operator)
-- [서비스형 함수 지원 구성 요소](#function-as-a-service-assets)
+- [명세(specification)](#specification)
+- [컬렉터(collector)](#collector)
+- [언어별 API 및 SDK 구현체(language-specific API \& SDK implementations)](#language-specific-api--sdk-implementations)
+  - [계측 라이브러리(instrumentation Libraries)](#instrumentation-libraries)
+  - [익스포터(exporters)](#exporters)
+  - [제로 코드 계측(zero-Code Instrumentation)](#zero-code-instrumentation)
+  - [리소스 감지기(resource Detectors)](#resource-detectors)
+  - [서비스 간 전파기(cross Service Propagators)](#cross-service-propagators)
+  - [샘플러(samplers)](#samplers)
+- [쿠버네티스 오퍼레이터(Kubernetes operator)](#kubernetes-operator)
+- [서비스형 함수 지원 구성 요소(function as a Service assets)](#function-as-a-service-assets)
 
 오픈텔레메트리는 텔레메트리 데이터 생성 및 전송에 필요한 특정 벤더 전용 SDK와
 도구를 대체할 수 있다.

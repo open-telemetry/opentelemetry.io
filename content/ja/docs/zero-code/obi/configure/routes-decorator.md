@@ -3,7 +3,8 @@ title: OBI ルートデコレーターを設定する
 linkTitle: ルートデコレーター
 description: OBI がパイプラインの次のステージにデータを送信する前に、ルートデコレーターコンポーネントを設定します。
 weight: 50
-default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
+default_lang_commit: 5d6a81cbc10c0d041125802495b0a09c4ff835d6
+cSpell:ignore: Blazor
 ---
 
 > [!NOTE]
@@ -14,10 +15,18 @@ default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
 
 YAML セクション: `routes`
 
+v0.14.0 以降、OBI は Django、FastAPI、Flask、Rails、.NET、Symfony、Laravel、Slim アプリケーションからフレームワーク定義の HTTP ルートを収集できます。
+フレームワークルートが利用可能な場合、`patterns` にそのルートを列挙することなく、低カーディナリティの `http.route` が提供されます。
+OBI がルートを収集できないアプリケーションについては、パターンまたはヒューリスティックモードを設定してください。
+
+v0.15.2 では、ルート収集の対象が Rails GraphQL エンジンやさらに多くの .NET エンドポイント形式にも拡大されました。
+これには、ルートグループ、MVC と Razor Pages、ヘルスチェック、SignalR、Blazor エンドポイントが含まれます。
+
 このコンポーネントは、YAML 設定ファイルの `routes` セクション、または環境変数を使用して設定できます。
 
-このセクションは YAML ファイルで設定する必要があります。
+ルートデコレーションをカスタマイズするには、このセクションを YAML ファイルで設定してください。
 `routes` セクションを指定しない場合、OBI はデフォルトのルートパイプラインステージを作成し、`heuristic` ルートデコレーターを使用します。
+選択した言語のフレームワークルート収集を無効にするには、`discovery.disabled_route_harvesters` を設定してください。
 
 たとえば次のとおりです。
 

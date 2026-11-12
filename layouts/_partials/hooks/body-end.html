@@ -1,5 +1,11 @@
-{{ if hugo.IsProduction -}}
+{{/* Website telemetry is paused: /site/features/#website-telemetry
+{{ if eq (os.Getenv "SITE_NAME") "opentelemetry" -}}
   {{ partial "script.html" (dict "src" "js/tracing.js") -}}
 {{ end -}}
+*/ -}}
 {{ partial "script.html" (dict "src" "js/navScroll.js") -}}
 {{ partial "script.html" (dict "src" "js/imageZoom.js") -}}
+{{/* Gating: /site/implementation/plugins-and-scripts/#gating-to-the-blog-index */ -}}
+{{ if eq .Path "/blog" -}}
+  {{ partial "script.html" (dict "src" "js/blog-sidebar-entry-opener.js") -}}
+{{ end -}}

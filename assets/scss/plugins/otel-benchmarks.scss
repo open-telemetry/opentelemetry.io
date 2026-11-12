@@ -1,0 +1,54 @@
+// Layout of the benchmarks shortcode's container and the markup the renderer
+// creates in it.
+
+$charts-gap-above: 3rem; // Docsy's section rhythm
+$chart-min-width: 600px; // legend and axes stay legible; the renderer reads it
+$chart-max-width: 1000px; // the stock page's chart width; keeps wide columns readable
+$set-gap: 0.5rem;
+$title-gap-above: 2rem;
+
+[data-otel-benchmarks] {
+  margin-top: $charts-gap-above;
+
+  .benchmark-set {
+    margin-block: $set-gap;
+  }
+
+  .benchmark-graphs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Chart titles carry long identifiers with no break points of their own.
+  h3 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    margin-top: $title-gap-above;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  // Narrow columns pan the chart, as Docsy's tables do, rather than shrink it
+  // past legibility.
+  .otel-chart-scroller {
+    width: 100%;
+    max-width: $chart-max-width;
+    overflow-x: auto;
+  }
+
+  // The chart fills this box; the renderer sets its aspect ratio. Without the
+  // zero minimum, the canvas's own height would hold the box after a shrink.
+  .otel-chart-wrapper {
+    position: relative;
+    min-width: $chart-min-width;
+    min-height: 0;
+  }
+
+  // Where a clicked point is; the commit popover hangs off it.
+  .otel-point-anchor {
+    position: absolute;
+  }
+}

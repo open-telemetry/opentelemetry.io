@@ -1,5 +1,9 @@
 {{ $source := .Get "source" | default "agent" -}}
-{{ $gettingStarted := readFile "examples/otel-config/examples/otel-getting-started.yaml" -}}
+{{ $gettingStartedPath := "content-modules/opentelemetry-configuration/examples/otel-getting-started.yaml" -}}
+{{ $gettingStarted := readFile $gettingStartedPath -}}
+{{ if not $gettingStarted -}}
+  {{ warnf "%s: %s is empty or missing" .Name $gettingStartedPath -}}
+{{ end -}}
 
 <div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
   <p class="text-body-secondary mb-3">

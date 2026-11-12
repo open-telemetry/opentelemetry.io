@@ -3,7 +3,7 @@ title: 承認者およびメンテナーのための SIG のプラクティス
 linkTitle: SIG のプラクティス
 description: 承認者およびメンテナーがどのようにイシューやコントリビューションを管理するかを学びます。
 weight: 999
-default_lang_commit: d03483e1d5cc696a5541f8bcc8ff97170f2f2ca1
+default_lang_commit: a288a96448b8a97adf7409379cd089a68394308a
 cSpell:ignore: Comms contribfest
 ---
 
@@ -46,16 +46,16 @@ cSpell:ignore: Comms contribfest
 
 - 新規のイシューは `@open-telemetry/docs-triagers` チームによってトリアージされます。
 - 最初のステップとして、トリアージをする人はイシューのタイトルと説明を読み、以下のラベルを適用します
-  - 必須: `sig:*`, `lang:*` または `docs:*` ラベルを適用してイシューの所有権を決定します
+  - 必須: `sig:*`、`lang:*` またはドキュメントチーム用ラベルを適用してイシューの所有権を決定します
     - イシューが SIG によって共同所有されているコンテンツまたは質問と関連する場合は、`sig:*` ラベルが適用されます。たとえば、コレクターに関する質問は `sig:collector` ラベルが適用されます。
     - イシューが特定のローカリゼーションに関するコンテンツまたは質問と関連する場合は、`lang:*` ラベルが適用されます。
-    - イシューがドキュメントチーム (SIG Comms) によって単独で所有されているコンテンツまたは質問と関連する場合は、`docs:*` ラベルが適用されます
+    - イシューがドキュメントチーム (SIG Comms) によって単独で所有されているコンテンツまたは質問と関連する場合は、ドキュメントチーム用ラベル（`docs`、`blog` または `docs:*`）が適用されます
       - `docs`
+      - `blog`
       - `docs:admin`
       - `docs:accessibility`
       - `docs:analytics-and-seo`
       - `docs:IA`
-      - `docs:blog`
       - `docs:cleanup/refactoring`
       - `docs:upstream`, `docs:upstream/docsy`
       - `docs:javascript`
@@ -67,10 +67,12 @@ cSpell:ignore: Comms contribfest
     - `triage:deciding`、`triage:deciding:blocked`、`triage:deciding:needs-info`
     - `triage:rejected`、`triage:rejected:duplicate`、`triage:rejected:invalid`、`triage:rejected:wontfix`
   - 必須: イシューの "type" を以下のように設定します
-    - バグには `bug` イシュータイプ
-    - 機能要望には `enhancement` イシュータイプ
+    - バグには `Bug` イシュータイプ
+    - 機能要望には `Feature` イシュータイプ
+    - その他の対応可能な作業には `Task` イシュータイプ
     - 質問には `type:question` ラベル
     - 文章校正には `type:copyedit` ラベル
+    - ページフィードバックには `type:feedback` ラベル
     - 作業として対応できない、方向性の定まらない議論の場合は、イシューを "discussions" に移動します
   - 任意: 該当する場合は、以下の見積もりラベルを適用します
     - `e0-minutes`
@@ -86,12 +88,33 @@ cSpell:ignore: Comms contribfest
     - `help wanted`
     - `contribfest`
     - `maintainers only`
+    - `blocked`
     - `forever`
     - `stale`
+    - `parked`（以下を参照）
+- イシューフォームにより、これらのラベルやタイプの一部（`docs`、`blog`、`type:feedback`、`Bug`、`Feature`）が事前に適用されます。
+  それらを確認し、フォームが適用に失敗したラベルを追加するか（外部からの起票者によるイシューではラベルが欠落することがあります）、置き換えてください。
 - イシュー上で 14 日間活動がない場合、自動化により `triage:deciding` 状態のイシューに
   `triage:followup` ラベルが付与され、再トリアージの対象となります。
   `triage:followup` ラベルは 7 日以内に削除する必要があります。
   参加者へのメンションとラベルの削除で、十分な活動とみなされます。
+- イシューのクローズは、リクエストが達成された場合にのみ _completed_ とし、別のイシューと重複する場合は _duplicate_ とします。
+  それ以外の場合は、以下のいずれかのラベルを付けて _not planned_ としてクローズします。
+  - `parked`: 現時点でイシューを進めるキャパシティがない場合。
+    ラベルを追加し、他のラベルはそのままにしてコメントします。
+    たとえば `CI/infra` ラベルが付いていないイシューの場合は以下のようにします。
+    <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
+    <!-- markdownlint-disable no-otel-io-external-urls -->
+    > This issue isn't declined; we're parking it for lack of capacity. To pick
+    > it up, comment here. For details, see
+    > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
+    <!-- markdownlint-enable no-otel-io-external-urls -->
+  - `triage:rejected*`: リクエストが却下された場合。
+    [declined issues][] を確認するトリアージ担当者のために、簡潔な理由を残してください。
+- [parked issues][] を定期的にレビューしてください。
+
+[declined issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 
 ### PR {#prs}
 

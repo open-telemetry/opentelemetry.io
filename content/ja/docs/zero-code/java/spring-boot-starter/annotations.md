@@ -1,11 +1,11 @@
 ---
 title: アノテーション
 weight: 50
-default_lang_commit: a790e3cf91025305c683047b181120ab6bbae3de
+default_lang_commit: 06bcb558c71da67124b77dfd7ddf1de659cb2da7
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 ほとんどのユーザーにとっては、すぐに使える計装は完全に十分であり、それ以上何もする必要はありません。
 しかし時には、ユーザーが多くのコード変更を必要とせずに、独自のカスタムコードに対して[スパン](/docs/concepts/signals/traces/#spans)を作成したい場合があります。

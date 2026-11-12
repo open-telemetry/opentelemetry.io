@@ -3,7 +3,7 @@ title: OpenTelemetry Collector レシーバーとしての OBI
 linkTitle: Collector レシーバー
 weight: 75
 description: テレメトリーを一元的に処理するために、OBI を OpenTelemetry Collector のレシーバーコンポーネントとして使用する方法を学びます。
-default_lang_commit: 12862017e85a7b88fbd194241af00f4dbd4ee75c
+default_lang_commit: 6e13d934026c15dc982e28c1234838ccf005ecb0
 cSpell:ignore: bpftool PERFMON
 ---
 
@@ -98,9 +98,9 @@ OCB をインストールしていない場合は、[インストール手順](/
 
 **要件**は次のとおりです。
 
-- [Go](https://go.dev) 1.25 以降
+- [Go](https://go.dev) 1.26 以降
 - [OCB](/docs/collector/extend/ocb/) がインストールされ、`PATH` から利用できること
-- [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation) リポジトリの v0.6.0 以降をローカルにチェックアウト
+- [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation) リポジトリの v1.0.0 をローカルにチェックアウト
 - [Docker](https://docs.docker.com/get-started/get-docker/)（eBPF ファイル生成用）、または C コンパイラ、clang、eBPF ヘッダー
 
 **ビルド手順:**
@@ -126,34 +126,35 @@ OCB をインストールしていない場合は、[インストール手順](/
      output_path: ./dist
 
    exporters:
-     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.142.0
-     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.142.0
+     - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.163.0
+     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.163.0
 
    processors:
-     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.142.0
+     - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.163.0
 
    receivers:
-     - gomod: go.opentelemetry.io/obi v0.6.0
+     - gomod: go.opentelemetry.io/obi/collector v0.15.2
        import: go.opentelemetry.io/obi/collector
 
    providers:
-     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.18.0
-     - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.18.0
-     - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.18.0
-     - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.18.0
-     - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.18.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.69.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.69.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.69.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.69.0
+     - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.69.0
 
    replaces:
      - go.opentelemetry.io/obi => /path/to/obi
+     - go.opentelemetry.io/obi/collector => /path/to/obi/collector
    ```
 
    `/path/to/obi` は実際の OBI ソースディレクトリのパスに置き換えてください。
-   `replaces:` セクションは、公開モジュールリポジトリからフェッチするかわりにローカルの OBI ソースを使うよう `ocb` に指示します。
-   公開されている OBI モジュールには生成された BPF コードが含まれていないため、これが必要です。
+   `replaces:` セクションは、v1.0.0 のチェックアウトから両方のモジュールをビルドします（生成された BPF コードを含む）。
+   ルートモジュールだけを replace してもレシーバーは replace されません。
 
    **バージョン選定**: コンポーネントごとにバージョンを指定する必要があります。
-   上記の例では OBI v0.6.0 と互換性が確認されているバージョンを使用しています。
-   別の OBI バージョンを使用している場合や、より新しいコンポーネントバージョンを使用したい場合は、OBI リポジトリの `go.mod` ファイルを確認して、依存している Collector コンポーネントのバージョンを特定し、それに合わせて builder の設定を更新してください。
+   上記の例は v1.0.0 のアップストリーム Builder サンプルに準拠しており、Collector コンポーネントは `v0.163.0`、構成プロバイダーは `v1.69.0` を使用しています。
+   別のバージョンを選択する場合は、OBI チェックアウト内の `collector/go.mod` と `examples/otel-collector/builder-config.yaml` を確認してください。
 
 3. カスタム Collector をビルドします。
 
@@ -162,6 +163,13 @@ OCB をインストールしていない場合は、[インストール手順](/
    ```
 
    コンパイルされたバイナリは `./dist/otelcol-obi` に配置されます。
+
+レシーバーはコアとは独立してバージョン管理されています。
+公開モジュールを使用する Go プロジェクトでは、両方のバージョンを指定してください。
+
+```shell
+go get go.opentelemetry.io/obi/collector@v0.15.2 go.opentelemetry.io/obi@v1.0.0
+```
 
 ### OBI レシーバーを使用した Collector の設定 {#collector-configuration-with-obi-receiver}
 
@@ -275,8 +283,8 @@ Collector は `sudo` で実行するか、次のための適切な Linux ケー�
 2. イメージをビルドして push します。
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.6.0 .
-   docker push my-registry/otelcol-obi:v0.6.0
+   docker build -t my-registry/otelcol-obi:custom .
+   docker push my-registry/otelcol-obi:custom
    ```
 
 3. DaemonSet をデプロイします。
@@ -301,7 +309,7 @@ Collector は `sudo` で実行するか、次のための適切な Linux ケー�
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.6.0
+             image: my-registry/otelcol-obi:custom
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
@@ -351,10 +359,10 @@ Collector は `sudo` で実行するか、次のための適切な Linux ケー�
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor
-      v0.142.0
+      v0.163.0
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
-      v0.142.0
+      v0.163.0
 ```
 
 その上で、Collector のプロセッサーを使ってエクスポート前に PII を除去します。
@@ -414,7 +422,7 @@ Collector を使ってインテリジェントなサンプリングを実装で�
 processors:
   - gomod:
       github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor
-      v0.142.0
+      v0.163.0
 ```
 
 設定例:
@@ -524,19 +532,20 @@ Collector のパイプラインは設定に応じて追加のリソースを必�
 
 ビルド時に API 非互換エラーや "unknown revision" エラーが発生した場合は、次を試してください。
 
-1. OBI のソースディレクトリが最新であることを確認します。
+1. OBI のソースディレクトリがローカルの replace で使用しているコアバージョンでチェックアウトされていることを確認します。
 
    ```shell
    cd /path/to/obi
-   git pull origin main  # または使用しているブランチ
+   git fetch --tags
+   git checkout v1.0.0
    ```
 
-2. Collector コンポーネントのバージョン pin が builder の設定で指定されていないこと、または OBI の `go.mod` で定義されているバージョンと一致していることを確認します。
+2. builder の設定における Collector コンポーネントのバージョン pin が、チェックアウトした OBI の `collector/go.mod` で定義されているバージョンと一致していることを確認します。
 
-3. OBI の `go.mod` ファイルを確認し、依存している Collector コンポーネントのバージョンを特定します。
+3. OBI の `collector/go.mod` ファイルを確認し、依存している Collector コンポーネントのバージョンを特定します。
 
    ```shell
-   grep "go.opentelemetry.io/collector" go.mod
+   grep "go.opentelemetry.io/collector" collector/go.mod
    ```
 
    そして、他のコンポーネントについても同じバージョンを `builder-config.yaml` に追加します。

@@ -2,7 +2,7 @@
 title: サーバーレス
 weight: 100
 description: OpenTelemetry JavaScriptでサーバーレス関数を計装
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
+default_lang_commit: 8ed9f745d6252000e153fae8c1913dc15a03b5cd
 cSpell:ignore: otelwrapper
 ---
 
@@ -38,8 +38,7 @@ npm install \
   @opentelemetry/auto-instrumentations-node \
   @opentelemetry/exporter-trace-otlp-http \
   @opentelemetry/instrumentation \
-  @opentelemetry/sdk-trace-base \
-  @opentelemetry/sdk-trace-node
+  @opentelemetry/sdk-trace
 ```
 
 ### AWS Lambdaラッパーコード {#aws-lambda-wrapper-code}
@@ -51,29 +50,43 @@ npm install \
 /* lambda-wrapper.js */
 
 const api = require('@opentelemetry/api');
-const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+const {
+  BatchSpanProcessor,
+  TracerProvider,
+} = require('@opentelemetry/sdk-trace');
 const {
   OTLPTraceExporter,
 } = require('@opentelemetry/exporter-trace-otlp-http');
-const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} = require('@opentelemetry/core');
+const {
+  AsyncLocalStorageContextManager,
+} = require('@opentelemetry/context-async-hooks');
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
-const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter({
-    url: '<backend_url>',
-  }),
+const exporter = new OTLPTraceExporter({ url: '<backend_url>' });
+const tracerProvider = new TracerProvider({
+  spanProcessors: [new BatchSpanProcessor({ exporter })],
+});
+api.trace.setGlobalTracerProvider(tracerProvider);
+
+api.context.setGlobalContextManager(
+  new AsyncLocalStorageContextManager().enable(),
 );
 
-const provider = new NodeTracerProvider({
-  spanProcessors: [spanProcessor],
-});
-
-provider.register();
+api.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 registerInstrumentations({
   instrumentations: [
@@ -215,15 +228,25 @@ GCPにログインして、関数を配置するプロジェクトを作成ま�
 const { resourceFromAttributes } = require('@opentelemetry/resources');
 const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
-const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+const {
+  BatchSpanProcessor,
+  TracerProvider,
+} = require('@opentelemetry/sdk-trace');
 const {
   OTLPTraceExporter,
 } = require('@opentelemetry/exporter-trace-otlp-http');
-const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
 const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
 } = require('@opentelemetry/auto-instrumentations-node');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} = require('@opentelemetry/core');
+const {
+  AsyncLocalStorageContextManager,
+} = require('@opentelemetry/context-async-hooks');
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
@@ -231,16 +254,27 @@ const collectorOptions = {
   url: '<address for your backend>',
 };
 
-const provider = new NodeTracerProvider({
+const tracerProvider = new TracerProvider({
   resource: resourceFromAttributes({
     [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
-    new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),
+    new BatchSpanProcessor({
+      exporter: new OTLPTraceExporter(collectorOptions),
+    }),
   ],
 });
+api.trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register();
+api.context.setGlobalContextManager(
+  new AsyncLocalStorageContextManager().enable(),
+);
+
+api.propagation.setGlobalPropagator(
+  new CompositePropagator({
+    propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
+  }),
+);
 
 registerInstrumentations({
   instrumentations: [getNodeAutoInstrumentations()],
@@ -256,13 +290,12 @@ registerInstrumentations({
   "dependencies": {
     "@google-cloud/functions-framework": "^3.0.0",
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/auto-instrumentations-node": "^0.56.1",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.200.0",
-    "@opentelemetry/instrumentation": "^0.200.0",
-    "@opentelemetry/sdk-trace-base": "^2.0.0",
-    "@opentelemetry/sdk-trace-node": "^2.0.0",
-    "@opentelemetry/resources": "^2.0.0",
-    "@opentelemetry/semantic-conventions": "^2.0.0"
+    "@opentelemetry/auto-instrumentations-node": "^0.80.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.222.0",
+    "@opentelemetry/instrumentation": "^0.222.0",
+    "@opentelemetry/sdk-trace": "^2.11.0",
+    "@opentelemetry/resources": "^2.11.0",
+    "@opentelemetry/semantic-conventions": "^1.43.0"
   }
 }
 ```

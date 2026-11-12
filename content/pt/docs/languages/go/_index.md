@@ -8,9 +8,8 @@ aliases: [/golang, /golang/metrics, /golang/tracing]
 redirects:
   - { from: /go/*, to: ':splat' }
   - { from: /docs/go/*, to: ':splat' }
-weight: 16
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+weight: 140
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 {{% docs/languages/index-intro go /%}}

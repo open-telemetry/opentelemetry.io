@@ -3,12 +3,12 @@ title: サプライチェーンセキュリティ
 description: >-
   サイトの npm 依存関係制御の背景にある脅威モデルと根拠
 weight: 20
-default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
+default_lang_commit: 9303f8245fc0b7e9f51d9b42696b7144bfef2ae1
 ---
 
 制御の詳細と日常の手順については、[Dependency management](../../build/dependencies/) を参照してください。
 関連するセキュリティトピックにはそれぞれ専用のページがあります。
-これらの制御を検証する監査の設計については [Supply-chain audit design](/site/design/supply-chain-audit/) を、ワークフローのトリガーとトークン権限については [CI workflows](../../build/ci-workflows/#security-model) を、脆弱性の報告については [security policy][] を参照してください。
+これらの制御を検証する監査の設計については [Supply-chain audit design](/site/design/supply-chain-audit/) を、ワークフローのトリガー、トークン権限、信頼されない入力については [CI workflows](../../build/ci-workflows/#security-model) を、脆弱性の報告については [security policy][] を参照してください。
 
 ## 脅威モデル {#threat-model}
 
@@ -62,9 +62,12 @@ default_lang_commit: 7fdabd2ed2c394ad4cbff90314c2f12eea6db1d9
 - _レジストリで解決可能な名前で呼び出された bin は、ローカルのインストールが古い場合にその名前を主張する者を実行する。6月に未登録の bin 名のスクワットがこれを証明した。_
   - **bin を呼び出し、名前は呼び出さない**: <a id="no-bare-npx"></a> リポジトリの配線は[素の `npx` を使用しない][no bare npx]。
     bin はインストール済みの依存関係ツリーから取得されるか、明示的に失敗します。
-- _制御が暗黙のうちに適用されなくなることは、制御がないことよりも悪い。_
+- _制御や修正が暗黙のうちに適用されなくなることは、制御がないことよりも悪い。_
   - **古い npm ではフェイルクローズする**: <a id="old-npm"></a> アクティブな npm が `.npmrc` の設定を適用するには古すぎる場合、続行するのではなくインストールが失敗します。
-  - **信頼せず検証する**: <a id="verify"></a> 無効化とロック完全一致は、前提ではなく検証済みの主張です。
+  - **信頼せず検証する**: <a id="verify"></a> 無効化、ロック完全一致、および各[セキュリティオーバーライド][security updates]は、前提ではなく検証済みの主張です。
+    - npm はロックファイルを自身の解決との一致のみで検査します。
+      固定バージョンを知らず、オーバーライドが不要になったことを報告しないため、監査は各オーバーライドをすべてのロック済みコピーと回避対象の親の範囲に対して検証します。
+      その範囲内にバックポートされた修正、2つ目の依存元、または `acceptDependencies` の範囲は npm の視野の外にあります。
 
 適用方法の一覧:
 

@@ -2,10 +2,10 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: c2f1762937a709892f60dece2e238d35d8a4d103
+default_lang_commit: 5c42532e37db75bdd0ffbf158ff088fb774f4492
 ---
 
-<?code-excerpt path-base="examples/java/getting-started"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/getting-started"?>
 
 このページでは、JavaでOpenTelemetryを始める方法を紹介します。
 
@@ -227,7 +227,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 ## 次のステップ {#what-next}
 
-詳細については。
+詳細については、以下を参照してください。
 
 - この例を別の[エクスポーター][exporter]でテレメトリーデータ用に実行してください。
 - 自分のアプリの1つで[ゼロコード計装](/docs/zero-code/java/agent/)を試してください。

@@ -14,7 +14,7 @@ cSpell:ignore: kotlint updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 
 The API is a set of classes and interfaces for recording telemetry across key
 observability signals. The [SDK](../sdk/) is the built-in reference
@@ -712,7 +712,7 @@ As a result:
 
 <!-- prettier-ignore-start -->
 <!-- temporarily change except path to resolve relative to configuration directory, and revert after -->
-<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/configuration"?>
 <?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
 ```java
 package otel;
@@ -739,7 +739,7 @@ public class GlobalOpenTelemetryManualInstrumentationUsage {
   }
 }
 ```
-<?code-excerpt path-base="examples/java/api"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/api"?>
 <!-- prettier-ignore-end -->
 
 As a result:

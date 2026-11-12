@@ -189,7 +189,7 @@ receivers:
         endpoint: ${env:MY_POD_IP}:4318
 ```
 
-ノード上の任意のPodからコレクターに対して、`${MY_HOST_IP}:4317`にアクセスすることで、OTLP over gRPCで、`${MY_HOST_IP}:4318`にアクセスすることで、OTLP over gRPCで、OTLPデータを送信することができます。
+ノード上の任意のPodからコレクターに対して、`${MY_HOST_IP}:4317`にアクセスすることで、OTLP over gRPCで、`${MY_HOST_IP}:4318`にアクセスすることで、OTLP over HTTP で、OTLPデータを送信することができます。
 `MY_HOST_IP` にはノードのIPアドレスを指定してください。
 このIPアドレスは、以下のようにDownward APIから取得可能です。
 

@@ -37,16 +37,16 @@ drifted_from_default: true
 - Citește
   [politica noastră privind contribuțiile la inteligența artificială generativă](pull-requests#using-ai)
 
-- Dorești să lucrezi la alte probleme sau la schimbări mai ample? [Discutǎ mai
+- Dorești să lucrezi la alte probleme sau la schimbări mai ample? [Discută mai
   întâi cu administratorii][].
 
-[Discutǎ mai întâi cu administratorii]: issues/#fixing-an-existing-issue
+[Discută mai întâi cu administratorii]: issues/#fixing-an-existing-issue
 
 ## Începe direct! {#jump-right-in}
 
 What do you want to do?
 
-- Corecteazǎ o **greșeală de scriere sau alte remedieri rapide**, consultǎ
+- Corectează o **greșeală de scriere sau alte remedieri rapide**, consultă
   [trimiterea de conținut folosind GitHub](pull-requests/#changes-using-github)
 - Pentru contribuții mai semnificative, citește paginile din această secțiune
   începând cu:
@@ -61,16 +61,16 @@ What do you want to do?
 
 Contribuitorii la documentația OpenTelemetry:
 
-- Îmbunătățesc conținutul existent sau creeazǎ conținut nou
+- Îmbunătățesc conținutul existent sau creează conținut nou
 - [Trimit o postare pe blog](blog/) sau un studiu de caz
-- Adaugǎ sau actualizeazǎ [registrul OpenTelemetry](/ecosystem/registry/)
+- Adaugă sau actualizează [registrul OpenTelemetry](/ecosystem/registry/)
 - Îmbunătățesc codul care construiește site-ul
 
 Paginile din această secțiune descriu cum să contribui la **documentația**
 OpenTelemetry.
 
 Pentru îndrumări despre cum să contribui la proiectul OpenTelemetry în general,
-consultǎ [Ghidul pentru noii contribuitori OpenTelemetry][] al comunitǎții.
+consultă [Ghidul pentru noii contribuitori OpenTelemetry][] al comunității.
 Fiecare [repertoriu OTel][org] pentru implementări de limbaj, Colector și
 convenții are propriile ghiduri de contribuție specifice proiectului.
 

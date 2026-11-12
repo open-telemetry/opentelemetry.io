@@ -20,10 +20,11 @@ info here.
 
 **Initial Setup and Dependencies:**
 
-- `npm install` -- takes ~45 seconds. NEVER CANCEL. Set timeout to 2+ minutes.
-  Installs the versions pinned in the committed `package-lock.json`
-- Initial setup automatically runs: `npm run prepare` which executes
-  `get:submodule` and `_prepare:docsy`
+- `npm run install:safe` -- takes ~1 minute. NEVER CANCEL. Set timeout to 3+
+  minutes. A lock-exact install with lifecycle scripts suppressed, followed by
+  `ci:prepare` (reviewed Hugo-binary fetch, then `npm run prepare`:
+  `get:submodule` and `_prepare:docsy`); the repo's
+  [install contract](https://opentelemetry.io/site/build/dependencies/#install-contracts)
 - Submodules are essential - they contain OpenTelemetry specifications,
   community docs, and theme components
 
@@ -44,7 +45,6 @@ info here.
 - `npm run check:spelling` -- ~5 seconds, validates content spelling
 - `npm run check:format` -- ~25 seconds, validates Prettier formatting
 - `npm run check:markdown` -- ~10 seconds, validates markdown syntax
-- `npm run check:registry` -- ~1 second, validates registry YAML files
 
 ### Development Server
 
@@ -114,7 +114,6 @@ info here.
 ├── static/               # Static assets (images, CSS, JS)
 ├── themes/docsy/         # Docsy theme submodule
 ├── scripts/              # Build and validation helper scripts
-├── gulp-src/             # Gulp task definitions for validation
 ├── data/                 # YAML data files (registry, etc.)
 └── public/               # Generated site output (git-ignored)
 ```
@@ -123,7 +122,7 @@ info here.
 
 ```bash
 # Setup and dependencies
-npm install               # Install all dependencies (~45s)
+npm run install:safe     # Lock-exact install, then ci:prepare (~1min)
 npm run prepare          # Get submodules and prepare Docsy theme
 
 # Building
@@ -138,7 +137,6 @@ npm run check            # Run ALL validation checks (~2min)
 npm run check:spelling   # Spell check content (~5s)
 npm run check:format     # Check Prettier formatting (~25s)
 npm run check:markdown   # Lint markdown files (~10s)
-npm run check:registry   # Validate registry YAML (~1s)
 
 # Fixing issues
 npm run fix:format       # Auto-fix formatting issues
@@ -164,8 +162,8 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 ### Hugo-Specific Details
 
-- Uses Hugo v0.148.2 with extended features
-- Theme: Docsy (Google's documentation theme)
+- Uses the `hugo-extended` version pinned in `package.json`
+- Theme: Docsy
 - Multilingual support enabled for 8+ languages
 - Content mounting from submodules defined in
   `config/_default/module-template.yaml`
@@ -184,7 +182,7 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 **NEVER CANCEL these commands - use generous timeouts:**
 
-- `npm install`: 2+ minutes (network dependent)
+- `npm run install:safe`: 3+ minutes (network dependent)
 - `npm run build`: 3+ minutes (includes submodule processing)
 - `npm run serve`: 3+ minutes (initial build before serving)
 - `npm run check`: 4+ minutes (comprehensive validation)
@@ -193,7 +191,6 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 - `npm run check:spelling`
 - `npm run check:format`
-- `npm run check:registry`
 - `npm run check:markdown`
 
 **Common Timing Issues:**

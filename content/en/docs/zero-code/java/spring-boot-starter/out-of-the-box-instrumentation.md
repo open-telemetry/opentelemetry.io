@@ -5,7 +5,7 @@ cSpell:ignore: autoconfigurations autoconfigures webflux webmvc
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 Out of the box instrumentation is available for several frameworks:
 

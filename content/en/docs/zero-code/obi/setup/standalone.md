@@ -11,9 +11,9 @@ inspect other running processes.
 
 ## Download and verify
 
-OBI provides pre-built binaries for Linux (amd64 and arm64). Download the latest
-release from the
-[releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
+OBI provides pre-built binaries for Linux (amd64 and arm64). Download the
+archive for your architecture from the
+[releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0).
 Each release includes:
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
@@ -29,6 +29,9 @@ Each release includes:
 - `SHA256SUMS` - Checksums for verification of the release archives and SBOM
   assets
 
+Each archive, SBOM, and `SHA256SUMS` file has a Cosign signature bundle named
+`<asset>.bundle.json`.
+
 Container images for the same release are also published. For image pull and
 signature verification instructions, see
 [Run OBI as a Docker container](../docker/).
@@ -38,7 +41,7 @@ Set your desired version and architecture:
 ```sh
 # Set your desired version (find latest at
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)
-VERSION=0.12.1
+VERSION=1.0.0
 
 # Determine your architecture
 # For Intel/AMD 64-bit: amd64
@@ -53,9 +56,6 @@ wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releas
 
 # Verify the archive
 sha256sum -c SHA256SUMS --ignore-missing
-
-# Extract the archive
-tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
 Successful verification prints an `OK` result for each downloaded file:
@@ -69,6 +69,24 @@ If verification fails, `sha256sum` reports `FAILED`. When that happens:
 - confirm that `VERSION` matches the archive and `SHA256SUMS` you downloaded
 - remove any partially downloaded files and fetch them again
 - verify only the files you actually downloaded from that release
+
+Download the archive's signature bundle and verify its signature with
+[Cosign](https://docs.sigstore.dev/cosign/verifying/verify/):
+
+```sh
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/obi-v${VERSION}-linux-${ARCH}.tar.gz.bundle.json
+
+cosign verify-blob obi-v${VERSION}-linux-${ARCH}.tar.gz \
+  --bundle obi-v${VERSION}-linux-${ARCH}.tar.gz.bundle.json \
+  --certificate-identity "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/.github/workflows/release.yml@refs/tags/v${VERSION}" \
+  --certificate-oidc-issuer 'https://token.actions.githubusercontent.com'
+```
+
+After signature verification succeeds, extract the archive:
+
+```sh
+tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
+```
 
 The archive contains:
 
@@ -100,6 +118,10 @@ The published SBOMs describe the contents of the binary archives and embedded
 components in [CycloneDX JSON format](https://cyclonedx.org/). They can be used
 with standard SBOM tooling to inspect dependencies, licenses, and components
 without executing the binaries.
+
+The v1.0.0 archive SBOMs omit the embedded Java agent's Byte Buddy dependencies
+and report the agent version as `UNKNOWN`. To inspect Java dependencies, use the
+companion `obi-java-agent-v1.0.0.cyclonedx.json` SBOM and its signature bundle.
 
 Download the SBOMs you want to inspect:
 

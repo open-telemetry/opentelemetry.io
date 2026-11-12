@@ -3,6 +3,7 @@ title: Resolución de problemas de la instrumentación automática en .NET
 linkTitle: Resolución de problemas
 weight: 50
 default_lang_commit: f7b06a7
+drifted_from_default: true
 cSpell:ignore: corehost netfx pjanotti redirección TRACEFILE
 ---
 

@@ -1,6 +1,5 @@
 ---
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
-drifted_from_default: true
+default_lang_commit: e4a94862ebc3eb2c87fdbdd5baf72545a449db98
 ---
 
 Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/)
@@ -49,14 +48,12 @@ Esta página reúne informações sobre os principais exportadores do OpenTeleme
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Nota %}}
-
-Caso você esteja utilizando
-[instrumentação sem código](</docs/zero-code/{{ $langIdAsPath }}>), você poderá
-aprender a configurar os exporters através do
-[Guia de Configurações](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Caso você esteja utilizando
+> [instrumentação sem código](</docs/zero-code/{{ $langIdAsPath }}>), você
+> poderá aprender a configurar os exportadores através do
+> [Guia de Configurações](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
 {{ end }}
 
@@ -66,13 +63,11 @@ aprender a configurar os exporters através do
 
 ### Configuração do Collector {#collector-setup}
 
-{{% alert title=Nota %}}
-
-Caso já possua um coletor ou _backend_ OTLP configurado, poderá pular para
-[configurar as dependências do exportador OTLP](#otlp-dependencies) para a sua
-aplicação.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Caso já possua um coletor ou _backend_ OTLP configurado, poderá pular esta
+> seção e [configurar as dependências do exportador OTLP](#otlp-dependencies)
+> para a sua aplicação.
 
 Para testar e validar os seus exportadores OTLP, é possível executar o Collector
 em um contêiner Docker que escreve os dados diretamente no console.
@@ -114,4 +109,5 @@ docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/o
 Este Collector agora é capaz receber dados de telemetria via OTLP. Mais tarde,
 você também poderá [configurar o Collector](/docs/collector/configuration) para
 enviar os seus dados de telemetria para o seu _backend_ de observabilidade.
+
 {{ end }}

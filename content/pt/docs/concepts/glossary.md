@@ -4,8 +4,8 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 64e150b6ffbe071402b5aa87afa0b5e56bd6aa75 # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
+cSpell:ignore: OTTL
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -112,9 +112,9 @@ rastreamento. Consulte a [especificação de campos][field].
 O número de valores únicos para um determinado [Atributo](#attribute) ou
 conjunto de atributos. Alta cardinalidade significa muitos valores únicos, o que
 pode impactar o desempenho e os requisitos de armazenamento dos _backends_ de
-telemetria. Por exemplo, um atributo `user_id` teria alta cardinalidade,
-enquanto um atributo `status_code` com valores como "200", "404", "500" teria
-baixa cardinalidade.
+telemetria, além da memória utilizada pelo SDK de [Métricas](#metric). Por
+exemplo, um atributo `user_id` teria alta cardinalidade, enquanto um atributo
+`status_code` com valores como "200", "404", "500" teria baixa cardinalidade.
 
 ### Collector
 
@@ -212,6 +212,15 @@ programação e os exemplos incluem injeção de _bytecode_ ou _monkey patching_
 
 Abreviação para [JavaScript Object Notation][json].
 
+### Limite de cardinalidade {#cardinality-limit}
+
+Um valor máximo configurável para o número de combinações únicas de atributos
+que um SDK de [Métricas](#metric) rastreia para um único fluxo de métricas,
+utilizado para limitar o uso de memória. Quando o limite é atingido, novas
+combinações são agregadas em um único ponto de dados de transbordamento
+(_overflow_), identificado pelo atributo `otel.metric.overflow=true`. Consulte
+[Limites de cardinalidade](/docs/concepts/signals/metrics/#cardinality-limits).
+
 ### Linguagem
 
 Linguagem de programação.
@@ -304,6 +313,11 @@ Enhancement Proposal)_].
 ### OTLP
 
 Abreviação para [OpenTelemetry Protocol](/docs/specs/otlp/).
+
+### OTTL
+
+Abreviação para
+[OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md).
 
 ### Propagação de Contexto {#context-propagation}
 
@@ -432,11 +446,11 @@ dados são exibidos em páginas da web quando solicitados. Consulte [zPages][].
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/specs/otel/glossary#log
+[log]: /docs/concepts/signals/logs/
 [log record]: /docs/specs/otel/glossary#log-record
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[propagators]: /docs/specs/otel/context/api-propagators/
 [Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

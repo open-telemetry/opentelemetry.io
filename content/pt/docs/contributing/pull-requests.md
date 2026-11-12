@@ -5,8 +5,7 @@ description:
   interface do GitHub ou a partir de um _fork_ local.
 aliases: [new-content]
 weight: 15
-default_lang_commit: 8252c194ab8d214f2bad084ab283986b3f3d7a6c # patched
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 Para contribuir com novos conteúdos ou melhorar a documentação existente,
@@ -21,30 +20,29 @@ submeta um [pull request][PR] (PR):
 
 ## Política de contribuição de IA generativa {#using-ai}
 
-{{% alert color="warning" title="Nota importante para contribuidor iniciantes" %}}
-
-Se você é um [contribuidor iniciante][first-time contributor], observe o
-seguinte:
-
-Suas 3 primeiras contribuições para o nosso repositório devem ser escritas
-majoritariamente por humanos, com assistência mínima de IA permitida.
-([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Isso significa
-que seu código deve ser escrito manualmente, mas a IA pode auxiliar com o
-preenchimento automático de código, formatação, _linting_ e seguindo as melhores
-práticas. A descrição do seu PR deve ser inteiramente escrita por humanos, sem
-qualquer envolvimento de IA (AIL0).
-
-Claro, você pode usar ferramentas de IA para fazer perguntas e aprender sobre
-nosso repositório, nosso projeto, como contribuir e muito mais.
-
-Implementamos esse requisito para ajudar você a aprender enquanto contribui, e
-para ajudar a proteger o tempo dos mantenedores e aprovadores, que é um recurso
-escasso.
-
-Os mantenedores podem abrir uma exceção se ficar claro que sua contribuição é
-“passageira” e pode ser incorporada sem muito esforço adicional da parte deles.
-
-{{% /alert %}}
+> [!WARNING] **Contribuidores iniciantes**, atenção!
+>
+> Se você é um [contribuidor iniciante][first-time contributor], observe o
+> seguinte:
+>
+> Suas 3 primeiras contribuições para o nosso repositório devem ser escritas
+> majoritariamente por humanos, com assistência mínima de IA permitida
+> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Isso
+> significa que seu código deve ser escrito manualmente, mas a IA pode auxiliar
+> com o preenchimento automático de código, formatação, _linting_ e seguindo as
+> melhores práticas. A descrição do seu PR deve ser inteiramente escrita por
+> humanos, sem qualquer envolvimento de IA (AIL0).
+>
+> Claro, você pode usar ferramentas de IA para fazer perguntas e aprender sobre
+> nosso repositório, nosso projeto, como contribuir e muito mais.
+>
+> Implementamos esse requisito para ajudar você a aprender enquanto contribui, e
+> para ajudar a proteger o tempo dos mantenedores e aprovadores, que é um
+> recurso escasso.
+>
+> Os mantenedores podem abrir uma exceção se ficar claro que sua contribuição é
+> “passageira” e pode ser incorporada sem muito esforço adicional da parte
+> deles.
 
 A IA generativa é permitida, mas **você é responsável** por **revisar e
 _validar_** todo o conteúdo gerado pela IA &mdash; se você não o entender, não o
@@ -82,14 +80,12 @@ class first,second white
 
 _Figura 1. Contribuindo com novo conteúdo._
 
-{{% alert title="Dica: Status de rascunho" %}}
-
-Defina o status do seu _pull request_ como **Rascunho** (_Draft_) para informar
-aos mantenedores que o conteúdo ainda não está pronto para revisão. Os
-mantenedores ainda podem comentar ou fazer revisões de alto nível, mas não
-revisarão o conteúdo completamente até que você remova o status de rascunho.
-
-{{% /alert %}}
+> [!TIP]
+>
+> Defina o status do seu _pull request_ como **Rascunho** (_Draft_) para
+> informar aos mantenedores que o conteúdo ainda não está pronto para revisão.
+> Os mantenedores ainda podem comentar ou fazer revisões de alto nível, mas não
+> revisarão o conteúdo completamente até que você remova o status de rascunho.
 
 ## Usando o GitHub {#changes-using-github}
 
@@ -171,32 +167,40 @@ automaticamente.
 Adicione o seguinte comentário ao seu PR:
 
 ```text
-/fix:all
+/fix
 ```
 
 Isso fará com que o bot OpenTelemetry tente corrigir os problemas de compilação.
+O bot responde com um comentário de progresso que aponta para o seu comando de
+correção e, em seguida, atualiza esse mesmo comentário com o resultado — assim,
+cada comando de correção que você emitir recebe seu próprio comentário do bot.
 Ou você pode emitir um dos seguintes comandos de correção para resolver uma
 falha específica:
 
 ```text
-fix:dict
-fix:expired
-fix:filenames
-fix:format
-fix:htmltest-config
-fix:i18n
-fix:markdown
-fix:refcache
-fix:submodule
-fix:text
+/fix:code-excerpts
+/fix:dict
+/fix:expired
+/fix:filenames
+/fix:format
+/fix:i18n
+/fix:l10n
+/fix:link-cache
+/fix:markdown
+/fix:submodule
+/fix:text
 ```
 
-{{% alert title="Dica" %}}
+O comando de correção deve estar na primeira linha do seu comentário; você pode
+adicionar um texto explicativo nas linhas seguintes. Emitir um novo comando de
+correção enquanto outro ainda está em execução cancela a execução em andamento,
+de modo que o comando mais recente prevalece; quando possível, o comentário do
+bot da execução cancelada é atualizado para indicar o cancelamento.
 
-Você também pode executar os comandos `fix` localmente. Para a lista completa de
-comandos de correção, execute `npm run -s '_list:fix:*'`.
-
-{{% /alert %}}
+> [!TIP] Dica
+>
+> Você também pode executar os comandos `fix` localmente. Para a lista completa
+> de comandos de correção, execute `npm run -s '_list:fix:*'`.
 
 ## Trabalhando localmente {#fork-the-repo}
 
@@ -430,8 +434,8 @@ Para testar e corrigir separadamente todos os problemas com seus arquivos,
 execute:
 
 ```sh
-npm run test    # Verifica, mas não atualiza nenhum arquivo
-npm run fix:all # Pode atualizar arquivos
+npm run test # Verifica, mas não atualiza nenhum arquivo
+npm run fix  # Pode atualizar arquivos
 ```
 
 Para listar os scripts NPM disponíveis, execute `npm run`. Veja
@@ -464,8 +468,10 @@ implantação][deploy preview] para que você possa revisar suas alterações. A
 que ocorrer o _merge_ do seu PR, o Netlify implanta o site atualizado no
 servidor de produção.
 
-> **Nota**: As prévias de PR incluem _páginas de rascunho_, mas as compilações
-> de produção não.
+> **Nota**: As prévias de PR incluem páginas de rascunho e com data futura, mas
+> as compilações de produção não; a verificação
+> [`CHECK LINKS (production, internal)`](../pr-checks/#check-links-production-internal)
+> detecta links para essas páginas.
 
 Para ver logs de implantação e mais, visite o [dashboard][] do projeto - login
 no Netlify é necessário.

@@ -2,7 +2,7 @@
 title: 伝搬
 description: JS SDKのコンテキスト伝搬
 weight: 65
-default_lang_commit: 80f1878ba5e02e1ac98daab3397999078dc67179
+default_lang_commit: b191670efb5fa665cb17f8ff5791d96164a15cfd
 cSpell:ignore: rolldice
 ---
 
@@ -54,11 +54,13 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
   instrumentations: [new UndiciInstrumentation()],
 });
 sdk.start();
@@ -78,11 +80,13 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
   instrumentations: [new UndiciInstrumentation()],
 });
 sdk.start();
@@ -450,10 +454,12 @@ import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-node';
+} from '@opentelemetry/sdk-trace';
 
 const sdk = new NodeSDK({
-  spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
+  spanProcessors: [
+    new SimpleSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
 });
 
 sdk.start();

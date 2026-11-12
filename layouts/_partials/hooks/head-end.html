@@ -1,3 +1,19 @@
+{{ $defaultLang := "en" -}}
+
+{{/* A page under content/en/ rendered in another language is an English page
+  mounted into the locale as a fallback. */ -}}
+{{ $isLocalized := and (ne .Language.Name $defaultLang) .File -}}
+{{ $pagePath := "" -}}
+{{ $isFallback := false -}}
+{{ if $isLocalized -}}
+  {{ $pagePath = strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
+  {{ $isFallback = hasPrefix $pagePath $defaultLang -}}
+{{ end -}}
+
+{{ if and $isLocalized .Draft (not $isFallback) -}}
+  {{ warnf "Localized pages must not be drafts: content/%s. See https://opentelemetry.io/docs/contributing/localization/#drafts" $pagePath -}}
+{{ end -}}
+
 {{ with .Params.canonical_url -}}
 
 <link rel="canonical" href="{{ . }}">
@@ -5,21 +21,12 @@
 {{- else -}}
 
   {{ $canonicalURL := .Permalink -}}
-
-  {{ $defaultLang := "en" -}}
-  {{ if and (ne .Language.Name $defaultLang) .File -}}
-    {{/* This page is in a non-default-language section */ -}}
-    {{ $pagePath := strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
-    {{ if hasPrefix $pagePath $defaultLang -}}
-
-      {{/* This page is actually a default-language fallback page. Use the link
-      to the origin of the fallback page as canonical reference. */ -}}
-
-      {{ $translationPages := where .Translations "Lang" $defaultLang -}}
-      {{ $translation := index $translationPages 0 -}}
-      {{ with $translation -}}
-        {{ $canonicalURL = .Permalink -}}
-      {{ end -}}
+  {{ if $isFallback -}}
+    {{/* A fallback page duplicates its English origin, so the origin is canonical. */ -}}
+    {{ $translationPages := where .Translations "Lang" $defaultLang -}}
+    {{ $translation := index $translationPages 0 -}}
+    {{ with $translation -}}
+      {{ $canonicalURL = .Permalink -}}
     {{ end -}}
   {{ end -}}
   <link rel="canonical" href="{{ $canonicalURL }}" data-proofer-ignore>

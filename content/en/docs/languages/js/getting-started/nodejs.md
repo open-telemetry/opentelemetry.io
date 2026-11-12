@@ -152,7 +152,7 @@ npm install @opentelemetry/sdk-node \
   @opentelemetry/api \
   @opentelemetry/auto-instrumentations-node \
   @opentelemetry/sdk-metrics \
-  @opentelemetry/sdk-trace-node
+  @opentelemetry/sdk-trace
 ```
 
 To find all autoinstrumentation modules, you can look at the
@@ -178,7 +178,7 @@ TypeScript), which will contain your instrumentation setup code.
 ```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,
@@ -201,7 +201,7 @@ sdk.start();
 ```js
 /*instrumentation.mjs*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import {
   PeriodicExportingMetricReader,

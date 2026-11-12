@@ -288,20 +288,64 @@ test('manifest: the engines floor keeps its binding shape', () => {
   );
 });
 
-// GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc; drop with
-// the override once hugo-extended's range includes 0.6.1
-// (jakejarvis/hugo-extended#256).
-test('lock and manifest: the adm-zip override is applied and still needed', () => {
-  assert.match(
-    lock.packages['node_modules/adm-zip'].version,
-    /^0\.6\.[1-9]\d*$/,
-    'locked adm-zip carries the 0.6.1 fixes',
+// Security-override register. Rationale and maintenance:
+// https://opentelemetry.io/site/design/supply-chain-security/#verify
+// https://opentelemetry.io/site/build/dependencies/#security-updates
+const REVIEWED_OVERRIDES = {
+  // GHSA-xcpc-8h2w-3j85, GHSA-vwc7-r8mq-g2x9, GHSA-7q85-xj36-vmfc. Retire with
+  // jakejarvis/hugo-extended#256.
+  'adm-zip': {
+    spec: '0.6.1',
+    firstFixed: '0.6.1',
+    parent: 'hugo-extended',
+    parentRange: '^0.5.17',
+  },
+  // GHSA-238p-pmpm-9mq7. markdownlint loads katex but never renders with it.
+  katex: {
+    spec: '^0.19.0',
+    firstFixed: '0.18.2',
+    parent: 'micromark-extension-math',
+    parentRange: '^0.16.0',
+  },
+};
+
+// Release versions only: anything but numeric x.y.z fails closed.
+const versionAtLeast = (version, floor) => {
+  if (!/^\d+\.\d+\.\d+$/.test(version)) return false;
+  const [a, b] = [version, floor].map((v) => v.split('.').map(Number));
+  for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i];
+  return true;
+};
+
+test('lock and manifest: security overrides are applied and still needed', () => {
+  assert.deepEqual(
+    manifest.overrides ?? {},
+    Object.fromEntries(
+      Object.entries(REVIEWED_OVERRIDES).map(([name, o]) => [name, o.spec]),
+    ),
+    'root overrides carries exactly the REVIEWED_OVERRIDES specs',
   );
-  assert.equal(
-    lock.packages['node_modules/hugo-extended'].dependencies['adm-zip'],
-    '^0.5.17',
-    'hugo-extended declares the adm-zip range that justifies the override',
-  );
+  for (const [name, o] of Object.entries(REVIEWED_OVERRIDES)) {
+    // Every copy, hoisted or nested: npm validates only where its ideal tree
+    // lands.
+    const nodes = Object.keys(lock.packages).filter((k) =>
+      k.endsWith(`node_modules/${name}`),
+    );
+    assert.ok(nodes.length > 0, `${name} is in the lock`);
+    for (const node of nodes) {
+      assert.ok(
+        versionAtLeast(lock.packages[node].version, o.firstFixed),
+        `${node} at ${lock.packages[node].version} carries the ${o.firstFixed} fix`,
+      );
+    }
+    const parent = lock.packages[`node_modules/${o.parent}`];
+    assert.ok(parent, `${o.parent} is hoisted in the lock`);
+    assert.equal(
+      parent.dependencies?.[name],
+      o.parentRange,
+      `${o.parent} still declares ${name} ${o.parentRange}, short of the ${o.firstFixed} fix`,
+    );
+  }
 });
 
 test('manifest and lock: unscoped markdownlint-rule-link-pattern stays absent', () => {
@@ -434,7 +478,7 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
   );
   assert.deepEqual(
     context,
-    { production: { command: 'npm run netlify-build:production' } },
+    parseToml('production.command = "npm run netlify-build:production"'),
     'context tables hold exactly the reviewed production command',
   );
   assert.deepEqual(

@@ -230,6 +230,7 @@
   repo: contrib
   distributions:
     - contrib
+    - core
     - k8s
   stability:
     logs: beta
@@ -270,6 +271,13 @@
     - contrib
   stability:
     traces: alpha
+- name: gnmireceiver
+  display_name: gNMI Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
 - name: googlecloudmonitoringreceiver
   display_name: Google Cloud Monitoring Receiver
   repo: contrib
@@ -481,6 +489,15 @@
     - contrib
   stability:
     logs: alpha
+- name: natsreceiver
+  display_name: NATS Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    traces: development
 - name: netflowreceiver
   display_name: Netflow Receiver
   repo: contrib
@@ -667,7 +684,8 @@
   distributions:
     - contrib
   stability:
-    metrics: beta
+    metrics: unmaintained
+  unmaintained: true
 - name: saphanareceiver
   display_name: SAP HANA Receiver
   repo: contrib
@@ -675,22 +693,13 @@
     - contrib
   stability:
     metrics: alpha
-- name: signalfxreceiver
-  display_name: SignalFx Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: deprecated
-    metrics: deprecated
 - name: simpleprometheusreceiver
   display_name: Simple Prometheus Receiver
   repo: contrib
   distributions:
     - contrib
   stability:
-    metrics: unmaintained
-  unmaintained: true
+    metrics: beta
 - name: skywalkingreceiver
   display_name: SkyWalking Receiver
   repo: contrib
@@ -844,7 +853,7 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: beta
 - name: windowsperfcountersreceiver
   display_name: Windows Performance Counters Receiver
   repo: contrib

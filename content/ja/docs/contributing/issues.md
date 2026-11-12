@@ -3,7 +3,7 @@ title: イシュー
 description: 既存イシューの修正方法、またはバグ、セキュリティ、潜在的な改善の報告方法
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
+default_lang_commit: ce13abdfc9fac8e92bf420b1f758451f63082c69
 ---
 
 ## 既存のイシューの修正 {#fixing-an-existing-issue}
@@ -72,10 +72,18 @@ default_lang_commit: f60f406894f94169947ecbd236b933ee4008354c
   ほかのコントリビューターを尊重しましょう。
   「このドキュメントはひどい」のような発言は、有益でも礼儀正しくもありません。
 
+## 保留されたイシュー {#parked}
+
+一部のイシューは _not planned_ としてクローズされ、`parked` ラベルが付けられます。
+メンテナーが現時点では対応する余裕がないものの、却下されたわけではありません。
+
+メンテナーは余裕ができたときに[保留されたイシュー][parked issues]を再オープンします。
+
 <!-- prettier-ignore-start -->
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Aparked
 <!-- prettier-ignore-end -->
 <!-- markdownlint-disable link-image-reference-definitions -->
 

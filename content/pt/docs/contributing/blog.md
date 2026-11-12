@@ -2,8 +2,7 @@
 title: Blog
 description: Saiba como enviar uma publicação para o blog.
 weight: 30
-default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 ---
 
 O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios
@@ -25,26 +24,38 @@ de revisão.
 
 ## Solicitação de conteúdo para redes sociais {#social-media-content-request}
 
-Se você deseja solicitar a publicação de conteúdo nos canais de redes sociais do
-projeto OpenTelemetry, e que não seja uma publicação do blog,
-[utilize este formulário](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+Para solicitar uma publicação nos canais de redes sociais do OpenTelemetry em
+vez do _blog_, [envie uma solicitação para redes
+sociais][submit a social media request].
+
+[submit a social media request]:
+  https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
 
 ## Antes de enviar um post no blog {#before-submitting-a-blog-post}
 
 As publicações no _blog_ não devem ter caráter comercial e devem conter conteúdo
 original que seja amplamente relevante para a comunidade OpenTelemetry. As
-publicações devem seguir as políticas descritas no
-[Guia de Mídias Sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+publicações devem seguir as políticas descritas no [Guia de Mídias
+Sociais][Social Media Guide].
 
-### Criando links para repositórios do GitHub
+[Social Media Guide]:
+  https://github.com/open-telemetry/community/blob/main/social-media-guide.md
 
-Ao criar links para o código-fonte em repositórios do GitHub, não utilize a
-_branch_ `main` (ou outra _branch_ padrão). Em vez disso, utilize um **commit
-específico** ou uma **versão marcada** que reflita o estado do código no momento
-em que a postagem do blog foi escrita.
+### Criando links para repositórios do GitHub {#linking-to-github-repositories}
 
-Isso garante que as postagens do blog permaneçam estáveis ​​e não apresentem
-problemas no futuro, conforme os repositórios evoluem.
+As publicações do _blog_ são [verificadas pelo
+markdownlint][checked by markdownlint] (`gh-url-hash`) para evitar links
+instáveis do GitHub do tipo `blob`/`tree`.
+
+Caso a verificação aponte um problema:
+
+- Substitua referências à _branch_ padrão (por exemplo, `main`/`master`) por uma
+  _tag_/versão ou um _hash_ de _commit_.
+- Utilize o _hash_ completo do _commit_, com 40 caracteres (_hashes_ curtos são
+  sinalizados).
+- Execute `npm run fix:markdown` para corrigir automaticamente o que for
+  possível e, em seguida, corrija manualmente os links restantes que forem
+  reportados.
 
 Verifique se o conteúdo pretendido se aplica amplamente à comunidade
 OpenTelemetry. Exemplos de conteúdos adequados incluem:
@@ -60,8 +71,9 @@ Conteúdos inadequados incluem:
 
 - Divulgação de produtos de fornecedores (_vendor_)
 
-Caso sua publicação se encaixe na lista de conteúdos apropriados,
-[crie uma _issue_](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
+Caso sua publicação se encaixe na lista de conteúdos apropriados, é
+**obrigatório** primeiro
+[criar uma _issue_](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)
 com os seguintes detalhes:
 
 - Título da publicação
@@ -70,18 +82,20 @@ com os seguintes detalhes:
   aberto, e deve-se dar preferência a projetos da CNCF em relação a projetos
   fora da CNCF (por exemplo, use Jaeger para visualização de rastros e
   Prometheus para visualização de métricas)
-- Nome de um [SIG](https://github.com/open-telemetry/community/) relacionado ao
-  conteúdo
-- Nome de um patrocinador (mantenedor ou aprovador) desse SIG, que ajudará a
-  revisar o PR. Idealmente, o patrocinador deve ser de uma empresa diferente da
-  sua
+- Nome de um [SIG](https://github.com/open-telemetry/community/) disposto a
+  patrocinar a publicação. **O patrocínio de um SIG é obrigatório.**
+- Nome de um patrocinador (mantenedor ou aprovador) desse SIG, que fará a
+  primeira rodada de revisão antes que o SIG de Comunicação revise a publicação.
+  O patrocinador **deve** ser de uma empresa diferente da do autor.
 
-Os mantenedores do SIG de Comunicação irão verificar se sua publicação atende a
-todos os requisitos para ser aceita. Caso não consiga indicar um
-SIG/patrocinador inicialmente na sua _issue_, eles poderão te direcionar a um
-SIG apropriado, com o qual você pode entrar em contato para obter patrocínio.
-Ter um patrocinador é opcional, mas aumenta a chance de a publicação ser
-revisada e aprovada mais rapidamente.
+**Abrir uma _issue_ antes de enviar um _pull request_ é obrigatório.** _Pull
+requests_ de publicações no _blog_ que não tenham sido precedidos por uma
+_issue_ aceita podem ser fechados sem revisão adicional.
+
+Os mantenedores do SIG de Comunicação irão verificar se a publicação atende a
+todos os requisitos para ser aceita. O patrocinador do SIG deve concluir sua
+revisão antes que o SIG de Comunicação analise a publicação. O autor da
+publicação é responsável por encontrar um patrocinador.
 
 Caso sua _issue_ tenha todas as informações necessárias, um mantenedor irá
 autorizar a submissão do conteúdo.
@@ -114,13 +128,13 @@ um modelo. Siga estes passos para criar um _post_ a partir do modelo:
 1. Execute o seguinte comando a partir da raiz do repositório:
 
    ```sh
-   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação.md
+   npm exec --no -- hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação.md
    ```
 
    Caso seu _post_ tenha imagens ou outros arquivos, execute o seguinte comando:
 
    ```sh
-   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação/index.md
+   npm exec --no -- hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação/index.md
    ```
 
 2. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
@@ -182,3 +196,17 @@ plataformas, é permitido fazê-lo. Apenas tenha em mente o seguinte:
 
 Isso auxilia a garantir a atribuição adequada, suporta as melhores práticas de
 SEO e evita a duplicação de conteúdo.
+
+## Publicações antigas não são atualizadas {#old-blogs-are-not-updated}
+
+As publicações do _blog_ são consideradas históricas e deixam de ser atualizadas
+após cerca de um ano (exceto por alterações essenciais que garantam que o site
+seja compilado). Publicações antigas exibem um aviso no topo informando ao
+leitor que o conteúdo pode estar desatualizado e que alguns links podem ser
+inválidos.
+
+Observe também que publicações antigas não passam por [_lint_ nem por
+verificação de links][pr-checks].
+
+[pr-checks]: ../pr-checks/#checks
+[checked by markdownlint]: ../pr-checks/#markdown-linter

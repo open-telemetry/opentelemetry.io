@@ -92,10 +92,18 @@ Keep the following in mind when filing an issue:
 - Follow the [Code of Conduct][]. Respect your fellow contributors. For example,
   "The docs are terrible" is not helpful or polite feedback.
 
+## Parked issues {#parked}
+
+Some issues are closed as _not planned_ and labeled `parked`: maintainers lack
+the capacity to take them further for now, but the issues aren't declined.
+
+Maintainers reopen [parked issues][] when capacity allows.
+
 <!-- prettier-ignore-start -->
 [CI/infra]: https://github.com/open-telemetry/opentelemetry.io/labels/CI%2Finfra
 [Code of Conduct]: https://github.com/open-telemetry/community/blob/main/code-of-conduct.md
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/
+[parked issues]: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Aparked
 <!-- prettier-ignore-end -->
 <!-- markdownlint-disable link-image-reference-definitions -->
 

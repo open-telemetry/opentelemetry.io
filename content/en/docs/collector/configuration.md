@@ -529,9 +529,22 @@ may only be used to connect pipelines accordingly.
 > Configuring a connector doesn't enable it. Connectors are enabled through
 > pipelines within the [service](#service) section.
 
-The following example shows the `count` connector and how it's configured in the
-`pipelines` section. Notice that the connector acts as an exporter for traces
-and as a receiver for metrics, connecting both pipelines:
+For example, you might want a metric that counts particular span events in your
+traces. A processor can modify or filter data within a pipeline, but it cannot
+export traces from that pipeline as metrics in another pipeline. A connector can
+consume the traces and produce metrics for a separate metrics pipeline.
+
+The following example uses the `count` connector to produce a metric named
+`my.prod.event.count`. It counts span events whose `env` attribute is `prod`
+**or** whose name is `prodevent`. The conditions are ORed: an event only needs
+to match one condition to be counted. These conditions select events to count,
+rather than filtering the traces for a tracing backend.
+
+In the `pipelines` section, `count` acts as an exporter for traces and as a
+receiver for metrics. The traces pipeline sends its data to `count`, and the
+metrics pipeline sends the resulting counts to `bar`. This example does not
+export the original traces to a tracing backend. To keep them as well, add a
+trace exporter to the traces pipeline's `exporters` list.
 
 ```yaml
 receivers:
@@ -544,7 +557,7 @@ connectors:
   count:
     spanevents:
       my.prod.event.count:
-        description: The number of span events from my prod environment.
+        description: The number of span events matching either condition.
         conditions:
           - 'attributes["env"] == "prod"'
           - 'name == "prodevent"'

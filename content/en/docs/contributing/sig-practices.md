@@ -72,21 +72,21 @@ Additional valuable resources to review are
 - Incoming issues are triaged by `@open-telemetry/docs-triagers` team.
 - As a first step, a triager will read through an issue title and description
   and apply the following labelling:
-  - Mandatory: A `sig:*`, `lang:*` or `docs:*` to determine (co)ownership of the
-    issue:
+  - Mandatory: A `sig:*`, `lang:*` or docs-team label to determine (co)ownership
+    of the issue:
     - A `sig:*` label if the issue is related to content or a question that is
       co-owned by a SIG (e.g. a question around the Collector will be labelled
       `sig:collector`).
     - A `lang:*` label if the issue is related to content or a question that is
       related to a specific localization.
-    - A `docs:*` label if the issue is related to content or a question that is
-      solely owned by the docs team (SIG Comms):
+    - A docs-team label (`docs`, `blog` or `docs:*`) if the issue is related to
+      content or a question that is solely owned by the docs team (SIG Comms):
       - `docs`
+      - `blog`
       - `docs:admin`
       - `docs:accessibility`
       - `docs:analytics-and-seo`
       - `docs:IA`
-      - `docs:blog`
       - `docs:cleanup/refactoring`
       - `docs:upstream`, `docs:upstream/docsy`
       - `docs:javascript`
@@ -99,10 +99,12 @@ Additional valuable resources to review are
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
   - Mandatory: Set the "type" of the issue as follows:
-    - issue type `bug` for bugs
-    - issue type `enhancement` for feature requests
+    - issue type `Bug` for bugs
+    - issue type `Feature` for feature requests
+    - issue type `Task` for other actionable work
     - label `type:question` for questions
     - label `type:copyedit` for copy edits
+    - label `type:feedback` for page feedback
     - move the issue to "discussions" if it seems to be a non workable
       open-ended conversation
   - Optional: An estimate label if applicable:
@@ -114,17 +116,42 @@ Additional valuable resources to review are
     - `p1-high`
     - `p2-medium`
     - `p3-low`
-  - Optional: One of the following special tags:
+  - Optional: Any of the following special tags:
     - `good first issue`
     - `help wanted`
     - `contribfest`
     - `maintainers only`
+    - `blocked`
     - `forever`
     - `stale`
+    - `parked` (see below)
+- The issue forms pre-apply some of these labels and types (`docs`, `blog`,
+  `type:feedback`, `Bug`, `Feature`). Confirm them, add any the form failed to
+  apply (labels can go missing on issues from external filers), or replace them.
 - Automation will mark an issue in `triage:deciding` with `triage:followup` for
   re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
   should be removed within 7 days. Pinging the participants and removing the
   label is sufficient activity.
+- Close an issue as _completed_ only when its request has been fulfilled, and as
+  a _duplicate_ when it duplicates another issue. Otherwise, close it as _not
+  planned_ with one of these labels:
+  - `parked`: nobody has the capacity to take the issue further for now. Add the
+    label, leave the other labels as they are, and comment. For an issue not
+    labeled `CI/infra`, for example:
+    <!-- The template is pasted into GitHub comments, so it needs the full URL. -->
+    <!-- markdownlint-disable no-otel-io-external-urls -->
+    > This issue isn't declined; we're parking it for lack of capacity. To pick
+    > it up, comment here. For details, see
+    > [parked issues](https://opentelemetry.io/docs/contributing/issues/#parked).
+    <!-- markdownlint-enable no-otel-io-external-urls -->
+  - `triage:rejected*`: the request is declined. Leave a short rationale for the
+    triagers who check the [declined issues][].
+- Review the [parked issues][] periodically.
+
+[declined issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aclosed+label%3Atriage%3Arejected%2Ctriage%3Arejected%3Awontfix
+[parked issues]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+label%3Aparked
 
 ### PRs
 

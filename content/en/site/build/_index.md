@@ -37,5 +37,5 @@ Most checks that force a fresh build first, such as link-checking, use
 [Link checking](./link-checking/).
 
 <!-- prettier-ignore-start -->
-[Chrome build modes]: https://github.com/google/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
+[Chrome build modes]: https://github.com/docsy/docsy/blob/main/docsy.dev/content/en/docs/deployment/chrome.md
 <!-- prettier-ignore-end -->

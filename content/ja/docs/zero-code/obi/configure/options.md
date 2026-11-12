@@ -3,7 +3,7 @@ title: OBI グローバル設定プロパティ
 linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
-default_lang_commit: 0fee5e1c7ff48dc9fb39c919c9882a9a8d8da4aa
+default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
 cSpell:ignore: healthz
 ---
 
@@ -12,6 +12,9 @@ cSpell:ignore: healthz
 > このページでは Config v1 のフィールド名、例、環境変数を使用しています。
 > Config v2 については、[Config v2 リファレンス](/docs/zero-code/obi/configure/config-v2/)を参照してください。
 > 既存のファイルを変換するには、[移行ガイド](/docs/zero-code/obi/configure/migrate-to-config-v2/)を使用してください。
+
+Config v1 は引き続きサポートされていますが、バグ修正や新機能は提供されません。
+新しい設定には Config v2 を使用してください。
 
 OBI は、環境変数またはコマンドライン引数 `-config` か環境変数 `OTEL_EBPF_CONFIG_PATH` を使用して渡す YAML 設定ファイルを通じて設定できます。
 環境変数は設定ファイルのプロパティよりも優先されます。
@@ -70,10 +73,11 @@ health_check:
   port: 8080
 ```
 
-| YAML<br>環境変数                                                             | 説明                                                                                                                       | 型     | デフォルト |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- |
-| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | 指定された TCP ポートでヘルスエンドポイントを開きます。`0` にすると TCP ヘルスチェックが無効になります。                   | int    | `0`        |
-| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | ヘルスエンドポイントを絶対ファイルシステムパスまたは `@` 接頭辞付き抽象ソケットにバインドします。`port` より優先されます。 | string | 未設定     |
+| YAML<br>環境変数                                                             | 説明                                                                                                                       | 型     | デフォルト  |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------ | ----------- |
+| `health_check.listen_address`<br>`OTEL_EBPF_HEALTH_CHECK_LISTEN_ADDRESS`     | TCP ヘルスエンドポイントの IP アドレスです。外部プローブからのアクセスが必要な場合は `0.0.0.0` または `::` を設定します。  | string | `127.0.0.1` |
+| `health_check.port`<br>`OTEL_EBPF_HEALTH_CHECK_PORT`                         | 指定された TCP ポートでヘルスエンドポイントを開きます。`0` にすると TCP ヘルスチェックが無効になります。                   | int    | `0`         |
+| `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | ヘルスエンドポイントを絶対ファイルシステムパスまたは `@` 接頭辞付き抽象ソケットにバインドします。`port` より優先されます。 | string | 未設定      |
 
 たとえば、`unix_socket_path: /var/run/obi-health.sock` はファイルシステムソケットを作成し、`unix_socket_path: '@obi-health'` は抽象ソケットを使用します。
 
@@ -159,6 +163,7 @@ OTEL_EBPF_OPEN_PORT=80,443,8000-8999
 - **`text`**: 簡潔な 1 行テキストを出力
 - **`json`**: コンパクトな JSON オブジェクトを出力
 - **`json_indent`**: インデントされた JSON オブジェクトを出力
+- **`counter`**: 計装されたトレースの数を出力
 
 ## システムケーパビリティ {#system-capabilities}
 

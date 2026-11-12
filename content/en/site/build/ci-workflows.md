@@ -9,6 +9,12 @@ weight: 10
 For workflows and (most of) their helper scripts, see the `workflow` and
 `scripts` folder under [.github][]
 
+## Same-repository references {#same-repository-references}
+
+Workflows and composite actions reference this repository's own actions and
+reusable workflows with GitHub's [self-repository `$/` syntax][self-repo], which
+loads them from the running commit, no checkout needed.
+
 ## Dependency installation {#dependency-installation}
 
 CI jobs install npm dependencies following the site-wide
@@ -271,12 +277,18 @@ It runs as a four-stage pipeline:
 1. **`ack`** (trusted): as soon as a directive is received, replies with a 🔄
    in-progress comment that links to the directive comment and to the run.
 2. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
-   command, and uploads a patch artifact (`site.patch`), up to 1024 KB. Before
-   the checkout, a trusted step refuses a PR head that predates
-   `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
-   check would recreate the obsolete `.lycheecache`); the outcome comment then
-   tells the author to update the branch. The step is inline shell, untested,
-   and goes once no open PR predates the switch.
+   command via the [npm-script-patch][] action, and uploads a patch artifact
+   (`site.patch`), up to 1024 KB.
+   - The action is referenced with the
+     [self-repository `$/` syntax](#same-repository-references), so its
+     definition, including the lychee version it installs, comes from the
+     default branch; npm dependency installation and the fix command still run
+     the PR's code.
+   - Before the checkout, a trusted step refuses a PR head that predates
+     `link-cache.jsonc` or still pins the CSV-only `link-cache` (its own link
+     check would recreate the obsolete `.lycheecache`); the outcome comment then
+     tells the author to update the branch. The step is inline shell, untested,
+     and goes once no open PR predates the switch.
 3. **`apply-patch`** (trusted): calls the [`reusable-apply-patch.yml`][]
    workflow — resolved from the default branch, never from the PR — which
    applies the patch with a GitHub App token and pushes a commit to the PR
@@ -331,10 +343,15 @@ It runs as a three-stage pipeline:
 
 1. **`generate-patch`**: runs the housekeeping command via the
    [npm-script-patch][] action and uploads the changes as a patch artifact.
-   Unlike the `/fix` pipeline, the whole run is trusted: the schedule and
-   dispatch triggers only ever execute default-branch code. A failing command
-   fails the job, but any fixes it produced are still published, with a
-   partial-results warning in the PR body.
+   - Unlike the `/fix` pipeline, the whole run is trusted: scheduled runs
+     execute `main`, and a dispatch runs the maintainer-selected ref.
+   - A failing command fails the job, but any fixes it produced are still
+     published, with a partial-results warning in the PR body.
+   - With the default command, it first refreshes the locale team registry
+     (`data/locale-teams.yaml`) from the live teams' direct membership, using a
+     read-only, members-scoped app token that later steps never see; drift then
+     lands in the same PR as the regenerated CODEOWNERS. A failed refresh leaves
+     the registry untouched and fails the job.
 2. **`publish-patch`**: calls the [`reusable-patch-pr.yml`][] workflow — the
    sibling of [`reusable-apply-patch.yml`][] for callers without a PR context —
    which force-pushes the patch to the stable `otelbot/housekeeping` branch,
@@ -498,4 +515,38 @@ The repository includes several other workflows:
 <!-- prettier-ignore-start -->
 [link checking]: ../link-checking/
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
+[self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->
+
+## Blog post announcements {#announce-blog-post}
+
+[`announce-blog-post.yml`][announce] runs on every push to `main` that touches
+`content/en/blog/`. It runs [`announce-blog-post/cli.mjs`][announce-script],
+which finds the English blog post published by the push: a post that isn't a
+draft now, and that didn't exist or was a draft before the push. Edits of
+published posts are ignored, so each post is announced once. For that post it
+opens a pull request in
+[`open-telemetry/opentelemetry-announcements`][announcements] with an
+announcement file. A maintainer there reviews and merges it.
+
+- Uses the `OTELBOT_DOCS_*` app token, scoped to the announcements repository
+  (the app must be installed there with `contents` and `pull requests` write
+  access).
+- The text comes from the post's `announcement` front matter string (default:
+  the title) followed by the post URL. The subject is "New on the OpenTelemetry
+  blog: _title_". Posts with `announcement: false` are skipped. The
+  announcements repository's own pull request check validates the length per
+  channel.
+- For posts with a future `date`, the PR description says when the post goes
+  live, so the PR isn't merged before that.
+- The file is named after the post date and the PR uses the branch
+  `otelbot/announce-blog-<year>-<slug>`, so re-runs don't announce a post twice.
+- If a push publishes more than one post, the workflow fails. Announce each post
+  with a manual run, using the `post` input. Manual runs also work for existing
+  posts.
+
+[announce]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml?link-check=no
+[announce-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs?link-check=no
+[announcements]: https://github.com/open-telemetry/opentelemetry-announcements

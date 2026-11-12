@@ -4,7 +4,7 @@ weight: 50
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/spring-starter"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/spring-starter"?>
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more has to be done. Sometimes, however, users wish to create

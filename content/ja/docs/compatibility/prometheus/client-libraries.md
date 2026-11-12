@@ -1,11 +1,11 @@
 ---
 title: Prometheus クライアントライブラリ vs. OpenTelemetry
 linkTitle: クライアントライブラリ
-default_lang_commit: c88a006471f039334aed7990736e089a62b33f94
+default_lang_commit: cde423b3ca7efa8a2fed4ce97369a8fedff8932b
 cSpell:ignore: hvac
 ---
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 
 > [!NOTE]
 >
@@ -201,7 +201,7 @@ public class OtelScrapeInit {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -290,7 +290,7 @@ func main() {
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusOtlpInit.java"?>
 
 ```java
@@ -379,7 +379,7 @@ public class OtelOtlpInit {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -452,7 +452,7 @@ Prometheus の `Counter` には、OpenTelemetry に同等機能がない2つの�
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusCounter.java"?>
 
 ```java
@@ -530,7 +530,7 @@ public class OtelCounter {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -614,7 +614,7 @@ func otelCounterUsage(ctx context.Context, meter metric.Meter) {
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusCounterCallback.java"?>
 
 ```java
@@ -685,7 +685,7 @@ public class OtelCounterCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -784,7 +784,7 @@ Prometheus の `Gauge` は OpenTelemetry の `Gauge` 計装に対応します。
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
 
 ```java
@@ -851,7 +851,7 @@ public class OtelGauge {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -924,7 +924,7 @@ func otelGaugeUsage(ctx context.Context, meter metric.Meter) {
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
 
 ```java
@@ -988,7 +988,7 @@ public class OtelGaugeCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1073,7 +1073,7 @@ OpenTelemetry の `Gauge` は絶対値のみを記録するため、このパタ
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
 
 ```java
@@ -1144,7 +1144,7 @@ public class OtelUpDownCounter {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1223,7 +1223,7 @@ func otelUpDownCounterUsage(ctx context.Context, meter metric.Meter) {
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
 
 ```java
@@ -1285,7 +1285,7 @@ public class OtelUpDownCounterCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1384,7 +1384,7 @@ Prometheus の `Histogram` は OpenTelemetry の `Histogram` 計装に対応し�
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
 
 ```java
@@ -1456,7 +1456,7 @@ public class OtelHistogram {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1542,7 +1542,7 @@ Prometheus
 Prometheus では、ヒストグラムフォーマットは計装作成時に制御されます。
 以下の例では `.nativeOnly()` を使用してネイティブフォーマットに限定しています。これを省略すると、クラシックとネイティブの両方のフォーマットが同時に出力されます。
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
 
 ```java
@@ -1568,7 +1568,7 @@ public class PrometheusHistogramNative {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 
@@ -1612,7 +1612,7 @@ base2 指数フォーマットは、計装レイヤーの外部で別途設定�
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
 
 ```java
@@ -1639,7 +1639,7 @@ public class OtelHistogramExponentialExporter {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential_exporter.go" region="createExponentialExporter"?>
 
 ```go
@@ -1672,7 +1672,7 @@ func createExponentialExporter(ctx context.Context) (*otlpmetrichttp.Exporter, e
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
 
 ```java
@@ -1698,7 +1698,7 @@ public class OtelHistogramExponentialView {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
 
 ```go
@@ -1731,7 +1731,7 @@ OpenTelemetry には直接的な同等物がありません。
 
 Prometheus
 
-<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-java-examples/doc-snippets/prometheus-compatibility"?>
 <?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
 
 ```java
@@ -1797,7 +1797,7 @@ public class OtelHistogramAsSummary {
 
 {{% /tab %}} {{% tab Go %}}
 
-<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt path-base="content-modules/opentelemetry-go-contrib/examples/prometheus-compatibility"?>
 
 Prometheus
 

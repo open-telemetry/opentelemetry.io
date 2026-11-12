@@ -2,6 +2,7 @@
 title: ベンチマーク
 weight: 190
 default_lang_commit: fc509b751d6882b99824ea78a1dd8e638dd9055a
+drifted_from_default: true
 cSpell:ignore: Elems rrggbbaa
 ---
 

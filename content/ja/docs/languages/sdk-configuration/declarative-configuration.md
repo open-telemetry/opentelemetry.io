@@ -2,11 +2,11 @@
 title: 宣言的設定
 linkTitle: 宣言的設定
 weight: 30
-default_lang_commit: b2cbf3f2c569f1d68f0d2624a23359dc348283f5
+default_lang_commit: a92bba88db05bd6684fabb0648c351f1c6d937ad
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/otel-config"?>
+<?code-excerpt path-base="content-modules/opentelemetry-configuration"?>
 
 宣言的設定は、環境変数のかわりに YAML ファイルを使用します。
 

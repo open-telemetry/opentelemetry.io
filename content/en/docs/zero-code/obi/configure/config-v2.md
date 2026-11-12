@@ -14,6 +14,11 @@ declarative configuration structure. Common settings such as resources,
 sampling, and exporters remain at the root of the document, while OBI-specific
 settings are grouped under `extensions.obi`.
 
+Config v2 and its generated schema are stable. OBI supports a subset of
+OpenTelemetry declarative configuration; see the
+[supported top-level fields](#supported-top-level-fields). Sampling applies to
+all workloads; you cannot set a sampler for an individual workload.
+
 If you already have a Config v1 file, use the
 [Config v1 to v2 migration guide](../migrate-to-config-v2/) instead of rewriting
 it by hand.
@@ -91,8 +96,8 @@ Do not set either field to the OBI release version.
 
 ### Supported top-level fields
 
-OBI v0.12.1 supports the following OpenTelemetry declarative configuration
-fields:
+OBI v0.12.1 and later support the following OpenTelemetry declarative
+configuration fields:
 
 | Field                        | Support                                                                                                                     |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -115,7 +120,7 @@ resource:
 ```
 
 When you validate a standalone configuration, OBI reports an error for
-unsupported pipeline fields instead of ignoring them. In v0.12.1, do not use
+unsupported pipeline fields instead of ignoring them. Do not use
 `attribute_limits`, `instrumentation/development`, or `logger_provider`. It also
 rejects `disabled: true`, a nonempty `distribution`, and a nonempty
 `propagator`.
@@ -228,9 +233,9 @@ extensions:
                   unmatched: path
 ```
 
-In v0.12.1, `refine` supports `exports` and `http.routes`. It does not support a
-nonempty `http.filters` field or per-workload sampling. Configure sampling for
-all workloads with `tracer_provider.sampler`.
+`refine` supports `exports` and `http.routes`. It does not support a nonempty
+`http.filters` field or per-workload sampling. Configure sampling for all
+workloads with `tracer_provider.sampler`.
 
 When multiple rules match a workload, a rule does not inherit refinements that
 you omit from an earlier rule. If rules can overlap, specify each refinement
@@ -247,6 +252,7 @@ Collector receiver:
 | `policy`, `rules` | Select workloads and apply per-workload refinements.                                         |
 | `instrumentation` | Enable and tune application protocols.                                                       |
 | `runtimes`        | Control Go, Node.js, and Java runtime instrumentation.                                       |
+| `metrics`         | Select metric families with `features`.                                                      |
 | `network`         | Configure network flow and TCP statistics capture.                                           |
 | `limits`          | Set cardinality and memory guardrails.                                                       |
 | `engine`          | Tune batching, PID filtering, context propagation, traffic control, and other eBPF behavior. |
@@ -286,9 +292,9 @@ signal. For example, you can filter HTTP traces without applying the same filter
 to HTTP metrics or SQL telemetry. Define these filters under
 `capture.instrumentation.<protocol>.filters.traces` and `.metrics`.
 
-Network flow filters and TCP statistics filters are not signal-specific in
-v0.12.1. For each of these groups, use the same filter map for traces and
-metrics. Validation reports an error when the two maps differ.
+Network flow filters and TCP statistics filters are not signal-specific. For
+each of these groups, use the same filter map for traces and metrics. Validation
+reports an error when the two maps differ.
 
 To enable HTTP payload extraction, add extractors to
 `payload_extraction.enabled`. Supported values are `graphql`, `elasticsearch`,
@@ -301,8 +307,39 @@ extractor. A nested block does not enable the extractor.
 
 Use `capture.runtimes` to enable or disable Go probes, Node.js `SIGUSR1`
 injection, and Java agent attachment. You can also configure Java debug settings
-and an attachment timeout. OBI v0.12.1 does not support nonempty runtime
-`filter` fields. Use capture rules to select workloads instead.
+and an attachment timeout. OBI does not support nonempty runtime `filter`
+fields. Use capture rules to select workloads instead.
+
+### Metric feature selection
+
+Starting with v0.15.2, set `capture.metrics.features` to select metric families
+using the same names as Config v1:
+
+```yaml
+extensions:
+  obi:
+    version: '2.0'
+    capture:
+      metrics:
+        features:
+          - application_red
+          - application_runtime
+          - application_service_graph
+          - application_span_otel
+```
+
+Configure `meter_provider` to export these metrics. In a Collector receiver
+body, put this list at `metrics.features` and use the Collector metric pipeline
+for export. See
+[metric export features](../export-data/#metrics-export-features) for all names
+and compatibility constraints.
+
+An explicit list replaces the selection inferred from protocol, HTTP body-size,
+and network settings. An empty list disables all metric features; omitting it
+preserves inference. Protocol `enabled.metrics` switches still control which
+protocols contribute application metrics, span metrics, and service graphs,
+independently of `enabled.traces`. Setting `network.capture.enabled: true` can
+force flow capture independently of this feature list.
 
 ### Network observability
 
