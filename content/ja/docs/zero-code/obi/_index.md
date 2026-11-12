@@ -7,8 +7,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-default_lang_commit: ab6ef133372515d3267cf99f06d4e5f8db0ef409
-drifted_from_default: true
+default_lang_commit: 9c32e973d7dd7fa0ec965d45a20954b7a4a613b2
 cSpell:ignore: Aerospike Ollama Qwen SunRPC
 ---
 
@@ -44,83 +43,44 @@ OBI は以下の機能を提供します。
 - **強化されたサービスディスカバリー**: DNS 解決によるサービス名の検索の改善
 - **Collector との統合**: OBI を OpenTelemetry Collector レシーバーコンポーネントとして実行
 
-## 最近のハイライト（v0.15.2） {#recent-highlights-v0152}
+## 安定性 {#stability}
 
-OBI v0.15.2 は、未公開の v0.15.0 および v0.15.1 リリースを置き換えるものです。
-v0.15.0 で意図された変更、BPF ベリファイアの修正、およびリリースアーティファクトのビルド修正が含まれています。
-v0.14.0 からアップグレードする場合は v0.15.2 をインストールしてください。
+OBI v1.0.0 は最初の安定リリースです。
+以下の互換性を保証します。
 
-- **Go 手動スパン**: 別途 Auto SDK モジュールを必要とせず、Go Trace API に組み込まれた Auto SDK を通じてスパンをキャプチャ
-- **.NET 計装**: ルートハーベスティングを拡張し、CPU および最終コレクション時のヒープサイズメトリクスを追加
-- **エンドポイント名**: オプトインの AWS Route53 ホストゾーン名前解決を追加
-- **Config v2**: メトリクスファミリーを明示的に選択し、プロトコルメトリクススイッチをスパンメトリクスおよびサービスグラフに適用
-- **Collector 統合**: インポートパスを維持しながら、レシーバーを別の Go モジュールとして公開
-- **正確性の修正**: 誤分類されたソケットへの HTTP/2 コンテキストインジェクションを防止し、衝突するメトリクスラベルタプルを分離し、重複した `target.info` カウントを修正し、OTLP/HTTP JSON トレースエンコーディングを修正
+- [`go.opentelemetry.io/obi`](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#go-module-api) のパブリック Go API。
+- Config v2、その生成スキーマ、および OpenTelemetry 宣言的設定のサポートされたサブセット。
+- ドキュメント化された CLI フラグ、環境変数、リリースバイナリ、およびコンテナイメージの動作。
+- OTLP と組み込み Prometheus 出力の両方で `stable` に分類されたテレメトリー。
+- サポートされた環境、およびドキュメント化されたアップグレードと非推奨のルール。
 
-[v0.15.2 アップグレードノート](#upgrade-notes-for-v0152)と[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)で、ダッシュボード、メトリクスカーディナリティ、およびトレース処理に影響する変更を確認してください。
+これらの保証を破る変更には新しいメジャーバージョンが必要です。
+マイナーリリースは互換性のある機能を追加でき、パッチリリースは互換性を維持します。
+[リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v1.0.0)と[バージョニングポリシー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/VERSIONING.md#compatibility-and-release-rules-after-v1)を参照してください。
+
+[コレクターレシーバー](configure/collector-receiver/)は v0 リリースラインで個別にバージョン管理されています。
+`stable` とマークされていないテレメトリーと属性は引き続き変更される可能性があり、セマンティック規約の整合が進められている間はネットワークフロー属性名も同様です。
+[テレメトリーの安定性](metrics/#stability)を参照してください。
+
+## v1.0.0 へのアップグレード {#upgrade-to-v100}
+
+- [Config v2](configure/config-v2/) を使用してください。
+  Config v1 は引き続きサポートされますが、バグ修正や新機能は提供されません。
+  [移行ガイド](configure/migrate-to-config-v2/)に従い、移行された設定をロールアウト前に1つのインスタンスでテストしてください。
+- コレクターレシーバーは `v0.15.2` のままです。
+  コアの `v1.0.0` は個別に選択してください。
+  [コレクターレシーバーのセットアップ](configure/collector-receiver/)を参照してください。
+- テレメトリースキーマ URL は `0.15.2` から `1.0.0` に変更されます。
+  スキーマは以前の変換を保持し、新しいリネームは追加されません。
+  スキーマの制限については[テレメトリーの安定性](metrics/#stability)を参照してください。
+
+v1.0.0-rc.1 または v0.15.2 より前のリリースからアップグレードする場合は、[v0.15.2 リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.15.2)でスパン名、デフォルトのメトリクス属性、Prometheus ラベル、および Go 設定 API の変更を確認してください。
+v0.14.0 より前のリリースからアップグレードする場合は、[v0.14.0 リリースノート](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.14.0)も確認してください。
+ロールアウト中は[既知の運用上の制限事項](#limitations)を確認してください。
 
 上流のサンプルを確認するには、
-[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/nginx)と
-[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.15.2/examples/apache)を参照してください。
-
-## v0.15.2 のアップグレードノート {#upgrade-notes-for-v0152}
-
-- `go.opentelemetry.io/obi/collector` モジュールの `v0.15.2` で Collector ディストリビューションをビルドしてください。
-  ルートモジュールにはレシーバーパッケージが含まれなくなりました。
-  更新されたモジュール置換とコンポーネントバージョンについては、[Collector レシーバーのセットアップ](configure/collector-receiver/)を参照してください。
-  Go エンベッダーは、削除された `PrometheusConfig.Registry` フィールドを Prometheus HTTP ポート設定に置き換える必要もあります。
-- Config v2 プロトコルの `enabled.metrics: false` は、そのプロトコルのスパンメトリクスとサービスグラフも抑制するようになりました。
-  トレースは引き続き独立して設定できます。
-  Config v1 の計装リストと導出されたメトリクスカバレッジが異なる場合は、移行レポートを確認してください。
-  [メトリクス機能の選択](configure/config-v2/#metric-feature-selection)を参照してください。
-- HTTP クライアントの `server.address` 値は Host ヘッダーのポートを省略します。
-  `server.port` と `url.full` はポートを保持します。
-  ポートを持つ Kubernetes Service ホストはサービスとネームスペースに解決されるようになり、サービスグラフ名が変わる可能性があります。
-- gRPC スパン名と `rpc.method` 値は先頭のスラッシュを省略します。
-  無効またはまだ読み取られていないパスはスパン名 `grpc` とメソッド `_OTHER` を使用します。
-  `rpc.method_original` はキャプチャされた生パスを保持します。
-  ONC RPC は CALL がキャプチャされた場合にのみ `{program}/{procedure}` メソッドを使用し、REPLY がある場合にのみレスポンスステータスを報告します。
-- GenAI、データベース、GraphQL、AWS S3/SQS、および ONC RPC のスパン名はセマンティック規約に従うように変更されました。
-  たとえば、Anthropic の `message` は `chat` に、GraphQL サーバー名は `GraphQL` を省略し、S3/SQS の名前は `S3.`/`SQS.` 接頭辞を使用します。
-  スパン名フィルターとスパンメトリクスクエリを更新してください。
-- データベースの持続時間メトリクスにはデフォルトで `db.collection.name` が含まれるようになりました。
-  RPC クライアントの持続時間に `server.port` が追加され、失敗した RPC サーバーの持続時間に `error.type` が追加されました。
-  メッセージングクライアントの持続時間に `messaging.operation.type` が追加されます。
-  クライアントとプロセスの持続時間にはサブスクリプション名が存在する場合に含まれます。
-  これらのデフォルトはメトリクス系列を分割する可能性があります。
-  [メトリクス属性](metrics/#attributes-of-obi-metrics)を参照してください。
-- MQTT SUBSCRIBE テレメトリーは宛先名のかわりに `messaging.destination.subscription.name` を使用し、スパン名からフィルターを省略します。
-  共有サブスクリプションは `messaging.consumer.group.name` も報告します。
-  AWS SNS スパンには `rpc.system.name` と `rpc.method` が含まれなくなりました。
-- GraphQL、MCP、および JSON-RPC サーバースパンは HTTP メソッド、ステータス、ルート、URL、ボディサイズ、ユーザーエージェント、または OBI レスポンス監視属性を含まなくなりました。
-  キャプチャされた HTTP ヘッダーはプレーン HTTP および GraphQL スパンに限定されます。
-  OTLP GenAI メトリクスはリクエストモデルが欠落している場合にそれを省略し、AMQP メトリクスは空の宛先を省略します。
-- テレメトリースキーマは以前の変換を保持したまま `0.15.2` に更新されました。
-  テレメトリーレジストリは Weaver `definition/2` を使用します。
-  スパンリファレンス ID に `span.` 接頭辞が付かなくなったため、古いカタログアンカーへのリンクを更新してください。
-
-v0.14.0 より古いリリースからアップグレードする場合は、以下の以前の変更も確認してください。
-リリースノートには、追加のプロトコル固有の命名と属性の変更が記載されています。
-
-## v0.14.0 のアップグレードノート {#upgrade-notes-for-v0140}
-
-- HTTP の持続時間およびボディサイズメトリクスは、失敗したリクエストにデフォルトで `error.type` を含むようになりました。
-  Prometheus 系列に `error_type` ラベルが追加され、成功したリクエストでは空の値になります。
-  古い系列に依存するダッシュボードとアラートクエリを確認してください。
-- OTLP スパンメトリクスは `host.id` を各データポイントにコピーしなくなりました。
-  値はリソース属性と `target_info` に残ります。
-  OBI の Prometheus エクスポーターは変更されていません。
-  OTLP リソースを Prometheus ラベルにフラット化するコンシューマーは、`host_id` クエリを確認してください。
-- `service.peer.name`、`http.request.body.size`、`http.response.body.size`、および `obi.http.response.observed` はオプトインのスパン属性になりました。
-  必要な場合は [`attributes.select.traces.include`](configure/metrics-traces-attributes/) で選択してください。
-  サービスグラフプロセッサーには `service.peer.name` が必要な場合があります。
-- 固定された `traces_ctx_v1` マップはデフォルトでは設定されなくなりました。
-  外部トレースプロファイル相関と Go チャネルハンドオフフォールバックは、[`ebpf.populate_trace_context: true`](configure/metrics-traces-attributes/) で復元できます。
-- ターゲット宣言は引き続きリソースメタデータより優先されます。
-  解決されたターゲットメタデータはエージェント自身の `OTEL_RESOURCE_ATTRIBUTES` より優先されるようになり、値はキーごとにマージされます。
-- Elastic Cloud クライアントスパンとデータベースオペレーションメトリクスに `X-Found-Handling-Cluster` からの `db.namespace` が含まれるようになりました。
-  既存のメトリクス系列がクラスターごとに分割される可能性があります。
-  AWS SQS スパンには `aws.extended_request_id` が含まれなくなりました。
+[NGINX ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/nginx)と
+[Apache ウォークスルー](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v1.0.0/examples/apache)を参照してください。
 
 ## OBI の仕組み {#how-obi-works}
 
@@ -149,6 +109,8 @@ OBI は以下のサポートされたリリース成果物を公開していま�
 
 OBI は、要件を満たす環境であれば、スタンドアロン Linux ホスト、コンテナ、および Kubernetes にデプロイできます。
 
+[サポートマトリクス](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0/SUPPORT_MATRIX.md)で、サポートされた環境と機能固有の要件を定義しています。
+
 OBI は、Linux 以外のオペレーティングシステム、`amd64` および `arm64` 以外の Linux アーキテクチャ、BTF のない Linux 環境、またはドキュメントに示されている `4.18+` の RHEL ファミリーという例外を除き、Linux `5.8` より古いカーネルバージョンをサポートしていません。
 
 機能固有のサポートの詳細については、以下のガイドに記載されています。
@@ -166,6 +128,16 @@ OBI はネットワークとプロトコルのアクティビティを自動的�
 
 一部の機能には、コアプラットフォーム要件よりも追加の注意事項やサポート範囲の制限があります。
 詳細については、[分散トレース](distributed-traces/)と[エクスポートされた計装](configure/export-data/)の機能固有のドキュメントを参照してください。
+
+既知の制限事項と未解決の報告には以下が含まれます。
+
+- Kubernetes Pod の起動または再起動後にアプリケーションメトリクスが欠落したままになることがあります。
+  OBI を再起動すると復元できます。
+  [アプリケーションメトリクスの欠落](troubleshooting/#missing-application-metrics-after-a-pod-restart)を参照してください。
+- あるユーザーが OBI v0.9.0/v0.10.0 を OpenShift 4.16 で使用した際に[子スパンのタイムスタンプが親スパンのタイムスタンプより早くなる](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/2568)ことを報告しました。
+  [報告された条件](troubleshooting/#reported-span-timestamp-anomalies)を参照してください。
+- OBI がメタデータを解決できない場合、サービスグラフに `outgoing` の宛先が表示されたり、同じサービスに対して Kubernetes 名と OpenTelemetry 名が別々に表示されたりすることがあります。
+  [サービスグラフの制限事項](metrics/#service-graph-limitations)を参照してください。
 
 OBI が必要とするケーパビリティの包括的なリストについては、[セキュリティ、権限、およびケーパビリティ](security/)を参照してください。
 
