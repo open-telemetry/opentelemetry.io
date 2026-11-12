@@ -540,7 +540,7 @@ announcement file. A maintainer there reviews and merges it.
 - For posts with a future `date`, the PR description says when the post goes
   live, so the PR isn't merged before that.
 - The file is named after the post date and the PR uses the branch
-  `otelbot/announce-blog-<slug>`, so re-runs don't announce a post twice.
+  `otelbot/announce-blog-<year>-<slug>`, so re-runs don't announce a post twice.
 - If a push publishes more than one post, the workflow fails. Announce each post
   with a manual run, using the `post` input. Manual runs also work for existing
   posts.

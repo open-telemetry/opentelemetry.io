@@ -58,15 +58,17 @@ function dayOf(date) {
  */
 export function buildAnnouncement(path, frontMatter, today) {
   const { year, slug } = parsePostPath(path);
-  const { title, announcement, date } = frontMatter;
+  const { announcement, date } = frontMatter;
 
   if (announcement === false) return null;
   if (announcement != null && typeof announcement !== 'string') {
     throw new Error(`${path}: announcement must be a string or false`);
   }
-  if (typeof title !== 'string' || !title) {
+  if (typeof frontMatter.title !== 'string' || !frontMatter.title.trim()) {
     throw new Error(`${path}: missing title`);
   }
+  // The title feeds single-line values: subject, PR title and $GITHUB_OUTPUT.
+  const title = frontMatter.title.replace(/\s+/g, ' ').trim();
   const day = dayOf(date);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) {
     throw new Error(`${path}: missing or invalid date`);
@@ -86,7 +88,7 @@ export function buildAnnouncement(path, frontMatter, today) {
         },
         { lineWidth: -1 },
       ),
-    branch: `otelbot/announce-blog-${slug}`,
+    branch: `otelbot/announce-blog-${year}-${slug}`,
     title: `Announce blog post: ${title}`,
     body:
       day > today

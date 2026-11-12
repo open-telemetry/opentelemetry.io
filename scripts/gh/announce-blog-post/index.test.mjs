@@ -56,7 +56,7 @@ describe('buildAnnouncement', () => {
   test('defaults text to the title, followed by the URL', () => {
     const a = build('title: "Hello: it\'s & 100%"\ndate: 2026-05-01');
     assert.equal(a.file, 'announcements/2026/05-01-blog-my-post.yaml');
-    assert.equal(a.branch, 'otelbot/announce-blog-my-post');
+    assert.equal(a.branch, 'otelbot/announce-blog-2026-my-post');
     assert.match(a.content, /^# yaml-language-server: \$schema=/);
     assert.match(a.content, /subject: 'New on the OpenTelemetry blog: Hello/);
     assert.match(
@@ -64,6 +64,11 @@ describe('buildAnnouncement', () => {
       /https:\/\/opentelemetry.io\/blog\/2026\/my-post\//,
     );
     assert.doesNotMatch(a.body, /goes live/);
+  });
+  test('collapses multiline titles into one line', () => {
+    const a = build('title: |\n  Line one\n  line two\ndate: 2026-05-01');
+    assert.equal(a.title, 'Announce blog post: Line one line two');
+    assert.doesNotMatch(a.body, /\n/);
   });
   test('uses the announcement string', () => {
     assert.match(
