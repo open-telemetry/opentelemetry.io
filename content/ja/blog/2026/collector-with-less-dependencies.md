@@ -6,8 +6,7 @@ author: >-
   [Alex Boten](https://github.com/codeboten) (Grafana Labs)
 issue: 12217
 sig: Collector SIG
-default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
-drifted_from_default: true
+default_lang_commit: 17662c24ee2f9789a70287c4ad02707582e3de98
 cSpell:ignore: otelconf trimpath
 ---
 
@@ -75,7 +74,7 @@ processors:
 
 ## 新しい OCB 設定 {#new-ocb-configuration}
 
-Collector と [ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-cmd/builder/v0.163.1) の [v0.163.1 リリース](https://github.com/open-telemetry/opentelemetry-collector-releases/releases#release-v0.163.1)では、より少ない設定でリソース検出器をフィルタリングしたいユーザーもサポートするようになりました。
+Collector と [ocb](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/cmd%2Fbuilder%2Fv0.163.1) の [v0.163.1 リリース](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.163.1)では、より少ない設定でリソース検出器をフィルタリングしたいユーザーもサポートするようになりました。
 これは Configuration Schema で定義された設定に従います。以下の例では、`resource` ブロックで設定された検出器以外のすべてを除外します。
 
 ```yaml

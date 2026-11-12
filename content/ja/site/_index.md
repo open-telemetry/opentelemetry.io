@@ -7,8 +7,7 @@ cascade:
   type: docs
   params:
     hide_feedback: true
-default_lang_commit: 116a47a010450c408dd4ec774cd849df4b1c2ddb
-drifted_from_default: true
+default_lang_commit: 52bc572fc569401f35171b4138844754e5dac670
 ---
 
 このセクションは、サイトのメンテナーとコントリビューター向けです。
@@ -42,6 +41,8 @@ _param FAS person-digging " ps-2" %}}
 - 長い背景セクションよりも簡潔な要約を優先します。
 - 詳細はここで繰り返すのではなく、イシュー、計画、コードへのリンクを記載します。
 - サイトの仕組みとその理由を説明するために必要なコンテンツのみを追加します。
+- 機能の記録は役割ごとに分割します。
+  何をするか、いつ使うかは [Features](./features/) に、なぜそのように設計されているかは [Design](./design/) に、ビルドや実行の方法は [Build](./build/) に記載します。
 
 ## サイトビルド情報 {#site-build-information}
 
