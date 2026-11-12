@@ -9,6 +9,11 @@ author: >-
   Liu](https://github.com/123liuziming) (Alibaba Cloud)
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/11367
 sig: 'Semantic Conventions and Instrumentation: GenAI'
+announcement:
+  We tested whether a team of agents can instrument GenAI frameworks. They
+  implement against the GenAI semantic conventions, and Weaver live-check
+  validates the telemetry they emit. What worked, what didn't, and what it
+  means for the conventions.
 # prettier-ignore
 cSpell:ignore: BFCL crewai Dify genai Huxing kwargs loongsuite Rego Zhang Ziming
 ---
