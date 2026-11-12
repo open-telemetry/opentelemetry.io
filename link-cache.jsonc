@@ -10304,6 +10304,11 @@
     "when": "2026-10-27T05:47:01Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-announcements": {
+    "result": 200,
+    "when": "2026-11-11T19:59:06Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-browser": {
     "result": 200,
     "when": "2026-10-24T05:43:11Z",
