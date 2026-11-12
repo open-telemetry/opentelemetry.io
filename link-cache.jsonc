@@ -4034,6 +4034,11 @@
     "when": "2026-10-20T05:45:34Z",
     "via": "lychee",
   },
+  "https://events.humanitix.com/otel-unplugged-2027": {
+    "result": 200,
+    "when": "2026-11-11T00:43:52Z",
+    "via": "lychee",
+  },
   "https://events.humanitix.com/otelunplugged-eu2026": {
     "result": 200,
     "when": "2026-10-27T05:47:58Z",
@@ -4512,6 +4517,11 @@
   "https://fosdem.org/2026/": {
     "result": 200,
     "when": "2026-10-20T05:44:53Z",
+    "via": "lychee",
+  },
+  "https://fosdem.org/2027/": {
+    "result": 200,
+    "when": "2026-11-11T00:43:51Z",
     "via": "lychee",
   },
   "https://fosstodon.org/@opentelemetry": {
@@ -9667,6 +9677,11 @@
   "https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main": {
     "result": 200,
     "when": "2026-10-28T05:39:57Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/community/blob/2325c5bc19f91ae68a11878ad9c0bcf75daf4453/community-members.md": {
+    "result": 200,
+    "when": "2026-11-11T00:43:51Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member": {
