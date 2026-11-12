@@ -853,14 +853,14 @@ plugins {
   id("com.gradleup.shadow") version "9.2.2"
 
   // Muzzle plugins - required for all custom instrumentation
-  id("io.opentelemetry.instrumentation.muzzle-generation")
-  id("io.opentelemetry.instrumentation.muzzle-check")
+  id("io.opentelemetry.instrumentation.muzzle-generation") version "{{% param vers.instrumentation %}}-alpha"
+  id("io.opentelemetry.instrumentation.muzzle-check") version "{{% param vers.instrumentation %}}-alpha"
 }
 
 dependencies {
   // The alpha instrumentation BOM manages the javaagent and instrumentation
   // artifacts as well as everything in opentelemetry-bom, so no OpenTelemetry
-  // dependency below needs a version
+  // compileOnly dependency below needs a version
   compileOnly(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
 
   // Core extension dependencies (provided by agent at runtime)
@@ -879,6 +879,13 @@ dependencies {
 
   // Target library you're instrumenting (example)
   compileOnly("javax.servlet:javax.servlet-api:3.0.1")
+
+  // Muzzle code generation and tooling (the BOM above doesn't apply to these
+  // configurations, so they need explicit versions)
+  add("codegen", "io.opentelemetry.javaagent:opentelemetry-javaagent-tooling:{{% param vers.instrumentation %}}-alpha")
+  add("muzzleBootstrap", "io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations-support:{{% param vers.instrumentation %}}-alpha")
+  add("muzzleTooling", "io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:{{% param vers.instrumentation %}}-alpha")
+  add("muzzleTooling", "io.opentelemetry.javaagent:opentelemetry-javaagent-tooling:{{% param vers.instrumentation %}}-alpha")
 }
 
 // Muzzle configuration - specify the library versions your instrumentation
@@ -961,7 +968,8 @@ public class MyTypeInstrumentation implements TypeInstrumentation {
     transformer.applyAdviceToMethod(
       named("myMethod")
         .and(isPublic())
-        .and(takesArguments(1)),
+        .and(takesArguments(1))
+        .and(returns(String.class)),
       this.getClass().getName() + "$MyMethodAdvice");
   }
 }
