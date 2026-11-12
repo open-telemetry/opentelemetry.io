@@ -25,7 +25,8 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-Cada versão do Collector inclui um executável que você pode descompactar e executar.
+Cada versão do Collector inclui um executável que você pode descompactar e
+executar.
 
 [releases]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
