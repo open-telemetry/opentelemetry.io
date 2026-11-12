@@ -1,0 +1,779 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1530" height="1360" viewBox="0 0 1530 1360" role="img" aria-labelledby="title desc">
+<title id="title">Historical LoongSuite gen_ai.invoke_agent.internal coverage</title>
+<desc id="desc">A transposed replot of the original LoongSuite coverage image: 29 attributes by 14 Python instrumentations. Green cells reproduce observed entries from that image, and gray cells reproduce empty entries.</desc>
+<rect x="0" y="0" width="1530" height="1360" fill="#ffffff" />
+<rect x="0.5" y="0.5" width="1529" height="1359" fill="none" stroke="#dce3e9" rx="10"/>
+<text x="32" y="69" font-size="30" fill="#17212d" font-weight="700" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.invoke_agent.internal</text>
+<text x="32" y="100" font-size="17" fill="#61707d" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Span coverage across 14 generated Python instrumentations</text>
+<rect x="1130" y="45" width="17" height="17" fill="#078768" rx="2"/>
+<text x="1157" y="59" font-size="15" fill="#3c4853" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Observed</text>
+<rect x="1260" y="45" width="17" height="17" fill="#e8ebef" rx="2"/>
+<text x="1287" y="59" font-size="15" fill="#3c4853" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Not observed</text>
+<rect x="32" y="128" width="1454" height="30" fill="#eff4f3" />
+<rect x="416" y="128" width="938" height="3" fill="#609471" />
+<text x="428" y="149" font-size="13" fill="#4c715f" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >PYTHON  /  LOONGSUITE</text>
+<rect x="32" y="158" width="1454" height="190" fill="#f6f8fa" />
+<text x="45" y="333" font-size="13" fill="#586675" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >ATTRIBUTE</text>
+<text x="1420.0" y="333" font-size="12" fill="#586675" font-weight="700" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" >EMITTED BY</text>
+<text x="449.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 449.5 335)">AlgoTune</text>
+<rect x="416" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="516.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 516.5 335)">BFCL-v4</text>
+<rect x="483" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="583.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 583.5 335)">Claude Agent SDK</text>
+<rect x="550" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="650.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 650.5 335)">CLAW-Eval</text>
+<rect x="617" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="717.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 717.5 335)">CrewAI</text>
+<rect x="684" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="784.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 784.5 335)">Hermes Agent</text>
+<rect x="751" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="851.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 851.5 335)">LangGraph</text>
+<rect x="818" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="918.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 918.5 335)">MiniSWEAgent</text>
+<rect x="885" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="985.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 985.5 335)">OpenHands</text>
+<rect x="952" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="1052.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 1052.5 335)">Qwen-Agent</text>
+<rect x="1019" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="1119.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 1119.5 335)">qwenpaw</text>
+<rect x="1086" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="1186.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 1186.5 335)">Terminus2</text>
+<rect x="1153" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="1253.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 1253.5 335)">Vita</text>
+<rect x="1220" y="158" width="1" height="190" fill="#e0e5e9" />
+<text x="1320.5" y="335" font-size="14" fill="#44525f" font-weight="500" text-anchor="start" font-family="Arial, Helvetica, sans-serif" transform="rotate(-90 1320.5 335)">WebArena</text>
+<rect x="1287" y="158" width="1" height="190" fill="#e0e5e9" />
+<rect x="1354" y="158" width="1" height="190" fill="#d7dfe4" />
+<rect x="32" y="347" width="1454" height="1" fill="#cbd4d9" />
+<rect x="32" y="348" width="1454" height="29" fill="#edf0f4" />
+<rect x="44" y="358" width="8" height="8" fill="#8b30c8" rx="1"/>
+<text x="59" y="368" font-size="13" fill="#454b56" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >REQUIRED · 3</text>
+<rect x="32" y="377" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="396" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.operation.name</text>
+<rect x="418" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="379" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="391.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="396" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="404" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="405" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="424" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.provider.name</text>
+<rect x="418" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="407" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="419.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="424" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="432" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="433" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="452" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.system</text>
+<rect x="418" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="435" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="452" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="460" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="461" width="1454" height="29" fill="#edf0f4" />
+<rect x="44" y="471" width="8" height="8" fill="#7c6c9f" rx="1"/>
+<text x="59" y="481" font-size="13" fill="#454b56" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >CONDITIONALLY REQUIRED · 11</text>
+<rect x="32" y="490" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="509" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >error.type</text>
+<rect x="418" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="492" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="504.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="492" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="504.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="492" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="509" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >2/14</text>
+<rect x="32" y="517" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="518" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="537" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.agent.description</text>
+<rect x="418" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="520" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="520" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="532.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="537" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >13/14</text>
+<rect x="32" y="545" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="546" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="565" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.agent.id</text>
+<rect x="418" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="548" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="560.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="548" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="565" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >8/14</text>
+<rect x="32" y="573" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="574" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="593" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.agent.name</text>
+<rect x="418" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="576" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="588.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="593" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="601" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="602" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="621" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.agent.version</text>
+<rect x="418" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="604" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="621" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="629" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="630" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="649" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.conversation.id</text>
+<rect x="418" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="632" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="632" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="644.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="632" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="649" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >12/14</text>
+<rect x="32" y="657" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="658" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="677" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.data_source.id</text>
+<rect x="418" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="660" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="677" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="685" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="686" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="705" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.output.type</text>
+<rect x="418" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="688" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="705" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="713" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="714" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="733" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.choice.count</text>
+<rect x="418" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="716" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="733" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="741" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="742" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="761" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.model</text>
+<rect x="418" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="744" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="756.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="761" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="769" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="770" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="789" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.seed</text>
+<rect x="418" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="772" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="789" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="797" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="798" width="1454" height="29" fill="#edf0f4" />
+<rect x="44" y="808" width="8" height="8" fill="#2070a6" rx="1"/>
+<text x="59" y="818" font-size="13" fill="#454b56" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >RECOMMENDED · 11</text>
+<rect x="32" y="827" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="846" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.frequency_penalty</text>
+<rect x="418" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="829" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="846" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="854" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="855" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="874" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.max_tokens</text>
+<rect x="418" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="857" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="869.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="857" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="874" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >1/14</text>
+<rect x="32" y="882" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="883" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="902" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.presence_penalty</text>
+<rect x="418" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="885" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="902" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="910" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="911" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="930" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.stop_sequences</text>
+<rect x="418" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="913" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="930" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="938" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="939" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="958" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.temperature</text>
+<rect x="418" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="941" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="953.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="941" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="953.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="941" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="958" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >2/14</text>
+<rect x="32" y="966" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="967" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="986" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.request.top_p</text>
+<rect x="418" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="969" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="986" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="994" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="995" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="1014" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.response.finish_reasons</text>
+<rect x="418" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="997" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1009.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1014" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="1022" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1023" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="1042" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.usage.cache_creation.input_tokens</text>
+<rect x="418" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="1025" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="1042" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="1050" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1051" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="1070" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.usage.cache_read.input_tokens</text>
+<rect x="418" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="485" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="552" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="753" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="954" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1021" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1088" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1155" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1289" y="1053" width="63" height="24" fill="#e8ebef" rx="1"/>
+<text x="1473" y="1070" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >0/14</text>
+<rect x="32" y="1078" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1079" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="1098" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.usage.input_tokens</text>
+<rect x="418" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1081" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1093.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1098" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="1106" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1107" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="1126" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.usage.output_tokens</text>
+<rect x="418" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1109" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1121.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1126" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="1134" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1135" width="1454" height="29" fill="#edf0f4" />
+<rect x="44" y="1145" width="8" height="8" fill="#9297a0" rx="1"/>
+<text x="59" y="1155" font-size="13" fill="#454b56" font-weight="700" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >OPT-IN · 4</text>
+<rect x="32" y="1164" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="1183" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.input.messages</text>
+<rect x="418" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1166" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1178.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1183" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="1191" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1192" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="1211" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.output.messages</text>
+<rect x="418" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1186.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="1222" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1194" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1206.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1211" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >14/14</text>
+<rect x="32" y="1219" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1220" width="1454" height="28" fill="#fbfcfd" />
+<text x="45" y="1239" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.system_instructions</text>
+<rect x="418" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1222" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="619" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="650.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="686" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1222" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="820" y="1222" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="887" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1222" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1222" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1234.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1239" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >10/14</text>
+<rect x="32" y="1247" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1248" width="1454" height="28" fill="#ffffff" />
+<text x="45" y="1267" font-size="13.5" fill="#26313c" font-weight="400" text-anchor="start" font-family="Menlo, Consolas, monospace" >gen_ai.tool.definitions</text>
+<rect x="418" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="449.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="485" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="516.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="552" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="583.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="619" y="1250" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="686" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="717.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="753" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="784.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="820" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="851.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="887" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="918.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="954" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="985.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="1021" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1052.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="1088" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1119.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="1155" y="1250" width="63" height="24" fill="#e8ebef" rx="1"/>
+<rect x="1222" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1253.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<rect x="1289" y="1250" width="63" height="24" fill="#078768" rx="1"/>
+<circle cx="1320.5" cy="1262.0" r="2.1" fill="#ffffff"/>
+<text x="1473" y="1267" font-size="14" fill="#61707d" font-weight="500" text-anchor="end" font-family="Arial, Helvetica, sans-serif" >12/14</text>
+<rect x="32" y="1275" width="1454" height="1" fill="#e5e9ed" />
+<rect x="32" y="1292" width="1454" height="1" fill="#dce3e9" />
+<rect x="32" y="1310" width="18" height="18" fill="#8b30c8" rx="3"/>
+<text x="60" y="1325" font-size="17" fill="#5d6573" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Required</text>
+<rect x="190" y="1310" width="18" height="18" fill="#7c6c9f" rx="3"/>
+<text x="218" y="1325" font-size="17" fill="#5d6573" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Conditionally required</text>
+<rect x="465" y="1310" width="18" height="18" fill="#2070a6" rx="3"/>
+<text x="493" y="1325" font-size="17" fill="#5d6573" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Recommended</text>
+<rect x="655" y="1310" width="18" height="18" fill="#7b6b9f" rx="3"/>
+<text x="683" y="1325" font-size="17" fill="#5d6573" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Recommended (conditional)</text>
+<rect x="1010" y="1310" width="18" height="18" fill="#9297a0" rx="3"/>
+<text x="1038" y="1325" font-size="17" fill="#5d6573" font-weight="400" text-anchor="start" font-family="Arial, Helvetica, sans-serif" >Opt-in</text>
+</svg>
