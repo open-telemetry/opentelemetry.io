@@ -2,8 +2,8 @@
 title: Urme
 weight: 1
 description: Traseul unei cereri prin aplicația ta.
-cSpell:ignore: Guten
 default_lang_commit: 6f2f46d66353b05e205f4fd74964c84a797e9dbe
+cSpell:ignore: Guten
 ---
 
 **Urmele** ne oferă imaginea de ansamblu a ceea ce se întâmplă când o cerere
