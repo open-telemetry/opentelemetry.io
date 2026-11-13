@@ -473,7 +473,7 @@ public class SpanExporterConfig {
         .build();
   }
 
-  public static SpanExporter loggingSpanExporter() {
+  public static SpanExporter logginSpanExporter() {
     return LoggingSpanExporter.create();
   }
 
@@ -804,7 +804,7 @@ public class MetricExporterConfig {
         .build();
   }
 
-  public static MetricExporter loggingMetricExporter() {
+  public static MetricExporter logginMetricExporter() {
     return LoggingMetricExporter.create();
   }
 
