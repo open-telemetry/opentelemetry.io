@@ -291,12 +291,10 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1910782?v=4
   - name: bobstrecansky
     teams:
-      - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
       - php-distro-maintainers
-      - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
     avatar_url: https://avatars.githubusercontent.com/u/4099109?v=4
@@ -1331,6 +1329,13 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
+  - name: Nevay
+    teams:
+      - php-approvers
+      - php-maintainers
+      - php-triagers
+    html_url: https://github.com/Nevay
+    avatar_url: https://avatars.githubusercontent.com/u/22509671?v=4
   - name: NimrodAvni78
     teams:
       - ebpf-instrumentation-approvers
@@ -2489,6 +2494,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/henrinormak
     avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
+  - name: himanshu130700
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/himanshu130700
+    avatar_url: https://avatars.githubusercontent.com/u/228173647?v=4
   - name: inetand
     teams:
       - kotlin-triagers
@@ -3196,6 +3206,9 @@ members:
   - name: sandy2008
     html_url: https://github.com/sandy2008
     avatar_url: https://avatars.githubusercontent.com/u/18073670?v=4
+  - name: sangkyoonnam
+    html_url: https://github.com/sangkyoonnam
+    avatar_url: https://avatars.githubusercontent.com/u/354771?v=4
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4

@@ -62,6 +62,7 @@ Here is a list of community roles with current and previous members:
 
 These are the members of [@open-telemetry/docs-maintainers][] (members-only):
 
+- [Austin Parker](https://github.com/austinlparker)
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 - [Patrice Chalin](https://github.com/chalin), CNCF
@@ -94,7 +95,6 @@ For more information about the triager role, see the
 
 ### Emeritus
 
-- [Austin Parker](https://github.com/austinlparker), Maintainer
 - [Ezzio Moreira](https://github.com/EzzioMoreira), Triager
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Maintainer
 - [jparsana](https://github.com/jparsana), Maintainer

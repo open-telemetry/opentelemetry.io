@@ -7924,6 +7924,11 @@
     "when": "2026-10-23T05:45:23Z",
     "via": "lychee",
   },
+  "https://github.com/himanshu130700": {
+    "result": 200,
+    "when": "2026-11-13T03:44:11Z",
+    "via": "lychee",
+  },
   "https://github.com/honeycombio/honeycomb-collector-distro": {
     "result": 200,
     "when": "2026-11-06T05:38:28Z",
@@ -24967,6 +24972,11 @@
   "https://github.com/sandy2008": {
     "result": 200,
     "when": "2026-10-19T05:46:52Z",
+    "via": "lychee",
+  },
+  "https://github.com/sangkyoonnam": {
+    "result": 200,
+    "when": "2026-11-12T03:43:29Z",
     "via": "lychee",
   },
   "https://github.com/sanketmehta28": {
