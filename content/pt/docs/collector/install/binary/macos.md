@@ -5,9 +5,9 @@ weight: 200
 default_lang_commit: 9f912d59a165ded5dec82d0e1a94c2aef54e5c57
 ---
 
-As [distribuições][releases] de macOS estão disponíveis para sistemas Intel e ARM.
-Elas são disponibilizadas como arquivos tarballs comprimidos com gzip (`.tar.gz`). Para
-descompactá-los, execute os seguintes comandos:
+As [distribuições][releases] de macOS estão disponíveis para sistemas Intel e
+ARM. Elas são disponibilizadas como arquivos tarballs comprimidos com gzip
+(`.tar.gz`). Para descompactá-los, execute os seguintes comandos:
 
 {{< tabpane text=true >}} {{% tab Intel %}}
 
