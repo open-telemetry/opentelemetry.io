@@ -25,7 +25,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-Cada versão do Collector inclui um executável que você pode descompactar e
+Cada distribuição do Collector inclui um executável que você pode descompactar e
 executar.
 
 [releases]:
