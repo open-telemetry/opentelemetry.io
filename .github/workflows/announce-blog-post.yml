@@ -1,0 +1,114 @@
+name: Announce blog post
+
+# Opens a pull request in open-telemetry/opentelemetry-announcements for every
+# English blog post published on main. A maintainer there reviews and merges it.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/en/blog/**
+  workflow_dispatch:
+    inputs:
+      post:
+        description:
+          Blog post to announce, for example content/en/blog/2026/my-post.md
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+# Overlapping runs could race updates to the same announcement branch. Queue
+# waiting runs instead of replacing them: each push announces only its own posts.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+  queue: max
+
+jobs:
+  announce:
+    name: Open announcement PR
+    runs-on: ubuntu-latest
+    # Remove the if statement below when testing against a fork
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm run ci:min
+
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        id: otelbot-token
+        with:
+          client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+          owner: open-telemetry
+          repositories: opentelemetry-announcements
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Checkout announcements
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: open-telemetry/opentelemetry-announcements
+          path: announcements-repo
+          token: ${{ steps.otelbot-token.outputs.token }}
+          persist-credentials: false
+
+      # The merge queue can push several commits at once, so compare with the
+      # commit before the push rather than with the parent commit.
+      - name: Write announcement file
+        id: announce
+        env:
+          BEFORE: ${{ github.event.before }}
+          POST: ${{ inputs.post }}
+        run: |
+          if [[ -n $POST ]]; then
+            node scripts/gh/announce-blog-post/cli.mjs announcements-repo --post "$POST"
+          else
+            git fetch --depth=1 origin "$BEFORE"
+            node scripts/gh/announce-blog-post/cli.mjs announcements-repo --before "$BEFORE"
+          fi
+
+      - name: Create pull request # zizmor: ignore[superfluous-actions] Manages the commit, update branch, and PR lifecycle.
+        if: steps.announce.outputs.branch != ''
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          path: announcements-repo
+          add-paths: announcements/**
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: ${{ steps.announce.outputs.branch }}
+          delete-branch: true
+          title: ${{ steps.announce.outputs.title }}
+          commit-message: ${{ steps.announce.outputs.title }}
+          body: |
+            Announces a new post on the OpenTelemetry blog:
+
+            ${{ steps.announce.outputs.body }}
+
+            Edit the text as needed, then merge.
+
+            Created by the [Announce blog post][workflow] workflow in
+            open-telemetry/opentelemetry.io from ${{ github.sha }}.
+
+            [workflow]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  report-failure:
+    needs: announce
+    if: failure() && github.repository == 'open-telemetry/opentelemetry.io'
+    uses: $/.github/workflows/reusable-report-failure.yml
+    permissions:
+      issues: write # Pass through for failure tracking issues
+      contents: read
