@@ -1,5 +1,5 @@
 ---
-title: Instalar o Collector no macOS
+title: Instale o Collector no macOS
 linkTitle: macOS
 weight: 200
 default_lang_commit: 9f912d59a165ded5dec82d0e1a94c2aef54e5c57
