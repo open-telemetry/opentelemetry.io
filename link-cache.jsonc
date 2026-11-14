@@ -3766,12 +3766,12 @@
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
     "result": "error",
-    "when": "2026-11-13T05:38:31Z",
+    "when": "2026-11-14T05:38:07Z",
     "via": "lychee",
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
     "result": "error",
-    "when": "2026-11-13T05:38:31Z",
+    "when": "2026-11-14T05:38:07Z",
     "via": "lychee",
   },
   "https://en.wikipedia.org/": {
@@ -33339,7 +33339,7 @@
   },
   "https://www.britannica.com/dictionary/pipeline": {
     "result": "error",
-    "when": "2026-11-13T05:38:31Z",
+    "when": "2026-11-14T05:38:07Z",
     "via": "lychee",
   },
   "https://www.buoyant.io/mtls-guide": {
