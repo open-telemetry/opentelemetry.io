@@ -4,7 +4,7 @@ linkTitle: Community Slack Analysis
 date: 2026-01-07
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
 canonical_url: https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges
-cSpell:ignore: k8sattributes kubeletstats OllyGarden OTTL
+cSpell:ignore: k8sattributes kubeletstats OllyGarden
 ---
 
 ![Cover image showing Slack message volume over time](cover.png)

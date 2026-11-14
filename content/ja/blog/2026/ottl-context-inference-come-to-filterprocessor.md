@@ -6,7 +6,8 @@ author: '[Kaise Cheng](https://github.com/kaisecheng) (Elastic)'
 issue: 9190
 sig: Collector SIG
 default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
-cSpell:ignore: Kaise OTTL spanevent
+drifted_from_default: true
+cSpell:ignore: Kaise spanevent
 ---
 
 昨年、OpenTelemetry プロジェクトは [transform processor のための OTTL コンテキスト推論](/blog/2025/ottl-contexts-just-got-easier/)を導入しました。

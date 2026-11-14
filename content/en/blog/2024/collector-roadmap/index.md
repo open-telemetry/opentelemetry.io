@@ -4,7 +4,7 @@ linkTitle: Collector Roadmap
 date: 2024-05-06
 author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 # prettier-ignore
-cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski OTTL Pantuza pushback Shishi Vijay
+cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski Pantuza pushback Shishi Vijay
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) is a very popular component in

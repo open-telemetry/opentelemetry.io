@@ -2,7 +2,7 @@
 title: 'Managed Telemetry Platforms for Kubernetes Workloads'
 linkTitle: 'Managed Telemetry Platforms for K8s Workloads'
 # prettier-ignore
-cSpell:ignore: actioned Autoscaler kube OTTL overprovision rollouts SDLC Skyscanner statefulset
+cSpell:ignore: actioned Autoscaler kube overprovision rollouts SDLC Skyscanner statefulset
 ---
 
 ## Summary

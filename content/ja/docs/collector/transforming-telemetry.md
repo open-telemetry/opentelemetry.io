@@ -2,8 +2,9 @@
 title: テレメトリーの変換
 weight: 26
 default_lang_commit: 801233d066e99c97408663e5dbc6971fa38e94d3
+drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: accountid clustername k8sattributes metricstransform OTTL resourcedetection
+cSpell:ignore: accountid clustername k8sattributes metricstransform ottl resourcedetection
 ---
 
 OpenTelemetryコレクターは、データをベンダーや他のシステムに送信する前に変換するために便利な場所です。
