@@ -202,7 +202,7 @@ exporters:
 
 ### 移行後のキュー容量 {#queue-capacity-after-migration}
 
-バッチ処理を `sending_queue` に移すことで、キューの反対側に移動することにもなります。
+バッチ処理を `sending_queue` に移すことは、キューを挟んでバッチ処理を反対側へ移すことでもあります。
 一般的な `batch` プロセッサーのパイプラインでは、エクスポーターの `sending_queue` は `batch` プロセッサーの後に配置されます。
 既存の `batch` プロセッサーがパイプラインにある場合、デフォルトサイズのキューはバッチ処理済みのリクエストを最大 1000 個保持するため、既存の設定を変換する際は注意が必要です。
 
@@ -237,7 +237,7 @@ exporters:
 アイテム数またはバイト数でサイズ管理されたキューは、`sending_queue` のメモリコストを明示的にします。
 一方、リクエスト数でサイズ管理されたキューは、大きいリクエストも小さいリクエストも保持でき、メモリ使用量が変動します。
 
-バイト数を使用すると、バックエンドの制限もバイト単位の場合に有効です。
+バックエンドの制限もバイト単位の場合、バイト数での計測が役立ちます。
 `max_size` を使用して、すべてのリクエストを制限内に収めます。
 
 <!-- prettier-ignore -->
@@ -349,7 +349,7 @@ processors:
   自分で設定を行えば、デフォルトの変更の影響を受けません。
 - `batch` プロセッサーのかわりに `queue_batch` プロセッサーを使用する。
 
-バッチ処理がデフォルトで有効になるまでに、今日すぐに使えるいくつかの緩和策が用意されています。
+バッチ処理がデフォルトで有効になる前に、いくつかの緩和策を今日から利用できます。
 
 - `pkg.exporterhelper.queueBatchEnabled` フィーチャーフラグにより、バッチ処理がデフォルトで有効な状態でテストできます。
 - コレクターのパイプラインセットアップは、パイプラインに `batch` プロセッサーとバッチ処理が有効な `sending_queue` の両方がある場合を検出しようとします。
@@ -357,7 +357,8 @@ processors:
 
 ### コンポーネント開発者向け {#for-component-developers}
 
-[コレクターの `mdatagen` コマンド][MDATAGEN]は、コンポーネントの `metadata.yaml` で `sending_queue` の設定を宣言することをサポートしており、`sending_queue` がデフォルトの動作を取るか、特定のオーバーライドを持つか、完全に省略されるかを宣言できます。
+[コレクターの `mdatagen` コマンド][MDATAGEN]は、コンポーネントの `metadata.yaml` で `sending_queue` の設定を宣言できます。
+これにより、`sending_queue` がデフォルトの動作を取るか、特定のオーバーライドを持つか、完全に省略されるかを指定できます。
 
 [MDATAGEN]: https://github.com/open-telemetry/opentelemetry-collector/blob/302c933caa8c66f7ebf35ea42238b261bc3e5fc6/cmd/mdatagen/README.md#exporter-queuebatch-sender-defaults
 
