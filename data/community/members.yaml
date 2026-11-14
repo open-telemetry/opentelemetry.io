@@ -1953,6 +1953,12 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/hannahramadan
     avatar_url: https://avatars.githubusercontent.com/u/76922290?v=4
+  - name: harshitt13
+    teams:
+      - dart-approvers
+      - dart-triagers
+    html_url: https://github.com/harshitt13
+    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -2484,11 +2490,6 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
-  - name: harshitt13
-    teams:
-      - dart-triagers
-    html_url: https://github.com/harshitt13
-    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: henrinormak
     teams:
       - javascript-contrib-triagers
