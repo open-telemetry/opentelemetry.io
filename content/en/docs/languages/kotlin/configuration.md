@@ -32,16 +32,29 @@ val baseUrl = "http://localhost:4318"
 val otel: OpenTelemetry = createOpenTelemetry {
     tracerProvider {
         export {
-            batchSpanProcessor(otlpHttpSpanExporter(baseUrl))
+            batchSpanProcessor(
+                otlpHttpSpanExporter {
+                    endpoint = baseUrl
+                }
+            )
         }
     }
     loggerProvider {
         export {
-            batchLogRecordProcessor(otlpHttpLogRecordExporter(baseUrl))
+            batchLogRecordProcessor(
+                otlpHttpLogRecordExporter {
+                    endpoint = baseUrl
+                }
+            )
         }
     }
 }
 ```
+
+If `endpoint` isn't set, the exporters read the `OTEL_EXPORTER_OTLP_ENDPOINT`
+environment variable (or the signal-specific
+`OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` and `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`),
+and otherwise default to `http://localhost:4318`.
 
 ## Resource
 
@@ -83,9 +96,7 @@ Syntactic sugar also allows setting the Resources from a `Map<String, Any>`:
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
-    resource {
-        resource(mapOf("service.namespace" to "payments"))
-    }
+    resource(mapOf("service.namespace" to "payments"))
 }
 ```
 
@@ -129,58 +140,70 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 [Span Limits](/docs/specs/otel/trace/sdk/#span-limits) provide the same limits
 as previously shown in the [attribute limits](#attribute-limits) section, and
-also provide configuration that restricts how many spans and events are
+also provide configuration that restricts how many links and events are
 captured:
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     tracerProvider {
-        spanLimits = 200
-        eventCountLimit = 250
-        attributeCountPerEventLimit = 50
-        attributeCountPerLinkLimit = 20
-        attributeCountLimit = 200
-        attributeValueLengthLimit = 256
+        spanLimits {
+            linkCountLimit = 200
+            eventCountLimit = 250
+            attributeCountPerEventLimit = 50
+            attributeCountPerLinkLimit = 20
+            attributeCountLimit = 200
+            attributeValueLengthLimit = 256
+        }
     }
 }
 ```
 
-## Implicit Context storage
+## Current context storage
 
 As described in the
-[implicit context instrumentation guide](/docs/languages/kotlin/instrumentation/#using-implicit-context)
-it's possible to alter the default mechanism that stores the implicit context.
-By default this is stored in a global, process-wide mechanism, but can be
-changed to thread-local via `storageMode`:
+[current context instrumentation guide](/docs/languages/kotlin/instrumentation/#using-current-context)
+it's possible to alter the default mechanism that stores the current context. By
+default this is stored in a global, process-wide mechanism, but can be changed
+to thread-local via `storageMode`:
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     context {
-        storageMode = ImplicitContextStorageMode.THREAD_LOCAL
-        // storage { MyCustomStorage() }
+        storageMode = CurrentContextStorageMode.THREAD_LOCAL
     }
 }
 ```
 
-You can implement custom storage mechanisms too. The example below implements
+You can implement custom storage mechanisms too. The `storage` function receives
+a `rootSupplier` that provides the root `Context`. The example below implements
 the same behavior as OpenTelemetry Kotlin's default approach to global context
 storage:
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     context {
-        storage { MyCustomStorage() }
+        storage { rootSupplier -> MyCustomStorage(rootSupplier) }
     }
 }
 
-class CustomStorage(private val default: Context): ImplicitContextStorage {
+class MyCustomStorage(
+    private val rootSupplier: () -> Context,
+) : CurrentContextStorage {
 
-    private var ref: Context = default
+    @Volatile
+    private var current: Context? = null
 
-    override fun setImplicitContext(context: Context) {
-        ref = context
+    override fun current(): Context = current ?: rootSupplier()
+
+    override fun attach(context: Context): Scope {
+        val previous = current
+        current = context
+        return object : Scope {
+            override fun detach(): Boolean {
+                current = previous
+                return true
+            }
+        }
     }
-
-    override fun implicitContext(): Context = ref
 }
 ```
