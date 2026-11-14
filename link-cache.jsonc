@@ -2619,6 +2619,11 @@
     "when": "2026-11-06T05:38:26Z",
     "via": "lychee",
   },
+  "https://docs.kernel.org/accounting/psi.html": {
+    "result": 200,
+    "when": "2026-11-14T10:29:13Z",
+    "via": "lychee",
+  },
   "https://docs.kernel.org/admin-guide/cgroup-v2.html#cpu-interface-files": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
