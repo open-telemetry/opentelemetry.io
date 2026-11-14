@@ -14,12 +14,12 @@ _OpenTelemetry In Focus_ の第1回へようこそ！
 
 ## リリースと更新 {#releases-and-updates}
 
-新年、新コード！
+新年、新しいコード！
 以下のリポジトリが今月新しいバージョンをリリースしました。
 各リリースの詳細については、完全なリリースノートをご確認ください。
 
 - [Specification v.1.17.0](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.17.0) がリリースされました！
-  Jaeger エクスポーターの非推奨通知、ヒストグラムデータモデルの安定版、セマンティック規約の変更、その他いくつかの変更が含まれています。
+  Jaeger エクスポーターの非推奨通知、ヒストグラムデータモデルの安定化、セマンティック規約の変更、その他いくつかの変更が含まれています。
 - [Go v1.12.0/v0.35.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.12.0) は、セマンティック規約とメトリクス計装の更新という重要なリリースに加え、いくつかのバグ修正やその他の重要な変更を含んでいます。
 - [JavaScript](https://github.com/open-telemetry/opentelemetry-js/releases) は、API の v1.4.0、コアの v.1.9.0、実験的パッケージの v0.35.0 をリリースしました！
   これらのリリースには、トレーシングにおけるクロックドリフトに関する重要なバグ修正、その他の非推奨化と機能強化が含まれています。
