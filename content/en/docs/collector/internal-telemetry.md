@@ -726,6 +726,38 @@ metrics and data egress with the `otelcol_exporter_sent_log_records`,
 `otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
 metrics.
 
+Before interpreting missing telemetry as data loss, establish when data is
+expected. Account for idle services, scheduled work, deployment changes, and the
+normal delay between data generation and observation.
+
+Compare counts for the same signal type over a defined time window along a known
+path through your pipeline. Filtering, sampling, routing, replication, and
+generated telemetry can change the expected relationship between ingress and
+egress counts, and batching or queued work can push egress past the end of the
+window. So a gap between accepted and sent counts is not proof of loss on its
+own.
+
+If the gap persists across several windows, check [queue length](#queue-length)
+and Collector logs to see whether data is waiting to be sent or being dropped.
+Then look at [receive and export failures](#receive-failures), keeping in mind
+that failed sends may still succeed on retry.
+
+Where practical, send the Collector's internal telemetry somewhere other than
+through the pipeline it monitors, so you still see it when that pipeline fails.
+For example, scrape the Collector's Prometheus endpoint directly. Make sure
+these measurements themselves keep arriving. OpenTelemetry provides the
+telemetry, but it has no way to know when your services are expected to be
+quiet, so you need to define missing-data alerts in your monitoring system
+yourself. Set their evaluation windows and thresholds to match expected activity
+and observation delays.
+
+A running Collector may still be failing to deliver data, and a successful
+export means the backend accepted the data, not that it is durably stored or
+queryable yet. When you need those guarantees, verify at the destination.
+
+For a broader discussion of missing telemetry in application workflows, see
+[When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
+
 [SemConvGuidance]:
   /docs/specs/semconv/general/semantic-convention-groups#group-stability
 [OTEP-0232]:
