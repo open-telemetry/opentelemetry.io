@@ -11,4 +11,4 @@ weight: 170
 ## Further Reading
 
 - [OpenTelemetry for Kotlin on GitHub](https://github.com/open-telemetry/opentelemetry-kotlin)
-- [Installation](https://github.com/open-telemetry/opentelemetry-kotlin#getting-started)
+- [Getting started](/docs/languages/kotlin/getting-started/)
