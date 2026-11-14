@@ -9,7 +9,7 @@ cSpell:ignore: Bogdan Drutu mtwo Paxão Shkuro Sigelman trask
 
 OpenTelemetry プロジェクトは、2023年 OpenTelemetry Governance Committee（GC）選挙の実施をお知らせします。
 推薦の締め切りは2023年10月13日の終日です。
-候補者リストは2023年10月16日に公開されます。
+有資格候補者の一覧は2023年10月16日に公開されます。
 投票は2023年10月23日から2023年10月25日まで行われ、最終的な選挙結果は2023年10月27日に発表されます。
 
 ## 投票しましょう！ {#vote}
@@ -35,9 +35,9 @@ Governance Committee の役割については、[こちらのブログ記事](/b
 OpenTelemetry の成長に貢献してきた GC メンバーに感謝いたします。
 再選を希望される場合は立候補をお待ちしています：Ben Sigelman、Bogdan Drutu、Juraci Paxão Kröhling、Ted Young、Yuri Shkuro。
 
-## ご質問は？ {#questions}
+## ご質問はありますか？ {#questions}
 
-選挙に関するご質問は、[コミュニティリポジトリ](https://github.com/open-telemetry/community/issues)でイシューを作成し、[@dyladan](https://github.com/dyladan)、[@mtwo](https://github.com/mtwo)、[@trask](https://github.com/trask) をタグしてください。
+選挙に関するご質問は、[コミュニティリポジトリ](https://github.com/open-telemetry/community/issues)でイシューを作成し、[@dyladan](https://github.com/dyladan)、[@mtwo](https://github.com/mtwo)、[@trask](https://github.com/trask) をタグ付けしてください。
 投票期間中に緊急のアクセスの問題がある場合は、[CNCF Slack](https://slack.cncf.io/) の [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) でご連絡ください。
 
 投票所でお会いしましょう！
