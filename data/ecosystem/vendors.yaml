@@ -631,3 +631,9 @@
   contact: frank@respan.ai
   oss: false
   commercial: true
+- name: Ritele
+  nativeOTLP: true
+  url: https://ritele.io/docs/#otel
+  contact: hello@ritele.io
+  oss: false
+  commercial: true
