@@ -22,7 +22,7 @@ OpenTelemetry が C++、.NET、Go、Java、JavaScript、PHP、Python におい�
 
 OpenTelemetry プロジェクトの[主要な目標](https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0)の一つは、OpenCensus との後方互換性と既存ユーザー向けの移行手段を提供することです。
 
-移行パスを容易にするために、以下の言語向けに後方互換性ブリッジを提供しています[^shim-next-release]。
+移行を容易にするために、以下の言語向けに後方互換性ブリッジを提供しています[^shim-next-release]。
 
 - [Go][go shim]
 - [Java][java shim]
@@ -45,9 +45,9 @@ OpenTelemetry は OpenCensus の厳密なスーパーセットとなることを
 ただし、OpenCensus リポジトリは GitHub 上でアーカイブとして残ります。
 ユーザーは引き続き OpenCensus のコードをダウンロードしてプロジェクトで使用できます。
 OpenCensus の既存リリースは NPM や PyPI などのパブリックパッケージリポジトリで引き続き利用可能です。
-**すべての OpenCensus ユーザーには、今すぐ OpenTelemetry への移行計画を開始することをお勧めします。**
+**すべての OpenCensus ユーザーに、今すぐ自身のプロジェクトを OpenTelemetry に移行する計画を始めることをお勧めします。**
 
-この例外として、[census-instrumentation/opencensus-python][] リポジトリがあります[^python-timeline]。
+この例外は、[census-instrumentation/opencensus-python][] リポジトリです[^python-timeline]。
 
 [go shim]: https://github.com/open-telemetry/opentelemetry-go/tree/dbeb92241acd17d8c2a4a70c9b449407558e83de/bridge/opencensus?from_branch=main
 [java shim]: https://github.com/open-telemetry/opentelemetry-java/tree/4c43b37f780372c2f6f5a8489b606f79ebfef854/opencensus-shim?from_branch=main
@@ -56,7 +56,7 @@ OpenCensus の既存リリースは NPM や PyPI などのパブリックパッ�
 [census-instrumentation/opencensus-python]: https://github.com/census-instrumentation/opencensus-python
 
 [^python-timeline]:
-    `opencensus-python` リポジトリ内の多くのプロジェクトは、引き続き推奨されるプロダクションソリューションとして使用されています。
+    `opencensus-python` リポジトリ内の多くのプロジェクトは、引き続き推奨される本番環境向けのソリューションとして使用されています。
     これらのプロジェクトは引き続きメンテナンスされます。
     メンテナンスのタイムラインや移行の次のステップ、一般的なサポートに関する質問については、リポジトリのメンテナーに連絡してください。
 
