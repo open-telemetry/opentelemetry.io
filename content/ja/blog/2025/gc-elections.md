@@ -27,8 +27,8 @@ OpenTelemetry コミュニティの [Member of Standing](https://github.com/open
 
 ## Governance Committee への参加に興味はありますか？ {#interested-in-joining-the-governance-committee}
 
-OpenTelemetry に携わり、その成長を見守ってきた方や、OpenTelemetry をより良くするために貢献したいエンドユーザーの方は、今こそ Governance Committee の席に立候補することを検討してみてください。
-Governance Committee の役割については、[こちらのブログ記事](/blog/2019/opentelemetry-governance-committee-explained/)や[チャータードキュメント](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main)を参照してください。
+OpenTelemetry に携わり、その成長を見守ってきた方や、OpenTelemetry をより良くするために貢献したいエンドユーザーの方は、今こそ Governance Committee のメンバーに立候補することを検討してみてください。
+Governance Committee の役割については、[こちらのブログ記事](/blog/2019/opentelemetry-governance-committee-explained/)や[憲章文書](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main)を参照してください。
 2025年10月17日 23:59 UTC までに[候補者リスト](https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main)にプルリクエストを送信して、自薦（または他薦）できます。
 詳しい要件については、Governance Committee 選挙の[推薦](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2025/governance-committee-election.md?from_branch=main#nominations)セクションをご覧ください。
 
