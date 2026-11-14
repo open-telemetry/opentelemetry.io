@@ -136,10 +136,12 @@ don't need to adapt.
 It carries the same buffering and two-tier topology as `tail_sampling`, plus two
 costs of its own. Rates are learned per instance, so each Collector adapts only
 to the slice of traffic it sees, and by default a throughput goal is enforced
-per instance rather than across the fleet. An experimental `fleet_tracker`
-setting can divide the goal by a live fleet size, but no distribution ships a
-tracker extension yet. The processor is also alpha, so expect some configuration
-change.
+per instance rather than across the fleet. The optional `fleet_tracker` setting
+divides the goal by a live fleet size reported by an extension. The Redis-backed
+[`redis_fleet_tracker`][] extension in Collector Contrib provides one. It is in
+development and not yet in a Collector distribution, so using it means building
+a custom Collector, and it adds a Redis or Valkey dependency. The processor is
+also alpha, so expect some configuration change.
 
 **Use adaptive tail sampling when** you need counts to stay accurate after
 sampling, your traffic mix shifts enough that fixed rates go stale, or you are
@@ -195,3 +197,5 @@ cover, the specification and Collector repositories are the place to raise it.
   https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/processor/tailsamplingprocessor/README.md
 [`adaptive_tail_sampling`]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/processor/adaptivetailsamplingprocessor/README.md
+[`redis_fleet_tracker`]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.165.1/extension/fleettracker/redisfleettrackerextension/README.md
