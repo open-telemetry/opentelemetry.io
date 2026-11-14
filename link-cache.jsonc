@@ -2619,6 +2619,11 @@
     "when": "2026-11-06T05:38:26Z",
     "via": "lychee",
   },
+  "https://docs.kernel.org/accounting/psi.html": {
+    "result": 200,
+    "when": "2026-11-14T10:29:13Z",
+    "via": "lychee",
+  },
   "https://docs.kernel.org/admin-guide/cgroup-v2.html#cpu-interface-files": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
@@ -3017,6 +3022,11 @@
   "https://docs.oracle.com/en/database/oracle/oracle-database/26/tgsql/observabilitly-open-telemetry.html": {
     "result": 200,
     "when": "2026-10-28T10:30:00Z",
+    "via": "lychee",
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/tgsql/observability-open-telemetry.html": {
+    "result": 200,
+    "when": "2026-11-08T13:00:58Z",
     "via": "lychee",
   },
   "https://docs.oracle.com/en/error-help/db/": {
@@ -23664,6 +23674,16 @@
     "when": "2026-10-28T10:30:01Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4291": {
+    "result": 200,
+    "when": "2026-11-05T10:29:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4292": {
+    "result": 200,
+    "when": "2026-11-05T10:29:34Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "result": 200,
     "when": "2026-10-27T05:47:27Z",
@@ -24037,6 +24057,11 @@
   "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
     "result": 200,
     "when": "2026-10-28T05:39:35Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.v2.md#spans-definition": {
+    "result": 200,
+    "when": "2026-11-05T10:29:33Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/weaver/releases": {
