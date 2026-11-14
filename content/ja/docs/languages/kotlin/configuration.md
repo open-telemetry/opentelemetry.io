@@ -3,6 +3,7 @@ title: OpenTelemetry Kotlin の設定
 linkTitle: SDK の設定
 weight: 13
 default_lang_commit: 6dae53b63ae3197dcc140fddcc867ac635541799
+drifted_from_default: true
 ---
 
 OpenTelemetry Kotlin SDK は、DSL パラメーターを通じて初期化時に設定されます。
