@@ -1,0 +1,21 @@
+title: Spree Commerce Instrumentation
+registryType: instrumentation
+language: ruby
+tags:
+  - ruby
+  - instrumentation
+  - spree commerce
+  - ecommerce
+license: MIT
+description: Spree Commerce instrumentation for the OpenTelemetry framework
+authors:
+  - name: Spree Commerce
+urls:
+  repo: https://github.com/spree/spree/tree/main/spree/opentelemetry
+  website: https://spreecommerce.org
+createdAt: 2026-11-02
+package:
+  registry: gems
+  name: spree_opentelemetry
+  version: 6.0.1
+isFirstParty: false
