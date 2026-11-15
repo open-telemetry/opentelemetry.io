@@ -12,7 +12,7 @@ cSpell:ignore: mbstring opcache
 
 {{% docs/languages/index-intro php /%}}
 
-## Further Reading
+## Further reading
 
 - [OpenTelemetry for PHP on GitHub](https://github.com/open-telemetry/opentelemetry-php)
 - [Examples](https://github.com/open-telemetry/opentelemetry-php/tree/main/examples)
