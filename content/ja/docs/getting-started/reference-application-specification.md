@@ -4,6 +4,7 @@ linkTitle: リファレンスアプリ仕様
 description: このドキュメントは、Getting Started ガイド全体で使用されるリファレンスアプリケーションの仕様を記載しています
 toc_hide: true
 default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
+drifted_from_default: true
 cspell:ignore: uninstrumented rolldice
 ---
 

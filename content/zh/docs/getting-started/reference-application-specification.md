@@ -5,6 +5,7 @@ description: 本文包含在快速入门指南中使用的参考应用的规范
 toc_hide: true
 cspell:ignore: uninstrumented rolldice
 default_lang_commit: 5d9a9ba46a959435e2b0c22dddb021a7d4152393
+drifted_from_default: true
 ---
 
 参考应用的目的是提供一个标准化的示例应用，该应用可以使用所有已提供
