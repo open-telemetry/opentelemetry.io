@@ -36,7 +36,7 @@ Logging API と Tracing API の初期実装が利用可能です。
 
 このプロジェクトにはいくつかの長期的な目標があります。
 まず、ユーザービリティについて十分なフィードバックを得た後、Logging API と Tracing API の安定化を予定しています。
-その一環として、流暢な Kotlin API を提供しつつ、プロジェクトが [OpenTelemetry 仕様に準拠している](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md)ことの確認を行います。
+その一環として、Fluent な Kotlin API を提供しつつ、プロジェクトが [OpenTelemetry 仕様に準拠している](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md)ことの確認を行います。
 
 次に、モバイル開発環境から新たなユーザーを OpenTelemetry エコシステムに引き込むことが重要な目標です。
 モバイルフレンドリーな API の提供と、プロセス終了の処理方法など、クライアント/モバイルに影響する現在の荒削りな部分の修正によってこれを実現したいと考えています。
