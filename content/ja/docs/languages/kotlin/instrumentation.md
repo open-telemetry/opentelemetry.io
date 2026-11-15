@@ -6,6 +6,7 @@ aliases:
   - manual_instrumentation
 description: OpenTelemetry Kotlin の手動計装
 default_lang_commit: e358f6a20be1341939fe50816902dd284c60bb16
+drifted_from_default: true
 ---
 
 {{% include instrumentation-intro.md %}}

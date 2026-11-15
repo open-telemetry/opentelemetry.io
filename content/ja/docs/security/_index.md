@@ -4,6 +4,7 @@ cascade:
   collector_vers: 0.164.0
 weight: 970
 default_lang_commit: afae27e30673d857278fcf0c1285d0ab0c51cd67
+drifted_from_default: true
 ---
 
 このセクションでは、OpenTelemetryプロジェクトがどのように脆弱性を公開し、インシデントに対応しているかを学び、あなたがテレメトリーを安全に収集し、送信するために何ができるかを知ることができます。
