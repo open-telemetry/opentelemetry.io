@@ -7,7 +7,8 @@ author: >-
 issue: 8039
 sig: Collector
 default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
-cSpell:ignore: Bindplane CloudWatch OTTL schmikei VPC
+drifted_from_default: true
+cSpell:ignore: Bindplane CloudWatch schmikei VPC
 ---
 
 OpenTelemetry Collector 内でバンドルされたログを展開するというアイデアは、プロセッサーから始まったわけではありません。
