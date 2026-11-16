@@ -2,6 +2,7 @@
 title: Getting Started
 description: Get started with the OpenTelemetry Kotlin SDK
 weight: 10
+cSpell:ignore: jetbrains
 ---
 
 OpenTelemetry Kotlin provides a
@@ -57,6 +58,9 @@ OpenTelemetry Kotlin's API operates in 2 modes:
 
 First, choose whether to follow the regular or compatibility mode guide below.
 
+You can find the latest version on the
+[GitHub releases page](https://github.com/open-telemetry/opentelemetry-kotlin/releases).
+
 ### Use regular mode
 
 1. Add these dependencies to the `build.gradle` of the module that initializes
@@ -99,7 +103,8 @@ dependencies {
 
 1. Wrap your existing
    [OpenTelemetry Java](https://github.com/open-telemetry/opentelemetry-java)
-   instance:
+   instance. This requires your module to depend on
+   `io.opentelemetry:opentelemetry-sdk`:
 
 ```kotlin
 val otelJava = io.opentelemetry.sdk.OpenTelemetrySdk.builder().build()
@@ -141,10 +146,10 @@ A minimal example that emits a log and a trace is shown below:
 fun example(otel: OpenTelemetry = NoopOpenTelemetry) {
     // emits a log
     val logger = otel.loggerProvider.getLogger("my_logger")
-    logger.log("Hello, World!")
+    logger.emit(body = "Hello, World!")
 
     // starts then ends a span
-    val tracer = otel.tracerProvider.getTracer("my_tracer)
+    val tracer = otel.tracerProvider.getTracer("my_tracer")
     tracer.startSpan("my_span").end()
 }
 ```
@@ -153,6 +158,49 @@ To emit telemetry, pass a real instance of `OpenTelemetry` as a parameter rather
 than a no-op. If you're a library author, this pattern is very useful as it
 allows your library consumers to opt in to capturing telemetry from your
 library.
+
+### Check that it works
+
+Before you set up a backend, you can check that telemetry is captured by
+printing it to stdout. Configure the SDK with the stdout exporters:
+
+```kotlin
+val otel: OpenTelemetry = createOpenTelemetry {
+    serviceName = "my-service"
+    tracerProvider {
+        export {
+            simpleSpanProcessor(stdoutSpanExporter())
+        }
+    }
+    loggerProvider {
+        export {
+            simpleLogRecordProcessor(stdoutLogRecordExporter())
+        }
+    }
+}
+example(otel)
+```
+
+Processors currently export telemetry asynchronously. In a short-lived process,
+such as a `main` function, you may need to block until this telemetry is
+delivered:
+
+```kotlin
+runBlocking {
+    (otel as? OpenTelemetrySdk)?.shutdown()
+}
+```
+
+You should then see output similar to the following:
+
+```text
+LogRecord [UNKNOWN]
+  Body: Hello, World!
+  ...
+Span: my_span [INTERNAL]
+  TraceId: 9f2ac10dc87ab58aa6b0b5eed29af32d
+  ...
+```
 
 ### Export to an OpenTelemetry Collector
 
@@ -171,24 +219,34 @@ dependencies {
 Then configure OTLP exporters with a batch processor:
 
 ```kotlin
-val url = "http://localhost:4318"
 val otel: OpenTelemetry = createOpenTelemetry {
+    serviceName = "my-service"
     tracerProvider {
         export {
             batchSpanProcessor(
-                otlpHttpSpanExporter(url)
+                otlpHttpSpanExporter {
+                    endpoint = "http://localhost:4318"
+                }
             )
         }
     }
     loggerProvider {
         export {
             batchLogRecordProcessor(
-                otlpHttpLogRecordExporter(url)
+                otlpHttpLogRecordExporter {
+                    endpoint = "http://localhost:4318"
+                }
             )
         }
     }
 }
 ```
+
+`http://localhost:4318` is the default endpoint, so you can omit `endpoint` if
+your Collector runs locally. The Android emulator reaches the host machine at
+`http://10.0.2.2:4318` instead, and your app's
+[network security configuration](https://developer.android.com/privacy-and-security/security-config)
+must allow cleartext traffic to that address.
 
 ---
 

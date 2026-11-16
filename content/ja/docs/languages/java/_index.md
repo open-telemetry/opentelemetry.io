@@ -10,12 +10,11 @@ redirects:
 cascade:
   vers:
     instrumentation: 2.33.1
-    otel: 1.67.0
-    contrib: 1.62.0
+    otel: 1.68.0
+    contrib: 1.62.1
     semconv: 1.45.0
 weight: 150
-default_lang_commit: 9303f8245fc0b7e9f51d9b42696b7144bfef2ae1
-drifted_from_default: true
+default_lang_commit: 52bc572fc569401f35171b4138844754e5dac670
 ---
 
 {{% docs/languages/index-intro java /%}}

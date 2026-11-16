@@ -66,7 +66,7 @@ SDK exists.
     The names of those files should be idiomatic within the implementing
     language, like `app.js` and `roll-the-dice.js`. The important point is that
     by separating the two, the code demonstrates that the `library` only takes
-    dependency on the API and all the SDK code is initalized in the `app` code.
+    dependency on the API and all the SDK code is initialized in the `app` code.
 - Error handling for `rolls` should be split as follows:
   - the `app` checks if `rolls` is defined, and if not, sets it to `1`.
   - the `app` only checks if `rolls` is a number. If yes, it calls the function
@@ -112,7 +112,7 @@ SDK exists.
   attributes to the span like the value of `rolls`, `code.*`, ...
 - There should be a span created for the inner function in `library`. The span
   tracks the time of the function. It adds the random number it generated as an
-  attribue to the span.
+  attribute to the span.
 - In the `library` file the following metrics should be created:
   - a counter for the calls of the outer function
   - a histogram for the distribution of the outcomes (1-6)

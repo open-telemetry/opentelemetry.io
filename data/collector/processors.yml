@@ -245,10 +245,10 @@
   distributions:
     - core
   stability:
-    logs: development
-    metrics: development
-    profiles: development
-    traces: development
+    profiles: alpha
+    logs: beta
+    metrics: beta
+    traces: beta
 - name: redactionprocessor
   display_name: Redaction Processor
   repo: contrib
@@ -274,6 +274,7 @@
   repo: contrib
   distributions:
     - contrib
+    - core
     - k8s
   stability:
     logs: beta
@@ -361,6 +362,7 @@
   repo: contrib
   distributions:
     - contrib
+    - core
     - k8s
   stability:
     logs: beta
