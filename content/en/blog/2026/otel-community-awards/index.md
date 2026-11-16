@@ -10,7 +10,7 @@ sig: End-User SIG
 
 ## Congratulations to our 2026 OpenTelemetry Community Award winners!
 
-![Graphic showing the GitHub profile pictures of the five winners](OTel_Community_Awards_2026.png)
+![Graphic showing the GitHub profile pictures of the five winners](otel-community-awards-2026.png)
 
 We are very pleased to announce the winners of the 2026 OpenTelemetry 
 Community Awards! These awards recognize individuals who have made a notable 
@@ -42,8 +42,8 @@ reference implementation project.
 <br>SIGs: `benchmarks`, `dotnet-contrib`, `dotnet`
 <br>**Martin Costello** is “one of the most active” contributors of “high level 
 quality” to the project. In addition to maintaining the OTel .NET and 
-benchmarks repos, he provides “thoughtful feedback” on other repos that 
-impact the project as a whole. 
+benchmarks repositories, he provides “thoughtful feedback” on other 
+repositories that impact the project as a whole. 
 
 [@MrAlias](https://github.com/MrAlias)
 <br>SIGs: `configuration`, `ebpf-instrumentation`, `go-instrumentation`, `go`
