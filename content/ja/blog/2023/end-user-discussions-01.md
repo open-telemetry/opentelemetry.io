@@ -5,8 +5,8 @@ date: 2023-01-27
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 aliases: [otel-end-user-discussions-january-2023]
 body_class: otel-with-contributions-from
-default_lang_commit: c0067e41464a36f4b29f59d1b0d3b3970d4bd5dc
-cSpell:ignore: january OTTL
+default_lang_commit: ca99c1f23ef7e02acee3389ee766af6dbedb8e64
+cSpell:ignore: january
 ---
 
 [Henrik Rexed](https://github.com/henrikrexed)（Dynatrace）、
@@ -185,8 +185,8 @@ GitHub の[プロファイリングリポジトリ](https://github.com/open-tele
 OpenTelemetry を組織でどのように活用しているかのストーリーを共有したい方は、ぜひお聞かせください！
 共有方法:
 
-- [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf) の [#otel-endusers チャンネル](/community/end-user/slack-channel/)に参加する
-- 毎月開催の[エンドユーザーディスカッショングループ](/community/end-user/discussion-group/)に参加する
+- [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf) の [#otel-endusers チャンネル](/community/end-user/#slack)に参加する
+- 毎月開催の[エンドユーザーディスカッショングループ](/community/end-user/#podcast)に参加する
 - [OTel in Practice](/community/end-user/otel-in-practice/) セッションに参加する
 - [OpenTelemetry ブログ](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)でストーリーを共有する
 

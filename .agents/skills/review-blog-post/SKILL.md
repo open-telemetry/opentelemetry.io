@@ -131,7 +131,7 @@ line is long enough that the formatter would wrap it:
 
 ```yaml
 # prettier-ignore
-cSpell:ignore: jpkrohling Krohling logdedup OllyGarden OTTL Paixao telemetrygen
+cSpell:ignore: jpkrohling Krohling logdedup OllyGarden Paixao telemetrygen
 ```
 
 ## OTel terminology
