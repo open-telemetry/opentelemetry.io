@@ -11,7 +11,30 @@ body:
 
         **Before submitting this request, read the [blog submission guidelines](https://opentelemetry.io/docs/contributing/blog/) to ensure your content meets our requirements.**
 
+        Blog posts must be submitted by a member of the [OpenTelemetry GitHub organization](https://github.com/open-telemetry/community/blob/main/community-membership.md). The blog strongly prefers project and organizational announcements, such as releases, milestones, and SIG news. Tutorials and how-to content usually belong in the documentation instead.
+
         Blog posts should not be commercial in nature and should consist of original content that applies broadly to the OpenTelemetry community.
+
+  - type: checkboxes
+    id: membership
+    attributes:
+      label: Organization membership
+      options:
+        - label: I am a member of the OpenTelemetry GitHub organization.
+          required: true
+
+  - type: dropdown
+    id: post_type
+    attributes:
+      label: Post type
+      options:
+        - Release or project milestone
+        - SIG formation or update
+        - Call for Contributors
+        - Other announcement
+        - Other
+    validations:
+      required: true
 
   - type: input
     id: title
