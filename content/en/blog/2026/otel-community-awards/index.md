@@ -29,7 +29,7 @@ nominations.
 <br>SIGs: `docs`, `ecosystem-explorer`, `java-contrib`, `semconv-conformance`
 <br>**Jay DeLuca** is “an incredible maintainer/contributor” who kicked off and 
 drove the Ecosystem Explorer. He welcomes and mentors new contributors, and 
-contributes high-quality work to the Java repos. 
+contributes high-quality work to the Java repositories. 
 
 [@julianocosta89](https://github.com/julianocosta89)
 <br>SIGs: `demo`, `sig-developer-experience`
@@ -41,7 +41,7 @@ reference implementation project.
 [@martincostello](https://github.com/martincostello)
 <br>SIGs: `benchmarks`, `dotnet-contrib`, `dotnet`
 <br>**Martin Costello** is “one of the most active” contributors of “high level 
-quality” to the project. In addition to maintaining the OTel dotnet and 
+quality” to the project. In addition to maintaining the OTel .NET and 
 benchmarks repos, he provides “thoughtful feedback” on other repos that 
 impact the project as a whole. 
 
