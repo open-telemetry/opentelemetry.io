@@ -1,7 +1,7 @@
 ---
 title: Updates to our blog policy
 linkTitle: Blog policy update
-date: 2026-11-16
+date: 2026-11-17
 author: '[Austin Parker](https://github.com/austinlparker)'
 issue: 12693
 sig: Comms
