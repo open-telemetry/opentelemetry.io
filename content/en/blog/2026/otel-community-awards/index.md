@@ -3,14 +3,14 @@ title: Announcing the 2026 OpenTelemetry Community Award Winners
 linkTitle: 2026 OpenTelemetry Community Award Winners
 date: 2026-11-16
 author: OpenTelemetry Community Managers
-draft: true # TODO: remove this line once your post is ready to be published
 issue: 12671
 sig: End-User SIG
+cSpell:ignore: jaydeluca julianocosta martincostello yahn
 ---
 
-## Congratulations to our 2026 OpenTelemetry Community Award winners!
-
 ![Graphic showing the GitHub profile pictures of the five winners](otel-community-awards-2026.png)
+
+## Congratulations to our 2026 OpenTelemetry Community Award winners!
 
 We are very pleased to announce the winners of the 2026 OpenTelemetry Community
 Awards! These awards recognize individuals who have made a notable impact to the
