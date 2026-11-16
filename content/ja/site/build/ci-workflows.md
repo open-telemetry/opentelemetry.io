@@ -4,6 +4,7 @@ description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
 default_lang_commit: c03c6396c60a28c9fd83931cf1c310b5cad360fb
+drifted_from_default: true
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
