@@ -7,7 +7,7 @@ redirects:
   - { from: /php/*, to: ':splat' }
   - { from: /docs/php/*, to: ':splat' }
 weight: 180
-default_lang_commit: 60d50174e01d221f65af4b69ad1ae946fbc16ec8
+default_lang_commit: ca99c1f23ef7e02acee3389ee766af6dbedb8e64
 cSpell:ignore: mbstring opcache
 ---
 

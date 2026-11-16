@@ -19,6 +19,7 @@ colectorului
 commiturile
 comune
 configurezi
+contraintuitiv
 contribuitoare
 contribuitori
 contribuitorii
@@ -31,6 +32,7 @@ deserializează
 deții
 dezvoltatori
 dezvoltatorii
+dezvoltatorul
 editezi
 elimini
 emiți
@@ -47,6 +49,8 @@ eșantionează
 eșantioneze
 eșantionezi
 explorezi
+exportatoarele
+exportatoarelor
 exportatorilor
 exportatorului
 formatorul
@@ -100,6 +104,7 @@ procesator
 procesatori
 procesatorul
 propagatoarele
+propagatoarelor
 propagatorul
 propagi
 provii
@@ -117,9 +122,11 @@ revizuitorii
 sanitizezi
 semantică
 semnalizate
+serializată
 servii
 seteaz
 setează
+setezi
 sincronizate
 sincronizezi
 soliciți
@@ -129,6 +136,7 @@ submodulele
 submodulelor
 submodulul
 submodulului
+suboperații
 subregiuni
 sugerezi
 telemetrice

@@ -73,10 +73,9 @@
   distributions:
     - contrib
   stability:
-    logs: unmaintained
-    metrics: unmaintained
-    traces: unmaintained
-  unmaintained: true
+    logs: beta
+    metrics: beta
+    traces: beta
 - name: azuremonitorexporter
   display_name: Azure Monitor Exporter
   repo: contrib

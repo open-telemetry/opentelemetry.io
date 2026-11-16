@@ -3,6 +3,7 @@ title: はじめに
 description: OpenTelemetry Kotlin SDK を使い始める
 weight: 10
 default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
+drifted_from_default: true
 ---
 
 OpenTelemetry Kotlin は、[OpenTelemetry 仕様](/docs/specs/otel/)の [Kotlin Multiplatform](https://kotlinlang.org/multiplatform/) 実装を提供します。

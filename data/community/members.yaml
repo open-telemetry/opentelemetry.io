@@ -126,6 +126,12 @@ maintainers:
       - sig-project-infra-approvers
     html_url: https://github.com/adrielp
     avatar_url: https://avatars.githubusercontent.com/u/25961386?v=4
+  - name: agagniere
+    teams:
+      - zig-approvers
+      - zig-maintainers
+    html_url: https://github.com/agagniere
+    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
   - name: alanwest
     teams:
       - dotnet-approvers
@@ -285,12 +291,10 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1910782?v=4
   - name: bobstrecansky
     teams:
-      - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
       - php-distro-maintainers
-      - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
     avatar_url: https://avatars.githubusercontent.com/u/4099109?v=4
@@ -666,7 +670,6 @@ maintainers:
     teams:
       - docs-pt-approvers
       - docs-pt-maintainers
-      - docs-triagers
     html_url: https://github.com/EzzioMoreira
     avatar_url: https://avatars.githubusercontent.com/u/18507157?v=4
   - name: fabled
@@ -1326,6 +1329,13 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
+  - name: Nevay
+    teams:
+      - php-approvers
+      - php-maintainers
+      - php-triagers
+    html_url: https://github.com/Nevay
+    avatar_url: https://avatars.githubusercontent.com/u/22509671?v=4
   - name: NimrodAvni78
     teams:
       - ebpf-instrumentation-approvers
@@ -1773,11 +1783,11 @@ approvers:
       - docs-ko-approvers
     html_url: https://github.com/abel9851
     avatar_url: https://avatars.githubusercontent.com/u/66953834?v=4
-  - name: agagniere
+  - name: adityareddy-dev
     teams:
-      - zig-approvers
-    html_url: https://github.com/agagniere
-    avatar_url: https://avatars.githubusercontent.com/u/8630600?v=4
+      - browser-approvers
+    html_url: https://github.com/adityareddy-dev
+    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: ajimenez1503
     teams:
       - semconv-network-approvers
@@ -1943,6 +1953,12 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/hannahramadan
     avatar_url: https://avatars.githubusercontent.com/u/76922290?v=4
+  - name: harshitt13
+    teams:
+      - dart-approvers
+      - dart-triagers
+    html_url: https://github.com/harshitt13
+    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -2423,6 +2439,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/abhee11
     avatar_url: https://avatars.githubusercontent.com/u/6670495?v=4
+  - name: Adii-45
+    teams:
+      - ecosystem-explorer-triagers
+    html_url: https://github.com/Adii-45
+    avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
   - name: anarwal
     teams:
       - sig-contributor-experience-triagers
@@ -2469,16 +2490,16 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
-  - name: harshitt13
-    teams:
-      - dart-triagers
-    html_url: https://github.com/harshitt13
-    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: henrinormak
     teams:
       - javascript-contrib-triagers
     html_url: https://github.com/henrinormak
     avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
+  - name: himanshu130700
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/himanshu130700
+    avatar_url: https://avatars.githubusercontent.com/u/228173647?v=4
   - name: inetand
     teams:
       - kotlin-triagers
@@ -2652,12 +2673,6 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
-  - name: Adii-45
-    html_url: https://github.com/Adii-45
-    avatar_url: https://avatars.githubusercontent.com/u/90207171?v=4
-  - name: adityareddy-dev
-    html_url: https://github.com/adityareddy-dev
-    avatar_url: https://avatars.githubusercontent.com/u/82123567?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
@@ -2874,6 +2889,9 @@ members:
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4
+  - name: henry3260
+    html_url: https://github.com/henry3260
+    avatar_url: https://avatars.githubusercontent.com/u/108824346?v=4
   - name: hgaol
     html_url: https://github.com/hgaol
     avatar_url: https://avatars.githubusercontent.com/u/11908658?v=4
@@ -3192,6 +3210,9 @@ members:
   - name: sandy2008
     html_url: https://github.com/sandy2008
     avatar_url: https://avatars.githubusercontent.com/u/18073670?v=4
+  - name: sangkyoonnam
+    html_url: https://github.com/sangkyoonnam
+    avatar_url: https://avatars.githubusercontent.com/u/354771?v=4
   - name: sanketmehta28
     html_url: https://github.com/sanketmehta28
     avatar_url: https://avatars.githubusercontent.com/u/20374164?v=4
@@ -3231,6 +3252,9 @@ members:
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4
+  - name: sonalgaud12
+    html_url: https://github.com/sonalgaud12
+    avatar_url: https://avatars.githubusercontent.com/u/82362774?v=4
   - name: SpencerTorres
     html_url: https://github.com/SpencerTorres
     avatar_url: https://avatars.githubusercontent.com/u/28887171?v=4

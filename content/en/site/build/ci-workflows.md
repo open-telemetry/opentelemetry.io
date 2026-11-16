@@ -517,3 +517,36 @@ The repository includes several other workflows:
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 [self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->
+
+## Blog post announcements {#announce-blog-post}
+
+[`announce-blog-post.yml`][announce] runs on every push to `main` that touches
+`content/en/blog/`. It runs [`announce-blog-post/cli.mjs`][announce-script],
+which finds the English blog post published by the push: a post that isn't a
+draft now, and that didn't exist or was a draft before the push. Edits of
+published posts are ignored, so each post is announced once. For that post it
+opens a pull request in
+[`open-telemetry/opentelemetry-announcements`][announcements] with an
+announcement file. A maintainer there reviews and merges it.
+
+- Uses the `OTELBOT_DOCS_*` app token, scoped to the announcements repository
+  (the app must be installed there with `contents` and `pull requests` write
+  access).
+- The text comes from the post's `announcement` front matter string (default:
+  the title) followed by the post URL. The subject is "New on the OpenTelemetry
+  blog: _title_". Posts with `announcement: false` are skipped. The
+  announcements repository's own pull request check validates the length per
+  channel.
+- For posts with a future `date`, the PR description says when the post goes
+  live, so the PR isn't merged before that.
+- The file is named after the post date and the PR uses the branch
+  `otelbot/announce-blog-<year>-<slug>`, so re-runs don't announce a post twice.
+- If a push publishes more than one post, the workflow fails. Announce each post
+  with a manual run, using the `post` input. Manual runs also work for existing
+  posts.
+
+[announce]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml?link-check=no
+[announce-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs?link-check=no
+[announcements]: https://github.com/open-telemetry/opentelemetry-announcements

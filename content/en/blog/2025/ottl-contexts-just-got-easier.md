@@ -5,7 +5,7 @@ date: 2025-02-20
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 6289
 sig: Collector SIG
-cSpell:ignore: OTTL Vamerlatti
+cSpell:ignore: Vamerlatti
 ---
 
 Selecting the right OTTL context for running statements can be challenging, even
