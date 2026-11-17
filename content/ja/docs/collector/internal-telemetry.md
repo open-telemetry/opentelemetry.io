@@ -1,8 +1,7 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: 2cc7b050cecdab1a7daadb6b78ce51b15a18bec8
-drifted_from_default: true
+default_lang_commit: 134221e3bee516f02b424402300aef67d64159e1
 cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
@@ -436,18 +435,19 @@ service:
 
 #### 追加の `detailed` レベルのメトリクス {#additional-detailed-level-metrics}
 
-| メトリクス名                                          | 説明                                                      | 種別      |
-| ----------------------------------------------------- | --------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。 | Counter   |
-| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。       | Histogram |
-| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。     | Counter   |
-| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。           | Histogram |
-| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。     | Counter   |
-| `otelcol_exporter_enqueue_size`                       | 送信キューに追加されたリクエスト内のユニット数。          | Histogram |
-| `otelcol_exporter_enqueue_size_bytes`                 | 送信キューに追加されたリクエスト内のバイト数。            | Histogram |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                            | Histogram |
-| `rpc.client.call.duration`                            | アウトバウンド RPC の継続時間を測定します。               | Histogram |
-| `rpc.server.call.duration`                            | インバウンド RPC の継続時間を測定します。                 | Histogram |
+| メトリクス名                                          | 説明                                                                       | 種別      |
+| ----------------------------------------------------- | -------------------------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。                  | Counter   |
+| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。                        | Histogram |
+| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。                      | Counter   |
+| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。                            | Histogram |
+| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。                      | Counter   |
+| `otelcol_exporter_enqueue_size`                       | 送信キューに追加されたリクエスト内のユニット数。                           | Histogram |
+| `otelcol_exporter_enqueue_size_bytes`                 | 送信キューに追加されたリクエスト内のバイト数。                             | Histogram |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                                             | Histogram |
+| `otelcol_processor_internal_duration`                 | プロセッサーを通じてテレメトリーデータのバッチを処理するのにかかった時間。 | Histogram |
+| `rpc.client.call.duration`                            | アウトバウンド RPC の継続時間を測定します。                                | Histogram |
+| `rpc.server.call.duration`                            | インバウンド RPC の継続時間を測定します。                                  | Histogram |
 
 #### 出力されるメトリクスのオーナーシップ {#ownership-of-emitted-metrics}
 
