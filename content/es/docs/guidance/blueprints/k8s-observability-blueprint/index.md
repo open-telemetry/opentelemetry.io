@@ -90,8 +90,8 @@ Esto provoca:
   un problema se debe a la aplicación o al contenedor, o a la infraestructura o
   los recursos.
 - **Las alertas dejan de funcionar silenciosamente al cambiar de recopilador**:
-  una regla de alerta escrita para `pod_name` deja de encontrar coincidencias
-  cuando un nuevo recopilador utiliza `pod`.
+  una alerta escrita para `pod_name` deja de encontrar coincidencias cuando un
+  nuevo recopilador utiliza `pod`.
 - **Falta de contexto organizativo**: las etiquetas de equipo responsable,
   entorno y nivel de las anotaciones de los pods rara vez están presentes en la
   telemetría, por lo que el enrutamiento de alertas y la atribución de costos se
