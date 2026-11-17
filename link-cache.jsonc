@@ -22904,6 +22904,11 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/discussions/12694": {
+    "result": 200,
+    "when": "2026-11-16T18:48:13Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/fork": {
     "result": 200,
     "when": "2026-11-06T05:38:27Z",
