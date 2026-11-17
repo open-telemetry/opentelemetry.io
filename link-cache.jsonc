@@ -3854,6 +3854,11 @@
     "when": "2026-10-24T05:43:00Z",
     "via": "lychee",
   },
+  "https://en.wikipedia.org/wiki/Hexagonal_architecture": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
+    "via": "lychee",
+  },
   "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol": {
     "result": 200,
     "when": "2026-10-22T05:45:31Z",
@@ -5827,6 +5832,11 @@
   "https://github.com/akahenry/dynatrace-otel-exporter/blob/main/README.md": {
     "result": 200,
     "when": "2026-10-24T05:43:20Z",
+    "via": "lychee",
+  },
+  "https://github.com/akila-i": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
     "via": "lychee",
   },
   "https://github.com/alanwest": {
@@ -9444,6 +9454,11 @@
     "when": "2026-10-19T05:46:52Z",
     "via": "lychee",
   },
+  "https://github.com/nilushancosta": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
+    "via": "lychee",
+  },
   "https://github.com/nityanandagohain": {
     "result": 200,
     "when": "2026-10-22T05:45:22Z",
@@ -10862,6 +10877,21 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b21bf1a21be57988b655aa03ff664dbb250d6a99/pkg/ottl": {
     "result": 200,
     "when": "2026-11-06T05:38:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/c64840337cf400792cb684037ed998428b268197/processor/k8sattributesprocessor": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/c64840337cf400792cb684037ed998428b268197/processor/tailsamplingprocessor": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/c64840337cf400792cb684037ed998428b268197/receiver/k8seventsreceiver": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cb1f1bb54ee849b4c569eb8f6a950c0f9c7c6d43/receiver/pprofreceiver?from_branch=main": {
@@ -24064,6 +24094,26 @@
     "when": "2026-10-27T05:46:39Z",
     "via": "lychee",
   },
+  "https://github.com/openchoreo/community-modules": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/openchoreo/community-modules/tree/35fac05461e3287ed0ddecc8911d292135a4dd35/observability-events-otel-collector": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
+    "via": "lychee",
+  },
+  "https://github.com/openchoreo/openchoreo": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/openchoreo/openchoreo/tree/4bd2b139ff9cf23d3b7e33a3d37ad7718b7c437e/samples/gcp-microservices-demo": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "result": 200,
     "when": "2026-11-07T05:37:18Z",
@@ -28927,6 +28977,21 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://openchoreo.dev/": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
+    "via": "lychee",
+  },
+  "https://openchoreo.dev/docs/reference/mcp-servers/#observability-plane-mcp-server": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
+    "via": "lychee",
+  },
+  "https://openchoreo.dev/slack": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
+    "via": "lychee",
+  },
   "https://openfeature.dev/": {
     "result": 200,
     "when": "2026-10-22T05:45:20Z",
@@ -33482,6 +33547,11 @@
     "when": "2026-10-27T05:47:21Z",
     "via": "lychee",
   },
+  "https://www.cncf.io/blog/2026/10/27/opentelemetry-powered-distributed-tracing-and-kubernetes-events-in-openchoreo/": {
+    "result": 200,
+    "when": "2026-11-17T05:23:24Z",
+    "via": "lychee",
+  },
   "https://www.cncf.io/case-studies/brz-migrated-the-austrian-business-service-portal-with-2m-users-to-keycloak/": {
     "result": 200,
     "when": "2026-10-28T05:39:18Z",
@@ -33535,6 +33605,11 @@
   "https://www.cncf.io/projects/opentelemetry": {
     "result": 200,
     "when": "2026-10-27T05:47:21Z",
+    "via": "lychee",
+  },
+  "https://www.cncf.io/sandbox-projects/": {
+    "result": 200,
+    "when": "2026-11-17T05:23:22Z",
     "via": "lychee",
   },
   "https://www.cncf.io/training/certification/": {
@@ -35685,6 +35760,11 @@
   "https://www.youtube.com/live/vB9_SiTV5CI?si=F3jRi2w83Gp1lp_F": {
     "result": 200,
     "when": "2026-10-27T05:47:21Z",
+    "via": "lychee",
+  },
+  "https://www.youtube.com/live/yyJmBj8k7mk": {
+    "result": 200,
+    "when": "2026-11-17T05:23:23Z",
     "via": "lychee",
   },
   "https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43": {
