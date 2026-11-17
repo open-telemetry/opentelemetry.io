@@ -2,7 +2,7 @@
 title: Configure OBI performance
 linkTitle: Tune performance
 description:
-  Configure how the eBPF tracer component instruments HTTP and GRPC services of
+  Configure how the eBPF tracer component instruments HTTP and gRPC services of
   external processes and creates traces to forward to the next stage of the
   pipeline.
 weight: 90
