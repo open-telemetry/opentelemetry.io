@@ -3,8 +3,7 @@ title: CI ワークフロー
 description: >-
   PR のチェック、ラベル管理、その他の CI/CD プロセスを自動化する GitHub Actions ワークフロー。
 weight: 10
-default_lang_commit: c03c6396c60a28c9fd83931cf1c310b5cad360fb
-drifted_from_default: true
+default_lang_commit: ead94c1362193347d11dbadf1d6a5bb570b7618a
 ---
 
 ワークフローと（ほとんどの）ヘルパースクリプトについては、[.github][] 配下の `workflow` フォルダと `scripts` フォルダを参照してください。
@@ -408,3 +407,27 @@ scripts/gh/specs/create-or-finalize-pr.mjs --help
 [.github]: https://github.com/open-telemetry/opentelemetry.io/tree/main/.github
 [self-repo]: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/find-and-customize-actions#adding-an-action-from-the-same-repository
 <!-- prettier-ignore-end -->
+
+## ブログ記事のアナウンス {#announce-blog-post}
+
+[`announce-blog-post.yml`][announce] は `content/en/blog/` に変更を含む `main` へのプッシュごとに実行されます。
+[`announce-blog-post/cli.mjs`][announce-script] を実行し、そのプッシュで公開された英語のブログ記事を検出します。
+現在ドラフトではなく、プッシュ前には存在しなかったかドラフトだった記事が対象です。
+公開済み記事の編集は無視されるため、各記事は一度だけアナウンスされます。
+該当する記事について、[`open-telemetry/opentelemetry-announcements`][announcements] にアナウンスファイルを含むプルリクエストをオープンします。
+そちらのメンテナーがレビューしてマージします。
+
+- `OTELBOT_DOCS_*` App トークンを使用し、アナウンスリポジトリにスコープされます（そのリポジトリに `contents` と `pull requests` の書き込みアクセス付きでアプリがインストールされている必要があります）。
+- テキストは記事の `announcement` フロントマター文字列（デフォルト: タイトル）に記事の URL を続けたものです。
+  件名は「New on the OpenTelemetry blog: _タイトル_」です。
+  `announcement: false` の記事はスキップされます。
+  アナウンスリポジトリ自身のプルリクエストチェックが、チャンネルごとの長さを検証します。
+- 未来の `date` を持つ記事の場合、PR の説明に記事が公開される日時が記載されるため、その前に PR がマージされることはありません。
+- ファイル名は記事の日付に基づき、PR はブランチ `otelbot/announce-blog-<year>-<slug>` を使用するため、再実行しても同じ記事が二重にアナウンスされることはありません。
+- プッシュで複数の記事が公開された場合、ワークフローは失敗します。
+  `post` 入力を使用して手動実行で各記事を個別にアナウンスしてください。
+  手動実行は既存の記事にも使用できます。
+
+[announce]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/announce-blog-post.yml?link-check=no
+[announce-script]: https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/gh/announce-blog-post/cli.mjs?link-check=no
+[announcements]: https://github.com/open-telemetry/opentelemetry-announcements
