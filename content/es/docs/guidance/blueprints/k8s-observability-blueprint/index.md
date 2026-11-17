@@ -19,13 +19,13 @@ obtener:
 - Visibilidad inmediata del uso de recursos de las cargas de trabajo, los
   eventos de falta de memoria (OOM), los fallos de las sondas y el estado del
   ciclo de vida de los pods, sin cambios en las aplicaciones.
-- Una vía para monitorizar de forma fiable los componentes críticos de
-  Kubernetes (CoreDNS, plugins de CNI, controladores de Ingress, KEDA, etc.).
+- Una vía para el monitoreo fiable de los componentes críticos de Kubernetes
+  (CoreDNS, plugins de CNI, controladores de Ingress, KEDA, etc.).
 - Enriquecimiento uniforme de metadatos mediante las convenciones semánticas de
   OTel, que permite investigar de forma correlacionada métricas, logs y trazas.
 - Automonitorización de la infraestructura de recopilación de telemetría para
-  detectar lagunas de datos silenciosas antes de que afecten a la respuesta a
-  incidentes.
+  detectar lagunas de datos silenciosas antes de que perjudiquen la respuesta
+  ante incidentes.
 
 ## Contexto {#background}
 
@@ -89,9 +89,9 @@ Esto provoca:
   aplicaciones**: aumenta la carga cognitiva de los operadores al investigar si
   un problema se debe a la aplicación o al contenedor, o a la infraestructura o
   los recursos.
-- **Las reglas de alerta dejan de funcionar silenciosamente al cambiar de
-  recopilador**: una alerta escrita para `pod_name` deja de encontrar
-  coincidencias cuando un nuevo recopilador utiliza `pod`.
+- **Las alertas dejan de funcionar silenciosamente al cambiar de recopilador**:
+  una regla de alerta escrita para `pod_name` deja de encontrar coincidencias
+  cuando un nuevo recopilador utiliza `pod`.
 - **Falta de contexto organizativo**: las etiquetas de equipo responsable,
   entorno y nivel de las anotaciones de los pods rara vez están presentes en la
   telemetría, por lo que el enrutamiento de alertas y la atribución de costos se
@@ -104,9 +104,9 @@ CoreDNS, los plugins de CNI, los controladores de Ingress, KEDA, cert-manager
 
 Algunas consecuencias son:
 
-- **Los picos de latencia del DNS parecen problemas de las aplicaciones**: las
-  ralentizaciones de CoreDNS se manifiestan como tiempos de espera agotados en
-  los componentes que realizan las solicitudes, indistinguibles de un servicio
+- **Los picos de latencia del DNS parecen problemas de las aplicaciones**: la
+  lentitud de CoreDNS se manifiesta como tiempos de espera agotados en los
+  componentes que realizan las solicitudes, indistinguibles de un servicio
   dependiente lento sin una métrica de la capa DNS.
 - **Los descartes de paquetes de CNI no se atribuyen a su origen**: los paquetes
   descartados en la capa de políticas de red se manifiestan como fallos
@@ -175,7 +175,7 @@ Resultados:
 - Se siguen las convenciones semánticas de OpenTelemetry, lo que facilita la
   adopción de herramientas de observabilidad.
 
-### 3. Utiliza el operador de OpenTelemetry como plano de control del Collector y recopila los objetivos de Prometheus localmente en cada nodo {#3-use-the-opentelemetry-operator-as-the-collector-control-plane-and-scrape-prometheus-targets-node-locally}
+### 3. Utiliza el operador de OpenTelemetry como plano de control del Collector y recopila las métricas de los objetivos de Prometheus en cada nodo {#3-use-the-opentelemetry-operator-as-the-collector-control-plane-and-scrape-prometheus-targets-node-locally}
 
 **Desafíos abordados:** 3
 
@@ -211,8 +211,8 @@ toda la pila de observabilidad del clúster.
 
 Resultados:
 
-- Cada objetivo de Prometheus se recopila exactamente una vez, mediante el
-  Collector del nodo donde se ejecuta el objetivo.
+- Las métricas de cada objetivo de Prometheus se recopilan exactamente una vez,
+  mediante el Collector del nodo donde se ejecuta ese objetivo.
 - El ciclo de vida del Collector se gestiona automáticamente con recuperación
   automática.
 
