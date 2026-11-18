@@ -87,6 +87,18 @@ health_check:
 For example, `unix_socket_path: /var/run/obi-health.sock` creates a filesystem
 socket, while `unix_socket_path: '@obi-health'` uses an abstract socket.
 
+TCP example:
+
+```sh
+curl http://127.0.0.1:8080/healthz
+```
+
+Unix domain socket example:
+
+```sh
+curl --unix-socket /var/run/obi-health.sock http://localhost/healthz
+```
+
 ## Executable name matching
 
 This property accepts a
