@@ -7,8 +7,8 @@ cSpell:ignore: rolldice
 
 This page will show you how to get started with OpenTelemetry in Swift.
 
-You will learn how you can instrument a simple application, in such a way that
-[traces][] are emitted to the console.
+You will instrument a simple application to emit [traces][], [metrics][], and
+[logs][] (including events) to the console.
 
 ## Prerequisites
 
@@ -30,13 +30,13 @@ To begin, create a file called `Package.swift` in a new directory with the
 following content:
 
 ```swift
-// swift-tools-version:5.9
+// swift-tools-version:6.0
 import PackageDescription
 
 let package = Package(
     name: "dice-server",
     platforms: [
-       .macOS(.v13)
+        .macOS(.v13)
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1")
@@ -64,13 +64,18 @@ import Vapor
 @main
 enum Entrypoint {
     static func main() async throws {
-        let app = try Application(.detect())
-        defer { app.shutdown() }
-        app.get("rolldice") { req in
-            let result = Int.random(in: 1..<7)
-            return result
+        let app = try await Application.make(.detect())
+        do {
+            app.get("rolldice") { req in
+                let result = Int.random(in: 1..<7)
+                return result
+            }
+            try await app.execute()
+            try await app.asyncShutdown()
+        } catch {
+            try? await app.asyncShutdown()
+            throw error
         }
-        try app.run()
     }
 }
 ```
@@ -78,32 +83,30 @@ enum Entrypoint {
 Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-```console
-$ swift run
-Building for debugging...
-Build complete! (0.31s)
-2023-10-04T17:16:13+0200 notice codes.vapor.application : [Vapor] Server starting on http://127.0.0.1:8080
+```sh
+swift run
 ```
+
+Stop the server with Ctrl+C before continuing.
 
 ## Instrumentation
 
-To add OpenTelemetry to your application, update the `Package.swift` with the
-following additional dependencies:
+To add OpenTelemetry to your application, update `Package.swift` with the
+following dependencies. Version 2.6.0 provides the APIs used below.
 
 ```swift
-// swift-tools-version:5.9
+// swift-tools-version:6.0
 import PackageDescription
-
 
 let package = Package(
     name: "dice-server",
     platforms: [
-       .macOS(.v13)
+        .macOS(.v13)
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1"),
-        .package(url: "https://github.com/open-telemetry/opentelemetry-swift-core.git", from: "2.4.1"),
-        .package(url: "https://github.com/open-telemetry/opentelemetry-swift.git", from: "2.4.1"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift-core.git", from: "2.6.0"),
+        .package(url: "https://github.com/open-telemetry/opentelemetry-swift.git", from: "2.6.0"),
     ],
     targets: [
         .executableTarget(
@@ -121,8 +124,9 @@ let package = Package(
 )
 ```
 
-Update the `main.swift` file with code to initialize a tracer and to emit spans
-when the `rolldice` request handler is called:
+Update `main.swift` to configure stdout exporters for all three signals. Each
+`rolldice` request creates a server span, increments a counter, emits a log
+record, and emits a named event:
 
 ```swift
 import Vapor
@@ -134,66 +138,108 @@ import ResourceExtension
 @main
 enum Entrypoint {
     static func main() async throws {
-
-        let spanExporter = StdoutSpanExporter()
-        let spanProcessor = SimpleSpanProcessor(spanExporter: spanExporter)
         let resources = DefaultResources().get()
-
         let instrumentationScopeName = "DiceServer"
         let instrumentationScopeVersion = "semver:0.1.0"
 
+        let spanExporter = StdoutSpanExporter()
+        let spanProcessor = SimpleSpanProcessor(spanExporter: spanExporter)
         OpenTelemetry.registerTracerProvider(tracerProvider:
             TracerProviderBuilder()
                 .add(spanProcessor: spanProcessor)
                 .with(resource: resources)
                 .build()
         )
-        let tracer = OpenTelemetry.instance.tracerProvider.get(instrumentationName: instrumentationScopeName, instrumentationVersion: instrumentationScopeVersion) as! TracerSdk
+        let tracer = OpenTelemetry.instance.tracerProvider.get(
+            instrumentationName: instrumentationScopeName,
+            instrumentationVersion: instrumentationScopeVersion
+        )
 
+        let metricReader = PeriodicMetricReaderBuilder(
+            exporter: StdoutMetricExporter(isDebug: false)
+        ).setInterval(timeInterval: 1).build()
+        let meterProvider = MeterProviderSdk.builder()
+            .setResource(resource: resources)
+            .registerMetricReader(reader: metricReader)
+            .registerView(
+                selector: InstrumentSelector.builder()
+                    .setMeter(name: instrumentationScopeName)
+                    .build(),
+                view: View.builder().build()
+            )
+            .build()
+        OpenTelemetry.registerMeterProvider(meterProvider: meterProvider)
+        let meter = meterProvider.meterBuilder(
+            name: instrumentationScopeName
+        ).build()
+        let diceRolls = meter.counterBuilder(name: "dice.rolls").build()
 
-        let app = try Application(.detect())
-        defer { app.shutdown() }
+        OpenTelemetry.registerLoggerProvider(loggerProvider:
+            LoggerProviderBuilder()
+                .with(resource: resources)
+                .with(processors: [
+                    SimpleLogRecordProcessor(logRecordExporter: StdoutLogExporter())
+                ])
+                .build()
+        )
+        let logger = OpenTelemetry.instance.loggerProvider.get(
+            instrumentationScopeName: instrumentationScopeName
+        )
 
-        app.get("rolldice") { req in
-            let span = tracer.spanBuilder(spanName: "GET /rolldice").setSpanKind(spanKind: .client).startSpan()
-            let result = Int.random(in: 1..<7)
-            span.end();
-            return result
+        let app = try await Application.make(.detect())
+        do {
+            app.get("rolldice") { req in
+                let span = tracer.spanBuilder(spanName: "GET /rolldice")
+                    .setSpanKind(spanKind: .server)
+                    .startSpan()
+                defer { span.end() }
+
+                let result = Int.random(in: 1..<7)
+                diceRolls.add(value: 1)
+                logger.logRecordBuilder()
+                    .setSeverity(.info)
+                    .setBody(.string("Rolled a dice"))
+                    .emit()
+                logger.logRecordBuilder()
+                    .setEventName("dice.rolled")
+                    .setAttributes(["dice.value": .int(result)])
+                    .emit()
+                return result
+            }
+
+            try await app.execute()
+            try await app.asyncShutdown()
+        } catch {
+            try? await app.asyncShutdown()
+            throw error
         }
-
-        try app.run()
     }
 }
 ```
 
-Start your server again:
+Start your server again, then send a request from another terminal:
 
 ```sh
 swift run
 ```
 
-When you send a request to the server at <http://localhost:8080/rolldice>,
-you'll see a span being emitted to the console (output is pretty printed for
-convenience):
-
-```json
-{
-  "attributes": {},
-  "duration": 2.70605087280273e-5,
-  "parentSpanId": "0000000000000000",
-  "span": "GET /rolldice",
-  "spanId": "635455eb236a1592",
-  "spanKind": "client",
-  "start": 718126321.210727,
-  "traceFlags": {
-    "sampled": true
-  },
-  "traceId": "c751f7af0586dac8ef3607c6fc128884",
-  "traceState": {
-    "entries": []
-  }
-}
+```sh
+curl http://localhost:8080/rolldice
 ```
+
+The exporters print JSON to the server console. Look for these fields (IDs and
+dice values will vary):
+
+| Signal | Fields in the output                                          |
+| ------ | ------------------------------------------------------------- |
+| Trace  | `span` named `GET /rolldice` and `spanKind` set to `server`   |
+| Metric | `name` set to `dice.rolls` and a `dataPoints` value           |
+| Log    | `body` containing `Rolled a dice`                             |
+| Event  | `eventName` set to `dice.rolled` and a `dice.value` attribute |
+
+The view selects instruments from the `DiceServer` meter. The metric reader
+exports cumulative counter values once per second. The event uses the logs API
+and appears as a log record with an `eventName`.
 
 ## Next Steps
 
@@ -206,3 +252,5 @@ Take a look at available
 telemetry data for popular frameworks and libraries.
 
 [traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
