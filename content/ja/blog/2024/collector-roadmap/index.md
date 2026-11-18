@@ -3,9 +3,9 @@ title: OpenTelemetry Collector v1 に向けたロードマップ
 linkTitle: Collector のロードマップ
 date: 2024-05-06
 author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
-default_lang_commit: 5d6a81cbc10c0d041125802495b0a09c4ff835d6
+default_lang_commit: 134221e3bee516f02b424402300aef67d64159e1
 # prettier-ignore
-cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski OTTL Pantuza Shishi Vijay
+cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski Pantuza Shishi Vijay
 ---
 
 [OpenTelemetry Collector](/docs/collector/) は、OpenTelemetry の中でも非常に人気のあるコンポーネントであり、長期間にわたって活発に開発が続けられてきました。

@@ -5,8 +5,7 @@ aliases:
   - manual
 weight: 30
 description: OpenTelemetry JavaScript の計装
-default_lang_commit: 39d3d2ef243d968e6a434fd9d2690c8070c3d7ea
-drifted_from_default: true
+default_lang_commit: 41477529b5ad5d600c36c57803b3df9cda150941
 cSpell:ignore: dicelib Millis rolldice
 ---
 
@@ -191,7 +190,7 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 Node.jsアプリケーションを計装する場合は、[Node.js用OpenTelemetry SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node)をインストールします。
 
 ```shell
-npm install @opentelemetry/sdk-node
+npm install @opentelemetry/sdk-node @opentelemetry/sdk-trace @opentelemetry/sdk-metrics
 ```
 
 アプリケーション内の他のモジュールがロードされる前に、SDKを初期化する必要があります。
@@ -202,7 +201,7 @@ SDKの初期化に失敗した場合、または遅すぎる場合、APIから�
 ```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
@@ -215,8 +214,8 @@ import {
 
 const sdk = new NodeSDK({
   resource: resourceFromAttributes({
-    [ATTR_SERVICE_NAME]: 'yourServiceName',
-    [ATTR_SERVICE_VERSION]: '1.0',
+    [ATTR_SERVICE_NAME]: 'dice-server',
+    [ATTR_SERVICE_VERSION]: '0.1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
@@ -232,7 +231,7 @@ sdk.start();
 ```js
 /*instrumentation.mjs*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace';
 import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
@@ -316,7 +315,11 @@ node --import ./instrumentation.mjs app.js
 まず、適切なパッケージがあることを確認します。
 
 ```shell
-npm install @opentelemetry/sdk-trace-web
+npm install @opentelemetry/api \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
+  @opentelemetry/sdk-trace \
+  @opentelemetry/core
 ```
 
 次に、`instrumentation.ts`（または`instrumentation.js`）を更新して、すべてのSDK初期化コードを含めます。
@@ -324,6 +327,7 @@ npm install @opentelemetry/sdk-trace-web
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
+import { context, propagation, trace } from '@opentelemetry/api';
 import {
   defaultResource,
   resourceFromAttributes,
@@ -332,11 +336,17 @@ import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import {
   BatchSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-base';
+  StackContextManager,
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
+import {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} from '@opentelemetry/core';
 
 const resource = defaultResource().merge(
   resourceFromAttributes({
@@ -345,34 +355,45 @@ const resource = defaultResource().merge(
   }),
 );
 
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-
-const provider = new WebTracerProvider({
-  resource: resource,
-  spanProcessors: [processor],
+const tracerProvider = new TracerProvider({
+  resource,
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ],
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register();
+context.setGlobalContextManager(new StackContextManager().enable());
+
+const propagator = new CompositePropagator({
+  propagators: [new W3CBaggagePropagator(), new W3CTraceContextPropagator()],
+});
+propagation.setGlobalPropagator(propagator);
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { context, propagation, trace } require('@opentelemetry/api');
 const {
   defaultResource,
   resourceFromAttributes,
-} = require('@opentelemetry/resources');
+} require('@opentelemetry/resources');
 const {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
-} = require('@opentelemetry/semantic-conventions');
-const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
+} require('@opentelemetry/semantic-conventions');
 const {
-  ConsoleSpanExporter,
   BatchSpanProcessor,
-} = require('@opentelemetry/sdk-trace-base');
+  ConsoleSpanExporter,
+  StackContextManager,
+  TracerProvider,
+} require('@opentelemetry/sdk-trace');
+const {
+  CompositePropagator,
+  W3CBaggagePropagator,
+  W3CTraceContextPropagator,
+} require('@opentelemetry/core');
 
 const resource = defaultResource().merge(
   resourceFromAttributes({
@@ -381,15 +402,23 @@ const resource = defaultResource().merge(
   }),
 );
 
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-
-const provider = new WebTracerProvider({
-  resource: resource,
-  spanProcessors: [processor],
+const tracerProvider = new TracerProvider({
+  resource,
+  spanProcessors: [
+    new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+  ]
 });
+trace.setGlobalTracerProvider(tracerProvider);
 
-provider.register();
+context.setGlobalContextManager(new StackContextManager().enable());
+
+const propagator = new CompositePropagator({
+  propagators: [
+    new W3CBaggagePropagator(),
+    new W3CTraceContextPropagator(),
+  ],
+});
+propagation.setGlobalPropagator(propagator);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -420,10 +449,10 @@ provider.register();
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { trace } from '@opentelemetry/api';
 //...
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'instrumentation-scope-name',
   'instrumentation-scope-version',
 );
@@ -434,10 +463,10 @@ const tracer = opentelemetry.trace.getTracer(
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { trace } = require('@opentelemetry/api');
 //...
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'instrumentation-scope-name',
   'instrumentation-scope-version',
 );
@@ -1039,7 +1068,7 @@ tracer.startActiveSpan('app.doWork', (span) => {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
+import { trace, SpanStatusCode } from '@opentelemetry/api';
 
 // ...
 
@@ -1056,7 +1085,7 @@ try {
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { SpanStatusCode } = require('@opentelemetry/api');
 
 // ...
 
@@ -1066,90 +1095,90 @@ try {
   if (ex instanceof Error) {
     span.recordException(ex);
   }
-  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+  span.setStatus({ code: SpanStatusCode.ERROR });
 }
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-### `sdk-trace-base`の使用と手動でのスパンコンテキストの伝搬 {#using-sdk-trace-base-and-manually-propagating-span-context}
+### `sdk-trace`の使用と手動でのスパンコンテキストの伝搬 {#using-sdk-trace-and-manually-propagating-span-context}
 
 場合によっては、Node.js SDKもWeb SDKも使用できない場合があります。
 初期化コード以外の最大の違いは、ネストされたスパンを作成できるように、現在のコンテキストでスパンを手動でアクティブに設定する必要があることです。
 
-#### `sdk-trace-base`でトレーシングを初期化 {#initializing-tracing-with-sdk-trace-base}
+#### `sdk-trace`でトレーシングを初期化 {#initializing-tracing-with-sdk-trace}
 
 トレーシングの初期化は、Node.jsまたはWeb SDKで行う方法と似ています。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { trace, propagation } from '@opentelemetry/api';
 import {
   CompositePropagator,
   W3CTraceContextPropagator,
   W3CBaggagePropagator,
 } from '@opentelemetry/core';
 import {
-  BasicTracerProvider,
   BatchSpanProcessor,
   ConsoleSpanExporter,
-} from '@opentelemetry/sdk-trace-base';
+  TracerProvider,
+} from '@opentelemetry/sdk-trace';
 
-opentelemetry.trace.setGlobalTracerProvider(
-  new BasicTracerProvider({
-    // エクスポーターにスパンを送信するようにスパンプロセッサーを構成
-    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
-  }),
+trace.setGlobalTracerProvider(
+  new TracerProvider({
+    spanProcessors: [
+      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() })
+    ],
+  }
 );
 
-opentelemetry.propagation.setGlobalPropagator(
+propagation.setGlobalPropagator(
   new CompositePropagator({
     propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
   }),
 );
 
 // これはすべての計装コードでアクセスするものです
-const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+const tracer = trace.getTracer('example-basic-tracer-node');
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const opentelemetry = require('@opentelemetry/api');
+const { trace, context, propagation } = require('@opentelemetry/api');
 const {
   CompositePropagator,
   W3CTraceContextPropagator,
   W3CBaggagePropagator,
 } = require('@opentelemetry/core');
 const {
-  BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
-} = require('@opentelemetry/sdk-trace-base');
+  TracerProvider,
+} = require('@opentelemetry/sdk-trace');
 
-opentelemetry.trace.setGlobalTracerProvider(
-  new BasicTracerProvider({
-    // エクスポーターにスパンを送信するようにスパンプロセッサーを構成
-    spanProcessors: [new BatchSpanProcessor(new ConsoleSpanExporter())],
+trace.setGlobalTracerProvider(
+  new TracerProvider({
+    spanProcessors: [
+      new BatchSpanProcessor({ exporter: new ConsoleSpanExporter() }),
+    ],
   }),
 );
 
-opentelemetry.propagation.setGlobalPropagator(
+propagation.setGlobalPropagator(
   new CompositePropagator({
     propagators: [new W3CTraceContextPropagator(), new W3CBaggagePropagator()],
   }),
 );
 
 // これはすべての計装コードでアクセスするものです
-const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+const tracer = trace.getTracer('example-basic-tracer-node');
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-このドキュメントの他の例と同様に、これによりアプリケーション全体で使用できるトレーサーがエクスポートされます。
-
-#### `sdk-trace-base`でネストされたスパンを作成 {#creating-nested-spans-with-sdk-trace-base}
+#### `sdk-trace`でネストされたスパンを作成 {#creating-nested-spans-with-sdk-trace}
 
 ネストされたスパンを作成するには、現在作成されているスパンを現在のコンテキストでアクティブなスパンとして設定する必要があります。
 `startActiveSpan`を使用しても、これを行ってくれないので、使用しないでください。
@@ -1169,10 +1198,7 @@ const mainWork = () => {
 const doWork = (parent, i) => {
   // 子スパンを作成するには、現在の（親）スパンをコンテキストでアクティブなスパンとしてマークし、
   // 結果のコンテキストを使用して子スパンを作成する必要があります。
-  const ctx = opentelemetry.trace.setSpan(
-    opentelemetry.context.active(),
-    parent,
-  );
+  const ctx = trace.setSpan(context.active(), parent);
   const span = tracer.startSpan(`doWork:${i}`, undefined, ctx);
 
   // ランダムな作業をシミュレートします。
@@ -1186,7 +1212,7 @@ const doWork = (parent, i) => {
 };
 ```
 
-`sdk-trace-base`を使用する場合、他のすべてのAPIは、Node.jsまたはWeb SDKと比較して
+`sdk-trace`を使用する場合、他のすべてのAPIは、Node.jsまたはWeb SDKと比較して
 同じように動作します。
 
 ## メトリクス {#metrics}
@@ -1223,7 +1249,7 @@ npm install @opentelemetry/sdk-metrics
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import opentelemetry from '@opentelemetry/api';
+import { metrics } from '@opentelemetry/api';
 import {
   ConsoleMetricExporter,
   MeterProvider,
@@ -1257,7 +1283,7 @@ const myServiceMeterProvider = new MeterProvider({
 });
 
 // このMeterProviderを計装されるアプリケーションにグローバルに設定します。
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+metrics.setGlobalMeterProvider(myServiceMeterProvider);
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}

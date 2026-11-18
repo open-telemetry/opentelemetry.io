@@ -2,7 +2,8 @@
 title: はじめに
 description: OpenTelemetry Kotlin SDK を使い始める
 weight: 10
-default_lang_commit: aac3db2d7779c644ad981d0797e0028738698826
+default_lang_commit: ead94c1362193347d11dbadf1d6a5bb570b7618a
+cSpell:ignore: jetbrains
 ---
 
 OpenTelemetry Kotlin は、[OpenTelemetry 仕様](/docs/specs/otel/)の [Kotlin Multiplatform](https://kotlinlang.org/multiplatform/) 実装を提供します。
@@ -52,6 +53,8 @@ OpenTelemetry Kotlin の API は2つのモードで動作します。
 
 まず、以下の通常モードまたは互換モードのガイドのどちらに従うかを選択してください。
 
+最新バージョンは [GitHub リリースページ](https://github.com/open-telemetry/opentelemetry-kotlin/releases)で確認できます。
+
 ### 通常モードを使用する {#use-regular-mode}
 
 1. SDK を初期化するモジュールの `build.gradle` に以下の依存関係を追加します。
@@ -90,6 +93,7 @@ dependencies {
 ```
 
 1. 既存の [OpenTelemetry Java](https://github.com/open-telemetry/opentelemetry-java) インスタンスをラップします。
+   これには、モジュールが `io.opentelemetry:opentelemetry-sdk` に依存する必要があります。
 
 ```kotlin
 val otelJava = io.opentelemetry.sdk.OpenTelemetrySdk.builder().build()
@@ -128,16 +132,58 @@ dependencies {
 fun example(otel: OpenTelemetry = NoopOpenTelemetry) {
     // ログを出力する
     val logger = otel.loggerProvider.getLogger("my_logger")
-    logger.log("Hello, World!")
+    logger.emit(body = "Hello, World!")
 
     // スパンを開始して終了する
-    val tracer = otel.tracerProvider.getTracer("my_tracer)
+    val tracer = otel.tracerProvider.getTracer("my_tracer")
     tracer.startSpan("my_span").end()
 }
 ```
 
 テレメトリーを出力するには、no-op ではなく `OpenTelemetry` の実インスタンスをパラメーターとして渡します。
 ライブラリの作者にとって、このパターンはライブラリの利用者がライブラリからのテレメトリー収集にオプトインできるため、非常に便利です。
+
+### 動作確認 {#check-that-it-works}
+
+バックエンドをセットアップする前に、テレメトリーを標準出力に表示することでキャプチャされていることを確認できます。
+SDK を標準出力エクスポーターで設定します。
+
+```kotlin
+val otel: OpenTelemetry = createOpenTelemetry {
+    serviceName = "my-service"
+    tracerProvider {
+        export {
+            simpleSpanProcessor(stdoutSpanExporter())
+        }
+    }
+    loggerProvider {
+        export {
+            simpleLogRecordProcessor(stdoutLogRecordExporter())
+        }
+    }
+}
+example(otel)
+```
+
+プロセッサーは現在テレメトリーを非同期でエクスポートします。
+`main` 関数のような短命なプロセスでは、テレメトリーが配信されるまでブロックする必要がある場合があります。
+
+```kotlin
+runBlocking {
+    (otel as? OpenTelemetrySdk)?.shutdown()
+}
+```
+
+すると、以下のような出力が表示されるはずです。
+
+```text
+LogRecord [UNKNOWN]
+  Body: Hello, World!
+  ...
+Span: my_span [INTERNAL]
+  TraceId: 9f2ac10dc87ab58aa6b0b5eed29af32d
+  ...
+```
 
 ### OpenTelemetry Collector へのエクスポート {#export-to-an-opentelemetry-collector}
 
@@ -154,24 +200,31 @@ dependencies {
 次に、バッチプロセッサーを使用して OTLP エクスポーターを設定します。
 
 ```kotlin
-val url = "http://localhost:4318"
 val otel: OpenTelemetry = createOpenTelemetry {
+    serviceName = "my-service"
     tracerProvider {
         export {
             batchSpanProcessor(
-                otlpHttpSpanExporter(url)
+                otlpHttpSpanExporter {
+                    endpoint = "http://localhost:4318"
+                }
             )
         }
     }
     loggerProvider {
         export {
             batchLogRecordProcessor(
-                otlpHttpLogRecordExporter(url)
+                otlpHttpLogRecordExporter {
+                    endpoint = "http://localhost:4318"
+                }
             )
         }
     }
 }
 ```
+
+`http://localhost:4318` はデフォルトのエンドポイントであるため、コレクターをローカルで実行している場合は `endpoint` を省略できます。
+Android エミュレーターはホストマシンに `http://10.0.2.2:4318` で接続するため、アプリの[ネットワークセキュリティ設定](https://developer.android.com/privacy-and-security/security-config)でそのアドレスへの平文トラフィックを許可する必要があります。
 
 ---
 

@@ -6,7 +6,7 @@ author: >-
   [Keith Schmitt](https://github.com/schmikei) (Bindplane)
 issue: 8039
 sig: Collector
-cSpell:ignore: Bindplane CloudWatch OTTL schmikei VPC
+cSpell:ignore: Bindplane CloudWatch schmikei VPC
 ---
 
 The idea for unrolling bundled logs inside the OpenTelemetry Collector didn't

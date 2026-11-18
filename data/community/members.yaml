@@ -291,12 +291,10 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1910782?v=4
   - name: bobstrecansky
     teams:
-      - php-approvers
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
       - php-distro-maintainers
-      - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
     avatar_url: https://avatars.githubusercontent.com/u/4099109?v=4
@@ -1331,6 +1329,13 @@ maintainers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
+  - name: Nevay
+    teams:
+      - php-approvers
+      - php-maintainers
+      - php-triagers
+    html_url: https://github.com/Nevay
+    avatar_url: https://avatars.githubusercontent.com/u/22509671?v=4
   - name: NimrodAvni78
     teams:
       - ebpf-instrumentation-approvers
@@ -1948,6 +1953,12 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/hannahramadan
     avatar_url: https://avatars.githubusercontent.com/u/76922290?v=4
+  - name: harshitt13
+    teams:
+      - dart-approvers
+      - dart-triagers
+    html_url: https://github.com/harshitt13
+    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: hectorhdzg
     teams:
       - javascript-approvers
@@ -2479,16 +2490,16 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
-  - name: harshitt13
-    teams:
-      - dart-triagers
-    html_url: https://github.com/harshitt13
-    avatar_url: https://avatars.githubusercontent.com/u/143245429?v=4
   - name: henrinormak
     teams:
       - javascript-contrib-triagers
     html_url: https://github.com/henrinormak
     avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
+  - name: himanshu130700
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/himanshu130700
+    avatar_url: https://avatars.githubusercontent.com/u/228173647?v=4
   - name: inetand
     teams:
       - kotlin-triagers
@@ -2878,6 +2889,9 @@ members:
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4
+  - name: henry3260
+    html_url: https://github.com/henry3260
+    avatar_url: https://avatars.githubusercontent.com/u/108824346?v=4
   - name: hgaol
     html_url: https://github.com/hgaol
     avatar_url: https://avatars.githubusercontent.com/u/11908658?v=4
@@ -3238,6 +3252,9 @@ members:
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4
+  - name: sonalgaud12
+    html_url: https://github.com/sonalgaud12
+    avatar_url: https://avatars.githubusercontent.com/u/82362774?v=4
   - name: SpencerTorres
     html_url: https://github.com/SpencerTorres
     avatar_url: https://avatars.githubusercontent.com/u/28887171?v=4

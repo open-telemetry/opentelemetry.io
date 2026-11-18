@@ -2,7 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
+default_lang_commit: 134221e3bee516f02b424402300aef67d64159e1
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
@@ -22,6 +22,26 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 ブログではなく OpenTelemetry のソーシャルメディアチャンネルでの公開をリクエストするには、[ソーシャルメディアリクエストを提出][submit a social media request]してください。
 
 [submit a social media request]: https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
+
+## ブログ記事の告知 {#announcing}
+
+ブログ記事が公開されると、メンテナーが OpenTelemetry のソーシャルメディアチャンネルやメーリングリストで告知できるように、[opentelemetry-announcements][] にプルリクエストが自動的に作成されます。
+告知は「New on the OpenTelemetry blog: _title_」という形式で、短いテキストと記事へのリンクが含まれます。
+
+デフォルトでは、短いテキストは記事のタイトルになります。
+よりよいテキストを書くには、フロントマターに `announcement` キーを追加してください。
+
+```yaml
+announcement:
+  Cardinality limits keep your metrics pipeline healthy. Learn how to set them
+  up.
+```
+
+Bluesky の文字数制限が300文字でリンクがおよそ34文字を消費するため、約260文字以内に収めてください。
+告知をスキップするには `announcement: false` を使用してください。
+テキストは告知のプルリクエストがマージされる前であれば編集できます。
+
+[opentelemetry-announcements]: https://github.com/open-telemetry/opentelemetry-announcements
 
 ## ブログ記事を提出する前に {#before-submitting-a-blog-post}
 

@@ -3,9 +3,9 @@ title: KubeCon NA 2024 での OpenTelemetry 関連の講演とアクティビテ
 linkTitle: KubeCon NA '24
 date: 2024-11-05
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
-default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
+default_lang_commit: 134221e3bee516f02b424402300aef67d64159e1
 # prettier-ignore
-cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec OTTL Prasanna Shivanshu Shrivastava simha Woerner
+cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeussler Helmuth Jernigan Kalkanis Kats Kowall Kruthika Liudmila Mclean Molkova Novatec Prasanna Shivanshu Shrivastava simha Woerner
 ---
 
 OpenTelemetry プロジェクトのメンテナー、ガバナンス委員会メンバー、技術委員会メンバーは、2024年11月12日から15日にソルトレイクシティで開催される [KubeCon NA][] に参加できることを大変嬉しく思います。
