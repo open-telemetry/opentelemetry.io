@@ -35292,6 +35292,11 @@
     "when": "2026-10-20T05:45:16Z",
     "via": "lychee",
   },
+  "https://www.rfc-editor.org/rfc/rfc10008.html": {
+    "result": 200,
+    "when": "2026-11-18T10:28:58Z",
+    "via": "lychee",
+  },
   "https://www.rfc-editor.org/rfc/rfc2732#section-2": {
     "result": 200,
     "when": "2026-10-28T05:39:35Z",
