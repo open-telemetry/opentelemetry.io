@@ -6,8 +6,7 @@ author: >-
   [Keith Schmitt](https://github.com/schmikei) (Bindplane)
 issue: 8039
 sig: Collector
-default_lang_commit: 5dd59654f024bdc3d8ca1cccae5551d6b0f59e35
-drifted_from_default: true
+default_lang_commit: 41477529b5ad5d600c36c57803b3df9cda150941
 cSpell:ignore: Bindplane CloudWatch schmikei VPC
 ---
 
