@@ -29,7 +29,7 @@ GenAI フレームワークの計装は、適切な拡張ポイントを見つ�
 経験豊富なコントリビューターでも、フレームワークの計装に数日かかることがあります。
 実装によって属性、単位、スパン境界の選択が異なることもあり、フレームワーク間でテレメトリーのクエリが難しくなります。
 エージェントは反復的な調査と実装作業を支援できます。
-GenAI セマンティック規約と Weaver が共通の仕様と出力をチェックする手段を提供します。
+GenAI セマンティック規約と Weaver が共通の仕様と、出力をチェックする手段を提供します。
 
 ## 構成要素 {#the-pieces}
 
@@ -185,7 +185,7 @@ Weaver は出力された OTLP データを解決済みのセマンティック�
 
 オブザベーションエージェントは Weaver を直接呼び出しません。
 コンフォーマンスランナーを通じて実行を駆動します。
-ランナーはシナリオを起動し、OTLP エンドポイントに接続し、出力されたデータを `weaver registry live-check` に渡します。
+ランナーはシナリオを起動し、その送信先を OTLP エンドポイントに設定し、出力されたデータを `weaver registry live-check` に渡します。
 公開されている例として、[semantic-conventions-conformance](https://github.com/open-telemetry/semantic-conventions-conformance) リポジトリのルートから CrewAI/OpenInference シナリオを実行できます。
 
 ```sh
@@ -252,10 +252,10 @@ Weaver がその violation を報告しなくなった場合にも実行が失�
 ## これまでの成果 {#what-weve-shipped-so-far}
 
 私たちはこのシステムを使用して、さまざまな GenAI フレームワーク、エージェント SDK、エージェントベンチマーク向けのエンドツーエンドの計装開発を推進してきました。
-生成されたプラグインは、Alibaba の Apache-2.0 ディストリビューションである Loongsuite Python の `instrumentation-loongsuite` パッケージに含まれており、それぞれプルリクエストの段階で人間によるレビューを受けています。
+生成されたプラグインは、Alibaba による OpenTelemetry Python 計装の Apache-2.0 ディストリビューションである Loongsuite Python の `instrumentation-loongsuite` パッケージに含まれており、それぞれプルリクエストの段階で人間によるレビューを受けています。
 現在、CrewAI、LangChain、LangGraph、LiteLLM、AutoGen、AgentScope、Dify、Google ADK、Claude Agent SDK、Microsoft Agent Framework、MCP、mem0 などのフレームワークと SDK をカバーしているほか、BFCL-v4、WebArena、MiniSWEAgent などのエージェントベンチマークもカバーしています。
 
-コンフォーマンスチェックにより、フレームワーク間でテレメトリーの一貫性が保たれています。
+コンフォーマンスチェックは、フレームワーク間でテレメトリーの一貫性を保つのに役立っています。
 
 私たちは、この計装を OpenTelemetry Python GenAI プロジェクトに取り込む作業も進めています。
 議論は [opentelemetry-python-genai#185](https://github.com/open-telemetry/opentelemetry-python-genai/issues/185) で公開されており、最初の計装プルリクエストが現在レビュー中です。
