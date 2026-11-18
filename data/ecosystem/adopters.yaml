@@ -139,6 +139,12 @@
   reference: ''
   referenceTitle: ''
   contact: ''
+- name: Narkis.ai
+  url: https://narkis.ai/
+  components: [Collector, Go]
+  reference: 'https://narkis.ai/about/stack'
+  referenceTitle: tech stack
+  contact: 'support@narkis.ai'
 - name: NAV - Norwegian Government
   url: https://nav.no
   components: [Collector, Go, Java, JavaScript, Python]
