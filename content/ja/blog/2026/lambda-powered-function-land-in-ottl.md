@@ -5,8 +5,7 @@ date: 2026-07-22
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 10848
 sig: Collector SIG
-default_lang_commit: e234c145b84f7c5e029afd1c7458ae162c307432
-drifted_from_default: true
+default_lang_commit: edfda068e00cd45e50a77967e193baad2beeccb5
 cSpell:ignore: ottl Vamerlatti
 ---
 
