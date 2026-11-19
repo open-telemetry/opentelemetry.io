@@ -26954,6 +26954,11 @@
     "when": "2026-10-28T05:39:33Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#csi": {
+    "result": 200,
+    "when": "2026-11-19T10:28:58Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/concepts/storage/volumes/#downwardapi": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
@@ -26964,9 +26969,29 @@
     "when": "2026-10-28T05:39:33Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#fc": {
+    "result": 200,
+    "when": "2026-11-19T10:28:58Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#hostpath": {
+    "result": 200,
+    "when": "2026-11-19T10:28:58Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#iscsi": {
+    "result": 200,
+    "when": "2026-11-19T10:28:58Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/concepts/storage/volumes/#local": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#nfs": {
+    "result": 200,
+    "when": "2026-11-19T10:28:58Z",
     "via": "lychee",
   },
   "https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim": {
