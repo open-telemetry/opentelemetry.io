@@ -5,8 +5,8 @@ date: 2025-02-20
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 6289
 sig: Collector SIG
-default_lang_commit: 2cc7b050cecdab1a7daadb6b78ce51b15a18bec8
-cSpell:ignore: OTTL Vamerlatti
+default_lang_commit: c623aaf368e162473bd208fbc9fa9a0e9ca803a5
+cSpell:ignore: Vamerlatti
 ---
 
 OTTL ステートメントを実行するための適切な OTTL コンテキストを選択することは、経験豊富なユーザーにとっても難しいことがあります。

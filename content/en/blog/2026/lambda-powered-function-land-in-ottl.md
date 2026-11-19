@@ -5,7 +5,7 @@ date: 2026-07-22
 author: '[Edmo Vamerlatti Costa](https://github.com/edmocosta) (Elastic)'
 issue: 10848
 sig: Collector SIG
-cSpell:ignore: OTTL Vamerlatti
+cSpell:ignore: ottl Vamerlatti
 ---
 
 As telemetry pipelines become more sophisticated, so do the transformations they

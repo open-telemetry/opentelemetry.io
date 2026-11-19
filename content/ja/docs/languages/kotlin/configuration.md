@@ -2,7 +2,7 @@
 title: OpenTelemetry Kotlin の設定
 linkTitle: SDK の設定
 weight: 13
-default_lang_commit: 6dae53b63ae3197dcc140fddcc867ac635541799
+default_lang_commit: 41477529b5ad5d600c36c57803b3df9cda150941
 ---
 
 OpenTelemetry Kotlin SDK は、DSL パラメーターを通じて初期化時に設定されます。
@@ -29,16 +29,26 @@ val baseUrl = "http://localhost:4318"
 val otel: OpenTelemetry = createOpenTelemetry {
     tracerProvider {
         export {
-            batchSpanProcessor(otlpHttpSpanExporter(baseUrl))
+            batchSpanProcessor(
+                otlpHttpSpanExporter {
+                    endpoint = baseUrl
+                }
+            )
         }
     }
     loggerProvider {
         export {
-            batchLogRecordProcessor(otlpHttpLogRecordExporter(baseUrl))
+            batchLogRecordProcessor(
+                otlpHttpLogRecordExporter {
+                    endpoint = baseUrl
+                }
+            )
         }
     }
 }
 ```
+
+`endpoint` が設定されていない場合、エクスポーターは `OTEL_EXPORTER_OTLP_ENDPOINT` 環境変数（またはシグナル固有の `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` および `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`）を読み取り、いずれも設定されていない場合は `http://localhost:4318` がデフォルトになります。
 
 ## リソース {#resource}
 
@@ -79,9 +89,7 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
-    resource {
-        resource(mapOf("service.namespace" to "payments"))
-    }
+    resource(mapOf("service.namespace" to "payments"))
 }
 ```
 
@@ -121,53 +129,65 @@ val otel: OpenTelemetry = createOpenTelemetry {
 
 ### スパンの制限 {#span-limits}
 
-[スパンの制限](/docs/specs/otel/trace/sdk/#span-limits)は[属性の制限](#attribute-limits)セクションで示したものと同じ制限を提供し、さらにキャプチャされるスパンとイベントの数を制限する設定も提供します。
+[スパンの制限](/docs/specs/otel/trace/sdk/#span-limits)は[属性の制限](#attribute-limits)セクションで示したものと同じ制限を提供し、さらにキャプチャされるリンクとイベントの数を制限する設定も提供します。
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     tracerProvider {
-        spanLimits = 200
-        eventCountLimit = 250
-        attributeCountPerEventLimit = 50
-        attributeCountPerLinkLimit = 20
-        attributeCountLimit = 200
-        attributeValueLengthLimit = 256
+        spanLimits {
+            linkCountLimit = 200
+            eventCountLimit = 250
+            attributeCountPerEventLimit = 50
+            attributeCountPerLinkLimit = 20
+            attributeCountLimit = 200
+            attributeValueLengthLimit = 256
+        }
     }
 }
 ```
 
-## 暗黙的コンテキストストレージ {#implicit-context-storage}
+## カレントコンテキストストレージ {#current-context-storage}
 
-[暗黙的コンテキストの計装ガイド](/docs/languages/kotlin/instrumentation/#using-implicit-context)で説明されているように、暗黙的コンテキストを格納するデフォルトのメカニズムを変更できます。
+[カレントコンテキストの計装ガイド](/docs/languages/kotlin/instrumentation/#using-current-context)で説明されているように、カレントコンテキストを格納するデフォルトのメカニズムを変更できます。
 デフォルトではグローバルなプロセス全体のメカニズムに格納されますが、`storageMode` でスレッドローカルに変更できます。
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     context {
-        storageMode = ImplicitContextStorageMode.THREAD_LOCAL
-        // storage { MyCustomStorage() }
+        storageMode = CurrentContextStorageMode.THREAD_LOCAL
     }
 }
 ```
 
 カスタムストレージメカニズムを実装することもできます。
+`storage` 関数はルートの `Context` を提供する `rootSupplier` を受け取ります。
 以下の例は、OpenTelemetry Kotlin のグローバルコンテキストストレージに対するデフォルトのアプローチと同じ動作を実装しています。
 
 ```kotlin
 val otel: OpenTelemetry = createOpenTelemetry {
     context {
-        storage { MyCustomStorage() }
+        storage { rootSupplier -> MyCustomStorage(rootSupplier) }
     }
 }
 
-class CustomStorage(private val default: Context): ImplicitContextStorage {
+class MyCustomStorage(
+    private val rootSupplier: () -> Context,
+) : CurrentContextStorage {
 
-    private var ref: Context = default
+    @Volatile
+    private var current: Context? = null
 
-    override fun setImplicitContext(context: Context) {
-        ref = context
+    override fun current(): Context = current ?: rootSupplier()
+
+    override fun attach(context: Context): Scope {
+        val previous = current
+        current = context
+        return object : Scope {
+            override fun detach(): Boolean {
+                current = previous
+                return true
+            }
+        }
     }
-
-    override fun implicitContext(): Context = ref
 }
 ```

@@ -1784,6 +1784,11 @@
     "when": "2026-10-27T05:47:30Z",
     "via": "lychee",
   },
+  "https://developer.android.com/privacy-and-security/security-config": {
+    "result": 200,
+    "when": "2026-11-12T15:16:20Z",
+    "via": "lychee",
+  },
   "https://developer.android.com/reference/android/os/Build#MANUFACTURER": {
     "result": 200,
     "when": "2026-10-20T05:45:14Z",
@@ -4694,6 +4699,11 @@
     "when": "2026-10-23T05:45:19Z",
     "via": "lychee",
   },
+  "https://github.com/AgentGymLeader": {
+    "result": 200,
+    "when": "2026-11-18T03:43:29Z",
+    "via": "lychee",
+  },
   "https://github.com/AlchemyDing": {
     "result": 200,
     "when": "2026-10-23T05:45:19Z",
@@ -5497,6 +5507,11 @@
   "https://github.com/RonFed": {
     "result": 200,
     "when": "2026-10-22T05:45:39Z",
+    "via": "lychee",
+  },
+  "https://github.com/Rxfa": {
+    "result": 200,
+    "when": "2026-11-18T03:43:29Z",
     "via": "lychee",
   },
   "https://github.com/SAP/opentelemetry-exporter-for-sap-cloud-logging-for-nodejs": {
@@ -7889,6 +7904,11 @@
     "when": "2026-10-23T05:45:21Z",
     "via": "lychee",
   },
+  "https://github.com/henry3260": {
+    "result": 200,
+    "when": "2026-11-15T03:43:41Z",
+    "via": "lychee",
+  },
   "https://github.com/herin049": {
     "result": 200,
     "when": "2026-10-23T05:45:13Z",
@@ -8037,6 +8057,11 @@
   "https://github.com/idvoretskyi": {
     "result": 200,
     "when": "2026-10-23T05:45:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/iliferov": {
+    "result": 200,
+    "when": "2026-11-18T03:43:29Z",
     "via": "lychee",
   },
   "https://github.com/imandra-ai": {
@@ -8589,6 +8614,11 @@
     "when": "2026-10-27T05:47:11Z",
     "via": "lychee",
   },
+  "https://github.com/kingbj940429": {
+    "result": 200,
+    "when": "2026-11-18T03:43:29Z",
+    "via": "lychee",
+  },
   "https://github.com/kinyoklion": {
     "result": 200,
     "when": "2026-10-23T05:45:16Z",
@@ -8977,6 +9007,11 @@
   "https://github.com/mahendrabishnoi2": {
     "result": 200,
     "when": "2026-10-19T05:46:50Z",
+    "via": "lychee",
+  },
+  "https://github.com/maksmara": {
+    "result": 200,
+    "when": "2026-11-19T03:43:53Z",
     "via": "lychee",
   },
   "https://github.com/malus2077": {
@@ -22899,6 +22934,11 @@
     "when": "2026-10-20T05:44:49Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/discussions/12694": {
+    "result": 200,
+    "when": "2026-11-16T18:48:13Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/fork": {
     "result": 200,
     "when": "2026-11-06T05:38:27Z",
@@ -25192,6 +25232,11 @@
   "https://github.com/solsu01": {
     "result": 200,
     "when": "2026-11-07T05:38:23Z",
+    "via": "lychee",
+  },
+  "https://github.com/sonalgaud12": {
+    "result": 200,
+    "when": "2026-11-16T03:44:54Z",
     "via": "lychee",
   },
   "https://github.com/songy23": {
@@ -31697,6 +31742,11 @@
     "when": "2026-10-27T00:44:30Z",
     "via": "lychee",
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.34.0-alpha/opentelemetry-instrumentation-bom-alpha-2.34.0-alpha.pom": {
+    "result": 200,
+    "when": "2026-11-19T01:07:15Z",
+    "via": "lychee",
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.32.0/opentelemetry-instrumentation-bom-2.32.0.pom": {
     "result": 200,
     "when": "2026-10-20T05:44:55Z",
@@ -31710,6 +31760,11 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.33.1/opentelemetry-instrumentation-bom-2.33.1.pom": {
     "result": 200,
     "when": "2026-10-27T00:44:30Z",
+    "via": "lychee",
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.34.0/opentelemetry-instrumentation-bom-2.34.0.pom": {
+    "result": 200,
+    "when": "2026-11-19T01:07:15Z",
     "via": "lychee",
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.67.0-alpha/opentelemetry-bom-alpha-1.67.0-alpha.pom": {

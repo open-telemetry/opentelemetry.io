@@ -61,7 +61,7 @@ The `version`, `schemaUrl`, and `attributes` can be optionally specified and
 will be associated with the captured telemetry:
 
 ```kotlin
-val tracer = otel.getTracer(
+val logger = otel.loggerProvider.getLogger(
     name = "com.example.myclient",
     version = "1.4.2",
     schemaUrl = "https://opentelemetry.io/schemas/1.30.0",
@@ -93,9 +93,9 @@ with a log record:
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
-    severityNumber: SeverityNumber? = SeverityNumber.INFO,
-    severityText: String? = "INFO"
+    body = "Hello, World!",
+    severityNumber = SeverityNumber.INFO,
+    severityText = "INFO",
 )
 ```
 
@@ -106,7 +106,7 @@ with a log record:
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
+    body = "Hello, World!",
     timestamp = 100,
     observedTimestamp = 90,
 )
@@ -122,8 +122,8 @@ fun example(logger: Logger) {
         performFoo()
     } catch (exc: IllegalStateException) {
         logger.emit(
-            body = "Hello, World!"
-            exception = IllegalStateException("my exception")
+            body = "Hello, World!",
+            exception = exc,
         )
     }
 }
@@ -136,20 +136,20 @@ Specify `eventName` if the log record is an OpenTelemetry
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
-    eventName = "event_name"
+    body = "Hello, World!",
+    eventName = "event_name",
 )
 ```
 
 #### Specify the context
 
 Specify `context` if you want to associate the log record with a specific
-context. If you don't specify this, the implicit context will be used.
+context. If you don't specify this, the current context will be used.
 
 ```kotlin
 fun example(logger: Logger, ctx: Context) {
     logger.emit(
-        body = "Hello, World!"
+        body = "Hello, World!",
         context = ctx,
     )
 }
@@ -192,7 +192,7 @@ The `version`, `schemaUrl`, and `attributes` can be optionally specified and
 will be associated with the captured telemetry:
 
 ```kotlin
-val tracer = otel.getTracer(
+val tracer = otel.tracerProvider.getTracer(
     name = "com.example.checkout",
     version = "1.4.2",
     schemaUrl = "https://opentelemetry.io/schemas/1.30.0",
@@ -222,7 +222,7 @@ If you wish to set an explicit end time, pass `timestamp`. By default
 OpenTelemetry Kotlin will use its own clock to populate the end timestamp:
 
 ```kotlin
-span.end(timestamp = MyClock.now())
+span.end(timestamp = endTimeNanos)
 ```
 
 ### Specify attributes
@@ -282,7 +282,7 @@ below:
 ```kotlin
 val span: Span = tracer.startSpan(
     name = "my_span",
-    spanKind = SpanKind.CLIENT
+    spanKind = SpanKind.CLIENT,
 )
 ```
 
@@ -295,7 +295,7 @@ The start timestamp of a `Span` can be explicitly set:
 ```kotlin
 val span: Span = tracer.startSpan(
     name = "my_span",
-    startTimestamp = MyClock.now()
+    startTimestamp = startTimeNanos,
 )
 ```
 
@@ -304,13 +304,13 @@ before OpenTelemetry was initialized.
 
 ### Specify the parentContext
 
-Specify `context` if you want to associate a span with a specific context. If
-you don't specify this, the implicit context will be used.
+Specify `parentContext` if you want to associate a span with a specific context.
+If you don't specify this, the current context will be used.
 
 ```kotlin
 fun example(tracer: Tracer, ctx: Context) {
     tracer.startSpan(
-        name = "my_span"
+        name = "my_span",
         parentContext = ctx,
     )
 }
@@ -327,7 +327,7 @@ done at initialization time:
 
 ```kotlin
 val span: Span = tracer.startSpan("my_span") {
-    addLink(otherSpan)
+    addLink(otherSpan.spanContext)
 }
 ```
 
@@ -343,9 +343,10 @@ span.addLink(otherSpan) {
 ### Wrap an operation with a span
 
 If you have a synchronous operation that you want to record with a span you can
-use `wrapOperation` to start and end a span:
+use `wrapOperation` to end the span when the operation completes:
 
 ```kotlin
+val span = tracer.startSpan("my_operation")
 span.wrapOperation {
     performFoo()
     span.setName(updatedName)
@@ -353,13 +354,13 @@ span.wrapOperation {
 }
 ```
 
-`wrapOperation` automatically handles starting and ending the span by performing
-an arbitrary operation in a lambda so you don't need to worry about leaking
-resources. You must return a `StatusData` to signify whether the operation was
-successful or not.
+`wrapOperation` performs an arbitrary operation in a lambda and then ends the
+span, so you don't need to worry about leaking resources. You must return a
+`StatusData` to signify whether the operation was successful or not.
 
 Additionally, if any exceptions are thrown within `wrapOperation` this is
-automatically recorded and the span status is set to `Error`.
+automatically recorded, the span status is set to `Error`, and the exception is
+rethrown.
 
 ## Attributes
 
@@ -367,7 +368,7 @@ All interfaces that are capable of accepting attributes have the same syntax.
 It's possible to use typed setters:
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setStringAttribute("string_key", "my_string")
     setBooleanAttribute("bool_key", true)
     setLongAttribute("long_key", 5L)
@@ -383,7 +384,7 @@ It's possible to use typed setters:
 Or a `Map<String, Any>` can be passed instead:
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setAttributes(mapOf(
         "string_key" to "my_string",
         "bool_key" to true,
@@ -403,7 +404,7 @@ Finally, it's possible to supply an object of
 want to represent complex values:
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setAnyValueAttribute("my_key", AnyValue.StringValue("my_value"))
 }
 ```
@@ -423,7 +424,8 @@ must be passed to any log records that are emitted during the request.
 creating spans. For our REST API example this could measure sub-operations such
 as request body deserialization or DB queries.
 
-There are two approaches to managing context: explicit and implicit.
+There are two approaches to managing context: explicit and current (sometimes
+called implicit).
 
 ### Using explicit context
 
@@ -494,71 +496,74 @@ if (parentSpan.spanContext.isValid) {
 
 #### Setting other values on Context
 
-Arbitrary values can be set on `Context` by creating a key and calling the `set`
-and `get` functions:
+Arbitrary values can be set on `Context` by creating a key with
+`createContextKey` and calling the `set` and `get` functions:
 
 ```kotlin
-val key: ContextKey<MyObject> = otel.context.createKey("my-unique-key")
+val key: ContextKey<MyObject> = createContextKey("my-unique-key")
 val root: Context = otel.context.root()
 val newCtx: Context = root.set(key, MyObject())
-val ref: MyObject = newCtx.get(key)
+val ref: MyObject? = newCtx.get(key)
 ```
 
 Under the hood this is exactly how `Span` and `Baggage` are stored in `Context`.
 
-### Using implicit context
+### Using current context
 
-In implicit context management whenever a log/span is created the SDK uses
+In current context management whenever a log/span is created the SDK uses
 pre-defined rules that choose the correct `Context`.
 
-#### The dangers of implicit context
+#### The dangers of current context
 
 Explicitly passing in `Context` objects at every callsite introduces mental
-overhead. OpenTelemetry has the concept of an 'implicit' context - i.e. the
+overhead. OpenTelemetry has the concept of a 'current' context - i.e. the
 context associated with the current execution unit.
 
-Implicit context reduces the mental overhead of threading through parameters but
+Current context reduces the mental overhead of threading through parameters but
 you must be careful that it matches what you consider the current execution
 unit. For example, Kotlin applications may use both thread-locals and coroutines
-at the same time. If you use a thread-local approach to store the implicit
-context but you're running in a coroutine, the implicit context becomes useless
+at the same time. If you use a thread-local approach to store the current
+context but you're running in a coroutine, the current context becomes useless
 and misleading.
 
-Implicit context management can only ever provide a sensible default. You are
+Current context management can only ever provide a sensible default. You are
 strongly encouraged to supplement this sensible default with explicit context
 management in your own application.
 
-#### Obtaining the implicit context
+#### Obtaining the current context
 
-To obtain the implicit context call `implicit()`:
+To obtain the current context call `current()`:
 
 ```kotlin
-val implicitCtx: Context = otel.context.implicit()
+val currentCtx: Context = otel.context.current()
 ```
 
-If no implicit `Context` has been set this defaults to the root context.
+If no current `Context` has been set this defaults to the root context.
 
-#### Setting the implicit context
+#### Setting the current context
 
 First, create a new `Context` object that stores a `Span`. Then call
-`asImplicitContext()`. This automatically attaches a `Context` for the scope of
+`asCurrentContext()`. This automatically attaches a `Context` for the scope of
 your operation then detaches on completion:
 
 ```kotlin
-val ctx: Context = otel.context.implicit().storeSpan(span)
-ctx.asImplicitContext {
+val ctx: Context = otel.context.current().storeSpan(span)
+ctx.asCurrentContext {
     performFoo()
 }
 ```
 
-If you wish fine-grained control over the implicit `Context` you can call
+If you wish fine-grained control over the current `Context` you can call
 `attach()` and `detach()` yourself. However, it's very important to balance
 calls to `attach/detach` and handle errors appropriately. If you aren't careful
-you may end up with unexpected values in the implicit context:
+you may end up with unexpected values in the current context:
 
 ```kotlin
-val ctx: Context = otel.context.implicit().storeSpan(span)
+val ctx: Context = otel.context.current().storeSpan(span)
 val scope: Scope = ctx.attach()
-performFoo()
-scope.detach()
+try {
+    performFoo()
+} finally {
+    scope.detach()
+}
 ```

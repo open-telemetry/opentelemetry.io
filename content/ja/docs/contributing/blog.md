@@ -2,13 +2,14 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 38e36ae231c523f9e54499ad6ca05de7c49501c5
+default_lang_commit: edfda068e00cd45e50a77967e193baad2beeccb5
 ---
 
-[OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
-これは、エンドユーザーと開発者を含みます。
-誰でもブログを書くことができます。
-要件について下記を読んでください。
+[OpenTelemetry ブログ](/blog/)は、リリース、マイルストーン、Special Interest Group（SIG）ニュースなどのプロジェクトおよび組織に関するお知らせを、エンドユーザーと開発者を含む OpenTelemetry コミュニティに発信します。
+ブログ記事は [OpenTelemetry GitHub organization のメンバー][membership]が提出する必要があります。
+要件の詳細については下記を読んでください。
+
+[membership]: https://github.com/open-telemetry/community/blob/main/community-membership.md
 
 ## ドキュメンテーションまたはブログ投稿？ {#documentation-or-blog-post}
 
@@ -22,6 +23,26 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 ブログではなく OpenTelemetry のソーシャルメディアチャンネルでの公開をリクエストするには、[ソーシャルメディアリクエストを提出][submit a social media request]してください。
 
 [submit a social media request]: https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
+
+## ブログ記事の告知 {#announcing}
+
+ブログ記事が公開されると、メンテナーが OpenTelemetry のソーシャルメディアチャンネルやメーリングリストで告知できるように、[opentelemetry-announcements][] にプルリクエストが自動的に作成されます。
+告知は「New on the OpenTelemetry blog: _title_」という形式で、短いテキストと記事へのリンクが含まれます。
+
+デフォルトでは、短いテキストは記事のタイトルになります。
+よりよいテキストを書くには、フロントマターに `announcement` キーを追加してください。
+
+```yaml
+announcement:
+  Cardinality limits keep your metrics pipeline healthy. Learn how to set them
+  up.
+```
+
+Bluesky の文字数制限が300文字でリンクがおよそ34文字を消費するため、約260文字以内に収めてください。
+告知をスキップするには `announcement: false` を使用してください。
+テキストは告知のプルリクエストがマージされる前であれば編集できます。
+
+[opentelemetry-announcements]: https://github.com/open-telemetry/opentelemetry-announcements
 
 ## ブログ記事を提出する前に {#before-submitting-a-blog-post}
 
@@ -40,21 +61,28 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 - 40文字の完全なコミットハッシュを使用する（短いハッシュは警告されます）
 - `npm run fix:markdown` を実行して、修正できるものを自動的に修正し、残りのリンクを手動で修正する
 
-投稿しようとしている内容が、OpenTelemetry コミュニティ全体に適用されることを確認してください。
-適切な内容には、以下が含まれます。
+### 投稿できる人 {#who-can-submit}
 
+投稿する著者は [OpenTelemetry GitHub organization のメンバー][membership]で**なければなりません**。
+共著者はメンバーである必要はありません。
+
+### 公開される内容 {#what-we-publish}
+
+ブログでは、以下のようなプロジェクトおよび組織に関するお知らせの投稿を強く推奨します。
+
+- リリースおよびその他のプロジェクトのマイルストーン
 - 新しい OpenTelemetry の機能
-- OpenTelemetry プロジェクトの更新情報
-- Special Interest Group（SIG）の最新情報
-- チュートリアルやウォークスルー
-- OpenTelemetry の統合
+- SIG の設立、進捗、その他の最新情報
 - [コントリビューター募集](#call-for-contributors)
+
+チュートリアル、ウォークスルー、ハウツーコンテンツは通常、ユーザーや利用ツールが最も見つけやすい[ドキュメント](#documentation-or-blog-post)に掲載するのが適切です。
+OpenTelemetry コミュニティの幅広いメンバーに関係するその他の投稿も受け入れられる場合がありますが、優先度は低くなります。
 
 不適切な内容には、以下が含まれます。
 
 - ベンダー製品の宣伝
 
-もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、**必ず**最初に次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
+これらの要件を満たす場合は、以下の項目を記載して、**必ず**最初に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
 
 - ブログ投稿のタイトル
 - 簡潔な説明とブログ投稿の概要

@@ -87,6 +87,7 @@ otelcol
 otep
 otlp
 Otmar
+OTTL
 packagist
 Paixão
 Pavol
