@@ -76,13 +76,13 @@ Bluesky の文字数制限が300文字でリンクがおよそ34文字を消費�
 - [コントリビューター募集](#call-for-contributors)
 
 チュートリアル、ウォークスルー、ハウツーコンテンツは通常、ユーザーや利用ツールが最も見つけやすい[ドキュメント](#documentation-or-blog-post)に掲載するのが適切です。
-OpenTelemetry コミュニティに広く該当するその他の投稿も受け入れられる場合がありますが、優先度は低くなります。
+OpenTelemetry コミュニティの幅広いメンバーに関係するその他の投稿も受け入れられる場合がありますが、優先度は低くなります。
 
 不適切な内容には、以下が含まれます。
 
 - ベンダー製品の宣伝
 
-これらの要件を満たす場合、**必ず**最初に次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
+これらの要件を満たす場合は、以下の項目を記載して、**必ず**最初に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)してください。
 
 - ブログ投稿のタイトル
 - 簡潔な説明とブログ投稿の概要
