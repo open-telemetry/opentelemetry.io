@@ -1,0 +1,41 @@
+{{/*
+  Upcoming community meetings, read in the browser from an iCalendar feed and
+  shown in the viewer's time zone.
+
+  - src: the feed's https URL; defaults to the page param meetings_calendar
+  - exclude: comma-separated, case-insensitive title substrings to leave out
+  - weeks: weeks shown at first, and added by each "Show more" (default 4)
+  - max_weeks: how far ahead "Show more" reaches (default 26)
+*/ -}}
+{{ $src := .Get "src" | default (.Page.Param "meetings_calendar") -}}
+{{ if not (hasPrefix $src "https://") -}}
+  {{ errorf "%s: src, or the page param meetings_calendar, must be an https:// iCalendar URL: %s" .Name .Position -}}
+{{ end -}}
+{{ $webcal := replaceRE `^https://` "webcal://" $src -}}
+
+<div class="otel-meetings"
+  data-ics-url="{{ $src }}"
+  data-exclude="{{ .Get "exclude" }}"
+  data-weeks="{{ .Get "weeks" | default 4 }}"
+  data-max-weeks="{{ .Get "max_weeks" | default 26 }}"
+  data-i18n-loading="{{ i18n "meetings_loading" }}"
+  data-i18n-error="{{ i18n "meetings_error" }}"
+  data-i18n-time-zone="{{ i18n "meetings_time_zone" }}"
+  data-i18n-event-time="{{ i18n "meetings_event_time" }}"
+  data-i18n-filter-label="{{ i18n "meetings_filter_label" }}"
+  data-i18n-all="{{ i18n "meetings_all" }}"
+  data-i18n-live="{{ i18n "meetings_live" }}"
+  data-i18n-none="{{ i18n "meetings_none" }}"
+  data-i18n-show-more="{{ i18n "meetings_show_more" }}">
+  <noscript><p>{{ i18n "meetings_no_script" }}</p></noscript>
+  <p class="otel-meetings__status" role="status"></p>
+  <div class="otel-meetings__body"></div>
+  <p class="otel-meetings__feed">
+    <i class="fa-regular fa-calendar"></i>
+    <a href="{{ $webcal }}">{{ i18n "meetings_subscribe" }}</a>
+    &middot;
+    <a href="{{ $src }}">{{ i18n "meetings_feed" }}</a>
+  </p>
+</div>
+
+{{ partial "script.html" (dict "src" "js/communityMeetings.js") -}}
