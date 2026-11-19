@@ -7,8 +7,7 @@ eventUrl: &eventUrl >-
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
 queryParams: >-
   utm_source=opentelemetry&utm_medium=website&utm_content=blog
-default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
-drifted_from_default: true
+default_lang_commit: edfda068e00cd45e50a77967e193baad2beeccb5
 # prettier-ignore
 cSpell:ignore: Ajmal Araujo Atulpriya Baert Bindplane Braydon Chirayath Chircop Chungyu Contribfest Crowell Danielson Edera Flagsmith Genba Ghadge Goswami Guangya Guardrailing Helmuth Hendrickson Kains kannu Karena Kaynan Kedify Kubesimplify Leffler Liudmila Luttmer Mahanata Mancioppi Molkova Mowry Muhammed Narang Nissen Nubank Odigos Pathak Pronnoy Qasim Rizzo Roquetto Saiyam Sarfraz Schrottner Soham Stacke Tintri Todea Vamerlatti Verticalizing Yunas
 ---
