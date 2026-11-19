@@ -2393,6 +2393,11 @@ approvers:
       - swift-triagers
     html_url: https://github.com/vvydier
     avatar_url: https://avatars.githubusercontent.com/u/466745?v=4
+  - name: wehzzz
+    teams:
+      - ebpf-profiler-approvers
+    html_url: https://github.com/wehzzz
+    avatar_url: https://avatars.githubusercontent.com/u/113706003?v=4
   - name: weyert
     teams:
       - javascript-contrib-triagers
@@ -2500,6 +2505,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/himanshu130700
     avatar_url: https://avatars.githubusercontent.com/u/228173647?v=4
+  - name: iliferov
+    teams:
+      - kotlin-triagers
+    html_url: https://github.com/iliferov
+    avatar_url: https://avatars.githubusercontent.com/u/18546754?v=4
   - name: inetand
     teams:
       - kotlin-triagers
@@ -2601,6 +2611,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/punya
     avatar_url: https://avatars.githubusercontent.com/u/277514?v=4
+  - name: Rxfa
+    teams:
+      - kotlin-triagers
+    html_url: https://github.com/Rxfa
+    avatar_url: https://avatars.githubusercontent.com/u/65974055?v=4
   - name: SatoshiKamiyama
     teams:
       - collector-contrib-triagers
@@ -2673,6 +2688,9 @@ members:
   - name: addname
     html_url: https://github.com/addname
     avatar_url: https://avatars.githubusercontent.com/u/3360883?v=4
+  - name: AgentGymLeader
+    html_url: https://github.com/AgentGymLeader
+    avatar_url: https://avatars.githubusercontent.com/u/264910004?v=4
   - name: AlchemyDing
     html_url: https://github.com/AlchemyDing
     avatar_url: https://avatars.githubusercontent.com/u/88769332?v=4
@@ -2988,6 +3006,9 @@ members:
   - name: kevinearls
     html_url: https://github.com/kevinearls
     avatar_url: https://avatars.githubusercontent.com/u/1008872?v=4
+  - name: kingbj940429
+    html_url: https://github.com/kingbj940429
+    avatar_url: https://avatars.githubusercontent.com/u/63000843?v=4
   - name: kirbyquerby
     html_url: https://github.com/kirbyquerby
     avatar_url: https://avatars.githubusercontent.com/u/6455350?v=4
@@ -3324,9 +3345,6 @@ members:
   - name: vyagh
     html_url: https://github.com/vyagh
     avatar_url: https://avatars.githubusercontent.com/u/115340955?v=4
-  - name: wehzzz
-    html_url: https://github.com/wehzzz
-    avatar_url: https://avatars.githubusercontent.com/u/113706003?v=4
   - name: wgliang
     html_url: https://github.com/wgliang
     avatar_url: https://avatars.githubusercontent.com/u/8739301?v=4
