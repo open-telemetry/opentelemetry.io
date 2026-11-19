@@ -5,8 +5,7 @@ aliases:
   - manual
   - manual_instrumentation
 description: OpenTelemetry Kotlin の手動計装
-default_lang_commit: e358f6a20be1341939fe50816902dd284c60bb16
-drifted_from_default: true
+default_lang_commit: 41477529b5ad5d600c36c57803b3df9cda150941
 ---
 
 {{% include instrumentation-intro.md %}}
@@ -53,7 +52,7 @@ val logger = otel.getLogger("com.example.myclient")
 `version`、`schemaUrl`、`attributes` はオプションで指定でき、キャプチャされたテレメトリーに関連付けられます。
 
 ```kotlin
-val tracer = otel.getTracer(
+val logger = otel.loggerProvider.getLogger(
     name = "com.example.myclient",
     version = "1.4.2",
     schemaUrl = "https://opentelemetry.io/schemas/1.30.0",
@@ -83,9 +82,9 @@ logger.emit(
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
-    severityNumber: SeverityNumber? = SeverityNumber.INFO,
-    severityText: String? = "INFO"
+    body = "Hello, World!",
+    severityNumber = SeverityNumber.INFO,
+    severityText = "INFO",
 )
 ```
 
@@ -95,7 +94,7 @@ logger.emit(
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
+    body = "Hello, World!",
     timestamp = 100,
     observedTimestamp = 90,
 )
@@ -111,8 +110,8 @@ fun example(logger: Logger) {
         performFoo()
     } catch (exc: IllegalStateException) {
         logger.emit(
-            body = "Hello, World!"
-            exception = IllegalStateException("my exception")
+            body = "Hello, World!",
+            exception = exc,
         )
     }
 }
@@ -124,20 +123,20 @@ fun example(logger: Logger) {
 
 ```kotlin
 logger.emit(
-    body = "Hello, World!"
-    eventName = "event_name"
+    body = "Hello, World!",
+    eventName = "event_name",
 )
 ```
 
 #### コンテキストの指定 {#specify-the-context}
 
 ログレコードを特定のコンテキストに関連付けたい場合は、`context` を指定します。
-これを指定しない場合、暗黙的なコンテキストが使用されます。
+これを指定しない場合、現在のコンテキストが使用されます。
 
 ```kotlin
 fun example(logger: Logger, ctx: Context) {
     logger.emit(
-        body = "Hello, World!"
+        body = "Hello, World!",
         context = ctx,
     )
 }
@@ -175,7 +174,7 @@ val tracer = otel.getTracer("com.example.checkout")
 `version`、`schemaUrl`、`attributes` はオプションで指定でき、キャプチャされたテレメトリーに関連付けられます。
 
 ```kotlin
-val tracer = otel.getTracer(
+val tracer = otel.tracerProvider.getTracer(
     name = "com.example.checkout",
     version = "1.4.2",
     schemaUrl = "https://opentelemetry.io/schemas/1.30.0",
@@ -205,7 +204,7 @@ span.end()
 デフォルトでは、OpenTelemetry Kotlin は独自のクロックを使用して終了タイムスタンプを設定します。
 
 ```kotlin
-span.end(timestamp = MyClock.now())
+span.end(timestamp = endTimeNanos)
 ```
 
 ### 属性の指定 {#specify-attributes}
@@ -262,7 +261,7 @@ if (span.isRecording()) {
 ```kotlin
 val span: Span = tracer.startSpan(
     name = "my_span",
-    spanKind = SpanKind.CLIENT
+    spanKind = SpanKind.CLIENT,
 )
 ```
 
@@ -275,7 +274,7 @@ val span: Span = tracer.startSpan(
 ```kotlin
 val span: Span = tracer.startSpan(
     name = "my_span",
-    startTimestamp = MyClock.now()
+    startTimestamp = startTimeNanos,
 )
 ```
 
@@ -283,13 +282,13 @@ val span: Span = tracer.startSpan(
 
 ### parentContext の指定 {#specify-the-parentcontext}
 
-スパンを特定のコンテキストに関連付けたい場合は、`context` を指定します。
-これを指定しない場合、暗黙的なコンテキストが使用されます。
+スパンを特定のコンテキストに関連付けたい場合は、`parentContext` を指定します。
+これを指定しない場合、現在のコンテキストが使用されます。
 
 ```kotlin
 fun example(tracer: Tracer, ctx: Context) {
     tracer.startSpan(
-        name = "my_span"
+        name = "my_span",
         parentContext = ctx,
     )
 }
@@ -304,7 +303,7 @@ fun example(tracer: Tracer, ctx: Context) {
 
 ```kotlin
 val span: Span = tracer.startSpan("my_span") {
-    addLink(otherSpan)
+    addLink(otherSpan.spanContext)
 }
 ```
 
@@ -319,9 +318,10 @@ span.addLink(otherSpan) {
 
 ### スパンでオペレーションをラップする {#wrap-an-operation-with-a-span}
 
-スパンで記録したい同期オペレーションがある場合は、`wrapOperation` を使用してスパンを開始および終了できます。
+スパンで記録したい同期オペレーションがある場合は、`wrapOperation` を使用してオペレーション完了時にスパンを終了できます。
 
 ```kotlin
+val span = tracer.startSpan("my_operation")
 span.wrapOperation {
     performFoo()
     span.setName(updatedName)
@@ -329,10 +329,10 @@ span.wrapOperation {
 }
 ```
 
-`wrapOperation` はラムダ内で任意のオペレーションを実行することで、スパンの開始と終了を自動的に処理するため、リソースリークを心配する必要がありません。
+`wrapOperation` はラムダ内で任意のオペレーションを実行した後にスパンを終了するため、リソースリークを心配する必要がありません。
 オペレーションが成功したかどうかを示す `StatusData` を返す必要があります。
 
-さらに、`wrapOperation` 内で例外がスローされた場合、自動的に記録され、スパンステータスが `Error` に設定されます。
+さらに、`wrapOperation` 内で例外がスローされた場合、自動的に記録され、スパンステータスが `Error` に設定され、例外が再スローされます。
 
 ## 属性 {#attributes}
 
@@ -340,7 +340,7 @@ span.wrapOperation {
 型付きセッターを使用できます。
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setStringAttribute("string_key", "my_string")
     setBooleanAttribute("bool_key", true)
     setLongAttribute("long_key", 5L)
@@ -356,7 +356,7 @@ span.wrapOperation {
 または、かわりに `Map<String, Any>` を渡すこともできます。
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setAttributes(mapOf(
         "string_key" to "my_string",
         "bool_key" to true,
@@ -375,7 +375,7 @@ span.wrapOperation {
 これは複雑な値を表現したい場合に役立ちます。
 
 ```kotlin
-{
+tracer.startSpan("my_span") {
     setAnyValueAttribute("my_key", AnyValue.StringValue("my_value"))
 }
 ```
@@ -391,7 +391,7 @@ span.wrapOperation {
 `Context` オブジェクトは、スパンの作成時に親子関係をモデル化するためにも使用できます。
 REST API の例では、リクエストボディのデシリアライズや DB クエリなどのサブオペレーションを計測できます。
 
-コンテキスト管理には、明示的と暗黙的の2つのアプローチがあります。
+コンテキスト管理には、明示的と現在のコンテキスト（暗黙的とも呼ばれる）の2つのアプローチがあります。
 
 ### 明示的なコンテキストの使用 {#using-explicit-context}
 
@@ -460,63 +460,66 @@ if (parentSpan.spanContext.isValid) {
 
 #### Context へのその他の値の設定 {#setting-other-values-on-context}
 
-任意の値は、キーを作成して `set` と `get` 関数を呼び出すことで `Context` に設定できます。
+任意の値は、`createContextKey` でキーを作成して `set` と `get` 関数を呼び出すことで `Context` に設定できます。
 
 ```kotlin
-val key: ContextKey<MyObject> = otel.context.createKey("my-unique-key")
+val key: ContextKey<MyObject> = createContextKey("my-unique-key")
 val root: Context = otel.context.root()
 val newCtx: Context = root.set(key, MyObject())
-val ref: MyObject = newCtx.get(key)
+val ref: MyObject? = newCtx.get(key)
 ```
 
 内部的には、これはまさに `Span` と `Baggage` が `Context` に格納される方法と同じです。
 
-### 暗黙的なコンテキストの使用 {#using-implicit-context}
+### 現在のコンテキストの使用 {#using-current-context}
 
-暗黙的なコンテキスト管理では、ログやスパンを作成するたびに、SDK が事前定義されたルールに基づいて正しい `Context` を選択します。
+現在のコンテキスト管理では、ログやスパンを作成するたびに、SDK が事前定義されたルールに基づいて正しい `Context` を選択します。
 
-#### 暗黙的なコンテキストの危険性 {#the-dangers-of-implicit-context}
+#### 現在のコンテキストの危険性 {#the-dangers-of-current-context}
 
 すべての呼び出し元で明示的に `Context` オブジェクトを渡すことは、認知的なオーバーヘッドを生じさせます。
-OpenTelemetry には「暗黙的な」コンテキスト、つまり現在の実行単位に関連付けられたコンテキストの概念があります。
+OpenTelemetry には「現在の」コンテキスト、つまり現在の実行単位に関連付けられたコンテキストの概念があります。
 
-暗黙的なコンテキストはパラメーターを受け渡す認知的なオーバーヘッドを軽減しますが、それが自分が現在の実行単位とみなすものに一致しているかに注意する必要があります。
+現在のコンテキストはパラメーターを受け渡す認知的なオーバーヘッドを軽減しますが、それが自分が現在の実行単位とみなすものに一致しているかに注意する必要があります。
 たとえば、Kotlin アプリケーションはスレッドローカルとコルーチンの両方を同時に使用することがあります。
-スレッドローカルのアプローチを使用して暗黙的なコンテキストを格納しているにもかかわらずコルーチン内で実行している場合、暗黙的なコンテキストは無意味で誤解を招くものになります。
+スレッドローカルのアプローチを使用して現在のコンテキストを格納しているにもかかわらずコルーチン内で実行している場合、現在のコンテキストは無意味で誤解を招くものになります。
 
-暗黙的なコンテキスト管理は、妥当なデフォルトを提供するのみです。
+現在のコンテキスト管理は、妥当なデフォルトを提供するのみです。
 独自のアプリケーションでは、この妥当なデフォルトを明示的なコンテキスト管理で補うことを強くお勧めします。
 
-#### 暗黙的なコンテキストの取得 {#obtaining-the-implicit-context}
+#### 現在のコンテキストの取得 {#obtaining-the-current-context}
 
-暗黙的なコンテキストを取得するには、`implicit()` を呼び出します。
+現在のコンテキストを取得するには、`current()` を呼び出します。
 
 ```kotlin
-val implicitCtx: Context = otel.context.implicit()
+val currentCtx: Context = otel.context.current()
 ```
 
-暗黙的な `Context` が設定されていない場合、デフォルトでルートコンテキストが使用されます。
+現在の `Context` が設定されていない場合、デフォルトでルートコンテキストが使用されます。
 
-#### 暗黙的なコンテキストの設定 {#setting-the-implicit-context}
+#### 現在のコンテキストの設定 {#setting-the-current-context}
 
 まず、`Span` を格納した新しい `Context` オブジェクトを作成します。
-次に `asImplicitContext()` を呼び出します。
+次に `asCurrentContext()` を呼び出します。
 これにより、オペレーションのスコープに対して `Context` が自動的にアタッチされ、完了時にデタッチされます。
 
 ```kotlin
-val ctx: Context = otel.context.implicit().storeSpan(span)
-ctx.asImplicitContext {
+val ctx: Context = otel.context.current().storeSpan(span)
+ctx.asCurrentContext {
     performFoo()
 }
 ```
 
-暗黙的な `Context` をより細かく制御したい場合は、`attach()` と `detach()` を自分で呼び出せます。
+現在の `Context` をより細かく制御したい場合は、`attach()` と `detach()` を自分で呼び出せます。
 ただし、`attach/detach` の呼び出しを対応させ、エラーを適切に処理することが非常に重要です。
-注意しないと、暗黙的なコンテキストに予期しない値が残る可能性があります。
+注意しないと、現在のコンテキストに予期しない値が残る可能性があります。
 
 ```kotlin
-val ctx: Context = otel.context.implicit().storeSpan(span)
+val ctx: Context = otel.context.current().storeSpan(span)
 val scope: Scope = ctx.attach()
-performFoo()
-scope.detach()
+try {
+    performFoo()
+} finally {
+    scope.detach()
+}
 ```
