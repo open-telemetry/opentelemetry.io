@@ -2,7 +2,7 @@
 title: JMX Metrics
 weight: 14
 description: Collect metrics from JMX MBeans using OpenTelemetry
-cSpell:ignore: jconsole jmxremote mbean mbeans visualvm wildfly
+cSpell:ignore: jconsole jmxremote mbean mbeans visualvm weblogic wildfly
 ---
 
 This page describes how to collect metrics from
@@ -23,7 +23,7 @@ into OpenTelemetry, enabling you to:
 - Collect metrics from application-specific MBeans
 - Export JMX data alongside other OpenTelemetry telemetry signals
 - Use predefined metric mappings for popular target systems (Tomcat, Jetty,
-  Wildfly, ...)
+  WebLogic, Wildfly, ...)
 
 ## Installation
 
@@ -42,16 +42,19 @@ with the JMX metrics extension:
 
    ```sh
    java -javaagent:opentelemetry-javaagent.jar \
-     -Dotel.jmx.target.system=tomcat \
+     -Dotel.jmx.metrics.experimental.included=tomcat.* \
      -Dotel.jmx.config=/path/to/custom-metrics.yaml \
      -jar myapp.jar
    ```
 
-JMX metrics collection is enabled by setting either (or both) of the following
-configuration options:
+Stable bundled JMX metrics are enabled by default (except for the JMX-based
+`jvm` definitions, which are captured through the `runtime-telemetry` module).
+You can customize JMX metric collection by setting either (or both) of the
+following configuration options:
 
-- `otel.jmx.target.system` to select predefined metric sets to enable
-- `otel.jmx.config` to provide path to custom JMX rules
+- `otel.jmx.metrics.experimental.included` to opt in to unstable predefined
+  metrics by metric name pattern
+- `otel.jmx.config` to provide a path to custom JMX rules
 
 When using the Java agent, the JVM runtime metrics (cpu, memory, ...) are
 captured through the `runtime-telemetry` module and are enabled by default
@@ -69,16 +72,19 @@ JMX metrics can be collected in two ways:
 When using the OpenTelemetry Java agent, configure JMX metrics using these
 properties:
 
-| System Property          | Environment Variable     | Description                                           | Default |
-| ------------------------ | ------------------------ | ----------------------------------------------------- | ------- |
-| `otel.jmx.enabled`       | `OTEL_JMX_ENABLED`       | Enable JMX metric collection                          | `true`  |
-| `otel.jmx.target.system` | `OTEL_JMX_TARGET_SYSTEM` | Comma-separated list of predefined metric sets to use | none    |
-| `otel.jmx.config`        | `OTEL_JMX_CONFIG`        | Path to custom YAML for metric mapping                | none    |
+| System Property                          | Environment Variable                     | Description                                                        | Default |
+| ---------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------ | ------- |
+| `otel.instrumentation.jmx.enabled`       | `OTEL_INSTRUMENTATION_JMX_ENABLED`       | Enable JMX metric collection                                       | `true`  |
+| `otel.jmx.metrics.experimental.included` | `OTEL_JMX_METRICS_EXPERIMENTAL_INCLUDED` | Comma-separated glob patterns for unstable bundled metrics to emit | none    |
+| `otel.jmx.metrics.included`              | `OTEL_JMX_METRICS_INCLUDED`              | Comma-separated glob patterns for metric names to collect          | all     |
+| `otel.jmx.metrics.excluded`              | `OTEL_JMX_METRICS_EXCLUDED`              | Comma-separated glob patterns for metric names not to collect      | none    |
+| `otel.jmx.config`                        | `OTEL_JMX_CONFIG`                        | Path to custom YAML for metric mapping                             | none    |
 
 ### JMX Scraper Configuration
 
 When using the standalone JMX Scraper to collect metrics from a remote JVM,
-configure using these properties (note: `otel.jmx.enabled` is not needed).
+configure using these properties (note: `otel.instrumentation.jmx.enabled` is
+not needed).
 
 | System Property          | Environment Variable     | Description                                           | Default    |
 | ------------------------ | ------------------------ | ----------------------------------------------------- | ---------- |
@@ -97,14 +103,16 @@ working as expected.
 ### Predefined Target Systems
 
 OpenTelemetry provides predefined metric mappings for popular Java frameworks
-and application servers. Use the `otel.jmx.target.system` property to enable
-them (available with both Java agent and JMX Scraper):
+and application servers. With the Java agent, stable bundled metrics are
+collected automatically, and unstable predefined metrics can be enabled by
+metric name pattern using `otel.jmx.metrics.experimental.included` (with the JMX
+Scraper, use `otel.jmx.target.system` instead):
 
 **Example - Monitoring Tomcat (Java agent):**
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.target.system=tomcat \
+  -Dotel.jmx.metrics.experimental.included=tomcat.* \
   -jar myapp.jar
 ```
 
