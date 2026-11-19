@@ -39,7 +39,7 @@ let package = Package(
         .macOS(.v13)
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1")
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.99.0")
     ],
     targets: [
         .executableTarget(
@@ -68,7 +68,7 @@ enum Entrypoint {
         do {
             app.get("rolldice") { req in
                 let result = Int.random(in: 1..<7)
-                return result
+                return String(result)
             }
             try await app.execute()
             try await app.asyncShutdown()
@@ -104,7 +104,7 @@ let package = Package(
         .macOS(.v13)
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.83.1"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.99.0"),
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift-core.git", from: "2.6.0"),
         .package(url: "https://github.com/open-telemetry/opentelemetry-swift.git", from: "2.6.0"),
     ],
@@ -189,22 +189,21 @@ enum Entrypoint {
         let app = try await Application.make(.detect())
         do {
             app.get("rolldice") { req in
-                let span = tracer.spanBuilder(spanName: "GET /rolldice")
+                tracer.spanBuilder(spanName: "GET /rolldice")
                     .setSpanKind(spanKind: .server)
-                    .startSpan()
-                defer { span.end() }
-
-                let result = Int.random(in: 1..<7)
-                diceRolls.add(value: 1)
-                logger.logRecordBuilder()
-                    .setSeverity(.info)
-                    .setBody(.string("Rolled a dice"))
-                    .emit()
-                logger.logRecordBuilder()
-                    .setEventName("dice.rolled")
-                    .setAttributes(["dice.value": .int(result)])
-                    .emit()
-                return result
+                    .withActiveSpan { _ in
+                        let result = Int.random(in: 1..<7)
+                        diceRolls.add(value: 1)
+                        logger.logRecordBuilder()
+                            .setSeverity(.info)
+                            .setBody(.string("Rolled a dice"))
+                            .emit()
+                        logger.logRecordBuilder()
+                            .setEventName("dice.rolled")
+                            .setAttributes(["dice.value": .int(result)])
+                            .emit()
+                        return String(result)
+                    }
             }
 
             try await app.execute()
@@ -240,6 +239,10 @@ dice values will vary):
 The view selects instruments from the `DiceServer` meter. The metric reader
 exports cumulative counter values once per second. The event uses the logs API
 and appears as a log record with an `eventName`.
+
+`withActiveSpan` makes the request span active inside the closure, so the log
+and event include its trace and span IDs. It ends the span when the closure
+returns.
 
 ## Next Steps
 
