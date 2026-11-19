@@ -406,6 +406,7 @@ maintainers:
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
+      - php-maintainers
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
@@ -464,6 +465,7 @@ maintainers:
       - proto-approvers
       - proto-triagers
       - shared-workflows-approvers
+      - sig-security-approvers
       - specs-approvers
       - specs-maintainers
       - specs-triagers
@@ -769,6 +771,7 @@ maintainers:
       - php-contrib-approvers
       - php-distro-approvers
       - php-distro-maintainers
+      - php-maintainers
       - php-triagers
     html_url: https://github.com/intuibase
     avatar_url: https://avatars.githubusercontent.com/u/9551626?v=4
@@ -3060,6 +3063,9 @@ members:
   - name: mahendrabishnoi2
     html_url: https://github.com/mahendrabishnoi2
     avatar_url: https://avatars.githubusercontent.com/u/25322000?v=4
+  - name: maksmara
+    html_url: https://github.com/maksmara
+    avatar_url: https://avatars.githubusercontent.com/u/2587936?v=4
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
