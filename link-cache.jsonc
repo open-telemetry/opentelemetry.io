@@ -16774,6 +16774,11 @@
     "when": "2026-10-23T05:44:45Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/docs/troubleshooting/README.md": {
+    "result": 200,
+    "when": "2026-11-20T09:16:35Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Api/Context/Propagation/EnvironmentVariableCarrier.cs": {
     "result": 200,
     "when": "2026-10-20T05:45:18Z",
@@ -27454,6 +27459,11 @@
     "when": "2026-10-22T05:45:16Z",
     "via": "lychee",
   },
+  "https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel": {
+    "result": 200,
+    "when": "2026-11-20T09:16:35Z",
+    "via": "lychee",
+  },
   "https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.logpropertiesattribute": {
     "result": 200,
     "when": "2026-11-06T05:38:24Z",
@@ -27589,6 +27599,11 @@
     "when": "2026-11-06T05:38:24Z",
     "via": "lychee",
   },
+  "https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource": {
+    "result": 200,
+    "when": "2026-11-20T09:16:35Z",
+    "via": "lychee",
+  },
   "https://learn.microsoft.com/dotnet/api/system.environment.processorcount": {
     "result": 200,
     "when": "2026-11-06T05:38:50Z",
@@ -27722,6 +27737,11 @@
   "https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-counters": {
     "result": 200,
     "when": "2026-10-23T05:44:44Z",
+    "via": "lychee",
+  },
+  "https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-trace": {
+    "result": 200,
+    "when": "2026-11-20T09:16:35Z",
     "via": "lychee",
   },
   "https://learn.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation": {
