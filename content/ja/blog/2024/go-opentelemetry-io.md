@@ -27,7 +27,7 @@ OpenTelemetry のエンジニアがリスクを最小限に抑えるため、移
 
 ### 影響を受けるリソース {#affected-resources}
 
-問題が発生する可能性は低いですが、今回の計画された変更の影響範囲は、以下のドメインの Go パッケージダウンロードに及びます。
+今回の変更で問題が発生する可能性は低いものの、万一発生した場合は、以下のドメインからの Go パッケージのダウンロードに影響が及びます。
 
 - `go.opentelemetry.io/auto`
 - `go.opentelemetry.io/build-tools`
@@ -52,11 +52,11 @@ OpenTelemetry のエンジニアがリスクを最小限に抑えるため、移
 
 ## 気づくかもしれないこと {#what-you-might-notice}
 
-この移行中に [go.opentelemetry.io][] ドメインがダウンタイムを経験する可能性があります。
+この移行中に [go.opentelemetry.io][] ドメインでダウンタイムが発生する可能性があります。
 その場合、`go.opentelemetry.io` モジュールをインポートしているプロジェクトのコンパイルが失敗する可能性があります。
 
 これは、DNS の伝搬の遅延や設定ミスなど、いくつかの要因によって発生する可能性があります。
-ダウンタイムを最小限に抑えるため、複数のメンテナーがこの期間中に同期的に作業します。
+この期間中は複数のメンテナーが同時に対応し、ダウンタイムが発生した場合は最小限に抑えます。
 
 この移行後に問題が発生した場合は、[Slack #otel-go](https://cloud-native.slack.com/archives/C01NPAXACKT) で連絡を取るか、[opentelemetry-go-vanityurls](https://github.com/open-telemetry/opentelemetry-go-vanityurls) に[イシューを作成](https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/new)してください。
 
