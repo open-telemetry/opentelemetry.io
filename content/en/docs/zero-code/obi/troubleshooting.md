@@ -118,6 +118,10 @@ OBI can expose a `pprof` port to allow performance profiling. To enable it, set
 the `profile_port` configuration value or the `OTEL_EBPF_PROFILE_PORT`
 environment variable to the desired port.
 
+See the
+[OBI profiling guide](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/82cd923dfbee956f95487b46e8371de12510cf11/devdocs/profiling.md)
+for commands to capture and analyze profiles.
+
 This is an advanced use case and typically not required.
 
 ## Common OBI issues

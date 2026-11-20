@@ -5,9 +5,8 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-default_lang_commit: ec0a1a501eb7321af7150f534d8339cd22f23a8a
-drifted_from_default: true
-cSpell:ignore: coreutils HKLM iisreset Sonoma
+default_lang_commit: 52bc572fc569401f35171b4138844754e5dac670
+cSpell:ignore: coreutils HKLM iisreset Sequoia
 ---
 
 OpenTelemetry .NET 自動計装を使用すると、ソースコードを変更せずに .NET アプリケーションやサービスからトレースとメトリクスをオブザーバビリティバックエンドに送信できます。
@@ -32,12 +31,12 @@ OpenTelemetry .NET 自動計装は、[.NET](https://dotnet.microsoft.com/en-us/p
 
 CI テストは以下のオペレーティングシステムに対して実行されています。
 
-- [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
-- [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
-- [Debian x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian.dockerfile)
-- [Debian ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/debian-arm64.dockerfile)
-- [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-stream9.dockerfile)
-- [macOS Sonoma 14 ARM64](https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md)
+- [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/alpine.dockerfile)
+- [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/alpine.dockerfile)
+- [Debian x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/debian.dockerfile)
+- [Debian ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/debian-arm64.dockerfile)
+- [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docker/centos-stream9.dockerfile)
+- [macOS Sequoia 15 ARM64](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
 - [Microsoft Windows Server 2025 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)
 - [Ubuntu 22.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)
@@ -62,7 +61,7 @@ CI テストは以下のオペレーティングシステムに対して実行�
 
 ```shell
 # インストーラーをプライベートディレクトリにダウンロード
-version="v1.18.0"
+version="v1.19.1"
 repository="open-telemetry/opentelemetry-dotnet-instrumentation"
 release_workflow="$repository/.github/workflows/release.yml"
 download_dir="$(mktemp -d "${TMPDIR:-/tmp}/otel-dotnet-auto-installer.XXXXXX")"
@@ -130,7 +129,7 @@ Windows では、管理者として PowerShell モジュールを使用します
 # PowerShell 5.1 が必要です
 #Requires -PSEdition Desktop
 
-$version = "v1.18.0"
+$version = "v1.19.1"
 $repository = "open-telemetry/opentelemetry-dotnet-instrumentation"
 $release_workflow = "$repository/.github/workflows/release.yml"
 $skip_release_verification = $false

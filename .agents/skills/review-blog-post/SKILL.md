@@ -85,6 +85,12 @@ Judgment calls beyond the hook:
 
 From [`content/en/docs/contributing/blog.md`][contrib-blog]:
 
+- The submitting author **must** be a member of the `open-telemetry` GitHub org
+  (check with `gh api orgs/open-telemetry/members/<login>`; 204 means member).
+  Co-authors needn't be.
+- Strong preference for project or organizational announcements (releases,
+  milestones, SIG formation and progress, Call for Contributors). Tutorials and
+  how-tos should usually go to the docs instead; flag them.
 - Non-commercial, broadly relevant; no vendor product pitches.
 - Prefer CNCF projects in examples (Jaeger for traces, Prometheus for metrics).
 - A pre-submission issue is **mandatory** — PRs without an accepted issue can be
@@ -131,7 +137,7 @@ line is long enough that the formatter would wrap it:
 
 ```yaml
 # prettier-ignore
-cSpell:ignore: jpkrohling Krohling logdedup OllyGarden OTTL Paixao telemetrygen
+cSpell:ignore: jpkrohling Krohling logdedup OllyGarden Paixao telemetrygen
 ```
 
 ## OTel terminology
@@ -172,10 +178,11 @@ below are what humans most often miss after the hook + linters pass:
 3. Multi-author intro credits + `body_class: otel-with-contributions-from` set
    if needed.
 4. `gh-url-hash`: no `main`/`master` or short SHAs; tags or full SHAs only.
-5. Submission prerequisites: pre-submission issue linked (mandatory — flag PRs
-   without one for closure), non-commercial, CNCF tools preferred, SIG sponsor
-   identified and from a different company than the author, sponsor has
-   completed their review before Comms SIG review.
+5. Submission prerequisites: submitting author is an `open-telemetry` org
+   member, post is announcement-type (or flagged), pre-submission issue linked
+   (mandatory — flag PRs without one for closure), non-commercial, CNCF tools
+   preferred, SIG sponsor identified and from a different company than the
+   author, sponsor has completed their review before Comms SIG review.
 6. OTel terminology consistent throughout.
 7. `date` and `draft` set so the publish workflow gates the merge as intended.
 

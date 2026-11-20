@@ -10,9 +10,9 @@ author: >-
   Lehner](https://github.com/florianl) (Elastic) [Damien
   Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Profiling
-default_lang_commit: 346b2912021b98de4349f80753c829d9223a1f25
+default_lang_commit: 50f5ce6ba90c9999a624be8e34a538eee7d25f5b
 # prettier-ignore
-cSpell:ignore: Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner k8sattributesprocessor Kalkanis Lehner Mefford Najaryan Nayef OTTL Rühsen Suereth Teräs Tigran Zymtrace
+cSpell:ignore: Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner k8sattributesprocessor Kalkanis Lehner Mefford Najaryan Nayef Rühsen Suereth Teräs Tigran Zymtrace
 ---
 
 OpenTelemetry が初めてプロファイルを[紹介](/blog/2024/profiling/)して以来、トレース、メトリクス、ログと並ぶ継続的な本番プロファイリングの統一された業界標準の構築に向けた勢いは増す一方です。

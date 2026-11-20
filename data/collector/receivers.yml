@@ -230,6 +230,7 @@
   repo: contrib
   distributions:
     - contrib
+    - core
     - k8s
   stability:
     logs: beta
@@ -692,14 +693,6 @@
     - contrib
   stability:
     metrics: alpha
-- name: signalfxreceiver
-  display_name: SignalFx Receiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: deprecated
-    metrics: deprecated
 - name: simpleprometheusreceiver
   display_name: Simple Prometheus Receiver
   repo: contrib

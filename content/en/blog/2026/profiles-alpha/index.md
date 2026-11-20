@@ -11,7 +11,7 @@ author: >-
   Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Profiling
 # prettier-ignore
-cSpell:ignore: Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner k8sattributesprocessor Kalkanis Lehner Mefford Najaryan Nayef OTTL Rühsen Suereth Teräs Tigran Zymtrace
+cSpell:ignore: Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner k8sattributesprocessor Kalkanis Lehner Mefford Najaryan Nayef Rühsen Suereth Teräs Tigran Zymtrace
 ---
 
 Since OpenTelemetry first [introduced](/blog/2024/profiling/) Profiles, momentum

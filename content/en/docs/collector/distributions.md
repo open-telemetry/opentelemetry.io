@@ -4,7 +4,7 @@ weight: 25
 ---
 
 The OpenTelemetry project currently offers pre-built [distributions][] of the
-Collector. The components included in the distributions can be found by in the
+Collector. The components included in the distributions can be found in the
 `manifest.yaml` of each distribution.
 
 [distributions]:

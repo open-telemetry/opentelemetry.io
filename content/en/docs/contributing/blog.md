@@ -4,10 +4,14 @@ description: Learn how to submit a blog post.
 weight: 30
 ---
 
-The [OpenTelemetry blog](/blog/) communicates new features, community reports,
-and any news that might be relevant to the OpenTelemetry community. This
-includes end users and developers. Anyone can write a blog post, read below what
-the requirements are.
+The [OpenTelemetry blog](/blog/) communicates project and organizational
+announcements, such as releases, milestones, and Special Interest Group (SIG)
+news, to the OpenTelemetry community, including end users and developers. Blog
+posts must be submitted by a [member of the OpenTelemetry GitHub
+organization][membership]; read below for the full requirements.
+
+[membership]:
+  https://github.com/open-telemetry/community/blob/main/community-membership.md
 
 ## Documentation or blog post?
 
@@ -26,6 +30,29 @@ blog, [submit a social media request][].
 
 [submit a social media request]:
   https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml
+
+## Announcing your blog post {#announcing}
+
+When a blog post is published, a pull request is opened automatically in
+[opentelemetry-announcements][] so maintainers can announce it on
+OpenTelemetry's social media channels and mailing list. The announcement is "New
+on the OpenTelemetry blog: _title_" with a short text and the link to the post.
+
+By default the short text is the post title. To write a better one, add an
+`announcement` key to the front matter:
+
+```yaml
+announcement:
+  Cardinality limits keep your metrics pipeline healthy. Learn how to set them
+  up.
+```
+
+Keep it to about 260 characters, because Bluesky allows 300 and the link counts
+as roughly 34 of them. Use `announcement: false` to skip the announcement. The
+text can still be edited in the announcements pull request before it's merged.
+
+[opentelemetry-announcements]:
+  https://github.com/open-telemetry/opentelemetry-announcements
 
 ## Before submitting a blog post
 
@@ -49,21 +76,31 @@ If the check reports an issue:
 - Run `npm run fix:markdown` to auto-fix what it can, then fix any remaining
   reported links manually.
 
-Verify that your intended content broadly applies to the OpenTelemetry Community
-. Appropriate content includes:
+### Who can submit {#who-can-submit}
 
+The submitting author **must** be a [member of the OpenTelemetry GitHub
+organization][membership]. Co-authors don't need to be members.
+
+### What we publish {#what-we-publish}
+
+The blog strongly prefers posts about project and organizational announcements,
+such as:
+
+- Releases and other project milestones
 - New OpenTelemetry capabilities
-- OpenTelemetry projects updates
-- Updates from Special Interest Groups
-- Tutorials and walkthroughs
-- OpenTelemetry Integrations
+- SIG formation, progress, and other updates
 - [Call for Contributors](#call-for-contributors)
+
+Tutorials, walkthroughs, and how-to content usually belong in the
+[documentation](#documentation-or-blog-post) instead, where users and the tools
+they use are most likely to find them. Other posts that apply broadly to the
+OpenTelemetry community may still be accepted, but at a lower priority.
 
 Unsuitable content includes:
 
 - Vendor product pitches
 
-If your blog post fits into the list of appropriate content, you **must** first
+If you meet these requirements, you **must** first
 [raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?template=BLOG_POST.yml)
 with the following details:
 
