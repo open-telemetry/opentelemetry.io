@@ -11,7 +11,7 @@ cSpell:ignore: bisutti datasource
 [OpenTelemetry Java エージェント](/docs/zero-code/java/agent/)は、Java アプリケーションを計装する便利で確立された方法です。
 しかし、現時点では [GraalVM ネイティブイメージでは使用できません](https://github.com/oracle/graal/issues/1065)。
 
-それにもかかわらず、Spring Boot ネイティブイメージアプリケーションのための簡単でシームレスな方法を提供するために、OpenTelemetry Java のコントリビューターは既存の OpenTelemetry Spring Boot スターターを改善し、Spring Boot ネイティブイメージアプリケーションで適切に動作するようにしました。
+そこで、Spring Boot ネイティブイメージアプリケーションのための簡単でシームレスな方法を提供するために、OpenTelemetry Java のコントリビューターは既存の OpenTelemetry Spring Boot スターターを改善し、Spring Boot ネイティブイメージアプリケーションで適切に動作するようにしました。
 詳しくはこの先をお読みください！
 
 ## ここ数か月の歴史 {#a-history-of-the-last-months}
@@ -31,7 +31,7 @@ OpenTelemetry Java のコントリビューターは、これを利用して Spr
 ```
 
 さらに可視性を高めるために、スターターは[計装ライブラリ](/docs/languages/java/instrumentation/)と組み合わせることができます。
-この目的のために、OpenTelemetry Java のコントリビューターは JDBC（データベース）ライブラリとロギング計装ライブラリを改善しました。
+この目的のために、OpenTelemetry Java のコントリビューターは JDBC（データベース）とロギングの計装ライブラリを改善しました。
 たとえば、Logback ロギングライブラリについては、ネイティブモードでライブラリが動作するよう GraalVM 設定を追加しました[^1]。
 
 さらに、スターターでのロギングおよびデータベース計装のセットアップに必要な設定を削減する作業も行いました。
