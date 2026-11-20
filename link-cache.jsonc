@@ -9009,6 +9009,11 @@
     "when": "2026-10-19T05:46:50Z",
     "via": "lychee",
   },
+  "https://github.com/maksmara": {
+    "result": 200,
+    "when": "2026-11-19T03:43:53Z",
+    "via": "lychee",
+  },
   "https://github.com/malus2077": {
     "result": 200,
     "when": "2026-11-02T20:57:05Z",
@@ -10367,6 +10372,26 @@
   "https://github.com/open-telemetry/opentelemetry-browser": {
     "result": 200,
     "when": "2026-10-24T05:43:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/docs/roadmap.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/docs/session-management.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/packages/instrumentation/README.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-browser/blob/main/packages/sdk/README.md": {
+    "result": 200,
+    "when": "2026-10-15T19:18:17Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-browser/tree/main/packages/instrumentation": {
