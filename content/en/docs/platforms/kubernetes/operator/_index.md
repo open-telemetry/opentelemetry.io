@@ -39,8 +39,8 @@ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releas
 Once the `opentelemetry-operator` deployment is ready, create an OpenTelemetry
 Collector (otelcol) instance, like:
 
-```console
-$ kubectl apply -f - <<EOF
+```sh
+kubectl apply -f - <<EOF
 apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:

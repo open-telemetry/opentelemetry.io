@@ -3,8 +3,7 @@ title: OBI メトリクスのカーディナリティ
 linkTitle: メトリクスのカーディナリティ
 description: 計装される環境のサイズと複雑さを考慮した、デフォルトの OBI インストールで生成されるメトリクスのカーディナリティの算出方法の概要。
 weight: 24
-default_lang_commit: 84d7cf19e9f7f44ea889f8e148b37bc71116ef31
-drifted_from_default: true
+default_lang_commit: 41477529b5ad5d600c36c57803b3df9cda150941
 cSpell:ignore: kube-system spanmetrics
 ---
 
@@ -13,8 +12,9 @@ cSpell:ignore: kube-system spanmetrics
 このドキュメントでは、デフォルトの OBI インストールで生成される可能性のあるメトリクスのカーディナリティの概算を提供しようとします。
 各メトリクスファミリーは選択的に有効化または無効化できるため、OBI が生成可能な各種のメトリクスごとにいくつかのセクションに分かれています。
 
-単純化のため、以下の公式は単一クラスターを想定しています。
-複数のクラスターがある場合は、それぞれのクラスターのカーディナリティを掛け合わせる必要があります。
+以下のシリーズ数の算出は、単一クラスター、クラシック Prometheus ヒストグラム、OBI のデフォルトバケット境界を前提としています。
+ネイティブヒストグラムと OTLP ヒストグラムでは表現が異なります。
+各クラスターを個別に見積もってください。
 
 ## 用語 {#terminology}
 
@@ -41,8 +41,8 @@ cSpell:ignore: kube-system spanmetrics
 
 たとえば、HTTP ルートの数とサーバーアドレスの数はどちらもカーディナリティを増加させますが、すべてのサーバーインスタンスが同じ HTTP ルートを受け付けるわけではないため、単純に掛け合わせることはできません。
 
-次の公式は非常におおまかな上限を示すことができますが、[我々の測定](#case-study-cardinality-of-opentelemetry-demo) では、実際のカーディナリティは計算値よりも 2 桁低い結果でした。
-このため、事前にカーディナリティを計算しようとするのではなく、測定指向のアプローチを推奨します。
+次の公式は非常におおまかな上限を示すことができますが、[我々の測定](#case-study-cardinality-of-opentelemetry-demo) では、実測のカーディナリティは計算値よりもはるかに低い結果でした。
+このため、見積もりと並行してエクスポートされるシリーズを測定してください。
 
 ただし、全体のカーディナリティに影響する可能性のある要因は次のとおりです。
 
@@ -51,6 +51,7 @@ cSpell:ignore: kube-system spanmetrics
 - クライアント側メトリクス（OBI が他のアプリケーションへリクエストを行うアプリケーションを計装する場合）:
   - `http.client.request.duration`
   - `http.client.request.body.size`
+  - `http.client.response.body.size`
   - `rpc.client.call.duration`
   - `db.client.operation.duration`
   - `messaging.client.operation.duration`
@@ -58,8 +59,18 @@ cSpell:ignore: kube-system spanmetrics
 - サーバー側メトリクス（OBI が他のアプリケーションからのリクエストをディスパッチするアプリケーションを計装する場合）:
   - `http.server.request.duration`
   - `http.server.request.body.size`
+  - `http.server.response.body.size`
   - `rpc.server.call.duration`
-- **HistogramBuckets** は、すべてのアプリケーションレベルのメトリクスがヒストグラムであるため、各メトリクスに対して考慮し、乗算する必要があります。バケットは OBI で設定可能ですが、デフォルトの数は duration メトリクスで 15 個、body size メトリクスで 11 個に、さらに 2 つのメトリクス（ヒストグラムの sum と count）が加わります。
+- **エラータイプ**: v0.14.0 以降、HTTP の duration および body-size の Prometheus シリーズには `error_type` ラベルがあります。
+  成功したリクエストでは値は空です。
+  同じ操作、エンドポイント、ステータスコードに対して複数のエラータイプがあると、別々のシリーズが作成されます。
+  すべての HTTP シリーズに固定の係数を掛けるのではなく、デプロイメントで観測された値をカウントしてください。
+- **データベースコレクションと RPC ポート**: v0.15.2 以降、データベースの duration メトリクスにはデフォルトで `db.collection.name` が含まれ、RPC クライアントの duration には `server.port` が含まれ、失敗した RPC サーバーの duration には `error.type` が含まれます。
+  各操作で観測される個別の組み合わせをカウントしてください。
+  メッセージングの duration メトリクスも操作タイプとサブスクリプション名で分割される場合があります。
+- **HistogramBuckets** は、この例の各アプリケーションメトリクスがヒストグラムであるため、考慮する必要があります。
+  OBI のデフォルトでは、duration バケット境界が 15 個、body-size バケット境界が 10 個です。
+  Prometheus は `+Inf` バケット、sum、count を追加するため、属性の組み合わせごとにそれぞれ 18 または 13 のシリーズが生成されます。
 - **Operations** は呼び出された機能と同等です。HTTP サービスでは HTTP メソッドと HTTP ルートをグループ化したものであり、RPC では RPC メソッド名です。
 - **Endpoints** はサーバーアドレスとポートの数です。
 - **ReturnCodes** は操作の取り得る結果の数です。通常、gRPC では Ok/Err、または HTTP ステータスコードです。
@@ -86,8 +97,8 @@ cSpell:ignore: kube-system spanmetrics
 悲観的な計算は次のようになります。
 
 ```text
-#Instances * #MetricNames * #HistoBuckets * #Operations * #Endpoints * #ReturnCodes =
-= 2 * 5 * 177/3 * 37/3 =2771
+#Instances * #MetricNames * #HistogramSeries * #Operations * #Endpoints * #ReturnCodes
+= 2 * 5 * 18 * 7 * 3 * 7 = 26,460
 ```
 
 参照とした数値:
@@ -102,16 +113,18 @@ cSpell:ignore: kube-system spanmetrics
     - `http.client.request.duration`
     - `http.client.request.body.size`
     - `db.client.operation.duration`
-- 17 個のヒストグラムメトリクス（ほとんどのメトリクスが duration ベースであるため）
+- duration ヒストグラムあたり 18 シリーズ（明示的バケット 15 個、`+Inf`、sum、count）を悲観的な上限として使用。
+  body-size ヒストグラムは 13 シリーズ
 - 7 つの操作: RPC Add/List/Delete、HTTP PUT、SQL Insert/Select/Delete
 - 3 つのエンドポイント: バックエンド、Identity プロバイダー、DB
 - 7 つの戻りコード: RPC OK/Err、HTTP 200/401/500、SQL OK/Err
 
-カーディナリティが 163 を超えないように見えるかもしれません。
-しかし一部の乗数はシステム全体には適用されないため、この数値は現実的でも正確でもありません。
-たとえば、SQL メソッドは RPC や HTTP メトリクスとは掛け合わせないはずです。
+この上限は意図的に緩く設定されています。
+SQL の操作は RPC や HTTP メトリクスに掛け合わされず、各メトリクスはクライアントまたはサーバーのどちらか一方のみが出力します。
+また、HTTP ステータスコードごとに `error_type` の値が 1 つであることを前提としており、追加のエラータイプがあるとシリーズはさらに分割されます。
+この算出では、SQL 操作ごとに 1 つのデータベースコレクション、エンドポイントごとに 1 つの RPC サーバーポート、失敗した操作ごとに 1 つの RPC エラータイプも前提としています。
 
-このシンプルなシナリオでは、手動でカウントすると最大カーディナリティが 396 になり、これは当初の 2771 よりはるかに少ない値です。
+これらの前提のもとで、5 つのメトリクスから 417 シリーズをカウントでき、悲観的な上限の 26,460 よりはるかに少ない値です。
 
 | #   | インスタンス | メトリクス                      | エンドポイント | 操作       | コード |
 | --- | ------------ | ------------------------------- | -------------- | ---------- | ------ |
@@ -144,24 +157,31 @@ cSpell:ignore: kube-system spanmetrics
 次にメトリクスインスタンスをヒストグラムバケット、それにヒストグラムの `_count` と `_sum` で乗算します。
 
 - 3 個の body-size メトリクスインスタンス × 13 = 39
-- 21 個の duration メトリクスインスタンス × 17 = 357
+- 21 個の duration メトリクスインスタンス × 18 = 378
 
-合計のカーディナリティ: **396**
+合計のカーディナリティ: **417**
 
-上記の例は、カーディナリティへの影響を計算する公式を 1 つ提供することの難しさを示しています。
-すべての情報が既知である非常にシンプルな例では、正確なカーディナリティをカウントできました。
-アプリケーションとその相互接続についてほとんど、あるいはまったく情報がない大規模な Kubernetes クラスターでは、この演習は不可能でしょう。
+この例は、1 つの公式ではデプロイメントのカーディナリティを予測できない理由を示しています。
+このカウントでさえ、有効化されたメトリクスとラベルの値に依存します。
+より大規模な Kubernetes クラスターでは、エクスポートされるシリーズを測定して、実際のワークロードの接続と属性を把握してください。
 
 ## ネットワークレベルのメトリクス {#network-level-metrics}
 
-OBI が提供するカウンターは `obi.network.flow.bytes` 1 つだけなので、ネットワークレベルのメトリクスはアプリケーションレベルのメトリクスより計算が簡単です。
-ただし、カーディナリティはアプリケーション同士がどれだけ相互接続されているかにも依存します。
+ネットワークレベルのメトリクスはアプリケーションレベルのメトリクスより見積もりが簡単です。
+`network` 機能は `obi.network.flow.bytes` カウンターをエクスポートします。
+パケットカウンターやゾーン間バイトカウンターも個別に有効化できます。
+カーディナリティは、どのエンドポイントが通信し、どの属性を選択するかに依存します。
 
 `obi.network.flow.bytes` のデフォルト属性は次のとおりです。
 
-- Direction（リクエスト/レスポンス）
-- Kubernetes における送信元と送信先のエンドポイントオーナー: `k8s_src_owner_name`、`k8s_dst_owner_name`、`k8s_src_owner_type`、`k8s_dst_owner_type`、`k8s_src_namespace`、`k8s_dst_namespace`
-- `k8s_cluster_name`: 各クラスターで一意。他のメトリクスと同様、単一クラスターを想定しています。
+- `direction`: `request`、`response`、または `unknown`。
+- Kubernetes メタデータが有効な場合の送信元と送信先のエンドポイントオーナー名、オーナータイプ、名前空間: `k8s_src_owner_name`、`k8s_src_owner_type`、`k8s_src_namespace`、`k8s_dst_owner_name`、`k8s_dst_owner_type`、`k8s_dst_namespace`。
+- `k8s_cluster_name`: 各クラスターで一意。
+  他のメトリクスと同様、単一クラスターを想定しています。
+  この属性も Kubernetes メタデータが必要です。
+
+これらの例では、各オーナー数は名前空間、オーナー名、オーナータイプの個別の組み合わせを表すため、オーナータイプに別の乗数は不要です。
+各オーナーペアで観測される個別の `direction` 値をカウントしてください。
 
 簡略化された悲観的な公式は次のようになります。
 
@@ -173,7 +193,9 @@ OBI が提供するカウンターは `obi.network.flow.bytes` 1 つだけなの
 接続係数を適用するほうが現実的です。
 たとえば 100 個の Deployment/DaemonSet/StatefulSet を持つクラスターで、各オーナーが平均 2 つの他のオーナーに接続されている場合、カーディナリティは次のようになります。
 
-2 directions × 100 SourceOwners × 2 Destination Owners = **400**
+2 directions × 100 source owners × 2 destination owners = **400** シリーズ（すべてのオーナーペアで `request` と `response` の両方が発生する場合のバイトカウンター）。
+`unknown` の direction 値があるとさらに増える可能性があります。
+追加のメトリクス機能もシリーズを追加します。
 
 ## サービスグラフメトリクス {#service-graph-metrics}
 
@@ -195,15 +217,19 @@ OBI が提供するカウンターは `obi.network.flow.bytes` 1 つだけなの
 
 計算はネットワークメトリクスと類似していますが、カーディナリティはより高くなります。
 
-- 単一のカウンターメトリクスではなく、全体で 36 のカーディナリティを持つメトリクス/ヒストグラムのセット（2 つの 15+2 ヒストグラム + 2 つのカウンター）を報告します。
+- ネットワークバイトカウンターではなく、全体で 38 のカーディナリティを持つメトリクス/ヒストグラムのセット（2 つの 18 シリーズヒストグラム + 2 つのカウンター）を報告します。
 - インスタンスのオーナー（たとえば Deployment）で集約するのではなく、クライアントはリクエストを送信するインスタンスであり、サーバーは通常単一のサービスインスタンス経由でアクセスされるため、オーナーとなる場合があります。
 
 ## スパンメトリクス {#span-metrics}
 
-- `traces_spanmetrics_latency`: 15 + 2 バケットのヒストグラム
-- `traces_spanmetrics_calls_total`: カウンター
-- `traces_spanmetrics_size_total`: カウンター
-- `traces_spanmetrics_response_size_total`: カウンター
+オプションの `application_span_otel` 機能を使用すると、OBI は次のメトリクスをエクスポートします。
+
+- `traces.span.metrics.duration`: Prometheus 経由でエクスポートされる場合、明示的バケット 15 個、`+Inf`、sum、count を持つヒストグラム
+- `traces.span.metrics.calls`: カウンター
+
+非推奨の `application_span` 機能は、以前の `traces_spanmetrics_latency` および `traces_spanmetrics_calls_total` という名前を使用します。
+非推奨の `application_span_sizes` 機能は、後継なしで 2 つのサイズカウンターを追加します。
+[メトリクスのエクスポート機能](../configure/export-data/#metrics-export-features) を参照してください。
 
 各メトリクスにカーディナリティを追加する可能性のある属性は次のとおりです。
 
@@ -215,38 +241,43 @@ OBI が提供するカウンターは `obi.network.flow.bytes` 1 つだけなの
 最大カーディナリティはおおまかに次のように計算できます。
 
 ```text
-19 metric buckets * 3 span kinds * #Instances * #Operations * #ReturnCodes
+19 metric series * 3 span kinds * #Instances * #Operations * #ReturnCodes
 ```
 
 [前述のアプリケーションメトリクスの計算例](#example-calculation) で示したとおり、HTTP の戻りコードの大きな数は HTTP サービスにのみ掛かる、あるいは一部のインスタンスグループは総ルートのサブセットしか持たないといった仮定を置きました。
 
 ## ケーススタディ: OpenTelemetry デモのカーディナリティ {#case-study-cardinality-of-opentelemetry-demo}
 
-このセクションでは、3 ノードのローカルクラスターにデプロイされた [OpenTelemetry Demo](/docs/demo/architecture/) のカーディナリティを計算します。
-サンプルアプリケーションにバンドルされている OpenTelemetry の計装はすべて無効化し、OBI をデプロイして計装を行いました。
+以下の測定値は、ローカルの 3 ノードクラスターにデプロイされた [OpenTelemetry Demo](/docs/demo/architecture/) の以前のデプロイメントから取得したものです。
+バンドルされている OpenTelemetry の計装は無効化し、OBI が計装を行いました。
+これらのカウントはそのデプロイメントを表しています。
+クエリを使用してご自身のデプロイメントを調査し、現在のカーディナリティを見積もる際には、有効化されたメトリクスファミリーと選択した属性を含めてください。
 
 ### アプリケーションレベルメトリクスの測定 {#measure-application-level-metrics}
 
 計装対象のほとんどのインスタンスはクライアントでありサービスでもあるため、より正確にするために公式の `#instances` 引数を無視します。
 
 ```text
-#MetricNames * (#HistoBuckets+2) * #Operations * #Endpoints * #ReturnCodes
+#MetricNames * #HistogramSeries * #Operations * #Endpoints * #ReturnCodes
 ```
 
 最終的なカーディナリティに対して属性が非線形に与える影響を最小化するため、メトリクスのタイプごと（HTTP、gRPC、Kafka）に別々にカーディナリティの数値を計算します。
 
 **HTTP メトリクス:**
 
-- 4 メトリクス: クライアント、サーバー、リクエストサイズ、時間
-- 平均 15 個のヒストグラムバケット
+- この例に含まれる 4 つの HTTP ヒストグラムメトリクス
+- 悲観的なメトリクスごとの上限として、明示的ヒストグラムバケット 15 個、`+Inf`、sum、count
 - 既知の操作: 75。実行中の OTel デモから PromQL クエリ `group by (http_request_method, http_route)({__name__=~"http_.*"})` で測定
 - 26 エンドポイント。実行中の OTel デモから PromQL クエリ `group by (server_address, server_port)({__name__=~"http_.*"})` で測定
 - 6 個のレスポンスステータスコード: 200、301、308、403、408、504。実行中の OTel デモから抽出
 
+v0.14.0 以降、`application` 機能は 6 つの HTTP ヒストグラムファミリー（クライアントとサーバーの duration、リクエストの body size、レスポンスの body size）をエクスポートできます。
+この以前のスナップショットの 4 メトリクスの係数を再利用するのではなく、ご自身のデプロイメントが実際に出力するファミリーを含めてください。
+
 HTTP メトリクスの最大計算上限値は次のとおりです。
 
 ```text
-4 x 15 x 75 x 26 x 6 =~ 702,000
+4 x 18 x 75 x 26 x 6 = 842,400
 ```
 
 これは、アプリケーションレベルのメトリクスに対して公式がいかに効果的でないかを示しています。
@@ -256,17 +287,19 @@ HTTP メトリクスの最大計算上限値は次のとおりです。
 
 ### ネットワークレベルメトリクスの測定 {#measure-network-level-metrics}
 
-ネットワークレベルメトリクスについて、2 方向（リクエスト/レスポンス）と、21 個の Deployment がすべての 21 個の Deployment に情報を要求すると仮定すると、次のカーディナリティの数値が得られます。
+デフォルト属性のバイトカウンターについて、21 個のデモ Deployment がすべての 21 個の Deployment と通信し、すべてのオーナーペアで `request` と `response` の両方が発生すると仮定すると、見積もりは次のようになります。
 
-2×21×21 = 882
+2 × 21 × 21 = 882 シリーズ
 
-アーキテクチャを知っていれば、アーキテクチャ図の矢印のみをカウントし、それらが双方向であると仮定することで、より低い見積もりが得られます。
+アーキテクチャ図の 29 個の接続のみをカウントし、それぞれ双方向と仮定すると、より低い見積もりが得られます。
 
-2x29 = 58
+2 × 29 = 58 シリーズ
 
-ネットワークメトリクスは、OpenTelemetry デモの接続、その他の内部クラスターの接続、計装トラフィックを測定するため、実際のカーディナリティはより高くなります。
+デフォルトの `direction` 属性には `unknown` の値もあり得るため、シリーズがさらに増える可能性があります。
+名前空間やタイプが異なるオーナーは個別にカウントしてください。
 
-`count(obi_network_flow_bytes_total)` **→ 330**
+ネットワークメトリクスは、OpenTelemetry デモの接続、その他の内部クラスターの接続、計装トラフィックを測定します。
+現在の合計は `count(obi_network_flow_bytes_total)` でクエリできます。
 
 OpenTelemetry デモに属する部分をよりよく把握するために、次のクエリで名前空間間のトラフィックをグループ化できます。
 
@@ -274,7 +307,7 @@ OpenTelemetry デモに属する部分をよりよく把握するために、次
 count(obi_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
 ```
 
-これは次の情報を返します。
+以前のスナップショットでは次の名前空間ペアが記録され、合計 312 シリーズでした。
 
 | k8s_src_namespace | k8s_dst_namespace | count |
 | ----------------- | ----------------- | ----- |
@@ -298,7 +331,7 @@ OpenTelemetry デモのコンポーネント間トラフィックに対して生
 
 ネットワークメトリクスはサービスグラフの構築によく使用されますが、実際のサービスグラフメトリクスは異なる形をしています。
 
-- 単一のカウンターメトリクスではなく、2 つのカウンターメトリクスと 16+2 バケットのヒストグラムメトリクス 2 つがあります。
+- ネットワークバイトカウンターではなく、2 つのカウンターメトリクスと 2 つのヒストグラムメトリクス（明示的バケット 15 個、`+Inf`、sum、count）があります。
 - サービスグラフメトリクスは、通常、内部 Kubernetes トラフィックや、アプリケーションレベルで計装されていないインスタンスからのトラフィックを無視します。
 
 測定値は次のとおりです。
@@ -310,4 +343,5 @@ OpenTelemetry デモのコンポーネント間トラフィックに対して生
 アプリケーションレベルメトリクスの計算では、関連するパラメーターの数が多いため、解析的な数値を得ることが難しいことを示しました。
 PromQL で測定することで、カーディナリティの正確な測定値を得ることができます。
 
-`count({__name__=~".*spanmetrics.*"})` **→ 3900**
+`count({__name__=~".*spanmetrics.*"})` **→ 3900**（以前のデプロイメントの値）。
+`application_span_otel` の場合は、かわりに `traces_span_metrics_.*` をクエリしてください。
