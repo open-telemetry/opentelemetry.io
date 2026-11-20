@@ -4,7 +4,7 @@ description: >-
   Use OpenTelemetry in apps running on Android platforms
 weight: 10
 vers:
-  ot-android: 1.8.1
+  ot-android: 1.9.0
 cSpell:ignore: inactivity
 ---
 
