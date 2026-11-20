@@ -10,7 +10,7 @@ cSpell:ignore: ECS Reiley Yang
 本日、[Elastic](https://www.elastic.co/) と共同で、[Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html)（ECS）と [OpenTelemetry セマンティック規約][OpenTelemetry Semantic Conventions]の将来について発表できることを大変嬉しく思います。
 
 目標は、ECS と OTel セマンティック規約を、OpenTelemetry によって管理される単一のオープンスキーマへと統合し、OpenTelemetry セマンティック規約が真に Elastic Common Schema の後継となることです。
-OpenTelemetry はこの分野におけるオブザーバビリティとセキュリティの統合を改善することに同様の関心を持っています。
+OpenTelemetry も、この分野におけるオブザーバビリティとセキュリティの統合を進めることに関心を持っています。
 このスキーマの統合は、以下の理由からオープンソースコミュニティに大きな価値をもたらすと考えています。
 
 - ECS は、ログ、メトリクス、トレース、セキュリティイベントのスキーマにおいて長年にわたる実績を持ち、一般的な問題領域を幅広くカバーしています。
@@ -19,7 +19,7 @@ OpenTelemetry はこの分野におけるオブザーバビリティとセキュ
 - この共同の取り組みは、ロギング、分散トレーシング、メトリクス、セキュリティイベントの各分野の専門家からの知見を活用します。
   その結果、オブザーバビリティとセキュリティイベントの各領域にわたって、より一貫性のあるシグナルが得られることを期待しています。
 
-Elastic と OpenTelemetry コミュニティの双方は、広く使われている2つの標準を1つの共通スキーマに統合し、ユーザーにとってスムーズな移行を実現することが重要であると認識しています。
+Elastic と OpenTelemetry コミュニティの双方は、広く使われている2つの標準を1つの共通スキーマに統合することと、スムーズな移行を実現することの両方が、ユーザーにとって極めて重要だと認識しています。
 Elastic と OpenTelemetry の双方からドメインの専門家が参加する、専用の OpenTelemetry セマンティック規約ワーキンググループが設立される予定です。
 また、データスキーマやセマンティック規約に情熱を持つドメインの専門家の参加も歓迎しています。
 コントリビューションに興味がある方は、[OTel セマンティック規約ワーキンググループ](https://github.com/open-telemetry/community#specification-sigs)に参加し、[Slack チャンネル](https://cloud-native.slack.com/archives/C041APFBYQP)でのディスカッションにご参加ください。
