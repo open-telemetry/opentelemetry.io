@@ -3765,13 +3765,13 @@
     "via": "lychee",
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
-    "result": "error",
-    "when": "2026-11-19T05:38:30Z",
+    "result": 200,
+    "when": "2026-11-20T00:38:52Z",
     "via": "lychee",
   },
   "https://en.cppreference.com/w/cpp/container/vector.html": {
-    "result": "error",
-    "when": "2026-11-19T05:38:30Z",
+    "result": 200,
+    "when": "2026-11-20T00:38:52Z",
     "via": "lychee",
   },
   "https://en.wikipedia.org/": {
@@ -28115,8 +28115,8 @@
     "via": "double-check",
   },
   "https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda": {
-    "result": "error",
-    "when": "2026-11-19T05:38:30Z",
+    "result": 200,
+    "when": "2026-11-20T00:38:51Z",
     "via": "lychee",
   },
   "https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e": {
@@ -33383,8 +33383,8 @@
     "via": "lychee",
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "result": "error",
-    "when": "2026-11-19T05:38:30Z",
+    "result": 200,
+    "when": "2026-11-20T00:38:52Z",
     "via": "lychee",
   },
   "https://www.buoyant.io/mtls-guide": {
