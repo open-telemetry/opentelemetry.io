@@ -19,7 +19,7 @@ console.
 
 Ensure that you have the following installed locally:
 
-- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 10+
 - [GitHub CLI](https://cli.github.com/), used to verify the installer and
   downloaded artifacts
 
