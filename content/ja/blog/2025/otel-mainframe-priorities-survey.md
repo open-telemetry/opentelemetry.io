@@ -11,7 +11,7 @@ cSpell:ignore: Ruediger Schulze
 ---
 
 [OpenTelemetry](/) プロジェクトと [The Open Mainframe Project](https://openmainframeproject.org/) は、2024年初頭に [SIG「OpenTelemetry on Mainframe」](https://github.com/open-telemetry/sig-mainframe)を設立しました。
-私たちの焦点は、メインフレーム上で OpenTelemetry を有効にし、エンドツーエンドのオブザーバビリティを向上させ、ハイブリッドクラウドアプリケーションへのメインフレームの参加を支援することです。
+私たちは、メインフレーム上で OpenTelemetry を利用できるようにすることでエンドツーエンドのオブザーバビリティを向上させるとともに、ハイブリッドクラウドアプリケーションにメインフレームを組み込めるよう支援することに重点を置いています。
 **SIG は皆さまの参加を求める新しい[アンケート][survey]を開始しました。**
 
 ## 背景 {#background}
@@ -26,7 +26,7 @@ OpenTelemetry プロジェクトの幅広さとメインフレームの高度な
 メインフレームのユーザーやオブザーバビリティソリューションのユーザー、開発者、サイトリライアビリティエンジニア、アプリケーションオーナー、アーキテクト、DevOps エンジニア、およびこの分野のすべての専門家から幅広くフィードバックを求めています。
 
 [アンケート][survey]の結果は、メインフレームプラットフォームでの OpenTelemetry の採用を加速するための活動に優先順位を付け、実施するために役立てられます。
-そのような活動としては、コード計装のための選定された SDK の z/OS への迅速な移植や、プラットフォーム固有の側面に対するセマンティック規約の定義などが考えられます。
+たとえば、コード計装用に選定した SDK を z/OS に速やかに移植したり、プラットフォーム固有の側面に対応するセマンティック規約を定義したりすることが考えられます。
 アンケートが完了した後、OpenTelemetry プロジェクトと The Open Mainframe Project のウェブサイトで結果と優先順位付けされた活動リストを公開する予定です。
 
 ## アンケートへの参加 {#taking-the-survey}
@@ -40,7 +40,7 @@ OpenTelemetry プロジェクトの幅広さとメインフレームの高度な
 ぜひ[アンケート][survey]にご参加ください。
 OpenTelemetry on Mainframe SIG の活動について詳しく知りたい方は、[CNCF Slack](https://slack.cncf.io/) の [#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) で会話にご参加ください。
 
-_この記事のバージョンは、Open Mainframe Project ブログに[当初掲載][originally posted]されたものです。_
+_この記事の元になった版は、Open Mainframe Project のブログに[最初に掲載されました][originally posted]。_
 
 [originally posted]: <{{% param canonical_url %}}>
 [survey]: https://www.surveymonkey.com/r/HGTD2KJ
