@@ -16904,6 +16904,11 @@
     "when": "2026-11-19T05:38:55Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/82cd923dfbee956f95487b46e8371de12510cf11/devdocs/profiling.md": {
+    "result": 200,
+    "when": "2026-11-20T02:06:54Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/v1.0.0-rc.2/SUPPORT_MATRIX.md": {
     "result": 200,
     "when": "2026-10-26T20:34:25Z",
