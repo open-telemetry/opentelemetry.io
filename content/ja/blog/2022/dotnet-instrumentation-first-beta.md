@@ -15,7 +15,7 @@ cSpell:ignore: devopsnote librarysupport
 現在、開発者は[自動計装](/docs/specs/otel/glossary/#automatic-instrumentation)を使用して[シグナル](/docs/specs/otel/glossary/#signals)プロバイダーを初期化し、サポートされている[計装済みライブラリ](/docs/specs/otel/glossary/#instrumented-library)のテレメトリーデータを生成できます。
 このアプローチにはいくつかの利点があります。
 
-- [バイトコード計装](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/design.md#bytecode-instrumentations)による自動計装をサポートするための技術的な道筋が開かれ、公開されている計装ライブラリのみに依存するよりも多くの自動計装をサポートできる可能性がある
+- [バイトコード計装](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/design.md#bytecode-instrumentations)による自動計装をサポートするための技術的な道筋が開かれ、公開されている計装ライブラリだけに頼る場合よりも、自動計装の対象を広げられる可能性がある
 - 計装ライブラリのインストールと初期化が不要
 - 自動計装を追加するためにアプリケーションを修正して再ビルドする必要がない
 - 開始に必要なコードが少ない
@@ -28,7 +28,7 @@ cSpell:ignore: devopsnote librarysupport
 
 OpenTelemetry .NET 自動計装がカバーするさまざまな計装シナリオのデモについては、[サンプル](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/v0.1.0-beta.1/examples)を参照してください。
 
-今後数ヶ月で以下を計画しています。
+今後数か月で以下を計画しています。
 
 - 追加の[計装ライブラリ](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/config.md#instrumented-libraries-and-frameworks)のサポート
 - 依存関係管理の改善
@@ -36,7 +36,7 @@ OpenTelemetry .NET 自動計装がカバーするさまざまな計装シナリ�
 
 ぜひ**フィードバック**をお寄せください（お好みの方法で）。
 
-- [GitHub イシューを送信する](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/new)。
+- [GitHub イシューを作成する](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/new)。
 - [Slack](https://cloud-native.slack.com/archives/C01NR1YLSE7) でご連絡ください。
   初めての方は [CNCF Slack アカウントを作成](https://slack.cncf.io/)できます。
 
