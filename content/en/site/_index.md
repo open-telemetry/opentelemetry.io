@@ -27,6 +27,8 @@ Tentatively planned content organization:
   other relevant information broken down into features.
 - [**Skills**](./skills/) — Skills for agents and humans to use when maintaining
   the site.
+- [**Administration**](./admin/) — Maintainer procedures on the GitHub side:
+  team access, code ownership, branch rules, secrets, and bot identities.
 - [**Design**](./design/) — Architectural design, Information Architecture (IA),
   layout, UX choices, theme related decisions, and other design-level artifacts.
 - [**Implementation**](./implementation/) — Code-level structure and

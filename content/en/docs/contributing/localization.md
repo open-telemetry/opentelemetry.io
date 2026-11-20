@@ -562,13 +562,16 @@ Each locale has `docs-LANG_ID-approvers` and `docs-LANG_ID-maintainers` GitHub
 teams; maintainers are also approvers. The approvers team is the [code owner][]
 of the locale's paths, so a locale approver's review satisfies the required
 code-owner review of a locale-only PR. Locale maintainers can also
-[auto-merge](#auto-merge) such PRs.
+[auto-merge](#auto-merge) such PRs. For the ownership model behind this, which
+also covers SIG-owned content, see [Docs ownership][].
 
 The expected membership of locale teams is recorded in the
 [`data/locale-teams.yaml`][] registry, which also drives the locale section of
-the repository's [CODEOWNERS][] file. Membership changes are proposed as PRs
-against the registry, giving an audit trail, and applied to the live teams by an
-org admin. For the generator and the conventions it encodes, see the
+the repository's [CODEOWNERS][] file. Membership changes are made on the live
+teams, by the locale's team maintainers or, until a locale has them, by an org
+admin (see the setup guide's [Step 6c][]); the daily Housekeeping run syncs the
+registry with the live teams and opens a PR for any drift, giving an audit
+trail. For the generator and the conventions it encodes, see the
 [locale-codeowners README][].
 
 A locale without maintainers is **unstaffed**: its CODEOWNERS lines list
@@ -583,32 +586,13 @@ locale's lines, and the locale team gates its own PRs from then on: the locale
 has **graduated**. For an example, see the [zh graduation PR][]. If a locale
 team later becomes dormant, the inverse registry change restores the fallback.
 
-### Enabling auto-merge on locale-only PRs {#auto-merge}
+### Auto-merge on locale-only PRs {#auto-merge}
 
-Members of a locale's maintainers team can enable [GitHub auto-merge][] on a
-locale-only PR by commenting `/auto-merge` (or `/auto-merge:enable`; use
-`/auto-merge:disable` to turn it off). The directive must be on its own line,
-with no leading text or whitespace, as the first or last non-blank line of the
-comment. It may appear at most once. For example, you can write:
+Locale maintainers can enable auto-merge on a locale-only PR by commenting
+`/auto-merge`; the command, its guards, and its example are in [Docs
+ownership][auto-merge].
 
-```text
-LGTM
-/auto-merge
-```
-
-This lets established localization teams land their own PRs without waiting on a
-docs maintainer. GitHub, branch protection, and CODEOWNERS rules still gate the
-merge: the PR only merges once all required reviews are in and checks pass.
-
-An auto-merge comment is honored only when every changed file is owned by a
-locale you maintain, so it can't be used to make changes to shared or English
-content. For the eligibility rules and command details, see the [helper
-README][].
-
-[GitHub auto-merge]:
-  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request
-[helper README]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-auto-merge
+[auto-merge]: ../docs-ownership/#auto-merge
 
 ### PRs should not span locales {#prs-should-not-span-locales}
 
@@ -707,6 +691,7 @@ Finally, rerun `npm run check:links` and confirm that no link failures remain.
 [code owner]: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 [CODEOWNERS]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/CODEOWNERS
 [`data/locale-teams.yaml`]: https://github.com/open-telemetry/opentelemetry.io/blob/main/data/locale-teams.yaml
+[Docs ownership]: ../docs-ownership/
 [front matter]: https://gohugo.io/content-management/front-matter/
 [locale-codeowners README]: https://github.com/open-telemetry/opentelemetry.io/tree/main/scripts/gh/locale-codeowners
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
@@ -715,5 +700,6 @@ Finally, rerun `npm run check:links` and confirm that no link failures remain.
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/
+[Step 6c]: /site/build/localization/#gh-org-members
 [zh graduation PR]: https://github.com/open-telemetry/opentelemetry.io/pull/11516
 <!-- prettier-ignore-end -->
