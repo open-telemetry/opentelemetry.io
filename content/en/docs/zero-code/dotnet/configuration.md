@@ -109,13 +109,13 @@ The following resource detectors are included and enabled by default:
 
 | ID                   | Description                   | Documentation                                                                                                                                                                                                                          | Status                                                    |
 | -------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `AZUREAPPSERVICE`    | Azure App Service detector    | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.2-beta.1/src/OpenTelemetry.Resources.Azure/README.md)                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `AZURECONTAINERAPPS` | Azure Container Apps detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.2-beta.1/src/OpenTelemetry.Resources.Azure/README.md) **Not supported on .NET Framework**             | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `CONTAINER`          | Container detector            | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.20.1-beta.1/src/OpenTelemetry.Resources.Container/README.md) **Not supported on .NET Framework** | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `HOST`               | Host detector                 | [Host resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.20.1-beta.1/src/OpenTelemetry.Resources.Host/README.md)                                                    | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OPERATINGSYSTEM`    | Operating System detector     | [Operating System resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.20.1-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md)                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `PROCESS`            | Process detector              | [Process resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.20.1-rc.1/src/OpenTelemetry.Resources.Process/README.md)                                             | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `PROCESSRUNTIME`     | Process Runtime detector      | [Process Runtime resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.20.1-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md)                     | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `AZUREAPPSERVICE`    | Azure App Service detector    | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.21.0-beta.1/src/OpenTelemetry.Resources.Azure/README.md)                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `AZURECONTAINERAPPS` | Azure Container Apps detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.21.0-beta.1/src/OpenTelemetry.Resources.Azure/README.md) **Not supported on .NET Framework**             | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `CONTAINER`          | Container detector            | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.21.0-beta.1/src/OpenTelemetry.Resources.Container/README.md) **Not supported on .NET Framework** | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `HOST`               | Host detector                 | [Host resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.21.0-beta.1/src/OpenTelemetry.Resources.Host/README.md)                                                    | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OPERATINGSYSTEM`    | Operating System detector     | [Operating System resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.21.0-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md)                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESS`            | Process detector              | [Process resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.21.0-rc.1/src/OpenTelemetry.Resources.Process/README.md)                                             | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESSRUNTIME`     | Process Runtime detector      | [Process Runtime resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.21.0-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md)                     | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## Propagators
 
@@ -195,7 +195,7 @@ To enable the OTLP exporter, set the
 variable to `otlp`.
 
 To customize the OTLP exporter using environment variables, see the
-[OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
+[OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.21.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
 Important environment variables include:
 
 | Environment variable                                | Description                                                                                                                                                                                    | Default value                                                                        | Status                                              |
@@ -239,7 +239,7 @@ Important environment variables include:
 
 - The OpenTelemetry .NET Automatic Instrumentation defaults to `http/protobuf`,
   which differs from the OpenTelemetry .NET SDK default value of `grpc`.
-- On .NET 8 and higher, the application must reference
+- On .NET 10 and higher, the application must reference
   [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) to use
   the `grpc` OTLP exporter protocol. For example, by adding
   `<PackageReference Include="Grpc.Net.Client" Version="2.65.0" />` to the
@@ -264,7 +264,7 @@ Important environment variables include:
 
 **[3]**: Considerations on mTLS (mutual TLS) configuration:
 
-- mTLS is only supported on .NET 8.0 and higher.
+- mTLS is only supported on .NET 10.0 and higher.
 - All certificate files must be in PEM format.
 - When using mTLS, the `OTEL_EXPORTER_OTLP_ENDPOINT` must use `https://`.
 - mTLS is not supported on .NET Framework.
@@ -291,7 +291,7 @@ The exporter exposes the metrics HTTP endpoint on
 milliseconds.
 
 See the
-[Prometheus Exporter HttpListener documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.20.1-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener).
+[Prometheus Exporter HttpListener documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.21.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener).
 to learn more.
 
 ### Zipkin
@@ -302,7 +302,7 @@ To enable the Zipkin exporter, set the `OTEL_TRACES_EXPORTER` environment
 variable to `zipkin`.
 
 To customize the Zipkin exporter using environment variables, see the
-[Zipkin exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables).
+[Zipkin exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.21.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables).
 Important environment variables include:
 
 | Environment variable            | Description | Default value                        | Status                                              |
@@ -323,15 +323,15 @@ Important environment variables include:
 | `OTEL_DOTNET_AUTO_TRACES_ADDITIONAL_LEGACY_SOURCES` | Comma-separated list of additional legacy source names to be added to the tracer at the startup. Use it to capture `System.Diagnostics.Activity` objects created without using the `System.Diagnostics.ActivitySource` API.                                                                                                                                                                                                                                                                                |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FLUSH_ON_UNHANDLEDEXCEPTION`      | Controls whether the telemetry data is flushed when an [AppDomain.UnhandledException](https://docs.microsoft.com/dotnet/api/system.appdomain.unhandledexception) event is raised. Set to `true` when you suspect that you are experiencing a problem with missing telemetry data and also experiencing unhandled exceptions.                                                                                                                                                                               | `false`                          | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES`       | Comma-separated list of additional `System.Diagnostics.Metrics.Meter` names to be added to the meter at the startup. Use it to capture manually created metrics.                                                                                                                                                                                                                                                                                                                                           |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_PLUGINS`                          | Colon-separated list of `OpenTelemetry.AutoInstrumentation.PluginApi` plugin types, specified with the [assembly-qualified name](https://docs.microsoft.com/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname). _Note: This list must be colon-separated because the type names may include commas._ See more info on how to write plugins at [plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/plugins.md). |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_APP_DOMAIN_STRATEGY`              | .NET Framework only. Defines how automatic instrumentation handles non-default AppDomains. Supported values are `LoaderOptimizationSingleDomain`, `AssemblyRedirect`, and `None`. See [.NET Framework AppDomain strategy](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/netfx-appdomain-strategy.md) for details.                                                                                                                                               | `LoaderOptimizationSingleDomain` | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_PLUGINS`                          | Colon-separated list of `OpenTelemetry.AutoInstrumentation.PluginApi` plugin types, specified with the [assembly-qualified name](https://docs.microsoft.com/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname). _Note: This list must be colon-separated because the type names may include commas._ See more info on how to write plugins at [plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/docs/plugins.md). |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_APP_DOMAIN_STRATEGY`              | .NET Framework only. Defines how automatic instrumentation handles non-default AppDomains. Supported values are `LoaderOptimizationSingleDomain`, `AssemblyRedirect`, and `None`. See [.NET Framework AppDomain strategy](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/docs/netfx-appdomain-strategy.md) for details.                                                                                                                                               | `LoaderOptimizationSingleDomain` | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## RuleEngine
 
 RuleEngine is a feature that validates OpenTelemetry API, SDK, Instrumentation,
 and Exporter assemblies for unsupported scenarios, ensuring that OpenTelemetry
 automatic instrumentation is more stable by backing of instead of crashing. It
-works on .NET 8 and higher.
+works on .NET 10 and higher.
 
 Enable RuleEngine only during the first run of the application, or when the
 deployment changes or the Automatic Instrumentation library is upgraded. Once

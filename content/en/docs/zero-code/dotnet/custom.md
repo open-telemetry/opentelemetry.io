@@ -18,7 +18,7 @@ To create your custom traces manually, follow these steps:
 1. Add the `System.Diagnostics.DiagnosticSource` dependency to your project:
 
    ```xml
-   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
    ```
 
 2. Create an `ActivitySource` instance:
@@ -56,7 +56,7 @@ To create your custom metrics manually, follow these steps:
 1. Add the `System.Diagnostics.DiagnosticSource` dependency to your project:
 
    ```xml
-   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
    ```
 
 2. Create a `Meter` instance:
