@@ -11,6 +11,7 @@ redirects:
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
 default_lang_commit: 6d5bce8500b2a358ae30dd1343770bc83ac325e7
+drifted_from_default: true
 ---
 
 ## はじめに {#introduction}

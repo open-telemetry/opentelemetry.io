@@ -4,6 +4,7 @@ linkTitle: カスタム計装
 description: .NET 自動計装を使用したカスタムトレースとメトリクス。
 weight: 30
 default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
+drifted_from_default: true
 cSpell:ignore: meterprovider tracerprovider
 ---
 
