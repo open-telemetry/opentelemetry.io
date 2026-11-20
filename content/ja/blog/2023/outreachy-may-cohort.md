@@ -18,9 +18,8 @@ cSpell:ignore: outreachy
 2. あなたがメンテナーで、プロジェクトで達成したいことがありますか？
    今回はメンターになりたくない場合でも、プロジェクトのアイデアをいただけるとありがたいです。
    そのアイデアに取り組むメンターを見つけるよう努めます。
-3. メンターになりたいという声が聞こえます。
-   すばらしいですね！
-   Outreachy はメンタリングスキルを向上させ、ずっとやりたかったけれど実際には着手できなかった機能に誰かに取り組んでもらう絶好の機会です。
+3. メンターになりたいですか？
+   Outreachy はメンタリングスキルを磨き、ずっと実装したいと思いながらも着手できずにいた機能の実装を誰かに手伝ってもらえる絶好の機会です。
    通常、インターンシップの成果は多くの面で優れており、KubeCon などのカンファレンスでも興味深いトピックとなります。
 
 良いアイデアとは何かとお思いですか？
@@ -29,7 +28,7 @@ cSpell:ignore: outreachy
 とはいえ、タスクを完了するまでに約3か月あり、通常はそれで十分です！
 これまでに、[Python threading モジュールの自動計装サポートの追加](https://www.outreachy.org/outreachy-december-2022-internship-round/communities/cncf-tracing/#add-auto-instrumentation-support-for-python-thread)、[OpenTelemetry Collector のコンポーネントジェネレーターの作成](https://www.outreachy.org/outreachy-december-2022-internship-round/communities/cncf-tracing/#create-a-component-generator)、[クライアント SDK のベンチマーク](https://www.outreachy.org/december-2018-march-2019-outreachy-internships/communities/cncf-tracing/#create-a-set-of-performance-tests)、[ユーザー向けドキュメントの作成](https://www.outreachy.org/2018-may-august/communities/cncf-tracing/#convert-and-revise-documentation-for-opentracing-s)、[分散トレーシングのデータ可視化の実験](https://www.outreachy.org/december-2019-to-march-2020-internship-round/communities/cncf-tracing/#research-alternative-data-visualizations-for-traci)など、さまざまなプロジェクトに取り組んできました。
 
-Outreachy と過去のコーホートへの参加について、詳しくは以下をご覧ください。
+Outreachy の概要と私たちのコミュニティが過去のコーホートに参加した実績については、以下をご覧ください。
 
 - [Outreachy](https://www.outreachy.org/)
 - [CNCF OpenTelemetry: Outreachy への過去のコミュニティ参加](https://www.outreachy.org/communities/cfp/cncf-tracing/)
