@@ -31582,6 +31582,11 @@
     "when": "2026-10-28T05:39:30Z",
     "via": "lychee",
   },
+  "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config": {
+    "result": 200,
+    "when": "2026-11-20T19:59:02Z",
+    "via": "lychee",
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config": {
     "result": 200,
     "when": "2026-11-19T05:38:31Z",
