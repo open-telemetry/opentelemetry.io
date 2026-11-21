@@ -4,6 +4,7 @@ description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
+cSpell:ignore: genai
 ---
 
 For workflows and (most of) their helper scripts, see the `workflow` and
