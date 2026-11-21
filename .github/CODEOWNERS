@@ -87,6 +87,10 @@
 
 # END locale-owners
 
+# Concepts summarize specification material, so changes require approval from
+# both documentation and specification approvers.
+/content/en/docs/concepts/** @open-telemetry/docs-approvers @open-telemetry/specs-approvers
+
 # CI/infra resources are owned by docs-maintainers. Last match wins, so this
 # block follows the locale section: infra ownership holds at any depth,
 # including under content/. Keep CI/infra paths in sync with the `CI/infra`
