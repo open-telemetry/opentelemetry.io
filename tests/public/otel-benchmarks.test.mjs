@@ -41,7 +41,7 @@ const PAGES = [
       group_separator: '/',
       series_separator: ' - ',
     },
-    inline: ['ja', 'pt', 'zh'],
+    inline: ['pt', 'zh'],
   },
   {
     path: 'docs/languages/js/benchmarks',
