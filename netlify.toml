@@ -21,6 +21,12 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
+[[redirects]]
+from = "https://packages.opentelemetry.io/*"
+to = "https://opentelemetry.cdn.cncf.io/:splat"
+status = 302
+force = true
+
 [[edge_functions]]
 function = "registry-component-redirect"
 path = "/ecosystem/registry/*"
