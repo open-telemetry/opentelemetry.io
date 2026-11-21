@@ -1,6 +1,6 @@
 # cSpell:ignore jjatria
 title: OpenTelemetry for Perl
-registryType: instrumentation
+registryType: sdk
 language: perl
 tags:
   - perl
