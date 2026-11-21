@@ -7,6 +7,11 @@
 {{ partial "redirects/pages.txt" . | partial "func/trim-lines.html" -}}
 {{ partial "redirects/languages.txt" . | partial "func/trim-lines.html" -}}
 
+{{/* Pre-split semconv paths: core pages moved under semconv/core. This
+  catch-all must follow all page redirects. Netlify doesn't apply it to paths
+  that exist, such as semconv/core and semconv/gen-ai pages. */ -}}
+/docs/specs/semconv/*            /docs/specs/semconv/core/:splat
+
 {{/* TODO: move the following into the spec index file. */ -}}
 /docs/reference/specification    /docs/specs/otel
 /docs/reference/specification/*  /docs/specs/otel/:splat

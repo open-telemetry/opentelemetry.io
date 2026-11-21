@@ -4,6 +4,7 @@ description: >-
   Patch an imported spec page until its upstream fix ships, with an entry in
   `patches.yml`.
 weight: 15
+cSpell:ignore: genai
 ---
 
 Spec pages published on this site (OTel specification, OTLP, semantic
@@ -88,7 +89,7 @@ Append a new entry (replacing the `[]` marker if the list is empty):
 The fields for each patch entry are:
 
 - **`id`**: A unique ID (date + short description) printed in log messages.
-- **`module`**: One of `spec`, `otlp`, `semconv`, or `opamp`.
+- **`module`**: One of `spec`, `otlp`, `semconv`, `semconv-genai`, or `opamp`.
 - **`minVers`**: Inclusive lower bound. The patch applies while the submodule
   version is at or above this version, and becomes obsolete once the spec
   advances past the patch's version range.
@@ -100,8 +101,8 @@ The fields for each patch entry are:
 - **`file`**: Optional regular expression matching the file paths the patch
   should apply to, for example `^tmp/semconv/docs/`. If omitted, defaults to the
   module's spec/docs tree: `^tmp/otel/specification/` for `spec`,
-  `^tmp/otlp/docs/` for `otlp`, `^tmp/semconv/docs/` for `semconv`, and
-  `^tmp/opamp/` for `opamp`.
+  `^tmp/otlp/docs/` for `otlp`, `^tmp/semconv/docs/` for `semconv`,
+  `^tmp/semconv-genai/docs/` for `semconv-genai`, and `^tmp/opamp/` for `opamp`.
 - **`context`**: Optional, `body` (default) or `front-matter`. Body patches are
   applied line by line; `front-matter` patches are applied to the whole
   front-matter block.

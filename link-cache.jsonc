@@ -23024,6 +23024,11 @@
     "when": "2026-11-06T05:38:31Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-genai-integration": {
+    "result": 200,
+    "when": "2026-11-21T01:29:05Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration": {
     "result": 200,
     "when": "2026-11-06T05:38:26Z",

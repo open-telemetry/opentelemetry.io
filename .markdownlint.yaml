@@ -112,4 +112,4 @@ no-semconv-github-urls:
   message: >-
     Use a local path, not a GitHub URL, for references to semantic conventions
     pages that are hosted on this site.
-  replace: '/docs/specs/semconv/'
+  replace: '/docs/specs/semconv/core/'

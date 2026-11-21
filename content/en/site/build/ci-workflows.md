@@ -4,6 +4,7 @@ description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
+cSpell:ignore: genai
 ---
 
 For workflows and (most of) their helper scripts, see the `workflow` and
@@ -427,10 +428,15 @@ conflict confined to `link-cache.jsonc` (both sides update the cache daily)
 self-heals by taking `main`'s cache, and the run's own link check re-adds the
 branch's entries.
 
-| Matrix job | Upstream repository           | Branch slug |
-| ---------- | ----------------------------- | ----------- |
-| `otel`     | `opentelemetry-specification` | `spec`      |
-| `semconv`  | `semantic-conventions`        | `semconv`   |
+| Matrix job      | Upstream repository           | Branch slug     |
+| --------------- | ----------------------------- | --------------- |
+| `otel`          | `opentelemetry-specification` | `spec`          |
+| `semconv`       | `semantic-conventions`        | `semconv`       |
+| `semconv-genai` | `semantic-conventions-genai`  | `semconv-genai` |
+
+For `semconv-genai`, release runs also download the upstream release asset
+`manifest-dev.yaml` into `static/schemas/semconv-genai-dev/<version>-dev`. These
+files are committed and must not be deleted: they back published schema URLs.
 
 [specs-integration.yml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/specs-integration.yml
