@@ -6,6 +6,7 @@ aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 default_lang_commit: 52bc572fc569401f35171b4138844754e5dac670
+drifted_from_default: true
 cSpell:ignore: coreutils HKLM iisreset Sequoia
 ---
 

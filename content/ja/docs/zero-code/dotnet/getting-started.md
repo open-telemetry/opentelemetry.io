@@ -2,7 +2,7 @@
 title: はじめに
 description: 5分以内にアプリケーションのテレメトリーを取得しましょう！
 weight: 5
-default_lang_commit: a6d209663d7f45dde5497371fc5d5f7d6f441acf
+default_lang_commit: ea312f6d603e787a71e181b38df625a7079577a0
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
@@ -16,7 +16,7 @@ cSpell:ignore: ASPNETCORE rolldice
 
 以下がローカルにインストールされていることを確認してください。
 
-- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6以上
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 10以上
 - [GitHub CLI](https://cli.github.com/)、インストーラーとダウンロードしたアーティファクトの検証に使用します
 
 ## サンプルアプリケーション {#example-application}
