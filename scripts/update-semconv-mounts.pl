@@ -32,9 +32,11 @@ my @SEMCONV_SETS = (
   {
     dir => "content-modules/semantic-conventions-genai",
     tmp => "tmp/semconv-genai/docs",
-    target => "content/docs/specs/semconv/genai",
+    target => "content/docs/specs/semconv/gen-ai",
     # Not published, see cp-pages.sh
-    exclude => qr{^gen-ai/non-normative/tests/},
+    exclude => qr{^(README\.md$|gen-ai/non-normative/tests/)},
+    # docs/gen-ai is the GenAI section root; docs/registry nests under it
+    strip => qr{^gen-ai/},
   },
 );
 
@@ -112,6 +114,7 @@ sub generate_mount_entries {
     next if $set->{exclude} && $path =~ $set->{exclude};
 
     my $target = $path;
+    $target =~ s/$set->{strip}// if $set->{strip};
     $target =~ s/README\.md$/_index.md/;
 
     push @mount_entries, "  - source: $set->{tmp}/$path\n";

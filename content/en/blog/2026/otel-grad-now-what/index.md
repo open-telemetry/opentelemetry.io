@@ -7,7 +7,7 @@ author: >-
   Lee](https://github.com/reese-lee) (New Relic)
 sig: Governance Committee
 issue: 10432
-cSpell:ignore: Farfetch genai shoutout
+cSpell:ignore: Farfetch shoutout
 ---
 
 In case you missed it:
@@ -149,9 +149,9 @@ Collector, and beyond.
 
 Looking ahead, we see a strong need for observability around new types of
 workloads, such as agentic workflows, an area covered by the emerging
-[generative AI semantic conventions](/docs/specs/semconv/genai/gen-ai/). We're
-also tackling challenges in areas that we hadn't focused on as much previously,
-such as browser and mobile observability.
+[generative AI semantic conventions](/docs/specs/semconv/gen-ai/). We're also
+tackling challenges in areas that we hadn't focused on as much previously, such
+as browser and mobile observability.
 
 More mature teams are looking for guidance on using OpenTelemetry at scale.
 That's where tools like [Weaver](https://github.com/open-telemetry/weaver),

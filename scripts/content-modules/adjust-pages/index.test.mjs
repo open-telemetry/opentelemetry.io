@@ -301,20 +301,26 @@ Text.
 
   it('stamps the version on the semconv GenAI landing page', () => {
     const out = adjust(
-      'tmp/semconv-genai/docs/README.md',
+      'tmp/semconv-genai/docs/gen-ai/README.md',
       `<!--- Hugo front matter used to generate the website version of this page:
-linkTitle: GenAI semantic conventions
+linkTitle: Generative AI
 --->
 
-# OpenTelemetry GenAI semantic conventions
+# Semantic conventions for generative AI systems
 `,
     );
     assert.equal(
       out,
       `---
-title: OpenTelemetry GenAI semantic conventions 0.1.0
+title: Semantic conventions for generative AI systems 0.1.0
 linkTitle: GenAI v0.1.0
 weight: 20
+cascade:
+  body_class: otel-docs-spec
+  github_repo: &repo https://github.com/open-telemetry/semantic-conventions-genai
+  github_subdir: docs
+  path_base_for_github_subdir: tmp/semconv-genai/docs/
+  github_project_repo: *repo
 ---
 `,
     );
@@ -419,14 +425,14 @@ describe('transform: link rewriting', () => {
         'tmp/semconv/docs/README.md',
         '* [Generative AI](gen-ai/README.md)\n',
       ),
-      /\n\* \[Generative AI\]\(\/docs\/specs\/semconv\/genai\/gen-ai\/README\.md\)\n$/,
+      /\n\* \[Generative AI\]\(\/docs\/specs\/semconv\/gen-ai\/README\.md\)\n$/,
     );
     assert.equal(
       body(
         'tmp/semconv/docs/registry/attributes/README.md',
         '- [MCP](mcp.md)\n',
       ),
-      '- [MCP](/docs/specs/semconv/genai/registry/attributes/mcp.md)\n',
+      '- [MCP](/docs/specs/semconv/gen-ai/registry/attributes/mcp.md)\n',
     );
     assert.equal(
       body('tmp/semconv/docs/registry/attributes/README.md', '- [Go](go.md)\n'),
@@ -438,11 +444,11 @@ describe('transform: link rewriting', () => {
     const p = 'tmp/semconv-genai/docs/gen-ai/a.md';
     assert.equal(
       body(p, '[x](/docs/registry/attributes/gen-ai.md#gen-ai-system)\n'),
-      '[x](/docs/specs/semconv/genai/registry/attributes/gen-ai.md#gen-ai-system)\n',
+      '[x](/docs/specs/semconv/gen-ai/registry/attributes/gen-ai.md#gen-ai-system)\n',
     );
     assert.equal(
       body(p, '[x]: /docs/gen-ai/gen-ai-spans.md\n'),
-      '[x]: /docs/specs/semconv/genai/gen-ai/gen-ai-spans.md\n',
+      '[x]: /docs/specs/semconv/gen-ai/gen-ai-spans.md\n',
     );
     assert.equal(
       body(p, '[m](/model/gen-ai/a.json)\n'),
@@ -516,7 +522,7 @@ describe('transform: link rewriting', () => {
         'tmp/semconv/docs/gen-ai/README.md',
         '[g](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md)\n',
       ),
-      '[g](/docs/specs/semconv/genai/gen-ai/README.md)\n',
+      '[g](/docs/specs/semconv/gen-ai/README.md)\n',
     );
   });
 

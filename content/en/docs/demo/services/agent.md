@@ -1,7 +1,7 @@
 ---
 title: Agent Service
 linkTitle: Agent
-cSpell:ignore: fastapi genai httpx langchain langgraph openai
+cSpell:ignore: fastapi httpx langchain langgraph openai
 ---
 
 This service provides the AI assistant for the demo. It exposes a FastAPI
@@ -99,8 +99,8 @@ enrich spans using `set_attribute`.
 ### Prompt and completion content
 
 The bundled generative-AI instrumentations follow the OpenTelemetry
-[generative AI semantic conventions](/docs/specs/semconv/genai/gen-ai/) and
-record prompts and completions as span attributes, `gen_ai.input.messages` and
+[generative AI semantic conventions](/docs/specs/semconv/gen-ai/) and record
+prompts and completions as span attributes, `gen_ai.input.messages` and
 `gen_ai.output.messages`. Set `TRACELOOP_TRACE_CONTENT=false` to keep prompt and
 completion content out of the exported spans.
 

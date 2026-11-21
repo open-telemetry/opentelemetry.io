@@ -38,9 +38,9 @@ exclude = [
   '/../docs/specs/?$',                             # non-default locale spec redirect
   # Temporary (semconv Core/GenAI split prototype): pre-split semconv paths,
   # still linked from localized pages, are served via redirects to
-  # /docs/specs/semconv/core/ and /docs/specs/semconv/genai/. Matches any
-  # /docs/specs/semconv/<x> where <x> doesn't start with `core` or `genai`.
-  '/docs/specs/semconv/([^cg]|c[^o]|co[^r]|g[^e]|ge[^n]|gen[^a])',
+  # /docs/specs/semconv/core/. Matches any /docs/specs/semconv/<x> where <x>
+  # doesn't start with `core` or `gen-`.
+  '/docs/specs/semconv/([^cg]|c[^o]|co[^r]|g[^e]|ge[^n]|gen[^-])',
   # Root AGENTS.md links into the Docsy submodule, absent from the CI link-check checkout.
   '/themes/docsy/AGENTS\.md$',
   # JS accordion: #type-* anchors are client-side only (spec PR #5192).

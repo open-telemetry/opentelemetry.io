@@ -6,7 +6,7 @@ author: >-
   [Yoshi Yamaguchi](https://github.com/ymotongpoo) (Grafana Labs)
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: chikahisa fujikane genai kohei loglass mikata mixi ohira okamoto sugimoto yoshi yoshiki yuzuru
+cSpell:ignore: chikahisa fujikane kohei loglass mikata mixi ohira okamoto sugimoto yoshi yoshiki yuzuru
 ---
 
 We're back with our fifth edition of
@@ -121,7 +121,7 @@ why I chose traces.
 
 **TAKASHI OKAMOTO:** Rather than a signal per se — I've been working on
 observability for AI agents lately, so I like the
-[Generative AI semantic conventions](/docs/specs/semconv/genai/gen-ai/).
+[Generative AI semantic conventions](/docs/specs/semconv/gen-ai/).
 
 **KOHEI SUGIMOTO:** Metrics. Among the many kinds of telemetry data, metrics can
 nicely absorb the others and contribute to things like cost optimization and

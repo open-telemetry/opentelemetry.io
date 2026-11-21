@@ -45,7 +45,7 @@ response metadata, and token usage in a structured format.
 
 ## Key Signals for Generative AI
 
-The [Semantic Conventions for Generative AI](/docs/specs/semconv/genai/gen-ai/) focus
+The [Semantic Conventions for Generative AI](/docs/specs/semconv/gen-ai/) focus
 on capturing insights into AI model behavior through three primary signals:
 [Traces](/docs/concepts/signals/traces/),
 [Metrics](/docs/concepts/signals/metrics/), and

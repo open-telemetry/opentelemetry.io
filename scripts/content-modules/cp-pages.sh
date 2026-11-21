@@ -101,7 +101,10 @@ rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
 
-# Drop the schema test suite and other non-page files: they aren't published.
+# Drop pages and files that aren't published: the repo landing page (the
+# docs/gen-ai landing page is used instead), the schema test suite, and
+# non-page files.
+rm -f $DEST/README.md
 rm -Rf $DEST/gen-ai/non-normative/tests
 find $DEST -type f \( -name "*.py" -o -name "*.toml" -o -name "*.lock" \) -delete
 

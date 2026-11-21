@@ -14,10 +14,10 @@ chain of model calls, tool invocations, and token exchanges happens behind the
 scenes — and without observability, you are guessing.
 
 The OpenTelemetry
-[Semantic Conventions for Generative AI](/docs/specs/semconv/genai/gen-ai/) give
-you that visibility. They standardize how GenAI operations are recorded — the
-model being called, input and output token counts, and when opted in, the full
-content of prompts, completions, tool calls, and tool results.
+[Semantic Conventions for Generative AI](/docs/specs/semconv/gen-ai/) give you
+that visibility. They standardize how GenAI operations are recorded — the model
+being called, input and output token counts, and when opted in, the full content
+of prompts, completions, tool calls, and tool results.
 
 This post walks through:
 

@@ -22,7 +22,9 @@ export const semconvGenaiSpecRepoUrl =
 export const specBasePath = '/docs/specs';
 // Site paths of the semconv sets under the Semantic Conventions section.
 export const semconvCorePath = `${specBasePath}/semconv/core`;
-export const semconvGenaiPath = `${specBasePath}/semconv/genai`;
+// GenAI's docs/gen-ai and docs/registry are mounted as semconv/gen-ai and
+// semconv/gen-ai/registry.
+export const semconvGenaiPath = `${specBasePath}/semconv/gen-ai`;
 
 // Default `file` regex per module, used when a patch entry omits `file`.
 /** @type {Record<string, RegExp | undefined>} */
@@ -338,7 +340,7 @@ export function buildBodyPipeline(v) {
     {
       when: /^tmp\/semconv\/docs\/README\.md$/,
       search: /(\]\()gen-ai\//g,
-      replace: `$1${semconvGenaiPath}/gen-ai/`,
+      replace: `$1${semconvGenaiPath}/`,
     },
     {
       when: /^tmp\/semconv\/docs\/registry\/attributes\/README\.md$/,
@@ -346,15 +348,15 @@ export function buildBodyPipeline(v) {
       replace: `$1${semconvGenaiPath}/registry/attributes/$2`,
     },
 
-    // Semconv GenAI: repo-root paths resolve against the GenAI mount
+    // Semconv GenAI: repo-root paths resolve against the GenAI mounts
     {
       when: /^tmp\/semconv-genai\//,
-      search: /(\]\()\/docs\//g,
+      search: /(\]\()\/docs\/(?:gen-ai\/)?/g,
       replace: `$1${semconvGenaiPath}/`,
     },
     {
       when: /^tmp\/semconv-genai\//,
-      search: /(\]:\s*)\/docs\//,
+      search: /(\]:\s*)\/docs\/(?:gen-ai\/)?/,
       replace: `$1${semconvGenaiPath}/`,
     },
     {
@@ -410,7 +412,7 @@ export function buildBodyPipeline(v) {
     },
     {
       search: new RegExp(
-        `(\\]:\\s+|\\()https://github.com/open-telemetry/semantic-conventions-genai/\\w+/(main|v${v['semconv-genai']})/docs(.*?\\)?)`,
+        `(\\]:\\s+|\\()https://github.com/open-telemetry/semantic-conventions-genai/\\w+/(main|v${v['semconv-genai']})/docs(?:/gen-ai)?(.*?\\)?)`,
         'g',
       ),
       replace: `$1${semconvGenaiPath}$3`,
@@ -469,7 +471,7 @@ export function buildBodyPipeline(v) {
     // Pre-split semconv site paths now live under the core semconv section:
     {
       search:
-        /(\]\(|\]:\s*)\/docs\/specs\/semconv\/(?!core\/|genai\/)(?=[^\s)#])/g,
+        /(\]\(|\]:\s*)\/docs\/specs\/semconv\/(?!core\/|gen-ai\/)(?=[^\s)#])/g,
       replace: `$1${semconvCorePath}/`,
     },
 
@@ -556,8 +558,8 @@ export function transform({ path, text, versions, applyPatches, log }) {
       );
       if (!/^\s*weight/m.test(frontMatterFromFile))
         frontMatterFromFile += 'weight: 10\n';
-    } else if (/^tmp\/semconv-genai\/docs\/\w+.md$/.test(path)) {
-      // only docs/README.md
+    } else if (path === 'tmp/semconv-genai/docs/gen-ai/README.md') {
+      // GenAI landing page (docs/README.md isn't published)
       title += ` ${versions['semconv-genai']}`;
       frontMatterFromFile = frontMatterFromFile.replace(
         /linkTitle: .*/,
@@ -565,6 +567,17 @@ export function transform({ path, text, versions, applyPatches, log }) {
       );
       if (!/^\s*weight/m.test(frontMatterFromFile))
         frontMatterFromFile += 'weight: 20\n';
+      // Section-wide settings, from the unpublished docs/README.md
+      if (!/^cascade:/m.test(frontMatterFromFile))
+        frontMatterFromFile += [
+          'cascade:',
+          '  body_class: otel-docs-spec',
+          `  github_repo: &repo ${semconvGenaiSpecRepoUrl}`,
+          '  github_subdir: docs',
+          '  path_base_for_github_subdir: tmp/semconv-genai/docs/',
+          '  github_project_repo: *repo',
+          '',
+        ].join('\n');
     }
 
     frontMatterFromFile = _applyPatches(

@@ -25,10 +25,9 @@ substantial engineering time.
 
 We have been testing whether a team of agents can do much of that work. The
 agents inspect a framework, propose a plan, implement it against the
-[OpenTelemetry Semantic Conventions for GenAI](/docs/specs/semconv/genai/gen-ai/),
-and use [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver) to
-check the emitted telemetry. Engineers review the plan and resulting pull
-request.
+[OpenTelemetry Semantic Conventions for GenAI](/docs/specs/semconv/gen-ai/), and
+use [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver) to check
+the emitted telemetry. Engineers review the plan and resulting pull request.
 
 ## Why automate instrumentation?
 

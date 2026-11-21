@@ -112,7 +112,7 @@ standardized metrics, traces, and logs, making it easier to integrate
 observability solutions and compare performance across different frameworks.
 
 Note: Experimental conventions already exist in OpenTelemetry for models at
-[GenAI semantic convention](/docs/specs/semconv/genai/gen-ai/).
+[GenAI semantic convention](/docs/specs/semconv/gen-ai/).
 
 ### Instrumentation approaches
 
@@ -233,9 +233,8 @@ Looking ahead, AI agent observability will continue to evolve with:
 
 The
 [GenAI Special Interest Group (SIG) in OpenTelemetry](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main)
-is actively defining
-[GenAI semantic conventions](/docs/specs/semconv/genai/gen-ai/) that cover key
-areas such as:
+is actively defining [GenAI semantic conventions](/docs/specs/semconv/gen-ai/)
+that cover key areas such as:
 
 - LLM or model semantic conventions
 - VectorDB semantic conventions
