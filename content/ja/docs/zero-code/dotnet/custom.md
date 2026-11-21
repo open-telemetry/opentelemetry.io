@@ -3,8 +3,7 @@ title: カスタムトレースとメトリクスの作成
 linkTitle: カスタム計装
 description: .NET 自動計装を使用したカスタムトレースとメトリクス。
 weight: 30
-default_lang_commit: 2b88c43e50fb99c601ededa24b1f3a461fef9ac0
-drifted_from_default: true
+default_lang_commit: edb0fd516545baeae64e4203c8164e62d2f2067a
 cSpell:ignore: meterprovider tracerprovider
 ---
 
@@ -18,7 +17,7 @@ cSpell:ignore: meterprovider tracerprovider
 1. プロジェクトに `System.Diagnostics.DiagnosticSource` の依存関係を追加します。
 
    ```xml
-   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
    ```
 
 2. `ActivitySource` インスタンスを作成します。
@@ -52,7 +51,7 @@ cSpell:ignore: meterprovider tracerprovider
 1. プロジェクトに `System.Diagnostics.DiagnosticSource` の依存関係を追加します。
 
    ```xml
-   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.0" />
+   <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="11.0.0" />
    ```
 
 2. `Meter` インスタンスを作成します。
