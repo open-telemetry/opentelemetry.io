@@ -10,8 +10,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 6d5bce8500b2a358ae30dd1343770bc83ac325e7
-drifted_from_default: true
+default_lang_commit: edb0fd516545baeae64e4203c8164e62d2f2067a
 ---
 
 ## はじめに {#introduction}
@@ -33,8 +32,8 @@ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releas
 
 `opentelemetry-operator` のDeploymentが準備できたら、OpenTelemetryコレクター (otelcol) インスタンスを以下のように作成します。
 
-```console
-$ kubectl apply -f - <<EOF
+```sh
+kubectl apply -f - <<EOF
 apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
