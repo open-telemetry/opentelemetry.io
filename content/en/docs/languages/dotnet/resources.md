@@ -23,8 +23,8 @@ debugging and analyzing telemetry data.
 
 Resource attributes are key-value pairs that provide metadata about the
 resource. OpenTelemetry defines a set of
-[semantic conventions](/docs/specs/semconv/core/resource/) for resource
-attributes, which should be used when applicable.
+[semantic conventions](/docs/specs/semconv/resource/) for resource attributes,
+which should be used when applicable.
 
 Common resource attributes include:
 
@@ -168,11 +168,11 @@ There are more resource detectors you can add to your configuration, for example
 to get details about your [Cloud][] environment or [Deployment][].
 
 [getting started]: /docs/languages/dotnet/getting-started/
-[host]: /docs/specs/semconv/core/resource/host/
-[cloud]: /docs/specs/semconv/core/resource/cloud/
-[deployment]: /docs/specs/semconv/core/resource/deployment-environment/
-[service]: /docs/specs/semconv/core/resource/#service
-[os]: /docs/specs/semconv/core/resource/os/
+[host]: /docs/specs/semconv/resource/host/
+[cloud]: /docs/specs/semconv/resource/cloud/
+[deployment]: /docs/specs/semconv/resource/deployment-environment/
+[service]: /docs/specs/semconv/resource/#service
+[os]: /docs/specs/semconv/resource/os/
 
 ## Learn more
 

@@ -1422,7 +1422,7 @@ minimize the conflicts across all the different types of telemetry generation
 entities that it may need to represent.
 
 These guidelines are known as
-[Resource Semantic Conventions](/docs/specs/semconv/core/resource/) and are
+[Resource Semantic Conventions](/docs/specs/semconv/resource/) and are
 documented in the OTel specification.
 
 When creating your own attributes to represent your own telemetry generation
@@ -1462,13 +1462,13 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 The resource semantic conventions also have prescriptive attribute names and
 well-known values to represent telemetry generation entities that are common and
 applicable across different domains such as
-[compute unit](/docs/specs/semconv/core/resource/#compute-unit),
-[environment](/docs/specs/semconv/core/resource/#compute-unit) and others.
+[compute unit](/docs/specs/semconv/resource/#compute-unit),
+[environment](/docs/specs/semconv/resource/#compute-unit) and others.
 
 For the `BackendSystem` entity, it has fields representing information relating
-to [Operating System](/docs/specs/semconv/core/resource/os/) and
-[Cloud](/docs/specs/semconv/core/resource/cloud/). We will use the attribute
-names and values specified by the resource semantic convention to represent this
+to [Operating System](/docs/specs/semconv/resource/os/) and
+[Cloud](/docs/specs/semconv/resource/cloud/). We will use the attribute names
+and values specified by the resource semantic convention to represent this
 information on its `Resource`.
 
 The resource semantic convention keys and well-known values are defined by the

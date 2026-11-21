@@ -1189,7 +1189,7 @@ scaling considerations][62].
 [10]: /docs/specs/otel/trace/sdk/#span-processor
 [11]: https://github.com/open-telemetry/weaver
 [12]: /blog/2025/otel-weaver/
-[13]: /docs/specs/semconv/core/otel/sdk-metrics/
+[13]: /docs/specs/semconv/otel/sdk-metrics/
 [14]: /docs/collector/deploy/gateway/
 [15]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor/README.md
@@ -1248,7 +1248,7 @@ scaling considerations][62].
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor/README.md
 [54]: /docs/collector/components/processor/
 [55]: /docs/collector/components/connector/
-[56]: /docs/specs/semconv/core/otel/
+[56]: /docs/specs/semconv/otel/
 [57]: /docs/collector/troubleshooting/
 [58]: /docs/guidance/reference-implementations/adobe/
 [59]: /docs/guidance/reference-implementations/mastodon/

@@ -251,22 +251,21 @@ such as:
 - Centrally maintained configuration snippets or templates.
 
 The recommended resource model for non-Kubernetes environments should align with
-[OpenTelemetry resource semantic conventions](/docs/specs/semconv/core/resource/)
-and rely on automatic resource detection wherever possible. In OpenTelemetry, a
+[OpenTelemetry resource semantic conventions](/docs/specs/semconv/resource/) and
+rely on automatic resource detection wherever possible. In OpenTelemetry, a
 resource identifies the entity that produced the telemetry, such as a host, VM,
 process, container, or service instance. In practice, organizations should
 ensure that telemetry can be correlated across the following resource domains,
 using automatically detected attributes where supported:
 
-- **[Host](/docs/specs/semconv/core/resource/host/)**
-- **[Device](/docs/specs/semconv/core/registry/attributes/device/)** (where
+- **[Host](/docs/specs/semconv/resource/host/)**
+- **[Device](/docs/specs/semconv/registry/attributes/device/)** (where
   applicable)
-- **[Process](/docs/specs/semconv/core/resource/process/)**
-- **[Process runtime](/docs/specs/semconv/core/resource/process/#process-runtimes)**
-- **[Operating system](/docs/specs/semconv/core/resource/os/)**
-- **[Container](/docs/specs/semconv/core/resource/container/)** (where
-  applicable)
-- **[Service identity](/docs/specs/semconv/core/resource/#service)**
+- **[Process](/docs/specs/semconv/resource/process/)**
+- **[Process runtime](/docs/specs/semconv/resource/process/#process-runtimes)**
+- **[Operating system](/docs/specs/semconv/resource/os/)**
+- **[Container](/docs/specs/semconv/resource/container/)** (where applicable)
+- **[Service identity](/docs/specs/semconv/resource/#service)**
 
 Rather than manually maintaining all of the corresponding attributes,
 organizations should prefer existing instrumentation and resource detection for
@@ -276,7 +275,7 @@ or bootstrap artifacts to keep that detection enabled consistently.
 The area that usually requires the most deliberate standardization is **service
 identity**. Organizations should ensure that service telemetry uses the
 appropriate
-[service semantic conventions](/docs/specs/semconv/core/registry/attributes/service/),
+[service semantic conventions](/docs/specs/semconv/registry/attributes/service/),
 with attributes such as `service.name`, and, where relevant, `service.version`,
 `service.namespace`, `service.instance.id`, and `deployment.environment`.
 
@@ -587,7 +586,7 @@ be covered separately.
 Documentation:
 
 - [OpenTelemetry Semantic Conventions](/docs/specs/semconv/)
-- [OpenTelemetry Resource Semantic Conventions](/docs/specs/semconv/core/resource/)
+- [OpenTelemetry Resource Semantic Conventions](/docs/specs/semconv/resource/)
 
 ### 6. Centralize governance, policy enforcement, and change management
 

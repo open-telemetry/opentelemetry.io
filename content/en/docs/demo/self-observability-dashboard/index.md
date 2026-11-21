@@ -4,11 +4,11 @@ title: Self-Observability Dashboard
 
 The OpenTelemetry SDKs can emit their own internal metrics (using the
 experimental
-[`otel.sdk.*` semantic conventions](/docs/specs/semconv/core/otel/sdk-metrics/))
-that describe how the SDK is behaving — for example whether a service is
-dropping telemetry, how long exports take, or whether processor queues are
-filling up. The demo's **Self-Observability** dashboard visualizes these metrics
-across the span, log, and metric pipelines.
+[`otel.sdk.*` semantic conventions](/docs/specs/semconv/otel/sdk-metrics/)) that
+describe how the SDK is behaving — for example whether a service is dropping
+telemetry, how long exports take, or whether processor queues are filling up.
+The demo's **Self-Observability** dashboard visualizes these metrics across the
+span, log, and metric pipelines.
 
 ## Enabling SDK self-observability
 

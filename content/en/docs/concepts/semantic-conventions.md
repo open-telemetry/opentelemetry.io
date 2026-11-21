@@ -13,8 +13,8 @@ platforms.
 Semantic conventions are available for traces, metrics, logs, profiles and
 resources:
 
-- [Trace semantic conventions](/docs/specs/semconv/core/general/trace/)
-- [Metric semantic conventions](/docs/specs/semconv/core/general/metrics/)
-- [Log attributes](/docs/specs/semconv/core/registry/attributes/log/)
-- [Profiles semantic conventions](/docs/specs/semconv/core/general/profiles/)
-- [Resource semantic conventions](/docs/specs/semconv/core/resource/)
+- [Trace semantic conventions](/docs/specs/semconv/general/trace/)
+- [Metric semantic conventions](/docs/specs/semconv/general/metrics/)
+- [Log attributes](/docs/specs/semconv/registry/attributes/log/)
+- [Profiles semantic conventions](/docs/specs/semconv/general/profiles/)
+- [Resource semantic conventions](/docs/specs/semconv/resource/)

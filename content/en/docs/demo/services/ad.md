@@ -186,8 +186,8 @@ The following custom metrics are currently available:
 
 The following auto-instrumented metrics are available for the application:
 
-- [Runtime metrics for the JVM](/docs/specs/semconv/core/runtime/jvm-metrics/).
-- [Latency metrics for RPCs](/docs/specs/semconv/core/rpc/rpc-metrics/#rpc-server)
+- [Runtime metrics for the JVM](/docs/specs/semconv/runtime/jvm-metrics/).
+- [Latency metrics for RPCs](/docs/specs/semconv/rpc/rpc-metrics/#rpc-server)
 
 ## Logs
 

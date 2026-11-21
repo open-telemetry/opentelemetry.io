@@ -119,7 +119,7 @@ same as the **Protocol** status.
 - {{% spec_status "Protocol" "otlp" "/document-status.*for.*profiles" %}}
 
 [baggage]: /docs/specs/otel/baggage/
-[event semantic conventions]: /docs/specs/semconv/core/general/events/
+[event semantic conventions]: /docs/specs/semconv/general/events/
 [logging]: /docs/specs/otel/logs/
 [logs data model]: /docs/specs/otel/logs/data-model/
 [metrics]: /docs/specs/otel/metrics/

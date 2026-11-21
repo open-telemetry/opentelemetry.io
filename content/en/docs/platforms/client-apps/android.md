@@ -219,7 +219,7 @@ httpExport {
 
 - [OpenTelemetry Android GitHub](https://github.com/open-telemetry/opentelemetry-android)
 - [OpenTelemetry Java documentation](/docs/languages/java/)
-- [Android semantic conventions](/docs/specs/semconv/core/registry/attributes/android/)
+- [Android semantic conventions](/docs/specs/semconv/registry/attributes/android/)
 - [Example applications](https://github.com/open-telemetry/opentelemetry-android/tree/main/demo-app)
 
 ## Help and feedback

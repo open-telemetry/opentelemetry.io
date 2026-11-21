@@ -373,7 +373,7 @@ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,se
 will replace the value of headers such as `session-id` and `set-cookie` with
 `[REDACTED]` in the span.
 
-[semantic convention]: /docs/specs/semconv/core/http/http-spans/
+[semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [instrumentation]:

@@ -266,11 +266,10 @@ catch (Exception ex)
 Avoid adding exception details into the message template. For example:
 
 You want to use the correct `Exception` APIs because the OpenTelemetry
-Specification
-[defines dedicated attributes](/docs/specs/semconv/core/exceptions/) for
-`Exception` details. The following examples show what **NOT** to do. In these
-cases the details won't be lost, but the dedicated attributes also won't be
-added.
+Specification [defines dedicated attributes](/docs/specs/semconv/exceptions/)
+for `Exception` details. The following examples show what **NOT** to do. In
+these cases the details won't be lost, but the dedicated attributes also won't
+be added.
 
 ```csharp
 var food = "tomato";

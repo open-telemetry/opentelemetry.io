@@ -469,7 +469,7 @@ recurring concept in the OpenTelemetry API:
 See [semantic attributes](#semantic-attributes) for attribute constants
 generated from the semantic conventions.
 
-See [attribute naming](/docs/specs/semconv/core/general/naming/) for guidance on
+See [attribute naming](/docs/specs/semconv/general/naming/) for guidance on
 attribute naming.
 
 The following code snippet explores `Attributes` API usage:
@@ -991,8 +991,7 @@ The instrument APIs have share a variety of features:
 - Record values which are `long` or `double`, which is configured via the
   builder.
 
-See
-[metric guidelines](/docs/specs/semconv/core/general/metrics/#general-guidelines)
+See [metric guidelines](/docs/specs/semconv/general/metrics/#general-guidelines)
 for details on metric naming and units.
 
 See
@@ -1616,9 +1615,9 @@ public class NoopUsage {
 
 The [semantic conventions](/docs/specs/semconv/) describe how to collect
 telemetry in a standardized way for common operations. This includes an
-[attribute registry](/docs/specs/semconv/core/registry/attributes/), which
-enumerates definitions for all attributes referenced in the conventions,
-organized by domain. The
+[attribute registry](/docs/specs/semconv/registry/attributes/), which enumerates
+definitions for all attributes referenced in the conventions, organized by
+domain. The
 [semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java)
 project generates constants from the semantic conventions, which can be used to
 help instrumentation conform:
