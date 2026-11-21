@@ -4,8 +4,7 @@ linkTitle: コミュニティ Slack 分析
 date: 2026-01-07
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
 canonical_url: https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges
-default_lang_commit: d88ab6df454cbc6de0b0ae5a4de4684e1154cea4
-drifted_from_default: true
+default_lang_commit: f22173f04f4dce6eefe102811371ec79b8cbd4f3
 cSpell:ignore: k8sattributes kubeletstats OllyGarden
 ---
 

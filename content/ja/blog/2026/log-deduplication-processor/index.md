@@ -4,8 +4,7 @@ linkTitle: ログ重複排除プロセッサー
 date: 2026-01-20
 author: '[Juraci Paixao Krohling](https://github.com/jpkrohling) (OllyGarden)'
 canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemetry-log-deduplication-processor?link-check=no
-default_lang_commit: 87bfbf12b9489ac9028d5519cf91caaaea5909e8
-drifted_from_default: true
+default_lang_commit: 50f5ce6ba90c9999a624be8e34a538eee7d25f5b
 # prettier-ignore
 cSpell:ignore: jpkrohling Krohling logdedup logdedupprocessor OllyGarden Paixao telemetrygen
 ---

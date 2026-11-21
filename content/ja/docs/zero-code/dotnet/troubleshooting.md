@@ -3,6 +3,7 @@ title: .NET 自動計装の問題のトラブルシューティング
 linkTitle: トラブルシューティング
 weight: 50
 default_lang_commit: 17662c24ee2f9789a70287c4ad02707582e3de98
+drifted_from_default: true
 cSpell:ignore: corehost netfx pjanotti's TRACEFILE
 ---
 
