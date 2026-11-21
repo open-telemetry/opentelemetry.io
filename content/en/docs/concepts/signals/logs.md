@@ -280,8 +280,7 @@ The top-level fields are:
 For more details on log records and log fields, see
 [Logs Data Model](/docs/specs/otel/logs/data-model/).
 
-### Specification
+## Specification
 
-To learn more about logs in OpenTelemetry, see the [logs specification][].
-
-[logs specification]: /docs/specs/otel/overview/#log-signal
+To learn more about logs in OpenTelemetry, see the
+[logs specification](/docs/specs/otel/overview/#log-signal).
