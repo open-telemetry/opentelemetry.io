@@ -72,6 +72,7 @@ Because a common use cases for Baggage is to add data to
 have Baggage Span Processors that add data from baggage as attributes on span
 creation.
 
-> For more information, see the [baggage specification][].
+## Specification
 
-[baggage specification]: /docs/specs/otel/overview/#baggage-signal
+To learn more about baggage in OpenTelemetry, see the
+[baggage specification](/docs/specs/otel/overview/#baggage-signal).
