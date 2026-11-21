@@ -87,6 +87,25 @@ node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "SEM CONV  pages: copied and processed"
 
+## Semantic Conventions: GenAI
+
+SRC=content-modules/semantic-conventions-genai/docs
+DEST=$DEST_BASE/semconv-genai/docs
+
+rm -Rf $DEST
+mkdir -p $DEST
+cp -R $SRC/* $DEST/
+
+# Drop the schema test suite and other non-page files: they aren't published.
+rm -Rf $DEST/gen-ai/non-normative/tests
+find $DEST -type f \( -name "*.py" -o -name "*.toml" -o -name "*.lock" \) -delete
+
+FILES=$(find $DEST -name "*.md")
+
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
+
+echo "SEM CONV GenAI pages: copied and processed"
+
 ## OpAMP spec
 
 SRC=content-modules/opamp-spec

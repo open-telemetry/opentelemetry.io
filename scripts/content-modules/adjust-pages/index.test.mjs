@@ -24,6 +24,7 @@ const versions = {
   spec: '1.58.0',
   otlp: '1.10.0',
   semconv: '1.42.0',
+  'semconv-genai': '0.1.0',
   opamp: '0.17.0',
 };
 
@@ -119,6 +120,8 @@ describe('version helpers', () => {
 \tspec-pin = v1.58.0
 [submodule "content-modules/community"]
 \tcommunity-pin = e9411ee
+[submodule "content-modules/semantic-conventions-genai"]
+\tsemconv-genai-pin = v0.1.0
 [submodule "content-modules/opamp-spec"]
 \topamp-pin = v0.17.0
 `,
@@ -126,6 +129,7 @@ describe('version helpers', () => {
     assert.deepEqual(pins, {
       spec: '1.58.0',
       community: 'e9411ee',
+      'semconv-genai': '0.1.0',
       opamp: '0.17.0',
     });
   });
@@ -280,7 +284,8 @@ Text.
       `---
 title: OpenTelemetry semantic conventions 1.42.0
 auto_gen: below
-linkTitle: Semantic conventions 1.42.0
+linkTitle: Core v1.42.0
+weight: 10
 ---
 
 Text.
@@ -292,6 +297,27 @@ Text.
       '# General attributes\n',
     );
     assert.equal(nested, '---\ntitle: General attributes\n---\n');
+  });
+
+  it('stamps the version on the semconv GenAI landing page', () => {
+    const out = adjust(
+      'tmp/semconv-genai/docs/README.md',
+      `<!--- Hugo front matter used to generate the website version of this page:
+linkTitle: GenAI semantic conventions
+--->
+
+# OpenTelemetry GenAI semantic conventions
+`,
+    );
+    assert.equal(
+      out,
+      `---
+title: OpenTelemetry GenAI semantic conventions 0.1.0
+linkTitle: GenAI v0.1.0
+weight: 20
+---
+`,
+    );
   });
 
   it('overrides linkTitle for the OTLP Design Goals page', () => {
@@ -373,16 +399,51 @@ describe('transform: link rewriting', () => {
   it('localizes semconv /docs/ links and /model/ paths', () => {
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[x](/docs/attributes.md)\n'),
-      '[x](/docs/specs/semconv/attributes.md)\n',
+      '[x](/docs/specs/semconv/core/attributes.md)\n',
     );
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[x]: /docs/attributes.md\n'),
-      '[x]: /docs/specs/semconv/attributes.md\n',
+      '[x]: /docs/specs/semconv/core/attributes.md\n',
     );
     // The double slash after the version is long-standing generated output:
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[m](/model/trace/http.yaml)\n'),
       '[m](https://github.com/open-telemetry/semantic-conventions/tree/v1.42.0//model/trace/http.yaml)\n',
+    );
+  });
+
+  it('localizes semconv GenAI /docs/ links and /model/ paths', () => {
+    const p = 'tmp/semconv-genai/docs/gen-ai/a.md';
+    assert.equal(
+      body(p, '[x](/docs/registry/attributes/gen-ai.md#gen-ai-system)\n'),
+      '[x](/docs/specs/semconv/genai/registry/attributes/gen-ai.md#gen-ai-system)\n',
+    );
+    assert.equal(
+      body(p, '[x]: /docs/gen-ai/gen-ai-spans.md\n'),
+      '[x]: /docs/specs/semconv/genai/gen-ai/gen-ai-spans.md\n',
+    );
+    assert.equal(
+      body(p, '[m](/model/gen-ai/a.json)\n'),
+      '[m](https://github.com/open-telemetry/semantic-conventions-genai/tree/v0.1.0/model/gen-ai/a.json)\n',
+    );
+    assert.equal(
+      body(p, '[c](./non-normative/models.py)\n'),
+      '[c](https://github.com/open-telemetry/semantic-conventions-genai/blob/v0.1.0/docs/gen-ai/non-normative/models.py)\n',
+    );
+    // Pinned links into core semconv, and site links to pre-split paths:
+    assert.equal(
+      body(
+        p,
+        '[e](https://github.com/open-telemetry/semantic-conventions/blob/v1.42.0/docs/general/recording-errors.md)\n',
+      ),
+      '[e](/docs/specs/semconv/core/general/recording-errors.md)\n',
+    );
+    assert.equal(
+      body(
+        p,
+        '[r](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/)\n',
+      ),
+      '[r](/docs/specs/semconv/core/general/attribute-requirement-level/)\n',
     );
   });
 
@@ -426,7 +487,14 @@ describe('transform: link rewriting', () => {
         'tmp/otel/specification/x.md',
         '[s](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/attributes.md)\n',
       ),
-      '[s](/docs/specs/semconv/general/attributes.md)\n',
+      '[s](/docs/specs/semconv/core/general/attributes.md)\n',
+    );
+    assert.equal(
+      body(
+        'tmp/semconv/docs/gen-ai/README.md',
+        '[g](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/README.md)\n',
+      ),
+      '[g](/docs/specs/semconv/genai/gen-ai/README.md)\n',
     );
   });
 

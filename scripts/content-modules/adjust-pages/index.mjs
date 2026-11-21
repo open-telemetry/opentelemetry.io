@@ -17,7 +17,12 @@ export const otlpSpecRepoUrl =
 export const opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 export const semconvSpecRepoUrl =
   'https://github.com/open-telemetry/semantic-conventions';
+export const semconvGenaiSpecRepoUrl =
+  'https://github.com/open-telemetry/semantic-conventions-genai';
 export const specBasePath = '/docs/specs';
+// Site paths of the semconv sets under the Semantic Conventions section.
+export const semconvCorePath = `${specBasePath}/semconv/core`;
+export const semconvGenaiPath = `${specBasePath}/semconv/genai`;
 
 // Default `file` regex per module, used when a patch entry omits `file`.
 /** @type {Record<string, RegExp | undefined>} */
@@ -25,6 +30,7 @@ const moduleFileDefaults = {
   spec: /^tmp\/otel\/specification\//,
   otlp: /^tmp\/otlp\/docs\//,
   semconv: /^tmp\/semconv\/docs\//,
+  'semconv-genai': /^tmp\/semconv-genai\/docs\//,
   opamp: /^tmp\/opamp\//,
 };
 
@@ -86,7 +92,7 @@ export function parseGitmodules(text) {
   /** @type {Record<string, string>} */
   const pins = {};
   for (const line of text.split('\n')) {
-    const m = line.match(/^\s*(\w+)-pin\s*=\s*(.+)/);
+    const m = line.match(/^\s*([\w-]+)-pin\s*=\s*(.+)/);
     if (m) pins[m[1]] = m[2].replace(/\r$/, '').replace(/^v/, '');
   }
   return pins;
@@ -139,7 +145,8 @@ export function versionErrors(versions, pins, modules) {
  * workflow, see content/en/site/build/content-module-patches.md.
  * @typedef {Object} Patch
  * @property {string} id - Unique patch identifier (date + short description).
- * @property {string} module - One of 'spec', 'otlp', 'semconv', 'opamp'.
+ * @property {string} module - One of 'spec', 'otlp', 'semconv',
+ *   'semconv-genai', 'opamp'.
  * @property {string} minVers - Inclusive lower version bound.
  * @property {string} [maxVers] - Exclusive upper bound; defaults to minVers
  *   with its patch number incremented.
@@ -311,21 +318,38 @@ export function compilePatches(patches, { pins, versions, scriptId, log }) {
  */
 export function buildBodyPipeline(v) {
   return [
-    // Semconv
+    // Semconv (core)
     {
-      when: /^tmp\/semconv/,
+      when: /^tmp\/semconv\//,
       search: /(\]\()\/docs\//g,
-      replace: `$1${specBasePath}/semconv/`,
+      replace: `$1${semconvCorePath}/`,
     },
     {
-      when: /^tmp\/semconv/,
+      when: /^tmp\/semconv\//,
       search: /(\]:\s*)\/docs\//,
-      replace: `$1${specBasePath}/semconv/`,
+      replace: `$1${semconvCorePath}/`,
     },
     {
-      when: /^tmp\/semconv/,
+      when: /^tmp\/semconv\//,
       search: /\((\/model\/.*?)\)/g,
       replace: `(${semconvSpecRepoUrl}/tree/v${v.semconv}/$1)`,
+    },
+
+    // Semconv GenAI: repo-root paths resolve against the GenAI mount
+    {
+      when: /^tmp\/semconv-genai\//,
+      search: /(\]\()\/docs\//g,
+      replace: `$1${semconvGenaiPath}/`,
+    },
+    {
+      when: /^tmp\/semconv-genai\//,
+      search: /(\]:\s*)\/docs\//,
+      replace: `$1${semconvGenaiPath}/`,
+    },
+    {
+      when: /^tmp\/semconv-genai\//,
+      search: /\((?:\.\.\/)*\/?(model\/.*?)\)/g,
+      replace: `(${semconvGenaiSpecRepoUrl}/tree/v${v['semconv-genai']}/$1)`,
     },
 
     // SPECIFICATION custom processing
@@ -365,13 +389,20 @@ export function buildBodyPipeline(v) {
       replace: 'OTLP',
     },
 
-    // Localize links to semconv
+    // Localize links to semconv (core and GenAI)
     {
       search: new RegExp(
         `(\\]:\\s+|\\()https://github.com/open-telemetry/semantic-conventions/\\w+/(main|v${v.semconv})/docs(.*?\\)?)`,
         'g',
       ),
-      replace: `$1${specBasePath}/semconv$3`,
+      replace: `$1${semconvCorePath}$3`,
+    },
+    {
+      search: new RegExp(
+        `(\\]:\\s+|\\()https://github.com/open-telemetry/semantic-conventions-genai/\\w+/(main|v${v['semconv-genai']})/docs(.*?\\)?)`,
+        'g',
+      ),
+      replace: `$1${semconvGenaiPath}$3`,
     },
 
     // Images
@@ -424,12 +455,26 @@ export function buildBodyPipeline(v) {
       search: /https:\/\/opentelemetry.io\//g,
       replace: '/',
     },
+    // Pre-split semconv site paths now live under the core semconv section:
+    {
+      search:
+        /(\]\(|\]:\s*)\/docs\/specs\/semconv\/(?!core\/|genai\/)(?=[^\s)#])/g,
+      replace: `$1${semconvCorePath}/`,
+    },
 
     // OTLP proto files: link into the repo:
     {
       when: /\btmp\/otlp/,
       search: /\.\.\/(opentelemetry\/proto\/?.*)/g,
       replace: `${otlpSpecRepoUrl}/tree/v${v.otlp}/$1`,
+    },
+
+    {
+      // Semconv GenAI: non-page files (for example, Python code) aren't
+      // published, so link into the repo. Runs after GitHub-link localization.
+      when: /^tmp\/semconv-genai\/docs\/gen-ai\//,
+      search: /(\]\()\.\/(non-normative\/[^)]+\.py\))/g,
+      replace: `$1${semconvGenaiSpecRepoUrl}/blob/v${v['semconv-genai']}/docs/gen-ai/$2`,
     },
 
     // OpAMP
@@ -448,7 +493,7 @@ export function buildBodyPipeline(v) {
  *   with `tmp/` for the module-specific rules to match.
  * @param {string} args.text - File content.
  * @param {Record<string, string>} args.versions - Base release per module
- *   ('spec', 'otlp', 'semconv', 'opamp').
+ *   ('spec', 'otlp', 'semconv', 'semconv-genai', 'opamp').
  * @param {ApplyPatches} [args.applyPatches]
  * @param {Log} [args.log]
  * @returns {string} The transformed content.
@@ -496,8 +541,19 @@ export function transform({ path, text, versions, applyPatches, log }) {
       title += ` ${versions.semconv}`;
       frontMatterFromFile = frontMatterFromFile.replace(
         /linkTitle: .*/,
-        `$& ${versions.semconv}`,
+        `linkTitle: Core v${versions.semconv}`,
       );
+      if (!/^\s*weight/m.test(frontMatterFromFile))
+        frontMatterFromFile += 'weight: 10\n';
+    } else if (/^tmp\/semconv-genai\/docs\/\w+.md$/.test(path)) {
+      // only docs/README.md
+      title += ` ${versions['semconv-genai']}`;
+      frontMatterFromFile = frontMatterFromFile.replace(
+        /linkTitle: .*/,
+        `linkTitle: GenAI v${versions['semconv-genai']}`,
+      );
+      if (!/^\s*weight/m.test(frontMatterFromFile))
+        frontMatterFromFile += 'weight: 20\n';
     }
 
     frontMatterFromFile = _applyPatches(
