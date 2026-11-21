@@ -22,7 +22,7 @@ default_lang_commit: f22173f04f4dce6eefe102811371ec79b8cbd4f3
 
 ## 主なハイライト {#the-highlights}
 
-- **追加のサービスを加えたにもかかわらず、ビルド時間を2倍改善**
+- **サービスを追加したにもかかわらず、ビルド時間を半分に短縮**
 - _arm64 アーキテクチャ（M1 および M2 Mac）のサポートを追加_
 - **Kafka を使用した非同期サポートと、新しい不正検出（Kotlin）/会計処理（Go）サービス**
 - _Helm を使わずに Kubernetes デプロイを可能にする Kubernetes マニフェスト_
