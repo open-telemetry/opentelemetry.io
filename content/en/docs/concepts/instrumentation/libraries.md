@@ -24,6 +24,16 @@ and document hooks. Other advantages provided by native instrumentation include:
 
 ![ Native Instrumentation vs instrumentation libraries](../native-vs-libraries.svg)
 
+> [!NOTE]
+>
+> The OpenTelemetry specification provides
+> [Instrumentation Supplementary Guidelines](/docs/specs/otel/instrumentation-supplementary-guidelines/),
+> a companion set of non-normative guidance for instrumentation authors. It
+> covers topics such as dependency policy, naming the instrumentation scope,
+> acquiring tracers, meters, and loggers, context propagation, configuration,
+> and stability and versioning. This page is an approachable introduction; refer
+> to the supplementary guidelines for the fuller, language-agnostic checklist.
+
 ## Semantic conventions
 
 [Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
