@@ -47,7 +47,7 @@ across all services. But why?
 When we started the OTel Demo back in 2022 `app.*` wasn't a reserved attribute
 and we built all our custom attributes and metrics with that namespace. Time has
 passed and in 2023 `app.*` was added to the project to
-[describe attributes related to client-side applications (e.g., web apps or mobile apps)](/docs/specs/semconv/core/registry/attributes/app/).
+[describe attributes related to client-side applications (e.g., web apps or mobile apps)](/docs/specs/semconv/registry/attributes/app/).
 
 But if that was introduced in 2023, why was the Demo still using it?
 

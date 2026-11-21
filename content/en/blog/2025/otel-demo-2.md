@@ -79,7 +79,7 @@ a quick rundown of the highlights:
   [React Native App documentation page](/docs/demo/services/react-native-app/).
 - **Span links for messaging spans**: Following OTel's recommendation to always
   link producer and consumer spans
-  ([Messaging spans - Trace structure](/docs/specs/semconv/core/messaging/messaging-spans/#trace-structure)),
+  ([Messaging spans - Trace structure](/docs/specs/semconv/messaging/messaging-spans/#trace-structure)),
   the Demo now demonstrates this best practice. Consumer spans for `Accounting`
   and `Fraud-Detection` are linked to the producer span
   (`Checkout/orders publish`).

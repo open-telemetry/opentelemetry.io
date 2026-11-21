@@ -162,7 +162,7 @@ might not have an immediate impact on the user, however, it will enable users to
 start natively reporting data in OpenTelemetry format (OTLP).
 
 Another recently merged change is the addition of
-[Cloudevents semantic attributes into the OpenTelemetry specification](/docs/specs/semconv/core/cloudevents/cloudevents-spans/).
+[Cloudevents semantic attributes into the OpenTelemetry specification](/docs/specs/semconv/cloudevents/cloudevents-spans/).
 The document standardizes attributes related to CloudEvents. The screenshot
 below is from the demo application that is still not using the standardized
 attribute names:
@@ -210,5 +210,5 @@ instrumentation libraries explicitly in the code or even
 - [Zipkin B3](https://github.com/openzipkin/b3-propagation)
 - [W3C Trace-Context](https://www.w3.org/TR/trace-context/)
 - [OpenTelemetry instrumentation for Cloudevents Golang SDK](https://github.com/cloudevents/sdk-go/tree/15a1151928556770f2a76faa5547278545fce8cb/observability/opentelemetry/v2?from_branch=main)
-- [Cloudevents OpenTelemetry attributes](/docs/specs/semconv/core/cloudevents/cloudevents-spans/)
+- [Cloudevents OpenTelemetry attributes](/docs/specs/semconv/cloudevents/cloudevents-spans/)
 - [Knative tracing demo](https://github.com/pavolloffay/knative-tracing)

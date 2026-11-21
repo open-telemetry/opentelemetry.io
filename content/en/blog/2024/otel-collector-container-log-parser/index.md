@@ -99,7 +99,7 @@ container.
 
 After extracting this metadata, you need to store it properly using the
 appropriate attributes following the
-[Semantic Conventions](/docs/specs/semconv/core/resource/k8s/). This handling can
+[Semantic Conventions](/docs/specs/semconv/resource/k8s/). This handling can
 also be encapsulated within the parser's implementation, eliminating the need
 for users to define it manually.
 

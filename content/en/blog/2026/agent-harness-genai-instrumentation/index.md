@@ -306,9 +306,9 @@ does not define, we propose adding it to the GenAI semantic conventions.
 
 The Coding Agent added `gen_ai.crewai.*` attributes to the CrewAI plugin for
 details absent from the GenAI semantic conventions; because
-[OpenTelemetry's naming guidance](/docs/specs/semconv/core/general/naming/)
-warns that this prefix could clash with future standard attributes, future
-prompts should require agents to emit only registry-defined GenAI attributes.
+[OpenTelemetry's naming guidance](/docs/specs/semconv/general/naming/) warns
+that this prefix could clash with future standard attributes, future prompts
+should require agents to emit only registry-defined GenAI attributes.
 
 ## What we've shipped so far
 

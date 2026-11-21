@@ -80,7 +80,7 @@ behaviors may arise.
 > Note that we decided to use [events emitted][] with the
 > [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
 > Conventions for Generative AI. Events allows for us to define specific
-> [semantic conventions](/docs/specs/semconv/core/general/events/) for the user
+> [semantic conventions](/docs/specs/semconv/general/events/) for the user
 > prompts and model responses that we capture. This addition to the API is in
 > development and considered unstable.
 
