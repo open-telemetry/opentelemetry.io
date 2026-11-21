@@ -15,6 +15,10 @@
 export const SPECS = Object.freeze({
   otel: { repo: 'opentelemetry-specification', slug: 'spec' },
   semconv: { repo: 'semantic-conventions', slug: 'semconv' },
+  'semconv-genai': {
+    repo: 'semantic-conventions-genai',
+    slug: 'semconv-genai',
+  },
 });
 
 /**

@@ -25,6 +25,7 @@ ETARGET
 excerpter
 favicons
 flagd
+genai
 geoip
 github
 gitpod

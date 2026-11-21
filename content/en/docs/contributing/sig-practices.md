@@ -264,22 +264,29 @@ The following workflow can be applied by maintainers to merge PRs:
 ## Specification PRs and integration branches {#spec-integration-branches}
 
 The website continuously integrates unreleased changes from the
-[opentelemetry-specification][] and [semantic-conventions][] repositories. Two
-scheduled workflows ([details][ci-section]) run daily and keep a draft
-"integration" PR current with the next dev version:
+[opentelemetry-specification][], [semantic-conventions][], and
+[semantic-conventions-genai][] repositories. Scheduled workflow jobs
+([details][ci-section]) run daily and keep a draft "integration" PR current with
+the next dev version:
 
-- Branch pattern: `otelbot/spec-integration-vX.Y.Z-dev` and
-  `otelbot/semconv-integration-vX.Y.Z-dev`.
-- List of live branches: [spec][spec-branches] · [semconv][semconv-branches].
+- Branch pattern: `otelbot/spec-integration-vX.Y.Z-dev`,
+  `otelbot/semconv-integration-vX.Y.Z-dev`, and
+  `otelbot/semconv-genai-integration-vX.Y.Z-dev`.
+- List of live branches: [spec][spec-branches] · [semconv][semconv-branches] ·
+  [semconv-genai][semconv-genai-branches].
 
 [opentelemetry-specification]:
   https://github.com/open-telemetry/opentelemetry-specification
 [semantic-conventions]: https://github.com/open-telemetry/semantic-conventions
+[semantic-conventions-genai]:
+  https://github.com/open-telemetry/semantic-conventions-genai
 [ci-section]: /site/build/ci-workflows/#spec-integration-branches
 [spec-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=spec-integration
 [semconv-branches]:
   https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-integration
+[semconv-genai-branches]:
+  https://github.com/open-telemetry/opentelemetry.io/branches/all?query=semconv-genai-integration
 
 ### Spec / semconv SIG maintainers
 
@@ -293,6 +300,9 @@ Just before cutting a release:
 4. If the PR checks are green, the spec is safe to release. If not, ping
    `@open-telemetry/docs-maintainers` so we can address breakage before the
    release goes out.
+
+GenAI semantic conventions releases must attach `manifest-dev.yaml` to the
+GitHub release: the workflow publishes it at the release's schema URL.
 
 ### Comms SIG maintainers
 
