@@ -28,7 +28,7 @@ cSpell:ignore: Comms contribfest
 - [Hugo ドキュメント](https://gohugo.io/documentation/)
 - [Docsy ドキュメント](https://www.docsy.dev/docs/)
 - [マーケティングガイドライン](/community/marketing-guidelines/)。これは、Linux Foundation のブランドおよび
-  [商標使用ガイドライン](https://www.linuxfoundation.org/legal/trademark-usage) 含みます。
+  [商標使用ガイドライン](https://www.linuxfoundation.org/legal/trademark-usage) を含みます。
   これらは、レジストリ、インテグレーション、ベンダー、導入事例、ディストリビューションのエントリーをレビューする際に特に重要です
 
 ## コラボレーション {#collaboration}
