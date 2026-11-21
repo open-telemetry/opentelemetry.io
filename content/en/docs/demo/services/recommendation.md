@@ -125,12 +125,12 @@ characters transformed to `_`.
 
 #### Auto-instrumented metrics
 
-- [Runtime metrics for the JVM](/docs/specs/semconv/runtime/jvm-metrics/), from
-  the starter. They show the memory growth when the `recommendationCacheFailure`
-  feature flag is on.
-- [Latency metrics for RPCs](/docs/specs/semconv/rpc/rpc-metrics/), from the
-  gRPC instrumentation library, for both the server and the client calls.
-- [SDK self-observability metrics](/docs/specs/semconv/otel/sdk-metrics/),
+- [Runtime metrics for the JVM](/docs/specs/semconv/core/runtime/jvm-metrics/),
+  from the starter. They show the memory growth when the
+  `recommendationCacheFailure` feature flag is on.
+- [Latency metrics for RPCs](/docs/specs/semconv/core/rpc/rpc-metrics/), from
+  the gRPC instrumentation library, for both the server and the client calls.
+- [SDK self-observability metrics](/docs/specs/semconv/core/otel/sdk-metrics/),
   because the service sets `OTEL_EXPERIMENTAL_SDK_TELEMETRY_VERSION=latest`. See
   the [Self-Observability Dashboard](/docs/demo/self-observability-dashboard/).
 

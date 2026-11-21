@@ -35,22 +35,22 @@ Most language-specific SDKs provide a set of resource detectors that can be used
 to automatically detect resource information from the environment. Common
 resource detectors include:
 
-- [Operating System](/docs/specs/semconv/resource/os/)
-- [Host](/docs/specs/semconv/resource/host/)
-- [Process and Process Runtime](/docs/specs/semconv/resource/process/)
-- [Container](/docs/specs/semconv/resource/container/)
-- [Kubernetes](/docs/specs/semconv/resource/k8s/)
-- [Cloud-Provider-Specific Attributes](/docs/specs/semconv/resource/#cloud-provider-specific-attributes)
-- [and more](/docs/specs/semconv/resource/)
+- [Operating System](/docs/specs/semconv/core/resource/os/)
+- [Host](/docs/specs/semconv/core/resource/host/)
+- [Process and Process Runtime](/docs/specs/semconv/core/resource/process/)
+- [Container](/docs/specs/semconv/core/resource/container/)
+- [Kubernetes](/docs/specs/semconv/core/resource/k8s/)
+- [Cloud-Provider-Specific Attributes](/docs/specs/semconv/core/resource/#cloud-provider-specific-attributes)
+- [and more](/docs/specs/semconv/core/resource/)
 
 ## Custom resources
 
 You can also provide your own resource attributes. You can either provide them
 in code or via populating the environment variable `OTEL_RESOURCE_ATTRIBUTES`.
 If applicable, use the
-[semantic conventions for your resource attributes](/docs/specs/semconv/resource).
+[semantic conventions for your resource attributes](/docs/specs/semconv/core/resource).
 For example, you can provide the name of your
-[deployment environment](/docs/specs/semconv/resource/deployment-environment/)
+[deployment environment](/docs/specs/semconv/core/resource/deployment-environment/)
 using `deployment.environment.name`:
 
 ```shell

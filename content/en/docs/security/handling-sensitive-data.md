@@ -74,7 +74,8 @@ can help manage sensitive data:
 
 The following configuration for the `attribute` processor is hashing the
 `user.email` and deleting `user.full_name` from sensitive
-[`user`](/docs/specs/semconv/registry/attributes/user/#user-hash) information:
+[`user`](/docs/specs/semconv/core/registry/attributes/user/#user-hash)
+information:
 
 ```yaml
 processors:

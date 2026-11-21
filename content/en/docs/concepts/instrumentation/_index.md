@@ -43,9 +43,10 @@ solutions. The following things are also a part of OpenTelemetry:
   generated.
 - [Resources](../resources/) and
   [Instrumentation Scopes](../instrumentation-scope/) allow grouping of signals,
-  by different entities, like, the [host](/docs/specs/semconv/resource/host/),
-  [operating system](/docs/specs/semconv/resource/os/) or
-  [K8s cluster](/docs/specs/semconv/resource/k8s/#cluster)
+  by different entities, like, the
+  [host](/docs/specs/semconv/core/resource/host/),
+  [operating system](/docs/specs/semconv/core/resource/os/) or
+  [K8s cluster](/docs/specs/semconv/core/resource/k8s/#cluster)
 - Each language-specific implementation of the API and SDK follows the
   requirements and expectations of the
   [OpenTelemetry specification](/docs/specs/otel/).

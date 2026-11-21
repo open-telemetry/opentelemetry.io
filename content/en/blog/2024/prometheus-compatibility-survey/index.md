@@ -88,7 +88,7 @@ of their opinions on units or delimiters.
 
 ## Dots and Underscores
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/naming/) that conventions
+OpenTelemetry [specifies](/docs/specs/semconv/core/general/naming/) that conventions
 should use dots as the namespace delimiter, and underscores as the delimiter
 between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
@@ -116,7 +116,7 @@ indicating they are likely OK with either approach.
 
 ## Units in Metric Names
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/metrics/#units) that units
+OpenTelemetry [specifies](/docs/specs/semconv/core/general/metrics/#units) that units
 should not generally be included in the metric name. Prometheus conventions
 [recommend](https://prometheus.io/docs/practices/naming/#metric-names) that the
 unit be included as a suffix of the metric name. OpenMetrics goes a step further

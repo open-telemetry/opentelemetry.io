@@ -404,8 +404,8 @@ resource attribute using the `resourceprocessor` or set `clusterName` in the
 kube-stack values.
 
 Important: Never use a custom label where the
-[K8s semantic conventions](/docs/specs/semconv/resource/k8s/) has an option for
-it already.
+[K8s semantic conventions](/docs/specs/semconv/core/resource/k8s/) has an option
+for it already.
 
 ### 6. Scrape Prometheus-native components on each node via DaemonSet mode
 

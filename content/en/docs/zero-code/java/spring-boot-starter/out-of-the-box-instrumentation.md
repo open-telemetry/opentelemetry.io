@@ -217,7 +217,7 @@ otel:
 {{% /tab %}} {{< /tabpane >}}
 
 [source code attributes]:
-  /docs/specs/semconv/general/attributes/#source-code-attributes
+  /docs/specs/semconv/core/general/attributes/#source-code-attributes
 
 Alternatively, you can enable these features by adding the OpenTelemetry Logback
 appender in your `logback.xml` or `logback-spring.xml` file:

@@ -912,7 +912,7 @@ information about multi-instrumentation feature capabilities, see
 
 The OpenTelemetry Operator can automatically set resource attributes as defined
 in the
-[OpenTelemetry Semantic Conventions](/docs/specs/semconv/non-normative/k8s-attributes/).
+[OpenTelemetry Semantic Conventions](/docs/specs/semconv/core/non-normative/k8s-attributes/).
 
 ### Configure resource attributes with annotations
 

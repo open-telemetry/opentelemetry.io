@@ -1581,7 +1581,7 @@ The legacy exporter metrics both include a `type` attribute with a value of
 attribute.
 
 The `latest` names follow the
-[SDK metric semantic conventions](/docs/specs/semconv/otel/sdk-metrics/).
+[SDK metric semantic conventions](/docs/specs/semconv/core/otel/sdk-metrics/).
 Exporter metrics include `otel.component.type`, `otel.component.name`,
 `server.address`, and `server.port`. Failed exports add `error.type` to the
 `.exported` and `.duration` metrics, but not to `.inflight` metrics. The

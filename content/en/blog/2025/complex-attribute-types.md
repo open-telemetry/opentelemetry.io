@@ -9,7 +9,7 @@ author: >-
   Parker](https://github.com/austinlparker) (honeycomb.io)
 sig: Specification, Logs
 issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4485
-cSpell:ignore: Liudmila Molkova Pajak
+cSpell:ignore: genai Liudmila Molkova Pajak
 ---
 
 It’s common to use simple key-value properties as attributes in telemetry. Most
@@ -66,7 +66,7 @@ of real-world scenarios.
 
 Examples include:
 
-- **[LLM operations](/docs/specs/semconv/gen-ai/non-normative/examples-llm-calls)**
+- **[LLM operations](/docs/specs/semconv/genai/gen-ai/non-normative/examples-llm-calls)**
   — input parameters like tool definitions and input/output messages are
   inherently structured
 - **GraphQL** — responses may include

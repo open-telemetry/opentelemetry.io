@@ -420,4 +420,4 @@ telemetry backends.
   https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
 [auto-instrumentation]:
   https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
-[semconv-spec]: /docs/specs/semconv/general/trace/
+[semconv-spec]: /docs/specs/semconv/core/general/trace/

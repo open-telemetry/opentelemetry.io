@@ -16,7 +16,7 @@ The OpenTelemetry Collector’s
 [`kubeletstats`](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/kubeletstatsreceiver/README.md)
 receiver is a crucial component for collecting Kubernetes node, pod and
 container metrics. To improve metric accuracy and adhere to
-[OpenTelemetry semantic conventions](/docs/specs/semconv/general/naming/#instrument-naming),
+[OpenTelemetry semantic conventions](/docs/specs/semconv/core/general/naming/#instrument-naming),
 we are updating how CPU metrics are named and emitted.
 
 This blog post explains the motivation behind this change, the impact on users,
@@ -42,7 +42,7 @@ field, which is an absolute measure of CPU usage (in units of nanocores).
 The term _utilization_ generally refers to a relative metric, typically
 expressed as a ratio or percentage of used CPU against total CPU capacity or
 limits. Using `.cpu.utilization` for absolute usage values violates
-[Semantic Conventions](/docs/specs/semconv/general/naming/#instrument-naming),
+[Semantic Conventions](/docs/specs/semconv/core/general/naming/#instrument-naming),
 potentially confusing users and tooling expecting utilization metrics to be
 relative.
 
@@ -130,7 +130,7 @@ everyone.
 - [PR #35139 - Introduce `.cpu.usage` metrics and feature gate (alpha)](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/35139)
 - [PR #39488 - Promote feature gate to beta and enable by default](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/39488)
 - [Issue #39650 - Plan to move feature gate to stable](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/39650)
-- [OpenTelemetry Metrics Semantic Conventions](/docs/specs/semconv/general/metrics/)
+- [OpenTelemetry Metrics Semantic Conventions](/docs/specs/semconv/core/general/metrics/)
 - [Kubernetes Kubelet Stats API](https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1)
 
 ## Final Thoughts

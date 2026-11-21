@@ -254,9 +254,10 @@ the
 [packages named `resource-detector-*` in the opentelemetry-js-contrib repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/
-[process and process runtime resources]: /docs/specs/semconv/resource/process/
-[host]: /docs/specs/semconv/resource/host/
-[cloud]: /docs/specs/semconv/resource/cloud/
-[deployment]: /docs/specs/semconv/resource/deployment-environment/
-[service]: /docs/specs/semconv/resource/#service
-[os]: /docs/specs/semconv/resource/os/
+[process and process runtime resources]:
+  /docs/specs/semconv/core/resource/process/
+[host]: /docs/specs/semconv/core/resource/host/
+[cloud]: /docs/specs/semconv/core/resource/cloud/
+[deployment]: /docs/specs/semconv/core/resource/deployment-environment/
+[service]: /docs/specs/semconv/core/resource/#service
+[os]: /docs/specs/semconv/core/resource/os/

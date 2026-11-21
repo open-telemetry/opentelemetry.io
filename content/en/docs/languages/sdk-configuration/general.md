@@ -10,8 +10,8 @@ cSpell:ignore: ottrace
 
 ## `OTEL_SERVICE_NAME`
 
-Sets the value of the [`service.name`](/docs/specs/semconv/resource/#service)
-resource attribute.
+Sets the value of the
+[`service.name`](/docs/specs/semconv/core/resource/#service) resource attribute.
 
 **Default value:** `unknown_service`
 
@@ -39,7 +39,7 @@ export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
 **References:**
 
 - [Resource SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable)
-- [Resource semantic conventions](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value)
+- [Resource semantic conventions](/docs/specs/semconv/core/resource/#semantic-attributes-with-sdk-provided-default-value)
   for common resource type semantic conventions
 
 ## `OTEL_TRACES_SAMPLER`

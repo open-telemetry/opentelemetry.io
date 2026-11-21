@@ -288,7 +288,7 @@ Value: 4356471
 ```
 
 If you wish to associate your metric with a
-[service](/docs/specs/semconv/resource/#service) that you've instrumented using
+[service](/docs/specs/semconv/core/resource/#service) that you've instrumented using
 OpenTelemetry, you can initially add `service.name` and `service.namespace` to
 your shell script as data point attributes:
 

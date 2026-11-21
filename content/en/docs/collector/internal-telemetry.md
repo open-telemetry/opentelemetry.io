@@ -542,7 +542,7 @@ covered by the maturity levels below.
 The Collector's internal RPC metrics come from the upstream
 [`otelgrpc`](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc/otelgrpc)
 instrumentation, which tracks the
-[OpenTelemetry RPC semantic conventions](/docs/specs/semconv/rpc/rpc-metrics/).
+[OpenTelemetry RPC semantic conventions](/docs/specs/semconv/core/rpc/rpc-metrics/).
 The set of RPC metrics emitted by the Collector has changed across releases:
 
 | Collector version    | Emitted RPC metrics                                                                                                                                                |
@@ -760,6 +760,6 @@ For a broader discussion of missing telemetry in application workflows, see
 [When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
 
 [SemConvGuidance]:
-  /docs/specs/semconv/general/semantic-convention-groups#group-stability
+  /docs/specs/semconv/core/general/semantic-convention-groups#group-stability
 [OTEP-0232]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md

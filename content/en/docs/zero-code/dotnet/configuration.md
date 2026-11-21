@@ -88,15 +88,16 @@ instead of silently continue.
 ## Resources
 
 A resource is the immutable representation of the entity producing the
-telemetry. See [Resource semantic conventions](/docs/specs/semconv/resource/)
-for more details.
+telemetry. See
+[Resource semantic conventions](/docs/specs/semconv/core/resource/) for more
+details.
 
 ### Resource attributes
 
-| Environment variable       | Description                                                                                                                                                                                                       | Default value                                                                                                                       | Status                                              |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `OTEL_RESOURCE_ATTRIBUTES` | Key-value pairs to be used as resource attributes. See [Resource SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable) for more details.                                | See [Resource semantic conventions](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value) for details. | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SERVICE_NAME`        | Sets the value of the [`service.name`](/docs/specs/semconv/resource/#service) resource attribute. If `service.name` is provided in `OTEL_RESOURCE_ATTRIBUTES`, the value of `OTEL_SERVICE_NAME` takes precedence. | See [Service name automatic detection](#configuration-methods) under Configuration method section.                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
+| Environment variable       | Description                                                                                                                                                                                                            | Default value                                                                                                                            | Status                                              |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `OTEL_RESOURCE_ATTRIBUTES` | Key-value pairs to be used as resource attributes. See [Resource SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable) for more details.                                     | See [Resource semantic conventions](/docs/specs/semconv/core/resource/#semantic-attributes-with-sdk-provided-default-value) for details. | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SERVICE_NAME`        | Sets the value of the [`service.name`](/docs/specs/semconv/core/resource/#service) resource attribute. If `service.name` is provided in `OTEL_RESOURCE_ATTRIBUTES`, the value of `OTEL_SERVICE_NAME` takes precedence. | See [Service name automatic detection](#configuration-methods) under Configuration method section.                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Resource detectors
 

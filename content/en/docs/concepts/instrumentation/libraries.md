@@ -26,14 +26,14 @@ and document hooks. Other advantages provided by native instrumentation include:
 
 ## Semantic conventions
 
-[Semantic conventions](/docs/specs/semconv/general/trace/) are the main source
-of truth about what information is included on spans produced by web frameworks,
-RPC clients, databases, messaging clients, infrastructure, and more. Conventions
-make instrumentation consistent: users who work with telemetry don't have to
-learn library specifics and observability vendors can build experiences for a
-wide variety of technologies, for example databases or messaging systems. When
-libraries follow conventions, many scenarios can be enabled without the user's
-input or configuration.
+[Semantic conventions](/docs/specs/semconv/core/general/trace/) are the main
+source of truth about what information is included on spans produced by web
+frameworks, RPC clients, databases, messaging clients, infrastructure, and more.
+Conventions make instrumentation consistent: users who work with telemetry don't
+have to learn library specifics and observability vendors can build experiences
+for a wide variety of technologies, for example databases or messaging systems.
+When libraries follow conventions, many scenarios can be enabled without the
+user's input or configuration.
 
 Semantic conventions are always evolving and new conventions are constantly
 added. If some don't exist for your library, consider
@@ -197,7 +197,7 @@ private Response selectWithTracing(Query query) {
 ```
 
 Follow conventions to populate attributes. If there is no applicable one, see
-[general conventions](/docs/specs/semconv/general/attributes/).
+[general conventions](/docs/specs/semconv/core/general/attributes/).
 
 ### Nested network and other spans
 
@@ -292,7 +292,7 @@ try (Scope unused = span.makeCurrent()) {
 
 In the case of a messaging system, you might receive more than one message at
 once. Received messages become links on the span you create. Refer to
-[messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
+[messaging conventions](/docs/specs/semconv/core/messaging/messaging-spans/) for
 details.
 
 ### Injecting context

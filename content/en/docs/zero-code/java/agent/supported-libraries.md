@@ -3,7 +3,7 @@ title: Supported Libraries
 linkTitle: Supported Libraries
 weight: 11
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu SOFARPC spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra genai helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu SOFARPC spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 The Java agent automatically instruments many libraries, frameworks, and
@@ -199,28 +199,28 @@ view execution. See
 **[5]** Doesn't currently support capturing HTTP/2 traffic.
 
 **[6]** Database client metrics are available for those who opt-in to
-[semantic convention stability](/docs/specs/semconv/non-normative/db-migration/).
+[semantic convention stability](/docs/specs/semconv/core/non-normative/db-migration/).
 
-[Elasticsearch Client Spans]: /docs/specs/semconv/db/elasticsearch/
-[HTTP Server Spans]: /docs/specs/semconv/http/http-spans/#http-server
-[HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client-span
-[HTTP Server Metrics]: /docs/specs/semconv/http/http-metrics/#http-server
-[HTTP Client Metrics]: /docs/specs/semconv/http/http-metrics/#http-client
-[RPC Server Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-server-span
-[RPC Client Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-client-span
-[RPC Server Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-server
-[RPC Client Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-client
-[Messaging Spans]: /docs/specs/semconv/messaging/messaging-spans/
-[Database Client Spans]: /docs/specs/semconv/db/database-spans/
-[Database Client Metrics]: /docs/specs/semconv/db/database-metrics/
-[Database Pool Metrics]: /docs/specs/semconv/db/database-metrics/
-[JVM Runtime Metrics]: /docs/specs/semconv/runtime/jvm-metrics/
-[System Metrics]: /docs/specs/semconv/system/system-metrics/
-[GraphQL Server Spans]: /docs/specs/semconv/graphql/graphql-spans/
-[FaaS Server Spans]: /docs/specs/semconv/faas/faas-spans/
-[GenAI Client Spans]: /docs/specs/semconv/gen-ai/gen-ai-spans/
+[Elasticsearch Client Spans]: /docs/specs/semconv/core/db/elasticsearch/
+[HTTP Server Spans]: /docs/specs/semconv/core/http/http-spans/#http-server
+[HTTP Client Spans]: /docs/specs/semconv/core/http/http-spans/#http-client-span
+[HTTP Server Metrics]: /docs/specs/semconv/core/http/http-metrics/#http-server
+[HTTP Client Metrics]: /docs/specs/semconv/core/http/http-metrics/#http-client
+[RPC Server Spans]: /docs/specs/semconv/core/rpc/rpc-spans/#rpc-server-span
+[RPC Client Spans]: /docs/specs/semconv/core/rpc/rpc-spans/#rpc-client-span
+[RPC Server Metrics]: /docs/specs/semconv/core/rpc/rpc-metrics/#rpc-server
+[RPC Client Metrics]: /docs/specs/semconv/core/rpc/rpc-metrics/#rpc-client
+[Messaging Spans]: /docs/specs/semconv/core/messaging/messaging-spans/
+[Database Client Spans]: /docs/specs/semconv/core/db/database-spans/
+[Database Client Metrics]: /docs/specs/semconv/core/db/database-metrics/
+[Database Pool Metrics]: /docs/specs/semconv/core/db/database-metrics/
+[JVM Runtime Metrics]: /docs/specs/semconv/core/runtime/jvm-metrics/
+[System Metrics]: /docs/specs/semconv/core/system/system-metrics/
+[GraphQL Server Spans]: /docs/specs/semconv/core/graphql/graphql-spans/
+[FaaS Server Spans]: /docs/specs/semconv/core/faas/faas-spans/
+[GenAI Client Spans]: /docs/specs/semconv/genai/gen-ai/gen-ai-spans/
 [GenAI Client Metrics]:
-  /docs/specs/semconv/gen-ai/gen-ai-metrics/?link-check=no&see-issue=10153#generative-ai-client-metrics
+  /docs/specs/semconv/genai/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
 
 ## Application Servers
 

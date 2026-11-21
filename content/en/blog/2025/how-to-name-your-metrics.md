@@ -138,10 +138,10 @@ This approach has several benefits:
 
 1. **Clean names**: No ugly suffixes cluttering your metric names.
 2. **Standardized units**: Follow the
-   [Unified Code for Units of Measure (UCUM)](/docs/specs/semconv/general/metrics/#instrument-units).
+   [Unified Code for Units of Measure (UCUM)](/docs/specs/semconv/core/general/metrics/#instrument-units).
 3. **Backend flexibility**: Systems can handle unit conversion automatically.
 4. **Consistent conventions**: Aligns with OpenTelemetry
-   [semantic conventions](/docs/specs/semconv/general/metrics/).
+   [semantic conventions](/docs/specs/semconv/core/general/metrics/).
 
 The specification recommends using non-prefixed units like `By` (bytes) rather
 than `MiBy` (mebibytes) unless there are technical reasons to do otherwise.
@@ -154,11 +154,12 @@ learned for spans, where it makes sense:
 1. **Focus on the operation**: What is being measured?
 2. **Not the operator**: Who is doing the measuring?
 3. **Follow semantic conventions**: Use
-   [established patterns](/docs/specs/semconv/general/metrics/) when available.
+   [established patterns](/docs/specs/semconv/core/general/metrics/) when
+   available.
 4. **Keep units as metadata**: Don't suffix names with units.
 
 Here are examples following OpenTelemetry
-[semantic conventions](/docs/specs/semconv/general/metrics/):
+[semantic conventions](/docs/specs/semconv/core/general/metrics/):
 
 - `http.server.request.duration` (not `payment_http_requests_ms`)
 - `db.client.operation.duration` (not `user_service_db_queries_seconds`)

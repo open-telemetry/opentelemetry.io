@@ -59,13 +59,14 @@ name to avoid collisions (for example, `smart_home_hvac_on_seconds_total`),
 since all metrics share a flat global namespace.
 
 OpenTelemetry conventionally uses
-[dotted names](/docs/specs/semconv/general/naming/). Ownership and namespacing
-are captured in the instrumentation scope (the `Meter` name, for example
-`smart.home`), so metric names themselves do not need a prefix (for example,
-`hvac.on`). When exporting to Prometheus, the exporter translates names: dots
-become underscores, unit abbreviations expand to full words (for example, `s` →
-`seconds`), and counters receive a `_total` suffix. An OpenTelemetry counter
-named `hvac.on` with unit `s` is exported as `hvac_on_seconds_total`. See the
+[dotted names](/docs/specs/semconv/core/general/naming/). Ownership and
+namespacing are captured in the instrumentation scope (the `Meter` name, for
+example `smart.home`), so metric names themselves do not need a prefix (for
+example, `hvac.on`). When exporting to Prometheus, the exporter translates
+names: dots become underscores, unit abbreviations expand to full words (for
+example, `s` → `seconds`), and counters receive a `_total` suffix. An
+OpenTelemetry counter named `hvac.on` with unit `s` is exported as
+`hvac_on_seconds_total`. See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
 for the complete set of name translation rules. The translation strategy is
 configurable — for example, to preserve UTF-8 characters or suppress unit and

@@ -174,7 +174,7 @@ trace.
 
 To record an error on a log, either `exception.type` or `exception.message` is
 required, while `exception.stacktrace` is recommended. For more information, see
-[Semantic Conventions for Exceptions in Logs](/docs/specs/semconv/exceptions/exceptions-logs/).
+[Semantic Conventions for Exceptions in Logs](/docs/specs/semconv/core/exceptions/exceptions-logs/).
 
 ## Logs or spans to capture errors?
 

@@ -11,10 +11,10 @@ once.
 ## Peer service name
 
 The
-[peer service name](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
+[peer service name](/docs/specs/semconv/core/general/attributes/#general-remote-service-attributes)
 is the name of a remote service to which a connection is made. It corresponds to
-`service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
-local service.
+`service.name` in the [resource](/docs/specs/semconv/core/resource/#service) for
+the local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
 
@@ -100,7 +100,7 @@ span link connecting it to the producer trace.
 ## Capturing enduser attributes
 
 You can configure the agent to capture
-[general identity attributes](/docs/specs/semconv/registry/attributes/enduser/)
+[general identity attributes](/docs/specs/semconv/core/registry/attributes/enduser/)
 (`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
 like
 [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)

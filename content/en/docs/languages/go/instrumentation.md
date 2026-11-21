@@ -1136,7 +1136,7 @@ You’ll also want to configure an appropriate exporter to
 telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
-[trace semantic conventions]: /docs/specs/semconv/general/trace/
+[trace semantic conventions]: /docs/specs/semconv/core/general/trace/
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector

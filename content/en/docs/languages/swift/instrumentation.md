@@ -144,7 +144,7 @@ automatically annotated with the `Resource` attributes attached to the tracer
 provider. The Opentelemetry-swift SDK already provides instrumentation of common
 attributes in the `SDKResourceExtension` instrumentation. In this example a span
 for a network request capturing details about that request using existing
-[semantic conventions](/docs/specs/semconv/general/trace/).
+[semantic conventions](/docs/specs/semconv/core/general/trace/).
 
 ```swift
 let span = tracer.spanBuilder("/resource/path").startSpan()

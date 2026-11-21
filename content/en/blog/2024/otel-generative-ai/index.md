@@ -45,7 +45,7 @@ response metadata, and token usage in a structured format.
 
 ## Key Signals for Generative AI
 
-The [Semantic Conventions for Generative AI](/docs/specs/semconv/gen-ai/) focus
+The [Semantic Conventions for Generative AI](/docs/specs/semconv/genai/gen-ai/) focus
 on capturing insights into AI model behavior through three primary signals:
 [Traces](/docs/concepts/signals/traces/),
 [Metrics](/docs/concepts/signals/metrics/), and
@@ -80,7 +80,7 @@ behaviors may arise.
 > Note that we decided to use [events emitted][] with the
 > [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
 > Conventions for Generative AI. Events allows for us to define specific
-> [semantic conventions](/docs/specs/semconv/general/events/) for the user
+> [semantic conventions](/docs/specs/semconv/core/general/events/) for the user
 > prompts and model responses that we capture. This addition to the API is in
 > development and considered unstable.
 

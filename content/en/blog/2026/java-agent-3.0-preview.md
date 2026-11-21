@@ -341,4 +341,4 @@ time to address problems before 3.0 becomes the default.
   https://github.com/open-telemetry/semantic-conventions/blob/v1.24.0/docs/messaging/messaging-spans.md
 [messaging-1.43]:
   https://github.com/open-telemetry/semantic-conventions/blob/v1.43.0/docs/messaging/messaging-spans.md
-[db-migration]: /docs/specs/semconv/non-normative/db-migration/
+[db-migration]: /docs/specs/semconv/core/non-normative/db-migration/

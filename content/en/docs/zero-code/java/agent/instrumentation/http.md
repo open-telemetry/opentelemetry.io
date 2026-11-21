@@ -8,8 +8,8 @@ weight: 110
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
-[semantic convention](/docs/specs/semconv/http/http-spans/). Use the following
-properties to define which HTTP headers you want to capture:
+[semantic convention](/docs/specs/semconv/core/http/http-spans/). Use the
+following properties to define which HTTP headers you want to capture:
 
 {{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
@@ -82,11 +82,11 @@ For client and server spans, the following attributes are added:
 
 For client metrics, the following metrics are created:
 
-- [http.client.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientrequestbodysize)
-- [http.client.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpclientresponsebodysize)
+- [http.client.request.body.size](/docs/specs/semconv/core/http/http-metrics/#metric-httpclientrequestbodysize)
+- [http.client.response.body.size](/docs/specs/semconv/core/http/http-metrics/#metric-httpclientresponsebodysize)
 
 For server metrics, the following metrics are created:
 
-- [http.server.active_requests](/docs/specs/semconv/http/http-metrics/#metric-httpserveractive_requests)
-- [http.server.request.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestbodysize)
-- [http.server.response.body.size](/docs/specs/semconv/http/http-metrics/#metric-httpserverresponsebodysize)
+- [http.server.active_requests](/docs/specs/semconv/core/http/http-metrics/#metric-httpserveractive_requests)
+- [http.server.request.body.size](/docs/specs/semconv/core/http/http-metrics/#metric-httpserverrequestbodysize)
+- [http.server.response.body.size](/docs/specs/semconv/core/http/http-metrics/#metric-httpserverresponsebodysize)

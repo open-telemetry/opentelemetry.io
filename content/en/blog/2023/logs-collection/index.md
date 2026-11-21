@@ -470,7 +470,7 @@ check out the following resources:
 [hossko]: https://github.com/hossko
 [otel-logs-spec]: /docs/specs/otel/logs/
 [otel-logs-events]: /docs/specs/otel/logs/event-api/
-[otel-semconv-logs]: /docs/specs/semconv/general/logs/
+[otel-semconv-logs]: /docs/specs/semconv/core/general/logs/
 [otel-python-repo]: https://github.com/open-telemetry/opentelemetry-python
 [otel-python]: /docs/languages/python/
 [py-docs-logs]:

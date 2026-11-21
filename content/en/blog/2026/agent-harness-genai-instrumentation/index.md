@@ -25,9 +25,10 @@ substantial engineering time.
 
 We have been testing whether a team of agents can do much of that work. The
 agents inspect a framework, propose a plan, implement it against the
-[OpenTelemetry Semantic Conventions for GenAI](/docs/specs/semconv/gen-ai/), and
-use [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver) to check
-the emitted telemetry. Engineers review the plan and resulting pull request.
+[OpenTelemetry Semantic Conventions for GenAI](/docs/specs/semconv/genai/gen-ai/),
+and use [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver) to
+check the emitted telemetry. Engineers review the plan and resulting pull
+request.
 
 ## Why automate instrumentation?
 
@@ -306,9 +307,9 @@ does not define, we propose adding it to the GenAI semantic conventions.
 
 The Coding Agent added `gen_ai.crewai.*` attributes to the CrewAI plugin for
 details absent from the GenAI semantic conventions; because
-[OpenTelemetry's naming guidance](/docs/specs/semconv/general/naming/) warns
-that this prefix could clash with future standard attributes, future prompts
-should require agents to emit only registry-defined GenAI attributes.
+[OpenTelemetry's naming guidance](/docs/specs/semconv/core/general/naming/)
+warns that this prefix could clash with future standard attributes, future
+prompts should require agents to emit only registry-defined GenAI attributes.
 
 ## What we've shipped so far
 

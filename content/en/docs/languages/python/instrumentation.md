@@ -134,7 +134,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Add semantic attributes
 
-[Semantic Attributes](/docs/specs/semconv/general/trace/) are pre-defined
+[Semantic Attributes](/docs/specs/semconv/core/general/trace/) are pre-defined
 [Attributes](/docs/concepts/signals/traces/#attributes) that are well-known
 naming conventions for common kinds of data. Using Semantic Attributes lets you
 normalize this kind of information across your systems.

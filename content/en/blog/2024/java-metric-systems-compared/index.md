@@ -35,13 +35,13 @@ cause intermittent blips in performance.
 
 Let’s introduce an example that we can reference during the subsequent text. One
 of the most useful metrics in OpenTelemetry is
-[`http.server.request.duration`](/docs/specs/semconv/http/http-metrics/#metric-httpserverrequestduration),
+[`http.server.request.duration`](/docs/specs/semconv/core/http/http-metrics/#metric-httpserverrequestduration),
 which records measurements of the response latency of each request served by an
 HTTP server and aggregates them into a histogram. Each measurement has a variety
 of attributes (or labels, or tags, or dimensions) associated with it, but let’s
 focus on `http.request.method`, `http.route`, and `http.response.status_code`
 for simplicity's sake. See
-[HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) for complete
+[HTTP semantic conventions](/docs/specs/semconv/core/http/http-metrics/) for complete
 details. From this, you can compute throughput, average response time, min and
 max response time, percentile response time (i.e. p95, p99, etc), all broken
 down by HTTP method, route, response status code, and more.
