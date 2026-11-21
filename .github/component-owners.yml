@@ -16,6 +16,9 @@ components:
   content-modules/semantic-conventions:
     - open-telemetry/docs-maintainers
     - open-telemetry/specs-semconv-approvers
+  content-modules/semantic-conventions-genai:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/semconv-genai-approvers
   content/en/blog:
     - open-telemetry/docs-maintainers
   content/en/community/end-user:
@@ -93,6 +96,9 @@ components:
     - open-telemetry/php-approvers
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
+  static/schemas/semconv-genai-dev:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/semconv-genai-approvers
 
   # No-owner files:
   link-cache.jsonc:

@@ -32,6 +32,9 @@ jobs:
           - spec: semconv
             repo: semantic-conventions
             slug: semconv
+          - spec: semconv-genai
+            repo: semantic-conventions-genai
+            slug: semconv-genai
     env:
       SPEC: ${{ matrix.spec }}
       REPO: ${{ matrix.repo }}
@@ -97,6 +100,8 @@ jobs:
           fi
 
       - name: Update submodule
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git submodule update --init "content-modules/$REPO"
           cd "content-modules/$REPO"
@@ -119,6 +124,14 @@ jobs:
 
           if [ "$SPEC" == "semconv" ]; then
             ./scripts/update-semconv-mounts.pl
+          fi
+
+          # GenAI publishes its schema-URL manifest only as a release asset.
+          if [ "$SPEC" == "semconv-genai" ] && [ "$tag_exists" == "true" ]; then
+            mkdir -p static/schemas/semconv-genai-dev
+            gh release download "$VERSION" --repo "open-telemetry/$REPO" \
+              --pattern manifest-dev.yaml --clobber \
+              --output "static/schemas/semconv-genai-dev/${VERSION#v}-dev"
           fi
 
           git add -A
