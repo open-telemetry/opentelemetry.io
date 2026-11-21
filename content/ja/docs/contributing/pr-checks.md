@@ -9,7 +9,7 @@ default_lang_commit: 7f94db6f324d9c0e1828f4800fe6eeb789788afc
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
 PR のチェックは次のことを検証します。
 
-- [CLA](#easy-cla) の署名しているか
+- [CLA](#easy-cla) に署名しているか
 - PR が[Netlify を通じてデプロイ](#netlify-deployment)に成功しているか
 - [スタイルガイド](#checks)に変更が従っているか
 
