@@ -26,6 +26,8 @@ my @SEMCONV_SETS = (
     dir => "content-modules/semantic-conventions",
     tmp => "tmp/semconv/docs",
     target => "content/docs/specs/semconv/core",
+    # GenAI stubs aren't published, see cp-pages.sh
+    exclude => qr{^gen-ai/},
   },
   {
     dir => "content-modules/semantic-conventions-genai",

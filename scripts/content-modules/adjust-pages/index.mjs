@@ -334,6 +334,17 @@ export function buildBodyPipeline(v) {
       search: /\((\/model\/.*?)\)/g,
       replace: `(${semconvSpecRepoUrl}/tree/v${v.semconv}/$1)`,
     },
+    // Core links to the GenAI stubs (not published) go to the GenAI pages
+    {
+      when: /^tmp\/semconv\/docs\/README\.md$/,
+      search: /(\]\()gen-ai\//g,
+      replace: `$1${semconvGenaiPath}/gen-ai/`,
+    },
+    {
+      when: /^tmp\/semconv\/docs\/registry\/attributes\/README\.md$/,
+      search: /(\]\()((?:gen-ai|mcp|openai)\.md\))/g,
+      replace: `$1${semconvGenaiPath}/registry/attributes/$2`,
+    },
 
     // Semconv GenAI: repo-root paths resolve against the GenAI mount
     {

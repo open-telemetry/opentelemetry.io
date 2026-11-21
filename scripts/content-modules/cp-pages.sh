@@ -78,6 +78,11 @@ rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
 
+# Drop the "Moved" GenAI stubs: the GenAI pages are published from
+# semantic-conventions-genai, and the old URLs redirect there.
+rm -Rf $DEST/gen-ai
+rm -f $DEST/registry/attributes/{gen-ai,mcp,openai}.md
+
 # find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'

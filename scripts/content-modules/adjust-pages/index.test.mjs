@@ -412,6 +412,28 @@ describe('transform: link rewriting', () => {
     );
   });
 
+  it('points core links to the GenAI stubs at the GenAI pages', () => {
+    // The landing page also gets version-stamped front matter:
+    assert.match(
+      body(
+        'tmp/semconv/docs/README.md',
+        '* [Generative AI](gen-ai/README.md)\n',
+      ),
+      /\n\* \[Generative AI\]\(\/docs\/specs\/semconv\/genai\/gen-ai\/README\.md\)\n$/,
+    );
+    assert.equal(
+      body(
+        'tmp/semconv/docs/registry/attributes/README.md',
+        '- [MCP](mcp.md)\n',
+      ),
+      '- [MCP](/docs/specs/semconv/genai/registry/attributes/mcp.md)\n',
+    );
+    assert.equal(
+      body('tmp/semconv/docs/registry/attributes/README.md', '- [Go](go.md)\n'),
+      '- [Go](go.md)\n',
+    );
+  });
+
   it('localizes semconv GenAI /docs/ links and /model/ paths', () => {
     const p = 'tmp/semconv-genai/docs/gen-ai/a.md';
     assert.equal(
