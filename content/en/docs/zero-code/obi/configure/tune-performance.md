@@ -75,9 +75,11 @@ scenarios, it helps reduce dropped trace events.
 
 ## eBPF map resizing
 
-The `maps_config.global_scale_factor` option allows you to dynamically resize
-eBPF map sizes at runtime to tune performance based on your workload
-characteristics.
+The `maps_config.global_scale_factor` option scales the size of eBPF maps to
+tune performance based on your workload characteristics. OBI applies the scale
+factor when it loads the eBPF maps. Maps that are already loaded aren't resized
+in place, so a new value only takes effect for maps loaded after the change, for
+example after you restart OBI.
 
 - **Values > 0** increase map sizes by powers of two (for example, `1` means 2x,
   `2` means 4x).
