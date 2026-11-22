@@ -22,9 +22,9 @@ dependencies are properly aligned with the application.
 
 ## Publishing
 
-Add `--use-current-runtime` to the `dotnet publish` command to distribute
-appropriate native runtime components.
+The Docker build passes a Linux runtime identifier to `dotnet publish` to
+include the native instrumentation components for the target architecture.
 
 ```sh
-dotnet publish "./AccountingService.csproj" --use-current-runtime -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+dotnet publish "./Accounting.csproj" -r linux-$TARGETARCH -c $BUILD_CONFIGURATION --no-restore -o /app/publish /p:UseAppHost=false
 ```
