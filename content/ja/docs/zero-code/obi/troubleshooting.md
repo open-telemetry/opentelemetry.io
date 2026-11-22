@@ -2,8 +2,7 @@
 title: トラブルシューティング
 description: OBI の一般的な問題やエラーのトラブルシューティング
 weight: 22
-default_lang_commit: 6e13d934026c15dc982e28c1234838ccf005ecb0
-drifted_from_default: true
+default_lang_commit: 8bea7946213ba876732959178e69573e0283d303
 cSpell:ignore: Clickhouse tracefs uprobe userland
 ---
 
@@ -103,6 +102,8 @@ OBI v0.6.0 以降では、`telemetry.sdk.name` は利用可能な場合に基盤
 
 OBI は、パフォーマンスプロファイリング用に `pprof` ポートを公開できます。
 有効化するには、`profile_port` 設定値または `OTEL_EBPF_PROFILE_PORT` 環境変数を任意のポートに設定します。
+
+プロファイルの取得と分析のコマンドについては、[OBI プロファイリングガイド](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/82cd923dfbee956f95487b46e8371de12510cf11/devdocs/profiling.md)を参照してください。
 
 これは高度なユースケースであり、通常は不要です。
 
