@@ -3,6 +3,7 @@ title: はじめに
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
 default_lang_commit: b83edac6fdc7da4c53d10ce00c2f78d9aea0c89b
+drifted_from_default: true
 cSpell:ignore: rolldice
 ---
 

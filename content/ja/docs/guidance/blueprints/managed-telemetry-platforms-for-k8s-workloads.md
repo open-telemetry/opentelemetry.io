@@ -1,8 +1,7 @@
 ---
 title: 'Kubernetes ワークロード向けマネージドテレメトリープラットフォーム'
 linkTitle: 'K8s ワークロード向けマネージドテレメトリープラットフォーム'
-default_lang_commit: b1ffeb18d523211cca6f1c9d2892b7bb1e24fe4f
-drifted_from_default: true
+default_lang_commit: ea312f6d603e787a71e181b38df625a7079577a0
 cSpell:ignore: Autoscaler kube SDLC Skyscanner statefulset
 ---
 

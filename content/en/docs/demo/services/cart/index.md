@@ -17,24 +17,26 @@ with a Valkey caching service for fast access to shopping cart data.
 
 ### Initializing Tracing
 
-OpenTelemetry is configured in the .NET dependency injection container. The
-`AddOpenTelemetry()` builder method is used to configure desired instrumentation
-libraries, add exporters, and set other options. Configuration of the exporter
-and resource attributes is performed through environment variables.
+The Cart service uses `AddOpenTelemetry()` to configure instrumentation and
+exporters in the .NET dependency injection container. Use environment variables
+to configure the exporter and supply additional resource attributes.
 
 ```cs
+var serviceInstanceId = Guid.NewGuid().ToString();
+
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
+        .AddService(builder.Environment.ApplicationName, serviceInstanceId: serviceInstanceId)
         .AddContainerDetector()
         .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
     .WithTracing(tracerBuilder => tracerBuilder
+        .AddSource("Microsoft.AspNetCore")
         .AddSource("OpenTelemetry.Demo.Cart")
         .AddRedisInstrumentation(
             options => options.SetVerboseDatabaseStatements = true)
-        .AddAspNetCoreInstrumentation()
         .AddGrpcClientInstrumentation()
         .AddHttpClientInstrumentation()
         .AddOtlpExporter());
@@ -75,22 +77,25 @@ activity?.AddEvent(new("Fetch cart"));
 ### Initializing Metrics
 
 Similar to configuring OpenTelemetry Traces, the .NET dependency injection
-container requires a call to `AddOpenTelemetry()`. This builder configures
-desired instrumentation libraries, exporters, etc.
+container requires a call to `AddOpenTelemetry()`.
 
 ```cs
+var serviceInstanceId = Guid.NewGuid().ToString();
+
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
+        .AddService(builder.Environment.ApplicationName, serviceInstanceId: serviceInstanceId)
         .AddContainerDetector()
         .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
     .WithMetrics(meterBuilder => meterBuilder
+        .AddMeter("Microsoft.AspNetCore.*")
         .AddMeter("OpenTelemetry.Demo.Cart")
+        .AddMeter("OpenFeature")
         .AddProcessInstrumentation()
         .AddRuntimeInstrumentation()
-        .AddAspNetCoreInstrumentation()
         .SetExemplarFilter(ExemplarFilterType.TraceBased)
         .AddOtlpExporter());
 ```

@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 1b7f33e30a91ebf48b6c9d00f7808b4021fb74dd
+default_lang_commit: ea312f6d603e787a71e181b38df625a7079577a0
 cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
@@ -43,6 +43,7 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 | `productCatalogFailure`        | 商品カタログ             | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                                                                                                                               |
 | `productCatalogLockContention` | 商品カタログ             | `catalog.products` テーブルに対して `ACCESS EXCLUSIVE` ロックを保持することでデータベースのロック競合をシミュレートし、他の商品カタログクエリをブロックします。                                                                          |
 | `recommendationCacheFailure`   | レコメンデーション       | 指数関数的に増大するキャッシュによりメモリリークが発生します。 リクエストのおよそ半数がその増加を引き起こします                                                                                                                          |
+| `webInteractionSlowdown`       | フロントエンド           | ブラウザでの「カートに追加」クリックを遅くし、INP の悪化を再現します。 代替のアナリティクスタグがクリックタスク内で同期処理を行います。 バリアントはイベントキューサイズを設定します: `300k`、`600k`、`1200k`。                          |
 
 ## ガイド付きデバッグシナリオ {#guided-debugging-scenario}
 
