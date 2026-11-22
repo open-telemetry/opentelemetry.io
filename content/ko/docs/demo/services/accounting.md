@@ -3,6 +3,7 @@ title: 회계 서비스
 linkTitle: 회계
 aliases: [accountingservice]
 default_lang_commit: 54b262d6b6703e304f6c42b41805a715d7ebee20
+drifted_from_default: true
 ---
 
 이 서비스는 판매된 상품의 총금액을 계산한다. 현재 이 계산은 모의 구현되어
