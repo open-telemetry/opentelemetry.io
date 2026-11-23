@@ -4,8 +4,7 @@ linkTitle: 構成
 description: .NET の自動計装の構成と設定
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
-default_lang_commit: ca99c1f23ef7e02acee3389ee766af6dbedb8e64
-drifted_from_default: true
+default_lang_commit: f4d4541a2ea5a21c67422fc99c4260ae3feb2baa
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE AZURECONTAINERAPPS CLSID CORECLR dylib ILREWRITE LOGRECORD NETFX OPERATINGSYSTEM PROCESSRUNTIME SQLCLIENT UNHANDLEDEXCEPTION
 ---
@@ -100,13 +99,13 @@ cSpell:ignore: AZUREAPPSERVICE AZURECONTAINERAPPS CLSID CORECLR dylib ILREWRITE 
 
 | ID                   | 説明                              | ドキュメント                                                                                                                                                                                                                                        | ステータス                                                |
 | -------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `AZUREAPPSERVICE`    | Azure App Service ディテクター    | [Azure リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.2-beta.1/src/OpenTelemetry.Resources.Azure/README.md)                                                           | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `AZURECONTAINERAPPS` | Azure Container Apps ディテクター | [Azure リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.20.2-beta.1/src/OpenTelemetry.Resources.Azure/README.md) **.NET Framework ではサポートされていません**             | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `CONTAINER`          | Container ディテクター            | [Container リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.20.1-beta.1/src/OpenTelemetry.Resources.Container/README.md) **.NET Framework ではサポートされていません** | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `HOST`               | Host ディテクター                 | [Host リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.20.1-beta.1/src/OpenTelemetry.Resources.Host/README.md)                                                              | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OPERATINGSYSTEM`    | Operating System ディテクター     | [Operating System リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.20.1-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md)                            | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `PROCESS`            | Process ディテクター              | [Process リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.20.1-rc.1/src/OpenTelemetry.Resources.Process/README.md)                                                       | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `PROCESSRUNTIME`     | Process Runtime ディテクター      | [Process Runtime リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.20.1-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md)                               | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `AZUREAPPSERVICE`    | Azure App Service ディテクター    | [Azure リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.21.0-beta.1/src/OpenTelemetry.Resources.Azure/README.md)                                                           | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `AZURECONTAINERAPPS` | Azure Container Apps ディテクター | [Azure リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.21.0-beta.1/src/OpenTelemetry.Resources.Azure/README.md) **.NET Framework ではサポートされていません**             | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `CONTAINER`          | Container ディテクター            | [Container リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Container-1.21.0-beta.1/src/OpenTelemetry.Resources.Container/README.md) **.NET Framework ではサポートされていません** | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `HOST`               | Host ディテクター                 | [Host リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Host-1.21.0-beta.1/src/OpenTelemetry.Resources.Host/README.md)                                                              | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OPERATINGSYSTEM`    | Operating System ディテクター     | [Operating System リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.OperatingSystem-1.21.0-beta.1/src/OpenTelemetry.Resources.OperatingSystem/README.md)                            | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESS`            | Process ディテクター              | [Process リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-1.21.0-rc.1/src/OpenTelemetry.Resources.Process/README.md)                                                       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESSRUNTIME`     | Process Runtime ディテクター      | [Process Runtime リソースディテクターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-1.21.0-beta.1/src/OpenTelemetry.Resources.ProcessRuntime/README.md)                               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## プロパゲーター {#propagators}
 
@@ -179,7 +178,7 @@ cSpell:ignore: AZUREAPPSERVICE AZURECONTAINERAPPS CLSID CORECLR dylib ILREWRITE 
 
 OTLP エクスポーターを有効にするには、`OTEL_TRACES_EXPORTER`/`OTEL_METRICS_EXPORTER`/`OTEL_LOGS_EXPORTER` 環境変数を `otlp` に設定します。
 
-環境変数を使用して OTLP エクスポーターをカスタマイズするには、[OTLP エクスポーターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables)を参照してください。
+環境変数を使用して OTLP エクスポーターをカスタマイズするには、[OTLP エクスポーターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.21.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables)を参照してください。
 重要な環境変数は以下の通りです。
 
 | 環境変数                                            | 説明                                                                                                                                                                               | デフォルト値                                                                         | ステータス                                          |
@@ -222,7 +221,7 @@ OTLP エクスポーターを有効にするには、`OTEL_TRACES_EXPORTER`/`OTE
 **[1]**: `OTEL_EXPORTER_OTLP_PROTOCOL` に関する考慮事項:
 
 - OpenTelemetry .NET 自動計装のデフォルトは `http/protobuf` であり、OpenTelemetry .NET SDK のデフォルト値 `grpc` とは異なります。
-- .NET 8 以上では、`grpc` OTLP エクスポータープロトコルを使用するためにアプリケーションが [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) を参照する必要があります。
+- .NET 10 以上では、`grpc` OTLP エクスポータープロトコルを使用するためにアプリケーションが [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) を参照する必要があります。
   たとえば、`.csproj` ファイルに `<PackageReference Include="Grpc.Net.Client" Version="2.65.0" />` を追加します。
 - .NET Framework では、`grpc` OTLP エクスポータープロトコルはサポートされていません。
 
@@ -235,7 +234,7 @@ OTLP エクスポーターを有効にするには、`OTEL_TRACES_EXPORTER`/`OTE
 
 **[3]**: mTLS（相互 TLS）構成に関する考慮事項:
 
-- mTLS は .NET 8.0 以上でのみサポートされます。
+- mTLS は .NET 10.0 以上でのみサポートされます。
 - すべての証明書ファイルは PEM 形式である必要があります。
 - mTLS を使用する場合、`OTEL_EXPORTER_OTLP_ENDPOINT` は `https://` を使用する必要があります。
 - mTLS は .NET Framework ではサポートされていません。
@@ -254,7 +253,7 @@ Prometheus エクスポーターを有効にするには、`OTEL_METRICS_EXPORTE
 
 エクスポーターは `http://localhost:9464/metrics` でメトリクスの HTTP エンドポイントを公開し、レスポンスを 300 ミリ秒間キャッシュします。
 
-詳細については、[Prometheus Exporter HttpListener のドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.20.1-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener)を参照してください。
+詳細については、[Prometheus Exporter HttpListener のドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.21.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener)を参照してください。
 
 ### Zipkin {#zipkin}
 
@@ -262,7 +261,7 @@ Prometheus エクスポーターを有効にするには、`OTEL_METRICS_EXPORTE
 
 Zipkin エクスポーターを有効にするには、`OTEL_TRACES_EXPORTER` 環境変数を `zipkin` に設定します。
 
-環境変数を使用して Zipkin エクスポーターをカスタマイズするには、[Zipkin エクスポーターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.20.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables)を参照してください。
+環境変数を使用して Zipkin エクスポーターをカスタマイズするには、[Zipkin エクスポーターのドキュメント](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.21.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables)を参照してください。
 重要な環境変数は以下の通りです。
 
 | 環境変数                        | 説明       | デフォルト値                         | ステータス                                          |
@@ -283,13 +282,13 @@ Zipkin エクスポーターを有効にするには、`OTEL_TRACES_EXPORTER` �
 | `OTEL_DOTNET_AUTO_TRACES_ADDITIONAL_LEGACY_SOURCES` | 起動時にトレーサーに追加されるレガシーソース名のカンマ区切りリスト。`System.Diagnostics.ActivitySource` API を使用せずに作成された `System.Diagnostics.Activity` オブジェクトをキャプチャするために使用します。                                                                                                                                                                                                                                                                                                       |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FLUSH_ON_UNHANDLEDEXCEPTION`      | [AppDomain.UnhandledException](https://docs.microsoft.com/dotnet/api/system.appdomain.unhandledexception) イベントが発生したときにテレメトリーデータをフラッシュするかどうかを制御します。テレメトリーデータの欠落と未処理の例外の両方が発生していると思われる場合に `true` に設定してください。                                                                                                                                                                                                                      | `false`                          | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES`       | 起動時にメーターに追加される `System.Diagnostics.Metrics.Meter` 名のカンマ区切りリスト。手動で作成されたメトリクスをキャプチャするために使用します。                                                                                                                                                                                                                                                                                                                                                                  |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_PLUGINS`                          | `OpenTelemetry.AutoInstrumentation.PluginApi` プラグインタイプのコロン区切りリスト。[アセンブリ修飾名](https://docs.microsoft.com/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname)で指定します。_注: タイプ名にカンマが含まれる場合があるため、このリストはコロン区切りである必要があります。_ プラグインの書き方の詳細については、[plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/plugins.md) を参照してください。 |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_APP_DOMAIN_STRATEGY`              | .NET Framework のみ。自動計装がデフォルト以外の AppDomain をどのように処理するかを定義します。サポートされる値: `LoaderOptimizationSingleDomain`、`AssemblyRedirect`、`None`。詳細については、[.NET Framework AppDomain strategy](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.19.1/docs/netfx-appdomain-strategy.md) を参照してください。                                                                                                                                          | `LoaderOptimizationSingleDomain` | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_PLUGINS`                          | `OpenTelemetry.AutoInstrumentation.PluginApi` プラグインタイプのコロン区切りリスト。[アセンブリ修飾名](https://docs.microsoft.com/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname)で指定します。_注: タイプ名にカンマが含まれる場合があるため、このリストはコロン区切りである必要があります。_ プラグインの書き方の詳細については、[plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/docs/plugins.md) を参照してください。 |                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_APP_DOMAIN_STRATEGY`              | .NET Framework のみ。自動計装がデフォルト以外の AppDomain をどのように処理するかを定義します。サポートされる値: `LoaderOptimizationSingleDomain`、`AssemblyRedirect`、`None`。詳細については、[.NET Framework AppDomain strategy](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/docs/netfx-appdomain-strategy.md) を参照してください。                                                                                                                                          | `LoaderOptimizationSingleDomain` | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## RuleEngine {#ruleengine}
 
 RuleEngine は、OpenTelemetry API、SDK、Instrumentation、Exporter アセンブリをサポートされていないシナリオに対して検証する機能であり、クラッシュするかわりにバックオフすることで OpenTelemetry の自動計装をより安定させます。
-.NET 8 以上で動作します。
+.NET 10 以上で動作します。
 
 RuleEngine は、アプリケーションの初回実行時、またはデプロイメントが変更されたか自動計装ライブラリがアップグレードされた場合にのみ有効にしてください。
 一度検証されると、アプリケーションの再起動時にルールを再検証する必要はありません。

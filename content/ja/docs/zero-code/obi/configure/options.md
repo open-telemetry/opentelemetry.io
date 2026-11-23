@@ -3,8 +3,7 @@ title: OBI グローバル設定プロパティ
 linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
-default_lang_commit: b2eb2bb46b0da10900c8fc36e3ee39b22b9894d9
-drifted_from_default: true
+default_lang_commit: 36998835eb3fb63365f9551b7407409efbbf17d9
 cSpell:ignore: healthz
 ---
 
@@ -81,6 +80,18 @@ health_check:
 | `health_check.unix_socket_path`<br>`OTEL_EBPF_HEALTH_CHECK_UNIX_SOCKET_PATH` | ヘルスエンドポイントを絶対ファイルシステムパスまたは `@` 接頭辞付き抽象ソケットにバインドします。`port` より優先されます。 | string | 未設定      |
 
 たとえば、`unix_socket_path: /var/run/obi-health.sock` はファイルシステムソケットを作成し、`unix_socket_path: '@obi-health'` は抽象ソケットを使用します。
+
+TCP の例：
+
+```sh
+curl http://127.0.0.1:8080/healthz
+```
+
+Unix ドメインソケットの例：
+
+```sh
+curl --unix-socket /var/run/obi-health.sock http://localhost/healthz
+```
 
 ## 実行可能ファイル名のマッチング {#executable-name-matching}
 
