@@ -114,7 +114,7 @@ prefix or suffix. This for example applies to
 - dates, where you keep only the year or the year and the month, but drop the
   day.
 - email addresses, where you drop the local part and only keep the domain.
-- IP addresses, where you drop drop the last octet of IPv4 or the last 80 bits
+- IP addresses, where you drop the last octet of IPv4 or the last 80 bits
   of IPv6.
 
 The following configuration for the `transform` processor drops the last octet
