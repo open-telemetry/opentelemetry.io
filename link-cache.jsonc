@@ -34123,8 +34123,8 @@
     "via": "lychee",
   },
   "https://www.iso.org/iso-8601-date-and-time-format.html": {
-    "result": "error",
-    "when": "2026-11-22T05:38:22Z",
+    "result": 200,
+    "when": "2026-11-23T05:39:05Z",
     "via": "lychee",
   },
   "https://www.itu.int/ITU-T/studygroups/com17/oid.html": {
