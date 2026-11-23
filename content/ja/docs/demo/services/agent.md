@@ -81,10 +81,10 @@ async def run_agent(self, input_prompt, history: List[Dict] | None = None):
 このデコレーター以外に、このサービスは OpenTelemetry トレーシング API を直接使用しません。
 `start_as_current_span` でスパンを作成することも、`set_attribute` でスパンを拡充することもありません。
 
-### プロンプトと完了コンテンツ {#prompt-and-completion-content}
+### プロンプトと応答の内容 {#prompt-and-completion-content}
 
-バンドルされた生成 AI 計装は OpenTelemetry の[生成 AI セマンティック規約](/docs/specs/semconv/gen-ai/)に従い、プロンプトと完了をスパン属性として `gen_ai.input.messages` および `gen_ai.output.messages` に記録します。
-`TRACELOOP_TRACE_CONTENT=false` を設定すると、エクスポートされるスパンからプロンプトと完了コンテンツを除外できます。
+バンドルされた生成 AI 計装は OpenTelemetry の[生成 AI セマンティック規約](/docs/specs/semconv/gen-ai/)に従い、プロンプトと応答をスパン属性として `gen_ai.input.messages` および `gen_ai.output.messages` に記録します。
+`TRACELOOP_TRACE_CONTENT=false` を設定すると、エクスポートされるスパンからプロンプトと応答の内容を除外できます。
 
 ## メトリクス {#metrics}
 
@@ -96,7 +96,7 @@ async def run_agent(self, input_prompt, history: List[Dict] | None = None):
 ### カスタムメトリクス {#custom-metrics}
 
 このサービスはカスタムメトリクスを定義していません。
-メーターを取得したり、独自の計装を作成したりすることもありません。
+メーターを取得したり、独自のメトリクス計装を作成したりすることもありません。
 
 ## ログ {#logs}
 
