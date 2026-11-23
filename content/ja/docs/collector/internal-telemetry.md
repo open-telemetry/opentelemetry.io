@@ -1,8 +1,7 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: 134221e3bee516f02b424402300aef67d64159e1
-drifted_from_default: true
+default_lang_commit: 4dfe6a316054df9852167b1818ee509723046db8
 cSpell:ignore: alloc batchprocessor journalctl lowmemory otelconf otelgrpc
 ---
 
@@ -617,6 +616,28 @@ otelcol_exporter_queue_size 0
 
 `otelcol_receiver_accepted_log_records`、`otelcol_receiver_accepted_spans`、および `otelcol_receiver_accepted_metric_points` メトリクスでデータ流入を監視できます。
 そして、 `otelcol_exporter_sent_log_records`、`otelcol_exporter_sent_spans`、および `otelcol_exporter_sent_metric_points` メトリクスでデータ流出を監視できます。
+
+テレメトリーの欠落をデータ損失と解釈する前に、データが期待される時間帯を確認してください。
+アイドル状態のサービス、スケジュールされたジョブ、デプロイメントの変更、およびデータ生成から観測までの通常の遅延を考慮してください。
+
+設定済みのレシーバー、プロセッサー、コネクター、エクスポーターを通る既知のパスに沿って、定義された時間窓内で同じシグナルタイプのカウントを比較してください。
+フィルタリング、サンプリング、ルーティング、レプリケーション、および生成されたテレメトリーにより、流入カウントと流出カウントの期待される関係が変わる可能性があります。
+バッチ処理やキュー内の処理は、観測窓を超えて流出を遅延させる可能性があります。
+カウントの差異だけではデータ損失を立証できず、送信済みと受け入れ済みのデータの単一の比率がすべてのパイプラインに適用されるわけではありません。
+
+持続的な変化を調査するには、[キュー長](#queue-length) とコレクターのログを使用して、データが送信待ちなのかドロップされているのかを確認してください。
+再試行に関する注意事項を含め、[受信および送信の失敗](#receive-failures) を確認してください。
+
+可能な場合は、監視対象のパイプラインが障害を起こしても報告できる経路を通じてコレクターの内部テレメトリーを収集し、観測してください。
+これらの測定値自体が引き続き到着していることを確認してください。
+期待されるアクティビティと観測の遅延を反映した評価窓としきい値を使用して、監視システムでデータ欠落アラートを定義してください。
+OpenTelemetry はテレメトリーを提供しますが、自動的に静止期間を推測したりこれらのアラートを設定したりすることはありません。
+
+コレクターが稼働していることは、テレメトリーが配信されていることの証明にはなりません。
+エクスポートの成功だけでは、レコードが永続的に保存されているか、バックエンドのクエリで利用可能であることの証明にはなりません。
+それらが必要な場合は、宛先での到着とクエリの可視性を確認してください。
+
+アプリケーションワークフローにおけるテレメトリー欠落のより広い議論については、[When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/) を参照してください。
 
 [SemConvGuidance]: /docs/specs/semconv/general/semantic-convention-groups#group-stability
 [OTEP-0232]: https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md
