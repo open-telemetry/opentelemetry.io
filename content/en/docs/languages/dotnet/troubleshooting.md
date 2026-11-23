@@ -14,6 +14,8 @@ The `EventSource` names all begin with `OpenTelemetry-`, for example
 `OpenTelemetry-Sdk`, `OpenTelemetry-Api`, and
 `OpenTelemetry-Exporter-OpenTelemetryProtocol`.
 
+## Self-diagnostics
+
 You can capture these events with general-purpose tools such as
 [PerfView](https://github.com/microsoft/perfview) or [`dotnet-trace`][], but the
 SDK also includes a self-diagnostics feature that subscribes to all of them and
@@ -126,6 +128,7 @@ configuration files.
 ```csharp
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.SelfDiagnostics;
+using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 
