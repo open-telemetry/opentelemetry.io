@@ -78,6 +78,11 @@ rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
 
+# Drop the "Moved" GenAI stubs: the GenAI pages are published from
+# semantic-conventions-genai, and the old URLs redirect there.
+rm -Rf $DEST/gen-ai
+rm -f $DEST/registry/attributes/{gen-ai,mcp,openai}.md
+
 # find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
@@ -86,6 +91,28 @@ FILES=$(find $DEST -name "*.md")
 node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
 
 echo "SEM CONV  pages: copied and processed"
+
+## Semantic Conventions: GenAI
+
+SRC=content-modules/semantic-conventions-genai/docs
+DEST=$DEST_BASE/semconv-genai/docs
+
+rm -Rf $DEST
+mkdir -p $DEST
+cp -R $SRC/* $DEST/
+
+# Drop pages and files that aren't published: the repo landing page (the
+# docs/gen-ai landing page is used instead), the schema test suite, and
+# non-page files.
+rm -f $DEST/README.md
+rm -Rf $DEST/gen-ai/non-normative/tests
+find $DEST -type f \( -name "*.py" -o -name "*.toml" -o -name "*.lock" \) -delete
+
+FILES=$(find $DEST -name "*.md")
+
+node $SCRIPT_DIR/adjust-pages/cli.mjs $FILES
+
+echo "SEM CONV GenAI pages: copied and processed"
 
 ## OpAMP spec
 

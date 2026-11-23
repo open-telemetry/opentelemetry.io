@@ -39,6 +39,7 @@ const errors = versionErrors(versions, pins, [
   'spec',
   'otlp',
   'semconv',
+  'semconv-genai',
   'opamp',
 ]);
 if (errors.length) {

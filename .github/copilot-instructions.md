@@ -60,9 +60,6 @@ info here.
 
 - Mermaid CDN errors: `Could not retrieve mermaid script from CDN` - build
   continues successfully
-- Semantic conventions link warnings: Multiple warnings about
-  `/docs/specs/semconv/gen-ai/` references - these are tracked in
-  `.warnings-skip-list.txt`
 - These warnings do NOT prevent successful builds or deployments
 
 **Submodule Management:**
