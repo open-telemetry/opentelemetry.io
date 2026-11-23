@@ -28,7 +28,7 @@ configuration or with environment variables.
 | `traffic_control_backend`<p>`OTEL_EBPF_BPF_TC_BACKEND`</p>          | Selects the backend for attaching traffic control probes. Refer to the [traffic control backend](#traffic-control-backend) section for details.                                   | string  | `auto`  |
 | `http_request_timeout`<p>`OTEL_EBPF_BPF_HTTP_REQUEST_TIMEOUT`</p>   | Sets the time interval after which OBI considers an HTTP request a timeout. Refer to the [HTTP request timeout](#http-request-timeout) section for details.                       | string  | (0ms)   |
 | `high_request_volume`<p>`OTEL_EBPF_BPF_HIGH_REQUEST_VOLUME`</p>     | Sends telemetry events as soon as OBI detects a response. Refer to the [high request volume](#high-request-volume) section for details.                                           | boolean | (false) |
-| `maps_config.global_scale_factor`                                   | Scales eBPF map sizes in powers of two. Positive values grow map sizes, negative values shrink map sizes, and 0 keeps defaults. Refer to [eBPF map resizing](#ebpf-map-resizing). | int     | 0       |
+| `maps_config.global_scale_factor`                                   | Sets the scale factor applied when eBPF maps are loaded. Refer to [eBPF map sizing](#ebpf-map-sizing).                                                                            | int     | 0       |
 
 ## Wake up length
 
@@ -73,11 +73,12 @@ This option makes OBI send telemetry events as soon as it detects a response. It
 reduces timing accuracy for requests with large responses, but in high-volume
 scenarios, it helps reduce dropped trace events.
 
-## eBPF map resizing
+## eBPF map sizing
 
-The `maps_config.global_scale_factor` option allows you to dynamically resize
-eBPF map sizes at runtime to tune performance based on your workload
-characteristics.
+The `maps_config.global_scale_factor` option controls the sizes of eBPF maps
+when OBI loads them. It does not resize maps that are already loaded, so
+changing this setting does not affect the existing maps in a running OBI
+process. Restart OBI after changing the value to load maps with the new sizes.
 
 - **Values > 0** increase map sizes by powers of two (for example, `1` means 2x,
   `2` means 4x).
