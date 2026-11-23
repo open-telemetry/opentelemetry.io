@@ -20324,6 +20324,11 @@
     "when": "2026-10-28T05:39:32Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/trace/v1/trace.proto": {
+    "result": 200,
+    "when": "2026-11-10T10:29:09Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/blob/v0.9.0/opentelemetry/proto/metrics/v1/metrics.proto#L200": {
     "result": 200,
     "when": "2026-10-28T05:39:33Z",
@@ -21619,6 +21624,16 @@
     "when": "2026-11-19T05:38:33Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0265-event-vision.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:07Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:07Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md": {
     "result": 200,
     "when": "2026-11-19T05:38:33Z",
@@ -22369,6 +22384,11 @@
     "when": "2026-10-28T05:39:30Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/data-model.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/exceptions.md": {
     "result": 200,
     "when": "2026-10-28T05:39:30Z",
@@ -22424,9 +22444,19 @@
     "when": "2026-10-23T10:34:36Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0066-separate-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:12Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0152-telemetry-schemas.md": {
     "result": 200,
     "when": "2026-10-23T10:34:36Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0182-otlp-remote-parent.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/0232-maturity-of-otel.md": {
@@ -22549,6 +22579,21 @@
     "when": "2026-10-23T10:34:34Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0059-otlp-trace-data-format.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:11Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0205-messaging-semantic-conventions-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:10Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0220-messaging-semantic-conventions-span-structure.md": {
+    "result": 200,
+    "when": "2026-11-10T10:29:10Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
     "result": 200,
     "when": "2026-10-23T10:34:34Z",
@@ -22557,6 +22602,171 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.62.0/oteps/trace/0250-Composite_Samplers.md": {
     "result": 200,
     "when": "2026-10-23T10:34:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/0035-opentelemetry-protocol.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:27Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/0066-separate-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/0152-telemetry-schemas.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/0182-otlp-remote-parent.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/0232-maturity-of-otel.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/entities/0264-resource-and-entities.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/logs/0091-logs-vocabulary.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/logs/0092-logs-vision.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/logs/0097-log-data-model.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/logs/0097-log-data-model.md#appendix-a-example-mappings": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/logs/0150-logging-library-sdk.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0003-measure-metric-type.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0008-metric-observer.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0009-metric-handles.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0010-cumulative-to-counter.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0049-metric-label-set.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0070-metric-bound-instrument.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0072-metric-observer.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0080-remove-metric-gauge.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0088-metric-instrument-optional-refinements.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:54Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0090-remove-labelset-from-metrics-api.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0098-metric-instruments-explained.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0108-naming-guidelines.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0113-exemplars.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0126-Configurable-Metric-Aggregations.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:25Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0131-otlp-export-behavior.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:54Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/metrics/0146-metrics-prototype-scenarios.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:24Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/profiles/0212-profiling-vision.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/trace/0059-otlp-trace-data-format.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/trace/0205-messaging-semantic-conventions-context-propagation.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:53Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/trace/0220-messaging-semantic-conventions-span-structure.md": {
+    "result": 200,
+    "when": "2026-11-23T19:30:54Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.63.0/oteps/trace/0250-Composite_Samplers.md": {
+    "result": 200,
+    "when": "2026-11-23T19:14:26Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
@@ -31542,6 +31752,11 @@
     "when": "2026-10-28T05:39:30Z",
     "via": "lychee",
   },
+  "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config": {
+    "result": 200,
+    "when": "2026-11-20T19:59:02Z",
+    "via": "lychee",
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config": {
     "result": 200,
     "when": "2026-11-19T05:38:31Z",
@@ -31905,6 +32120,11 @@
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "result": 200,
     "when": "2026-10-28T05:39:32Z",
+    "via": "lychee",
+  },
+  "https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
     "via": "lychee",
   },
   "https://resteasy.dev/": {
@@ -35740,6 +35960,16 @@
   "https://www.w3.org/TR/trace-context-2/#sampled-flag": {
     "result": 200,
     "when": "2026-10-20T05:45:16Z",
+    "via": "lychee",
+  },
+  "https://www.w3.org/TR/trace-context-2/#security-considerations": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
+    "via": "lychee",
+  },
+  "https://www.w3.org/TR/trace-context-2/#trace-flags": {
+    "result": 200,
+    "when": "2026-11-10T10:29:04Z",
     "via": "lychee",
   },
   "https://www.w3.org/TR/trace-context-2/#tracestate-header": {
