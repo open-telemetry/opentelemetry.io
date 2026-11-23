@@ -12,7 +12,7 @@ cSpell:ignore: adot otel-faas socha
 
 ## OTel FaaS のリパッケージ {#otel-faas-repackaged}
 
-OTel を使って Lambda を監視してきた方にとっては、このアナウンスに少し戸惑うかもしれません。
+OTel を使って Lambda を監視してきた方は、このアナウンスに少し戸惑うかもしれません。
 「OTel にはすでに [Lambda レイヤーのリポジトリ](https://github.com/open-telemetry/opentelemetry-lambda)があって、AWS で何年も利用できたではないか」と思われるかもしれません。
 
 その通りです。
@@ -21,7 +21,7 @@ OTel を使って Lambda を監視してきた方にとっては、このアナ�
 
 - OTel Lambda レイヤーは [AWS Distribution for OTel（ADOT）](https://aws-otel.github.io/)の一部としてのみリリースされており、コミュニティがリリースを制御できる範囲が限られていたため、新機能や修正の提供が遅れていました。
 - AWS で利用可能なレイヤーは、コレクターと自動計装の機能を単一のパッケージに統合しており、パフォーマンスの低下やユーザーの選択肢の制限につながっていました。
-- Lambda を監視するための公式の OTel ガイダンスがなく、OTel ユーザーが参照できる唯一の情報源もありませんでした。
+- Lambda を監視するための公式の OTel ガイダンスがなく、OTel ユーザーが基準として参照できる一元的な情報源もありませんでした。
 
 FaaS SIG は上記の問題に対処しました。
 
