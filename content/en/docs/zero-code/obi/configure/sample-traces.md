@@ -61,3 +61,7 @@ The `arg` property specifies the argument for the selected sampler. Only
 
 In YAML, you MUST provide this value as a string. Even if the value is numeric,
 make sure to enclose it in quotes in the YAML file (for example, `arg: "0.25"`).
+
+For Config v1, if the configured sampler name is unsupported or the sampler 
+argument cannot be parsed as a valid ratio, OBI logs a warning and falls back 
+to parentbased_always_on.
