@@ -17,7 +17,7 @@ cSpell:ignore: Bushe dartastic
 データによると、現在のアプリストアへの申請の20%超が Flutter アプリです。
 Dart はヌル安全かつ型安全であり、高速なバイナリにコンパイルされ、バックエンドサービスでの利用も増えています。
 しかし、Dart は公式にメンテナンスされている OpenTelemetry SDK を持たない、トップ15プログラミング言語の中で最後の言語です。
-以前のコミュニティ実装はすでにメンテナンスされておらず、Dart と Flutter の開発者にはサーバーやアプリからテレメトリーを取得するためのサポートされたパスがない状態です。
+以前のコミュニティ実装はすでにメンテナンスされておらず、Dart と Flutter の開発者には、サーバーやアプリからテレメトリーを取得するための、サポートが提供されている手段がありません。
 
 OpenTelemetry プロジェクトへの寄贈プロセスが進行中の、積極的に開発されている Dart 向け OpenTelemetry 仕様の実装がすでに存在します。
 [dartastic_opentelemetry](https://github.com/MindfulSoftwareLLC/dartastic_opentelemetry) とそのスタンドアロン API パッケージ [dartastic_opentelemetry_api](https://github.com/MindfulSoftwareLLC/dartastic_opentelemetry_api) が Apache 2.0 ライセンスで [pub.dev](https://pub.dev/packages/dartastic_opentelemetry) に公開されています。
@@ -27,7 +27,7 @@ OpenTelemetry プロジェクトへの寄贈プロセスが進行中の、積極
 
 これを OpenTelemetry の公式な一部にするための最初のステップは、Dart と Flutter の Special Interest Group（SIG）を結成することです。
 SIG を立ち上げるための[プロジェクト提案](https://github.com/open-telemetry/community/pull/3517)がレビュー中であり、Dart API および SDK の[寄贈提案](https://github.com/open-telemetry/community/issues/2718)も提出されています。
-これまでに4つのスポンサー組織にわたる6名のメンテナーがコミットしていますが、公式 Dart SDK の長期的な成功はコミュニティのさらなる成長にかかっています。
+これまでに4つのスポンサー組織から6名のメンテナーが参加を約束していますが、公式 Dart SDK の長期的な成功はコミュニティのさらなる成長にかかっています。
 
 ## コントリビューター募集 {#call-for-contributors}
 
