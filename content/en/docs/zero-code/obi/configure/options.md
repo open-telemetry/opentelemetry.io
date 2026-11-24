@@ -73,8 +73,8 @@ OBI can expose `/healthz` over TCP or a Unix domain socket. The JSON response
 reports the schema version, current Unix time, and process uptime. The endpoint
 is disabled by default.
 
-The `/healthz` endpoint reports that the OBI process is reachable. It does not confirm
-successful application discovery, probe attachment, or telemetry export.
+The `/healthz` endpoint reports that the OBI process is reachable. It does not
+confirm successful application discovery, probe attachment, or telemetry export.
 
 ```yaml
 health_check:
