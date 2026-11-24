@@ -2,8 +2,7 @@
 title: Getting Started by Example（実例で学ぶ入門）
 description: 5分以内でアプリケーションのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 67a2f014da28cd56bcadc56c94d7037398547329
-drifted_from_default: true
+default_lang_commit: da8c5447f8c016ed7dd05903cb169274ff5c1378
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
@@ -1245,7 +1244,7 @@ go run .
 1つ以上のテレメトリーバックエンドに[テレメトリーデータをエクスポートする](/docs/languages/go/exporters/)ために、適切なエクスポーターを設定することも必要です。
 
 より複雑な例を試してみたい場合は、[OpenTelemetryデモ](/docs/demo/)をご覧ください。
-このデモには、Goで実装された[Checkout Service](/docs/demo/services/checkout/)、[Product Catalog Service](/docs/demo/services/product-catalog/)、[Accounting Service](/docs/demo/services/accounting/)が含まれています。
+このデモには、Goで実装された[チェックアウトサービス](/docs/demo/services/checkout/)と[商品カタログサービス](/docs/demo/services/product-catalog/)が含まれています。
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
