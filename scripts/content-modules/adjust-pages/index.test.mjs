@@ -370,7 +370,7 @@ describe('transform: link rewriting', () => {
     return out.replace('---\ntitle: T\n---\n', '');
   }
 
-  it('localizes semconv /docs/ links and /model/ paths', () => {
+  it('localizes semconv /docs/ links and links repo-root paths to GitHub', () => {
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[x](/docs/attributes.md)\n'),
       '[x](/docs/specs/semconv/attributes.md)\n',
@@ -379,10 +379,13 @@ describe('transform: link rewriting', () => {
       body('tmp/semconv/docs/general/a.md', '[x]: /docs/attributes.md\n'),
       '[x]: /docs/specs/semconv/attributes.md\n',
     );
-    // The double slash after the version is long-standing generated output:
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[m](/model/trace/http.yaml)\n'),
-      '[m](https://github.com/open-telemetry/semantic-conventions/tree/v1.42.0//model/trace/http.yaml)\n',
+      '[m](https://github.com/open-telemetry/semantic-conventions/tree/v1.42.0/model/trace/http.yaml)\n',
+    );
+    assert.equal(
+      body('tmp/semconv/docs/general/a.md', '[p](/policies/README.md)\n'),
+      '[p](https://github.com/open-telemetry/semantic-conventions/tree/v1.42.0/policies/README.md)\n',
     );
   });
 
