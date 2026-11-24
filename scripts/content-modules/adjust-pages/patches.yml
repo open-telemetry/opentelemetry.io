@@ -48,3 +48,18 @@
     open-telemetry/opamp-spec#393, merged after v0.20.0 and awaiting a release,
     so the patch stays live through 0.20.x (opamp-spec releases by minor
     version).
+
+- id: 2026-11-23-semconv-policies-repo-path
+  module: semconv
+  minVers: 1.45.0
+  maxVers: 1.46.0
+  file: ^tmp/semconv/docs/general/naming\.md$
+  search: '\]\(\.\./\.\./policies/README\.md\)'
+  replace: '](https://github.com/open-telemetry/semantic-conventions/tree/main/policies/README.md)'
+  flags: g
+  notes: >-
+    The relative link added by open-telemetry/semantic-conventions#4332 leaves
+    the published docs/ tree, so it resolves nowhere on the site. Patches run
+    after the repo-root path rule of index.mjs, hence the full URL here. The
+    upstream fix makes the path repo-absolute (/policies/README.md), which that
+    rule handles; the range ends at 1.46.0, the release expected to carry it.
