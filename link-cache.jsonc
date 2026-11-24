@@ -24284,6 +24284,11 @@
     "when": "2026-11-24T00:15:52Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.45.0/policies/README.md": {
+    "result": "error",
+    "when": "2026-11-24T18:01:53Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "result": 200,
     "when": "2026-10-28T05:39:58Z",
