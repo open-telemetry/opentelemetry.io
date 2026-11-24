@@ -7,44 +7,59 @@ description:
 weight: 30
 ---
 
-Missing telemetry can mean that no work occurred, that work stopped before an
-instrumented step, or that telemetry did not arrive. To distinguish these cases,
-define what activity you expect and record evidence at meaningful points in the
-workflow.
+When telemetry you expected doesn't show up, there are a few possible
+explanations:
 
-For example, a file processing service might accept a file and queue it for a
-worker. Processing ends when the result becomes available to the caller. A
-successful upload alone does not establish that this result is available.
+- No work happened, so there was nothing to record.
+- Work started but stopped before it reached an instrumented step.
+- The work ran and was recorded, but the telemetry never reached your backend.
+
+From a dashboard, all three look the same. To tell them apart, you need to know
+what activity you expected, and you need instrumentation at the points in the
+workflow where you can confirm progress.
+
+This page uses a file processing service as a running example. A caller uploads
+a file, the service queues it, and a worker processes it. The job isn't done
+when the upload succeeds. It's done when the caller can read the result.
 
 ## Define expected activity
 
-Specify when work should occur and how long it normally takes to finish. A
-scheduled job has an expected run time. A service that handles incoming requests
-might have legitimate periods with no traffic. Account for deployment changes
-and planned pauses before interpreting an empty query result as a failure.
+Before you can say something is missing, you need to know what normal looks
+like. A scheduled job is the easy case, because it should run at a known time
+and finish within a known window. A request-driven service is harder, because a
+quiet period overnight might be completely normal. Deployments and planned
+maintenance also cause gaps that aren't failures, so take those into account
+before you treat an empty query as a problem.
 
-Choose a completion condition that reflects what the caller needs. For the file
-processing service, this might mean that the result can be read from its
-destination, rather than that a worker has finished computing it. Record the
-maximum expected delay between acceptance and completion separately from the
-delay before telemetry becomes queryable.
+Be precise about what "done" means. For the file service, a useful definition is
+that the caller can read the result from its destination, not just that a worker
+finished computing it. Then write down two delays separately, because they can
+go wrong independently:
 
-OpenTelemetry records and exports signals. Configure missing data alerts and
-their evaluation windows in your monitoring system using these expectations.
+- How long processing normally takes, from acceptance to completion.
+- How long it takes for telemetry about that work to become queryable in your
+  backend.
+
+OpenTelemetry records and exports signals, but it doesn't know what you expect.
+Missing-data alerts and their evaluation windows are set up in your monitoring
+system, using the expectations above.
 
 ## Count workflow milestones
 
-Use [code-based instrumentation](../code-based/) to record counters when logical
-items enter the workflow and reach a terminal outcome. Observe the number of
-items still in progress, including queued items and items waiting for a retry.
-Choose an observable gauge when reading this value from application state.
+The most direct way to notice missing work is to count items as they move
+through the workflow. With [code-based instrumentation](../code-based/), record
+a counter when an item is accepted and another when it reaches a final outcome.
+Also track how many items are still in progress, including anything queued or
+waiting for a retry. If your application already holds that number in memory, an
+observable gauge can report it directly without a separate counter.
 
-Define which items belong to the workflow. Count each logical item once at
-acceptance and once at its terminal outcome. For example, a file rejected before
-acceptance is outside this accounting boundary. A file accepted and later
-rejected by validation is an accepted item with an unsuccessful outcome.
+Decide up front which items count. In the file service, a file rejected at
+upload never entered the workflow, so it isn't counted. A file that was accepted
+and then failed validation did enter, so it counts as accepted with an
+unsuccessful outcome. Each item is counted once when it's accepted and once when
+it finishes.
 
-For the same workflow over one interval, the accounting relationship is
+Over any interval, the counts for a workflow should balance:
 
 ```text
 in progress at start + accepted during interval
@@ -53,84 +68,102 @@ in progress at start + accepted during interval
 ```
 
 For example, suppose 10 files are in progress at the start and 100 are accepted
-during the interval. If 92 complete and 3 end unsuccessfully, 15 should remain
-in progress at the end. Each terminal outcome must be counted once. Include
-cancelled or expired work among unsuccessful outcomes if the workflow supports
-them.
+during the interval. If 92 complete and 3 end unsuccessfully, 15 should still be
+in progress at the end. If the workflow supports cancellation or expiry, count
+those as unsuccessful outcomes.
 
-Record retries separately from logical item acceptance. A retry does not create
-another accepted item or a terminal outcome while further attempts remain.
-Deduplicate repeated deliveries before counting them as new work. If one input
-creates several output items, define separate accounting for those items rather
-than comparing their count directly with the input count.
+A few situations can throw the counts off if you don't plan for them:
 
-Use counter changes over the chosen interval and in progress measurements from
-both interval boundaries. Account for process restarts and counter resets when
-combining measurements across instances. Align the workflow scope and time
-boundaries before comparing totals. Collection delays and concurrent state
-changes can cause temporary differences, so allow for the expected observation
-delay before investigating a sustained mismatch.
+- **Retries.** A retry is another attempt at the same item, not a new item.
+  Don't count it as accepted again, and don't record a final outcome until the
+  last attempt.
+- **Duplicate deliveries.** If your queue can deliver the same message twice,
+  deduplicate before counting it as new work.
+- **Fan-out.** If one input produces several outputs, give the outputs their own
+  counters instead of comparing them with the input count.
 
-Keep metric attributes bounded, for example by workflow type or outcome. Avoid
-file identifiers and trace IDs as metric attributes. See
+To check the balance, use how much each counter changed over the interval and
+the in-progress value at the start and end. Small differences are normal and
+usually resolve on their own:
+
+- Process restarts reset counters, so be careful when combining measurements
+  across instances.
+- Collection delays mean the most recent values might not have arrived yet.
+- Items change state while you're measuring.
+
+Make sure you're comparing the same workflow over the same time window, wait for
+the expected delay to pass, and investigate mismatches that persist.
+
+Keep metric attributes to a small, fixed set of values, such as workflow type or
+outcome. File identifiers and trace IDs don't belong in metric attributes. See
 [metric cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits)
-for how attribute overflow affects queries that filter or group measurements.
+for what happens to queries when there are too many attribute combinations.
 
-These measurements can reveal discrepancies, but they are not a transactional
-record of every item. Instrumentation can fail between a state change and a
-counter update. For exact accounting, verify the corresponding application state
-or durable records.
+These counts help you spot problems, but they aren't an exact ledger. If a
+process fails between updating application state and incrementing a counter, the
+two will disagree. When you need an exact answer, check the application's own
+records.
 
 ## Use traces and logs to investigate gaps
 
-Create spans around meaningful processing steps. Use
+Counters tell you that something is off. Traces and logs help you find out
+where. Create spans around each processing step, such as upload, queueing,
+processing, and writing the result. Use
 [context propagation](/docs/concepts/context-propagation/) to connect work
-across services. For asynchronous work that starts a separate trace, use
-[span links](/docs/concepts/signals/traces/#span-links) to record the causal
-relationship.
+across services. When a queue worker starts a new trace, use
+[span links](/docs/concepts/signals/traces/#span-links) to connect it back to
+the request that caused it.
 
-Include trace context in logs so that you can inspect the recorded steps for
-affected work. Where appropriate, keep an application identifier in logs to
-support comparison with application state. Follow your data handling policy when
-recording identifiers or payload details.
+Include trace context in logs so you can see every recorded step for an affected
+item. If you can, also log the application's own ID for the item, such as a file
+ID, so you can match logs against application state. Follow your data handling
+policy when recording identifiers or payload details.
 
-A missing span does not prove that the step did not run.
-[Sampling](/docs/concepts/sampling/) or filtering might remove it. Record
-workflow counters independently of trace sampling decisions, rather than only
-when a span is sampled. Use retained traces to investigate discrepancies in the
-counts, with application state as a separate checkpoint.
+A missing span doesn't mean the step didn't run.
+[Sampling](/docs/concepts/sampling/) or filtering might have dropped it. That's
+why workflow counters should be recorded for every item, whether or not the
+trace was sampled. Use the counters to notice a gap, then use the traces that
+were kept, along with application state, to work out what happened.
 
 ## Check the path with known activity
 
-Send a bounded test item through the application and verify its expected result
-at the destination within a defined arrival window. Use test data and an
-isolated destination where needed to avoid real customer effects. Check for the
-expected telemetry in the backend as a separate step.
+One way to confirm the whole path works is to send a test file through the
+service and check that the result arrives at the destination in the expected
+time. Use test data, and an isolated destination if the test could affect real
+users. Then check separately that the expected telemetry reached your backend.
 
-Define how sampling and filtering should treat test telemetry before deciding
-whether its absence indicates a problem. A test that exercises one route only
-checks that route. It does not establish that all application work is being
-observed.
+Synthetic tests have limits:
 
-Sending test telemetry directly to a Collector checks the downstream telemetry
-path. It does not test whether application instrumentation emits telemetry when
-work runs. A local debug exporter is one checkpoint, not confirmation that the
-production backend received the data. See the Collector
+- Make sure sampling and filtering won't drop test telemetry. Otherwise its
+  absence looks like a failure when it isn't.
+- A test only covers the route it takes. Passing doesn't show that all
+  application work is being observed.
+- Sending test data straight to a Collector checks the pipeline from the
+  Collector onward, but not whether your application emits telemetry when real
+  work runs.
+- Seeing data in a local debug exporter tells you the SDK produced it, not that
+  your production backend received it.
+
+For more on debugging the Collector side, see the
 [pipeline troubleshooting checklist](/docs/collector/troubleshooting/#checklist-for-debugging-complex-pipelines).
 
-## Monitor the observation path
+## Monitor the telemetry pipeline
 
-Check the health of the telemetry pipeline separately from application
-completion. Monitor Collector
-[data flow](/docs/collector/internal-telemetry/#data-flow) and its queue and
-failure metrics. Where practical, observe these measurements through a path that
-can still report when the application telemetry path fails. Check that the
-monitoring measurements themselves continue to arrive.
+The telemetry pipeline can fail on its own, so monitor it separately from the
+application. Things worth watching:
 
-Verify query visibility at the backend when that is part of the expected
-outcome. A healthy Collector or a successful export alone does not establish
-that a record is stored and queryable. Comparing backend results with
-application state can help distinguish missing work from missing evidence.
+- Collector [data flow](/docs/collector/internal-telemetry/#data-flow), along
+  with its queue and export failure metrics.
+- Whether those metrics themselves keep arriving. If the monitoring goes quiet,
+  it looks the same as everything being fine. If possible, send these metrics
+  through a path that doesn't depend on the application's telemetry pipeline, so
+  they still report when it breaks.
+- Whether data can actually be queried in the backend, if that's part of what
+  "done" means for you. A healthy Collector and a successful export don't
+  guarantee that the record was stored.
+
+When counts look wrong, comparing backend results with application state helps
+you tell missing work apart from missing telemetry.
 
 For the application examples behind this guidance, see
 [When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
