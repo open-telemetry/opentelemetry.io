@@ -30,11 +30,13 @@ OpenTelemetry コミュニティのメンバーと一緒に、2024年8月21日�
 ## KubeCon の講演 {#kubecon-talks}
 
 - **[The Journey of Next-Gen FinTech IDP at China Merchants Bank | 中国招商银行下一代金融科技IDP之旅](https://sched.co/1eYYg)**<br>
-by Jiahang Xu, China Merchants Bank<br> Thursday, August 22 • 11:00 - 11:35
+  by Jiahang Xu, China Merchants Bank<br> Thursday, August 22 • 11:00 - 11:35
+
 <!-- prettier-ignore-start -->
 - **[Implement Auto Instrumentation Under GraalVM Static Compilation on OTel Java Agent | GraalVM 静态编译下 OTel Java Agent 的自动增强方案与实现](https://sched.co/1eYZA)**<br>
 by Zihao Rao & Ziyi Lin, Alibaba Cloud<br> Thursday, August 22 • 1:50 - 2:25
 <!-- prettier-ignore-end -->
+
 - **[OpAMP: Scaling OpenTelemetry with Flexibility | OpAMP：灵活扩展OpenTelemetry](https://sched.co/1eYZt)**<br>
   by Husni Alhamdani, Censhare & Herbert Sianturi, Krom Bank<br> Thursday,
   August 22 • 3:35 - 4:10
