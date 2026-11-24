@@ -55,6 +55,6 @@ exporters:
   - gomod: go.opentelemetry.io/collector/exporter/jaegerthrifthttpexporter v0.85.0
 ```
 
-既存のコレクターディストリビューションのマニフェストファイルのさらなる例は、[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol?from_branch=main) リポジトリにあります。
+既存のコレクターディストリビューションのマニフェストファイルについては、[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol?from_branch=main) リポジトリにほかの例もあります。
 
 これらの選択肢のいずれもユースケースに合わない場合は、[CNCF Slack](https://slack.cncf.io) の [#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W) コミュニティに連絡を取るか、[リポジトリ](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/new/choose)でイシューを作成してください。
