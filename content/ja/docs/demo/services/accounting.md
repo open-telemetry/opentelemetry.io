@@ -2,8 +2,7 @@
 title: 会計サービス
 linkTitle: 会計
 aliases: [accountingservice]
-default_lang_commit: 119208cc7b365e78d78be27a7c2d507650c73f7d
-drifted_from_default: true
+default_lang_commit: e54edb9d673c8f70765acdaab44485e8d00896b8
 ---
 
 このサービスは、販売された商品の合計金額を計算します。
@@ -20,8 +19,8 @@ Kafka からレコードを取得すると、データベース（PostgreSQL）�
 
 ## パブリッシング {#publishing}
 
-適切なネイティブランタイムコンポーネントを配布するために、`dotnet publish` コマンドに `--use-current-runtime` を追加してください。
+Docker ビルドは、ターゲットアーキテクチャに対応するネイティブ計装コンポーネントを含めるために、`dotnet publish` に Linux ランタイム識別子を渡します。
 
 ```sh
-dotnet publish "./AccountingService.csproj" --use-current-runtime -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+dotnet publish "./Accounting.csproj" -r linux-$TARGETARCH -c $BUILD_CONFIGURATION --no-restore -o /app/publish /p:UseAppHost=false
 ```
