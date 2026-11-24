@@ -370,7 +370,7 @@ describe('transform: link rewriting', () => {
     return out.replace('---\ntitle: T\n---\n', '');
   }
 
-  it('localizes semconv /docs/ links and links repo-root paths to GitHub', () => {
+  it('localizes semconv /docs/ links and sends inline /model/ and /policies/ links to GitHub', () => {
     assert.equal(
       body('tmp/semconv/docs/general/a.md', '[x](/docs/attributes.md)\n'),
       '[x](/docs/specs/semconv/attributes.md)\n',
