@@ -244,6 +244,9 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
+      - docs-approvers
+      - docs-maintainers
+      - docs-triagers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
@@ -2451,6 +2454,11 @@ triagers:
       - sig-contributor-experience-triagers
     html_url: https://github.com/bogdan-st
     avatar_url: https://avatars.githubusercontent.com/u/102800531?v=4
+  - name: Brilly-Bohyun
+    teams:
+      - docs-triagers
+    html_url: https://github.com/Brilly-Bohyun
+    avatar_url: https://avatars.githubusercontent.com/u/102973953?v=4
   - name: d4nyll
     teams:
       - javascript-contrib-triagers
