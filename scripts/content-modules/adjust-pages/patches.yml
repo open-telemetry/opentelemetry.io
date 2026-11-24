@@ -60,6 +60,7 @@
   notes: >-
     The relative link added by open-telemetry/semantic-conventions#4332 leaves
     the published docs/ tree, so it resolves nowhere on the site. Patches run
-    after the repo-root path rule of index.mjs, hence the full URL here. The
-    upstream fix makes the path repo-absolute (/policies/README.md), which that
-    rule handles; the range ends at 1.46.0, the release expected to carry it.
+    after the repo-root path rule of index.mjs, hence the full URL here.
+    Upstreamed fix: open-telemetry/semantic-conventions#4374 makes the path
+    repo-absolute (/policies/README.md), which that rule handles; the range
+    ends at 1.46.0, the release expected to carry it.
