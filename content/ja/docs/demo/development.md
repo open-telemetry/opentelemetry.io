@@ -1,7 +1,6 @@
 ---
 title: 開発環境
-default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
-drifted_from_default: true
+default_lang_commit: e54edb9d673c8f70765acdaab44485e8d00896b8
 cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
@@ -21,7 +20,7 @@ OpenTelemetryデモチームは、可能な限り依存関係やツールを最�
 
 ### .NET
 
-- .NET 8.0+
+- .NET 11 SDK以降
 
 ### C++
 
