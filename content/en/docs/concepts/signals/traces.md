@@ -219,7 +219,7 @@ work done in an application.
 
 ### SpanContext {#span-context}
 
-Span context is an immutable object on every span that contains the following:
+SpanContext is an immutable object on every span that contains the following:
 
 - The Trace ID representing the trace that the span is a part of
 - The span's Span ID
@@ -227,7 +227,7 @@ Span context is an immutable object on every span that contains the following:
 - Trace State, a list of key-value pairs that can carry vendor-specific trace
   information
 
-Span context is the part of a span that is serialized and propagated alongside
+SpanContext is the part of a span that is serialized and propagated alongside
 [Distributed Context](#context-propagation) and [Baggage](../baggage).
 
 Because SpanContext contains the Trace ID, it is used when creating
