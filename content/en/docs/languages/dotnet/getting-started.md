@@ -270,6 +270,8 @@ For more:
   [examples](/docs/languages/dotnet/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET
   based [Cart Service](/docs/demo/services/cart/).
+- If telemetry doesn't show up as expected, see
+  [Troubleshooting](/docs/languages/dotnet/troubleshooting/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
