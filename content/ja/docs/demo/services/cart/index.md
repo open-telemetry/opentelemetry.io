@@ -2,8 +2,7 @@
 title: カートサービス
 linkTitle: カート
 aliases: [cartservice]
-default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
-drifted_from_default: true
+default_lang_commit: da8c5447f8c016ed7dd05903cb169274ff5c1378
 ---
 
 このサービスはユーザーがショッピングカートに入れた商品を管理します。
@@ -18,23 +17,25 @@ drifted_from_default: true
 
 ### トレースの初期化 {#initializing-tracing}
 
-OpenTelemetry は .NET の依存性注入コンテナで設定されます。
-`AddOpenTelemetry()` ビルダーメソッドを使用して、目的の計装ライブラリの設定、エクスポーターの追加、その他のオプションの設定を行います。
-エクスポーターとリソース属性の設定は環境変数を通じて行われます。
+カートサービスは `AddOpenTelemetry()` を使用して、.NET の依存性注入コンテナで計装とエクスポーターを設定します。
+エクスポーターの設定や追加のリソース属性の提供には環境変数を使用します。
 
 ```cs
+var serviceInstanceId = Guid.NewGuid().ToString();
+
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
+        .AddService(builder.Environment.ApplicationName, serviceInstanceId: serviceInstanceId)
         .AddContainerDetector()
         .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
     .WithTracing(tracerBuilder => tracerBuilder
+        .AddSource("Microsoft.AspNetCore")
         .AddSource("OpenTelemetry.Demo.Cart")
         .AddRedisInstrumentation(
             options => options.SetVerboseDatabaseStatements = true)
-        .AddAspNetCoreInstrumentation()
         .AddGrpcClientInstrumentation()
         .AddHttpClientInstrumentation()
         .AddOtlpExporter());
@@ -71,21 +72,24 @@ activity?.AddEvent(new("Fetch cart"));
 ### メトリクスの初期化 {#initializing-metrics}
 
 OpenTelemetry トレースの設定と同様に、.NET の依存性注入コンテナは `AddOpenTelemetry()` の呼び出しを必要とします。
-このビルダーで目的の計装ライブラリやエクスポーターなどを設定します。
 
 ```cs
+var serviceInstanceId = Guid.NewGuid().ToString();
+
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
+        .AddService(builder.Environment.ApplicationName, serviceInstanceId: serviceInstanceId)
         .AddContainerDetector()
         .AddHostDetector();
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
     .WithMetrics(meterBuilder => meterBuilder
+        .AddMeter("Microsoft.AspNetCore.*")
         .AddMeter("OpenTelemetry.Demo.Cart")
+        .AddMeter("OpenFeature")
         .AddProcessInstrumentation()
         .AddRuntimeInstrumentation()
-        .AddAspNetCoreInstrumentation()
         .SetExemplarFilter(ExemplarFilterType.TraceBased)
         .AddOtlpExporter());
 ```
