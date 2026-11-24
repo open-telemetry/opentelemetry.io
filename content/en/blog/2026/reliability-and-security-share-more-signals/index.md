@@ -11,139 +11,147 @@ cSpell:ignore: anarwal
 _This is the second post in a series on observing the same system with
 OpenTelemetry. The first post,
 [When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/),
-covers detecting loss of visibility._
+covers how to tell when you've lost visibility._
 
-A queue starts growing. Requests take longer. Workers use more CPU. The
-reliability team sees a capacity problem. The security team may see a service
-being overwhelmed by unwanted work.
+A queue starts growing, requests take longer, and workers use more CPU. The
+reliability team sees a capacity problem. The security team might see a service
+being flooded with unwanted work.
 
-Both teams need to explain the same behavior. The queue length alone cannot tell
-them whether demand is legitimate, a deployment increased processing cost, or
-someone is deliberately sending expensive requests.
+Both teams are looking at the same behavior, and the queue length alone can't
+settle it. Demand might be legitimate, a deployment might have made processing
+more expensive, or someone might be sending expensive requests on purpose.
 
-OpenTelemetry can give these investigations a common starting point. Metrics
-show the change in behavior. Traces show paths through the system. Logs can
-record local decisions. The useful overlap is in the evidence, even when teams
-ask different questions of it.
+OpenTelemetry gives both investigations the same place to start. Metrics show
+that behavior changed, traces show which paths through the system it affected,
+and logs record the decisions individual services made. The teams ask different
+questions, but they can work from the same data.
 
 ## Separate the observation from the explanation
 
-Consider a service that accepts requests to generate reports. It authorizes the
-request, adds work to a queue, and returns an acknowledgement. A worker produces
-the report for later retrieval.
+Consider a service that generates reports. It authorizes each request, adds the
+work to a queue, and returns an acknowledgement. A worker later produces the
+report, and the caller retrieves it.
 
 Suppose requests increase while report completion slows. Several explanations
-fit that observation. A legitimate customer may have started a large export. A
-worker release may have made processing slower. A client may be retrying too
-often. An attacker may be exploiting an expensive operation.
+fit:
 
-Calling this a capacity incident does not establish the cause. Calling it an
-attack does not establish intent. First record what changed and where it
-changed. Then test possible explanations against additional evidence.
+- A legitimate customer started a large export.
+- A worker release made processing slower.
+- A client is retrying too often.
+- An attacker is exploiting an expensive operation.
+
+Calling this a capacity incident doesn't tell you the cause, and calling it an
+attack doesn't tell you the intent. Start by recording what changed and where,
+then check each explanation against more data.
 
 | Shared observation                         | Reliability investigation                     | Security investigation                          |
 | ------------------------------------------ | --------------------------------------------- | ----------------------------------------------- |
 | More requests reach an expensive operation | Demand growth or retry behavior               | Abuse of a costly operation                     |
 | Authorization denials increase             | Broken client configuration or policy rollout | Attempts to use unavailable privileges          |
 | Workers contact a new dependency           | Release or routing change                     | Unexpected destination or unauthorized behavior |
-| Completion counts fall behind admission    | Backlog, failure, or lost work                | Disruption or interference with processing      |
+| Completed work falls behind accepted work  | Backlog, failure, or lost work                | Disruption or interference with processing      |
 
-These are investigation paths. None of the observations proves an attack.
+Each row is a lead to follow. None of them proves an attack on its own.
 
 ## Use metrics to establish the shape of the change
 
-Start with request rate, duration, resource use, and work completion. Compare
-the same operation and environment before and after the change. A rise in total
-traffic can hide a sharper rise in one expensive operation.
+Start with request rate, duration, resource use, and work completion, and
+compare the same operation and environment before and after the change. Look at
+individual operations, not just totals, because a modest rise in total traffic
+can hide a sharp rise in one expensive operation.
 
-For the report service, useful application measurements include accepted jobs,
-completed jobs, authorization outcomes, queue age, and processing duration.
-Record these with the
-[OpenTelemetry metrics API](/docs/concepts/signals/metrics/). Use existing
-semantic conventions where they apply. Application workflow measurements need
-their own documented definitions.
+For the report service, the application measurements worth recording are
+accepted jobs, completed jobs, authorization outcomes, queue age, and processing
+duration. Record these with the
+[OpenTelemetry metrics API](/docs/concepts/signals/metrics/), and use existing
+[semantic conventions](/docs/concepts/semantic-conventions/) where they apply.
+Measurements like accepted and completed jobs are specific to your application,
+so write down what each one means.
 
-An authorization outcome count should come from the component that makes the
-authorization decision. A denied request is a meaningful outcome even when the
-service handled it correctly. An HTTP error count alone does not describe the
-policy decision or its reason.
+Count authorization outcomes in the component that makes the authorization
+decision. A denied request is worth counting even when the service handled it
+correctly, because a rise in denials can point to a broken client configuration
+or to someone trying privileges they don't have. An HTTP error count can't tell
+you which policy denied the request or why.
 
-Keep metric dimensions bounded. A small operation category or decision outcome
-can support useful comparisons. User IDs, request IDs, raw URLs, and arbitrary
-reason strings can create too many combinations. Keep individual investigation
-details in suitably protected logs or traces when there is a justified need.
+Keep metric attributes to a small, fixed set of values. An operation category or
+a decision outcome is enough to compare before and after. User IDs, request IDs,
+raw URLs, and free-form reason strings create
+[too many combinations](/docs/concepts/signals/metrics/#cardinality-limits). If
+an investigation needs those details, keep them in logs or traces with access
+controls, and only when you have a reason to record them.
 
 ## Use traces to locate expensive work
 
-A representative trace might show that admission remains fast while a worker
-spends most of its time in a database query. Another might show several retries
-before processing starts. These observations narrow the investigation.
+A representative trace might show that accepting a request stays fast while the
+worker spends most of its time in a database query. Another might show several
+retries before processing starts. Either one narrows down where to look.
 
 [Distributed traces](/docs/concepts/signals/traces/) connect instrumented
-operations through context propagation. They can show whether slow work shares a
-dependency, operation, or deployment version. They cannot explain the caller's
-intent on their own.
+operations through context propagation, so they can show whether slow requests
+share a dependency, an operation, or a deployment version. They can't tell you
+why the caller sent the request.
 
-The trace view is also selective. [Sampling](/docs/concepts/sampling/) may omit
-the request you want to inspect. A trace that was never retained cannot later be
-recovered by changing a query. Use direct application metrics to count outcomes
-rather than counting sampled spans as if they represented every request.
+Traces are also a sample. [Sampling](/docs/concepts/sampling/) might drop the
+request you want to inspect, and a trace that wasn't kept can't be recovered
+later by changing a query. Count outcomes with application metrics instead of
+counting sampled spans as if they represented every request.
 
 ## Add the decision that the trace cannot infer
 
-A trace may show a call to an authorization component without showing why it
-allowed or denied an action. A structured application log can supply that
-decision. It can record the action category, outcome, bounded reason category,
-and policy version when those details are needed and safe to retain.
+A trace might show a call to an authorization component without showing why it
+allowed or denied the action. A structured application log can record that
+decision: the action category, the outcome, a reason category from a fixed list,
+and the policy version, as long as those details are safe to keep.
 
-When emitted with active trace context and a suitable logging integration, the
-record can contain the trace ID and span ID. That allows an investigator to move
-from a decision to the related processing path. Check that correlation works in
-the actual SDK, logging bridge, and backend you use.
+When the log is emitted with an active trace context through a logging
+integration that supports it, the record includes the trace ID and span ID. An
+investigator can then go from the decision to the request that triggered it.
+Correlation depends on your SDK, logging bridge, and backend, so confirm that it
+actually works in yours.
 
-Record the decision as observed by the responsible service. An incoming header
-that says a request is trusted does not establish that it is trusted. A trace ID
-helps correlate activity. It is not an authenticated identity.
+Record the decision as the responsible service made it. An incoming header that
+says a request is trusted doesn't make it trusted. A trace ID helps you
+correlate activity, but it isn't an authenticated identity.
 
-Some investigations need a subject reference. Decide that separately from the
-shared operational metrics. Store only the necessary reference in an approved
-location with appropriate access. Avoid credentials, tokens, and request bodies.
-Hashing an identifier does not necessarily make it anonymous.
+Some investigations need to know who made a request. Decide that separately from
+the shared operational metrics. Store only the reference you need, in a location
+your organization has approved, with access limited to the people who need it.
+Don't log credentials, tokens, or request bodies, and keep in mind that hashing
+an identifier doesn't necessarily make it anonymous.
 
 ## Walk through the same evidence twice
 
-For the hypothetical report service, begin with three observations. Accepted
-work increased. Queue age increased. Sampled worker traces show longer database
-calls.
+Take the report service again. Three things have changed: accepted work went up,
+queue age went up, and sampled worker traces show longer database calls.
 
-The reliability investigation can compare worker versions, database latency,
-capacity, and retry behavior. If the slowdown began with a release, a query
-change becomes a useful hypothesis to test.
+The reliability team can compare worker versions, database latency, capacity,
+and retry behavior. If the slowdown started with a release, a changed query is
+the first thing to check.
 
-The security investigation can examine whether the operation mix changed,
-whether authoritative access decisions changed, and whether permitted clients
-are using the service in an unexpected way. Authorized activity can still be
-abusive. A low denial rate does not rule that out.
+The security team can look at whether the mix of operations changed, whether the
+authorization service's decisions changed, and whether permitted clients are
+using the service in an unexpected way. Authorized activity can still be
+abusive, and a low denial rate doesn't rule that out.
 
-Both investigations benefit from the same operation names, deployment context,
-and time boundaries. Each may require additional evidence. Security analysis may
-need identity provider records or a protected audit trail. Reliability analysis
-may need a deployment history or a database execution plan.
+Both teams need the same operation names, deployment context, and time window,
+and each will probably need data the other doesn't. Security might need identity
+provider records or a protected audit trail. Reliability might need a deployment
+history or a database execution plan.
 
 ## Keep the limits visible
 
-Shared OpenTelemetry data can reduce the work of reconstructing an incident. It
-does not make application telemetry a complete security record. A compromised
-application may emit false data. Collectors can drop records. Retention can
-expire before an investigation starts.
+Shared OpenTelemetry data saves both teams from rebuilding the incident from
+scratch, but application telemetry isn't a complete security record. A
+compromised application can emit false data, Collectors can drop records, and
+retention can expire before anyone starts looking.
 
-The first post in this series,
-[When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/),
-examines loss of visibility. A healthy application does not guarantee a healthy
-observation path. Check telemetry delivery before treating a quiet dashboard as
-evidence that an event did not occur.
+Telemetry can also go missing without anyone noticing, which is what the
+[first post in this series](/blog/2026/when-missing-telemetry-is-the-signal/)
+covers. A healthy application doesn't mean its telemetry is reaching you, so
+check delivery before you treat a quiet dashboard as proof that nothing
+happened.
 
-Start with one workflow and one behavior that matters to both teams. Agree on
-what the measurements mean. Connect aggregate changes to representative traces
-and authoritative decisions. The result is a common body of evidence with clear
-limits on what it can establish.
+Start with one workflow and one behavior that matters to both teams, and agree
+on what each measurement means. Then connect the changes you see in metrics to
+representative traces and to the decisions your services logged.
