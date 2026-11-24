@@ -171,8 +171,7 @@ of Traces. In OpenTelemetry, they include the following information:
 - [SpanContext](#span-context)
 - [Attributes](#attributes)
 - [Span Events](#span-events)
-  <!-- markdownlint-disable-next-line descriptive-link-text -- Link is the official spec term -->
-- [Link](#span-links)
+- [Links](#span-links)
 - [Span Status](#span-status)
 
 Sample span:
@@ -289,7 +288,7 @@ completes, you might want to add data from the operation to your telemetry.
   attach the data to a span event.
 - If the timestamp isn't meaningful, attach the data as span attributes.
 
-### Link {#span-links}
+### Links {#span-links}
 
 Links exist so that you can associate one span with one or more spans, implying
 a causal relationship. For example, let’s say we have a distributed system where
@@ -301,7 +300,7 @@ operation with a trace as well.
 
 We would like to associate the trace for the subsequent operations with the
 first trace, but we cannot predict when the subsequent operations will start. We
-need to associate these two traces, so we will use a span link.
+need to associate these two traces, so we will use a Link.
 
 You can link the last span from the first trace to the first span in the second
 trace. Now, they are causally associated with one another.
