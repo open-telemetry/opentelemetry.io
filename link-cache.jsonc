@@ -24239,16 +24239,6 @@
     "when": "2026-11-06T05:38:51Z",
     "via": "lychee",
   },
-  "https://github.com/open-telemetry/semantic-conventions/tree/v1.44.0//model/README.md": {
-    "result": 200,
-    "when": "2026-10-28T05:39:38Z",
-    "via": "lychee",
-  },
-  "https://github.com/open-telemetry/semantic-conventions/tree/v1.45.0//model/README.md": {
-    "result": 200,
-    "when": "2026-11-02T20:16:22Z",
-    "via": "lychee",
-  },
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.45.0/model/README.md": {
     "result": 200,
     "when": "2026-11-24T00:15:52Z",
