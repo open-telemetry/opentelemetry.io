@@ -3,6 +3,7 @@ title: 会計サービス
 linkTitle: 会計
 aliases: [accountingservice]
 default_lang_commit: 119208cc7b365e78d78be27a7c2d507650c73f7d
+drifted_from_default: true
 ---
 
 このサービスは、販売された商品の合計金額を計算します。

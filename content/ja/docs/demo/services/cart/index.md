@@ -3,6 +3,7 @@ title: カートサービス
 linkTitle: カート
 aliases: [cartservice]
 default_lang_commit: 552bd64ff45ca252d1da0ca875abd1584a619d7f
+drifted_from_default: true
 ---
 
 このサービスはユーザーがショッピングカートに入れた商品を管理します。

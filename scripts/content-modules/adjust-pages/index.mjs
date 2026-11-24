@@ -324,7 +324,7 @@ export function buildBodyPipeline(v) {
     },
     {
       when: /^tmp\/semconv/,
-      search: /\((\/model\/.*?)\)/g,
+      search: /\(\/((?:model|policies)\/.*?)\)/g,
       replace: `(${semconvSpecRepoUrl}/tree/v${v.semconv}/$1)`,
     },
 

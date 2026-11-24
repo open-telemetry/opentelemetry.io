@@ -127,6 +127,10 @@ var loggerFactory = LoggerFactory.Create(builder =>
 Use environment variables to set values like headers and an endpoint URL for
 production.
 
+If data doesn't reach your endpoint, turn on
+[self-diagnostics](/docs/languages/dotnet/troubleshooting/) to see export
+errors.
+
 ## Console
 
 ## Dependencies
