@@ -19,8 +19,7 @@ what activity you expected, and you need instrumentation at the points in the
 workflow where you can confirm progress.
 
 This page uses a file processing service as a running example. A caller uploads
-a file, the service queues it, and a worker processes it. The job isn't done
-when the upload succeeds. It's done when the caller can read the result.
+a file, the service queues it, and a worker processes it.
 
 ## Define expected activity
 
@@ -31,14 +30,12 @@ quiet period overnight might be completely normal. Deployments and planned
 maintenance also cause gaps that aren't failures, so take those into account
 before you treat an empty query as a problem.
 
-Be precise about what "done" means. For the file service, a useful definition is
-that the caller can read the result from its destination, not just that a worker
-finished computing it. Then write down two delays separately, because they can
-go wrong independently:
-
-- How long processing normally takes, from acceptance to completion.
-- How long it takes for telemetry about that work to become queryable in your
-  backend.
+Be precise about what "done" means. For the file service, the job isn't done
+when the upload succeeds, or even when a worker finishes computing the result.
+It's done when the caller can read the result from its destination. Then write
+down two delays separately, because they can go wrong independently: how long
+processing normally takes, from acceptance to completion, and how long telemetry
+about that work takes to become queryable in your backend.
 
 OpenTelemetry records and exports signals, but it doesn't know what you expect.
 Missing-data alerts and their evaluation windows are set up in your monitoring
@@ -51,13 +48,15 @@ through the workflow. With [code-based instrumentation](../code-based/), record
 a counter when an item is accepted and another when it reaches a final outcome.
 Also track how many items are still in progress, including anything queued or
 waiting for a retry. If your application already holds that number in memory, an
-observable gauge can report it directly without a separate counter.
+[observable gauge](/docs/concepts/signals/metrics/#metric-instruments) can
+report it directly without a separate counter.
 
 Decide up front which items count. In the file service, a file rejected at
 upload never entered the workflow, so it isn't counted. A file that was accepted
 and then failed validation did enter, so it counts as accepted with an
-unsuccessful outcome. Each item is counted once when it's accepted and once when
-it finishes.
+unsuccessful outcome. If the workflow supports cancellation or expiry, count
+those as unsuccessful outcomes too. Each item is counted once when it's accepted
+and once when it finishes.
 
 Over any interval, the counts for a workflow should balance:
 
@@ -69,8 +68,7 @@ in progress at start + accepted during interval
 
 For example, suppose 10 files are in progress at the start and 100 are accepted
 during the interval. If 92 complete and 3 end unsuccessfully, 15 should still be
-in progress at the end. If the workflow supports cancellation or expiry, count
-those as unsuccessful outcomes.
+in progress at the end.
 
 A few situations can throw the counts off if you don't plan for them:
 
@@ -86,23 +84,23 @@ To check the balance, use how much each counter changed over the interval and
 the in-progress value at the start and end. Small differences are normal and
 usually resolve on their own:
 
-- Process restarts reset counters, so be careful when combining measurements
-  across instances.
+- Process restarts reset counters to zero, so use your backend's rate or
+  increase functions, which handle resets, instead of subtracting raw values.
 - Collection delays mean the most recent values might not have arrived yet.
 - Items change state while you're measuring.
 
-Make sure you're comparing the same workflow over the same time window, wait for
-the expected delay to pass, and investigate mismatches that persist.
-
-Keep metric attributes to a small, fixed set of values, such as workflow type or
-outcome. File identifiers and trace IDs don't belong in metric attributes. See
-[metric cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits)
-for what happens to queries when there are too many attribute combinations.
+Compare the same workflow over the same time window. If a mismatch is still
+there after the delay you wrote down, investigate it.
 
 These counts help you spot problems, but they aren't an exact ledger. If a
 process fails between updating application state and incrementing a counter, the
 two will disagree. When you need an exact answer, check the application's own
 records.
+
+Keep metric attributes to a small, fixed set of values, such as workflow type or
+outcome. File identifiers and trace IDs don't belong in metric attributes. See
+[metric cardinality limits](/docs/concepts/signals/metrics/#cardinality-limits)
+for what happens to queries when there are too many attribute combinations.
 
 ## Use traces and logs to investigate gaps
 
@@ -121,16 +119,15 @@ policy when recording identifiers or payload details.
 
 A missing span doesn't mean the step didn't run.
 [Sampling](/docs/concepts/sampling/) or filtering might have dropped it. That's
-why workflow counters should be recorded for every item, whether or not the
-trace was sampled. Use the counters to notice a gap, then use the traces that
-were kept, along with application state, to work out what happened.
+why you record workflow counters for every item, whether or not the trace was
+sampled. Application state fills in what sampling left out.
 
-## Check the path with known activity
+## Test the workflow end to end
 
 One way to confirm the whole path works is to send a test file through the
-service and check that the result arrives at the destination in the expected
-time. Use test data, and an isolated destination if the test could affect real
-users. Then check separately that the expected telemetry reached your backend.
+service and check that the result arrives at the destination in time. Use test
+data, and an isolated destination if the test could affect real users. Then
+check separately that the test's telemetry reached your backend.
 
 Synthetic tests have limits:
 
@@ -162,8 +159,5 @@ application. Things worth watching:
   "done" means for you. A healthy Collector and a successful export don't
   guarantee that the record was stored.
 
-When counts look wrong, comparing backend results with application state helps
-you tell missing work apart from missing telemetry.
-
-For the application examples behind this guidance, see
+For code examples of these patterns, see
 [When Missing Telemetry Is the Signal](/blog/2026/when-missing-telemetry-is-the-signal/).
