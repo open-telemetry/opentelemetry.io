@@ -323,8 +323,7 @@ function getChromePath() {
 
   try {
     // Install Chrome if not present, or just return the path if already
-    // installed. `npm exec --no` refuses to fetch puppeteer from the registry
-    // if it isn't already installed.
+    // installed.
     const output = execFileSync('npm', installArgs, {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'ignore'],

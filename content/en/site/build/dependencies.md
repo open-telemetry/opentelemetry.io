@@ -109,13 +109,13 @@ that has an approval, the contributor making the change:
 2. Records the outcome, committed together with the dependency change and vetted
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps).
-3. For a new approval of a direct dependency, also gives the package its own
-   Renovate group, excluded from automatic merging, in
-   [`.github/renovate.jsonc`][]: a rule that matches the package by name and
-   sets `groupName` and `automerge: false`, placed below every group rule that
-   matches the package, so that it overrides them. Every bump of an approved
-   package needs the steps above, so its update PRs must wait for a contributor
-   without holding up the shared patch and minor groups.
+3. For a new approval of a direct dependency, also adds a rule to
+   [`.github/renovate.jsonc`][] that matches the package by name, gives it its
+   own group and keeps it out of automatic merging (`groupName`,
+   `automerge: false`), placed below every group rule that matches the package,
+   so that it overrides them. Every bump of an approved package needs the steps
+   above, so its update PRs must wait for a contributor without holding up the
+   shared patch and minor groups.
 
 ### Peer-coupled packages
 
