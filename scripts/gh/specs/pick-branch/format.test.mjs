@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { buildIssueBody, formatGithubEnv, SPECS } from './index.mjs';
 
 describe('pick-branch: format helpers', () => {
-  test('SPECS: contains otel and semconv with expected repos', () => {
+  test('SPECS: contains otel, semconv and semconv-genai with expected repos', () => {
     assert.deepEqual(SPECS.otel, {
       repo: 'opentelemetry-specification',
       slug: 'spec',
@@ -15,6 +15,10 @@ describe('pick-branch: format helpers', () => {
     assert.deepEqual(SPECS.semconv, {
       repo: 'semantic-conventions',
       slug: 'semconv',
+    });
+    assert.deepEqual(SPECS['semconv-genai'], {
+      repo: 'semantic-conventions-genai',
+      slug: 'semconv-genai',
     });
   });
 

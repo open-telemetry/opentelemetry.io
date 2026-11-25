@@ -1,0 +1,8 @@
+file_format: manifest/2.0
+schema_url: https://opentelemetry.io/schemas/semconv-genai-dev/0.1.0-dev
+description: |
+  OpenTelemetry Semantic Conventions for Generative AI. This registry defines semantic conventions for GenAI, including LLM inference, agents, tool calling, embeddings, and the Model Context Protocol (MCP).
+dependencies:
+- schema_url: https://opentelemetry.io/schemas/1.45.0
+stability: development
+resolved_registry_uri: https://github.com/open-telemetry/semantic-conventions-genai/releases/download/v0.1.0/registry-dev.yaml
