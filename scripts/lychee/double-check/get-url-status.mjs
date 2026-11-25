@@ -317,7 +317,7 @@ function getChromePath() {
     // if it isn't already installed.
     const output = execFileSync(
       'npm',
-      ['exec', '--no', 'puppeteer', 'browsers', 'install', 'chrome'],
+      ['exec', '--no', '--', 'puppeteer', 'browsers', 'install', 'chrome'],
       {
         encoding: 'utf-8',
         stdio: ['pipe', 'pipe', 'ignore'],
@@ -335,7 +335,7 @@ function getChromePath() {
   }
 
   throw new Error(
-    'Chrome not found. Install with: npm exec --no puppeteer browsers install chrome',
+    'Chrome not found. Install with: npm exec --no -- puppeteer browsers install chrome',
   );
 }
 
