@@ -3,6 +3,7 @@ title: Servicio de Contabilidad
 linkTitle: Accounting
 aliases: [accountingservice]
 default_lang_commit: bb23218b2ffc669eb538742e664dd7b52b55531e
+drifted_from_default: true
 ---
 
 Este servicio calcula el importe total de los productos vendidos. Este cálculo

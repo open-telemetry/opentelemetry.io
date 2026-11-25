@@ -3,6 +3,7 @@ title: Primeiros passos com exemplo
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
 default_lang_commit: ddf2415df2c47195339aaaa6d4cfb5c12a00b759
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: autoexport chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---

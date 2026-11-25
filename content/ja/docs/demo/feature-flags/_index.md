@@ -5,8 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: 1b7f33e30a91ebf48b6c9d00f7808b4021fb74dd
-drifted_from_default: true
+default_lang_commit: ea312f6d603e787a71e181b38df625a7079577a0
 cSpell:ignore: loadgenerator OLJCESPC7Z
 ---
 
@@ -18,8 +17,10 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 
 ユーザーインターフェイスを通じてフィーチャーフラグを変更する場合、2 つのオプションがあります。
 
-- **ベーシックビュー**: 各フィーチャーフラグに対して、デフォルトのバリエーション（生のファイルで構成するときに変更する必要がある同じオプション）を選択して保存できるユーザーフレンドリーなビュー。 現在、ベーシックビューは割合ベースのターゲティングをサポートしていません。
-- **アドバンスドビュー**: 読み込んでブラウザで編集可能な生の JSON 設定ファイルのビュー。 このビューは生の JSON ファイルを編集できるという柔軟性を提供しますが、JSON が有効であり、入力された設定値が正しいかを保証するスキーマチェックも提供します。
+- **ベーシックビュー**: 各フィーチャーフラグに対して、デフォルトのバリアント（生のファイルで構成するときに変更する必要がある同じオプション）を選択して保存できるユーザーフレンドリーなビュー。
+  現在、ベーシックビューは割合ベースのターゲティングをサポートしていません。
+- **アドバンスドビュー**: 読み込んでブラウザで編集可能な生の JSON 設定ファイルのビュー。
+  このビューは生の JSON ファイルを編集できるという柔軟性を提供しますが、JSON が有効であり、入力された設定値が正しいことを保証するスキーマチェックも提供します。
 
 ## 実装済みフィーチャーフラグ {#implemented-feature-flags}
 
@@ -27,7 +28,7 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 | ------------------------------ | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `adFailure`                    | 広告                     | 10分の1の確率で `GetAds` のエラーを生成します                                                                                                                                                                                            |
 | `adHighCpu`                    | 広告                     | 広告サービスで CPU を高負荷にします。 CPU スロットリングをデモしたい場合は、CPU リソース制限を設定します                                                                                                                                 |
-| `adManualGc`                   | 広告                     | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                                                                                                                             |
+| `adManualGc`                   | 広告                     | 広告サービスで手動のフルガベージコレクションを引き起こします                                                                                                                                                                             |
 | `aiRunawayAgent`               | エージェント             | エージェントが終了せずツールを呼び出し続けるように仕向け、暴走やループするエージェントをシミュレートします。                                                                                                                             |
 | `aiSlowResponse`               | エージェント             | エージェントの LLM モデル呼び出しを遅延させ、LLM プロバイダーのレイテンシー劣化をシミュレートします。                                                                                                                                    |
 | `cartFailure`                  | カート                   | 選択された割合の `EmptyCart` 呼び出しを、障害が発生するカートストアに送信します                                                                                                                                                          |
@@ -40,10 +41,11 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 | `loadGeneratorTraffic`         | 負荷生成ツール           | 負荷生成ツールからの合成トラフィックを有効にします。 オフにすると、すべての負荷生成シナリオが一時停止します。                                                                                                                            |
 | `loadGeneratorVUs`             | 負荷生成ツール           | 負荷生成ツールの HTTP シナリオを実行する同時仮想ユーザー数です。 変更すると、次回のポーリング時に k6 が再起動されます。                                                                                                                  |
 | `paymentFailure`               | 支払い                   | 選択された割合の `charge` 呼び出しに対してエラーを生成します                                                                                                                                                                             |
-| `paymentUnreachable`           | チェックアウト           | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、不正アドレスを使用します                                                                                                                                   |
+| `paymentUnreachable`           | チェックアウト           | 支払いサービスを呼び出すときに支払いサービスが利用できないように見せるために、誤ったアドレスを使用します                                                                                                                                 |
 | `productCatalogFailure`        | 商品カタログ             | 商品 ID: `OLJCESPC7Z` の `GetProduct` リクエストに対してエラーを生成します                                                                                                                                                               |
 | `productCatalogLockContention` | 商品カタログ             | `catalog.products` テーブルに対して `ACCESS EXCLUSIVE` ロックを保持することでデータベースのロック競合をシミュレートし、他の商品カタログクエリをブロックします。                                                                          |
 | `recommendationCacheFailure`   | レコメンデーション       | 指数関数的に増大するキャッシュによりメモリリークが発生します。 リクエストのおよそ半数がその増加を引き起こします                                                                                                                          |
+| `webInteractionSlowdown`       | フロントエンド           | ブラウザでの「カートに追加」クリックを遅くし、INP の悪化を再現します。 代替のアナリティクスタグがクリックタスク内で同期処理を行います。 バリアントはイベントキューサイズを設定します: `300k`、`600k`、`1200k`。                          |
 
 ## ガイド付きデバッグシナリオ {#guided-debugging-scenario}
 
@@ -51,4 +53,4 @@ cSpell:ignore: loadgenerator OLJCESPC7Z
 
 ## フィーチャーフラグアーキテクチャ {#feature-flag-architecture}
 
-flagd の動作の詳細については [flagd documentation](https://flagd.dev) を、OpenFeature の動作の詳細については [OpenFeature](https://openfeature.dev) と OpenFeature API を参照してください。
+flagd の動作の詳細については [flagd documentation](https://flagd.dev) を、OpenFeature の動作の詳細と OpenFeature API のドキュメントについては [OpenFeature](https://openfeature.dev) のウェブサイトを参照してください。

@@ -3,6 +3,7 @@ title: কার্ট সার্ভিস
 linkTitle: কার্ট
 aliases: [cartservice]
 default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
+drifted_from_default: true
 ---
 
 এই সার্ভিসটি ব্যবহারকারীদের শপিং কার্টে রাখা আইটেম সংরক্ষণ করে। এটি দ্রুত শপিং কার্ট

@@ -244,6 +244,9 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
+      - docs-approvers
+      - docs-maintainers
+      - docs-triagers
       - semconv-log-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
@@ -352,6 +355,7 @@ maintainers:
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
+      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/brettmc
@@ -406,6 +410,7 @@ maintainers:
       - php-contrib-approvers
       - php-contrib-maintainers
       - php-distro-approvers
+      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
@@ -483,9 +488,6 @@ maintainers:
     teams:
       - ebpf-instrumentation-approvers
       - ebpf-instrumentation-maintainers
-      - go-instrumentation-approvers
-      - go-instrumentation-maintainers
-      - go-instrumentation-triagers
     html_url: https://github.com/damemi
     avatar_url: https://avatars.githubusercontent.com/u/1839101?v=4
   - name: danielgblanco
@@ -623,13 +625,6 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/dyladan
     avatar_url: https://avatars.githubusercontent.com/u/1612643?v=4
-  - name: edeNFed
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-maintainers
-      - go-instrumentation-triagers
-    html_url: https://github.com/edeNFed
-    avatar_url: https://avatars.githubusercontent.com/u/5587419?v=4
   - name: edmocosta
     teams:
       - collector-contrib-approvers
@@ -732,8 +727,6 @@ maintainers:
     teams:
       - ebpf-instrumentation-approvers
       - ebpf-instrumentation-maintainers
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
       - injector-approvers
       - injector-maintainers
     html_url: https://github.com/grcevski
@@ -1264,9 +1257,6 @@ maintainers:
       - ebpf-instrumentation-approvers
       - ebpf-instrumentation-maintainers
       - go-approvers
-      - go-instrumentation-approvers
-      - go-instrumentation-maintainers
-      - go-instrumentation-triagers
       - go-maintainers
       - go-triagers
       - proto-approvers
@@ -1383,8 +1373,6 @@ maintainers:
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
       - go-approvers
-      - go-instrumentation-approvers
-      - go-instrumentation-triagers
       - go-maintainers
       - go-triagers
       - proto-approvers
@@ -1483,13 +1471,6 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/robertlaurin
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
-  - name: RonFed
-    teams:
-      - go-instrumentation-approvers
-      - go-instrumentation-maintainers
-      - go-instrumentation-triagers
-    html_url: https://github.com/RonFed
-    avatar_url: https://avatars.githubusercontent.com/u/73110295?v=4
   - name: rrschulze
     teams:
       - semconv-mainframe-approvers
@@ -2473,6 +2454,11 @@ triagers:
       - sig-contributor-experience-triagers
     html_url: https://github.com/bogdan-st
     avatar_url: https://avatars.githubusercontent.com/u/102800531?v=4
+  - name: Brilly-Bohyun
+    teams:
+      - docs-triagers
+    html_url: https://github.com/Brilly-Bohyun
+    avatar_url: https://avatars.githubusercontent.com/u/102973953?v=4
   - name: d4nyll
     teams:
       - javascript-contrib-triagers
@@ -2826,6 +2812,9 @@ members:
   - name: dineshg13
     html_url: https://github.com/dineshg13
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
+  - name: Dipanshusinghh
+    html_url: https://github.com/Dipanshusinghh
+    avatar_url: https://avatars.githubusercontent.com/u/161134993?v=4
   - name: discostu105
     html_url: https://github.com/discostu105
     avatar_url: https://avatars.githubusercontent.com/u/10918780?v=4
