@@ -106,8 +106,10 @@ When a dependency change adds a package with install scripts, or bumps a package
 that has an approval, review them under the [script policy][]:
 
 1. Run `npm view PACKAGE_NAME@VERSION scripts`, with the locked name and version
-   for _`PACKAGE_NAME`_ and _`VERSION`_. Read what the version's install scripts
-   (`preinstall`, `install`, `postinstall`) run, without running them.
+   for _`PACKAGE_NAME`_ and _`VERSION`_. Read the files that the version's
+   install scripts (`preinstall`, `install`, `postinstall`) run, without running
+   them: `npm run ci:min` installs the locked tree under `node_modules` and runs
+   no script.
 2. Update `allowScripts` in [`package.json`][] with the
    [dependency change](#updating):
    - Use `"PACKAGE_NAME": false` if no site workflow needs the scripts during
