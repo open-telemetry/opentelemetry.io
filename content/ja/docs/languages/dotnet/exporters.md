@@ -2,6 +2,7 @@
 title: エクスポーター
 weight: 50
 default_lang_commit: e76ca67d0f5b6906f7a9c90cde82380fc31e6e85
+drifted_from_default: true
 ---
 
 {{% docs/languages/exporters/intro %}}
