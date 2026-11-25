@@ -51,7 +51,7 @@ retried in a visible browser window.
 ## Chrome
 
 The probe requires Chrome: either set `CHROME_PATH`, or let the tooling install
-a Puppeteer-managed copy (`npm exec --no puppeteer browsers install chrome`).
+a Puppeteer-managed copy.
 
 <!-- prettier-ignore-start -->
 [docs]: ../../../content/en/site/build/link-checking.md

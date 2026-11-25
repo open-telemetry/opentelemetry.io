@@ -102,19 +102,27 @@ and rerun the command.
 
 ### Script-bearing packages
 
-When adding or updating a package that has, or needs, an `allowScripts` entry,
-the contributor making the change:
+When a dependency change adds a package with install scripts, or bumps a package
+that has an approval, review them under the [script policy][]:
 
-1. Reviews the new version's lifecycle scripts.
-2. Records the outcome, committed together with the dependency change and vetted
-   in PR review: a needed script as an exact-version approval, an unneeded one
-   as a name-level denial (`false`, which needs no update on later bumps).
-3. For a new approval of a direct dependency, also gives the package its own
-   Renovate group, excluded from automatic merging, in
-   [`.github/renovate.jsonc`][], modeled on the `Puppeteer` rule (placement
-   included). Every bump of an approved package needs the steps above, so its
-   update PRs must wait for a contributor without holding up the shared patch
-   and minor groups.
+1. Run `npm view PACKAGE_NAME@VERSION scripts`, with the locked name and version
+   for _`PACKAGE_NAME`_ and _`VERSION`_. Read the files that the version's
+   install scripts (`preinstall`, `install`, `postinstall`) run, without running
+   them: `npm run ci:min` installs the locked tree under `node_modules` and runs
+   no script.
+2. Update `allowScripts` in [`package.json`][] with the
+   [dependency change](#updating):
+   - Use `"PACKAGE_NAME": false` if no site workflow needs the scripts during
+     setup.
+   - Use `"PACKAGE_NAME@VERSION": true` only if a site workflow requires them as
+     a setup step and all of them pass review. Approval alone runs nothing on a
+     script-free [install path](#install-contracts): the path must also run
+     them, as `ci:prepare` does for Hugo.
+   - For a new entry, add its reason to the
+     [current entries](#lifecycle-script-allowlist).
+   - For obsolete entries, see [Supply-chain audit](#audit).
+3. Run `npm run test:local-tools` and `npm run install:safe`. Explain in the PR
+   why setup needs the scripts or how it works without them.
 
 ### Peer-coupled packages
 
@@ -253,9 +261,12 @@ principles behind the audit itself, see its
 When the audit fails on your PR, the assertion message states the expected
 condition; the common cases:
 
-- **You bumped a dependency that has an `allowScripts` entry**. Follow
+- **You bumped a dependency that has an `allowScripts` approval**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
-  the version the entry must move to.
+  the newly locked version.
+- **A bump removed a package's install script**. Remove the package's
+  `allowScripts` entry, approval or denial: the audit accepts an entry only for
+  a locked package that has an install script.
 - **Your change moved a security override's parent range**. If the new range
   admits the fixed version, drop the override,
   [reconcile the lock](#manifest-changes), confirm no copy below the row's
@@ -313,13 +324,22 @@ are listed in the `allowScripts` allowlist:
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
 - **Where it fires**: on script-enabled installs only, which here means the
-  `hugo-extended` rebuild step of the [install contracts](#install-contracts),
-  where npm checks the whole installed tree, and a local `npm install` run
-  without `--ignore-scripts`.
+  `hugo-extended` rebuild step of the [install contracts](#install-contracts)
+  and a local `npm install` run without `--ignore-scripts`. The rebuild step
+  checks every installed dependency against the allowlist but runs only
+  `hugo-extended`'s script.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
   - Denials grant nothing, so they cover the package by name, across versions.
+- **Current entries**:
+  - `hugo-extended`, approved: the install contracts fetch the pinned Hugo
+    binary through its script.
+  - `puppeteer`, denied: its script downloads browsers, and the [double-check
+    probe][] takes Chrome from `CHROME_PATH` or installs it on demand.
+  - `@parcel/watcher`, denied: an optional dependency of `sass`, the fallback
+    that `sass-embedded` installs only where it has no prebuilt compiler; its
+    script builds from source only on request.
 - **Local masking**: `ignore-scripts=true` in your user `.npmrc` makes a plain
   local `npm install` script-free, so that path skips the allowlist; the rebuild
   step still evaluates it, so `npm run install:safe` checks the repository's
@@ -398,6 +418,7 @@ with this rule through [drift tracking][].
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy upgrade guides]: https://www.docsy.dev/tags/hugo/
 [Docsy]: https://www.docsy.dev/
+[double-check probe]: ../link-checking/#double-check
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
 [install contracts]: #install-contracts
@@ -405,5 +426,6 @@ with this rule through [drift tracking][].
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Netlify]: https://www.netlify.com/
 [Renovate]: https://docs.renovatebot.com/
+[script policy]: ../../design/supply-chain-security/#scripts
 [Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->
