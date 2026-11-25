@@ -5176,7 +5176,7 @@
   },
   "https://github.com/IBM/wxflows/": {
     "result": "error",
-    "when": "2026-11-24T19:20:04Z",
+    "when": "2026-11-25T05:38:17Z",
     "via": "lychee",
   },
   "https://github.com/IliaBrahinets": {
@@ -32339,7 +32339,7 @@
   },
   "https://rubydoc.info/gems/opentelemetry-metrics-api/0.7.0": {
     "result": "error",
-    "when": "2026-11-24T19:20:04Z",
+    "when": "2026-11-25T05:38:17Z",
     "via": "lychee",
   },
   "https://rubydoc.info/gems/opentelemetry-metrics-sdk/0.16.0": {
