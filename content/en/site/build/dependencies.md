@@ -346,11 +346,6 @@ version that supports the controls above.
     construction; [Renovate][] keeps the pin updated. (A floating `.nvmrc` such
     as `lts/*` can't promise this: CI runners resolve it from possibly stale
     caches.)
-- **Netlify**:
-  - Netlify's Node-bundled default npm may be older than the floor;
-    [`NPM_VERSION`][netlify-deps] in [`netlify.toml`][] pins one that satisfies
-    it.
-  - Bump the pin at least when the floor rises.
 
 ### Inert Netlify auto-install
 
