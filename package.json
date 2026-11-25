@@ -39,7 +39,7 @@
     "_list:fix:*": "npm run --loglevel=warn | grep -Ee '^\\s*fix:[^:]+$' | grep -Ev \"fix:all|fix:refcache|${CMD_SKIP:-noop}\"",
     "_list:fix:for-test-and-fix": "npm -s run _list:fix:* | grep -Ev \"collector-sync|i18n|link-cache|submodule\"",
     "_list:test:compound-tests": "npm run --loglevel=warn | grep -Ee '^\\s*test:[^:]+-[^:]+$' | grep -Ev \"compound-tests|${CMD_SKIP:-noop}\"",
-    "_netlify:prepare": "echo \"npm $(npm --version) ($npm_config_user_agent)\" && npm run -s is:clean && npm run install:safe && npm run -s is:clean",
+    "_netlify:prepare": "npm run -s is:clean && npm run install:safe && npm run -s is:clean",
     "_pin:submodule": "scripts/pin-submodules.pl",
     "_postget:submodule": "npm run -s _git:submodule-status && echo && scripts/update-semconv-mounts.pl",
     "_prebuild": "npm run seq -- get:submodule cp:spec generate:config-types",
@@ -210,7 +210,7 @@
   "enginesNpmComment": "Floor policy: https://opentelemetry.io/site/build/dependencies/#npm-version-floor (11.18 closes the allowScripts enforcement gaps of npm/cli#9652; min-release-age-exclude arrived in 11.17; Node LTS bundles 11.19+ since 24.20.0)",
   "engines": {
     "node": ">=24",
-    "npm": ">=11.21.0"
+    "npm": ">=11.18.0"
   },
   "private": true,
   "prettier": {
