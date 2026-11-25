@@ -110,13 +110,6 @@ that has an approval, the contributor making the change:
    in PR review: a needed script as an exact-version approval, an unneeded one
    as a name-level denial (`false`, which needs no update on later bumps while
    the package still has an install script).
-3. For a new approval of a direct dependency, also adds a rule to
-   [`.github/renovate.jsonc`][] that matches the package by name, gives it its
-   own group, and keeps it out of automatic merging (`matchPackageNames`,
-   `groupName`, `automerge: false`), placed below every group rule that matches
-   the package, so that it overrides them. Every bump of an approved package
-   needs the steps above, so its update PRs must wait for a contributor without
-   holding up the shared patch and minor groups.
 
 ### Peer-coupled packages
 
