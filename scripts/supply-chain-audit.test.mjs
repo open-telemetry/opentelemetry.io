@@ -483,7 +483,7 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
   );
   assert.deepEqual(
     Object.keys(build.environment).sort(),
-    ['NPM_FLAGS', 'NPM_VERSION'],
+    ['NPM_FLAGS'],
     'the build environment carries exactly the reviewed keys',
   );
   for (const key of Object.keys(build.environment)) {
@@ -496,12 +496,5 @@ test('netlify.toml: auto-install stays inert and build commands stay pinned', ()
     build.environment.NPM_FLAGS,
     '--dry-run --ignore-scripts',
     'NPM_FLAGS constrains the Netlify auto-install to resolution only',
-  );
-  // NPM_VERSION's sufficiency is the floor's job at build time:
-  // https://opentelemetry.io/site/build/dependencies/#npm-version-floor
-  assert.match(
-    build.environment.NPM_VERSION,
-    /^\d+\.\d+\.\d+$/,
-    'NPM_VERSION is an exact npm version pin',
   );
 });
