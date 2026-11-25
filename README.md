@@ -86,6 +86,7 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][] (members-only):
 
+- [Bohyun Choi](https://github.com/Brilly-Bohyun), Outschool
 - [Emídio Neto](https://github.com/emdneto)
 - [Pratik Mahalle](https://github.com/pratik-mahalle), DrDroid
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), Grafana Labs
