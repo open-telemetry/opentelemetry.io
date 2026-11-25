@@ -8,7 +8,7 @@
     "__check:format": "prettier --ignore-unknown",
     "__find:md:not-old-blog": "sh -c 'find \"$@\" -name \"*.md\" -not -path \"content/en/blog/2019/*\" -not -path \"content/en/blog/202[0-4]/*\" -print0' --",
     "_build": "npm run -s _build:info && npm run _hugo -- --logLevel info -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
-    "_build:info": "echo \"BUILD_KIND=$BUILD_KIND\nHUGO_PARAMS_TD_CHROME=$HUGO_PARAMS_TD_CHROME\"",
+    "_build:info": "echo \"BUILD_KIND=$BUILD_KIND\nHUGO_PARAMS_TD_CHROME=$HUGO_PARAMS_TD_CHROME\nnpm_config_user_agent=$npm_config_user_agent\"",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/uk content/zh",
     "_check:format": "npm run __check:format -- --check .",
