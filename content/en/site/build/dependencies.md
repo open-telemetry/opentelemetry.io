@@ -108,7 +108,8 @@ that has an approval, the contributor making the change:
 1. Reviews the new version's lifecycle scripts.
 2. Records the outcome, committed together with the dependency change and vetted
    in PR review: a needed script as an exact-version approval, an unneeded one
-   as a name-level denial (`false`, which needs no update on later bumps).
+   as a name-level denial (`false`, which needs no update on later bumps while
+   the package still has an install script).
 3. For a new approval of a direct dependency, also adds a rule to
    [`.github/renovate.jsonc`][] that matches the package by name, gives it its
    own group and keeps it out of automatic merging (`groupName`,
@@ -257,6 +258,9 @@ condition; the common cases:
 - **You bumped a dependency that has an `allowScripts` approval**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
   the newly locked version.
+- **A bump removed a package's install script**. Remove the package's
+  `allowScripts` entry, approval or denial: the audit accepts an entry only for
+  a locked package that has an install script.
 - **Your change moved a security override's parent range**. If the new range
   admits the fixed version, drop the override,
   [reconcile the lock](#manifest-changes), confirm no copy below the row's
@@ -316,7 +320,7 @@ are listed in the `allowScripts` allowlist:
 - **Where it fires**: on script-enabled installs only, which here means the
   `hugo-extended` rebuild step of the [install contracts](#install-contracts)
   and a local `npm install` run without `--ignore-scripts`. The rebuild step
-  checks the whole installed tree against the allowlist but runs only
+  checks every installed dependency against the allowlist but runs only
   `hugo-extended`'s script.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
