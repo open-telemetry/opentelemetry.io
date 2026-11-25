@@ -311,7 +311,7 @@ function getChromePath() {
     return process.env.CHROME_PATH;
   }
 
-  const installArgs = [
+  const puppeteerChromeInstallArgs = [
     'exec',
     '--no',
     '--',
@@ -324,7 +324,7 @@ function getChromePath() {
   try {
     // Install Chrome if not present, or just return the path if already
     // installed.
-    const output = execFileSync('npm', installArgs, {
+    const output = execFileSync('npm', puppeteerChromeInstallArgs, {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'ignore'],
     }).trim();
@@ -340,7 +340,7 @@ function getChromePath() {
   }
 
   throw new Error(
-    `Chrome not found. Install with: npm ${installArgs.join(' ')}`,
+    `Chrome not found. Install with: npm ${puppeteerChromeInstallArgs.join(' ')}`,
   );
 }
 
