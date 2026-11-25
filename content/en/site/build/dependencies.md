@@ -113,9 +113,9 @@ that has an approval, the contributor making the change:
    Renovate group, excluded from automatic merging, in
    [`.github/renovate.jsonc`][]: a rule that matches the package by name and
    sets `groupName` and `automerge: false`, placed below every group rule that
-   matches the package, which it overrides. Every bump of an approved package
-   needs the steps above, so its update PRs must wait for a contributor without
-   holding up the shared patch and minor groups.
+   matches the package, so that it overrides them. Every bump of an approved
+   package needs the steps above, so its update PRs must wait for a contributor
+   without holding up the shared patch and minor groups.
 
 ### Peer-coupled packages
 
