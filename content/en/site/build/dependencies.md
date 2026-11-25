@@ -111,10 +111,11 @@ the contributor making the change:
    as a name-level denial (`false`, which needs no update on later bumps).
 3. For a new approval of a direct dependency, also gives the package its own
    Renovate group, excluded from automatic merging, in
-   [`.github/renovate.jsonc`][], modeled on the `Puppeteer` rule (placement
-   included). Every bump of an approved package needs the steps above, so its
-   update PRs must wait for a contributor without holding up the shared patch
-   and minor groups.
+   [`.github/renovate.jsonc`][]: a rule that matches the package by name and
+   sets `groupName` and `automerge: false`, placed below the shared group rules,
+   which it overrides. Every bump of an approved package needs the steps above,
+   so its update PRs must wait for a contributor without holding up the shared
+   patch and minor groups.
 
 ### Peer-coupled packages
 
@@ -253,9 +254,9 @@ principles behind the audit itself, see its
 When the audit fails on your PR, the assertion message states the expected
 condition; the common cases:
 
-- **You bumped a dependency that has an `allowScripts` entry**. Follow
+- **You bumped a dependency that has an `allowScripts` approval**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
-  the version the entry must move to.
+  the version the approval must move to.
 - **Your change moved a security override's parent range**. If the new range
   admits the fixed version, drop the override,
   [reconcile the lock](#manifest-changes), confirm no copy below the row's
@@ -313,9 +314,11 @@ are listed in the `allowScripts` allowlist:
 - **Enforcement**: the `allowScripts` map in [`package.json`][], made
   fail-closed by `strict-allow-scripts` in [`.npmrc`][].
 - **Where it fires**: on script-enabled installs only, which here means the
-  `hugo-extended` rebuild step of the [install contracts](#install-contracts),
-  where npm checks the whole installed tree, and a local `npm install` run
-  without `--ignore-scripts`.
+  `hugo-extended` rebuild step of the [install contracts](#install-contracts)
+  and a local `npm install` run without `--ignore-scripts`. The rebuild step
+  checks the whole installed tree against the allowlist but runs only
+  `hugo-extended`'s script, so any other approved script runs only on a
+  script-enabled local install.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
