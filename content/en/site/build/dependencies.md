@@ -102,8 +102,8 @@ and rerun the command.
 
 ### Script-bearing packages
 
-When adding or updating a package that has, or needs, an `allowScripts` entry,
-the contributor making the change:
+When a dependency change needs a new `allowScripts` entry, or bumps a package
+that has an approval, the contributor making the change:
 
 1. Reviews the new version's lifecycle scripts.
 2. Records the outcome, committed together with the dependency change and vetted
@@ -112,10 +112,10 @@ the contributor making the change:
 3. For a new approval of a direct dependency, also gives the package its own
    Renovate group, excluded from automatic merging, in
    [`.github/renovate.jsonc`][]: a rule that matches the package by name and
-   sets `groupName` and `automerge: false`, placed below the shared group rules,
-   which it overrides. Every bump of an approved package needs the steps above,
-   so its update PRs must wait for a contributor without holding up the shared
-   patch and minor groups.
+   sets `groupName` and `automerge: false`, placed below every group rule that
+   matches the package, which it overrides. Every bump of an approved package
+   needs the steps above, so its update PRs must wait for a contributor without
+   holding up the shared patch and minor groups.
 
 ### Peer-coupled packages
 
@@ -256,7 +256,7 @@ condition; the common cases:
 
 - **You bumped a dependency that has an `allowScripts` approval**. Follow
   [script-bearing packages](#script-bearing-packages); the failure message names
-  the version the approval must move to.
+  the newly locked version.
 - **Your change moved a security override's parent range**. If the new range
   admits the fixed version, drop the override,
   [reconcile the lock](#manifest-changes), confirm no copy below the row's
@@ -317,8 +317,7 @@ are listed in the `allowScripts` allowlist:
   `hugo-extended` rebuild step of the [install contracts](#install-contracts)
   and a local `npm install` run without `--ignore-scripts`. The rebuild step
   checks the whole installed tree against the allowlist but runs only
-  `hugo-extended`'s script, so any other approved script runs only on a
-  script-enabled local install.
+  `hugo-extended`'s script.
 - **Denials**:
   - An entry set to `false` records a reviewed denial: the package installs, its
     script is skipped.
