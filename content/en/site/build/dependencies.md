@@ -112,11 +112,11 @@ that has an approval, the contributor making the change:
    the package still has an install script).
 3. For a new approval of a direct dependency, also adds a rule to
    [`.github/renovate.jsonc`][] that matches the package by name, gives it its
-   own group and keeps it out of automatic merging (`groupName`,
-   `automerge: false`), placed below every group rule that matches the package,
-   so that it overrides them. Every bump of an approved package needs the steps
-   above, so its update PRs must wait for a contributor without holding up the
-   shared patch and minor groups.
+   own group, and keeps it out of automatic merging (`matchPackageNames`,
+   `groupName`, `automerge: false`), placed below every group rule that matches
+   the package, so that it overrides them. Every bump of an approved package
+   needs the steps above, so its update PRs must wait for a contributor without
+   holding up the shared patch and minor groups.
 
 ### Peer-coupled packages
 
