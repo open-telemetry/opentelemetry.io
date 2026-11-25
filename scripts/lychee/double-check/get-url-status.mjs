@@ -311,18 +311,24 @@ function getChromePath() {
     return process.env.CHROME_PATH;
   }
 
+  const installArgs = [
+    'exec',
+    '--no',
+    '--',
+    'puppeteer',
+    'browsers',
+    'install',
+    'chrome',
+  ];
+
   try {
     // Install Chrome if not present, or just return the path if already
     // installed. `npm exec --no` refuses to fetch puppeteer from the registry
     // if it isn't already installed.
-    const output = execFileSync(
-      'npm',
-      ['exec', '--no', '--', 'puppeteer', 'browsers', 'install', 'chrome'],
-      {
-        encoding: 'utf-8',
-        stdio: ['pipe', 'pipe', 'ignore'],
-      },
-    ).trim();
+    const output = execFileSync('npm', installArgs, {
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'ignore'],
+    }).trim();
 
     // Output is of the form: chrome@<buildID> <path>
     const spaceIndex = output.indexOf(' ');
@@ -335,7 +341,7 @@ function getChromePath() {
   }
 
   throw new Error(
-    'Chrome not found. Install with: npm exec --no -- puppeteer browsers install chrome',
+    `Chrome not found. Install with: npm ${installArgs.join(' ')}`,
   );
 }
 
