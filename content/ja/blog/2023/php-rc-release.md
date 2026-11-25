@@ -10,7 +10,7 @@ default_lang_commit: 1bd13789862174c89d11afd31d3f655de3cd16c9
 cSpell:ignore: Delewski Mailchimp McBride PECL Przemek Strecansky
 ---
 
-OpenTelemetry PHP チームは、[opentelemetry-php](https://github.com/open-telemetry/opentelemetry-php/) ライブラリがリリース候補の安定性に到達したことをお知らせします。
+OpenTelemetry PHP チームは、[opentelemetry-php](https://github.com/open-telemetry/opentelemetry-php/) ライブラリがリリース候補として公開できる水準の安定性に達したことをお知らせします。
 このリリースは、OpenTelemetry PHP チームによる数年にわたる取り組みの集大成です。
 このリリースを実現してくださったすべてのコントリビューター、テスター、インテグレーターの皆さんに感謝します。
 コミュニティ全体の助けがなければ、このリリースは実現できなかったことでしょう。
@@ -31,7 +31,7 @@ OpenTelemetry PHP チームは、[opentelemetry-php](https://github.com/open-tel
 OpenTelemetry PHP を初めて使う方は、[入門ドキュメント](/docs/languages/php/getting-started/)から始めるのが最適です。
 
 PHP コードベースでこの計装をテストしてくださる開発者を募集しています。
-発生した問題はぜひトリアージさせていただきますので、リポジトリの [GitHub Issues](https://github.com/open-telemetry/opentelemetry-php/issues/) でお気軽にイシューを作成してください。
+報告いただいた問題はチームでトリアージしますので、リポジトリの [GitHub Issues](https://github.com/open-telemetry/opentelemetry-php/issues/) でお気軽にイシューを作成してください。
 プルリクエストも、以下のどのリポジトリでもいつでも歓迎しています。
 
 - [API/SDK](https://github.com/open-telemetry/opentelemetry-php/)
