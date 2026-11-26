@@ -81,10 +81,16 @@ The release history records these boundaries:
 - [1.2.0][] added .NET 8 support, and [1.13.0][] added .NET 10 support.
 - [1.20.0][] added .NET 11 support and removed .NET 8 and .NET 9 support.
 
-In the following installation examples, set `version` on Linux and macOS, or
-`$version` on Windows, to the selected release tag, including the `v` prefix.
-For example, use `v1.19.1` for the historical .NET 9 combination. Download the
-installer from that same release rather than mixing package versions.
+The following installation examples apply to `v1.20.0` and `v1.19.1`, which
+provide the release and artifact attestations required by the verification
+commands. Set `version` on Linux and macOS, or `$version` on Windows, to the
+selected release tag, including the `v` prefix. For example, use `v1.19.1` for
+the historical .NET 9 combination.
+
+For .NET 6 and .NET 7, follow the [1.9.0 installation instructions][] instead.
+That release predates immutable-release attestations, so changing the version
+variable alone does not make the following verification commands work. Use the
+installer and installation instructions from the same release.
 
 [1.20.0 release]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.20.0
@@ -92,6 +98,8 @@ installer from that same release rather than mixing package versions.
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.19.1
 [1.9.0 release]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.9.0
+[1.9.0 installation instructions]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.9.0/docs/README.md
 [1.10.0-beta.1]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1100-beta1
 [1.10.0]:
