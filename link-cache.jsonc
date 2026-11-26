@@ -32337,10 +32337,14 @@
     "when": "2026-10-28T05:39:18Z",
     "via": "lychee",
   },
+  // Held: rubydoc.info returns 521 for this and some other gem pages (most
+  // still load). First failed 2026-11-24; last OK 2026-10-23. Precedent:
+  // open-telemetry/opentelemetry.io#8334.
   "https://rubydoc.info/gems/opentelemetry-metrics-api/0.7.0": {
-    "result": "error",
-    "when": "2026-11-26T01:58:22Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-11-26T02:32:24Z",
+    "via": "manual",
+    "expires": "2026-12-06",
   },
   "https://rubydoc.info/gems/opentelemetry-metrics-sdk/0.16.0": {
     "result": 200,
