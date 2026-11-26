@@ -23,7 +23,8 @@
   distributions:
     - contrib
   stability:
-    extension: development
+    extension: unmaintained
+  unmaintained: true
   subtype: encoding
 - name: awscloudwatchmetricstreamsencodingextension
   display_name: AWS CloudWatch Metric Streams Encoding Extension
