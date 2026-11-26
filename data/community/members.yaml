@@ -1183,7 +1183,6 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
-      - docs-ro-approvers
       - docs-triagers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-triagers
@@ -1516,7 +1515,6 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
-      - docs-ro-approvers
       - docs-triagers
       - proto-approvers
       - proto-triagers
@@ -2033,6 +2031,11 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/kinyoklion
     avatar_url: https://avatars.githubusercontent.com/u/4955475?v=4
+  - name: klobucar
+    teams:
+      - sig-security-approvers
+    html_url: https://github.com/klobucar
+    avatar_url: https://avatars.githubusercontent.com/u/223349?v=4
   - name: kota-sakuma
     teams:
       - docs-ja-approvers
@@ -2115,6 +2118,11 @@ approvers:
       - semconv-client-approvers
     html_url: https://github.com/MSNev
     avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
+  - name: mwimpelberg28
+    teams:
+      - demo-approvers
+    html_url: https://github.com/mwimpelberg28
+    avatar_url: https://avatars.githubusercontent.com/u/120263653?v=4
   - name: my-git9
     teams:
       - docs-zh-approvers

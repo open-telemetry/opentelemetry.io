@@ -2,7 +2,7 @@
 title: はじめに
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 8
-default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
+default_lang_commit: 820ce0e5f9c942912b85fad25b6ec8ff424bf73f
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
@@ -259,6 +259,7 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 - [手動計装][manual instrumentation]について学び、さらに多くの[サンプル](/docs/languages/dotnet/examples/)を試してみましょう。
 - [OpenTelemetry デモ](/docs/demo/)をご覧ください。
   .NET ベースの[カートサービス](/docs/demo/services/cart/)が含まれています。
+- テレメトリーが期待どおりに表示されない場合は、[トラブルシューティング](/docs/languages/dotnet/troubleshooting/)を参照してください。
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
