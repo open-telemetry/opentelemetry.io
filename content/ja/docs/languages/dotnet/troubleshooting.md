@@ -178,7 +178,7 @@ OpenTelemetry の値は `LogLevel` 名にマッピングされます。
 ### ファイルプリアンブル {#file-preamble}
 
 各ログファイルはプロセスを説明するプリアンブルで始まるため、単一のファイルだけで有用です。
-以下の例は省略されています。
+以下の例では一部を省略しています。
 
 ```text
 === OpenTelemetry .NET SDK self-diagnostics ===
@@ -236,7 +236,7 @@ OTEL_TRACES_SAMPLER = parentbased_traceidratio
 | `None`            | `none`      | 何も表示しない。                                                                     |
 | `Names`           | `names`     | 変数名のみ。                                                                         |
 | `KnownSafeValues` | `knownsafe` | 名前に加えて、SDK が安全と判断した値。その他の値は `[REDACTED]` となる。デフォルト。 |
-| `AllValues`       | `all`       | すべての値を未編集で表示。                                                           |
+| `AllValues`       | `all`       | すべての値を伏せずに表示。                                                           |
 
 `KnownSafeValues` では、エンドポイントはスキーム、ホスト、ポートに縮小され、`OTEL_RESOURCE_ATTRIBUTES` は `service.name` などの既知のキーの値のみを保持します。
 
@@ -267,7 +267,7 @@ export OTEL_DOTNET_SELF_DIAGNOSTICS_LOG_DIRECTORY=./otel-logs
 > [!IMPORTANT]
 >
 > 共有する前にログを確認してください。
-> 環境変数の値はデフォルトでは編集されますが、ログメッセージにはパス、エンドポイント、リソース属性、環境からの例外の詳細が含まれている可能性があります。
+> 環境変数の値はデフォルトで伏せられますが、ログメッセージには、実行環境のパス、エンドポイント、リソース属性、例外の詳細が含まれる場合があります。
 
 ## OTEL_DIAGNOSTICS.json からの移行 {#migrate-from-otel_diagnosticsjson}
 
