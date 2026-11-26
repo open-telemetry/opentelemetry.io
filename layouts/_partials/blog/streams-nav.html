@@ -1,0 +1,14 @@
+{{/* Tabs linking the main blog to its streams: sections with `blog_stream: true`. */ -}}
+{{ $blog := site.GetPage "/blog" -}}
+{{ $streams := where $blog.Sections "Params.blog_stream" true -}}
+{{ with $streams -}}
+<ul class="nav nav-tabs mb-4">
+  {{ range union (slice $blog) .ByWeight -}}
+  <li class="nav-item">
+    <a class="nav-link{{ if eq .Path $.Path }} active" aria-current="page{{ end }}" href="{{ .RelPermalink }}">
+      {{- .LinkTitle -}}
+    </a>
+  </li>
+  {{ end -}}
+</ul>
+{{ end -}}

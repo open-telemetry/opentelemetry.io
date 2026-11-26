@@ -1,0 +1,16 @@
+{{/*
+  Returns the pages that a list or RSS feed of the given section shows:
+
+  - Blog root: all blog posts, except those of streams that set
+    `in_main_blog: false` (via `cascade` in the stream's _index.md).
+  - A section with `all_streams: true` (/blog/all/): all blog posts.
+  - Any other section, including a stream: its own posts, recursively.
+*/ -}}
+{{ $pages := .RegularPagesRecursive -}}
+{{ $blog := site.GetPage "/blog" -}}
+{{ if eq .Path "/blog" -}}
+  {{ $pages = where $blog.RegularPagesRecursive "Params.in_main_blog" "!=" false -}}
+{{ else if .Params.all_streams -}}
+  {{ $pages = $blog.RegularPagesRecursive -}}
+{{ end -}}
+{{ return $pages -}}
