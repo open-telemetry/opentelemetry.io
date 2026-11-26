@@ -166,7 +166,7 @@ such as (in alphabetical order):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
+- [Ona (formerly Gitpod)](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## Tools
