@@ -3,6 +3,7 @@ title: はじめに
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 8
 default_lang_commit: ec40cad3a7ca79640aa6a6f97264fbbe0d00aa87
+drifted_from_default: true
 cSpell:ignore: ASPNETCORE rolldice
 ---
 

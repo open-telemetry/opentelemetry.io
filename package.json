@@ -176,8 +176,8 @@
     "markdownlint-rule-helpers": "0.31.0",
     "markdownlint-rule-no-shortcut-ref-link": "0.4.0",
     "prettier": "3.10.1",
-    "puppeteer": "25.16.0",
-    "puppeteer-core": "25.16.0",
+    "puppeteer": "25.17.0",
+    "puppeteer-core": "25.17.0",
     "sass-embedded": "1.108.2",
     "smol-toml": "1.9.1",
     "textlint": "15.8.0",
@@ -188,13 +188,13 @@
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",
-    "@opentelemetry/auto-instrumentations-web": "0.69.0",
-    "@opentelemetry/core": "3.1.0",
-    "@opentelemetry/exporter-trace-otlp-http": "0.301.0",
-    "@opentelemetry/instrumentation": "0.301.0",
-    "@opentelemetry/resources": "3.1.0",
-    "@opentelemetry/sdk-trace": "3.1.0",
-    "@opentelemetry/semantic-conventions": "1.44.0",
+    "@opentelemetry/auto-instrumentations-web": "0.70.1",
+    "@opentelemetry/core": "3.1.1",
+    "@opentelemetry/exporter-trace-otlp-http": "0.301.1",
+    "@opentelemetry/instrumentation": "0.301.1",
+    "@opentelemetry/resources": "3.1.1",
+    "@opentelemetry/sdk-trace": "3.1.1",
+    "@opentelemetry/semantic-conventions": "1.45.0",
     "minisearch": "7.2.0",
     "path": "0.12.7"
   },
@@ -221,6 +221,6 @@
   "allowScripts": {
     "@parcel/watcher": false,
     "hugo-extended@0.166.0": true,
-    "puppeteer@25.16.0": true
+    "puppeteer": false
   }
 }

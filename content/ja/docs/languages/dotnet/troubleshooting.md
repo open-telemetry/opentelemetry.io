@@ -3,6 +3,7 @@ title: トラブルシューティング
 description: OpenTelemetry .NET のトラブルシューティング方法を学ぶ
 weight: 100
 default_lang_commit: 3899955672f4abc64710cad23217b76528d7a961
+drifted_from_default: true
 cSpell:ignore: eventsource
 ---
 
