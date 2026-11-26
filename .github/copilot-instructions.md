@@ -13,8 +13,6 @@ info here.
 - Install the Node.js version pinned in `.nvmrc`: `nvm install` (for Windows,
   see
   [Development setup](https://opentelemetry.io/docs/contributing/development/))
-- If Puppeteer download fails due to network issues: Set
-  `export PUPPETEER_SKIP_DOWNLOAD=true`
 - Clone repository:
   `git clone https://github.com/open-telemetry/opentelemetry.io.git && cd opentelemetry.io`
 
@@ -93,8 +91,6 @@ info here.
 
 **Environment Variables for Development:**
 
-- `PUPPETEER_SKIP_DOWNLOAD=true` - Skip Puppeteer download in restricted
-  networks
 - `GET=no` - Skip submodule updates when working directly in submodules
 - `PIN_SKIP=content-modules` - Skip pinning specific submodules during
   development

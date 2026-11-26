@@ -276,7 +276,7 @@ Treat a file written with `AllValues` as a secret: it can contain API keys and
 authentication headers. Enable it for a single reproduction run, not
 permanently.
 
-On Linux and macOS with .NET 8 or later, the SDK creates the log directory and
+On Linux and macOS with .NET 10 or later, the SDK creates the log directory and
 files so that only the owning user can read them. Other accounts, such as a log
 shipper, must be granted access explicitly.
 
