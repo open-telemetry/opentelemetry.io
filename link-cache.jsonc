@@ -12121,7 +12121,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/simpleprometheusreceiver": {
@@ -17469,6 +17469,81 @@
     "when": "2026-11-26T05:39:29Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/blob/main/docs/instrument-guide.md": {
+    "result": 200,
+    "when": "2026-11-26T15:56:10Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/database/sql": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/gin-gonic/gin": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/openai/openai-go": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/redis/go-redis/v9": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/segmentio/kafka-go": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/sirupsen/logrus": {
+    "result": 200,
+    "when": "2026-11-26T15:56:10Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/google.golang.org/grpc": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/k8s.io/client-go": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/log": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/log/slog": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/net/http": {
+    "result": 200,
+    "when": "2026-11-26T15:56:09Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation": {
     "result": 200,
     "when": "2026-10-28T05:39:03Z",
@@ -17516,67 +17591,67 @@
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/database/sql": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/anthropics/anthropic-sdk-go": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/openai/openai-go": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/redis/go-redis/v9": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/segmentio/kafka-go": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/sirupsen/logrus": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/go.mongodb.org/mongo-driver/mongo": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/google.golang.org/grpc": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/k8s.io/client-go": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/log": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/log/slog": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/net/http": {
     "result": "error",
-    "when": "2026-11-26T05:39:04Z",
+    "when": "2026-11-26T15:44:56Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-go-contrib": {
@@ -31907,10 +31982,14 @@
     "when": "2026-10-27T05:47:10Z",
     "via": "lychee",
   },
+  // Held: rubydoc.info returns 521 for this and some other gem pages (most
+  // still load). First failed 2026-11-26; last OK 2026-10-24. Precedent:
+  // open-telemetry/opentelemetry.io#8334.
   "https://rubydoc.info/gems/opentelemetry-exporter-jaeger/0.24.1": {
-    "result": "error",
-    "when": "2026-11-26T05:39:04Z",
-    "via": "lychee",
+    "result": 200,
+    "when": "2026-11-26T15:55:37Z",
+    "via": "manual",
+    "expires": "2026-12-06",
   },
   "https://rubydoc.info/gems/opentelemetry-exporter-otlp-logs/0.5.1": {
     "result": 200,

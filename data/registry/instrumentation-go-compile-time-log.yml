@@ -15,5 +15,5 @@ description: >
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/log
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/log
 createdAt: 2026-06-29
