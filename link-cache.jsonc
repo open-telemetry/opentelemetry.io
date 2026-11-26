@@ -5176,7 +5176,7 @@
   },
   "https://github.com/IBM/wxflows/": {
     "result": "error",
-    "when": "2026-11-25T05:38:17Z",
+    "when": "2026-11-26T01:29:23Z",
     "via": "lychee",
   },
   "https://github.com/IliaBrahinets": {
@@ -32339,7 +32339,7 @@
   },
   "https://rubydoc.info/gems/opentelemetry-metrics-api/0.7.0": {
     "result": "error",
-    "when": "2026-11-25T05:38:17Z",
+    "when": "2026-11-26T01:58:22Z",
     "via": "lychee",
   },
   "https://rubydoc.info/gems/opentelemetry-metrics-sdk/0.16.0": {
@@ -33380,6 +33380,11 @@
   "https://web.archive.org/web/20250624231058/https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/": {
     "result": 200,
     "when": "2026-11-19T05:38:35Z",
+    "via": "lychee",
+  },
+  "https://web.archive.org/web/20260213013016/https://github.com/IBM/wxflows": {
+    "result": 200,
+    "when": "2026-11-26T01:58:26Z",
     "via": "lychee",
   },
   "https://web.dev/articles/cls": {

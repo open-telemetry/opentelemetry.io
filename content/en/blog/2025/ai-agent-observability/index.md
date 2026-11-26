@@ -73,7 +73,7 @@ frameworks**:
   manage, and deploy AI agents often in a more streamlined way than building an
   agent from scratch. Examples include the following:
   [IBM Bee AI](https://github.com/i-am-bee),
-  [IBM wxFlow](https://github.com/IBM/wxflows/),
+  [IBM wxFlow](https://web.archive.org/web/20260213013016/https://github.com/IBM/wxflows),
   [CrewAI](https://www.crewai.com/),
   [AutoGen](https://microsoft.github.io/autogen/dev/),
   [Semantic Kernel](https://github.com/microsoft/semantic-kernel),
