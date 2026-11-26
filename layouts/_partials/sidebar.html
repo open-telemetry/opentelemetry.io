@@ -1,0 +1,15 @@
+{{/* Docsy sidebar.html (non-shared chrome), with a per-view sidebar for blog pages. */ -}}
+{{ if eq .Type "blog" -}}
+  {{ $view := site.GetPage "/blog" -}}
+  {{ with .CurrentSection -}}
+    {{ if .Params.blog_stream }}{{ $view = . }}{{ end -}}
+  {{ end -}}
+  {{ partialCached "blog/sidebar-tree.html" $view $view.Path -}}
+{{ else -}}
+  {{ $args := partial "sidebar-args.html" . -}}
+  {{ if $args.cacheSidebar -}}
+    {{ partialCached "sidebar-tree.html" $args $args.sidebarRootID -}}
+  {{ else -}}
+    {{ partial "sidebar-tree.html" $args -}}
+  {{ end -}}
+{{ end -}}
