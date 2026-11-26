@@ -2,7 +2,7 @@
 title: Primeros pasos
 weight: 1
 default_lang_commit: 5d68eec62bc16a5558678eae6d2f8c5083113823
-cSpell:ignore: Dotel
+cSpell:ignore: Dotel jvms
 ---
 
 ## Configuración { #setup }
@@ -77,7 +77,7 @@ El agente de Java incluye librerías de instrumentación para muchos componentes
 
 {{% config_option name="otel.javaagent.debug" %}}
 
-Establécelo en `true` para ver los registros de depuración. Ten en cuenta que son bastante detallados.
+Configura esta opción en `true` para ver los registros de depuración. Ten en cuenta que son bastante detallados.
 
 {{% /config_option %}}
 
