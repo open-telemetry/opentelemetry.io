@@ -16,5 +16,5 @@ description: >
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/google.golang.org/grpc
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/google.golang.org/grpc
 createdAt: 2026-06-29
