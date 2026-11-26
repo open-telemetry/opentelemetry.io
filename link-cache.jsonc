@@ -7539,6 +7539,11 @@
     "when": "2026-11-26T19:07:35Z",
     "via": "lychee",
   },
+  "https://github.com/getsentry/sentry-python/tree/17094d74ef69518bd1fbf0f7138b2116255d62ae/sentry_sdk/integrations/opentelemetry": {
+    "result": 200,
+    "when": "2026-11-26T21:02:35Z",
+    "via": "lychee",
+  },
   "https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry": {
     "result": "error",
     "when": "2026-11-26T19:06:05Z",
