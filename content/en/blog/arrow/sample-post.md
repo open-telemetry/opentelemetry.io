@@ -6,6 +6,5 @@ author: OTel Arrow maintainers
 draft: true # Sample post to preview blog streams
 ---
 
-**This is a sample post** to preview the OTel Arrow stream. It is listed in OTel
-Arrow and in all posts, but not in the main blog. Its stream turns announcements
-off.
+**This is a sample post** to preview the OTel Arrow stream. It is listed only in
+OTel Arrow, whose posts aren't announced.

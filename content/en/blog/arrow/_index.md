@@ -1,11 +1,12 @@
 ---
 title: OTel Arrow
 description: Technical posts from the OTel Arrow project
-weight: 3
-blog_stream: true
+menu: { main: { parent: Blog, weight: 3 } }
+toc_hide: true # Not in the main blog's sidebar
+sidebar_root_for: self # Sidebar shows only this stream
 outputs: [HTML, markdown, RSS]
 cascade:
   params:
-    in_main_blog: false
+    stream: arrow
     announcement: false
 ---
