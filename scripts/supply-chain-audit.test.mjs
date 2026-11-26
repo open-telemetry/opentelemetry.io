@@ -393,7 +393,7 @@ test('manifest: the install path keeps its locked, script-free form', () => {
     'get:submodule':
       'bash -c \'npm run "_get:${GET:-submodule}" -- "$@" && npm run -s _postget:submodule\' -',
     '_get:submodule':
-      'set -x && git submodule update --init ${DEPTH:- --depth 999}',
+      "git submodule status | grep -q '^[^ ]' || exit 0; set -x && git submodule update --init ${DEPTH:- --depth 999}",
     '_get:no': 'echo SKIPPING get operation',
     '_postget:submodule':
       'npm run -s _git:submodule-status && echo && scripts/update-semconv-mounts.pl',
