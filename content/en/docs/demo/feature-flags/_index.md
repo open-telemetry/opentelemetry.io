@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: loadgenerator OLJCESPC7Z
+cSpell:ignore: loadgenerator maxmemory noeviction OLJCESPC7Z valkey
 ---
 
 The demo provides several feature flags that you can use to simulate different
@@ -53,6 +53,7 @@ user interface:
 | `productCatalogFailure`        | Product Catalog           | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                                                                                                        |
 | `productCatalogLockContention` | Product Catalog           | Simulate database lock contention by holding an `ACCESS EXCLUSIVE` lock on the `catalog.products` table, blocking other product catalog queries.                                                 |
 | `recommendationCacheFailure`   | Recommendation            | Create a memory leak due to an exponentially growing cache. Roughly half of requests trigger growth.                                                                                             |
+| `valkeyMemoryPressure`         | Cart                      | Set Valkey's `maxmemory` just below its current usage with the `noeviction` policy, so cart writes fail with OOM errors. Turning the flag off removes the limit.                                 |
 | `webInteractionSlowdown`       | Frontend                  | Make the Add To Cart click slow in the browser for a poor INP. A stand-in analytics tag does synchronous work in the click task. The variant sets the event queue size: `300k`, `600k`, `1200k`. |
 
 ## Guided Debugging Scenario
