@@ -14,11 +14,6 @@ This page will show you how to get started with OpenTelemetry in Go.
 You will learn how you can instrument a simple application manually, in such a
 way that [traces][], [metrics][], and [logs][] are emitted to the console.
 
-> [!NOTE]
->
-> The logs signal is still experimental. Breaking changes may be introduced in
-> future versions.
-
 ## Prerequisites
 
 Ensure that you have the following installed locally:

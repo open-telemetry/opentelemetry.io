@@ -29,7 +29,7 @@ go:
   status:
     traces: stable
     metrics: stable
-    logs: release_candidate
+    logs: stable
     profiles: '-'
 java:
   name: Java
