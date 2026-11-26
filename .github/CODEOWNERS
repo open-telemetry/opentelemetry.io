@@ -98,7 +98,6 @@
 /.editorconfig                  @open-telemetry/docs-maintainers
 /.github/**                     @open-telemetry/docs-maintainers
 /.gitmodules                    @open-telemetry/docs-maintainers
-/.gitpod.yml                    @open-telemetry/docs-maintainers
 /.markdown*.*                   @open-telemetry/docs-maintainers
 /content/**/.markdownlint.yaml  @open-telemetry/docs-maintainers
 /.nvmrc                         @open-telemetry/docs-maintainers
