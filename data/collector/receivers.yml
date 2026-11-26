@@ -488,7 +488,8 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: unmaintained
+  unmaintained: true
 - name: natsreceiver
   display_name: NATS Receiver
   repo: contrib
@@ -715,6 +716,7 @@
     - contrib
   stability:
     metrics: alpha
+    logs: development
 - name: snowflakereceiver
   display_name: Snowflake Receiver
   repo: contrib
@@ -728,7 +730,8 @@
   distributions:
     - contrib
   stability:
-    traces: beta
+    traces: unmaintained
+  unmaintained: true
 - name: splunkenterprisereceiver
   display_name: Splunk Enterprise Receiver
   repo: contrib

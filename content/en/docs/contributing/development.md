@@ -21,23 +21,6 @@ cSpell:ignore: TOCSS
 
 ## Cloud-IDE setup
 
-### Gitpod
-
-To work via [Gitpod.io][]:
-
-1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
-    open an existing workspace over your fork. You can also visit a link of the
-    form:
-    `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
-
-    > **Note**: If you have the necessary permissions to work from this
-    > repository, or just want to look around, open
-    > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
-
-Gitpod automatically installs the repo-specific packages for you.
-{{% param what-next %}}
-
 ### Codespaces
 
 To work via GitHub [Codespaces][]:
@@ -183,7 +166,7 @@ such as (in alphabetical order):
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
+- [Ona (formerly Gitpod)](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## Tools
@@ -243,8 +226,6 @@ npm run check:code-excerpts
 [deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[gitpod.io]: https://gitpod.io
-[gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases

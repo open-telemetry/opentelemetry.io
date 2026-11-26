@@ -294,7 +294,7 @@
     traces: beta
     profiles: development
 - name: rollingspanlatencyprocessor
-  display_name: rollingspanlatencyprocessor
+  display_name: Rolling Span Latency Processor
   repo: contrib
   distributions:
     - contrib
@@ -316,6 +316,7 @@
     - contrib
   stability:
     logs: development
+    traces: development
 - name: spanprocessor
   display_name: Span Processor
   repo: contrib
@@ -375,7 +376,7 @@
   distributions:
     - contrib
   stability:
-    logs: alpha
+    logs: beta
 - name: verifyprocessor
   display_name: verifyprocessor
   repo: contrib
