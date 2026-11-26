@@ -1,8 +1,8 @@
 {{/*
   Sidebar for a blog view (main blog, a stream, or all posts): a view switcher,
   and the view's posts from blog/pages.html, grouped by year. Uses Docsy's
-  sidebar-tree markup. It is cached per view, so it ships hidden, and Docsy's chrome-nav.js sets the active
-  page client side.
+  sidebar-tree markup. It is cached per view, so it ships hidden, and Docsy's
+  chrome-nav.js sets the active page client side.
 */ -}}
 {{ $view := . -}}
 {{ $isMain := eq .Path "/blog" -}}
