@@ -34,6 +34,13 @@ source Internal Developer Platform for Kubernetes. Building, deploying,
 observing, and securing applications work out of the box, and a growing
 ecosystem of modules lets platform teams swap in the tools they prefer to use.
 
+A module is a pluggable integration, typically packaged as a Helm chart, that
+provides one platform capability with a specific tool: an API gateway, a CI
+workflow engine, or an observability backend, for example. Available modules are
+listed in the [OpenChoreo ecosystem](https://openchoreo.dev/ecosystem/), and the
+[modules overview](https://openchoreo.dev/docs/platform-engineer-guide/modules/overview/)
+explains how they work.
+
 OpenChoreo splits the platform into planes, each running on Kubernetes. A
 control plane manages platform state. One or more data planes run the workloads.
 Optional workflow planes run build and test workflows, and an observability
@@ -62,10 +69,25 @@ adapters", architecture. On one side, it exposes logs, metrics, and tracing APIs
 it connects to storage backends through adapter APIs with published specs. Each
 backend ships as an
 [ecosystem module](https://github.com/openchoreo/community-modules) that
-implements the relevant adapter, so moving traces from Jaeger or OpenSearch to
-AWS X-Ray means installing a different Helm chart, not changing the platform.
+implements the relevant adapter, so moving traces from
+[Jaeger](https://www.jaegertracing.io/) or [OpenSearch](https://opensearch.org/)
+to AWS X-Ray means installing a different Helm chart, not changing the platform.
 
 ![Figure 2: The Observer's hexagonal architecture. Consumers query the ports on the left; pluggable adapters on the right talk to the chosen backends.](observer-hexagonal-architecture.png)
+
+This design also lets each module use the collection tooling that is most
+established for its signal, while the Observer's adapters keep the experience
+the same for the portal, CLI, and agents. For logs, the default modules use
+[Fluent Bit](https://fluentbit.io/), a lightweight processor widely used to ship
+container logs on Kubernetes. For metrics, the default module builds on
+[Prometheus](https://prometheus.io/), which many platform teams already run for
+cluster metrics, while cloud-specific modules follow their provider's
+conventions; the AWS CloudWatch module, for example, uses the OpenTelemetry
+Collector. For traces, the OpenTelemetry Collector is the natural fit, because
+applications already emit spans through OpenTelemetry SDKs and
+[OTLP](/docs/specs/otlp/). The OpenTelemetry Collector also captures Kubernetes
+events, and these two OpenTelemetry-powered features are the focus of this
+article.
 
 ## Where OpenTelemetry fits
 
@@ -146,8 +168,10 @@ to close that gap:
 - **Collect.** The
   [`k8s_events`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/c64840337cf400792cb684037ed998428b268197/receiver/k8seventsreceiver)
   receiver from the Collector contrib repository watches events across the
-  cluster. The collector runs as a single replica so that each event is recorded
-  once.
+  cluster and converts each one into an OpenTelemetry log record: the event
+  message becomes the log body, the event type (`Normal` or `Warning`) sets the
+  severity, and the event's fields become attributes. The collector runs as a
+  single replica so that each event is recorded only once.
 - **Enrich.** A custom processor, `k8seventenrich`, looks up the object each
   event refers to and copies its labels, annotations, and controlling owner
   reference onto the event as resource attributes: `k8s.object.label.<key>`,
