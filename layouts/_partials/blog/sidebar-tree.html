@@ -1,7 +1,7 @@
 {{/*
-  Sidebar for a blog view (main blog, a stream, or all posts): the view's posts,
-  from blog/pages.html, grouped by year. Uses Docsy's sidebar-tree markup. It is
-  cached per view, so it ships hidden, and Docsy's chrome-nav.js sets the active
+  Sidebar for a blog view (main blog, a stream, or all posts): a view switcher,
+  and the view's posts from blog/pages.html, grouped by year. Uses Docsy's
+  sidebar-tree markup. It is cached per view, so it ships hidden, and Docsy's chrome-nav.js sets the active
   page client side.
 */ -}}
 {{ $view := . -}}
@@ -18,6 +18,20 @@
   </form>
   </div>
   <div id="content-desktop"></div>
+  {{/* View switcher: the main blog and its streams (sections with `blog_stream: true`). */ -}}
+  {{ $blog := site.GetPage "/blog" -}}
+  {{ with where $blog.Sections "Params.blog_stream" true -}}
+  <div class="dropdown mb-3 pe-md-3">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle w-100 text-start" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      {{- $view.LinkTitle -}}
+    </button>
+    <ul class="dropdown-menu">
+      {{ range union (slice $blog) .ByWeight -}}
+      <li><a class="dropdown-item{{ if eq .Path $view.Path }} active" aria-current="true{{ end }}" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end -}}
+    </ul>
+  </div>
+  {{ end -}}
   <nav class="td-sidebar-nav collapse td-sidebar-nav--search-disabled foldable-nav" id="td-section-nav" data-sidebar-root-id="{{ .RelPermalink }}">
     <ul class="td-sidebar-nav__section pe-md-3 ul-0">
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="{{ $mid }}-li">
