@@ -36854,6 +36854,16 @@
     "when": "2026-10-28T05:39:34Z",
     "via": "lychee",
   },
+  "https://www.rabbitmq.com/docs/configure#cluster-name": {
+    "result": 200,
+    "when": "2026-11-27T10:29:02Z",
+    "via": "lychee",
+  },
+  "https://www.rabbitmq.com/docs/vhosts": {
+    "result": 200,
+    "when": "2026-11-27T10:29:02Z",
+    "via": "lychee",
+  },
   "https://www.rabbitmq.com/tutorials/tutorial-six-java#correlation-id": {
     "result": 200,
     "when": "2026-11-20T05:38:40Z",
