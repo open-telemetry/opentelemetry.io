@@ -2959,6 +2959,11 @@
     "when": "2026-11-27T17:20:05Z",
     "via": "lychee",
   },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/26/tgsql/observability-open-telemetry.html": {
+    "result": 200,
+    "when": "2026-11-27T18:14:57Z",
+    "via": "manual",
+  },
   "https://docs.oracle.com/en/error-help/db/": {
     "result": 200,
     "when": "2026-11-27T05:39:33Z",
