@@ -7,8 +7,7 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
-default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
-drifted_from_default: true
+default_lang_commit: f73c0ca547d4c6160a6afa492e36992b1876299b
 cSpell:ignore: TOCSS
 ---
 
@@ -19,21 +18,6 @@ cSpell:ignore: TOCSS
 > Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][] を使用して Linux と同様の手順に従うことができます。
 
 ## クラウド IDE のセットアップ {#cloud-ide-setup}
-
-### Gitpod {#gitpod}
-
-[Gitpod.io][] で作業する手順は以下です。
-
-1.  このリポジトリをフォークします。詳細は [リポジトリのフォーク方法][fork] を参照してください。
-2.  [gitpod.io/workspaces][] から新しいワークスペースを作成する（初回のみ）か、フォークしたリポジトリ上の既存のワークスペースを開きます。
-    また、次の形式のリンクを開くこともできます。
-    `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`
-
-    > **Note**: このリポジトリで作業するための権限がある場合や、単に内容を確認したい場合は、
-    > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io> を開いてください。
-
-Gitpod はリポジトリ固有のパッケージを自動的にインストールします。
-{{% param what-next %}}
 
 ### Codespaces {#codespaces}
 
@@ -157,7 +141,8 @@ Web サイトは以下のコンテンツを基に構築されます。
 デフォルトでは CI スクリプトが呼び出しのたびに、サブモジュールを取得します。
 作業中にこの動作を防ぐには、環境変数 `GET=no` を設定してください。
 サブモジュールの PR を提出する前に、サブモジュールに対して `git fetch --unshallow` を実行する必要もあります。
-または、`DEPTH=100` を設定してサブモジュールを再取得してください。
+サブモジュールはデフォルトで 999 コミット分の深さでクローンされます。
+別の深さを使用するには、サブモジュールが最初にクローンされる前に `DEPTH` を Git オプションに設定してください（例: `DEPTH='--depth 5000'`）。
 
 ## DevContainer サポート {#devcontainers}
 
@@ -165,7 +150,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 
 - [Codespaces][cs-devc]
 - [DevPod](https://devpod.sh/docs/developing-in-workspaces/devcontainer-json)
-- [Gitpod](https://ona.com/docs/ona/configuration/devcontainer/overview)
+- [Ona (formerly Gitpod)](https://ona.com/docs/ona/configuration/devcontainer/overview)
 - [VSCode](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## ツール {#tools}
@@ -221,8 +206,6 @@ npm run check:code-excerpts
 [deploy preview]: ../pull-requests/#site-deploys-and-pr-previews
 [devcontainers]: https://containers.dev/
 [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-[gitpod.io]: https://gitpod.io
-[gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases
