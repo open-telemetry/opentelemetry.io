@@ -75,19 +75,21 @@ to AWS X-Ray means installing a different Helm chart, not changing the platform.
 
 ![Figure 2: The Observer's hexagonal architecture. Consumers query the ports on the left; pluggable adapters on the right talk to the chosen backends.](observer-hexagonal-architecture.png)
 
-This design also lets each module use the collection tooling that is most
-established for its signal, while the Observer's adapters keep the experience
-the same for the portal, CLI, and agents. For logs, the default modules use
-[Fluent Bit](https://fluentbit.io/), a lightweight processor widely used to ship
-container logs on Kubernetes. For metrics, the default module builds on
-[Prometheus](https://prometheus.io/), which many platform teams already run for
-cluster metrics, while cloud-specific modules follow their provider's
-conventions; the AWS CloudWatch module, for example, uses the OpenTelemetry
-Collector. For traces, the OpenTelemetry Collector is the natural fit, because
-applications already emit spans through OpenTelemetry SDKs and
-[OTLP](/docs/specs/otlp/). The OpenTelemetry Collector also captures Kubernetes
-events, and these two OpenTelemetry-powered features are the focus of this
-article.
+This design also means OpenChoreo doesn't prescribe how telemetry is collected.
+Each module can make that choice independently, while the Observer's adapters
+keep the experience the same for the portal, CLI, and agents. For example, the
+default logs module uses [Fluent Bit](https://fluentbit.io/), a lightweight
+processor widely used to ship container logs on Kubernetes. The default metrics
+module builds on [Prometheus](https://prometheus.io/), which many platform teams
+already run for cluster metrics, while some cloud-specific metrics modules
+follow their provider's conventions; the AWS CloudWatch metrics module, for
+example, uses the OpenTelemetry Collector. For the default traces module, the
+OpenTelemetry Collector is the natural fit, because applications already emit
+spans through OpenTelemetry SDKs and [OTLP](/docs/specs/otlp/). A team that
+prefers OpenTelemetry for logs or metrics can use a Collector-based module
+instead, without changing the platform. The OpenTelemetry Collector also
+captures Kubernetes events, and these two OpenTelemetry-powered features are the
+focus of this article.
 
 ## Where OpenTelemetry fits
 
