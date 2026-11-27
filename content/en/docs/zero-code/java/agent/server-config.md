@@ -3,7 +3,8 @@ title: Application server configuration
 linkTitle: App server config
 description: Learn how to define agent paths for Java application servers
 weight: 215
-cSpell:ignore: asadmin Glassfish Payara setenv wildfly
+# prettier-ignore
+cSpell:ignore: asadmin Djavax Glassfish jmxremote MBean mbeanserver Payara setenv weblogic wildfly WLSMBeanServerBuilder
 ---
 
 When instrumenting an app that runs on a Java application server with a Java
@@ -151,6 +152,13 @@ set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaa
 For managed server instances, add the `-javaagent` argument using the admin
 console.
 
+To collect WebLogic JMX metrics with the Java agent, ensure that the domain's
+`PlatformMBeanServerUsed` JMX setting is `true` (the default for WebLogic Server
+10.3.3.0 and later). If you also pass `-Dcom.sun.management.jmxremote` to the
+JVM, add
+`-Djavax.management.builder.initial=weblogic.management.jmx.mbeanserver.WLSMBeanServerBuilder`
+so that WebLogic initializes the platform `MBeanServer`.
+
 ## WebSphere Liberty Profile
 
 Add the path to the Java agent to the `jvm.options` file. For a single server,
@@ -180,21 +188,27 @@ Open the WebSphere Admin Console and follow these steps:
 ## Enable predefined JMX Metrics
 
 The Java agent includes predefined JMX metrics configurations for several
-popular application servers, but these are not enabled by default. To enable
-collection of the predefined metrics, specify a list of targets as the value for
-the `otel.jmx.target.system` system property. For example:
+popular application servers. JMX metric collection is controlled by the
+`otel.instrumentation.jmx.enabled` instrumentation selector (`true` by default).
+Stable bundled JMX metrics are collected automatically, except for the JMX-based
+`jvm` definitions, which overlap with `runtime-telemetry`.
+
+Predefined application server metrics are currently unstable (experimental) and
+require opt-in by metric name pattern using the
+`otel.jmx.metrics.experimental.included` system property. For example:
 
 ```bash
 $ java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -Dotel.jmx.target.system=jetty,tomcat \
+     -Dotel.jmx.metrics.experimental.included=jetty.*,tomcat.*,weblogic.* \
      ... \
      -jar myapp.jar
 ```
 
-The following are known application server values for `otel.jmx.target.system`:
+The following application servers have predefined JMX metric definitions:
 
 - [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
 - [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`weblogic`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/weblogic.md)
 - [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
 
 > [!NOTE]
