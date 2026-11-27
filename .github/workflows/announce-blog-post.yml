@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: npm run ci:min
 
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         id: otelbot-token
         with:
           client-id: ${{ vars.OTELBOT_DOCS_CLIENT_ID }}
@@ -82,7 +82,7 @@ jobs:
 
       - name: Create pull request # zizmor: ignore[superfluous-actions] Manages the commit, update branch, and PR lifecycle.
         if: steps.announce.outputs.branch != ''
-        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
         with:
           path: announcements-repo
           add-paths: announcements/**

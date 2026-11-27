@@ -8,6 +8,7 @@ issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
 sig: SIG GenAI Observability
 date: 2025-03-06
 default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
+drifted_from_default: true
 cSpell:ignore: genai Guangya PydanticAI Sujay
 ---
 

@@ -8,6 +8,7 @@ what-next: >
   変更の提出方法の詳細については、[コンテンツの提出](../pull-requests)を参照してください。
 weight: 60
 default_lang_commit: 4b9a057a2bfb37e1ff1aff5b4dd4c7da363d7a86
+drifted_from_default: true
 cSpell:ignore: TOCSS
 ---
 

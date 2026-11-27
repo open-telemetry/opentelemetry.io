@@ -16,5 +16,5 @@ description: >
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/segmentio/kafka-go
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/segmentio/kafka-go
 createdAt: 2026-07-08
