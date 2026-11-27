@@ -3,6 +3,7 @@ title: Performance
 description:
   Measure and evaluate the performance of the OpenTelemetry Collector.
 weight: 98
+cSpell:ignore: Telemetrygen
 ---
 
 The performance of the OpenTelemetry Collector depends on its configuration, the
