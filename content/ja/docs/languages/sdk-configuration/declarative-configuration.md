@@ -127,9 +127,14 @@ resource:
 
 ## 利用可能な設定オプション {#available-config-options}
 
-設定オプションの完全なリストは[設定の例][otel-sdk-config.yaml]に記載されています。
+設定例は[otel-sdk-config.yaml][]で確認できます。設定オプションの完全なリストは
+[Configuration Types Reference][]で確認できます。
 
-[otel-sdk-config.yaml]: https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml
+[otel-sdk-config.yaml]:
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml
+
+[Configuration Types Reference]:
+  /docs/specs/otel-config/types/
 
 ## シグナルごとのエンドポイント {#endpoint-per-signal}
 

@@ -131,11 +131,12 @@ as a starting point to migrate to declarative configuration.
 
 ## Available config options
 
-A complete list of config options can be found in the [configuration
-example][otel-sdk-config.yaml].
+A configuration example is available in [otel-sdk-config.yaml][]. For a complete
+list of configuration options, see the [Configuration Types Reference][].
 
 [otel-sdk-config.yaml]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml
+[Configuration Types Reference]: /docs/specs/otel-config/types/
 
 ## Endpoint per signal
 

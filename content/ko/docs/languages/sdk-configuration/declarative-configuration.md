@@ -129,10 +129,12 @@ resource:
 
 ## 사용 가능한 구성 옵션 {#available-config-options}
 
-전체 구성 옵션 목록은 [구성 예시][otel-sdk-config.yaml]에서 확인할 수 있다.
+[otel-sdk-config.yaml][]에서 구성 예시를 확인할 수 있다. 전체 구성 옵션 목록은
+[구성 타입 레퍼런스][]에서 확인할 수 있다.
 
 [otel-sdk-config.yaml]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml
+[구성 타입 레퍼런스]: /docs/specs/otel-config/types/
 
 ## 시그널별 엔드포인트 {#endpoint-per-signal}
 
