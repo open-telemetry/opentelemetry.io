@@ -2,7 +2,7 @@
 title: サポートされているライブラリ
 description: すぐに使える計装済みのライブラリとフレームワーク。
 weight: 10
-default_lang_commit: c9a73abce6f8c4b1ee1bdb244ed1ce6ce7192f04
+default_lang_commit: 9667281f4d05e607d2d7d466b3a55b954dced564
 # prettier-ignore
 cSpell:ignore: anthropics gonic logrus openai runtimemetrics segmentio sirupsen
 ---
@@ -30,10 +30,10 @@ HTTP と gRPC の計装はスパンとメトリクスを生成し、サービス
 Go ランタイムメトリクスはデフォルトで収集され、`OTEL_GO_DISABLED_INSTRUMENTATIONS` に `runtimemetrics` を追加することで無効にできます。
 
 サポートされるライブラリバージョンのセットは、各計装のルールによって宣言されています。
-最新の正確なリストについては、リポジトリの[計装パッケージ](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation)を参照してください。
+最新の正確なリストについては、リポジトリの[計装パッケージ](https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation)を参照してください。
 
 ## ライブラリのリクエスト {#requesting-a-library}
 
 使用しているライブラリがまだ計装されていない場合は、[フィーチャーリクエスト](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues)を作成してください。
 自分で計装を追加することもできます。
-リポジトリの[計装ガイド](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/instrument-guide.md)で、新しいライブラリのルール定義とフックの実装方法を説明しています。
+リポジトリの[計装ガイド](https://github.com/open-telemetry/opentelemetry-go-compile-contrib/blob/main/docs/instrument-guide.md)で、新しいライブラリのルール定義とフックの実装方法を説明しています。

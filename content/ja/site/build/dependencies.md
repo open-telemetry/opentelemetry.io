@@ -3,7 +3,7 @@ title: 依存関係の管理
 description: >-
   サイトの npm 依存関係に対するインストール時の動作、更新手順、サプライチェーン制御
 weight: 5
-default_lang_commit: 9804fb55065c1cfa004c08f50e48c37e39bbe73c
+default_lang_commit: f73c0ca547d4c6160a6afa492e36992b1876299b
 cSpell:ignore: EBADENGINE ERESOLVE
 ---
 
@@ -87,13 +87,21 @@ npm install --package-lock-only --ignore-scripts
 
 ### スクリプトを持つパッケージ {#script-bearing-packages}
 
-`allowScripts` エントリを持つ（または必要とする）パッケージを追加または更新する場合、変更を行うコントリビューターは以下を行います。
+依存関係の変更によってインストールスクリプトを持つパッケージが追加される場合、または承認を持つパッケージがバージョンアップされる場合、[スクリプトポリシー][script policy]に従ってレビューしてください。
 
-1. 新しいバージョンのライフサイクルスクリプトをレビューする。
-2. 結果を、依存関係の変更と一緒にコミットし、PR レビューで検証する。
-   必要なスクリプトは正確なバージョン承認として、不要なスクリプトは名前レベルの拒否（`false`、以降のバージョンアップ時に更新不要）として記録する。
-3. 直接的依存関係の新しい承認の場合、[`.github/renovate.jsonc`][] で `Puppeteer` ルールを参考に（配置も含め）、そのパッケージに専用の Renovate グループを作成し、自動マージから除外する。
-   承認済みパッケージのすべてのバージョンアップには上記の手順が必要なため、その更新 PR は共有の patch/minor グループを止めることなくコントリビューターを待つ必要がある。
+1. `npm view PACKAGE_NAME@VERSION scripts` を実行する。
+   _`PACKAGE_NAME`_ と _`VERSION`_ にはロックされた名前とバージョンを指定する。
+   そのバージョンのインストールスクリプト（`preinstall`、`install`、`postinstall`）が実行するファイルを、実行せずに読む。
+   `npm run ci:min` はロックされたツリーを `node_modules` にインストールし、スクリプトは一切実行しない。
+2. [`package.json`][] の `allowScripts` を[依存関係の変更](#updating)と一緒に更新する。
+   - サイトのワークフローがセットアップ中にそのスクリプトを必要としない場合は、`"PACKAGE_NAME": false` を使用する。
+   - サイトのワークフローがセットアップステップとしてスクリプトを必要とし、かつすべてのスクリプトがレビューに合格した場合のみ、`"PACKAGE_NAME@VERSION": true` を使用する。
+     承認しただけでは、スクリプトを無効にした[インストールパス](#install-contracts)でスクリプトは実行されない。
+     `ci:prepare` が Hugo のスクリプトを実行するように、そのインストールパスにもスクリプトを実行する処理が必要になる。
+   - 新しいエントリの場合、その理由を[現在のエントリ](#lifecycle-script-allowlist)に追加する。
+   - 不要になったエントリについては、[サプライチェーン監査](#audit)を参照する。
+3. `npm run test:local-tools` と `npm run install:safe` を実行する。
+   セットアップにスクリプトが必要な理由、またはスクリプトなしでどのように動作するかを PR で説明する。
 
 ### ピア結合パッケージ {#peer-coupled-packages}
 
@@ -200,9 +208,12 @@ npm_config_min_release_age_exclude=PACKAGE_NAME \
 PR で監査が失敗した場合、アサーションメッセージに期待される条件が記載されています。
 よくあるケースは以下のとおりです。
 
-- **`allowScripts` エントリを持つ依存関係をバージョンアップした場合**。
+- **`allowScripts` 承認を持つ依存関係をバージョンアップした場合**。
   [スクリプトを持つパッケージ](#script-bearing-packages)に従ってください。
-  失敗メッセージにエントリが移行すべきバージョンが示されます。
+  失敗メッセージに新たにロックされたバージョンが示されます。
+- **バージョンアップによりパッケージのインストールスクリプトが削除された場合**。
+  そのパッケージの `allowScripts` エントリ（承認または拒否）を削除してください。
+  監査は、インストールスクリプトを持つロックされたパッケージに対してのみエントリを受け入れます。
 - **セキュリティオーバーライドの親の範囲を変更した場合**。
   新しい範囲が修正バージョンを取り込めるなら、オーバーライドを削除し、[ロックファイルを同期](#manifest-changes)して、その行の `firstFixed` より古いコピーが残っていないことを確認した上で行を削除してください。取り込めなければ、行の `parentRange` を更新してください。
 - **ボットがセキュリティオーバーライドをバンプした場合**。
@@ -249,11 +260,17 @@ PR で監査が失敗した場合、アサーションメッセージに期待�
 - **適用**: [`package.json`][] の `allowScripts` マップ。
   [`.npmrc`][] の `strict-allow-scripts` によりフェイルクローズドとなります。
 - **評価されるタイミング**: スクリプト有効のインストール時のみです。
-  具体的には、[インストール時の動作](#install-contracts)の `hugo-extended` リビルドステップ（npm がインストール済みツリー全体をチェックする）と、`--ignore-scripts` なしで実行されるローカルの `npm install` です。
+  具体的には、[インストール時の動作](#install-contracts)の `hugo-extended` リビルドステップと、`--ignore-scripts` なしで実行されるローカルの `npm install` です。
+  リビルドステップはインストール済みのすべての依存関係を許可リストと照合しますが、実行するのは `hugo-extended` のスクリプトのみです。
 - **拒否**:
   - `false` に設定されたエントリは、レビュー済みの拒否を記録します。
     パッケージはインストールされますが、そのスクリプトはスキップされます。
   - 拒否は何も許可しないため、バージョンをまたいで名前単位でパッケージをカバーします。
+- **現在のエントリ**:
+  - `hugo-extended`、承認: インストール手順ではこのパッケージのスクリプトを使って、バージョンを固定した Hugo バイナリを取得します。
+  - `puppeteer`、拒否: そのスクリプトはブラウザーをダウンロードしますが、[ダブルチェックプローブ][double-check probe]は `CHROME_PATH` から Chrome を取得するか、オンデマンドでインストールします。
+  - `@parcel/watcher`、拒否: `sass` のオプショナルな依存関係であり、`sass-embedded` がプリビルトコンパイラーを持たないプラットフォームでのみインストールするフォールバックです。
+    そのスクリプトはリクエストされた場合にのみソースからビルドします。
 - **ローカルでのマスキング**: ユーザーの `.npmrc` で `ignore-scripts=true` を設定すると、通常のローカル `npm install` はスクリプト無効になるため、許可リストの評価をスキップします。
   ただし、リビルドステップは引き続き許可リストを評価するため、`npm run install:safe` はユーザー設定に関係なくリポジトリの態勢をチェックします。
 
@@ -273,10 +290,6 @@ engines フロアとは、上記の制御をサポートする最も古いバー
   - コミット済みの `.nvmrc` は、バンドルされている npm がフロアを満たす Node.js リリースを固定しているため、CI、Netlify、`nvm` 管理のローカルセットアップは構造上これを満たします。
     [Renovate][] がこの固定値を最新に保ちます。
     （`lts/*` のようなフローティングな `.nvmrc` ではこれを保証できません。CI ランナーは古い可能性のあるキャッシュから解決します。）
-- **Netlify**:
-  - Netlify の Node バンドルのデフォルト npm はフロアより古い場合があります。
-    [`netlify.toml`][] の [`NPM_VERSION`][netlify-deps] でフロアを満たすバージョンを固定しています。
-  - 少なくともフロアが引き上げられた際にはこの固定値も更新してください。
 
 ### 不活性な Netlify 自動インストール {#inert-netlify-auto-install}
 
@@ -323,6 +336,7 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 [deploy context]: https://docs.netlify.com/deploy/deploy-overview/#deploy-contexts
 [Docsy upgrade guides]: https://www.docsy.dev/tags/hugo/
 [Docsy]: https://www.docsy.dev/
+[double-check probe]: ../link-checking/#double-check
 [drift tracking]: /docs/contributing/localization/#track-changes
 [includes a clone of the repository]: https://answers.netlify.com/t/what-does-clear-cache-and-deploy-site-do-specifically/9419/2
 [install contracts]: #install-contracts
@@ -330,5 +344,6 @@ engines フロアとは、上記の制御をサポートする最も古いバー
 [netlify-deps]: https://docs.netlify.com/build/configure-builds/manage-dependencies/#npm
 [Netlify]: https://www.netlify.com/
 [Renovate]: https://docs.renovatebot.com/
-[Supply-chain security]: /site/design/supply-chain-security/
+[script policy]: ../../design/supply-chain-security/#scripts
+[Supply-chain security]: ../../design/supply-chain-security/
 <!-- prettier-ignore-end -->

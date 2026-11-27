@@ -1,8 +1,7 @@
 ---
 title: エクスポーター
 weight: 50
-default_lang_commit: e76ca67d0f5b6906f7a9c90cde82380fc31e6e85
-drifted_from_default: true
+default_lang_commit: 895c42b47e633c042d3ccaee5f34a014ab7a68d7
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -118,6 +117,8 @@ var loggerFactory = LoggerFactory.Create(builder =>
 ```
 
 本番環境では、ヘッダーやエンドポイント URL などの値を設定するために環境変数を使用してください。
+
+データがエンドポイントに届かない場合は、[セルフダイアグノスティクス](/docs/languages/dotnet/troubleshooting/)を有効にしてエクスポートエラーを確認してください。
 
 ## コンソール {#console}
 
