@@ -160,7 +160,6 @@ CI/infra: # including config
           - .devcontainer/**
           - .editorconfig
           - .github/**
-          - .gitpod.yml
           - .markdown*.*
           - content/**/.markdownlint.yaml
           - .nvmrc

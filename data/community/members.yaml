@@ -731,6 +731,14 @@ maintainers:
       - injector-maintainers
     html_url: https://github.com/grcevski
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
+  - name: GregMefford
+    teams:
+      - erlang-approvers
+      - erlang-contrib-approvers
+      - erlang-contrib-maintainers
+      - erlang-maintainers
+    html_url: https://github.com/GregMefford
+    avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: gshriver
     teams:
       - semconv-mainframe-approvers
@@ -1744,6 +1752,7 @@ maintainers:
       - erlang-approvers
       - erlang-contrib-approvers
       - erlang-contrib-maintainers
+      - erlang-maintainers
     html_url: https://github.com/yordis
     avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: zacharycmontoya
@@ -1924,12 +1933,6 @@ approvers:
       - arrow-triagers
     html_url: https://github.com/gouslu
     avatar_url: https://avatars.githubusercontent.com/u/7251174?v=4
-  - name: GregMefford
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-    html_url: https://github.com/GregMefford
-    avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: hannahramadan
     teams:
       - ruby-contrib-approvers
