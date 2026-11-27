@@ -25,7 +25,7 @@
     "_fix:locale-teams": "node scripts/gh/locale-codeowners/sync-teams.mjs && prettier --write data/locale-teams.yaml && npm run fix:codeowners",
     "_fix:trailing-spaces": "npm run -s __find:md:not-old-blog -- content | xargs -0 perl -i -pe 's/[ \t]+$//g'",
     "_get:no": "echo SKIPPING get operation",
-    "_get:submodule": "git submodule status | grep -q '^[^ ]' || exit 0; set -x && git submodule update --init ${DEPTH:- --depth 999}",
+    "_get:submodule": "bash -c '[ $# -gt 0 ] || git submodule status | grep -q \"^[^ ]\" || exit 0; set -x && git submodule update --init ${DEPTH:- --depth 999} \"$@\"' -",
     "_git:submodule-status": "git submodule",
     "_hugo": "bash -c 'hugo --cleanDestinationDir \"$@\" && npm run -s _hugo::post' -",
     "_hugo::post": "scripts/strip-hugo-ctx.sh public",
