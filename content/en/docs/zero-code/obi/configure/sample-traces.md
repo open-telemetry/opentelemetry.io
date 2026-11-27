@@ -54,6 +54,10 @@ the parent of the traced span. If the span has no parent, the root sampler is
 used to make the sampling decision. If the span has a parent, the sampling
 configuration depends on the sampling parent.
 
+If the configured sampler name is not supported, or the `arg` value for a ratio
+sampler cannot be parsed, OBI logs a warning and falls back to the
+`parentbased_always_on` sampler.
+
 ## Sampler argument
 
 The `arg` property specifies the argument for the selected sampler. Only
