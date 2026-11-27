@@ -156,8 +156,8 @@ directly build and serve your (submodule) changes. By default, the CI scripts
 get submodules on every invocation. To prevent this behavior while you work
 within a submodule, set the environment variable `GET=no`. You also need to run
 `git fetch --unshallow` the submodule before you can submit a PR. Submodules are
-shallow clones by default. To use another depth, set `DEPTH` to the full Git
-option, such as `DEPTH='--depth 100'`, before the submodules are first cloned.
+cloned 999 commits deep by default. To use another depth, set `DEPTH` to the Git
+option, such as `DEPTH='--depth 5000'`, before the submodules are first cloned.
 
 ## DevContainer support {#devcontainers}
 
