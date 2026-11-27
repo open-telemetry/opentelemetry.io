@@ -63,3 +63,18 @@
     run after the repo-root path rule of index.mjs, hence the full URL here. The
     cutoff assumes that open-telemetry/semantic-conventions#4374 (pending) ships
     in that release; the rule handles its repo-absolute path.
+
+# cSpell:ignore observabilitly
+- id: 2026-11-27-oracle-observability-url
+  module: semconv
+  minVers: 1.45.0
+  maxVers: 1.46.0
+  file: ^tmp/semconv/docs/db/oracledb\.md$
+  search: '(?<pre>/tgsql/)observabilitly(?<post>-open-telemetry\.html)'
+  replace: '$<pre>observability$<post>'
+  flags: g
+  notes: >-
+    Oracle renamed the page, fixing the misspelled "observabilitly" slug, so the
+    old URL now 404s. Upstreamed fix: open-telemetry/semantic-conventions#4318,
+    merged after v1.45.0 and awaiting a release, so the patch stays live through
+    1.45.x.
