@@ -248,6 +248,7 @@ test('lock: no package provides a bin that shadows a trusted command', () => {
     'bash',
     'sh',
     'perl',
+    'grep',
   ]);
   let binNames = 0;
   for (const [key, pkg] of Object.entries(lock.packages)) {
