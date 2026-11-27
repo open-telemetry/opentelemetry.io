@@ -3,7 +3,7 @@ title: OBI グローバル設定プロパティ
 linkTitle: グローバルプロパティ
 description: OBI コアに適用されるグローバル設定プロパティを設定する
 weight: 2
-default_lang_commit: 36998835eb3fb63365f9551b7407409efbbf17d9
+default_lang_commit: 820ce0e5f9c942912b85fad25b6ec8ff424bf73f
 cSpell:ignore: healthz
 ---
 
@@ -67,6 +67,9 @@ channel_buffer_len: 33
 OBI は TCP または Unix ドメインソケットを介して `/healthz` を公開できます。
 JSON レスポンスにはスキーマバージョン、現在の Unix 時刻、プロセスのアップタイムが含まれます。
 このエンドポイントはデフォルトで無効です。
+
+`/healthz` エンドポイントは、OBI プロセスが到達可能であることを報告します。
+アプリケーションの検出、プローブのアタッチ、テレメトリーのエクスポートが成功したかどうかは確認しません。
 
 ```yaml
 health_check:

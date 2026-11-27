@@ -213,6 +213,7 @@
     - contrib
   stability:
     logs: alpha
+    metrics: development
     traces: development
 - name: googlemanagedprometheusexporter
   display_name: Google Cloud Managed Prometheus Exporter
@@ -273,8 +274,9 @@
   distributions:
     - contrib
   stability:
-    logs: beta
-    traces: beta
+    logs: unmaintained
+    traces: unmaintained
+  unmaintained: true
 - name: natsexporter
   display_name: NATS Exporter
   repo: contrib

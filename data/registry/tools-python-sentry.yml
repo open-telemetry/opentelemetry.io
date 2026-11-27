@@ -18,5 +18,5 @@ authors:
   - name: Sentry authors
     email: otel@sentry.io
 urls:
-  repo: https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry
+  repo: https://github.com/getsentry/sentry-python/tree/17094d74ef69518bd1fbf0f7138b2116255d62ae/sentry_sdk/integrations/opentelemetry
 createdAt: 2023-01-31

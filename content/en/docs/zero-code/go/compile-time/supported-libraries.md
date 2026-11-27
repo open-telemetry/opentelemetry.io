@@ -34,7 +34,7 @@ metrics are collected by default and can be turned off by adding
 
 The set of supported library versions is declared by each instrumentation's
 rules. For the authoritative, up-to-date list, see the
-[instrumentation packages](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation)
+[instrumentation packages](https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation)
 in the repository.
 
 ## Requesting a library
@@ -42,5 +42,5 @@ in the repository.
 If a library you rely on isn't instrumented yet, open a
 [feature request](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/issues).
 You can also add instrumentation yourself: the repository's
-[instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/blob/main/docs/instrument-guide.md)
+[instrumentation guide](https://github.com/open-telemetry/opentelemetry-go-compile-contrib/blob/main/docs/instrument-guide.md)
 walks through defining rules and implementing hooks for a new library.

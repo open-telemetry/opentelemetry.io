@@ -731,6 +731,14 @@ maintainers:
       - injector-maintainers
     html_url: https://github.com/grcevski
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
+  - name: GregMefford
+    teams:
+      - erlang-approvers
+      - erlang-contrib-approvers
+      - erlang-contrib-maintainers
+      - erlang-maintainers
+    html_url: https://github.com/GregMefford
+    avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: gshriver
     teams:
       - semconv-mainframe-approvers
@@ -1183,7 +1191,6 @@ maintainers:
       - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
-      - docs-ro-approvers
       - docs-triagers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-triagers
@@ -1516,7 +1523,6 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
-      - docs-ro-approvers
       - docs-triagers
       - proto-approvers
       - proto-triagers
@@ -1746,6 +1752,7 @@ maintainers:
       - erlang-approvers
       - erlang-contrib-approvers
       - erlang-contrib-maintainers
+      - erlang-maintainers
     html_url: https://github.com/yordis
     avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: zacharycmontoya
@@ -1926,12 +1933,6 @@ approvers:
       - arrow-triagers
     html_url: https://github.com/gouslu
     avatar_url: https://avatars.githubusercontent.com/u/7251174?v=4
-  - name: GregMefford
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-    html_url: https://github.com/GregMefford
-    avatar_url: https://avatars.githubusercontent.com/u/69467?v=4
   - name: hannahramadan
     teams:
       - ruby-contrib-approvers
@@ -2033,6 +2034,11 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/kinyoklion
     avatar_url: https://avatars.githubusercontent.com/u/4955475?v=4
+  - name: klobucar
+    teams:
+      - sig-security-approvers
+    html_url: https://github.com/klobucar
+    avatar_url: https://avatars.githubusercontent.com/u/223349?v=4
   - name: kota-sakuma
     teams:
       - docs-ja-approvers
@@ -2115,6 +2121,11 @@ approvers:
       - semconv-client-approvers
     html_url: https://github.com/MSNev
     avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
+  - name: mwimpelberg28
+    teams:
+      - demo-approvers
+    html_url: https://github.com/mwimpelberg28
+    avatar_url: https://avatars.githubusercontent.com/u/120263653?v=4
   - name: my-git9
     teams:
       - docs-zh-approvers

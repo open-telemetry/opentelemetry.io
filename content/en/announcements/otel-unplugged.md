@@ -1,17 +1,17 @@
 ---
-title: OTel Unplugged EU at FOSDEM 2026
-linkTitle: OTel Unplugged EU '26
-date: 2025-12-18
-expiryDate: 2026-02-02 # keep
-weight: 20260202
+title: OTel Unplugged EU at FOSDEM 2027
+linkTitle: OTel Unplugged EU '27
+date: 2026-11-25
+expiryDate: 2027-02-01 # keep
+weight: 20270201
 params:
-  blogPostURL: /blog/2025/otel-unplugged-fosdem/
-  eventUrl: https://events.humanitix.com/otelunplugged-eu2026
+  blogPostURL: /blog/2026/otel-unplugged-fosdem-2027/
+  eventUrl: https://events.humanitix.com/otel-unplugged-2027
 cSpell:ignore: fosdem
 ---
 
 [**OTel Unplugged EU**][event] is coming to **Brussels,
-<span class="text-nowrap">February 2, 2026</span>**!
+<span class="text-nowrap">February 1, 2027</span>**!
 <span class="d-none d-md-inline"><br></span>Join the OpenTelemetry
 [unconference][blog]<span class="d-none d-sm-inline"> the day after
 FOSDEM</span>!

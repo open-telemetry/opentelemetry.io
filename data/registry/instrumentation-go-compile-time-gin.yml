@@ -16,5 +16,5 @@ description: >
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation/tree/main/instrumentation/github.com/gin-gonic/gin
+  repo: https://github.com/open-telemetry/opentelemetry-go-compile-contrib/tree/main/instrumentation/github.com/gin-gonic/gin
 createdAt: 2026-06-29
