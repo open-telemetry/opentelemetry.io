@@ -1,0 +1,24 @@
+{{/*
+  Returns the posts that a blog section's list and RSS feed show.
+
+  Each post has a home stream: `main` for the year folders, and the stream's
+  folder name (newsletter, arrow, ...) for posts in a stream folder. A post can
+  also opt into other streams with `also_in: [main, inside]`. A stream can set
+  a default for its posts via `cascade: { params: { also_in: [...] } }`.
+
+  The blog root shows the `main` stream; a stream folder shows its own stream;
+  any other section (such as a year) shows its own posts.
+*/ -}}
+{{ $pages := .RegularPagesRecursive -}}
+{{ $blog := site.GetPage "/blog" -}}
+{{ if or (eq . $blog) (and (eq .Parent $blog) .Params.stream) -}}
+  {{ $key := cond (eq . $blog) "main" .Params.stream -}}
+  {{ $all := $blog.RegularPagesRecursive -}}
+  {{ $pages = $all | first 0 -}}
+  {{ range $all -}}
+    {{ if or (eq (.Params.stream | default "main") $key) (in (.Params.also_in | default slice) $key) -}}
+      {{ $pages = $pages | append . -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+{{ return $pages.ByDate.Reverse -}}

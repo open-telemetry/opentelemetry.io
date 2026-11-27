@@ -5,14 +5,32 @@
 import { dump, load } from 'js-yaml';
 
 export const SITE = 'https://opentelemetry.io';
+// `section` is a year folder (2026) or a stream (newsletter, arrow, ...).
 const POST_RE =
-  /^content\/en\/blog\/(\d{4})\/([a-z0-9][a-z0-9._-]*)(\/index)?\.md$/;
+  /^content\/en\/blog\/([a-z0-9][a-z0-9-]*)\/([a-z0-9][a-z0-9._-]*)(\/index)?\.md$/;
 const FRONT_MATTER_RE = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/;
 
-/** Returns `{ year, slug }` for an English blog post path, else null. */
+/** Returns `{ section, slug }` for an English blog post path, else null. */
 export function parsePostPath(path) {
   const m = POST_RE.exec(path);
-  return m ? { year: m[1], slug: m[2] } : null;
+  return m ? { section: m[1], slug: m[2] } : null;
+}
+
+/**
+ * Returns the post's front matter, with `announcement` defaulting to the
+ * `cascade.params.announcement` of its section's _index.md, so that a stream
+ * can turn announcements off for all its posts.
+ *
+ * @param {(path: string) => string | null} read
+ */
+export function withSectionDefaults(path, frontMatter, read) {
+  if (frontMatter.announcement !== undefined) return frontMatter;
+  const { section } = parsePostPath(path);
+  const index = read(`content/en/blog/${section}/_index.md`) ?? '';
+  const announcement = parseFrontMatter(index).cascade?.params?.announcement;
+  return announcement === undefined
+    ? frontMatter
+    : { ...frontMatter, announcement };
 }
 
 /** Parses YAML front matter; returns `{}` when there is none. */
@@ -57,7 +75,7 @@ function dayOf(date) {
  * @param {string} today `YYYY-MM-DD` (UTC).
  */
 export function buildAnnouncement(path, frontMatter, today) {
-  const { year, slug } = parsePostPath(path);
+  const { section, slug } = parsePostPath(path);
   const { announcement, date } = frontMatter;
 
   if (announcement === false) return null;
@@ -74,7 +92,7 @@ export function buildAnnouncement(path, frontMatter, today) {
     throw new Error(`${path}: missing or invalid date`);
   }
 
-  const url = `${SITE}/blog/${year}/${slug}/`;
+  const url = `${SITE}/blog/${section}/${slug}/`;
   const link = `[${title}](${url})`;
   return {
     // Named after the post date, so re-runs produce the same file.
@@ -88,7 +106,7 @@ export function buildAnnouncement(path, frontMatter, today) {
         },
         { lineWidth: -1 },
       ),
-    branch: `otelbot/announce-blog-${year}-${slug}`,
+    branch: `otelbot/announce-blog-${section}-${slug}`,
     title: `Announce blog post: ${title}`,
     body:
       day > today

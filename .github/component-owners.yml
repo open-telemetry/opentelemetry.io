@@ -18,6 +18,8 @@ components:
     - open-telemetry/specs-semconv-approvers
   content/en/blog:
     - open-telemetry/docs-maintainers
+  content/en/blog/arrow:
+    - open-telemetry/arrow-approvers
   content/en/community/end-user:
     - open-telemetry/sig-end-user-approvers
   content/en/docs/collector:

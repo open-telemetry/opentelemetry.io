@@ -24,6 +24,10 @@
 /.cspell.yml                    @open-telemetry/docs-approvers
 /prh/**                         @open-telemetry/docs-maintainers
 
+# Blog streams are owned by their teams, see content/en/blog/<stream>/_index.md.
+# TODO: owners for /content/en/blog/newsletter/ and /content/en/blog/inside/.
+/content/en/blog/arrow/         @open-telemetry/arrow-approvers
+
 # No-owner files. Keep this list in sync with the `no-owner-files` list in
 # .github/component-owners.yml.
 /link-cache.jsonc

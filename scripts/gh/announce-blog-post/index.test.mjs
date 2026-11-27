@@ -6,6 +6,7 @@ import {
   findPublishedPosts,
   parseFrontMatter,
   parsePostPath,
+  withSectionDefaults,
 } from './index.mjs';
 
 const post = (fm) => `---\n${fm}\n---\n\nBody\n`;
@@ -13,16 +14,21 @@ const PATH = 'content/en/blog/2026/my-post.md';
 
 describe('parsePostPath', () => {
   test('accepts single files and bundles', () => {
-    assert.deepEqual(parsePostPath(PATH), { year: '2026', slug: 'my-post' });
+    assert.deepEqual(parsePostPath(PATH), { section: '2026', slug: 'my-post' });
     assert.deepEqual(parsePostPath('content/en/blog/2026/a/index.md'), {
-      year: '2026',
+      section: '2026',
       slug: 'a',
+    });
+    assert.deepEqual(parsePostPath('content/en/blog/arrow/my-post.md'), {
+      section: 'arrow',
+      slug: 'my-post',
     });
   });
   test('rejects other paths', () => {
     assert.equal(parsePostPath('content/ja/blog/2026/my-post.md'), null);
     assert.equal(parsePostPath('content/en/blog/2026/_index.md'), null);
     assert.equal(parsePostPath('content/en/blog/2026/a/image.md'), null);
+    assert.equal(parsePostPath('content/en/blog/arrow/_index.md'), null);
   });
 });
 
@@ -95,5 +101,24 @@ describe('buildAnnouncement', () => {
       build('title: T\ndate: 2026-05-10').body,
       /goes live on 2026-05-10/,
     );
+  });
+});
+
+describe('withSectionDefaults', () => {
+  const ARROW = 'content/en/blog/arrow/my-post.md';
+  const read = (path) =>
+    path === 'content/en/blog/arrow/_index.md'
+      ? post('title: Arrow\ncascade:\n  params:\n    announcement: false')
+      : null;
+
+  test('inherits the stream default', () => {
+    assert.equal(withSectionDefaults(ARROW, {}, read).announcement, false);
+  });
+  test('the post overrides the stream default', () => {
+    const fm = { announcement: 'Hi' };
+    assert.equal(withSectionDefaults(ARROW, fm, read).announcement, 'Hi');
+  });
+  test('no default without a section setting', () => {
+    assert.deepEqual(withSectionDefaults(PATH, {}, read), {});
   });
 });

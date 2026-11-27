@@ -28,7 +28,7 @@
 {{- else }}
 {{- $pages = $pctx.Pages }}
 {{- end }}
-{{- $pages = .RegularPagesRecursive }} {{- /* OTel: always use all pages, recursively. */}}
+{{- $pages = partial "blog/pages.html" . }} {{- /* OTel: all pages recursively, filtered for blog streams. */}}
 {{- $limit := .Site.Config.Services.RSS.Limit }}
 {{- if ge $limit 1 }}
 {{- $pages = $pages | first $limit }}

@@ -25,6 +25,7 @@ import {
   findPublishedPosts,
   parseFrontMatter,
   parsePostPath,
+  withSectionDefaults,
 } from './index.mjs';
 
 const git = (...args) =>
@@ -84,7 +85,11 @@ function main() {
   if (!parsePostPath(path) || content === null) {
     throw new Error(`${path}: not an English blog post`);
   }
-  const frontMatter = parseFrontMatter(content);
+  const frontMatter = withSectionDefaults(
+    path,
+    parseFrontMatter(content),
+    read,
+  );
   if (frontMatter.draft === true) throw new Error(`${path}: is a draft`);
 
   const today = new Date().toISOString().slice(0, 10);
