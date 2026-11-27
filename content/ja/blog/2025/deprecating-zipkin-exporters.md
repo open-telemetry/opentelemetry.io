@@ -28,7 +28,7 @@ OpenTelemetry プロジェクトは、[Zipkin の OTLP インジェストサポ�
 
 現在 Zipkin エクスポーターを使用している場合、2つの移行パスがあります。
 
-- **OTLP への切り替え**（推奨）: アプリケーションを OTLP でトレースを送信するように設定し、[Zipkin の OTLP インジェストサポート](https://github.com/openzipkin-contrib/zipkin-otel)を有効にしてください。
+- **OTLP への切り替え**（推奨）: アプリケーションが OTLP でトレースを送信するように設定し、[Zipkin の OTLP インジェストサポート](https://github.com/openzipkin-contrib/zipkin-otel)を有効にしてください。
 - **コレクターの使用**: OTLP データを OpenTelemetry コレクター経由でルーティングし、コレクターの [Zipkin エクスポーター](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/exporter/zipkinexporter?from_branch=main)を使用してください。
 
 ## ご質問は？ {#questions}
