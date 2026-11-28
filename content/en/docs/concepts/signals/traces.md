@@ -168,10 +168,10 @@ of Traces. In OpenTelemetry, they include the following information:
 - Name
 - Parent span ID (empty for root spans)
 - Start and End Timestamps
-- [Span Context](#span-context)
+- [SpanContext](#span-context)
 - [Attributes](#attributes)
 - [Span Events](#span-events)
-- [Span Links](#span-links)
+- [Links](#span-links)
 - [Span Status](#span-status)
 
 Sample span:
@@ -217,9 +217,9 @@ Spans can be nested, as is implied by the presence of a parent span ID: child
 spans represent sub-operations. This allows spans to more accurately capture the
 work done in an application.
 
-### Span Context
+### SpanContext {#span-context}
 
-Span context is an immutable object on every span that contains the following:
+SpanContext is an immutable object on every span that contains the following:
 
 - The Trace ID representing the trace that the span is a part of
 - The span's Span ID
@@ -227,11 +227,11 @@ Span context is an immutable object on every span that contains the following:
 - Trace State, a list of key-value pairs that can carry vendor-specific trace
   information
 
-Span context is the part of a span that is serialized and propagated alongside
+SpanContext is the part of a span that is serialized and propagated alongside
 [Distributed Context](#context-propagation) and [Baggage](../baggage).
 
-Because Span Context contains the Trace ID, it is used when creating
-[Span Links](#span-links).
+Because SpanContext contains the Trace ID, it is used when creating
+[Links](#span-links).
 
 ### Attributes
 
@@ -288,7 +288,7 @@ completes, you might want to add data from the operation to your telemetry.
   attach the data to a span event.
 - If the timestamp isn't meaningful, attach the data as span attributes.
 
-### Span Links
+### Links {#span-links}
 
 Links exist so that you can associate one span with one or more spans, implying
 a causal relationship. For example, let’s say we have a distributed system where
@@ -300,15 +300,13 @@ operation with a trace as well.
 
 We would like to associate the trace for the subsequent operations with the
 first trace, but we cannot predict when the subsequent operations will start. We
-need to associate these two traces, so we will use a span link.
+need to associate these two traces, so we will use a Link.
 
 You can link the last span from the first trace to the first span in the second
 trace. Now, they are causally associated with one another.
 
 Links are optional but serve as a good way to associate trace spans with one
 another.
-
-For more information see [Span Links](/docs/specs/otel/trace/api/#link).
 
 ### Span Status
 
@@ -338,7 +336,7 @@ To reiterate: `Unset` represents a span that completed without an error. `Ok`
 represents when a developer explicitly marks a span as successful. In most
 cases, it is not necessary to explicitly mark a span as `Ok`.
 
-### Span Kind
+### SpanKind {#span-kind}
 
 When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`,
 or `Consumer`. This span kind provides a hint to the tracing backend as to how
@@ -347,9 +345,6 @@ parent of a server span is often a remote client span, and the child of a client
 span is usually a server span. Similarly, the parent of a consumer span is
 always a producer and the child of a producer span is always a consumer. If not
 provided, the span kind is assumed to be internal.
-
-For more information regarding SpanKind, see
-[SpanKind](/docs/specs/otel/trace/api/#spankind).
 
 #### Client
 
@@ -382,5 +377,5 @@ start long after the producer span has already ended.
 
 ## Specification
 
-For more information, see the
+To learn more about traces in OpenTelemetry, see the
 [traces specification](/docs/specs/otel/overview/#tracing-signal).
