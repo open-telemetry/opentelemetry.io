@@ -1,0 +1,15 @@
+title: OpenTelemetry-Swift-Api
+registryType: api
+language: swift
+tags:
+  - swift
+  - ios
+  - macOS
+  - tvOS
+license: Apache 2.0
+description: The OpenTelemetry API for Swift.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-swift-core/tree/main/Sources/OpenTelemetryApi
+createdAt: 2021-06-22

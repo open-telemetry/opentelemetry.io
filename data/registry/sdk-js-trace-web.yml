@@ -1,0 +1,13 @@
+title: JavaScript SDK Trace Web
+registryType: sdk
+language: js
+tags:
+  - javascript
+  - browser
+license: Apache 2.0
+description: The OpenTelemetry SDK for JavaScript
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-web
+createdAt: 2020-02-04
