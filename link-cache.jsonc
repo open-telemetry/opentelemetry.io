@@ -16449,6 +16449,31 @@
     "when": "2026-11-06T15:59:12Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1100": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1100-beta1": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1130": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#120": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#v1200": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/Directory.Packages.props": {
     "result": 200,
     "when": "2026-11-20T06:01:19Z",
@@ -16519,6 +16544,11 @@
     "when": "2026-11-20T06:01:19Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.9.0/docs/README.md": {
+    "result": 200,
+    "when": "2026-11-26T09:20:27Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744": {
     "result": 200,
     "when": "2026-11-27T05:38:58Z",
@@ -16547,6 +16577,21 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833": {
     "result": 200,
     "when": "2026-11-27T17:20:18Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.19.1": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.20.0": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.9.0": {
+    "result": 200,
+    "when": "2026-11-26T03:42:04Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo": {

@@ -48,6 +48,69 @@ CI tests run against the following operating systems:
 - [Ubuntu 22.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)
 - [Ubuntu 22.04 LTS ARM64](https://github.com/actions/partner-runner-images/blob/main/images/arm-ubuntu-22-image.md)
 
+## Select an instrumentation version
+
+Choose the automatic instrumentation package for the runtime your application
+uses before running an installer. The package version is independent of the
+OpenTelemetry .NET SDK version.
+
+The following table summarizes runtime compatibility through automatic
+instrumentation `1.20.0`. Release links include the installers and platform
+archives under **Assets**.
+
+| .NET runtime                   | Compatible stable package versions | Package to download | Support status                                       |
+| ------------------------------ | ---------------------------------- | ------------------- | ---------------------------------------------------- |
+| .NET 11                        | `1.20.0`                           | [1.20.0 release][]  | Supported                                            |
+| .NET 10                        | `1.13.0`–`1.20.0`                  | [1.20.0 release][]  | Supported                                            |
+| .NET 9                         | `1.10.0`–`1.19.1`                  | [1.19.1 release][]  | Historical compatibility                             |
+| .NET 8                         | `1.2.0`–`1.19.1`                   | [1.19.1 release][]  | Historical compatibility                             |
+| .NET 6 and .NET 7              | `1.0.0`–`1.9.0`                    | [1.9.0 release][]   | Historical compatibility                             |
+| .NET Framework 4.6.2 and later | `1.0.0`–`1.20.0`                   | [1.20.0 release][]  | Subject to Microsoft's .NET Framework support policy |
+
+These ranges describe runtime compatibility, not ongoing maintenance of every
+listed package. Historical downloads are provided to identify the last
+compatible release, not as a recommendation to remain on an unsupported runtime.
+For a supported deployment, upgrade an unsupported runtime and select a
+compatible, maintained instrumentation release. Check the release notes when
+choosing a package newer than the versions listed here.
+
+The release history records these boundaries:
+
+- [1.10.0-beta.1][] added .NET 9 support and removed .NET 6 and .NET 7 support;
+  [1.10.0][] included these changes in a stable release.
+- [1.2.0][] added .NET 8 support, and [1.13.0][] added .NET 10 support.
+- [1.20.0][] added .NET 11 support and removed .NET 8 and .NET 9 support.
+
+The following installation examples apply to `v1.20.0` and `v1.19.1`, which
+provide the release and artifact attestations required by the verification
+commands. Set `version` on Linux and macOS, or `$version` on Windows, to the
+selected release tag, including the `v` prefix. For example, use `v1.19.1` for
+the historical .NET 9 combination.
+
+For .NET 6 and .NET 7, follow the [1.9.0 installation instructions][] instead.
+That release predates immutable-release attestations, so changing the version
+variable alone does not make the following verification commands work. Use the
+installer and installation instructions from the same release.
+
+[1.20.0 release]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.20.0
+[1.19.1 release]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.19.1
+[1.9.0 release]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.9.0
+[1.9.0 installation instructions]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.9.0/docs/README.md
+[1.10.0-beta.1]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1100-beta1
+[1.10.0]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1100
+[1.2.0]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#120
+[1.13.0]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#1130
+[1.20.0]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v1.20.0/CHANGELOG.md#v1200
+
 ## Setup
 
 To instrument a .NET application automatically, download and run the installer

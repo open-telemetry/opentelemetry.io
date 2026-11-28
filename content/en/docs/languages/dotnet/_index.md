@@ -17,6 +17,11 @@ OpenTelemetry for .NET supports all officially supported versions of
 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) except
 for .NET Framework 3.5 SP1.
 
+For zero-code instrumentation, use the
+[runtime compatibility table](/docs/zero-code/dotnet/#select-an-instrumentation-version)
+to select and download an automatic instrumentation package for your runtime.
+Automatic instrumentation and SDK packages have separate version numbers.
+
 ## Signals
 
 OpenTelemetry .NET supports the following signals:
