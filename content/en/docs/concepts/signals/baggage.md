@@ -34,7 +34,10 @@ baggage for you.
 
 Baggage is best used to include information typically available only at the
 start of a request further downstream. This can include things like Account
-Identification, User IDs, Product IDs, and origin IPs, for example.
+Identification, User IDs, Product IDs, and origin IPs, for example. User IDs and
+origin IPs can be personal data. Check the
+[Baggage security considerations](#baggage-security-considerations) before you
+add them.
 
 Propagating this information using baggage allows for deeper analysis of
 telemetry in a backend. For example, if you include information like a User ID
@@ -47,16 +50,38 @@ log data.
 
 ## Baggage security considerations
 
-Sensitive Baggage items can be shared with unintended resources, like
-third-party APIs. This is because automatic instrumentation includes Baggage in
-most of your service’s network requests. Specifically, Baggage and other parts
-of trace context are sent in HTTP headers, making it visible to anyone
-inspecting your network traffic. If traffic is restricted within your network,
-then this risk may not apply, but keep in mind that downstream services could
-propagate Baggage outside your network.
+### Sending Baggage
 
-Also, there are no built-in integrity checks to ensure that Baggage items are
-yours, so exercise caution when reading them.
+Automatic instrumentation can add Baggage to outgoing HTTP headers. Any service
+or proxy that receives those headers can read them. Downstream services can also
+pass Baggage on to third-party APIs, even when your own request stays inside
+your network.
+
+- Don't put credentials in Baggage.
+- Avoid personal data unless every service and telemetry backend that can
+  receive it is allowed to see it.
+- Remove Baggage, or the entries that shouldn't leave, from requests to
+  third-party APIs and other external services. You can do this in the code that
+  makes the request, or in a proxy or gateway at the edge of your network.
+
+For more on trust boundaries, see the
+[privacy considerations](https://www.w3.org/TR/baggage/#privacy-considerations)
+in the W3C Baggage specification.
+
+### Reading incoming Baggage
+
+Baggage has no built-in integrity checks. Any service along the way can add,
+change, or remove entries. Treat Baggage that arrives with a request like any
+other request input. Use these checks for requests from outside your network.
+
+- Read only the keys you expect, and drop the rest.
+- Validate values before you use them. For example, check the format and length
+  of a `clientId` before you add it as an attribute.
+- Don't use Baggage values for authentication, authorization, or other security
+  decisions.
+- If you copy Baggage entries to attributes, for example with a Baggage Span
+  Processor, limit it to the keys you expect. Otherwise a caller can add
+  arbitrary attributes to your telemetry.
 
 ## Baggage is not the same as attributes
 

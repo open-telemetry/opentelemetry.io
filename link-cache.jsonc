@@ -35383,6 +35383,11 @@
     "when": "2026-11-20T05:38:41Z",
     "via": "lychee",
   },
+  "https://www.w3.org/TR/baggage/#privacy-considerations": {
+    "result": 200,
+    "when": "2026-11-04T06:29:01Z",
+    "via": "lychee",
+  },
   "https://www.w3.org/TR/baggage/#property": {
     "result": 200,
     "when": "2026-11-26T19:06:08Z",
