@@ -2,8 +2,7 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
-drifted_from_default: true
+default_lang_commit: 6ce0f45ce4b7bbb4e85bef99709711edccec8a21
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -143,51 +142,47 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Nota" %}}
-
-Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
-predefinições podem ser definidas com a variável de ambiente
-`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
-
-```sh
-export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
-```
-
-O valor padrão para `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` é
-`"CUMULATIVE"`.
-
-Os valores disponíveis e suas configurações correspondentes para esta variável
-de ambiente são:
-
-- `CUMULATIVE`
-  - `Counter`: `CUMULATIVE`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `CUMULATIVE`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `DELTA`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `DELTA`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `LOWMEMORY`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-Definir `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
-diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e definirá
-esta variável de ambiente como `CUMULATIVE`.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
+> predefinições podem ser definidas com a variável de ambiente
+> `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
+>
+> ```sh
+> export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+> ```
+>
+> O valor padrão para `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` é
+> `"CUMULATIVE"`.
+>
+> Os valores disponíveis e suas configurações correspondentes para esta variável
+> de ambiente são:
+>
+> - `CUMULATIVE`
+>   - `Counter`: `CUMULATIVE`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `CUMULATIVE`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `DELTA`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `DELTA`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `LOWMEMORY`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+>
+> Definir `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` para qualquer
+> valor diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e
+> definirá esta variável de ambiente como `CUMULATIVE`.
 
 {{% include "exporters/jaeger.md" %}}
 
