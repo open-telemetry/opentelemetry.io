@@ -25,10 +25,16 @@ This approach is useful when:
 
 The following OpenTelemetry SDKs support declarative configuration:
 
+- C++
+- Go
 - [Java](/docs/zero-code/java/agent/declarative-configuration/)
+- JavaScript
+- Kotlin
+- [PHP](/docs/languages/php/sdk/#declarative-configuration)
 
-For details, refer to the
-[Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration)
+The
+[compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration)
+tracks current SDK support.
 
 ## Getting started
 
