@@ -2604,6 +2604,11 @@
     "when": "2026-11-27T17:20:06Z",
     "via": "lychee",
   },
+  "https://docs.kernel.org/accounting/psi.html": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://docs.kernel.org/admin-guide/cgroup-v2.html#cpu-interface-files": {
     "result": 200,
     "when": "2026-11-27T05:39:34Z",
@@ -21434,6 +21439,16 @@
     "when": "2026-11-27T17:21:00Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.63.0/oteps/0232-maturity-of-otel.md": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.63.0/spec-compliance-matrix.md#logs": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "result": 200,
     "when": "2026-11-24T05:38:41Z",
@@ -23454,6 +23469,16 @@
     "when": "2026-11-27T17:21:05Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4291": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/4292": {
+    "result": 200,
+    "when": "2026-11-28T10:29:10Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "result": 200,
     "when": "2026-11-26T19:08:24Z",
@@ -23684,6 +23709,11 @@
     "when": "2026-11-24T00:15:52Z",
     "via": "lychee",
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.45.0/policies/README.md": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "result": 200,
     "when": "2026-11-27T17:20:20Z",
@@ -23822,6 +23852,11 @@
   "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.md#type": {
     "result": 200,
     "when": "2026-11-27T05:39:34Z",
+    "via": "lychee",
+  },
+  "https://github.com/open-telemetry/weaver/blob/main/schemas/semconv-syntax.v2.md#spans-definition": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
     "via": "lychee",
   },
   "https://github.com/open-telemetry/weaver/releases": {
@@ -26684,6 +26719,11 @@
     "when": "2026-11-27T05:39:33Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#csi": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/concepts/storage/volumes/#downwardapi": {
     "result": 200,
     "when": "2026-11-27T05:39:33Z",
@@ -26694,9 +26734,29 @@
     "when": "2026-11-27T05:39:33Z",
     "via": "lychee",
   },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#fc": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#hostpath": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#iscsi": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://kubernetes.io/docs/concepts/storage/volumes/#local": {
     "result": 200,
     "when": "2026-11-27T05:39:33Z",
+    "via": "lychee",
+  },
+  "https://kubernetes.io/docs/concepts/storage/volumes/#nfs": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
     "via": "lychee",
   },
   "https://kubernetes.io/docs/concepts/storage/volumes/#persistentvolumeclaim": {
@@ -35069,6 +35129,16 @@
     "when": "2026-11-27T05:39:34Z",
     "via": "lychee",
   },
+  "https://www.rabbitmq.com/docs/configure#cluster-name": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
+  "https://www.rabbitmq.com/docs/vhosts": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
+    "via": "lychee",
+  },
   "https://www.rabbitmq.com/tutorials/tutorial-six-java#correlation-id": {
     "result": 200,
     "when": "2026-11-20T05:38:40Z",
@@ -35087,6 +35157,11 @@
   "https://www.rfc-editor.org/info/bcp14": {
     "result": 200,
     "when": "2026-11-20T05:38:41Z",
+    "via": "lychee",
+  },
+  "https://www.rfc-editor.org/rfc/rfc10008.html": {
+    "result": 200,
+    "when": "2026-11-28T10:29:09Z",
     "via": "lychee",
   },
   "https://www.rfc-editor.org/rfc/rfc2732#section-2": {
