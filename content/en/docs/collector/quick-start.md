@@ -3,7 +3,7 @@ title: Quick start
 description: Set up and collect telemetry in minutes!
 aliases: [getting-started]
 weight: 1
-cSpell:ignore: docker dokey gobin okey telemetrygen
+cSpell:ignore: docker dokey gobin HyperV okey telemetrygen zpages
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
@@ -87,6 +87,59 @@ need to adjust the command syntax.
    - `4317` — OTLP over gRPC, the default for most SDKs
    - `4318` — OTLP over HTTP, for clients that don't support gRPC
    - `55679` — ZPages, a built-in debug UI you can open in the browser
+
+   > [!NOTE]
+   >
+   > **Windows users:** Port `55679` may fall within a port range excluded by
+   > Hyper-V (typically `55616`–`55715`), causing a bind error:
+   > `An attempt was made to access a socket in a way forbidden by its access permissions.`
+   >
+   > To work around this, create a `config.yaml` that remaps ZPages to an
+   > unreserved port and pass it to the Collector:
+   >
+   > ```yaml
+   > extensions:
+   >   health_check:
+   >   pprof:
+   >     endpoint: 0.0.0.0:1777
+   >   zpages:
+   >     endpoint: 0.0.0.0:9999
+   >
+   > receivers:
+   >   otlp:
+   >     protocols:
+   >       grpc:
+   >         endpoint: 0.0.0.0:4317
+   >       http:
+   >         endpoint: 0.0.0.0:4318
+   >
+   > processors:
+   >   batch:
+   >
+   > exporters:
+   >   debug:
+   >     verbosity: detailed
+   >
+   > service:
+   >   extensions: [health_check, pprof, zpages]
+   >   pipelines:
+   >     traces:
+   >       receivers: [otlp]
+   >       processors: [batch]
+   >       exporters: [debug]
+   > ```
+   >
+   > Then run:
+   >
+   > ```sh
+   > docker run \
+   >   -p 127.0.0.1:4317:4317 \
+   >   -p 127.0.0.1:4318:4318 \
+   >   -p 127.0.0.1:9999:9999 \
+   >   -v ${PWD}/config.yaml:/etc/otelcol/config.yaml \
+   >   otel/opentelemetry-collector:{{% param vers %}} \
+   >   2>&1 | tee collector-output.txt
+   > ```
 
 4. In a separate terminal, generate some traces:
 
