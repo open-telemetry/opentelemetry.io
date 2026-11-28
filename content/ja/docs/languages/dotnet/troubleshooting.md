@@ -2,103 +2,296 @@
 title: トラブルシューティング
 description: OpenTelemetry .NET のトラブルシューティング方法を学ぶ
 weight: 100
-default_lang_commit: 3899955672f4abc64710cad23217b76528d7a961
-drifted_from_default: true
-cSpell:ignore: eventsource
+default_lang_commit: 820ce0e5f9c942912b85fad25b6ec8ff424bf73f
+cSpell:ignore: appsettings Blazor knownsafe LOCALAPPDATA
 ---
 
-OpenTelemetry .NET リポジトリ（[opentelemetry-dotnet][] および [opentelemetry-dotnet-contrib][]）から提供されるすべてのコンポーネントは、内部ロギングに [EventSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource) を使用しています。
-OpenTelemetry SDK が使用する `EventSource` の名前は "OpenTelemetry-Sdk" です。
-他のコンポーネントが使用する `EventSource` の名前については、各コンポーネントのドキュメントを参照してください。
-
-これらのログは [PerfView](https://github.com/microsoft/perfview) や [`dotnet-trace`][dotnet-trace] などのツールで確認できますが、SDK にはトラブルシューティングに役立つ自己診断機能も搭載されています。
+OpenTelemetry .NET リポジトリ（[opentelemetry-dotnet][] および [opentelemetry-dotnet-contrib][]）から提供されるすべてのコンポーネントは、ドロップされた測定値、拒否された設定、失敗したエクスポートなどの内部状態を [EventSource](https://learn.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource) を通じて報告します。
+`EventSource` の名前はすべて `OpenTelemetry-` で始まります。
+たとえば、`OpenTelemetry-Sdk`、`OpenTelemetry-Api`、`OpenTelemetry-Exporter-OpenTelemetryProtocol` などです。
 
 ## 自己診断 {#self-diagnostics}
 
-OpenTelemetry SDK には自己診断機能が組み込まれています。
-この機能を有効にすると、すべての OpenTelemetry コンポーネント（名前が "OpenTelemetry-" で始まる EventSource）が生成する内部ログをリッスンし、ログファイルに書き込みます。
+これらのイベントは [PerfView](https://github.com/microsoft/perfview) や [`dotnet-trace`][] などの汎用ツールでキャプチャできますが、SDK にはすべてのイベントをサブスクライブし、ローリングログファイル、コンソール、またはその両方に読みやすいエントリを書き込む自己診断機能も含まれています。
 
-自己診断機能は、プロセスの実行中に（プロセスを再起動せずに）有効化、変更、無効化できます。
-SDK は10秒ごとに非排他的な読み取り専用モードで設定ファイルの読み取りを試みます。
-SDK は設定に従って新しいログを含むファイルを作成または上書きします。
-このファイルは設定された最大サイズを超えることはなく、循環的に上書きされます。
+このページでは、`OpenTelemetry` パッケージのバージョン 1.20.0 から利用可能な `SelfDiagnosticsOptions` による自己診断の設定について説明します。
+`appsettings.json` からの自動バインドにはバージョン 1.21.0 以降が必要です。
+詳細なリファレンスについては、opentelemetry-dotnet リポジトリの[自己診断ドキュメント][reference]を参照してください。
 
-自己診断を有効にするには、プロセスの[作業ディレクトリ](https://en.wikipedia.org/wiki/Working_directory)に移動し、以下の内容で `OTEL_DIAGNOSTICS.json` という名前の設定ファイルを作成します。
+> [!IMPORTANT]
+>
+> 自己診断は SDK 自体を診断するものです。
+> テレメトリーパイプラインではなく、エントリがエクスポートされたり OpenTelemetry のログレコードに変換されたりすることはありません。
+> アプリケーションログには `ILogger` とエクスポーターを使用してください。
 
-```json
-{
-  "LogDirectory": ".",
-  "FileSize": 32768,
-  "LogLevel": "Warning",
-  "FormatMessage": "true"
-}
+自己診断はデフォルトで無効です。
+_シンク_ と呼ばれる出力を少なくとも1つ有効にするまで、何も書き込まれません。
+Blazor WebAssembly などのブラウザーベースのアプリではサポートされていません。
+
+[.NET 自動計装](/docs/zero-code/dotnet/)を使用している場合は、まずその[トラブルシューティングページ](/docs/zero-code/dotnet/troubleshooting/)を参照してください。
+エージェントは SDK イベントを自身のログにすでに含んでいます。
+
+## 環境変数による有効化 {#enable-with-environment-variables}
+
+環境変数を使用すればコード変更は不要です。
+プロセスの開始前に設定してください。
+
+任意のディレクトリにローリングログファイルを書き込みます。
+ディレクトリを設定するだけでファイル出力が有効になり、ディレクトリが存在しない場合は作成されます。
+
+```sh
+export OTEL_DOTNET_SELF_DIAGNOSTICS_LOG_DIRECTORY=./otel-logs
 ```
 
-自己診断を無効にするには、設定ファイルを削除します。
+```powershell
+$env:OTEL_DOTNET_SELF_DIAGNOSTICS_LOG_DIRECTORY = "C:\otel-logs"
+```
+
+プラットフォームの[デフォルトログディレクトリ](#default-log-directory)にローリングログファイルを書き込みます。
+
+```sh
+export OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS=file
+```
+
+`Debug` エントリを含めてコンソールに書き込みます。
+
+```sh
+export OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS=stdout,stderr
+export OTEL_LOG_LEVEL=debug
+```
+
+他の環境変数で有効にした出力をオフにします。
+
+```sh
+export OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS=none
+```
 
 > [!TIP]
 >
-> ほとんどの場合、アプリケーションと同じ場所にファイルを配置できます。
-> Windows では、[Process Explorer](https://docs.microsoft.com/sysinternals/downloads/process-explorer) を使用してプロセスをダブルクリックしてプロパティダイアログを開き、"Image" タブで "Current directory" を確認できます。
+> デフォルトレベルの `Warning` は、本番環境で常時有効にしておいても安全なように設計されています。
+> 問題を調査する場合のみ `Debug` に下げてください。
+
+`OTEL_LOG_LEVEL` はレベルのみを設定します。
+これだけでは出力は生成されません。
+
+## appsettings.json による有効化 {#enable-with-appsettingsjson}
+
+SDK はアプリケーション設定から `OpenTelemetry:SelfDiagnostics` セクションを自動的に読み取ります。
+`appsettings.json` を読み込むアプリでは、以下のいずれかの設定を追加します。
+
+```json
+{
+  "OpenTelemetry": {
+    "SelfDiagnostics": {
+      "MinimumLevel": "Debug",
+      "LogDirectory": "/var/log/otel",
+      "FileSizeLimitKilobytes": 4096,
+      "MaxRetainedFiles": 5
+    }
+  }
+}
+```
+
+設定がリロードをサポートしている場合（デフォルトの .NET ホストにおける `appsettings.json` のように）、変更は再起動なしで実行中のプロセスに適用されます。
+これにより、インシデント中に `Debug` に切り替え、その後元に戻すことができます。
+環境変数の変更には常に再起動が必要です。
+
+設定が複数の場所で定義されている場合、通常の .NET 設定の優先順位が適用されます。
+デフォルトのホストでは、環境変数が `appsettings.json` を上書きし、コマンドライン引数が両方を上書きします。
+コードでの設定はこれらすべてを上書きします。
+
+> [!WARNING]
 >
-> 内部的には、SDK は [GetCurrentDirectory](https://docs.microsoft.com/dotnet/api/system.io.directory.getcurrentdirectory) にある設定ファイルを検索し、次に [AppContext.BaseDirectory](https://docs.microsoft.com/dotnet/api/system.appcontext.basedirectory) を検索します。
-> コードからこれらのメソッドを呼び出すことで、正確なディレクトリを確認することもできます。
+> `"MinimumLevel": "NotALevel"` のような無効な値は、設定の読み込みまたはリロード時にエラーを引き起こします。
+> SDK が最後の有効な設定を保持することは保証されないため、実行中のアプリケーションの設定を保存する前に値を確認してください。
 
-### 設定パラメーター {#configuration-parameters}
+## コードによる有効化 {#enable-with-code}
 
-設定ファイルは以下のパラメーターをサポートしています。
+標準の .NET オプションパターンを使用して `SelfDiagnosticsOptions` を設定します。
+コードでの設定は環境変数および設定ファイルよりも優先されます。
 
-#### LogDirectory {#logdirectory}
+```csharp
+using Microsoft.Extensions.Logging;
+using OpenTelemetry.SelfDiagnostics;
+using OpenTelemetry.Trace;
 
-出力ログファイルが保存されるディレクトリです。
-絶対パスまたは作業ディレクトリからの相対パスを指定できます。
+var builder = WebApplication.CreateBuilder(args);
 
-#### FileSize {#filesize}
+builder.Services.Configure<SelfDiagnosticsOptions>(options =>
+{
+    options.MinimumLevel = LogLevel.Debug;
+    options.LogDirectory = SelfDiagnosticsOptions.GetDefaultLogDirectory()
+        ?? "/var/log/otel";
+});
 
-ログファイルサイズを [KiB](https://en.wikipedia.org/wiki/Kibibyte) 単位で指定する正の整数です。
-この値は `[1024, 131072]`（1 MiB <= サイズ <= 128 MiB）の範囲内でなければならず、範囲外の場合は最も近い上限または下限に丸められます。
-ログファイルはこの設定サイズを超えることはなく、循環的に上書きされます。
-
-#### LogLevel {#loglevel}
-
-キャプチャされるイベントの最低レベルです。
-[`EventLevel` 列挙型](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventlevel)の[値](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventlevel#fields)のいずれかでなければなりません。
-レベルはイベントの重大度を表します。
-低い重大度レベルには、より高い重大度レベルが含まれます。
-たとえば、`Warning` には `Error` と `Critical` レベルが含まれます。
-
-#### FormatMessage {#formatmessage}
-
-ログメッセージのプレースホルダー（`{0}`、`{1}` など）を実際のパラメーター値に置き換えてフォーマットするかどうかを制御するブール値です。
-`false`（デフォルト）に設定すると、メッセージはフォーマットされていないプレースホルダーの後に生のパラメーター値が続く形式でログに記録されます。
-`true` に設定すると、プレースホルダーはフォーマットされたパラメーター値に置き換えられ、可読性が向上します。
-
-**`FormatMessage: false`（デフォルト）の例:**
-
-```text
-2025-07-24T01:45:04.1020880Z:Measurements from Instrument '{0}', Meter '{1}' will be ignored. Reason: '{2}'. Suggested action: '{3}'{dotnet.gc.collections}{System.Runtime}{Instrument belongs to a Meter not subscribed by the provider.}{Use AddMeter to add the Meter to the provider.}
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracing => tracing.AddOtlpExporter());
 ```
 
-**`FormatMessage: true` の例:**
+`Sdk.CreateTracerProviderBuilder()` や他の `Sdk.Create*ProviderBuilder()` メソッドでプロバイダーをビルドする場合は、`ConfigureServices` 内で同じ `Configure` 呼び出しを行ってください。
+自己診断の設定はプロセス全体に適用されるため、一度だけ設定してください。
+
+## 設定 {#settings}
+
+| オプション               | 環境変数                                     | デフォルト        | 説明                                                                                                     |
+| ------------------------ | -------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------- |
+| `MinimumLevel`           | `OTEL_LOG_LEVEL`                             | `Warning`         | キャプチャされる最低レベル。[ログレベル](#log-levels)を参照。                                            |
+| `LogDirectory`           | `OTEL_DOTNET_SELF_DIAGNOSTICS_LOG_DIRECTORY` | 未設定            | ログファイルのディレクトリ。設定するとファイル出力が有効になる。                                         |
+| `LogToStdout`            | `OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS`         | `false`           | 標準出力にエントリを書き込む。                                                                           |
+| `LogToStderr`            | `OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS`         | `false`           | 標準エラーにエントリを書き込む。両方のコンソールオプションが有効な場合、`Error` 以上がここに出力される。 |
+| `FileSizeLimitKilobytes` | なし                                         | `10240`（10 MiB） | 新しいログファイルを開始するサイズ。`0` 以下の場合、サイズ制限なしの単一ファイルになる。                 |
+| `MaxRetainedFiles`       | なし                                         | `10`              | 最も古いファイルが削除されるまでに保持されるログファイル数。`0` 以下の場合、すべてのファイルを保持する。 |
+| `EnvironmentVariables`   | `OTEL_DOTNET_SELF_DIAGNOSTICS_ENV_VARS`      | `KnownSafeValues` | `OTEL_*` 環境変数がどの程度各ログファイルに書き込まれるか。[機密データ](#sensitive-data)を参照。         |
+
+`OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS` は、`file`、`stdout`、`stderr`、`console`（`stdout,stderr` の略）、または `none` のカンマ区切りリストを受け取ります。
+リストに `file` が含まれていない場合、ログディレクトリが設定されていてもファイルは書き込まれません。
+これにより、デプロイメントがすべてのサービスにログディレクトリを設定している場合でも、個々のサービスがオプトアウトできます。
+
+### デフォルトログディレクトリ {#default-log-directory}
+
+`OTEL_DOTNET_SELF_DIAGNOSTICS_SINKS=file` でログディレクトリが未設定の場合、SDK は昇格された権限を必要としないユーザーごとのディレクトリに書き込みます。
+
+| プラットフォーム    | デフォルトパス                                                                                                       |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Windows             | `%LOCALAPPDATA%\OpenTelemetry\dotnet-diagnostics`                                                                    |
+| macOS               | `~/Library/Logs/OpenTelemetry/dotnet-diagnostics`                                                                    |
+| Linux / その他 Unix | `$XDG_STATE_HOME/opentelemetry/dotnet-diagnostics`、未設定の場合は `~/.local/state/opentelemetry/dotnet-diagnostics` |
+
+コード内では、`SelfDiagnosticsOptions.GetDefaultLogDirectory()` が同じパスを返します。
+ユーザーごとのディレクトリが利用できない場合、ファイル出力は無効のままとなり、SDK は標準エラーに警告を書き込みます。
+その場合は明示的にディレクトリを設定してください。
+
+### ログレベル {#log-levels}
+
+`OTEL_LOG_LEVEL` は、`error`、`warn`、`info`、`debug`、`trace`、`none` のほか、.NET の [`LogLevel`](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel) 名も受け付けます。
+値は大文字と小文字を区別しません。
+OpenTelemetry の値は `LogLevel` 名にマッピングされます。
+たとえば、`warn` は `Warning` に、`info` は `Information` にマッピングされます。
+
+デフォルトは `Warning` であり、OpenTelemetry 仕様のデフォルトである `Information` とは異なります。
+低いレベルでは出力が大幅に増えますが、問題を調査するまでは通常有用ではありません。
+調査時には `Debug` を使用してください。
+`Debug` は読み込まれた各アセンブリとそのバージョンもログに記録するため、どのビルドが実行されているかを確認する最も手軽な方法です。
+
+## 出力の読み方 {#reading-the-output}
+
+### ファイルプリアンブル {#file-preamble}
+
+各ログファイルはプロセスを説明するプリアンブルで始まるため、単一のファイルだけで有用です。
+以下の例では一部を省略しています。
 
 ```text
-2025-07-24T01:44:44.7059260Z:Measurements from Instrument 'dotnet.gc.collections', Meter 'System.Runtime' will be ignored. Reason: 'Instrument belongs to a Meter not subscribed by the provider.'. Suggested action: 'Use AddMeter to add the Meter to the provider.'
+=== OpenTelemetry .NET SDK self-diagnostics ===
+SDK version          : 1.21.0
+Runtime              : .NET 10.0.0
+OS                   : Ubuntu 24.04.1 LTS
+Process name         : MyCompany.MyService
+Log directory        : /home/app/.local/state/opentelemetry/dotnet-diagnostics
+...
+Environment Variables (mode: KnownSafeValues):
+OTEL_EXPORTER_OTLP_ENDPOINT_TRACES = [REDACTED]
+OTEL_SERVICE_NAME = my-service
+OTEL_TRACES_SAMPLER = parentbased_traceidratio
+=== end preamble ===
 ```
 
-### 備考 {#remarks}
+プリアンブルは、SDK が認識するかどうかにかかわらず、設定されているすべての `OTEL_*` 環境変数を一覧表示します。
+これにより、スペルミスした名前を簡単に発見できます。
+上の例では、`OTEL_EXPORTER_OTLP_ENDPOINT_TRACES` は `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` であるべきです。
 
-指定された `LogDirectory` に `ExecutableName.ProcessId.log`（たとえば `myapp.exe.12345.log`）という名前のログファイルが生成され、そこにログが書き込まれます。
+環境変数の値がパースできない場合、`Configuration Warnings:` ブロックに変数名、拒否された値、受け入れ可能な値が表示されます。
 
-SDK が `LogDirectory`、`FileSize`、または `LogLevel` フィールドの解析に失敗した場合、設定ファイルは無効として扱われ、ログファイルは生成されません。
+コンソール出力にはログエントリのみが含まれ、プリアンブルはありません。
 
-`LogDirectory` または `FileSize` が変更されると、SDK は新しい設定に従って新しいログを含むファイルを作成または上書きします。
-設定ファイルは4 KiB以下でなければなりません。
-ファイルが4 KiBより大きい場合、最初の4 KiBの内容のみが読み取られます。
+### ログエントリ {#log-entries}
 
-ログファイルは、最小限のオーバーヘッドと限定されたリソース使用量という目標を達成するために、適切なテキストファイル形式ではない場合があります。
-ログテキストが設定サイズより小さい場合、末尾に `NUL` 文字が含まれることがあります。
-書き込み操作が末尾に達すると、先頭から再開して既存のテキストを上書きします。
+各エントリの形式は以下のとおりです。
 
-[dotnet-trace]: https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace
+```text
+[<timestamp>][<threadId>][<spanId>][<level>]  <message> {EventId} <traceparent>
+```
+
+例:
+
+```text
+[2026-08-06T09:14:31.4471190Z][000014][00f067][Error]       OpenTelemetry-Exporter-OpenTelemetryProtocol: Exporter failed send data to collector to https://otlp.example.com:4317 endpoint. Data will not be sent. Exception: System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. {EventId: 2, EventName: FailedToReachCollector} <00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01>
+```
+
+メッセージは、それを書き込んだ `EventSource` の名前で始まるため、どのコンポーネントを調べるべきかがわかります。
+スパンがアクティブだった場合、エントリは [W3C `traceparent`](https://www.w3.org/TR/trace-context/#traceparent-header) で終わるため、エントリをトレースと照合できます。
+
+ログファイルは `otel-dotnet-{pid}-{processName}-{processStartTime}-{index}.log` という名前になります。
+ファイルが `FileSizeLimitKilobytes` に達すると、SDK はそのファイルを閉じて次のファイルを開始します。
+ファイル数が `MaxRetainedFiles` を超えると、SDK は最も古いファイルを削除します。
+この制限はプロセスの各実行ごとに個別に適用されます。
+他のプロセスや同じアプリケーションの以前の実行からのファイルは削除されないため、不要になったら手動で削除してください。
+
+## 機密データ {#sensitive-data}
+
+ファイルプリアンブルにはプロセスの `OTEL_*` 環境変数が含まれ、その名前空間外のものは含まれません。
+`EnvironmentVariables` オプション、または `OTEL_DOTNET_SELF_DIAGNOSTICS_ENV_VARS` で、表示される情報量を制御します。
+
+| モード            | 変数値      | 表示内容                                                                             |
+| ----------------- | ----------- | ------------------------------------------------------------------------------------ |
+| `None`            | `none`      | 何も表示しない。                                                                     |
+| `Names`           | `names`     | 変数名のみ。                                                                         |
+| `KnownSafeValues` | `knownsafe` | 名前に加えて、SDK が安全と判断した値。その他の値は `[REDACTED]` となる。デフォルト。 |
+| `AllValues`       | `all`       | すべての値を伏せずに表示。                                                           |
+
+`KnownSafeValues` では、エンドポイントはスキーム、ホスト、ポートに縮小され、`OTEL_RESOURCE_ATTRIBUTES` は `service.name` などの既知のキーの値のみを保持します。
+
+`AllValues` で書き込まれたファイルはシークレットとして扱ってください。
+API キーや認証ヘッダーが含まれている可能性があります。
+単一の再現実行でのみ有効にし、恒久的には有効にしないでください。
+
+Linux および macOS の .NET 10 以降では、SDK はログディレクトリとファイルを所有ユーザーのみが読み取れるように作成します。
+ログシッパーなどの他のアカウントには、明示的にアクセスを許可する必要があります。
+
+## バグレポート用のログ収集 {#collect-logs-for-a-bug-report}
+
+`Debug` レベルの自己診断ログは、バグレポートに含める最も有用な情報の1つです。
+以下の設定で再現を実行してください。
+
+```sh
+export OTEL_LOG_LEVEL=debug
+export OTEL_DOTNET_SELF_DIAGNOSTICS_LOG_DIRECTORY=./otel-logs
+```
+
+その後、[イシューを開いて][new-issue]以下を含めてください。
+
+- ログファイル。
+- 最小限の再現手順（ある場合）。
+- 期待した動作と実際に起きたこと。
+- 障害のおおよその発生時刻（関連するエントリを見つけるため）。
+
+> [!IMPORTANT]
+>
+> 共有する前にログを確認してください。
+> 環境変数の値はデフォルトで伏せられますが、ログメッセージには、実行環境のパス、エンドポイント、リソース属性、例外の詳細が含まれる場合があります。
+
+## OTEL_DIAGNOSTICS.json からの移行 {#migrate-from-otel_diagnosticsjson}
+
+以前のバージョンの SDK では、プロセスの作業ディレクトリにある `OTEL_DIAGNOSTICS.json` ファイルによって自己診断が有効化されていました。
+このファイルは引き続き動作しますが、非推奨であり、将来のメジャーバージョンで削除される予定です。
+
+バージョン 1.21.0 以降、このファイルはこのページで説明されているものと同じメカニズムを使用します。
+その結果:
+
+- 出力は、単一の循環 `{executable}.{pid}.log` ファイルではなく、ローリング `otel-dotnet-*.log` ファイルに書き込まれます。
+- `FormatMessage` は無視されます。
+  メッセージは常にフォーマットされます。
+- 環境変数、`appsettings.json`、またはコードによって他の方法で自己診断出力が設定されている場合、このファイルは無視されます。
+
+移行するには、ファイルを削除し、設定を [`OpenTelemetry:SelfDiagnostics`](#enable-with-appsettingsjson) セクションまたは[環境変数](#enable-with-environment-variables)に移してください。
+
+| `OTEL_DIAGNOSTICS.json` | 置き換え先                                                                               |
+| ----------------------- | ---------------------------------------------------------------------------------------- |
+| `LogDirectory`          | `LogDirectory`                                                                           |
+| `LogLevel`              | `MinimumLevel`。`Informational` は `Information` に、`Verbose` は `Debug` になる。       |
+| `FileSize`              | `FileSizeLimitKilobytes` と `MaxRetainedFiles`。旧サイズはすべてのファイルの合計だった。 |
+
+[`dotnet-trace`]: https://learn.microsoft.com/dotnet/core/diagnostics/dotnet-trace
+[new-issue]: https://github.com/open-telemetry/opentelemetry-dotnet/issues/new/choose
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet
 [opentelemetry-dotnet-contrib]: https://github.com/open-telemetry/opentelemetry-dotnet-contrib
+[reference]: https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/docs/troubleshooting/README.md

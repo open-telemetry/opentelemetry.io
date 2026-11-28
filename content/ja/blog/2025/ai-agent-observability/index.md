@@ -7,8 +7,7 @@ linkTitle: AI Agent Observability
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
 sig: SIG GenAI Observability
 date: 2025-03-06
-default_lang_commit: 68c29178b21e7ace970d27c5817a4edcff3ea9fb
-drifted_from_default: true
+default_lang_commit: 9667281f4d05e607d2d7d466b3a55b954dced564
 cSpell:ignore: genai Guangya PydanticAI Sujay
 ---
 
@@ -58,7 +57,7 @@ AIエージェントのエコシステムが成熟し続けるにつれて、標
 - **AIエージェントフレームワーク**は、AIエージェントを開発、管理、展開するために必要なインフラを提供し、多くの場合、エージェントをゼロから構築するよりも合理的な方法です。
   たとえば、以下のようなものがあります。
   [IBM Bee AI](https://github.com/i-am-bee),
-  [IBM wxFlow](https://github.com/IBM/wxflows/),
+  [IBM wxFlow](https://web.archive.org/web/20260213013016/https://github.com/IBM/wxflows),
   [CrewAI](https://www.crewai.com/),
   [AutoGen](https://microsoft.github.io/autogen/dev/),
   [Semantic Kernel](https://github.com/microsoft/semantic-kernel),
